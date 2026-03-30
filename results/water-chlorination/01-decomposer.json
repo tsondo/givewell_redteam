@@ -1,0 +1,149 @@
+{
+  "threads": [
+    {
+      "name": "External Validity of Mortality RCTs to Current Implementation Contexts",
+      "scope": "** This",
+      "key_questions": [
+        "** Potential non-linear relationships between baseline mortality and treatment effect; interaction effects between improved water quality and concurrent health system improvements; changes in pathogen mix over time.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "External validity adjustment (ranges from 0.558 to 1.214 across programs)",
+        "Pooled ln(RR) of -0.146",
+        "Baseline under-5 mortality rates (0.0083-0.0134 across programs)"
+      ],
+      "relevant_sources": [
+        "Original five RCTs used in meta-analysis (specific citations needed)",
+        "DHS/MICS surveys showing mortality and WASH trends in implementation countries",
+        "Recent water quality studies in implementation areas",
+        "WHO/UNICEF JMP data on water source improvements"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: External Validity of Mortality RCTs to Current Implementation Contexts\n\n## Scope\n** This\n\n## Key Parameters\n** \n- External validity adjustment (ranges from 0.558 to 1.214 across programs)\n- Pooled ln(RR) of -0.146\n- Baseline under-5 mortality rates (0.0083-0.0134 across programs)\n\n**\n\n## What GiveWell Already Accounts For\n** GiveWell applies program-specific external validity adjustments that vary by over 100% across programs. They acknowledge that baseline mortality has declined since the original trials.\n\n**\n\n## What GiveWell Does Not Account For\n** Potential non-linear relationships between baseline mortality and treatment effect; interaction effects between improved water quality and concurrent health system improvements; changes in pathogen mix over time.\n\n**\n\n## Data Sources to Examine\n**\n- Original five RCTs used in meta-analysis (specific citations needed)\n- DHS/MICS surveys showing mortality and WASH trends in implementation countries\n- Recent water quality studies in implementation areas\n- WHO/UNICEF JMP data on water source improvements\n\n**\n\n## Materiality Threshold\n** A 30% reduction in the pooled mortality effect (from 14% to 10%) would reduce cost-effectiveness by approximately 25-30%, potentially dropping some programs below funding thresholds.\n\n**\n\n## Known Concerns Already Surfaced\n** GiveWell acknowledges uncertainty in external validity and applies adjustments, but specific mechanisms driving validity concerns are not detailed in the available report.\n\n###\n"
+    },
+    {
+      "name": "Cryptosporidium Prevalence and Chlorine-Resistant Pathogen Burden",
+      "scope": "** This",
+      "key_questions": [
+        "** Quantitative adjustment for varying Cryptosporidium prevalence across settings; potential increases in chlorine-resistant pathogen burden over time; differential effectiveness by age given varying pathogen susceptibility.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "Implicit pathogen mix assumptions in the pooled mortality effect",
+        "No explicit adjustment for chlorine-resistant pathogens in the model"
+      ],
+      "relevant_sources": [
+        "GEMS (Global Enteric Multicenter Study) data on pathogen-specific attributable fractions",
+        "MAL-ED study data on age-specific pathogen burden",
+        "Recent molecular diagnostic studies of diarrheal etiology in implementation countries",
+        "Studies on chlorine effectiveness against specific pathogens at field-relevant doses"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Cryptosporidium Prevalence and Chlorine-Resistant Pathogen Burden\n\n## Scope\n** This\n\n## Key Parameters\n**\n- Implicit pathogen mix assumptions in the pooled mortality effect\n- No explicit adjustment for chlorine-resistant pathogens in the model\n\n**\n\n## What GiveWell Already Accounts For\n** The report explicitly acknowledges that chlorine has \"limited effectiveness against the protozoan parasite Cryptosporidium, a common cause of diarrhea in children in low-income settings.\"\n\n**\n\n## What GiveWell Does Not Account For\n** Quantitative adjustment for varying Cryptosporidium prevalence across settings; potential increases in chlorine-resistant pathogen burden over time; differential effectiveness by age given varying pathogen susceptibility.\n\n**\n\n## Data Sources to Examine\n**\n- GEMS (Global Enteric Multicenter Study) data on pathogen-specific attributable fractions\n- MAL-ED study data on age-specific pathogen burden\n- Recent molecular diagnostic studies of diarrheal etiology in implementation countries\n- Studies on chlorine effectiveness against specific pathogens at field-relevant doses\n\n**\n\n## Materiality Threshold\n** If chlorine-resistant pathogens account for >25% of preventable diarrheal mortality in implementation areas, this could reduce program effectiveness by 20-30%, shifting cost-effectiveness below 6x cash for several programs.\n\n**\n\n## Known Concerns Already Surfaced\n** Cryptosporidium resistance is acknowledged but not quantified.\n\n###\n"
+    },
+    {
+      "name": "Adherence Decay and Long-term Usage Patterns",
+      "scope": "** This",
+      "key_questions": [
+        "** Long-term adherence decay; seasonal variation in water source usage; competition from improving piped water access; behavioral fatigue with chlorination.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "Implicit adherence assumptions embedded in the mortality effect",
+        "Cost per person treated (assumes certain coverage/usage rates)"
+      ],
+      "relevant_sources": [
+        "Long-term follow-up studies of chlorination programs",
+        "Dispensers for Safe Water monitoring data on usage rates over time",
+        "Studies on factors affecting sustained adoption of water treatment",
+        "Program administrative data on chlorine refill rates"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Adherence Decay and Long-term Usage Patterns\n\n## Scope\n** This\n\n## Key Parameters\n**\n- Implicit adherence assumptions embedded in the mortality effect\n- Cost per person treated (assumes certain coverage/usage rates)\n\n**\n\n## What GiveWell Already Accounts For\n** The CEA includes program-specific costs that may reflect some operational realities, but adherence adjustments are not explicit in the parameter list.\n\n**\n\n## What GiveWell Does Not Account For\n** Long-term adherence decay; seasonal variation in water source usage; competition from improving piped water access; behavioral fatigue with chlorination.\n\n**\n\n## Data Sources to Examine\n**\n- Long-term follow-up studies of chlorination programs\n- Dispensers for Safe Water monitoring data on usage rates over time\n- Studies on factors affecting sustained adoption of water treatment\n- Program administrative data on chlorine refill rates\n\n**\n\n## Materiality Threshold\n** A 40% reduction in effective coverage due to adherence issues would reduce cost-effectiveness proportionally, potentially dropping programs below funding thresholds.\n\n**\n\n## Known Concerns Already Surfaced\n** Not explicitly addressed in available materials.\n\n###\n"
+    },
+    {
+      "name": "Age-Specific Effect Heterogeneity and Mortality Concentration",
+      "scope": "** This",
+      "key_questions": [
+        "** Potential concentration of effects in 6-24 month olds (peak diarrhea mortality age); different baseline immunity by age; varying water consumption patterns by age.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "Single under-5 mortality effect applied uniformly",
+        "Moral weights for under-5 (108-112) vs over-5 (66-70)",
+        "Adult mortality scaling factor (0.317-0.892)"
+      ],
+      "relevant_sources": [
+        "Age-disaggregated data from the five mortality RCTs",
+        "Studies on age-specific diarrhea mortality patterns",
+        "Immunological studies on enteric pathogen exposure and immunity development",
+        "Water consumption studies by age"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Age-Specific Effect Heterogeneity and Mortality Concentration\n\n## Scope\n** This\n\n## Key Parameters\n**\n- Single under-5 mortality effect applied uniformly\n- Moral weights for under-5 (108-112) vs over-5 (66-70)\n- Adult mortality scaling factor (0.317-0.892)\n\n**\n\n## What GiveWell Already Accounts For\n** Separate moral weights for under-5 and over-5 populations; an adult mortality scaling factor that reduces the assumed effect in older populations.\n\n**\n\n## What GiveWell Does Not Account For\n** Potential concentration of effects in 6-24 month olds (peak diarrhea mortality age); different baseline immunity by age; varying water consumption patterns by age.\n\n**\n\n## Data Sources to Examine\n**\n- Age-disaggregated data from the five mortality RCTs\n- Studies on age-specific diarrhea mortality patterns\n- Immunological studies on enteric pathogen exposure and immunity development\n- Water consumption studies by age\n\n**\n\n## Materiality Threshold\n** If 70% of the mortality effect is concentrated in ages 6-24 months (rather than distributed across under-5s), this could affect the moral weight calculation and reduce cost-effectiveness by 15-20%.\n\n**\n\n## Known Concerns Already Surfaced\n** Age distinctions are made between under-5 and over-5, but not within the under-5 group.\n\n###\n"
+    },
+    {
+      "name": "Implementation Fidelity at Scale",
+      "scope": "** This",
+      "key_questions": [
+        "** Chlorine stockouts; improper dosing due to varying source water turbidity; maintenance delays; seasonal variation in water volume affecting concentration.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "Cost per person (implicitly assumes certain implementation quality)",
+        "No explicit implementation quality adjustment"
+      ],
+      "relevant_sources": [
+        "Program monitoring data on chlorine levels at point of use",
+        "Supply chain reliability data from implementers",
+        "Water quality testing results from scaled programs",
+        "Maintenance logs and stockout reports"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Implementation Fidelity at Scale\n\n## Scope\n** This\n\n## Key Parameters\n**\n- Cost per person (implicitly assumes certain implementation quality)\n- No explicit implementation quality adjustment\n\n**\n\n## What GiveWell Already Accounts For\n** Program-specific costs that may reflect some operational realities.\n\n**\n\n## What GiveWell Does Not Account For\n** Chlorine stockouts; improper dosing due to varying source water turbidity; maintenance delays; seasonal variation in water volume affecting concentration.\n\n**\n\n## Data Sources to Examine\n**\n- Program monitoring data on chlorine levels at point of use\n- Supply chain reliability data from implementers\n- Water quality testing results from scaled programs\n- Maintenance logs and stockout reports\n\n**\n\n## Materiality Threshold\n** If 30% of water points have inadequate chlorination (due to stockouts, mechanical issues, or improper dosing), this would reduce effectiveness proportionally and could drop cost-effectiveness below thresholds.\n\n**\n\n## Known Concerns Already Surfaced\n** Not explicitly addressed in available materials.\n\n###\n"
+    },
+    {
+      "name": "Plausibility Cap Mechanism and Binding Constraints",
+      "scope": "** This",
+      "key_questions": [
+        "** The report doesn't explain why uncapped estimates exceed plausibility thresholds for most programs, suggesting potential model misspecification.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "Plausibility caps (binding for ILC Kenya at 0.109, DSW B at 0.056, DSW D at 0.109)",
+        "Parameters that drive estimates above caps"
+      ],
+      "relevant_sources": [
+        "GiveWell's methodology documentation on plausibility caps",
+        "Comparable all-cause mortality reductions from other child health interventions",
+        "Biological plausibility constraints on diarrhea's contribution to all-cause mortality"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Plausibility Cap Mechanism and Binding Constraints\n\n## Scope\n** This\n\n## Key Parameters\n**\n- Plausibility caps (binding for ILC Kenya at 0.109, DSW B at 0.056, DSW D at 0.109)\n- Parameters that drive estimates above caps\n\n**\n\n## What GiveWell Already Accounts For\n** Explicit plausibility caps that constrain the mortality reduction estimates.\n\n**\n\n## What GiveWell Does Not Account For\n** The report doesn't explain why uncapped estimates exceed plausibility thresholds for most programs, suggesting potential model misspecification.\n\n**\n\n## Data Sources to Examine\n**\n- GiveWell's methodology documentation on plausibility caps\n- Comparable all-cause mortality reductions from other child health interventions\n- Biological plausibility constraints on diarrhea's contribution to all-cause mortality\n\n**\n\n## Materiality Threshold\n** This is a structural issue - if the caps are set too high, all programs may be overestimated by 20-50%.\n\n**\n\n## Known Concerns Already Surfaced\n** Caps are applied but rationale is not transparent.\n\n###\n"
+    },
+    {
+      "name": "Mills-Reincke Phenomenon and Indirect Effects",
+      "scope": "** This",
+      "key_questions": [
+        "** Whether the historical Mills-Reincke relationship holds in settings with different disease burdens, health systems, and causes of death.\n\n**"
+      ],
+      "cea_parameters_affected": [
+        "Mills-Reincke multiplier: 3.744",
+        "Adjusted diarrhea RR: 0.805"
+      ],
+      "relevant_sources": [
+        "Original Mills-Reincke studies and their contexts",
+        "Modern studies on water quality and non-diarrheal mortality",
+        "Pathway analyses for water-mortality relationships beyond enterics",
+        "Studies from similar LMIC contexts rather than historical developed country data"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Mills-Reincke Phenomenon and Indirect Effects\n\n## Scope\n** This\n\n## Key Parameters\n**\n- Mills-Reincke multiplier: 3.744\n- Adjusted diarrhea RR: 0.805\n\n**\n\n## What GiveWell Already Accounts For\n** An explicit multiplier to capture indirect effects based on historical water infrastructure improvements in developed countries.\n\n**\n\n## What GiveWell Does Not Account For\n** Whether the historical Mills-Reincke relationship holds in settings with different disease burdens, health systems, and causes of death.\n\n**\n\n## Data Sources to Examine\n**\n- Original Mills-Reincke studies and their contexts\n- Modern studies on water quality and non-diarrheal mortality\n- Pathway analyses for water-mortality relationships beyond enterics\n- Studies from similar LMIC contexts rather than historical developed country data\n\n**\n\n## Materiality Threshold\n** If the true multiplier is 2.0 instead of 3.74, this would reduce cost-effectiveness by approximately 30-40%.\n\n**\n\n## Known Concerns Already Surfaced\n** The multiplier is applied but its validity for current contexts is not examined.\n\n##\n"
+    }
+  ],
+  "exclusion_list": [
+    "GiveWell acknowledges uncertainty in external validity and applies adjustments, but specific mechanisms driving validity concerns are not detailed in the available report.",
+    "###",
+    "Cryptosporidium resistance is acknowledged but not quantified.",
+    "Not explicitly addressed in available materials.",
+    "Age distinctions are made between under-5 and over-5, but not within the under-5 group.",
+    "Caps are applied but rationale is not transparent.",
+    "The multiplier is applied but its validity for current contexts is not examined.",
+    "##"
+  ],
+  "cea_parameter_map": "- External validity adjustment (ranges from 0.558 to 1.214 across programs)\n- Pooled ln(RR) of -0.146\n- Baseline under-5 mortality rates (0.0083-0.0134 across programs)\n- Implicit pathogen mix assumptions in the pooled mortality effect\n- No explicit adjustment for chlorine-resistant pathogens in the model\n- Implicit adherence assumptions embedded in the mortality effect\n- Cost per person treated (assumes certain coverage/usage rates)\n- Single under-5 mortality effect applied uniformly\n- Moral weights for under-5 (108-112) vs over-5 (66-70)\n- Adult mortality scaling factor (0.317-0.892)\n- Cost per person (implicitly assumes certain implementation quality)\n- No explicit implementation quality adjustment\n- Plausibility caps (binding for ILC Kenya at 0.109, DSW B at 0.056, DSW D at 0.109)\n- Parameters that drive estimates above caps\n- Mills-Reincke multiplier: 3.744\n- Adjusted diarrhea RR: 0.805"
+}
