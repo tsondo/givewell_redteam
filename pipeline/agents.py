@@ -1,0 +1,1069 @@
+"""Agent callers for all six pipeline stages.
+
+Each stage loads a system prompt, constructs a user message, calls the
+Anthropic API, parses the text response into dataclasses, and saves
+intermediate outputs.
+"""
+from __future__ import annotations
+
+import json
+import logging
+import re
+import time
+from pathlib import Path
+from typing import Any
+
+import anthropic
+
+from pipeline.config import (
+    ANTHROPIC_API_KEY,
+    COST_WARNING_PER_INTERVENTION,
+    MAX_RETRIES,
+    MAX_TOKENS_ADVERSARIAL,
+    MAX_TOKENS_DECOMPOSER,
+    MAX_TOKENS_INVESTIGATOR,
+    MAX_TOKENS_QUANTIFIER,
+    MAX_TOKENS_SYNTHESIZER,
+    MAX_TOKENS_VERIFIER,
+    OPUS_MODEL,
+    PRICING,
+    PROMPTS_DIR,
+    RESULTS_DIR,
+    SONNET_MODEL,
+)
+from pipeline.schemas import (
+    CandidateCritique,
+    DebatedCritique,
+    DecomposerOutput,
+    InvestigationThread,
+    PipelineStats,
+    QuantifiedCritique,
+    VerifiedCritique,
+)
+
+logger = logging.getLogger("pipeline")
+
+client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+
+# ---------------------------------------------------------------------------
+# API utilities
+# ---------------------------------------------------------------------------
+
+
+def call_api(
+    model: str,
+    system: str,
+    user_message: str,
+    stats: PipelineStats,
+    stage: str,
+    max_tokens: int,
+    tools: list[dict[str, Any]] | None = None,
+) -> str:
+    """Call Anthropic API with retries and cost tracking. Returns text response."""
+    last_error: Exception | None = None
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            kwargs: dict[str, Any] = {
+                "model": model,
+                "max_tokens": max_tokens,
+                "system": system,
+                "messages": [{"role": "user", "content": user_message}],
+            }
+            if tools:
+                kwargs["tools"] = tools
+            response = client.messages.create(**kwargs)
+
+            # Extract text blocks
+            text_parts: list[str] = []
+            for block in response.content:
+                if hasattr(block, "text"):
+                    text_parts.append(block.text)
+            text = "\n".join(text_parts)
+
+            input_tokens = response.usage.input_tokens
+            output_tokens = response.usage.output_tokens
+            cost = stats.record_call(stage, model, input_tokens, output_tokens, PRICING)
+            logger.info(
+                "[%s] %s | %d in / %d out | $%.4f | cumulative $%.4f",
+                stage,
+                model,
+                input_tokens,
+                output_tokens,
+                cost,
+                stats.total_cost,
+            )
+            if stats.total_cost > COST_WARNING_PER_INTERVENTION:
+                logger.warning(
+                    "Cumulative cost $%.2f exceeds warning threshold $%.2f",
+                    stats.total_cost,
+                    COST_WARNING_PER_INTERVENTION,
+                )
+            return text
+
+        except (anthropic.RateLimitError, anthropic.APIError) as exc:
+            last_error = exc
+            if attempt < MAX_RETRIES:
+                wait = 2 ** (attempt + 1)
+                logger.warning(
+                    "[%s] API error (attempt %d/%d), retrying in %ds: %s",
+                    stage,
+                    attempt + 1,
+                    MAX_RETRIES + 1,
+                    wait,
+                    exc,
+                )
+                time.sleep(wait)
+            else:
+                raise
+
+    # Should not reach here, but satisfy type checker
+    raise last_error  # type: ignore[misc]
+
+
+def load_prompt(filename: str) -> str:
+    """Load prompt from prompts/ directory."""
+    path = PROMPTS_DIR / filename
+    return path.read_text(encoding="utf-8")
+
+
+def save_stage_output(
+    intervention: str,
+    stage_num: int,
+    stage_name: str,
+    data: Any,
+    raw_text: str,
+) -> None:
+    """Save JSON + markdown to results/{intervention}/."""
+    out_dir = RESULTS_DIR / intervention
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    prefix = f"{stage_num:02d}-{stage_name}"
+
+    # JSON
+    json_path = out_dir / f"{prefix}.json"
+    if hasattr(data, "to_dict"):
+        json_data = data.to_dict()
+    elif isinstance(data, list):
+        json_data = [
+            item.to_dict() if hasattr(item, "to_dict") else item for item in data
+        ]
+    else:
+        json_data = data
+    json_path.write_text(json.dumps(json_data, indent=2, default=str), encoding="utf-8")
+
+    # Markdown (raw API response)
+    md_path = out_dir / f"{prefix}.md"
+    md_path.write_text(raw_text, encoding="utf-8")
+
+    logger.info("Saved stage output to %s (.json + .md)", prefix)
+
+
+def fetch_web_content(url: str, stats: PipelineStats) -> str:
+    """Fetch web content using Anthropic API with web search tool.
+
+    Uses a simple prompt to retrieve and return page content.
+    This keeps us within the 4-dependency constraint (no requests library).
+    """
+    return call_api(
+        model=SONNET_MODEL,
+        system="You are a research assistant. Retrieve and return the full content from the requested URL. Return the content as-is, without commentary.",
+        user_message=f"Please retrieve and return the full content from this URL: {url}",
+        stats=stats,
+        stage="fetch_web",
+        max_tokens=8192,
+        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Parsing helpers
+# ---------------------------------------------------------------------------
+
+
+def _extract_section(text: str, header: str, next_headers: list[str]) -> str:
+    """Extract content between a header and the next header in next_headers.
+
+    Uses loose regex matching with optional colon and whitespace.
+    """
+    # Escape header for regex
+    pattern = re.escape(header) + r"\s*:?\s*"
+    match = re.search(pattern, text, re.IGNORECASE)
+    if not match:
+        return ""
+
+    start = match.end()
+
+    # Find the earliest next header
+    end = len(text)
+    for nh in next_headers:
+        nh_pattern = re.escape(nh) + r"\s*:?\s*"
+        nh_match = re.search(nh_pattern, text[start:], re.IGNORECASE)
+        if nh_match:
+            end = min(end, start + nh_match.start())
+
+    return text[start:end].strip()
+
+
+def _split_on_pattern(text: str, pattern: str) -> list[tuple[str, str]]:
+    """Split text on a regex pattern, returning (title, body) tuples."""
+    matches = list(re.finditer(pattern, text, re.IGNORECASE))
+    results: list[tuple[str, str]] = []
+    for i, m in enumerate(matches):
+        title = m.group(1).strip() if m.lastindex else ""
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        body = text[start:end].strip()
+        results.append((title, body))
+    return results
+
+
+# ---------------------------------------------------------------------------
+# Parsers
+# ---------------------------------------------------------------------------
+
+
+DECOMPOSER_THREAD_HEADERS = [
+    "SCOPE",
+    "KEY PARAMETERS",
+    "WHAT GIVEWELL ALREADY ACCOUNTS FOR",
+    "WHAT GIVEWELL DOES NOT ACCOUNT FOR",
+    "DATA SOURCES TO EXAMINE",
+    "MATERIALITY THRESHOLD",
+    "KNOWN CONCERNS ALREADY SURFACED",
+]
+
+
+def parse_decomposer_output(text: str) -> DecomposerOutput:
+    """Parse decomposer API response into DecomposerOutput."""
+    # Split into thread sections
+    thread_splits = _split_on_pattern(text, r"THREAD\s+\d+\s*:\s*(.+?)(?:\n|$)")
+
+    threads: list[InvestigationThread] = []
+    all_exclusions: list[str] = []
+    all_parameters: list[str] = []
+
+    for thread_name, thread_body in thread_splits:
+        sections: dict[str, str] = {}
+        for i, header in enumerate(DECOMPOSER_THREAD_HEADERS):
+            remaining = DECOMPOSER_THREAD_HEADERS[i + 1:] + [
+                "THREAD",
+                "DEPENDENCY MAP",
+                "RECOMMENDED SEQUENCING",
+            ]
+            sections[header] = _extract_section(thread_body, header, remaining)
+
+        scope = sections.get("SCOPE", "")
+        key_params_raw = sections.get("KEY PARAMETERS", "")
+        already_accounts = sections.get("WHAT GIVEWELL ALREADY ACCOUNTS FOR", "")
+        not_account = sections.get("WHAT GIVEWELL DOES NOT ACCOUNT FOR", "")
+        data_sources_raw = sections.get("DATA SOURCES TO EXAMINE", "")
+        materiality = sections.get("MATERIALITY THRESHOLD", "")
+        known_concerns = sections.get("KNOWN CONCERNS ALREADY SURFACED", "")
+
+        # Parse bullet lists
+        key_params = [
+            line.strip().lstrip("-•* ").strip()
+            for line in key_params_raw.splitlines()
+            if line.strip() and line.strip().lstrip("-•* ").strip()
+        ]
+        data_sources = [
+            line.strip().lstrip("-•* ").strip()
+            for line in data_sources_raw.splitlines()
+            if line.strip() and line.strip().lstrip("-•* ").strip()
+        ]
+        exclusion_items = [
+            line.strip().lstrip("-•* ").strip()
+            for line in known_concerns.splitlines()
+            if line.strip() and line.strip().lstrip("-•* ").strip()
+        ]
+
+        all_exclusions.extend(exclusion_items)
+        all_parameters.extend(key_params)
+
+        # Build context_md for investigators
+        context_md = f"# Thread: {thread_name}\n\n"
+        context_md += f"## Scope\n{scope}\n\n"
+        context_md += f"## Key Parameters\n{key_params_raw}\n\n"
+        context_md += f"## What GiveWell Already Accounts For\n{already_accounts}\n\n"
+        context_md += f"## What GiveWell Does Not Account For\n{not_account}\n\n"
+        context_md += f"## Data Sources to Examine\n{data_sources_raw}\n\n"
+        context_md += f"## Materiality Threshold\n{materiality}\n\n"
+        context_md += f"## Known Concerns Already Surfaced\n{known_concerns}\n"
+
+        out_of_scope = ""
+        # Check for an out-of-scope note at the end
+        oos_match = re.search(r"OUT\s+OF\s+SCOPE", thread_body, re.IGNORECASE)
+        if oos_match:
+            out_of_scope = thread_body[oos_match.end():].strip()
+
+        thread = InvestigationThread(
+            name=thread_name,
+            scope=scope,
+            key_questions=[not_account] if not_account else [],
+            cea_parameters_affected=key_params,
+            relevant_sources=data_sources,
+            out_of_scope=out_of_scope,
+            context_md=context_md,
+        )
+        threads.append(thread)
+
+    # Build CEA parameter map from aggregated parameters
+    cea_parameter_map = "\n".join(f"- {p}" for p in all_parameters) if all_parameters else ""
+
+    # Deduplicate exclusion list
+    seen: set[str] = set()
+    unique_exclusions: list[str] = []
+    for e in all_exclusions:
+        lower = e.lower()
+        if lower not in seen:
+            seen.add(lower)
+            unique_exclusions.append(e)
+
+    return DecomposerOutput(
+        threads=threads,
+        exclusion_list=unique_exclusions,
+        cea_parameter_map=cea_parameter_map,
+    )
+
+
+def parse_investigator_output(
+    text: str, thread_name: str
+) -> list[CandidateCritique]:
+    """Parse investigator API response into list of CandidateCritique."""
+    critique_splits = _split_on_pattern(text, r"CRITIQUE\s+\d+\s*:\s*(.+?)(?:\n|$)")
+
+    critiques: list[CandidateCritique] = []
+    inv_headers = [
+        "HYPOTHESIS",
+        "MECHANISM",
+        "EVIDENCE",
+        "STRENGTH",
+        "NOVELTY CHECK",
+        "SUMMARY",
+        "RECOMMENDED VERIFICATION PRIORITIES",
+        "CRITIQUE",
+    ]
+
+    for title, body in critique_splits:
+        hypothesis = _extract_section(body, "HYPOTHESIS", inv_headers)
+        mechanism = _extract_section(body, "MECHANISM", inv_headers)
+        evidence_raw = _extract_section(body, "EVIDENCE", inv_headers)
+        strength_raw = _extract_section(body, "STRENGTH", inv_headers)
+        # novelty_check not stored in dataclass but parsed for completeness
+
+        # Parse evidence as list of items
+        evidence_items = [
+            line.strip().lstrip("-•* ").strip()
+            for line in evidence_raw.splitlines()
+            if line.strip() and line.strip().lstrip("-•* ").strip()
+        ]
+
+        # Infer direction from mechanism text
+        mech_lower = mechanism.lower()
+        if any(w in mech_lower for w in ("lower", "reduc", "decreas", "overestimat")):
+            direction = "decreases"
+        elif any(w in mech_lower for w in ("higher", "increas", "underestimat", "raise")):
+            direction = "increases"
+        else:
+            direction = "uncertain"
+
+        # Map strength to magnitude
+        strength_upper = strength_raw.upper().strip()
+        if "HIGH" in strength_upper:
+            magnitude = "large"
+        elif "MEDIUM" in strength_upper:
+            magnitude = "medium"
+        elif "LOW" in strength_upper:
+            magnitude = "small"
+        else:
+            magnitude = "unknown"
+
+        # Extract parameter names by scanning for known keywords
+        known_params = [
+            "relative_risk",
+            "internal_validity_under5",
+            "internal_validity_over5",
+            "external_validity",
+            "plausibility_cap",
+            "internal_validity_morbidity",
+            "morbidity_ext_validity",
+        ]
+        param_keywords = {
+            "relative risk": "relative_risk",
+            "mortality effect": "relative_risk",
+            "internal validity": "internal_validity_under5",
+            "external validity": "external_validity",
+            "plausibility cap": "plausibility_cap",
+            "morbidity": "internal_validity_morbidity",
+        }
+        found_params: list[str] = []
+        full_text_lower = (title + " " + mechanism + " " + hypothesis).lower()
+        for keyword, param in param_keywords.items():
+            if keyword in full_text_lower and param not in found_params:
+                found_params.append(param)
+        # Also check for direct parameter names
+        for p in known_params:
+            if p.replace("_", " ") in full_text_lower and p not in found_params:
+                found_params.append(p)
+
+        critiques.append(
+            CandidateCritique(
+                thread_name=thread_name,
+                title=title,
+                hypothesis=hypothesis,
+                mechanism=mechanism,
+                parameters_affected=found_params if found_params else ["unknown"],
+                suggested_evidence=evidence_items,
+                estimated_direction=direction,
+                estimated_magnitude=magnitude,
+            )
+        )
+
+    return critiques
+
+
+def parse_verifier_output(
+    text: str, original: CandidateCritique
+) -> VerifiedCritique:
+    """Parse verifier API response into VerifiedCritique."""
+    ver_headers = [
+        "CRITIQUE",
+        "CITATION CHECK",
+        "CLAIM CHECK",
+        "EVIDENCE FOUND",
+        "OVERALL VERDICT",
+        "REVISED CRITIQUE",
+    ]
+
+    verdict_raw = _extract_section(text, "OVERALL VERDICT", ver_headers)
+    evidence_raw = _extract_section(text, "EVIDENCE FOUND", ver_headers)
+    revised_raw = _extract_section(text, "REVISED CRITIQUE", ver_headers)
+    claim_check_raw = _extract_section(text, "CLAIM CHECK", ver_headers)
+
+    # Map verdict
+    verdict_upper = verdict_raw.upper()
+    if "PARTIALLY" in verdict_upper:
+        verdict = "partially_verified"
+    elif "VERIFIED" in verdict_upper:
+        verdict = "verified"
+    elif "REJECTED" in verdict_upper:
+        verdict = "unverified"
+    else:
+        # UNVERIFIABLE or anything else
+        verdict = "unverified"
+
+    # Parse evidence found as list
+    evidence_items = [
+        line.strip().lstrip("-•* ").strip()
+        for line in evidence_raw.splitlines()
+        if line.strip() and line.strip().lstrip("-•* ").strip()
+    ]
+
+    # Determine evidence strength from context
+    evidence_lower = (evidence_raw + " " + claim_check_raw).lower()
+    if any(
+        w in evidence_lower
+        for w in ("well-established", "strong evidence", "robust", "rct", "systematic review")
+    ):
+        evidence_strength = "strong"
+    elif any(
+        w in evidence_lower
+        for w in ("plausible", "uncertain", "mixed", "limited", "suggestive", "moderate")
+    ):
+        evidence_strength = "moderate"
+    else:
+        evidence_strength = "weak"
+
+    # Caveats from claim check
+    caveats = [
+        line.strip().lstrip("-•* ").strip()
+        for line in claim_check_raw.splitlines()
+        if line.strip() and line.strip().lstrip("-•* ").strip()
+    ]
+
+    # Clean up: the header often includes "(if partially verified):" — strip that
+    revised_clean = re.sub(
+        r"^\(if partially verified\)\s*:?\s*", "", revised_raw, flags=re.IGNORECASE
+    ).strip()
+    revised_hypothesis = revised_clean if revised_clean else None
+
+    return VerifiedCritique(
+        original=original,
+        verdict=verdict,
+        evidence_found=evidence_items,
+        evidence_strength=evidence_strength,
+        counter_evidence=[],
+        caveats=caveats,
+        revised_hypothesis=revised_hypothesis,
+    )
+
+
+# Parameter name mapping from API response text to compute_cost_effectiveness kwargs
+_PARAM_NAME_MAP: dict[str, str] = {
+    "relative risk": "relative_risk",
+    "mortality effect": "relative_risk",
+    "internal validity": "internal_validity_under5",
+    "external validity": "external_validity",
+    "plausibility cap": "plausibility_cap",
+    "morbidity": "internal_validity_morbidity",
+    "morbidity external validity": "morbidity_ext_validity",
+    "morbidity ext validity": "morbidity_ext_validity",
+}
+
+
+def _map_parameter_name(raw_name: str) -> str | None:
+    """Map a human-readable parameter name to a compute_cost_effectiveness kwarg."""
+    lower = raw_name.lower().strip()
+    for key, value in _PARAM_NAME_MAP.items():
+        if key in lower:
+            return value
+    return None
+
+
+def parse_quantifier_output(
+    text: str,
+    critique: VerifiedCritique,
+    cea: Any,
+) -> QuantifiedCritique:
+    """Parse quantifier API response and run actual sensitivity analysis."""
+    quant_headers = [
+        "CRITIQUE",
+        "PARAMETER MAPPING",
+        "PLAUSIBLE RANGE",
+        "SENSITIVITY ANALYSIS",
+        "BOTTOM-LINE IMPACT",
+        "MATERIALITY VERDICT",
+        "CODE",
+    ]
+
+    param_mapping_raw = _extract_section(text, "PARAMETER MAPPING", quant_headers)
+    plausible_range_raw = _extract_section(text, "PLAUSIBLE RANGE", quant_headers)
+    materiality_raw = _extract_section(text, "MATERIALITY VERDICT", quant_headers)
+
+    # Parse parameter mapping lines
+    target_parameters: list[dict[str, Any]] = []
+    for line in param_mapping_raw.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        # Try "Parameter N: Name, location, current value"
+        m = re.match(r"(?:Parameter\s*\d+\s*:?\s*)?(.+)", line, re.IGNORECASE)
+        if m:
+            target_parameters.append({"raw": m.group(1).strip()})
+
+    # Parse plausible ranges
+    alternative_range: list[dict[str, Any]] = []
+    range_pattern = re.compile(
+        r"Current\s+value\s*=\s*([\d.]+).*?"
+        r"(?:range|Range)\s*=?\s*\[?\s*([\d.]+)\s*[,to\-–]+\s*([\d.]+)",
+        re.IGNORECASE | re.DOTALL,
+    )
+    # Also try to capture parameter names in range section
+    param_line_pattern = re.compile(
+        r"(?:Parameter\s*\d+\s*:?\s*)?(.+?)(?:Current\s+value)",
+        re.IGNORECASE,
+    )
+
+    for line in plausible_range_raw.split("\n\n"):
+        line = line.strip()
+        if not line:
+            continue
+        # Try to get the range values
+        rm = range_pattern.search(line)
+        if rm:
+            current = float(rm.group(1))
+            low = float(rm.group(2))
+            high = float(rm.group(3))
+
+            # Try to get parameter name
+            pm = param_line_pattern.search(line)
+            param_name = pm.group(1).strip().rstrip(":. ") if pm else ""
+
+            alternative_range.append(
+                {
+                    "name": param_name,
+                    "current": current,
+                    "low": low,
+                    "high": high,
+                }
+            )
+
+    # Map materiality verdict
+    mat_upper = materiality_raw.upper().strip()
+    if "YES" in mat_upper:
+        api_materiality = "material"
+    elif "BORDERLINE" in mat_upper:
+        api_materiality = "notable"
+    else:
+        api_materiality = "immaterial"
+
+    # Run actual sensitivity analysis using CEA
+    sensitivity_results: dict[str, Any] = {}
+    max_abs_pct_change = 0.0
+
+    for rng in alternative_range:
+        mapped_param = _map_parameter_name(rng.get("name", ""))
+        if not mapped_param:
+            continue
+
+        low_val = rng["low"]
+        current_val = rng["current"]
+        high_val = rng["high"]
+
+        for program_key in cea.PROGRAMS:
+            try:
+                result = cea.run_sensitivity(
+                    program_key, mapped_param, low_val, current_val, high_val
+                )
+                key = f"{program_key}/{mapped_param}"
+                sensitivity_results[key] = result
+                # Track max absolute pct change
+                for label in ("low", "central", "high"):
+                    pct = abs(result.get(f"pct_change_{label}", 0.0))
+                    max_abs_pct_change = max(max_abs_pct_change, pct)
+            except Exception as exc:
+                logger.warning(
+                    "Sensitivity analysis failed for %s/%s: %s",
+                    program_key,
+                    mapped_param,
+                    exc,
+                )
+
+    # Determine materiality from actual results
+    if max_abs_pct_change >= 10.0:
+        materiality = "material"
+    elif max_abs_pct_change >= 1.0:
+        materiality = "notable"
+    else:
+        # Fall back to API-reported materiality if no sensitivity ran
+        materiality = api_materiality if not sensitivity_results else "immaterial"
+
+    return QuantifiedCritique(
+        critique=critique,
+        target_parameters=target_parameters,
+        alternative_range=alternative_range,
+        sensitivity_results=sensitivity_results,
+        materiality=materiality,
+        interaction_effects=[],
+    )
+
+
+def parse_challenger_output(text: str) -> tuple[str, list[str], str]:
+    """Parse adversarial challenger response.
+
+    Returns (surviving_strength, key_unresolved_questions, recommended_action).
+    """
+    challenger_headers = [
+        "REBUTTAL",
+        "RESPONSE TO",
+        "KEY UNRESOLVED QUESTIONS",
+        "SURVIVING STRENGTH",
+        "RECOMMENDED ACTION",
+    ]
+
+    strength_raw = _extract_section(text, "SURVIVING STRENGTH", challenger_headers)
+    questions_raw = _extract_section(text, "KEY UNRESOLVED QUESTIONS", challenger_headers)
+    action_raw = _extract_section(text, "RECOMMENDED ACTION", challenger_headers)
+
+    # Parse surviving strength
+    strength_lower = strength_raw.lower().strip()
+    if "strong" in strength_lower:
+        surviving_strength = "strong"
+    elif "moderate" in strength_lower:
+        surviving_strength = "moderate"
+    else:
+        surviving_strength = "weak"
+
+    # Parse questions as list
+    key_unresolved = [
+        line.strip().lstrip("-•*0123456789.) ").strip()
+        for line in questions_raw.splitlines()
+        if line.strip() and line.strip().lstrip("-•*0123456789.) ").strip()
+    ]
+
+    # Parse recommended action
+    action_lower = action_raw.lower().strip()
+    if "investigate" in action_lower:
+        recommended_action = "investigate"
+    elif "adjust" in action_lower:
+        recommended_action = "adjust_model"
+    elif "monitor" in action_lower:
+        recommended_action = "monitor"
+    elif "dismiss" in action_lower:
+        recommended_action = "dismiss"
+    else:
+        recommended_action = action_raw.strip()
+
+    return surviving_strength, key_unresolved, recommended_action
+
+
+# ---------------------------------------------------------------------------
+# Stage runners
+# ---------------------------------------------------------------------------
+
+
+def run_decomposer(
+    intervention_report: str,
+    cea_summary: str,
+    baseline_output: str,
+    stats: PipelineStats,
+    intervention: str,
+) -> tuple[DecomposerOutput, str]:
+    """Stage 1: Decompose the intervention into investigation threads."""
+    system = load_prompt("decomposer.md")
+    user_message = (
+        "## Intervention Report\n\n"
+        f"{intervention_report}\n\n"
+        "## CEA Parameter Summary\n\n"
+        f"{cea_summary}\n\n"
+        "## Baseline AI Output (for exclusion list)\n\n"
+        f"{baseline_output}"
+    )
+
+    raw = call_api(
+        model=OPUS_MODEL,
+        system=system,
+        user_message=user_message,
+        stats=stats,
+        stage="decomposer",
+        max_tokens=MAX_TOKENS_DECOMPOSER,
+    )
+
+    result = parse_decomposer_output(raw)
+    save_stage_output(intervention, 1, "decomposer", result, raw)
+    return result, raw
+
+
+def run_investigators(
+    threads: list[InvestigationThread],
+    exclusion_list: list[str],
+    stats: PipelineStats,
+    intervention: str,
+) -> tuple[list[CandidateCritique], str]:
+    """Stage 2: Run investigators on each thread sequentially."""
+    system_template = load_prompt("investigator-template.md")
+    all_critiques: list[CandidateCritique] = []
+    all_raw: list[str] = []
+
+    exclusion_text = "\n".join(f"- {e}" for e in exclusion_list)
+
+    for i, thread in enumerate(threads):
+        # Check for placeholder in template
+        if "{{CONTEXT_MD}}" in system_template:
+            system = system_template.replace("{{CONTEXT_MD}}", thread.context_md)
+        else:
+            system = system_template
+
+        user_message = (
+            "## Your Thread Assignment\n\n"
+            f"{thread.context_md}\n\n"
+            "## Exclusion List (do NOT re-raise these)\n\n"
+            f"{exclusion_text}\n\n"
+            "Generate 3-6 candidate critiques within this thread's scope."
+        )
+
+        raw = call_api(
+            model=SONNET_MODEL,
+            system=system,
+            user_message=user_message,
+            stats=stats,
+            stage=f"investigator-{i + 1}",
+            max_tokens=MAX_TOKENS_INVESTIGATOR,
+        )
+
+        critiques = parse_investigator_output(raw, thread.name)
+        all_critiques.extend(critiques)
+        all_raw.append(f"--- Thread: {thread.name} ---\n\n{raw}")
+
+    combined_raw = "\n\n".join(all_raw)
+    save_stage_output(intervention, 2, "investigators", all_critiques, combined_raw)
+    return all_critiques, combined_raw
+
+
+def run_verifier(
+    critiques: list[CandidateCritique],
+    stats: PipelineStats,
+    intervention: str,
+) -> tuple[list[VerifiedCritique], str]:
+    """Stage 3: Verify each critique with web search."""
+    system = load_prompt("verifier.md")
+    verified: list[VerifiedCritique] = []
+    all_raw: list[str] = []
+
+    for i, critique in enumerate(critiques):
+        user_message = (
+            f"## Critique to Verify\n\n"
+            f"**Title:** {critique.title}\n"
+            f"**Thread:** {critique.thread_name}\n"
+            f"**Hypothesis:** {critique.hypothesis}\n"
+            f"**Mechanism:** {critique.mechanism}\n"
+            f"**Suggested Evidence:** {', '.join(critique.suggested_evidence)}\n"
+            f"**Estimated Direction:** {critique.estimated_direction}\n"
+            f"**Estimated Magnitude:** {critique.estimated_magnitude}\n\n"
+            "Verify this critique. Check citations, claims, and evidence."
+        )
+
+        raw = call_api(
+            model=SONNET_MODEL,
+            system=system,
+            user_message=user_message,
+            stats=stats,
+            stage=f"verifier-{i + 1}",
+            max_tokens=MAX_TOKENS_VERIFIER,
+            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        )
+
+        result = parse_verifier_output(raw, critique)
+        all_raw.append(f"--- Critique: {critique.title} ---\n\n{raw}")
+
+        # Keep verified and partially_verified
+        if result.verdict in ("verified", "partially_verified"):
+            verified.append(result)
+        else:
+            logger.info(
+                "Dropping critique '%s': verdict=%s", critique.title, result.verdict
+            )
+
+    combined_raw = "\n\n".join(all_raw)
+    save_stage_output(intervention, 3, "verifier", verified, combined_raw)
+    return verified, combined_raw
+
+
+def run_quantifier(
+    critiques: list[VerifiedCritique],
+    cea: Any,
+    cea_parameter_map: str,
+    stats: PipelineStats,
+    intervention: str,
+) -> tuple[list[QuantifiedCritique], str]:
+    """Stage 4: Quantify impact of each verified critique."""
+    system = load_prompt("quantifier.md")
+    quantified: list[QuantifiedCritique] = []
+    all_raw: list[str] = []
+
+    cea_summary = cea.get_parameter_summary()
+
+    for i, critique in enumerate(critiques):
+        orig = critique.original
+        user_message = (
+            f"## Critique to Quantify\n\n"
+            f"**Title:** {orig.title}\n"
+            f"**Hypothesis:** {critique.revised_hypothesis or orig.hypothesis}\n"
+            f"**Mechanism:** {orig.mechanism}\n"
+            f"**Verdict:** {critique.verdict}\n"
+            f"**Evidence Strength:** {critique.evidence_strength}\n"
+            f"**Evidence Found:**\n"
+            + "\n".join(f"- {e}" for e in critique.evidence_found)
+            + f"\n\n## CEA Parameter Map\n\n{cea_parameter_map}\n\n"
+            f"## CEA Parameter Summary\n\n{cea_summary}\n\n"
+            "Quantify the impact. Map to specific parameters, provide plausible ranges, "
+            "and assess materiality."
+        )
+
+        raw = call_api(
+            model=OPUS_MODEL,
+            system=system,
+            user_message=user_message,
+            stats=stats,
+            stage=f"quantifier-{i + 1}",
+            max_tokens=MAX_TOKENS_QUANTIFIER,
+        )
+
+        result = parse_quantifier_output(raw, critique, cea)
+        quantified.append(result)
+        all_raw.append(f"--- Critique: {orig.title} ---\n\n{raw}")
+
+    combined_raw = "\n\n".join(all_raw)
+    save_stage_output(intervention, 4, "quantifier", quantified, combined_raw)
+    return quantified, combined_raw
+
+
+def _extract_relevant_report_sections(report: str, max_chars: int = 8000) -> str:
+    """Extract relevant sections from intervention report.
+
+    Looks for section headers related to key CEA topics. Falls back to
+    first max_chars characters if no headers found.
+    """
+    section_keywords = [
+        "mortality",
+        "internal validity",
+        "external validity",
+        "how we incorporate",
+        "adjustments",
+        "effect size",
+        "morbidity",
+        "cost-effectiveness",
+    ]
+
+    # Try to find markdown sections (## headers)
+    sections: list[str] = []
+    header_pattern = re.compile(r"^(#{1,3}\s+.+)$", re.MULTILINE)
+    headers = list(header_pattern.finditer(report))
+
+    if headers:
+        for i, hdr in enumerate(headers):
+            header_text = hdr.group(1).lower()
+            if any(kw in header_text for kw in section_keywords):
+                start = hdr.start()
+                end = headers[i + 1].start() if i + 1 < len(headers) else len(report)
+                sections.append(report[start:end].strip())
+
+    if sections:
+        result = "\n\n".join(sections)
+        return result[:max_chars]
+
+    # Fallback: return first max_chars
+    return report[:max_chars]
+
+
+def run_adversarial(
+    critiques: list[QuantifiedCritique],
+    intervention_report: str,
+    cea_parameter_map: str,
+    stats: PipelineStats,
+    intervention: str,
+) -> tuple[list[DebatedCritique], str]:
+    """Stage 5: Adversarial debate for material/notable critiques."""
+    advocate_prompt = load_prompt("adversarial-advocate.md")
+    challenger_prompt = load_prompt("adversarial-challenger.md")
+    all_raw: list[str] = []
+    debated: list[DebatedCritique] = []
+
+    # Extract relevant sections (FIX 6: don't truncate to 3000)
+    report_sections = _extract_relevant_report_sections(intervention_report)
+
+    for i, qcrit in enumerate(critiques):
+        # Only debate material or notable critiques
+        if qcrit.materiality not in ("material", "notable"):
+            logger.info(
+                "Skipping adversarial for '%s': materiality=%s",
+                qcrit.critique.original.title,
+                qcrit.materiality,
+            )
+            continue
+
+        orig = qcrit.critique.original
+        critique_summary = (
+            f"**Title:** {orig.title}\n"
+            f"**Hypothesis:** {qcrit.critique.revised_hypothesis or orig.hypothesis}\n"
+            f"**Mechanism:** {orig.mechanism}\n"
+            f"**Evidence:** {', '.join(qcrit.critique.evidence_found)}\n"
+            f"**Materiality:** {qcrit.materiality}\n"
+            f"**Sensitivity Results:** {json.dumps(qcrit.sensitivity_results, default=str)}"
+        )
+
+        # Step 1: Advocate defense
+        advocate_user = (
+            f"## Critique to Defend Against\n\n{critique_summary}\n\n"
+            f"## Relevant Report Sections\n\n{report_sections}\n\n"
+            f"## CEA Parameter Map\n\n{cea_parameter_map}\n\n"
+            "Defend GiveWell's position against this critique."
+        )
+
+        advocate_raw = call_api(
+            model=SONNET_MODEL,
+            system=advocate_prompt,
+            user_message=advocate_user,
+            stats=stats,
+            stage=f"advocate-{i + 1}",
+            max_tokens=MAX_TOKENS_ADVERSARIAL,
+        )
+
+        # Step 2: Challenger rebuttal
+        challenger_user = (
+            f"## Original Critique\n\n{critique_summary}\n\n"
+            f"## Advocate's Defense\n\n{advocate_raw}\n\n"
+            f"## Evidence Found During Verification\n\n"
+            + "\n".join(f"- {e}" for e in qcrit.critique.evidence_found)
+            + "\n\nChallenge the advocate's defense."
+        )
+
+        challenger_raw = call_api(
+            model=SONNET_MODEL,
+            system=challenger_prompt,
+            user_message=challenger_user,
+            stats=stats,
+            stage=f"challenger-{i + 1}",
+            max_tokens=MAX_TOKENS_ADVERSARIAL,
+        )
+
+        # Parse challenger output
+        surviving_strength, key_unresolved, recommended_action = parse_challenger_output(
+            challenger_raw
+        )
+
+        debated.append(
+            DebatedCritique(
+                critique=qcrit,
+                advocate_defense=advocate_raw,
+                challenger_rebuttal=challenger_raw,
+                surviving_strength=surviving_strength,
+                key_unresolved=key_unresolved,
+                recommended_action=recommended_action,
+            )
+        )
+
+        all_raw.append(
+            f"--- Critique: {orig.title} ---\n\n"
+            f"### Advocate\n{advocate_raw}\n\n"
+            f"### Challenger\n{challenger_raw}"
+        )
+
+    combined_raw = "\n\n".join(all_raw)
+    save_stage_output(intervention, 5, "adversarial", debated, combined_raw)
+    return debated, combined_raw
+
+
+def run_synthesizer(
+    debated: list[DebatedCritique],
+    all_critiques_count: int,
+    verified_count: int,
+    baseline_output: str,
+    stats: PipelineStats,
+    intervention: str,
+) -> str:
+    """Stage 6: Synthesize final report."""
+    system = load_prompt("synthesizer.md")
+
+    # Compile critique data
+    critique_summaries: list[str] = []
+    for dc in debated:
+        orig = dc.critique.critique.original
+        critique_summaries.append(
+            f"### {orig.title}\n"
+            f"- **Surviving Strength:** {dc.surviving_strength}\n"
+            f"- **Recommended Action:** {dc.recommended_action}\n"
+            f"- **Hypothesis:** {dc.critique.critique.revised_hypothesis or orig.hypothesis}\n"
+            f"- **Mechanism:** {orig.mechanism}\n"
+            f"- **Evidence:** {', '.join(dc.critique.critique.evidence_found)}\n"
+            f"- **Evidence Strength:** {dc.critique.critique.evidence_strength}\n"
+            f"- **Materiality:** {dc.critique.materiality}\n"
+            f"- **Sensitivity Results:** {json.dumps(dc.critique.sensitivity_results, default=str)}\n"
+            f"- **Key Unresolved Questions:** {', '.join(dc.key_unresolved)}\n"
+            f"- **Advocate Defense Summary:** {dc.advocate_defense[:500]}...\n"
+            f"- **Challenger Rebuttal Summary:** {dc.challenger_rebuttal[:500]}...\n"
+        )
+
+    user_message = (
+        f"## Pipeline Statistics\n\n"
+        f"- Candidate critiques generated: {all_critiques_count}\n"
+        f"- Verified critiques: {verified_count}\n"
+        f"- Critiques surviving adversarial review: {len(debated)}\n\n"
+        f"## Surviving Critiques\n\n"
+        + "\n".join(critique_summaries)
+        + f"\n\n## Baseline AI Output (for comparison)\n\n{baseline_output}\n\n"
+        "Produce the final red team report."
+    )
+
+    raw = call_api(
+        model=OPUS_MODEL,
+        system=system,
+        user_message=user_message,
+        stats=stats,
+        stage="synthesizer",
+        max_tokens=MAX_TOKENS_SYNTHESIZER,
+    )
+
+    save_stage_output(intervention, 6, "synthesizer", {"report": raw}, raw)
+    return raw
