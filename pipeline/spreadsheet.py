@@ -1,0 +1,469 @@
+"""CEA spreadsheet reader and sensitivity analysis for GiveWell Water Chlorination.
+
+Reads WaterCEA.xlsx, replicates the critical formula chain in Python,
+and runs sensitivity analysis when parameters change.
+"""
+from __future__ import annotations
+
+import math
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+import openpyxl
+
+
+# ---------------------------------------------------------------------------
+# Data structures
+# ---------------------------------------------------------------------------
+
+@dataclass
+class ProgramParams:
+    """Country/program-specific parameters read from the spreadsheet."""
+
+    name: str
+    # Demographics
+    pop_under5: float
+    pop_5_14: float
+    baseline_mortality_under5: float
+    baseline_mortality_over5: float
+
+    # Validity
+    external_validity: float
+    plausibility_cap: float
+    morbidity_ext_validity: float
+
+    # Moral weights
+    moral_weight_under5: float
+    moral_weight_over5: float
+    moral_weight_yld: float  # always 2.3 but read from sheet
+
+    # Adult mortality
+    adult_mortality_scaling: float
+
+    # Morbidity
+    ylds_per_100k: float
+    yld_under5: float
+    yld_5_14: float
+
+    # Development effects
+    dev_base: float  # units of value per treatment-year from SMC
+    dev_chlorination_pct: float  # chlorination as % of SMC
+
+    # Medical costs averted
+    baseline_diarrhea_incidence: float
+    cost_per_under5_diarrhea: float
+    consumption: float  # annual consumption per capita
+    iv_medical: float
+    ev_medical: float
+    value_doubling: float
+    mills_reincke: float  # shared but read per-program for safety
+
+    # Cost
+    cost_per_person: float
+    cash_benchmark: float
+
+    # DSW adjustment factors (only used for DSW programs)
+    downside_factor: float = 1.0
+    excluded_effects_factor: float = 1.0
+
+    # DSW leverage/funging
+    has_leverage_adjustment: bool = False
+    prob_govt_replace: float = 0.0
+    prob_other_phil_replace: float = 0.0
+    prob_upstream_stays: float = 0.0
+    prob_not_exist: float = 0.0
+    frac_govt_replace: float = 1.0
+    frac_other_phil: float = 1.0
+    frac_upstream: float = 0.0
+    frac_not_exist: float = 0.0
+    ce_govt: float = 0.0
+    ce_other_phil: float = 0.0
+    govt_costs: float = 0.0
+    other_donor_upstream: float = 0.0
+
+
+@dataclass
+class SensitivityResult:
+    """Result of a sensitivity analysis run."""
+
+    parameter_name: str
+    baseline: float
+    low: float
+    central: float
+    high: float
+    pct_change_low: float
+    pct_change_central: float
+    pct_change_high: float
+    cap_binds_baseline: bool
+    cap_binds_low: bool
+    cap_binds_central: bool
+    cap_binds_high: bool
+
+
+# ---------------------------------------------------------------------------
+# Main class
+# ---------------------------------------------------------------------------
+
+class WaterCEA:
+    """Reads GiveWell Water Chlorination CEA and replicates the formula chain."""
+
+    PROGRAMS = ("ilc_kenya", "dsw_kenya", "dsw_uganda", "dsw_malawi")
+
+    def __init__(self, path: Path) -> None:
+        self._path = Path(path)
+        wb = openpyxl.load_workbook(str(self._path), data_only=True)
+        self._read_shared_params(wb)
+        self._read_program_params(wb)
+        wb.close()
+
+    # ------------------------------------------------------------------
+    # Reading helpers
+    # ------------------------------------------------------------------
+
+    def _cell(self, ws: Any, ref: str) -> Any:
+        """Read a cell value, raising if None."""
+        val = ws[ref].value
+        if val is None:
+            raise ValueError(f"Cell {ws.title}!{ref} is None")
+        return val
+
+    def _read_shared_params(self, wb: openpyxl.Workbook) -> None:
+        mort = wb["Mortality effect size"]
+        self.pooled_ln_rr: float = float(self._cell(mort, "B10"))
+        self.relative_risk: float = float(self._cell(mort, "B11"))
+
+        iv = wb["Internal validity adjustment"]
+        self.internal_validity_under5: float = float(self._cell(iv, "B6"))
+        self.internal_validity_over5: float = float(self._cell(iv, "B7"))
+        self.internal_validity_morbidity: float = float(self._cell(iv, "E3"))
+        self.mills_reincke: float = float(self._cell(iv, "B23"))
+
+        morb = wb["Morbidity effect size"]
+        self.adjusted_diarrhea_rr: float = float(self._cell(morb, "B7"))
+
+    def _read_program_params(self, wb: openpyxl.Workbook) -> None:
+        self.programs: dict[str, ProgramParams] = {}
+        self._read_ilc_kenya(wb)
+        self._read_dsw(wb, "dsw_kenya", "B")
+        self._read_dsw(wb, "dsw_uganda", "C")
+        self._read_dsw(wb, "dsw_malawi", "D")
+
+    def _read_ilc_kenya(self, wb: openpyxl.Workbook) -> None:
+        ws = wb["ILC Kenya"]
+        ev_ws = wb["External validity adjustment"]
+        mw = wb["Moral weights"]
+        am = wb["Adult mortality scaling factor"]
+        iv = wb["Internal validity adjustment"]
+
+        self.programs["ilc_kenya"] = ProgramParams(
+            name="ILC Kenya",
+            pop_under5=float(self._cell(ws, "B3")),
+            pop_5_14=float(self._cell(ws, "B42")),
+            baseline_mortality_under5=float(self._cell(ws, "B4")),
+            baseline_mortality_over5=float(self._cell(ws, "B17")),
+            external_validity=float(self._cell(ev_ws, "B6")),
+            plausibility_cap=float(self._cell(iv, "B11")),
+            morbidity_ext_validity=float(self._cell(ev_ws, "B29")),
+            moral_weight_under5=float(self._cell(mw, "B3")),
+            moral_weight_over5=float(self._cell(mw, "B7")),
+            moral_weight_yld=float(self._cell(ws, "B35")),
+            adult_mortality_scaling=float(self._cell(am, "B17")),
+            ylds_per_100k=float(self._cell(ws, "B29")),
+            yld_under5=float(self._cell(ws, "B43")),
+            yld_5_14=float(self._cell(ws, "B44")),
+            dev_base=float(self._cell(ws, "B39")),
+            dev_chlorination_pct=float(self._cell(ws, "B40")),
+            baseline_diarrhea_incidence=float(self._cell(ws, "B52")),
+            cost_per_under5_diarrhea=float(self._cell(ws, "B55")),
+            consumption=float(self._cell(ws, "B63")),
+            iv_medical=float(self._cell(ws, "B60")),
+            ev_medical=float(self._cell(ws, "B61")),
+            value_doubling=float(self._cell(ws, "B65")),
+            mills_reincke=float(self._cell(ws, "B58")),
+            cost_per_person=float(self._cell(ws, "B72")),
+            cash_benchmark=float(self._cell(ws, "B77")),
+        )
+
+    def _read_dsw(self, wb: openpyxl.Workbook, key: str, col: str) -> None:
+        ws = wb["DSW"]
+        ev_ws = wb["External validity adjustment"]
+        mw = wb["Moral weights"]
+        am = wb["Adult mortality scaling factor"]
+        iv = wb["Internal validity adjustment"]
+
+        # Map column to country index for moral weights and adult mortality
+        col_map = {"B": "B", "C": "C", "D": "D"}
+        am_col = col_map[col]
+
+        # Plausibility caps: B12=Kenya, B13=Uganda, B14=Malawi
+        cap_row = {"B": 12, "C": 13, "D": 14}[col]
+
+        # Moral weights: under5 = B3(Kenya), B4(Uganda), B5(Malawi)
+        mw_u5_row = {"B": 3, "C": 4, "D": 5}[col]
+        # over5 = B7(Kenya), B8(Uganda), B9(Malawi)
+        mw_o5_row = {"B": 7, "C": 8, "D": 9}[col]
+
+        # External validity for mortality
+        ev_row = {"B": 11, "C": 16, "D": 21}[col]
+        # External validity for morbidity
+        morb_ev_row = {"B": 33, "C": 37, "D": 41}[col]
+
+        # DSW consumption: row 65 has adjusted consumption
+        consumption = float(self._cell(ws, f"{col}65"))
+
+        self.programs[key] = ProgramParams(
+            name=f"DSW {col_map[col]}",
+            pop_under5=float(self._cell(ws, f"{col}3")),
+            pop_5_14=float(self._cell(ws, f"{col}42")),
+            baseline_mortality_under5=float(self._cell(ws, f"{col}4")),
+            baseline_mortality_over5=float(self._cell(ws, f"{col}17")),
+            external_validity=float(self._cell(ev_ws, f"B{ev_row}")),
+            plausibility_cap=float(self._cell(iv, f"B{cap_row}")),
+            morbidity_ext_validity=float(self._cell(ev_ws, f"B{morb_ev_row}")),
+            moral_weight_under5=float(self._cell(mw, f"B{mw_u5_row}")),
+            moral_weight_over5=float(self._cell(mw, f"B{mw_o5_row}")),
+            moral_weight_yld=float(self._cell(ws, f"{col}35")),
+            adult_mortality_scaling=float(self._cell(am, f"{am_col}17")),
+            ylds_per_100k=float(self._cell(ws, f"{col}29")),
+            yld_under5=float(self._cell(ws, f"{col}43")),
+            yld_5_14=float(self._cell(ws, f"{col}44")),
+            dev_base=float(self._cell(ws, f"{col}39")),
+            dev_chlorination_pct=float(self._cell(ws, f"{col}40")),
+            baseline_diarrhea_incidence=float(self._cell(ws, f"{col}52")),
+            cost_per_under5_diarrhea=float(self._cell(ws, f"{col}55")),
+            consumption=consumption,
+            iv_medical=float(self._cell(ws, f"{col}60")),
+            ev_medical=float(self._cell(ws, f"{col}61")),
+            value_doubling=float(self._cell(ws, f"{col}67")),
+            mills_reincke=float(self._cell(ws, f"{col}58")),
+            cost_per_person=float(self._cell(ws, f"{col}74")),
+            cash_benchmark=float(self._cell(ws, f"{col}79")),
+            # DSW adjustments
+            downside_factor=float(self._cell(ws, f"{col}101")),
+            excluded_effects_factor=float(self._cell(ws, f"{col}108")),
+            # Leverage/funging
+            has_leverage_adjustment=True,
+            prob_govt_replace=float(self._cell(ws, f"{col}120")),
+            prob_other_phil_replace=float(self._cell(ws, f"{col}121")),
+            prob_upstream_stays=float(self._cell(ws, f"{col}122")),
+            prob_not_exist=float(self._cell(ws, f"{col}123")),
+            frac_govt_replace=float(self._cell(ws, f"{col}126")),
+            frac_other_phil=float(self._cell(ws, f"{col}127")),
+            frac_upstream=float(self._cell(ws, f"{col}128")),
+            frac_not_exist=float(self._cell(ws, f"{col}129")),
+            ce_govt=float(self._cell(ws, f"{col}133")),
+            ce_other_phil=float(self._cell(ws, f"{col}134")),
+            govt_costs=float(self._cell(ws, f"{col}112")),
+            other_donor_upstream=float(self._cell(ws, f"{col}117")),
+        )
+
+    # ------------------------------------------------------------------
+    # Formula chain
+    # ------------------------------------------------------------------
+
+    def compute_cost_effectiveness(
+        self,
+        program_key: str,
+        **overrides: float,
+    ) -> float:
+        """Compute cost-effectiveness in multiples of GiveDirectly cash.
+
+        Supported overrides:
+            relative_risk, internal_validity_under5, internal_validity_over5,
+            external_validity, plausibility_cap, internal_validity_morbidity,
+            morbidity_ext_validity
+        """
+        p = self.programs[program_key]
+
+        rr = overrides.get("relative_risk", self.relative_risk)
+        iv_u5 = overrides.get("internal_validity_under5", self.internal_validity_under5)
+        iv_o5 = overrides.get("internal_validity_over5", self.internal_validity_over5)
+        ev = overrides.get("external_validity", p.external_validity)
+        cap = overrides.get("plausibility_cap", p.plausibility_cap)
+        iv_morb = overrides.get("internal_validity_morbidity", self.internal_validity_morbidity)
+        morb_ev = overrides.get("morbidity_ext_validity", p.morbidity_ext_validity)
+
+        # --- Under-5 mortality ---
+        initial_estimate = (1 - rr) * iv_u5 * ev
+        final_estimate = min(initial_estimate, cap)
+        u5_deaths_per_100k = p.pop_under5 * p.baseline_mortality_under5 * final_estimate * 100_000
+        u5_uv = u5_deaths_per_100k * p.moral_weight_under5
+
+        # --- Over-5 mortality ---
+        pop_over5 = 1 - p.pop_under5
+        if initial_estimate > 0:
+            cap_ratio = final_estimate / initial_estimate
+        else:
+            cap_ratio = 1.0
+        o5_deaths_per_100k = (
+            pop_over5
+            * p.baseline_mortality_over5
+            * (1 - rr)
+            * p.adult_mortality_scaling
+            * iv_o5
+            * ev
+            * cap_ratio
+            * 100_000
+        )
+        o5_uv = o5_deaths_per_100k * p.moral_weight_over5
+
+        # --- Morbidity ---
+        morbidity_reduction = (1 - self.adjusted_diarrhea_rr) * iv_morb * morb_ev
+        ylds_averted = p.ylds_per_100k * morbidity_reduction
+        morb_uv = ylds_averted * p.moral_weight_yld
+
+        # --- Development effects ---
+        burden_ratio = p.yld_5_14 / p.yld_under5 if p.yld_under5 > 0 else 0.0
+        raw_dev_uv = (
+            (p.dev_base * p.dev_chlorination_pct * p.pop_under5)
+            + (p.dev_base * p.dev_chlorination_pct * p.pop_5_14 * burden_ratio)
+        ) * 100_000
+        dev_uv = raw_dev_uv * iv_u5 * ev
+
+        # --- Medical costs averted ---
+        averted_cases = p.baseline_diarrhea_incidence * morbidity_reduction
+        cost_per_u5 = averted_cases * (p.cost_per_under5_diarrhea / morbidity_reduction) if morbidity_reduction > 0 else 0.0
+        # Actually: cost_per_u5 is read from spreadsheet directly as annual cost averted per under-5
+        # The formula: B55 is pre-computed. B54 = B52 * B53. Then B55 is separate.
+        # B57 = B55 * B56. Let me re-derive:
+        # cost_per_person = cost_per_under5_diarrhea * pop_under5
+        cost_per_person_served = p.cost_per_under5_diarrhea * p.pop_under5
+        total_cost_averted = cost_per_person_served * p.mills_reincke
+        adjusted_cost = total_cost_averted * p.iv_medical * p.ev_medical
+        ln_consumption_increase = math.log(p.consumption + adjusted_cost) - math.log(p.consumption)
+        value_per_ln_unit = p.value_doubling / math.log(2)
+        uv_medical_per_person = ln_consumption_increase * value_per_ln_unit
+        medical_uv = uv_medical_per_person * 100_000
+
+        # --- Total units of value per 100k ---
+        total_uv_per_100k = u5_uv + o5_uv + morb_uv + dev_uv + medical_uv
+
+        # --- Cost-effectiveness ---
+        uv_per_dollar = (total_uv_per_100k / 100_000) / p.cost_per_person
+        uv_per_10k = uv_per_dollar * 10_000
+
+        # --- DSW adjustments ---
+        if p.has_leverage_adjustment:
+            # Apply downside and excluded-effects adjustments
+            adjusted_uv_per_10k = uv_per_10k * p.downside_factor * p.excluded_effects_factor
+
+            # Leverage/funging: compute counterfactual value
+            # Scenario UV values (what would happen in absence of DSW spending)
+            cost_pp = p.cost_per_person  # annual cost per person served
+
+            # Government replaces
+            uv_govt = (adjusted_uv_per_10k * p.frac_govt_replace) - (
+                p.ce_govt * cost_pp * p.frac_govt_replace * 10_000
+            )
+
+            # Other philanthropic actors replace
+            uv_other_phil = (adjusted_uv_per_10k * p.frac_other_phil) - (
+                p.ce_other_phil * cost_pp * p.frac_other_phil * 10_000
+            )
+
+            # Other actors' upstream costs stay the same
+            uv_upstream = (adjusted_uv_per_10k * p.frac_upstream) + (
+                (p.other_donor_upstream * p.ce_govt * 10_000) * (1 - p.frac_upstream)
+            )
+
+            # Program would not exist
+            uv_not_exist = (adjusted_uv_per_10k * p.frac_not_exist) + (
+                p.ce_govt * p.govt_costs * 10_000
+            )
+
+            # Counterfactual value (weighted by scenario probabilities)
+            counterfactual = (
+                p.prob_govt_replace * uv_govt
+                + p.prob_other_phil_replace * uv_other_phil
+                + p.prob_upstream_stays * uv_upstream
+                + p.prob_not_exist * uv_not_exist
+            )
+
+            # Units of value attributed to DSW spending
+            attributed_uv = adjusted_uv_per_10k - counterfactual
+            ce_multiple = attributed_uv / p.cash_benchmark
+        else:
+            ce_multiple = uv_per_10k / p.cash_benchmark
+
+        return ce_multiple
+
+    def detect_cap_binding(self, program_key: str, **overrides: float) -> bool:
+        """Return True if the plausibility cap binds for this program."""
+        p = self.programs[program_key]
+
+        rr = overrides.get("relative_risk", self.relative_risk)
+        iv_u5 = overrides.get("internal_validity_under5", self.internal_validity_under5)
+        ev = overrides.get("external_validity", p.external_validity)
+        cap = overrides.get("plausibility_cap", p.plausibility_cap)
+
+        initial_estimate = (1 - rr) * iv_u5 * ev
+        return initial_estimate > cap
+
+    def run_sensitivity(
+        self,
+        program_key: str,
+        parameter_name: str,
+        low: float,
+        central: float,
+        high: float,
+    ) -> dict[str, Any]:
+        """Run sensitivity analysis for a single parameter.
+
+        Returns dict with baseline CE, CE at low/central/high,
+        percentage changes, and cap binding info.
+        """
+        baseline_ce = self.compute_cost_effectiveness(program_key)
+        cap_binds_baseline = self.detect_cap_binding(program_key)
+
+        results: dict[str, float | bool | str] = {
+            "parameter_name": parameter_name,
+            "baseline": baseline_ce,
+            "cap_binds_baseline": cap_binds_baseline,
+        }
+
+        for label, value in [("low", low), ("central", central), ("high", high)]:
+            ce = self.compute_cost_effectiveness(program_key, **{parameter_name: value})
+            cap_binds = self.detect_cap_binding(program_key, **{parameter_name: value})
+            pct_change = ((ce - baseline_ce) / baseline_ce) * 100 if baseline_ce != 0 else 0.0
+            results[label] = ce
+            results[f"pct_change_{label}"] = pct_change
+            results[f"cap_binds_{label}"] = cap_binds
+
+        return results
+
+    def get_parameter_summary(self) -> str:
+        """Return a human-readable markdown summary of key parameters and baseline CE."""
+        lines: list[str] = []
+        lines.append("# Water Chlorination CEA — Parameter Summary\n")
+
+        lines.append("## Shared Parameters\n")
+        lines.append(f"- **Pooled ln(RR):** {self.pooled_ln_rr:.10f}")
+        lines.append(f"- **Relative risk of all-cause mortality:** {self.relative_risk:.10f}")
+        lines.append(f"- **Internal validity, under-5 mortality:** {self.internal_validity_under5:.10f}")
+        lines.append(f"- **Internal validity, over-5 mortality:** {self.internal_validity_over5:.10f}")
+        lines.append(f"- **Internal validity, morbidity:** {self.internal_validity_morbidity:.4f}")
+        lines.append(f"- **Adjusted diarrhea RR:** {self.adjusted_diarrhea_rr:.4f}")
+        lines.append(f"- **Mills-Reincke multiplier:** {self.mills_reincke:.10f}")
+        lines.append("")
+
+        lines.append("## Program-Specific Parameters\n")
+        for key in self.PROGRAMS:
+            p = self.programs[key]
+            ce = self.compute_cost_effectiveness(key)
+            cap_binds = self.detect_cap_binding(key)
+            lines.append(f"### {p.name}\n")
+            lines.append(f"- **Cost-effectiveness (x cash):** {ce:.4f}")
+            lines.append(f"- **External validity:** {p.external_validity:.10f}")
+            lines.append(f"- **Plausibility cap:** {p.plausibility_cap:.4f} (binds: {cap_binds})")
+            lines.append(f"- **Pop under-5:** {p.pop_under5:.4f}")
+            lines.append(f"- **Baseline mortality under-5:** {p.baseline_mortality_under5:.10f}")
+            lines.append(f"- **Baseline mortality over-5:** {p.baseline_mortality_over5:.10f}")
+            lines.append(f"- **Adult mortality scaling:** {p.adult_mortality_scaling:.10f}")
+            lines.append(f"- **Moral weight under-5:** {p.moral_weight_under5:.4f}")
+            lines.append(f"- **Moral weight over-5:** {p.moral_weight_over5:.4f}")
+            lines.append(f"- **Cost per person:** {p.cost_per_person:.10f}")
+            lines.append(f"- **Consumption:** {p.consumption:.4f}")
+            lines.append("")
+
+        return "\n".join(lines)
