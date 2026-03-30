@@ -31,9 +31,9 @@ givewell-red-team/
 │   └── water-chlorination/
 │       └── decomposer-output.md ← Already generated. Your pipeline should reproduce this.
 └── data/                        ← CEA spreadsheets already here
-    ├── cea-water-quality.xlsx
-    ├── cea-itns.xlsx
-    └── cea-smc.xlsx
+    ├── WaterCEA.xlsx
+    ├── InsecticideCEA.xlsx
+    └── MalariaCEA.xlsx
 ```
 
 You will create:
@@ -298,8 +298,12 @@ def run_pipeline(intervention: str):
 `config.py` should handle:
 
 ```python
-# API
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+# API — loaded from .env file via python-dotenv (NOT from shell environment)
+# The .env file is in the repo root, already in .gitignore.
+# This keeps API credentials isolated from Claude Code's own session.
+from dotenv import load_dotenv
+load_dotenv()
+ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 OPUS_MODEL = "claude-opus-4-20250115"
 SONNET_MODEL = "claude-sonnet-4-20250514"
 
@@ -356,9 +360,21 @@ The pipeline makes many API calls. It WILL fail partway through at some point. D
 anthropic>=0.42.0
 openpyxl>=3.1.0
 pandas>=2.0.0
+python-dotenv>=1.0.0
 ```
 
 That's it. Keep it minimal.
+
+---
+
+## Budget
+
+Total API credits available: $50. This should cover all three phases with room to spare, but be cost-conscious:
+
+- **Log token usage per API call.** Print input/output tokens and estimated cost after each stage.
+- **Use Sonnet where the spec says Sonnet.** Don't default to Opus for everything — Sonnet is ~5x cheaper and sufficient for Investigators, Verifier, and Adversarial stages.
+- **Run water chlorination (Phase 1) first.** Review costs before committing to Phase 2 and 3.
+- **Estimated cost per phase:** ~$5-15 depending on critique count and Verifier search volume.
 
 ---
 
