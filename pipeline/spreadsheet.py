@@ -1,7 +1,8 @@
-"""CEA spreadsheet reader and sensitivity analysis for GiveWell Water Chlorination.
+"""CEA spreadsheet readers and sensitivity analysis for GiveWell interventions.
 
-Reads WaterCEA.xlsx, replicates the critical formula chain in Python,
-and runs sensitivity analysis when parameters change.
+Provides WaterCEA (water chlorination) and ITNCEA (insecticide-treated nets)
+classes that replicate critical formula chains in Python and run sensitivity
+analysis when parameters change.
 """
 from __future__ import annotations
 
@@ -465,6 +466,298 @@ class WaterCEA:
             lines.append(f"- **Moral weight over-5:** {p.moral_weight_over5:.4f}")
             lines.append(f"- **Cost per person:** {p.cost_per_person:.10f}")
             lines.append(f"- **Consumption:** {p.consumption:.4f}")
+            lines.append("")
+
+        return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# ITN (Insecticide-Treated Nets) CEA
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class ITNProgramParams:
+    """Country/program-specific parameters for ITN CEA."""
+
+    name: str
+    # Coverage (person-years from Main CEA rows 55-57)
+    person_years_u5: float
+    person_years_5_14: float
+    person_years_over14: float
+    # Mortality (rows 70, 73-75, 80-81)
+    direct_malaria_mortality_u5: float
+    smc_reduction: float
+    baseline_net_coverage: float
+    malaria_deaths_u5_national: float
+    total_malaria_deaths_national: float
+    # Incidence (rows 88-89, from Counterfactual malaria sheet)
+    incidence_u5_no_nets: float
+    incidence_5_14_no_nets: float
+    # Per-country resistance (row 66)
+    insecticide_resistance: float
+    # Final adjustments (Simple CEA rows 32-35)
+    additional_benefits_adj: float
+    grantee_adj: float
+    leverage_adj: float
+    funging_adj: float
+    # Grant (row 8)
+    grant_size: float
+
+
+class ITNCEA:
+    """Reads GiveWell ITN (insecticide-treated nets) CEA and replicates the formula chain.
+
+    Columnar layout: 8 programs across columns I-P of InsecticideCEA.xlsx.
+    """
+
+    PROGRAMS = (
+        "chad", "drc", "guinea", "nigeria_gf",
+        "nigeria_pmi", "south_sudan", "togo", "uganda",
+    )
+
+    _COL_MAP: dict[str, str] = {
+        "chad": "I", "drc": "J", "guinea": "K", "nigeria_gf": "L",
+        "nigeria_pmi": "M", "south_sudan": "N", "togo": "O", "uganda": "P",
+    }
+
+    _NAMES: dict[str, str] = {
+        "chad": "Chad", "drc": "DRC", "guinea": "Guinea",
+        "nigeria_gf": "Nigeria (GF)", "nigeria_pmi": "Nigeria (PMI)",
+        "south_sudan": "South Sudan", "togo": "Togo", "uganda": "Uganda",
+    }
+
+    def __init__(self, path: Path) -> None:
+        self._path = Path(path)
+        wb = openpyxl.load_workbook(str(self._path), data_only=True)
+        self._read_shared_params(wb)
+        self._read_program_params(wb)
+        wb.close()
+
+    # ------------------------------------------------------------------
+    # Reading helpers
+    # ------------------------------------------------------------------
+
+    def _cell(self, ws: Any, ref: str) -> Any:
+        val = ws[ref].value
+        if val is None:
+            raise ValueError(f"Cell {ws.title}!{ref} is None")
+        return val
+
+    def _read_shared_params(self, wb: openpyxl.Workbook) -> None:
+        ws = wb["Main CEA"]
+        self.incidence_reduction: float = float(self._cell(ws, "H62"))
+        self.net_usage_trial: float = float(self._cell(ws, "H35"))
+        self.internal_validity: float = float(self._cell(ws, "H64"))
+        self.external_validity: float = float(self._cell(ws, "H65"))
+        self.mortality_incidence_ratio: float = float(self._cell(ws, "H68"))
+        self.indirect_deaths_multiplier: float = float(self._cell(ws, "H71"))
+        self.over5_relative_efficacy: float = float(self._cell(ws, "H84"))
+        self.income_per_case: float = float(self._cell(ws, "H96"))
+        self.years_to_benefits: int = int(self._cell(ws, "H98"))
+        self.discount_rate: float = float(self._cell(ws, "H99"))
+        self.benefit_duration: int = int(self._cell(ws, "H101"))
+        self.household_multiplier: float = float(self._cell(ws, "H103"))
+        self.moral_weight_u5: float = float(self._cell(ws, "H112"))
+        self.moral_weight_over5: float = float(self._cell(ws, "H116"))
+        self.ln_consumption_value: float = float(self._cell(ws, "H120"))
+        self.benchmark: float = float(self._cell(ws, "H144"))
+
+    def _read_program_params(self, wb: openpyxl.Workbook) -> None:
+        ws = wb["Main CEA"]
+        sc = wb["Simple CEA"]
+        self.programs: dict[str, ITNProgramParams] = {}
+        for key, col in self._COL_MAP.items():
+            self.programs[key] = ITNProgramParams(
+                name=self._NAMES[key],
+                person_years_u5=float(self._cell(ws, f"{col}55")),
+                person_years_5_14=float(self._cell(ws, f"{col}56")),
+                person_years_over14=float(self._cell(ws, f"{col}57")),
+                direct_malaria_mortality_u5=float(self._cell(ws, f"{col}70")),
+                smc_reduction=float(self._cell(ws, f"{col}73")),
+                baseline_net_coverage=float(self._cell(ws, f"{col}75")),
+                malaria_deaths_u5_national=float(self._cell(ws, f"{col}80")),
+                total_malaria_deaths_national=float(self._cell(ws, f"{col}81")),
+                incidence_u5_no_nets=float(self._cell(ws, f"{col}88")),
+                incidence_5_14_no_nets=float(self._cell(ws, f"{col}89")),
+                insecticide_resistance=float(self._cell(ws, f"{col}66")),
+                additional_benefits_adj=float(self._cell(sc, f"{col}32")),
+                grantee_adj=float(self._cell(sc, f"{col}33")),
+                leverage_adj=float(self._cell(sc, f"{col}34")),
+                funging_adj=float(self._cell(sc, f"{col}35")),
+                grant_size=float(self._cell(ws, "H8")),
+            )
+
+    # ------------------------------------------------------------------
+    # Formula chain
+    # ------------------------------------------------------------------
+
+    def _expected_reduction(
+        self,
+        incidence_reduction: float,
+        internal_validity: float,
+        external_validity: float,
+        insecticide_resistance: float,
+    ) -> float:
+        """Compute expected reduction in malaria incidence/mortality for net sleepers."""
+        implied = incidence_reduction / self.net_usage_trial
+        return (
+            implied
+            * (1 + internal_validity)
+            * (1 + external_validity)
+            * (1 + insecticide_resistance)
+        )
+
+    def _annuity_due_factor(self) -> float:
+        """Present value of annuity-due (payments at start of period)."""
+        r = self.discount_rate
+        n = self.benefit_duration
+        ordinary = (1 - (1 + r) ** (-n)) / r
+        return ordinary * (1 + r)
+
+    def compute_cost_effectiveness(
+        self,
+        program_key: str,
+        **overrides: float,
+    ) -> float:
+        """Compute cost-effectiveness in multiples of GiveDirectly cash.
+
+        Supported overrides:
+            incidence_reduction, internal_validity, external_validity,
+            insecticide_resistance, indirect_deaths_multiplier,
+            moral_weight_under5, moral_weight_over5
+        """
+        p = self.programs[program_key]
+
+        ir = overrides.get("incidence_reduction", self.incidence_reduction)
+        iv = overrides.get("internal_validity", self.internal_validity)
+        ev = overrides.get("external_validity", self.external_validity)
+        resist = overrides.get("insecticide_resistance", p.insecticide_resistance)
+        indirect = overrides.get("indirect_deaths_multiplier", self.indirect_deaths_multiplier)
+        mw_u5 = overrides.get("moral_weight_under5", self.moral_weight_u5)
+        mw_o5 = overrides.get("moral_weight_over5", self.moral_weight_over5)
+
+        # --- Expected reduction ---
+        exp_red = self._expected_reduction(ir, iv, ev, resist)
+        exp_mort_red = exp_red * self.mortality_incidence_ratio
+
+        # --- Malaria mortality in absence of nets ---
+        total_mort = p.direct_malaria_mortality_u5 * (1 + indirect)
+        adj_mort = total_mort - p.smc_reduction
+        denom = 1 - p.baseline_net_coverage * exp_mort_red
+        if denom <= 0:
+            denom = 1e-9  # avoid division by zero for extreme parameters
+        mort_no_nets = adj_mort / denom
+
+        # --- Under-5 deaths averted ---
+        deaths_u5 = p.person_years_u5 * mort_no_nets * exp_mort_red
+
+        # --- Over-5 deaths averted ---
+        over5_deaths_national = (
+            p.total_malaria_deaths_national - p.malaria_deaths_u5_national
+        )
+        if p.malaria_deaths_u5_national > 0:
+            over5_ratio = over5_deaths_national / p.malaria_deaths_u5_national
+        else:
+            over5_ratio = 0.0
+        deaths_over5 = deaths_u5 * over5_ratio * self.over5_relative_efficacy
+
+        # --- Development benefits (long-term income) ---
+        cases_u5 = p.person_years_u5 * p.incidence_u5_no_nets * exp_red
+        cases_5_14 = p.person_years_5_14 * p.incidence_5_14_no_nets * exp_red
+        total_cases = cases_u5 + cases_5_14
+
+        adj_income = math.log(1 + self.income_per_case)
+        discounted = adj_income * (1 / (1 + self.discount_rate)) ** self.years_to_benefits
+        pv_per_case = discounted * self._annuity_due_factor() * self.household_multiplier
+        dev_value = total_cases * pv_per_case * self.ln_consumption_value
+
+        # --- Total value ---
+        u5_value = deaths_u5 * mw_u5
+        over5_value = deaths_over5 * mw_o5
+        total_value = u5_value + over5_value + dev_value
+
+        # --- Initial CE (before final adjustments) ---
+        uv_per_dollar = total_value / p.grant_size
+        initial_ce = uv_per_dollar / self.benchmark
+
+        # --- Final CE (with project-level adjustments) ---
+        final_ce = (
+            initial_ce
+            * (1 + p.additional_benefits_adj)
+            * (1 + p.grantee_adj)
+            * (1 + p.leverage_adj + p.funging_adj)
+        )
+
+        return final_ce
+
+    def detect_cap_binding(self, program_key: str, **overrides: float) -> bool:
+        """ITN CEA does not use plausibility caps."""
+        return False
+
+    def run_sensitivity(
+        self,
+        program_key: str,
+        parameter_name: str,
+        low: float,
+        central: float,
+        high: float,
+    ) -> dict[str, Any]:
+        """Run sensitivity analysis for a single parameter.
+
+        Returns dict with baseline CE, CE at low/central/high,
+        percentage changes, and cap binding info.
+        """
+        baseline_ce = self.compute_cost_effectiveness(program_key)
+
+        results: dict[str, float | bool | str] = {
+            "parameter_name": parameter_name,
+            "baseline": baseline_ce,
+            "cap_binds_baseline": False,
+        }
+
+        for label, value in [("low", low), ("central", central), ("high", high)]:
+            ce = self.compute_cost_effectiveness(program_key, **{parameter_name: value})
+            pct_change = ((ce - baseline_ce) / baseline_ce) * 100 if baseline_ce != 0 else 0.0
+            results[label] = ce
+            results[f"pct_change_{label}"] = pct_change
+            results[f"cap_binds_{label}"] = False
+
+        return results
+
+    def get_parameter_summary(self) -> str:
+        """Return a human-readable markdown summary of key parameters and baseline CE."""
+        lines: list[str] = []
+        lines.append("# Insecticide-Treated Nets CEA — Parameter Summary\n")
+
+        lines.append("## Shared Parameters\n")
+        lines.append(f"- **Malaria incidence reduction (Pryce et al.):** {self.incidence_reduction}")
+        lines.append(f"- **Net usage in trials:** {self.net_usage_trial}")
+        lines.append(f"- **Internal validity adjustment:** {self.internal_validity}")
+        lines.append(f"- **External validity adjustment:** {self.external_validity}")
+        lines.append(f"- **Indirect deaths per direct death:** {self.indirect_deaths_multiplier}")
+        lines.append(f"- **Over-5 relative efficacy:** {self.over5_relative_efficacy}")
+        lines.append(f"- **Moral weight under-5:** {self.moral_weight_u5:.4f}")
+        lines.append(f"- **Moral weight over-5:** {self.moral_weight_over5:.4f}")
+        lines.append(f"- **Income per case averted:** {self.income_per_case}")
+        lines.append(f"- **Discount rate:** {self.discount_rate}")
+        lines.append(f"- **Benchmark (UoV/$):** {self.benchmark}")
+        lines.append("")
+
+        lines.append("## Program-Specific Parameters\n")
+        for key in self.PROGRAMS:
+            p = self.programs[key]
+            ce = self.compute_cost_effectiveness(key)
+            lines.append(f"### {p.name}\n")
+            lines.append(f"- **Cost-effectiveness (x cash):** {ce:.2f}")
+            lines.append(f"- **Insecticide resistance:** {p.insecticide_resistance:.4f}")
+            lines.append(f"- **Direct malaria mortality (u5):** {p.direct_malaria_mortality_u5:.6f}")
+            lines.append(f"- **SMC reduction:** {p.smc_reduction:.6f}")
+            lines.append(f"- **Baseline net coverage:** {p.baseline_net_coverage:.3f}")
+            lines.append(f"- **Person-years u5:** {p.person_years_u5:.0f}")
+            lines.append(f"- **Person-years 5-14:** {p.person_years_5_14:.0f}")
+            lines.append(f"- **Additional benefits adj:** {p.additional_benefits_adj}")
+            lines.append(f"- **Leverage + funging adj:** {p.leverage_adj + p.funging_adj:.4f}")
             lines.append("")
 
         return "\n".join(lines)
