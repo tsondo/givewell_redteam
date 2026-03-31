@@ -526,6 +526,18 @@ _PARAM_NAME_MAP: dict[str, str] = {
     "mills-reincke": "mills_reincke",
     "mills reincke": "mills_reincke",
     "indirect mortality": "mills_reincke",
+    # ITN-specific parameters
+    "incidence reduction": "incidence_reduction",
+    "malaria incidence reduction": "incidence_reduction",
+    "insecticide resistance": "insecticide_resistance",
+    "resistance adjustment": "insecticide_resistance",
+    "indirect deaths multiplier": "indirect_deaths_multiplier",
+    "indirect deaths": "indirect_deaths_multiplier",
+    "indirect malaria": "indirect_deaths_multiplier",
+    "moral weight under": "moral_weight_under5",
+    "moral weight over": "moral_weight_over5",
+    "moral weight, over": "moral_weight_over5",
+    "moral weight, under": "moral_weight_under5",
 }
 
 
