@@ -30,7 +30,7 @@ from pipeline.agents import (
     run_synthesizer,
     run_verifier,
 )
-from pipeline.spreadsheet import WaterCEA
+from pipeline.spreadsheet import MalariaCEA, WaterCEA
 
 logger = logging.getLogger("pipeline")
 
@@ -122,7 +122,12 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
     # ------------------------------------------------------------------
     spreadsheet_path = DATA_DIR / urls["spreadsheet"]
     logger.info("Loading CEA spreadsheet: %s", spreadsheet_path)
-    cea = WaterCEA(spreadsheet_path)
+    cea_classes = {
+        "water-chlorination": WaterCEA,
+        "smc": MalariaCEA,
+    }
+    cea_cls = cea_classes.get(intervention, WaterCEA)
+    cea = cea_cls(spreadsheet_path)
     cea_summary = cea.get_parameter_summary()
     logger.info("CEA spreadsheet loaded.")
 

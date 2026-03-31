@@ -526,6 +526,22 @@ _PARAM_NAME_MAP: dict[str, str] = {
     "mills-reincke": "mills_reincke",
     "mills reincke": "mills_reincke",
     "indirect mortality": "mills_reincke",
+    # SMC (Malaria) parameters
+    "self-report bias": "self_report_bias",
+    "self report bias": "self_report_bias",
+    "reporting bias": "self_report_bias",
+    "coverage adjustment": "self_report_bias",
+    "adherence adjustment": "adherence_adjustment",
+    "adherence": "adherence_adjustment",
+    "drug adherence": "adherence_adjustment",
+    "social desirability bias": "social_desirability_bias",
+    "social desirability": "social_desirability_bias",
+    "efficacy reduction": "efficacy_reduction",
+    "non-adherence efficacy": "efficacy_reduction",
+    "government cost": "govt_cost_fraction",
+    "total spending": "total_spending",
+    "total cost": "total_spending",
+    "cost per cycle": "total_spending",
 }
 
 
