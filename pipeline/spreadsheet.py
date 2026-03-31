@@ -1,8 +1,8 @@
 """CEA spreadsheet readers and sensitivity analysis for GiveWell interventions.
 
-Provides WaterCEA (water chlorination) and ITNCEA (insecticide-treated nets)
-classes that replicate critical formula chains in Python and run sensitivity
-analysis when parameters change.
+Provides WaterCEA (water chlorination), ITNCEA (insecticide-treated nets),
+and MalariaCEA (SMC) classes that replicate critical formula chains in Python
+and run sensitivity analysis when parameters change.
 """
 from __future__ import annotations
 
@@ -758,6 +758,226 @@ class ITNCEA:
             lines.append(f"- **Person-years 5-14:** {p.person_years_5_14:.0f}")
             lines.append(f"- **Additional benefits adj:** {p.additional_benefits_adj}")
             lines.append(f"- **Leverage + funging adj:** {p.leverage_adj + p.funging_adj:.4f}")
+            lines.append("")
+
+        return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Malaria CEA (SMC cost-per-cycle model)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class SMCCountryParams:
+    """Country-specific parameters for the SMC cost model."""
+
+    name: str
+    total_spending_mc: float       # Malaria Consortium spending
+    total_spending_other: float    # Other philanthropic actors
+    total_spending_govt: float     # Government spending
+    total_spending: float          # Sum of all
+    target_population: float       # Reported target population
+    adjusted_person_months: float  # Person-months of coverage (with adjustments)
+    cost_per_cycle: float          # Pre-computed cost per cycle
+    cost_per_child_4: float        # Cost per child (4 cycles)
+    cost_per_child_5: float        # Cost per child (5 cycles)
+
+
+class MalariaCEA:
+    """Reads GiveWell Malaria CEA (SMC cost model) and runs sensitivity analysis.
+
+    The spreadsheet calculates cost per SMC cycle administered. Key adjustable
+    parameters are self-report bias and adherence adjustment, which affect the
+    denominator (person-months of coverage).
+
+    Formula chain:
+        raw_person_months = adjusted_person_months / (self_report_bias * adherence)
+        person_months = raw_person_months * self_report_bias * adherence
+        cost_per_cycle = total_costs / person_months
+        cost_per_child_4 = cost_per_cycle * 4
+    """
+
+    PROGRAMS = ("burkina_faso", "chad", "nigeria", "togo")
+
+    # Column mapping: country -> spreadsheet column in Per-country analysis
+    _COL_MAP = {
+        "burkina_faso": "B",
+        "chad": "C",
+        "nigeria": "D",
+        "togo": "E",
+    }
+
+    def __init__(self, path: Path) -> None:
+        self._path = Path(path)
+        wb = openpyxl.load_workbook(str(self._path), data_only=True)
+        self._read_params(wb)
+        wb.close()
+
+    def _cell(self, ws: Any, ref: str) -> Any:
+        """Read a cell value, raising if None."""
+        val = ws[ref].value
+        if val is None:
+            raise ValueError(f"Cell {ws.title}!{ref} is None")
+        return val
+
+    def _read_params(self, wb: openpyxl.Workbook) -> None:
+        pca = wb["Per-country analysis (2018-2023"]
+
+        # Shared adjustment parameters
+        self.self_report_bias: float = float(self._cell(pca, "B16"))
+        self.adherence_adjustment: float = float(self._cell(pca, "B17"))
+
+        # Adherence sub-parameters
+        adh = wb["Calc Adherence adjustment"]
+        self.social_desirability_bias: float = float(self._cell(adh, "B5"))
+        self.efficacy_reduction: float = float(self._cell(adh, "B6"))
+
+        # Per-country adherence adjustments
+        self.country_adherence: dict[str, float] = {
+            "burkina_faso": float(self._cell(adh, "B32")),
+            "chad": float(self._cell(adh, "C32")),
+            "nigeria": float(self._cell(adh, "D32")),
+            "togo": self.adherence_adjustment,  # Togo uses overall average
+        }
+
+        # Per-country weighted average adherence rates (before social desirability)
+        self.country_raw_adherence: dict[str, float] = {
+            "burkina_faso": float(self._cell(adh, "B30")),
+            "chad": float(self._cell(adh, "C30")),
+            "nigeria": float(self._cell(adh, "D30")),
+            "togo": self.adherence_adjustment,
+        }
+
+        # Per-country parameters
+        self.programs: dict[str, SMCCountryParams] = {}
+        for key, col in self._COL_MAP.items():
+            name = {
+                "burkina_faso": "Burkina Faso",
+                "chad": "Chad",
+                "nigeria": "Nigeria",
+                "togo": "Togo",
+            }[key]
+            self.programs[key] = SMCCountryParams(
+                name=name,
+                total_spending_mc=float(self._cell(pca, f"{col}5")),
+                total_spending_other=float(self._cell(pca, f"{col}6")),
+                total_spending_govt=float(self._cell(pca, f"{col}7")),
+                total_spending=float(self._cell(pca, f"{col}8")),
+                target_population=float(self._cell(pca, f"{col}9")),
+                adjusted_person_months=float(self._cell(pca, f"{col}20")),
+                cost_per_cycle=float(self._cell(pca, f"{col}23")),
+                cost_per_child_4=float(self._cell(pca, f"{col}24")),
+                cost_per_child_5=float(self._cell(pca, f"{col}25")),
+            )
+
+        # Back-calculate raw (unadjusted) person-months per country
+        adjustment_product = self.self_report_bias * self.adherence_adjustment
+        self._raw_person_months: dict[str, float] = {}
+        for key, p in self.programs.items():
+            self._raw_person_months[key] = p.adjusted_person_months / adjustment_product
+
+    # ------------------------------------------------------------------
+    # Formula chain
+    # ------------------------------------------------------------------
+
+    def compute_cost_effectiveness(
+        self,
+        program_key: str,
+        **overrides: float,
+    ) -> float:
+        """Compute cost per child treated with 4 cycles.
+
+        Supported overrides:
+            self_report_bias, adherence_adjustment,
+            social_desirability_bias, efficacy_reduction,
+            govt_cost_fraction, total_spending
+        """
+        p = self.programs[program_key]
+
+        sr = overrides.get("self_report_bias", self.self_report_bias)
+        adh = overrides.get("adherence_adjustment", self.adherence_adjustment)
+
+        # If social_desirability_bias or efficacy_reduction are overridden,
+        # recompute adherence from the sub-parameters
+        if "social_desirability_bias" in overrides or "efficacy_reduction" in overrides:
+            sdb = overrides.get("social_desirability_bias", self.social_desirability_bias)
+            eff_red = overrides.get("efficacy_reduction", self.efficacy_reduction)
+            raw_adh = self.country_raw_adherence.get(program_key, 0.97)
+            adjusted_adh = raw_adh * sdb
+            adh = 1 - (1 - adjusted_adh) * eff_red
+
+        total_costs = overrides.get("total_spending", p.total_spending)
+
+        # Recompute person-months with overridden adjustments
+        raw_pm = self._raw_person_months[program_key]
+        person_months = raw_pm * sr * adh
+
+        if person_months <= 0:
+            return float("inf")
+
+        cost_per_cycle = total_costs / person_months
+        cost_per_child_4 = cost_per_cycle * 4
+        return cost_per_child_4
+
+    def detect_cap_binding(self, program_key: str, **overrides: float) -> bool:
+        """No plausibility cap concept in the SMC cost model."""
+        return False
+
+    def run_sensitivity(
+        self,
+        program_key: str,
+        parameter_name: str,
+        low: float,
+        central: float,
+        high: float,
+    ) -> dict[str, Any]:
+        """Run sensitivity analysis for a single parameter."""
+        baseline_ce = self.compute_cost_effectiveness(program_key)
+
+        results: dict[str, float | bool | str] = {
+            "parameter_name": parameter_name,
+            "baseline": baseline_ce,
+            "cap_binds_baseline": False,
+        }
+
+        for label, value in [("low", low), ("central", central), ("high", high)]:
+            ce = self.compute_cost_effectiveness(program_key, **{parameter_name: value})
+            pct_change = ((ce - baseline_ce) / baseline_ce) * 100 if baseline_ce != 0 else 0.0
+            results[label] = ce
+            results[f"pct_change_{label}"] = pct_change
+            results[f"cap_binds_{label}"] = False
+
+        return results
+
+    def get_parameter_summary(self) -> str:
+        """Return a human-readable markdown summary of key parameters and baseline costs."""
+        lines: list[str] = []
+        lines.append("# SMC (Seasonal Malaria Chemoprevention) CEA — Parameter Summary\n")
+
+        lines.append("## Shared Adjustment Parameters\n")
+        lines.append(f"- **Self-report bias adjustment:** {self.self_report_bias:.4f}")
+        lines.append(f"- **Adherence adjustment (weighted avg):** {self.adherence_adjustment:.10f}")
+        lines.append(f"- **Social desirability bias:** {self.social_desirability_bias:.4f}")
+        lines.append(f"- **Efficacy reduction for non-adherence:** {self.efficacy_reduction:.4f}")
+        lines.append("")
+
+        lines.append("## Per-Country Parameters\n")
+        for key in self.PROGRAMS:
+            p = self.programs[key]
+            ce = self.compute_cost_effectiveness(key)
+            lines.append(f"### {p.name}\n")
+            lines.append(f"- **Cost per child treated (4 cycles):** ${ce:.4f}")
+            lines.append(f"- **Cost per SMC cycle:** ${p.cost_per_cycle:.4f}")
+            lines.append(f"- **Total spending:** ${p.total_spending:,.2f}")
+            lines.append(f"  - Malaria Consortium: ${p.total_spending_mc:,.2f}")
+            lines.append(f"  - Other philanthropic: ${p.total_spending_other:,.2f}")
+            lines.append(f"  - Government: ${p.total_spending_govt:,.2f}")
+            lines.append(f"- **Target population (2018-2023):** {p.target_population:,.0f}")
+            lines.append(
+                f"- **Adjusted person-months of coverage:** {p.adjusted_person_months:,.2f}"
+            )
+            adh = self.country_adherence.get(key, self.adherence_adjustment)
+            lines.append(f"- **Country adherence adjustment:** {adh:.10f}")
             lines.append("")
 
         return "\n".join(lines)

@@ -1,0 +1,144 @@
+{
+  "threads": [
+    {
+      "name": "Adherence Measurement Validity and Real-World Treatment Completion",
+      "scope": "** This thread investigates the reliability of adherence measurements and actual drug completion rates in SMC programs. It examines whether the 93.9% weighted adherence adjustment accurately reflects real-world treatment completion across all four monthly cycles, particularly for the critical day 2 and day 3 doses administered at home.",
+      "key_questions": [
+        "** Potential systematic differences between caregiver-reported adherence and biomarker-verified adherence; variation in adherence across the 4-5 month campaign period (e.g., fatigue effects); differential adherence by socioeconomic status or distance from distribution points; spillage/sharing of medications."
+      ],
+      "cea_parameters_affected": [
+        "Adherence adjustment (weighted avg): 0.9387",
+        "Self-report bias adjustment: 0.85",
+        "Social desirability bias: 0.90",
+        "Efficacy reduction for non-adherence: 0.50"
+      ],
+      "relevant_sources": [
+        "Pharmacokinetic studies measuring blood levels of SP/AQ in SMC recipients",
+        "Household surveys with pill counts or blister pack checks",
+        "Studies comparing self-reported vs. directly observed therapy adherence in similar contexts",
+        "Time-series data on adherence rates across SMC cycles"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Adherence Measurement Validity and Real-World Treatment Completion\n\n## Scope\n** This thread investigates the reliability of adherence measurements and actual drug completion rates in SMC programs. It examines whether the 93.9% weighted adherence adjustment accurately reflects real-world treatment completion across all four monthly cycles, particularly for the critical day 2 and day 3 doses administered at home.\n\n## Key Parameters\n** \n- Adherence adjustment (weighted avg): 0.9387\n- Self-report bias adjustment: 0.85\n- Social desirability bias: 0.90\n- Efficacy reduction for non-adherence: 0.50\n\n## What GiveWell Already Accounts For\n** GiveWell applies multiple adjustments for adherence including self-report bias (0.85) and social desirability bias (0.90). They also model a 50% efficacy reduction for non-adherence and use country-specific adherence adjustments ranging from 93.1% to 94.4%.\n\n## What GiveWell Does Not Account For\n** Potential systematic differences between caregiver-reported adherence and biomarker-verified adherence; variation in adherence across the 4-5 month campaign period (e.g., fatigue effects); differential adherence by socioeconomic status or distance from distribution points; spillage/sharing of medications.\n\n## Data Sources to Examine\n** \n- Pharmacokinetic studies measuring blood levels of SP/AQ in SMC recipients\n- Household surveys with pill counts or blister pack checks\n- Studies comparing self-reported vs. directly observed therapy adherence in similar contexts\n- Time-series data on adherence rates across SMC cycles\n\n## Materiality Threshold\n** A reduction in true adherence from 94% to 80% would reduce effectiveness by approximately 15%, potentially increasing cost per death averted by 18% (from $4,500 to $5,300 in median settings).\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n\n###\n"
+    },
+    {
+      "name": "Drug Resistance Evolution and Efficacy Decay",
+      "scope": "** This thread examines whether the current SMC drugs (SP+AQ) maintain their modeled efficacy given selection pressure from mass administration, and whether resistance patterns in SMC areas differ from trial settings used to establish efficacy parameters.",
+      "key_questions": [
+        "** Time-varying efficacy as resistance develops; differential resistance patterns between countries; interaction between SMC drug pressure and treatment drug efficacy; potential for SMC to accelerate resistance to treatment drugs."
+      ],
+      "cea_parameters_affected": [
+        "Implicit efficacy parameters embedded in mortality/morbidity reduction estimates",
+        "No explicit resistance adjustment factor visible in provided parameters"
+      ],
+      "relevant_sources": [
+        "Molecular surveillance data on dhfr/dhps mutations in SMC vs non-SMC areas",
+        "Therapeutic efficacy studies of SP+AQ in SMC-implementing areas over time",
+        "Modeling studies on resistance evolution under mass drug administration",
+        "In vivo efficacy data from recent years vs trial periods"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Drug Resistance Evolution and Efficacy Decay\n\n## Scope\n** This thread examines whether the current SMC drugs (SP+AQ) maintain their modeled efficacy given selection pressure from mass administration, and whether resistance patterns in SMC areas differ from trial settings used to establish efficacy parameters.\n\n## Key Parameters\n**\n- Implicit efficacy parameters embedded in mortality/morbidity reduction estimates\n- No explicit resistance adjustment factor visible in provided parameters\n\n## What GiveWell Already Accounts For\n** The model appears to use static efficacy estimates from clinical trials. Country-specific adjustments exist but appear focused on adherence rather than resistance.\n\n## What GiveWell Does Not Account For\n** Time-varying efficacy as resistance develops; differential resistance patterns between countries; interaction between SMC drug pressure and treatment drug efficacy; potential for SMC to accelerate resistance to treatment drugs.\n\n## Data Sources to Examine\n**\n- Molecular surveillance data on dhfr/dhps mutations in SMC vs non-SMC areas\n- Therapeutic efficacy studies of SP+AQ in SMC-implementing areas over time\n- Modeling studies on resistance evolution under mass drug administration\n- In vivo efficacy data from recent years vs trial periods\n\n## Materiality Threshold\n** A 20% reduction in drug efficacy would increase cost per death averted by approximately 25%. Evidence of >10% annual efficacy decline would fundamentally alter program time horizons.\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n\n###\n"
+    },
+    {
+      "name": "Seasonal Targeting Accuracy and Climate-Driven Transmission Shifts",
+      "scope": "** This thread investigates whether SMC campaigns accurately target peak transmission months given climate variability, and whether the assumed concentration of malaria burden during SMC months holds across diverse implementation settings.",
+      "key_questions": [
+        "** Year-to-year variation in rainy season timing; sub-national heterogeneity in transmission patterns; climate change impacts on seasonality; malaria burden occurring outside SMC months."
+      ],
+      "cea_parameters_affected": [
+        "Implicit assumption about proportion of annual malaria burden occurring during SMC months",
+        "Coverage calculations assuming 4-5 cycles capture peak transmission"
+      ],
+      "relevant_sources": [
+        "District-level malaria incidence data by month across multiple years",
+        "Rainfall anomaly data and malaria transmission correlations",
+        "Studies on \"out-of-season\" malaria burden in SMC areas",
+        "Climate projections for Sahel rainfall patterns"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Seasonal Targeting Accuracy and Climate-Driven Transmission Shifts\n\n## Scope\n** This thread investigates whether SMC campaigns accurately target peak transmission months given climate variability, and whether the assumed concentration of malaria burden during SMC months holds across diverse implementation settings.\n\n## Key Parameters\n**\n- Implicit assumption about proportion of annual malaria burden occurring during SMC months\n- Coverage calculations assuming 4-5 cycles capture peak transmission\n\n## What GiveWell Already Accounts For\n** The model uses fixed 4-cycle campaigns with country-specific timing. Some flexibility exists in number of cycles by country.\n\n## What GiveWell Does Not Account For\n** Year-to-year variation in rainy season timing; sub-national heterogeneity in transmission patterns; climate change impacts on seasonality; malaria burden occurring outside SMC months.\n\n## Data Sources to Examine\n**\n- District-level malaria incidence data by month across multiple years\n- Rainfall anomaly data and malaria transmission correlations\n- Studies on \"out-of-season\" malaria burden in SMC areas\n- Climate projections for Sahel rainfall patterns\n\n## Materiality Threshold\n** If 25% of malaria burden occurs outside SMC months (vs assumed <10%), cost-effectiveness would decrease by approximately 20%.\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n\n###\n"
+    },
+    {
+      "name": "Implementation Fidelity at Scale",
+      "scope": "** This thread examines whether the quality of SMC delivery (dosing accuracy, cold chain for dispersible tablets, community distributor training) degrades as programs scale from tens of thousands to millions of children, particularly in the highest-burden areas.",
+      "key_questions": [
+        "** Explicit quality degradation at scale; variation in implementation quality within countries; stockouts or supply chain disruptions; community distributor retention/turnover effects."
+      ],
+      "cea_parameters_affected": [
+        "Cost per child treated: $5.62-$8.37",
+        "Target populations: ranging from 1.5M (Togo) to 40.7M (Nigeria)"
+      ],
+      "relevant_sources": [
+        "Coverage evaluation surveys comparing small vs large-scale districts",
+        "Supply chain assessment reports from implementing countries",
+        "Community distributor retention/performance data",
+        "Quality assurance monitoring reports by scale of operation"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Implementation Fidelity at Scale\n\n## Scope\n** This thread examines whether the quality of SMC delivery (dosing accuracy, cold chain for dispersible tablets, community distributor training) degrades as programs scale from tens of thousands to millions of children, particularly in the highest-burden areas.\n\n## Key Parameters\n**\n- Cost per child treated: $5.62-$8.37\n- Target populations: ranging from 1.5M (Togo) to 40.7M (Nigeria)\n\n## What GiveWell Already Accounts For\n** Different costs by country suggesting some accounting for implementation complexity. Includes monitoring and training in cost structure.\n\n## What GiveWell Does Not Account For\n** Explicit quality degradation at scale; variation in implementation quality within countries; stockouts or supply chain disruptions; community distributor retention/turnover effects.\n\n## Data Sources to Examine\n**\n- Coverage evaluation surveys comparing small vs large-scale districts\n- Supply chain assessment reports from implementing countries\n- Community distributor retention/performance data\n- Quality assurance monitoring reports by scale of operation\n\n## Materiality Threshold\n** A 15% reduction in effective coverage due to implementation issues would increase cost per death averted by approximately 18%.\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n\n###\n"
+    },
+    {
+      "name": "Spillover Mortality Effects and Attribution",
+      "scope": "** This thread investigates whether mortality reductions attributed to SMC might partially reflect other concurrent health system improvements or interventions, and whether the counterfactual (no SMC) accurately represents what would happen without the program.",
+      "key_questions": [
+        "** Differences between trial and programmatic contexts; concurrent expansion of other child health interventions; general health system strengthening in SMC areas; secular trends in child mortality."
+      ],
+      "cea_parameters_affected": [
+        "Mortality reduction estimates (embedded in effectiveness calculations)",
+        "No visible parameters for health system confounders"
+      ],
+      "relevant_sources": [
+        "Interrupted time series analyses of child mortality in SMC vs non-SMC areas",
+        "Data on concurrent intervention coverage (vaccines, nutrition programs)",
+        "Difference-in-differences studies using SMC rollout variation",
+        "Health system capacity indicators in SMC implementation areas"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Spillover Mortality Effects and Attribution\n\n## Scope\n** This thread investigates whether mortality reductions attributed to SMC might partially reflect other concurrent health system improvements or interventions, and whether the counterfactual (no SMC) accurately represents what would happen without the program.\n\n## Key Parameters\n**\n- Mortality reduction estimates (embedded in effectiveness calculations)\n- No visible parameters for health system confounders\n\n## What GiveWell Already Accounts For\n** Uses RCT evidence for efficacy, presumably controlling for confounders in trial settings.\n\n## What GiveWell Does Not Account For\n** Differences between trial and programmatic contexts; concurrent expansion of other child health interventions; general health system strengthening in SMC areas; secular trends in child mortality.\n\n## Data Sources to Examine\n**\n- Interrupted time series analyses of child mortality in SMC vs non-SMC areas\n- Data on concurrent intervention coverage (vaccines, nutrition programs)\n- Difference-in-differences studies using SMC rollout variation\n- Health system capacity indicators in SMC implementation areas\n\n## Materiality Threshold\n** If 30% of observed mortality reduction is due to concurrent interventions rather than SMC, cost per death averted would increase by approximately 43%.\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n\n###\n"
+    },
+    {
+      "name": "Long-term Income Effects Magnitude and Mechanisms",
+      "scope": "** This thread examines whether the modeled long-term income benefits from averting childhood malaria episodes are appropriately sized and whether the causal mechanisms assumed (cognitive development, school attendance) operate similarly in SMC contexts.",
+      "key_questions": [
+        "** Whether income effects observed in other settings (e.g., malaria eradication campaigns) transfer to seasonal prevention; interaction with baseline poverty levels; whether preventing seasonal malaria has same developmental impact as preventing year-round exposure."
+      ],
+      "cea_parameters_affected": [
+        "Long-term income effects (mentioned but parameters not provided)",
+        "Implicit assumptions about malaria-income causality"
+      ],
+      "relevant_sources": [
+        "Long-term follow-up studies of malaria prevention in childhood",
+        "Educational attainment data from early SMC implementation areas",
+        "Studies on seasonal vs perennial malaria exposure and cognitive outcomes",
+        "Economic studies from areas with successful malaria control"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Long-term Income Effects Magnitude and Mechanisms\n\n## Scope\n** This thread examines whether the modeled long-term income benefits from averting childhood malaria episodes are appropriately sized and whether the causal mechanisms assumed (cognitive development, school attendance) operate similarly in SMC contexts.\n\n## Key Parameters\n**\n- Long-term income effects (mentioned but parameters not provided)\n- Implicit assumptions about malaria-income causality\n\n## What GiveWell Already Accounts For\n** GiveWell notes \"substantial additional benefits like increased later-life income\" suggesting these are included in the model.\n\n## What GiveWell Does Not Account For\n** Whether income effects observed in other settings (e.g., malaria eradication campaigns) transfer to seasonal prevention; interaction with baseline poverty levels; whether preventing seasonal malaria has same developmental impact as preventing year-round exposure.\n\n## Data Sources to Examine\n**\n- Long-term follow-up studies of malaria prevention in childhood\n- Educational attainment data from early SMC implementation areas\n- Studies on seasonal vs perennial malaria exposure and cognitive outcomes\n- Economic studies from areas with successful malaria control\n\n## Materiality Threshold\n** If long-term income effects are 50% smaller than modeled, this could reduce cost-effectiveness by 20-30% depending on how heavily weighted these benefits are.\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n\n###\n"
+    },
+    {
+      "name": "Cost Trajectory and Sustainability",
+      "scope": "** This thread investigates whether the current cost per child ($5.62-$8.37) represents a stable long-term cost or whether there are predictable cost escalations as programs mature, and whether the government cost-share assumptions are realistic.",
+      "key_questions": [
+        "** Wage inflation for community distributors; increasing supervision costs as programs institutionalize; potential withdrawal of government support; costs of maintaining coverage as initial enthusiasm wanes."
+      ],
+      "cea_parameters_affected": [
+        "Cost per child treated: $5.62-$8.37 by country",
+        "Government contribution: 10.6% (Burkina Faso) to 10.4% (Nigeria)"
+      ],
+      "relevant_sources": [
+        "Multi-year cost data from mature SMC programs",
+        "Government health budget analyses in implementing countries",
+        "Community health worker wage trends",
+        "Program evaluation reports on cost drivers over time"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Cost Trajectory and Sustainability\n\n## Scope\n** This thread investigates whether the current cost per child ($5.62-$8.37) represents a stable long-term cost or whether there are predictable cost escalations as programs mature, and whether the government cost-share assumptions are realistic.\n\n## Key Parameters\n**\n- Cost per child treated: $5.62-$8.37 by country\n- Government contribution: 10.6% (Burkina Faso) to 10.4% (Nigeria)\n\n## What GiveWell Already Accounts For\n** Country-specific costs and some government contribution modeling.\n\n## What GiveWell Does Not Account For\n** Wage inflation for community distributors; increasing supervision costs as programs institutionalize; potential withdrawal of government support; costs of maintaining coverage as initial enthusiasm wanes.\n\n## Data Sources to Examine\n**\n- Multi-year cost data from mature SMC programs\n- Government health budget analyses in implementing countries\n- Community health worker wage trends\n- Program evaluation reports on cost drivers over time\n\n## Materiality Threshold\n** A 25% increase in delivery costs would directly increase cost per death averted by 25%, potentially crossing funding thresholds.\n\n## Known Concerns Already Surfaced\n** [Unable to specify without baseline AI output]\n"
+    }
+  ],
+  "exclusion_list": [
+    "[Unable to specify without baseline AI output]",
+    "###"
+  ],
+  "cea_parameter_map": "- Adherence adjustment (weighted avg): 0.9387\n- Self-report bias adjustment: 0.85\n- Social desirability bias: 0.90\n- Efficacy reduction for non-adherence: 0.50\n- Implicit efficacy parameters embedded in mortality/morbidity reduction estimates\n- No explicit resistance adjustment factor visible in provided parameters\n- Implicit assumption about proportion of annual malaria burden occurring during SMC months\n- Coverage calculations assuming 4-5 cycles capture peak transmission\n- Cost per child treated: $5.62-$8.37\n- Target populations: ranging from 1.5M (Togo) to 40.7M (Nigeria)\n- Mortality reduction estimates (embedded in effectiveness calculations)\n- No visible parameters for health system confounders\n- Long-term income effects (mentioned but parameters not provided)\n- Implicit assumptions about malaria-income causality\n- Cost per child treated: $5.62-$8.37 by country\n- Government contribution: 10.6% (Burkina Faso) to 10.4% (Nigeria)"
+}
