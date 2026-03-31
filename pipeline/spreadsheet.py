@@ -272,7 +272,7 @@ class WaterCEA:
         Supported overrides:
             relative_risk, internal_validity_under5, internal_validity_over5,
             external_validity, plausibility_cap, internal_validity_morbidity,
-            morbidity_ext_validity
+            morbidity_ext_validity, mills_reincke
         """
         p = self.programs[program_key]
 
@@ -283,6 +283,7 @@ class WaterCEA:
         cap = overrides.get("plausibility_cap", p.plausibility_cap)
         iv_morb = overrides.get("internal_validity_morbidity", self.internal_validity_morbidity)
         morb_ev = overrides.get("morbidity_ext_validity", p.morbidity_ext_validity)
+        mr = overrides.get("mills_reincke", p.mills_reincke)
 
         # --- Under-5 mortality ---
         initial_estimate = (1 - rr) * iv_u5 * ev
@@ -329,7 +330,7 @@ class WaterCEA:
         # B57 = B55 * B56. Let me re-derive:
         # cost_per_person = cost_per_under5_diarrhea * pop_under5
         cost_per_person_served = p.cost_per_under5_diarrhea * p.pop_under5
-        total_cost_averted = cost_per_person_served * p.mills_reincke
+        total_cost_averted = cost_per_person_served * mr
         adjusted_cost = total_cost_averted * p.iv_medical * p.ev_medical
         ln_consumption_increase = math.log(p.consumption + adjusted_cost) - math.log(p.consumption)
         value_per_ln_unit = p.value_doubling / math.log(2)

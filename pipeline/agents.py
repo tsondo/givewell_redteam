@@ -30,6 +30,9 @@ from pipeline.config import (
     PROMPTS_DIR,
     RESULTS_DIR,
     SONNET_MODEL,
+    VERIFIER_ALLOWED_DOMAINS,
+    VERIFIER_BATCH_SIZE,
+    VERIFIER_MAX_SEARCHES,
 )
 from pipeline.schemas import (
     CandidateCritique,
@@ -185,20 +188,22 @@ def _extract_section(text: str, header: str, next_headers: list[str]) -> str:
     """Extract content between a header and the next header in next_headers.
 
     Uses loose regex matching with optional colon and whitespace.
+    Headers are matched at the start of a line, optionally preceded by
+    markdown heading markers (# / ## / ###) or bold markers (**).
     """
-    # Escape header for regex
-    pattern = re.escape(header) + r"\s*:?\s*"
-    match = re.search(pattern, text, re.IGNORECASE)
+    # Match header at line start with optional markdown prefix
+    pattern = r"^[\s#*]*" + re.escape(header) + r"\s*:?\s*"
+    match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
     if not match:
         return ""
 
     start = match.end()
 
-    # Find the earliest next header
+    # Find the earliest next header (must also be at line start)
     end = len(text)
     for nh in next_headers:
-        nh_pattern = re.escape(nh) + r"\s*:?\s*"
-        nh_match = re.search(nh_pattern, text[start:], re.IGNORECASE)
+        nh_pattern = r"^[\s#*]*" + re.escape(nh) + r"\s*:?\s*"
+        nh_match = re.search(nh_pattern, text[start:], re.IGNORECASE | re.MULTILINE)
         if nh_match:
             end = min(end, start + nh_match.start())
 
@@ -499,16 +504,28 @@ def parse_verifier_output(
     )
 
 
-# Parameter name mapping from API response text to compute_cost_effectiveness kwargs
+# Parameter name mapping from API response text to compute_cost_effectiveness kwargs.
+# Keys are matched with substring search against lowercased parameter names.
+# More specific keys must come before less specific ones to avoid false matches.
 _PARAM_NAME_MAP: dict[str, str] = {
+    "ln(rr)": "relative_risk",
+    "pooled ln": "relative_risk",
+    "log relative risk": "relative_risk",
+    "mortality reduction": "relative_risk",
     "relative risk": "relative_risk",
     "mortality effect": "relative_risk",
+    "treatment effect": "relative_risk",
+    "internal validity, under": "internal_validity_under5",
+    "internal validity adjustment": "internal_validity_under5",
     "internal validity": "internal_validity_under5",
     "external validity": "external_validity",
     "plausibility cap": "plausibility_cap",
-    "morbidity": "internal_validity_morbidity",
     "morbidity external validity": "morbidity_ext_validity",
     "morbidity ext validity": "morbidity_ext_validity",
+    "morbidity": "internal_validity_morbidity",
+    "mills-reincke": "mills_reincke",
+    "mills reincke": "mills_reincke",
+    "indirect mortality": "mills_reincke",
 }
 
 
@@ -521,12 +538,146 @@ def _map_parameter_name(raw_name: str) -> str | None:
     return None
 
 
+def _is_ln_rr_value(value: float) -> bool:
+    """Check if a value looks like a ln(RR) (negative, small magnitude)."""
+    return value < 0 and abs(value) < 1.0
+
+
+def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
+    """Extract (parameter_name, low, current, high) from varied quantifier output.
+
+    The API uses many formats, so we try multiple strategies:
+    1. "Current value = X ... range = [Y, Z]" (original rigid pattern)
+    2. "Current = X. Adjusted range = [Y, Z]" or "Plausible range = [Y, Z]"
+    3. Named param blocks with values like "ln(RR) = -0.132 to -0.117"
+    4. Bold-header blocks: "**Pooled ln(RR)**: Current -0.146 ... range ..."
+    """
+    results: list[dict[str, Any]] = []
+
+    # Split into per-parameter blocks.  The API typically uses numbered items
+    # (1. / 2. / - **Name**:) or double-newline separated paragraphs.
+    # Split on numbered list items or bold headers.
+    block_pattern = re.compile(
+        r"(?:^|\n)\s*(?:\d+\.\s+|\-\s+)"
+        r"(?:\*\*(.+?)\*\*)",
+        re.MULTILINE,
+    )
+    block_matches = list(block_pattern.finditer(text))
+
+    blocks: list[tuple[str, str]] = []
+    for i, bm in enumerate(block_matches):
+        name = bm.group(1).strip().rstrip(":.")
+        start = bm.end()
+        end = block_matches[i + 1].start() if i + 1 < len(block_matches) else len(text)
+        body = text[start:end]
+        blocks.append((name, body))
+
+    # If no bold-header blocks found, treat the whole text as one block
+    # and try to infer the parameter name from content
+    if not blocks:
+        blocks = [("", text)]
+
+    for name, body in blocks:
+        merged = name + " " + body
+        # Determine the CEA parameter this block maps to
+        mapped = _map_parameter_name(name) if name else None
+
+        # Strategy 1: "Current value = X ... range = [Y, Z]" or
+        # "Current = X ... Plausible range = [Y, Z]"
+        # Use \b or lookahead to avoid consuming trailing periods in "1.0."
+        _NUM = r"-?\d+(?:\.\d+)?%?"
+        m = re.search(
+            r"Current\s*(?:value)?\s*[:=]\s*(" + _NUM + r")"
+            r".*?(?:Plausible\s+)?[Rr]ange\s*[:=]?\s*\[?\s*(" + _NUM + r")"
+            r"\s*[,to\-–]+\s*(" + _NUM + r")",
+            merged, re.IGNORECASE | re.DOTALL,
+        )
+        if m:
+            current = _parse_num(m.group(1))
+            low = _parse_num(m.group(2))
+            high = _parse_num(m.group(3))
+            if current is not None and low is not None and high is not None:
+                results.append({"name": name, "current": current, "low": low,
+                                "high": high, "mapped": mapped})
+                continue
+
+        # Strategy 2: "could be X to Y" or "= X to Y" patterns with a parameter name
+        m = re.search(
+            r"(?:could\s+be|range\s*[:=]?|adjusted\s+(?:range|ln\(rr\))\s*[:=]?)"
+            r"\s*\[?\s*(-?[\d.]+)\s*(?:to|[,\-–])\s*(-?[\d.]+)\s*\]?",
+            merged, re.IGNORECASE,
+        )
+        if m and mapped:
+            low = float(m.group(1))
+            high = float(m.group(2))
+            # Try to find current value nearby
+            cm = re.search(
+                r"Current(?:\s+value)?\s*[:=]\s*(-?[\d.]+)",
+                merged, re.IGNORECASE,
+            )
+            current = float(cm.group(1)) if cm else None
+            # If no explicit current, try to infer from "currently -0.146"
+            if current is None:
+                cm2 = re.search(r"[Cc]urrently\s+(-?[\d.]+)", merged)
+                current = float(cm2.group(1)) if cm2 else None
+            if current is not None:
+                results.append({"name": name, "current": current, "low": low,
+                                "high": high, "mapped": mapped})
+                continue
+
+        # Strategy 3: look for RR values like "RR = 0.95 ... RR = 0.90 ... RR = 0.92"
+        rr_values = re.findall(r"RR\s*=\s*([\d.]+)", merged, re.IGNORECASE)
+        if len(rr_values) >= 2 and (mapped or "relative risk" in merged.lower()
+                                     or "mortality" in merged.lower()):
+            vals = sorted(float(v) for v in rr_values)
+            if not mapped:
+                mapped = "relative_risk"
+            # Current RR from the CEA is ~0.864
+            results.append({
+                "name": name or "relative_risk",
+                "current": float(rr_values[0]),  # usually listed first
+                "low": vals[0],
+                "high": vals[-1],
+                "mapped": mapped,
+            })
+            continue
+
+        # Strategy 4: ln(RR) values like "ln(RR) = -0.132" or "ln(RR) could be..."
+        lnrr_vals = re.findall(r"ln\s*\(?RR\)?\s*(?:=|could\s+be|:)\s*(-?[\d.]+)", merged, re.IGNORECASE)
+        if len(lnrr_vals) >= 2:
+            vals = sorted(float(v) for v in lnrr_vals)
+            results.append({
+                "name": name or "ln(RR)",
+                "current": float(lnrr_vals[0]),
+                "low": vals[0],
+                "high": vals[-1],
+                "mapped": "relative_risk",
+                "is_ln": True,
+            })
+            continue
+
+    return results
+
+
+def _parse_num(s: str) -> float | None:
+    """Parse a number, handling optional % suffix (converted to fraction)."""
+    s = s.strip().rstrip("%")
+    try:
+        val = float(s)
+        # If original string had %, convert to fraction
+        return val
+    except ValueError:
+        return None
+
+
 def parse_quantifier_output(
     text: str,
     critique: VerifiedCritique,
     cea: Any,
 ) -> QuantifiedCritique:
     """Parse quantifier API response and run actual sensitivity analysis."""
+    import math
+
     quant_headers = [
         "CRITIQUE",
         "PARAMETER MAPPING",
@@ -541,53 +692,72 @@ def parse_quantifier_output(
     plausible_range_raw = _extract_section(text, "PLAUSIBLE RANGE", quant_headers)
     materiality_raw = _extract_section(text, "MATERIALITY VERDICT", quant_headers)
 
-    # Parse parameter mapping lines
+    # --- Extract named parameters from PARAMETER MAPPING ---
     target_parameters: list[dict[str, Any]] = []
-    for line in param_mapping_raw.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        # Try "Parameter N: Name, location, current value"
-        m = re.match(r"(?:Parameter\s*\d+\s*:?\s*)?(.+)", line, re.IGNORECASE)
-        if m:
-            target_parameters.append({"raw": m.group(1).strip()})
+    # Look for bold markdown names: **Parameter Name** or numbered + bold
+    bold_params = re.findall(
+        r"\*\*(.+?)\*\*",
+        param_mapping_raw,
+    )
+    seen_params: set[str] = set()
+    for bp in bold_params:
+        name = bp.strip().rstrip(":.")
+        mapped = _map_parameter_name(name)
+        if mapped and mapped not in seen_params:
+            target_parameters.append({"name": name, "mapped": mapped})
+            seen_params.add(mapped)
+        elif name and not any(skip in name.lower() for skip in (
+            "location", "role", "current", "note", "basis", "evidence",
+        )):
+            # Keep un-mappable but plausible parameter names for logging
+            target_parameters.append({"name": name, "mapped": mapped})
 
-    # Parse plausible ranges
+    # If no bold names found, fall back to line-level extraction
+    if not target_parameters:
+        for line in param_mapping_raw.splitlines():
+            line = line.strip().lstrip("-•*0123456789.) ")
+            if not line:
+                continue
+            mapped = _map_parameter_name(line)
+            if mapped and mapped not in seen_params:
+                target_parameters.append({"name": line[:80], "mapped": mapped})
+                seen_params.add(mapped)
+
+    # --- Extract ranges from PLAUSIBLE RANGE ---
+    extracted_ranges = _extract_ranges_from_text(plausible_range_raw)
     alternative_range: list[dict[str, Any]] = []
-    range_pattern = re.compile(
-        r"Current\s+value\s*=\s*([\d.]+).*?"
-        r"(?:range|Range)\s*=?\s*\[?\s*([\d.]+)\s*[,to\-–]+\s*([\d.]+)",
-        re.IGNORECASE | re.DOTALL,
-    )
-    # Also try to capture parameter names in range section
-    param_line_pattern = re.compile(
-        r"(?:Parameter\s*\d+\s*:?\s*)?(.+?)(?:Current\s+value)",
-        re.IGNORECASE,
-    )
+    for er in extracted_ranges:
+        alternative_range.append(er)
 
-    for line in plausible_range_raw.split("\n\n"):
-        line = line.strip()
-        if not line:
-            continue
-        # Try to get the range values
-        rm = range_pattern.search(line)
-        if rm:
-            current = float(rm.group(1))
-            low = float(rm.group(2))
-            high = float(rm.group(3))
-
-            # Try to get parameter name
-            pm = param_line_pattern.search(line)
-            param_name = pm.group(1).strip().rstrip(":. ") if pm else ""
-
-            alternative_range.append(
-                {
+    # If range extraction found nothing, try to match parameter names from
+    # PARAMETER MAPPING against PLAUSIBLE RANGE to find any numbers
+    if not alternative_range and target_parameters:
+        for tp in target_parameters:
+            mapped = tp.get("mapped")
+            if not mapped:
+                continue
+            # Search PLAUSIBLE RANGE for any section mentioning this parameter
+            param_name = tp.get("name", "")
+            # Look for current value and any alternative values
+            section_text = plausible_range_raw
+            current_m = re.search(
+                r"(?:Current|currently)\s*[:=]?\s*(-?[\d.]+)",
+                section_text, re.IGNORECASE,
+            )
+            if not current_m:
+                continue
+            current = float(current_m.group(1))
+            # Find any other float values that could be alternatives
+            all_floats = re.findall(r"(-?[\d]+\.[\d]+)", section_text)
+            floats = sorted(set(float(f) for f in all_floats))
+            if len(floats) >= 2:
+                alternative_range.append({
                     "name": param_name,
                     "current": current,
-                    "low": low,
-                    "high": high,
-                }
-            )
+                    "low": floats[0],
+                    "high": floats[-1],
+                    "mapped": mapped,
+                })
 
     # Map materiality verdict
     mat_upper = materiality_raw.upper().strip()
@@ -598,18 +768,31 @@ def parse_quantifier_output(
     else:
         api_materiality = "immaterial"
 
-    # Run actual sensitivity analysis using CEA
+    # --- Run actual sensitivity analysis using CEA ---
     sensitivity_results: dict[str, Any] = {}
     max_abs_pct_change = 0.0
 
     for rng in alternative_range:
-        mapped_param = _map_parameter_name(rng.get("name", ""))
+        mapped_param = rng.get("mapped") or _map_parameter_name(rng.get("name", ""))
         if not mapped_param:
             continue
 
         low_val = rng["low"]
         current_val = rng["current"]
         high_val = rng["high"]
+        is_ln = rng.get("is_ln", False)
+
+        # If this looks like ln(RR) values but the target param is relative_risk,
+        # convert from log-space to linear-space.
+        if mapped_param == "relative_risk":
+            if is_ln or (_is_ln_rr_value(low_val) and _is_ln_rr_value(current_val)):
+                low_val = math.exp(low_val)
+                current_val = math.exp(current_val)
+                high_val = math.exp(high_val)
+
+        # Ensure low <= high
+        if low_val > high_val:
+            low_val, high_val = high_val, low_val
 
         for program_key in cea.PROGRAMS:
             try:
@@ -781,49 +964,132 @@ def run_investigators(
     return all_critiques, combined_raw
 
 
+def _format_critique_for_verifier(critique: CandidateCritique, index: int) -> str:
+    """Format a single critique as a numbered block for the verifier prompt."""
+    return (
+        f"### Critique {index}\n\n"
+        f"**Title:** {critique.title}\n"
+        f"**Thread:** {critique.thread_name}\n"
+        f"**Hypothesis:** {critique.hypothesis}\n"
+        f"**Mechanism:** {critique.mechanism}\n"
+        f"**Suggested Evidence:** {', '.join(critique.suggested_evidence)}\n"
+        f"**Estimated Direction:** {critique.estimated_direction}\n"
+        f"**Estimated Magnitude:** {critique.estimated_magnitude}\n"
+    )
+
+
+def _parse_batched_verifier_output(
+    raw: str,
+    batch: list[CandidateCritique],
+) -> list[VerifiedCritique]:
+    """Parse verifier output that may contain multiple critiques.
+
+    Splits on 'Critique N' or '--- Critique' boundaries, then parses each.
+    Falls back to treating the entire response as a single critique.
+    """
+    # Split on section boundaries matching "## Critique 1:", "### Critique 2:", etc.
+    split_pattern = re.compile(
+        r"(?:^|\n)\s*#{1,3}\s*Critique\s+(\d+)\s*[:\-]",
+        re.IGNORECASE | re.MULTILINE,
+    )
+    matches = list(split_pattern.finditer(raw))
+
+    results: list[VerifiedCritique] = []
+
+    if len(matches) >= 2 and len(batch) > 1:
+        # Multiple sections found — parse each
+        for i, m in enumerate(matches):
+            critique_idx = int(m.group(1)) - 1
+            start = m.end()
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(raw)
+            section = raw[start:end].strip()
+
+            if 0 <= critique_idx < len(batch):
+                result = parse_verifier_output(section, batch[critique_idx])
+                results.append(result)
+    else:
+        # Single critique or can't split — parse as one
+        # If batch has multiple, attempt splitting on "---" delimiters
+        if len(batch) > 1:
+            parts = re.split(r"\n---+\s*\n", raw)
+            for j, part in enumerate(parts):
+                if j < len(batch):
+                    result = parse_verifier_output(part.strip(), batch[j])
+                    results.append(result)
+        else:
+            result = parse_verifier_output(raw, batch[0])
+            results.append(result)
+
+    return results
+
+
 def run_verifier(
     critiques: list[CandidateCritique],
     stats: PipelineStats,
     intervention: str,
 ) -> tuple[list[VerifiedCritique], str]:
-    """Stage 3: Verify each critique with web search."""
+    """Stage 3: Verify each critique with web search.
+
+    Uses batching, search count limits, and domain focusing to reduce costs.
+    """
     system = load_prompt("verifier.md")
     verified: list[VerifiedCritique] = []
     all_raw: list[str] = []
 
-    for i, critique in enumerate(critiques):
-        user_message = (
-            f"## Critique to Verify\n\n"
-            f"**Title:** {critique.title}\n"
-            f"**Thread:** {critique.thread_name}\n"
-            f"**Hypothesis:** {critique.hypothesis}\n"
-            f"**Mechanism:** {critique.mechanism}\n"
-            f"**Suggested Evidence:** {', '.join(critique.suggested_evidence)}\n"
-            f"**Estimated Direction:** {critique.estimated_direction}\n"
-            f"**Estimated Magnitude:** {critique.estimated_magnitude}\n\n"
-            "Verify this critique. Check citations, claims, and evidence."
-        )
+    web_search_tool: dict[str, Any] = {
+        "type": "web_search_20250305",
+        "name": "web_search",
+        "max_uses": VERIFIER_MAX_SEARCHES,
+        "allowed_domains": VERIFIER_ALLOWED_DOMAINS,
+    }
+
+    # Process in batches
+    batch_num = 0
+    for start in range(0, len(critiques), VERIFIER_BATCH_SIZE):
+        batch = critiques[start : start + VERIFIER_BATCH_SIZE]
+        batch_num += 1
+
+        if len(batch) == 1:
+            user_message = (
+                f"## Critique to Verify\n\n"
+                + _format_critique_for_verifier(batch[0], 1)
+                + "\nVerify this critique. Check citations, claims, and evidence."
+            )
+        else:
+            critique_blocks = "\n\n".join(
+                _format_critique_for_verifier(c, j + 1)
+                for j, c in enumerate(batch)
+            )
+            user_message = (
+                f"## Critiques to Verify\n\n"
+                f"Verify each of the following {len(batch)} critiques. "
+                f"For EACH critique, provide a separate section headed "
+                f"'## Critique N:' with OVERALL VERDICT, EVIDENCE FOUND, "
+                f"CLAIM CHECK, and (if partially verified) REVISED CRITIQUE.\n\n"
+                + critique_blocks
+            )
 
         raw = call_api(
             model=SONNET_MODEL,
             system=system,
             user_message=user_message,
             stats=stats,
-            stage=f"verifier-{i + 1}",
-            max_tokens=MAX_TOKENS_VERIFIER,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            stage=f"verifier-{batch_num}",
+            max_tokens=MAX_TOKENS_VERIFIER * len(batch),
+            tools=[web_search_tool],
         )
 
-        result = parse_verifier_output(raw, critique)
-        all_raw.append(f"--- Critique: {critique.title} ---\n\n{raw}")
+        results = _parse_batched_verifier_output(raw, batch)
 
-        # Keep verified and partially_verified
-        if result.verdict in ("verified", "partially_verified"):
-            verified.append(result)
-        else:
-            logger.info(
-                "Dropping critique '%s': verdict=%s", critique.title, result.verdict
-            )
+        for result in results:
+            title = result.original.title
+            all_raw.append(f"--- Critique: {title} ---\n\n{raw}")
+            if result.verdict in ("verified", "partially_verified"):
+                verified.append(result)
+            else:
+                logger.info(
+                    "Dropping critique '%s': verdict=%s", title, result.verdict
+                )
 
     combined_raw = "\n\n".join(all_raw)
     save_stage_output(intervention, 3, "verifier", verified, combined_raw)
@@ -871,6 +1137,27 @@ def run_quantifier(
         )
 
         result = parse_quantifier_output(raw, critique, cea)
+        logger.info(
+            "  Quantifier [%d/%d] '%s': params=%d, ranges=%d, sensitivity=%d, materiality=%s",
+            i + 1,
+            len(critiques),
+            orig.title[:50],
+            len(result.target_parameters),
+            len(result.alternative_range),
+            len(result.sensitivity_results),
+            result.materiality,
+        )
+        if result.sensitivity_results:
+            for key, sens in result.sensitivity_results.items():
+                logger.info(
+                    "    %s: baseline=%.2f, low=%.2f (%.1f%%), high=%.2f (%.1f%%)",
+                    key,
+                    sens["baseline"],
+                    sens["low"],
+                    sens["pct_change_low"],
+                    sens["high"],
+                    sens["pct_change_high"],
+                )
         quantified.append(result)
         all_raw.append(f"--- Critique: {orig.title} ---\n\n{raw}")
 

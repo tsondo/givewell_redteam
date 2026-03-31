@@ -27,6 +27,23 @@ MAX_TOKENS_QUANTIFIER: int = 8192
 MAX_TOKENS_ADVERSARIAL: int = 3072
 MAX_TOKENS_SYNTHESIZER: int = 8192
 
+# Verifier web search settings
+VERIFIER_MAX_SEARCHES: int = 5  # max web searches per verifier call
+VERIFIER_BATCH_SIZE: int = 3   # critiques per verifier API call
+VERIFIER_ALLOWED_DOMAINS: list[str] = [
+    "givewell.org",
+    "who.int",
+    "ncbi.nlm.nih.gov",
+    "pubmed.ncbi.nlm.nih.gov",
+    "scholar.google.com",
+    "thelancet.com",
+    "bmj.com",
+    "nature.com",
+    "cochranelibrary.com",
+    "worldbank.org",
+    "unicef.org",
+]
+
 # Cost thresholds (warn, don't stop)
 COST_WARNING_PER_INTERVENTION: float = 15.0
 

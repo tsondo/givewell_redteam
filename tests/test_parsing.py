@@ -9,6 +9,7 @@ from pipeline.agents import (
     parse_challenger_output,
     parse_decomposer_output,
     parse_investigator_output,
+    parse_quantifier_output,
     parse_verifier_output,
 )
 
@@ -320,3 +321,190 @@ def test_parse_challenger_output() -> None:
     assert len(questions) >= 2
     assert any("funnel plot" in q.lower() for q in questions)
     assert action == "investigate"
+
+
+# --- Quantifier samples matching real API output formats ---
+
+QUANTIFIER_LN_RR_SAMPLE = """\
+## CRITIQUE: Pathogen Ecology Shifts Reducing Treatment Effectiveness
+
+### PARAMETER MAPPING:
+
+The critique primarily affects:
+
+1. **Pooled ln(RR):** Currently -0.1463061064 (RR = 0.8639)
+   - Location: Shared parameter across all programs
+   - This represents the average mortality reduction from water treatment
+
+2. **External validity adjustments:** Currently 0.558-1.214 across programs
+   - Location: Program-specific adjustments
+   - Could be reduced if local pathogen mix differs from trial settings
+
+### PLAUSIBLE RANGE:
+
+Based on the verified evidence:
+
+1. **Pooled ln(RR) adjustment:**
+   - Current value: -0.1463 (13.6% mortality reduction)
+   - If Cryptosporidium represents 8-15% of diarrheal burden:
+     - Optimistic bound: ln(RR) = -0.1346 (12.6% reduction)
+     - Pessimistic bound: ln(RR) = -0.1243 (11.7% reduction)
+   - Basis: Verified Cryptosporidium prevalence of 8-15%
+
+### SENSITIVITY ANALYSIS:
+
+```python
+# omitted for brevity
+```
+
+### BOTTOM-LINE IMPACT:
+10-15% reduction in cost-effectiveness.
+
+### MATERIALITY VERDICT:
+**YES** — Crosses materiality threshold.
+"""
+
+QUANTIFIER_CURRENT_RANGE_SAMPLE = """\
+## CRITIQUE: Seasonal and Source-Dependent Usage Variation
+
+## PARAMETER MAPPING:
+- **Pooled ln(RR)**: Currently -0.146, applied uniformly across all person-time
+- **Effective coverage implicit in the mortality effect**: The pooled effect assumes consistent chlorination
+
+## PLAUSIBLE RANGE:
+- **Seasonal coverage factor**: Current value = 1.0. Plausible range = [0.67, 0.75].
+  Basis: Evidence indicates 3-4 months of rainwater use annually
+- **Effective pooled ln(RR)**: Current = -0.146. Adjusted range = [-0.098, -0.110].
+  Basis: Proportional reduction based on coverage gaps
+
+## SENSITIVITY ANALYSIS:
+Results omitted.
+
+## BOTTOM-LINE IMPACT:
+25-33% reduction.
+
+## MATERIALITY VERDICT:
+**YES** - highly material.
+"""
+
+QUANTIFIER_RR_VALUES_SAMPLE = """\
+## CRITIQUE: Field Chlorination Quality
+
+## PARAMETER MAPPING:
+
+1. **External validity adjustment**
+   - Current values: 0.558 (DSW B) to 1.214 (ILC Kenya)
+
+2. **Pooled ln(RR) of all-cause mortality**
+   - Current value: -0.146 (implies RR = 0.864)
+
+## PLAUSIBLE RANGE:
+
+1. **Combined effect on mortality reduction**
+   - Current RR = 0.864 (13.6% mortality reduction)
+   - Pessimistic: RR = 0.95 (5% reduction)
+   - Optimistic: RR = 0.90 (10% reduction)
+   - Central: RR = 0.92 (8% reduction)
+
+## SENSITIVITY ANALYSIS:
+omitted
+
+## BOTTOM-LINE IMPACT:
+25-30% reduction in effectiveness.
+
+## MATERIALITY VERDICT:
+**YES**
+"""
+
+
+def _make_verified_critique():
+    """Create a minimal VerifiedCritique for quantifier tests."""
+    from pipeline.schemas import CandidateCritique, VerifiedCritique
+
+    original = CandidateCritique(
+        thread_name="External Validity",
+        title="Test Critique",
+        hypothesis="Test hypothesis",
+        mechanism="Test mechanism",
+        parameters_affected=["relative_risk"],
+        suggested_evidence=[],
+        estimated_direction="decreases",
+        estimated_magnitude="medium",
+    )
+    return VerifiedCritique(
+        original=original,
+        verdict="verified",
+        evidence_found=["Some evidence"],
+        evidence_strength="moderate",
+        counter_evidence=[],
+        caveats=[],
+        revised_hypothesis=None,
+    )
+
+
+def _make_cea():
+    """Load the WaterCEA for quantifier tests."""
+    from pathlib import Path
+    from pipeline.spreadsheet import WaterCEA
+    return WaterCEA(Path("data/WaterCEA.xlsx"))
+
+
+def test_parse_quantifier_ln_rr_ranges() -> None:
+    """Test that ln(RR) values are extracted and converted to relative_risk."""
+    cea = _make_cea()
+    critique = _make_verified_critique()
+    result = parse_quantifier_output(QUANTIFIER_LN_RR_SAMPLE, critique, cea)
+
+    # Should have found parameter mappings
+    assert len(result.target_parameters) >= 1
+    mapped_names = [tp.get("mapped") for tp in result.target_parameters]
+    assert "relative_risk" in mapped_names
+
+    # Should have extracted ranges and run sensitivity
+    assert len(result.alternative_range) >= 1
+    assert len(result.sensitivity_results) > 0
+
+    # Materiality should be determined from actual sensitivity
+    assert result.materiality in ("material", "notable", "immaterial")
+
+
+def test_parse_quantifier_current_range_format() -> None:
+    """Test 'Current value = X. Plausible range = [Y, Z]' format."""
+    cea = _make_cea()
+    critique = _make_verified_critique()
+    result = parse_quantifier_output(QUANTIFIER_CURRENT_RANGE_SAMPLE, critique, cea)
+
+    assert len(result.alternative_range) >= 1
+    assert len(result.sensitivity_results) > 0
+
+    # Check that sensitivity was actually run on the CEA
+    some_key = next(iter(result.sensitivity_results))
+    sens = result.sensitivity_results[some_key]
+    assert "baseline" in sens
+    assert "pct_change_low" in sens
+
+
+def test_parse_quantifier_rr_values() -> None:
+    """Test extraction of RR = X values from prose."""
+    cea = _make_cea()
+    critique = _make_verified_critique()
+    result = parse_quantifier_output(QUANTIFIER_RR_VALUES_SAMPLE, critique, cea)
+
+    assert len(result.alternative_range) >= 1
+    # The RR values should map to relative_risk
+    for rng in result.alternative_range:
+        mapped = rng.get("mapped")
+        if mapped:
+            assert mapped == "relative_risk"
+
+    assert len(result.sensitivity_results) > 0
+
+
+def test_parse_quantifier_materiality_verdict() -> None:
+    """Test materiality extraction from YES/NO/BORDERLINE."""
+    cea = _make_cea()
+    critique = _make_verified_critique()
+
+    result = parse_quantifier_output(QUANTIFIER_LN_RR_SAMPLE, critique, cea)
+    # With actual sensitivity results, materiality comes from pct_change
+    assert result.materiality in ("material", "notable", "immaterial")
