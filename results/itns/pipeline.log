@@ -1,0 +1,328 @@
+06:18:41 INFO Starting pipeline for 'itns' from stage 'decomposer' (index 0)
+06:18:41 INFO Loading CEA spreadsheet: /home/tsondo/projects/givewell_redteam/data/InsecticideCEA.xlsx
+06:18:41 INFO CEA spreadsheet loaded.
+06:18:41 INFO Fetching intervention report from https://www.givewell.org/international/technical/programs/insecticide-treated-nets
+06:19:03 INFO [fetch_web] claude-sonnet-4-20250514 | 18637 in / 927 out | $0.0698 | cumulative $0.0698
+06:19:03 INFO Fetching baseline output from https://docs.google.com/document/d/16iIzH_KneLjlRSAc-2ZLO4aWdNB48CZ0LWH7sRe8yFo/
+06:19:16 INFO [fetch_web] claude-sonnet-4-20250514 | 15070 in / 464 out | $0.0522 | cumulative $0.1220
+06:19:16 INFO === Stage 1: Decomposer ===
+06:20:51 INFO [decomposer] claude-opus-4-20250514 | 3066 in / 2874 out | $0.2615 | cumulative $0.3835
+06:20:51 INFO Saved stage output to 01-decomposer (.json + .md)
+06:20:51 INFO Decomposer produced 11 investigation threads.
+06:20:51 INFO === Stage 2: Investigators ===
+06:21:35 INFO [investigator-1] claude-sonnet-4-20250514 | 1673 in / 1870 out | $0.0331 | cumulative $0.4166
+06:22:12 INFO [investigator-2] claude-sonnet-4-20250514 | 1558 in / 1567 out | $0.0282 | cumulative $0.4448
+06:22:53 INFO [investigator-3] claude-sonnet-4-20250514 | 1536 in / 1732 out | $0.0306 | cumulative $0.4754
+06:23:33 INFO [investigator-4] claude-sonnet-4-20250514 | 1572 in / 1687 out | $0.0300 | cumulative $0.5054
+06:24:08 INFO [investigator-5] claude-sonnet-4-20250514 | 1494 in / 1390 out | $0.0253 | cumulative $0.5307
+06:24:48 INFO [investigator-6] claude-sonnet-4-20250514 | 1535 in / 1783 out | $0.0314 | cumulative $0.5621
+06:25:30 INFO [investigator-7] claude-sonnet-4-20250514 | 1514 in / 1692 out | $0.0299 | cumulative $0.5920
+06:25:37 INFO [investigator-8] claude-sonnet-4-20250514 | 1262 in / 337 out | $0.0088 | cumulative $0.6008
+06:25:46 INFO [investigator-9] claude-sonnet-4-20250514 | 1260 in / 339 out | $0.0089 | cumulative $0.6097
+06:25:54 INFO [investigator-10] claude-sonnet-4-20250514 | 1262 in / 282 out | $0.0080 | cumulative $0.6177
+06:26:00 INFO [investigator-11] claude-sonnet-4-20250514 | 1260 in / 237 out | $0.0073 | cumulative $0.6250
+06:26:00 INFO Saved stage output to 02-investigators (.json + .md)
+06:26:00 INFO Investigators produced 30 candidate critiques.
+06:26:00 INFO === Stage 3: Verifier ===
+06:27:15 INFO [verifier-1] claude-sonnet-4-20250514 | 262751 in / 2922 out | $0.8321 | cumulative $1.4571
+06:28:07 INFO [verifier-2] claude-sonnet-4-20250514 | 164226 in / 1987 out | $0.5225 | cumulative $1.9796
+06:29:02 INFO [verifier-3] claude-sonnet-4-20250514 | 92581 in / 2138 out | $0.3098 | cumulative $2.2894
+06:29:56 INFO [verifier-4] claude-sonnet-4-20250514 | 164083 in / 1926 out | $0.5211 | cumulative $2.8106
+06:31:01 INFO [verifier-5] claude-sonnet-4-20250514 | 269507 in / 2461 out | $0.8454 | cumulative $3.6560
+06:31:01 INFO Dropping critique 'High Coverage Threshold Effects in Transmission Intensity': verdict=unverified
+06:31:01 INFO Dropping critique 'High Coverage Threshold Effects in Transmission Intensity': verdict=unverified
+06:32:04 INFO [verifier-6] claude-sonnet-4-20250514 | 156404 in / 2338 out | $0.5043 | cumulative $4.1603
+06:33:15 INFO [verifier-7] claude-sonnet-4-20250514 | 209400 in / 2467 out | $0.6652 | cumulative $4.8255
+06:34:07 INFO [verifier-8] claude-sonnet-4-20250514 | 198998 in / 1836 out | $0.6245 | cumulative $5.4500
+06:34:07 INFO Dropping critique 'General Equilibrium Effects in High-Coverage Areas': verdict=unverified
+06:34:07 INFO Dropping critique 'Threshold Effects in Cognitive Development': verdict=unverified
+06:35:11 INFO [verifier-9] claude-sonnet-4-20250514 | 167344 in / 2456 out | $0.5389 | cumulative $5.9889
+06:36:07 INFO [verifier-10] claude-sonnet-4-20250514 | 188749 in / 2320 out | $0.6010 | cumulative $6.5899
+06:36:07 INFO Saved stage output to 03-verifier (.json + .md)
+06:36:07 INFO Verifier passed 30 / 30 critiques.
+06:36:07 INFO === Stage 4: Quantifier ===
+06:37:19 INFO [quantifier-1] claude-opus-4-20250514 | 2664 in / 3550 out | $0.3062 | cumulative $6.8961
+06:37:19 INFO   Quantifier [1/30] 'Mosquito Species Composition Misalignment': params=2, ranges=1, sensitivity=0, materiality=material
+06:38:12 INFO [quantifier-2] claude-opus-4-20250514 | 2617 in / 2508 out | $0.2274 | cumulative $7.1235
+06:38:12 INFO   Quantifier [2/30] 'Housing Quality and Indoor Residual Coverage Diffe': params=2, ranges=1, sensitivity=0, materiality=material
+06:39:15 INFO [quantifier-3] claude-opus-4-20250514 | 2666 in / 3217 out | $0.2813 | cumulative $7.4048
+06:39:15 INFO   Quantifier [3/30] 'Temporal Degradation of Pyrethroid Susceptibility ': params=1, ranges=7, sensitivity=0, materiality=notable
+06:40:09 INFO [quantifier-4] claude-opus-4-20250514 | 2569 in / 2481 out | $0.2246 | cumulative $7.6294
+06:40:09 INFO   Quantifier [4/30] 'Altitude and Transmission Intensity Interactions': params=5, ranges=1, sensitivity=0, materiality=notable
+06:41:20 INFO [quantifier-5] claude-opus-4-20250514 | 2590 in / 3019 out | $0.2653 | cumulative $7.8947
+06:41:20 INFO   Quantifier [5/30] 'Behavioral Adaptation and Residual Transmission': params=2, ranges=1, sensitivity=0, materiality=material
+06:41:59 INFO [quantifier-6] claude-opus-4-20250514 | 2568 in / 1614 out | $0.1596 | cumulative $8.0542
+06:41:59 INFO   Quantifier [6/30] 'Post-Distribution Monitoring Shows Systematic Usag': params=1, ranges=1, sensitivity=0, materiality=material
+06:42:52 INFO [quantifier-7] claude-opus-4-20250514 | 2573 in / 2119 out | $0.1975 | cumulative $8.2517
+06:42:52 INFO   Quantifier [7/30] 'Differential Usage Patterns by Household Size and ': params=1, ranges=1, sensitivity=0, materiality=material
+06:43:55 INFO [quantifier-8] claude-opus-4-20250514 | 2635 in / 3145 out | $0.2754 | cumulative $8.5271
+06:43:55 INFO   Quantifier [8/30] 'Seasonal Usage Variation Not Reflected in Annual A': params=1, ranges=0, sensitivity=0, materiality=material
+06:44:34 INFO [quantifier-9] claude-opus-4-20250514 | 2617 in / 1467 out | $0.1493 | cumulative $8.6764
+06:44:34 INFO   Quantifier [9/30] 'Net Physical Degradation Accelerated by Distributi': params=2, ranges=0, sensitivity=0, materiality=material
+06:45:43 INFO [quantifier-10] claude-opus-4-20250514 | 2563 in / 3272 out | $0.2838 | cumulative $8.9603
+06:45:43 INFO   Quantifier [10/30] 'Crowd-Out Effects Reducing Baseline Net Replacemen': params=1, ranges=0, sensitivity=0, materiality=material
+06:46:31 INFO [quantifier-11] claude-opus-4-20250514 | 2586 in / 2179 out | $0.2022 | cumulative $9.1625
+06:46:31 INFO   Quantifier [11/30] 'Non-Linear Herd Protection Effects at High Coverag': params=2, ranges=0, sensitivity=0, materiality=notable
+06:47:23 INFO [quantifier-12] claude-opus-4-20250514 | 2582 in / 2166 out | $0.2012 | cumulative $9.3637
+06:47:23 INFO   Quantifier [12/30] 'Systematic Selection Bias in Remaining Uncovered P': params=3, ranges=1, sensitivity=8, materiality=material
+06:47:23 INFO     chad/external_validity: baseline=4.82, low=8.99 (86.6%), high=13.25 (174.9%)
+06:47:23 INFO     drc/external_validity: baseline=14.63, low=37.34 (155.3%), high=111.95 (665.2%)
+06:47:23 INFO     guinea/external_validity: baseline=22.79, low=53.54 (134.9%), high=114.06 (400.4%)
+06:47:23 INFO     nigeria_gf/external_validity: baseline=16.78, low=38.06 (126.8%), high=76.00 (353.0%)
+06:47:23 INFO     nigeria_pmi/external_validity: baseline=13.25, low=28.80 (117.3%), high=53.35 (302.6%)
+06:47:23 INFO     south_sudan/external_validity: baseline=7.16, low=14.96 (108.9%), high=25.66 (258.2%)
+06:47:23 INFO     togo/external_validity: baseline=8.81, low=21.10 (139.6%), high=52.06 (491.1%)
+06:47:23 INFO     uganda/external_validity: baseline=15.60, low=43.25 (177.2%), high=209.62 (1243.4%)
+06:48:20 INFO [quantifier-13] claude-opus-4-20250514 | 2499 in / 2487 out | $0.2240 | cumulative $9.5877
+06:48:20 INFO   Quantifier [13/30] 'Spatial Clustering Reduces Coverage Effectiveness': params=2, ranges=0, sensitivity=0, materiality=material
+06:49:51 INFO [quantifier-14] claude-opus-4-20250514 | 2537 in / 4588 out | $0.3822 | cumulative $9.9698
+06:49:51 INFO   Quantifier [14/30] 'SMC-ITN Interaction Creates Over-Protection Waste ': params=3, ranges=2, sensitivity=0, materiality=material
+06:50:49 INFO [quantifier-15] claude-opus-4-20250514 | 2519 in / 2596 out | $0.2325 | cumulative $10.2023
+06:50:49 INFO   Quantifier [15/30] 'Spatial Clustering Reduces Coverage Effectiveness': params=2, ranges=0, sensitivity=0, materiality=material
+06:51:58 INFO [quantifier-16] claude-opus-4-20250514 | 2524 in / 3179 out | $0.2763 | cumulative $10.4786
+06:51:58 INFO   Quantifier [16/30] 'SMC-ITN Interaction Creates Over-Protection Waste ': params=3, ranges=0, sensitivity=0, materiality=material
+06:52:47 INFO [quantifier-17] claude-opus-4-20250514 | 2698 in / 1942 out | $0.1861 | cumulative $10.6647
+06:52:47 INFO   Quantifier [17/30] 'Verbal Autopsy Misclassification Systematically In': params=1, ranges=0, sensitivity=0, materiality=material
+06:53:47 INFO [quantifier-18] claude-opus-4-20250514 | 2627 in / 2823 out | $0.2511 | cumulative $10.9158
+06:53:47 INFO   Quantifier [18/30] 'Age-Shifting Reduces Under-5 Mortality Faster Than': params=3, ranges=1, sensitivity=0, materiality=notable
+06:54:46 INFO [quantifier-19] claude-opus-4-20250514 | 2665 in / 2945 out | $0.2609 | cumulative $11.1767
+06:54:46 INFO   Quantifier [19/30] 'Context-Dependent Variation in Indirect Mortality ': params=1, ranges=1, sensitivity=8, materiality=material
+06:54:46 INFO     chad/indirect_deaths_multiplier: baseline=4.82, low=4.11 (-14.7%), high=6.10 (26.4%)
+06:54:46 INFO     drc/indirect_deaths_multiplier: baseline=14.63, low=13.23 (-9.6%), high=17.15 (17.2%)
+06:54:46 INFO     guinea/indirect_deaths_multiplier: baseline=22.79, low=20.32 (-10.9%), high=27.25 (19.5%)
+06:54:46 INFO     nigeria_gf/indirect_deaths_multiplier: baseline=16.78, low=14.79 (-11.8%), high=20.36 (21.3%)
+06:54:46 INFO     nigeria_pmi/indirect_deaths_multiplier: baseline=13.25, low=11.51 (-13.2%), high=16.39 (23.7%)
+06:54:46 INFO     south_sudan/indirect_deaths_multiplier: baseline=7.16, low=6.38 (-10.9%), high=8.57 (19.6%)
+06:54:46 INFO     togo/indirect_deaths_multiplier: baseline=8.81, low=7.77 (-11.8%), high=10.67 (21.2%)
+06:54:46 INFO     uganda/indirect_deaths_multiplier: baseline=15.60, low=14.09 (-9.7%), high=18.33 (17.5%)
+06:55:52 INFO [quantifier-20] claude-opus-4-20250514 | 2671 in / 3189 out | $0.2792 | cumulative $11.4559
+06:55:52 INFO   Quantifier [20/30] 'Over-5 Efficacy Assumption Not Grounded in Direct ': params=1, ranges=1, sensitivity=0, materiality=material
+06:56:46 INFO [quantifier-21] claude-opus-4-20250514 | 2698 in / 2447 out | $0.2240 | cumulative $11.6799
+06:56:46 INFO   Quantifier [21/30] 'Unaccounted Long-term Cognitive and Developmental ': params=2, ranges=1, sensitivity=0, materiality=material
+06:57:31 INFO [quantifier-22] claude-opus-4-20250514 | 2710 in / 1864 out | $0.1804 | cumulative $11.8604
+06:57:31 INFO   Quantifier [22/30] 'Heterogeneous Returns by Malaria Severity and Timi': params=1, ranges=1, sensitivity=0, materiality=material
+06:58:37 INFO [quantifier-23] claude-opus-4-20250514 | 2567 in / 3400 out | $0.2935 | cumulative $12.1539
+06:58:37 INFO   Quantifier [23/30] 'General Equilibrium Effects in High-Coverage Areas': params=2, ranges=0, sensitivity=0, materiality=notable
+07:00:03 INFO [quantifier-24] claude-opus-4-20250514 | 2576 in / 3538 out | $0.3040 | cumulative $12.4579
+07:00:03 INFO   Quantifier [24/30] 'Discount Rate Sensitivity for Multi-Decade Benefit': params=3, ranges=1, sensitivity=0, materiality=material
+07:01:01 INFO [quantifier-25] claude-opus-4-20250514 | 2589 in / 2510 out | $0.2271 | cumulative $12.6850
+07:01:01 INFO   Quantifier [25/30] 'Complementarity with Other Investments': params=2, ranges=0, sensitivity=0, materiality=material
+07:03:00 INFO [quantifier-26] claude-opus-4-20250514 | 2672 in / 5867 out | $0.4801 | cumulative $13.1651
+07:03:00 INFO   Quantifier [26/30] 'Cash Transfer Benchmark Creates Circular Preferenc': params=3, ranges=0, sensitivity=0, materiality=material
+07:04:17 INFO [quantifier-27] claude-opus-4-20250514 | 2691 in / 3442 out | $0.2985 | cumulative $13.4636
+07:04:17 INFO   Quantifier [27/30] 'DALY Framework Undervalues Prevention Relative to ': params=2, ranges=0, sensitivity=0, materiality=material
+07:05:22 INFO [quantifier-28] claude-opus-4-20250514 | 2637 in / 2528 out | $0.2292 | cumulative $13.6927
+07:05:22 INFO   Quantifier [28/30] 'Exclusion of Health System Strengthening Effects C': params=3, ranges=0, sensitivity=0, materiality=material
+07:06:14 INFO [quantifier-29] claude-opus-4-20250514 | 2644 in / 2012 out | $0.1906 | cumulative $13.8833
+07:06:14 INFO   Quantifier [29/30] 'Treatment of Uncertainty Favors Interventions with': params=11, ranges=0, sensitivity=0, materiality=material
+07:07:13 INFO [quantifier-30] claude-opus-4-20250514 | 2665 in / 2445 out | $0.2233 | cumulative $14.1066
+07:07:13 INFO   Quantifier [30/30] 'Within-Population Distributional Effects Ignored**': params=3, ranges=0, sensitivity=0, materiality=material
+07:07:13 INFO Saved stage output to 04-quantifier (.json + .md)
+07:07:13 INFO Quantifier processed 30 critiques.
+07:07:13 INFO === Stage 5: Adversarial ===
+07:07:41 INFO [advocate-1] claude-sonnet-4-20250514 | 2332 in / 1065 out | $0.0230 | cumulative $14.1296
+07:08:07 INFO [challenger-1] claude-sonnet-4-20250514 | 2421 in / 1045 out | $0.0229 | cumulative $14.1526
+07:08:31 INFO [advocate-2] claude-sonnet-4-20250514 | 2282 in / 906 out | $0.0204 | cumulative $14.1730
+07:08:55 INFO [challenger-2] claude-sonnet-4-20250514 | 2221 in / 1032 out | $0.0221 | cumulative $14.1951
+07:09:15 INFO [advocate-3] claude-sonnet-4-20250514 | 2332 in / 781 out | $0.0187 | cumulative $14.2138
+07:09:36 INFO [challenger-3] claude-sonnet-4-20250514 | 2138 in / 845 out | $0.0191 | cumulative $14.2329
+07:09:59 INFO [advocate-4] claude-sonnet-4-20250514 | 2234 in / 949 out | $0.0209 | cumulative $14.2539
+07:10:24 INFO [challenger-4] claude-sonnet-4-20250514 | 2159 in / 1126 out | $0.0234 | cumulative $14.2772
+07:10:49 INFO [advocate-5] claude-sonnet-4-20250514 | 2255 in / 1025 out | $0.0221 | cumulative $14.2994
+07:11:17 INFO [challenger-5] claude-sonnet-4-20250514 | 2293 in / 1106 out | $0.0235 | cumulative $14.3228
+07:11:43 INFO [advocate-6] claude-sonnet-4-20250514 | 2237 in / 1051 out | $0.0225 | cumulative $14.3453
+07:12:10 INFO [challenger-6] claude-sonnet-4-20250514 | 2276 in / 1143 out | $0.0240 | cumulative $14.3693
+07:12:30 INFO [advocate-7] claude-sonnet-4-20250514 | 2242 in / 790 out | $0.0186 | cumulative $14.3879
+07:12:52 INFO [challenger-7] claude-sonnet-4-20250514 | 1993 in / 911 out | $0.0196 | cumulative $14.4075
+07:13:15 INFO [advocate-8] claude-sonnet-4-20250514 | 2306 in / 844 out | $0.0196 | cumulative $14.4271
+07:13:43 INFO [challenger-8] claude-sonnet-4-20250514 | 2138 in / 1039 out | $0.0220 | cumulative $14.4491
+07:14:09 INFO [advocate-9] claude-sonnet-4-20250514 | 2288 in / 1001 out | $0.0219 | cumulative $14.4710
+07:14:35 INFO [challenger-9] claude-sonnet-4-20250514 | 2262 in / 1019 out | $0.0221 | cumulative $14.4930
+07:14:52 INFO [advocate-10] claude-sonnet-4-20250514 | 2231 in / 663 out | $0.0166 | cumulative $14.5097
+07:15:13 INFO [challenger-10] claude-sonnet-4-20250514 | 1877 in / 812 out | $0.0178 | cumulative $14.5275
+07:15:37 INFO [advocate-11] claude-sonnet-4-20250514 | 2252 in / 976 out | $0.0214 | cumulative $14.5489
+07:16:05 INFO [challenger-11] claude-sonnet-4-20250514 | 2204 in / 1076 out | $0.0228 | cumulative $14.5716
+07:16:31 INFO [advocate-12] claude-sonnet-4-20250514 | 3504 in / 1049 out | $0.0262 | cumulative $14.5979
+07:17:03 INFO [challenger-12] claude-sonnet-4-20250514 | 3544 in / 1371 out | $0.0312 | cumulative $14.6291
+07:17:30 INFO [advocate-13] claude-sonnet-4-20250514 | 2167 in / 1085 out | $0.0228 | cumulative $14.6519
+07:18:01 INFO [challenger-13] claude-sonnet-4-20250514 | 2199 in / 1228 out | $0.0250 | cumulative $14.6769
+07:18:19 INFO [advocate-14] claude-sonnet-4-20250514 | 2205 in / 749 out | $0.0178 | cumulative $14.6947
+07:18:45 INFO [challenger-14] claude-sonnet-4-20250514 | 1910 in / 1027 out | $0.0211 | cumulative $14.7159
+07:19:06 INFO [advocate-15] claude-sonnet-4-20250514 | 2187 in / 836 out | $0.0191 | cumulative $14.7350
+07:19:30 INFO [challenger-15] claude-sonnet-4-20250514 | 1973 in / 924 out | $0.0198 | cumulative $14.7547
+07:19:56 INFO [advocate-16] claude-sonnet-4-20250514 | 2192 in / 1065 out | $0.0226 | cumulative $14.7773
+07:20:23 INFO [challenger-16] claude-sonnet-4-20250514 | 2211 in / 1048 out | $0.0224 | cumulative $14.7996
+07:20:45 INFO [advocate-17] claude-sonnet-4-20250514 | 2364 in / 971 out | $0.0217 | cumulative $14.8213
+07:21:11 INFO [challenger-17] claude-sonnet-4-20250514 | 2356 in / 1086 out | $0.0234 | cumulative $14.8447
+07:21:35 INFO [advocate-18] claude-sonnet-4-20250514 | 2292 in / 984 out | $0.0216 | cumulative $14.8663
+07:21:59 INFO [challenger-18] claude-sonnet-4-20250514 | 2290 in / 1084 out | $0.0231 | cumulative $14.8894
+07:22:24 INFO [advocate-19] claude-sonnet-4-20250514 | 3603 in / 1113 out | $0.0275 | cumulative $14.9169
+07:22:54 INFO [challenger-19] claude-sonnet-4-20250514 | 3742 in / 1198 out | $0.0292 | cumulative $14.9461
+07:23:18 INFO [advocate-20] claude-sonnet-4-20250514 | 2338 in / 941 out | $0.0211 | cumulative $14.9673
+07:23:43 INFO [challenger-20] claude-sonnet-4-20250514 | 2276 in / 1110 out | $0.0235 | cumulative $14.9907
+07:24:12 INFO [advocate-21] claude-sonnet-4-20250514 | 2364 in / 1145 out | $0.0243 | cumulative $15.0150
+07:24:12 WARNING Cumulative cost $15.02 exceeds warning threshold $15.00
+07:24:39 INFO [challenger-21] claude-sonnet-4-20250514 | 2529 in / 1102 out | $0.0241 | cumulative $15.0391
+07:24:39 WARNING Cumulative cost $15.04 exceeds warning threshold $15.00
+07:25:04 INFO [advocate-22] claude-sonnet-4-20250514 | 2378 in / 958 out | $0.0215 | cumulative $15.0606
+07:25:04 WARNING Cumulative cost $15.06 exceeds warning threshold $15.00
+07:25:30 INFO [challenger-22] claude-sonnet-4-20250514 | 2340 in / 1069 out | $0.0231 | cumulative $15.0837
+07:25:30 WARNING Cumulative cost $15.08 exceeds warning threshold $15.00
+07:25:55 INFO [advocate-23] claude-sonnet-4-20250514 | 2230 in / 1043 out | $0.0223 | cumulative $15.1060
+07:25:55 WARNING Cumulative cost $15.11 exceeds warning threshold $15.00
+07:26:22 INFO [challenger-23] claude-sonnet-4-20250514 | 2258 in / 1149 out | $0.0240 | cumulative $15.1300
+07:26:22 WARNING Cumulative cost $15.13 exceeds warning threshold $15.00
+07:26:43 INFO [advocate-24] claude-sonnet-4-20250514 | 2243 in / 851 out | $0.0195 | cumulative $15.1495
+07:26:43 WARNING Cumulative cost $15.15 exceeds warning threshold $15.00
+07:27:09 INFO [challenger-24] claude-sonnet-4-20250514 | 2080 in / 1050 out | $0.0220 | cumulative $15.1715
+07:27:09 WARNING Cumulative cost $15.17 exceeds warning threshold $15.00
+07:27:34 INFO [advocate-25] claude-sonnet-4-20250514 | 2257 in / 981 out | $0.0215 | cumulative $15.1930
+07:27:34 WARNING Cumulative cost $15.19 exceeds warning threshold $15.00
+07:28:00 INFO [challenger-25] claude-sonnet-4-20250514 | 2216 in / 1094 out | $0.0231 | cumulative $15.2161
+07:28:00 WARNING Cumulative cost $15.22 exceeds warning threshold $15.00
+07:28:24 INFO [advocate-26] claude-sonnet-4-20250514 | 2338 in / 1040 out | $0.0226 | cumulative $15.2387
+07:28:24 WARNING Cumulative cost $15.24 exceeds warning threshold $15.00
+07:28:53 INFO [challenger-26] claude-sonnet-4-20250514 | 2365 in / 1095 out | $0.0235 | cumulative $15.2622
+07:28:53 WARNING Cumulative cost $15.26 exceeds warning threshold $15.00
+07:29:14 INFO [advocate-27] claude-sonnet-4-20250514 | 2357 in / 841 out | $0.0197 | cumulative $15.2819
+07:29:14 WARNING Cumulative cost $15.28 exceeds warning threshold $15.00
+07:29:39 INFO [challenger-27] claude-sonnet-4-20250514 | 2201 in / 948 out | $0.0208 | cumulative $15.3027
+07:29:39 WARNING Cumulative cost $15.30 exceeds warning threshold $15.00
+07:30:00 INFO [advocate-28] claude-sonnet-4-20250514 | 2303 in / 796 out | $0.0188 | cumulative $15.3215
+07:30:00 WARNING Cumulative cost $15.32 exceeds warning threshold $15.00
+07:30:23 INFO [challenger-28] claude-sonnet-4-20250514 | 2094 in / 958 out | $0.0207 | cumulative $15.3422
+07:30:23 WARNING Cumulative cost $15.34 exceeds warning threshold $15.00
+07:30:48 INFO [advocate-29] claude-sonnet-4-20250514 | 2307 in / 1079 out | $0.0231 | cumulative $15.3653
+07:30:48 WARNING Cumulative cost $15.37 exceeds warning threshold $15.00
+07:31:17 INFO [challenger-29] claude-sonnet-4-20250514 | 2390 in / 1211 out | $0.0253 | cumulative $15.3906
+07:31:17 WARNING Cumulative cost $15.39 exceeds warning threshold $15.00
+07:31:42 INFO [advocate-30] claude-sonnet-4-20250514 | 2327 in / 1010 out | $0.0221 | cumulative $15.4128
+07:31:42 WARNING Cumulative cost $15.41 exceeds warning threshold $15.00
+07:32:10 INFO [challenger-30] claude-sonnet-4-20250514 | 2358 in / 1115 out | $0.0238 | cumulative $15.4366
+07:32:10 WARNING Cumulative cost $15.44 exceeds warning threshold $15.00
+07:32:10 INFO Saved stage output to 05-adversarial (.json + .md)
+07:32:10 INFO Adversarial stage produced 30 debated critiques.
+07:32:10 INFO === Stage 6: Synthesizer ===
+07:34:01 INFO [synthesizer] claude-opus-4-20250514 | 23177 in / 2884 out | $0.5640 | cumulative $16.0005
+07:34:01 WARNING Cumulative cost $16.00 exceeds warning threshold $15.00
+07:34:01 INFO Saved stage output to 06-synthesizer (.json + .md)
+07:34:01 INFO Synthesizer produced final report (12670 chars).
+07:34:01 INFO === Pipeline Complete ===
+07:34:01 INFO Total tokens: 2168599 in / 188064 out
+07:34:01 INFO Total cost: $16.0005
+07:34:01 WARNING Total cost $16.00 exceeded warning threshold $15.00
+07:34:01 INFO   [advocate-1] $0.0230
+07:34:01 INFO   [advocate-10] $0.0166
+07:34:01 INFO   [advocate-11] $0.0214
+07:34:01 INFO   [advocate-12] $0.0262
+07:34:01 INFO   [advocate-13] $0.0228
+07:34:01 INFO   [advocate-14] $0.0178
+07:34:01 INFO   [advocate-15] $0.0191
+07:34:01 INFO   [advocate-16] $0.0226
+07:34:01 INFO   [advocate-17] $0.0217
+07:34:01 INFO   [advocate-18] $0.0216
+07:34:01 INFO   [advocate-19] $0.0275
+07:34:01 INFO   [advocate-2] $0.0204
+07:34:01 INFO   [advocate-20] $0.0211
+07:34:01 INFO   [advocate-21] $0.0243
+07:34:01 INFO   [advocate-22] $0.0215
+07:34:01 INFO   [advocate-23] $0.0223
+07:34:01 INFO   [advocate-24] $0.0195
+07:34:01 INFO   [advocate-25] $0.0215
+07:34:01 INFO   [advocate-26] $0.0226
+07:34:01 INFO   [advocate-27] $0.0197
+07:34:01 INFO   [advocate-28] $0.0188
+07:34:01 INFO   [advocate-29] $0.0231
+07:34:01 INFO   [advocate-3] $0.0187
+07:34:01 INFO   [advocate-30] $0.0221
+07:34:01 INFO   [advocate-4] $0.0209
+07:34:01 INFO   [advocate-5] $0.0221
+07:34:01 INFO   [advocate-6] $0.0225
+07:34:01 INFO   [advocate-7] $0.0186
+07:34:01 INFO   [advocate-8] $0.0196
+07:34:01 INFO   [advocate-9] $0.0219
+07:34:01 INFO   [challenger-1] $0.0229
+07:34:01 INFO   [challenger-10] $0.0178
+07:34:01 INFO   [challenger-11] $0.0228
+07:34:01 INFO   [challenger-12] $0.0312
+07:34:01 INFO   [challenger-13] $0.0250
+07:34:01 INFO   [challenger-14] $0.0211
+07:34:01 INFO   [challenger-15] $0.0198
+07:34:01 INFO   [challenger-16] $0.0224
+07:34:01 INFO   [challenger-17] $0.0234
+07:34:01 INFO   [challenger-18] $0.0231
+07:34:01 INFO   [challenger-19] $0.0292
+07:34:01 INFO   [challenger-2] $0.0221
+07:34:01 INFO   [challenger-20] $0.0235
+07:34:01 INFO   [challenger-21] $0.0241
+07:34:01 INFO   [challenger-22] $0.0231
+07:34:01 INFO   [challenger-23] $0.0240
+07:34:01 INFO   [challenger-24] $0.0220
+07:34:01 INFO   [challenger-25] $0.0231
+07:34:01 INFO   [challenger-26] $0.0235
+07:34:01 INFO   [challenger-27] $0.0208
+07:34:01 INFO   [challenger-28] $0.0207
+07:34:01 INFO   [challenger-29] $0.0253
+07:34:01 INFO   [challenger-3] $0.0191
+07:34:01 INFO   [challenger-30] $0.0238
+07:34:01 INFO   [challenger-4] $0.0234
+07:34:01 INFO   [challenger-5] $0.0235
+07:34:01 INFO   [challenger-6] $0.0240
+07:34:01 INFO   [challenger-7] $0.0196
+07:34:01 INFO   [challenger-8] $0.0220
+07:34:01 INFO   [challenger-9] $0.0221
+07:34:01 INFO   [decomposer] $0.2615
+07:34:01 INFO   [fetch_web] $0.1220
+07:34:01 INFO   [investigator-1] $0.0331
+07:34:01 INFO   [investigator-10] $0.0080
+07:34:01 INFO   [investigator-11] $0.0073
+07:34:01 INFO   [investigator-2] $0.0282
+07:34:01 INFO   [investigator-3] $0.0306
+07:34:01 INFO   [investigator-4] $0.0300
+07:34:01 INFO   [investigator-5] $0.0253
+07:34:01 INFO   [investigator-6] $0.0314
+07:34:01 INFO   [investigator-7] $0.0299
+07:34:01 INFO   [investigator-8] $0.0088
+07:34:01 INFO   [investigator-9] $0.0089
+07:34:01 INFO   [quantifier-1] $0.3062
+07:34:01 INFO   [quantifier-10] $0.2838
+07:34:01 INFO   [quantifier-11] $0.2022
+07:34:01 INFO   [quantifier-12] $0.2012
+07:34:01 INFO   [quantifier-13] $0.2240
+07:34:01 INFO   [quantifier-14] $0.3822
+07:34:01 INFO   [quantifier-15] $0.2325
+07:34:01 INFO   [quantifier-16] $0.2763
+07:34:01 INFO   [quantifier-17] $0.1861
+07:34:01 INFO   [quantifier-18] $0.2511
+07:34:01 INFO   [quantifier-19] $0.2609
+07:34:01 INFO   [quantifier-2] $0.2274
+07:34:01 INFO   [quantifier-20] $0.2792
+07:34:01 INFO   [quantifier-21] $0.2240
+07:34:01 INFO   [quantifier-22] $0.1804
+07:34:01 INFO   [quantifier-23] $0.2935
+07:34:01 INFO   [quantifier-24] $0.3040
+07:34:01 INFO   [quantifier-25] $0.2271
+07:34:01 INFO   [quantifier-26] $0.4801
+07:34:01 INFO   [quantifier-27] $0.2985
+07:34:01 INFO   [quantifier-28] $0.2292
+07:34:01 INFO   [quantifier-29] $0.1906
+07:34:01 INFO   [quantifier-3] $0.2813
+07:34:01 INFO   [quantifier-30] $0.2233
+07:34:01 INFO   [quantifier-4] $0.2246
+07:34:01 INFO   [quantifier-5] $0.2653
+07:34:01 INFO   [quantifier-6] $0.1596
+07:34:01 INFO   [quantifier-7] $0.1975
+07:34:01 INFO   [quantifier-8] $0.2754
+07:34:01 INFO   [quantifier-9] $0.1493
+07:34:01 INFO   [synthesizer] $0.5640
+07:34:01 INFO   [verifier-1] $0.8321
+07:34:01 INFO   [verifier-10] $0.6010
+07:34:01 INFO   [verifier-2] $0.5225
+07:34:01 INFO   [verifier-3] $0.3098
+07:34:01 INFO   [verifier-4] $0.5211
+07:34:01 INFO   [verifier-5] $0.8454
+07:34:01 INFO   [verifier-6] $0.5043
+07:34:01 INFO   [verifier-7] $0.6652
+07:34:01 INFO   [verifier-8] $0.6245
+07:34:01 INFO   [verifier-9] $0.5389
+07:34:01 INFO Pipeline stats saved to /home/tsondo/projects/givewell_redteam/results/itns/pipeline-stats.json

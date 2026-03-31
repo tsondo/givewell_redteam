@@ -1,0 +1,191 @@
+{
+  "threads": [
+    {
+      "name": "External Validity of the Pryce et al. Meta-Analysis to Current Program Settings",
+      "scope": "** This thread investigates whether the 45% malaria incidence reduction from Pryce et al.'s meta-analysis validly applies to the specific contexts where GiveWell funds ITN distributions, given differences in mosquito species, resistance patterns, housing structures, and baseline malaria endemicity between trial settings and current program locations.",
+      "key_questions": [
+        "** Potential interactions between insecticide resistance and behavioral adaptation by mosquito populations, differences in housing quality that affect indoor/outdoor biting ratios, variation in mosquito species composition between trials and current settings, and temporal changes in resistance patterns since the studies in Pryce et al."
+      ],
+      "cea_parameters_affected": [
+        "Malaria incidence reduction (Pryce et al.): 0.45",
+        "External validity adjustment: -0.05",
+        "Location-specific insecticide resistance adjustments (ranging from -0.0377 to -0.5860)"
+      ],
+      "relevant_sources": [
+        "Pryce et al. 2018 meta-analysis (full text and supplementary materials)",
+        "WHO Malaria Threat Maps for resistance data",
+        "National malaria control program reports from Chad, DRC, Guinea, Nigeria, South Sudan, Togo, and Uganda",
+        "Recent entomological surveillance data from program areas"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: External Validity of the Pryce et al. Meta-Analysis to Current Program Settings\n\n## Scope\n** This thread investigates whether the 45% malaria incidence reduction from Pryce et al.'s meta-analysis validly applies to the specific contexts where GiveWell funds ITN distributions, given differences in mosquito species, resistance patterns, housing structures, and baseline malaria endemicity between trial settings and current program locations.\n\n## Key Parameters\n** \n- Malaria incidence reduction (Pryce et al.): 0.45\n- External validity adjustment: -0.05\n- Location-specific insecticide resistance adjustments (ranging from -0.0377 to -0.5860)\n\n## What GiveWell Already Accounts For\n** GiveWell applies a 5% external validity discount and location-specific insecticide resistance adjustments. They differentiate between trial settings and program settings by adjusting for net usage differences.\n\n## What GiveWell Does Not Account For\n** Potential interactions between insecticide resistance and behavioral adaptation by mosquito populations, differences in housing quality that affect indoor/outdoor biting ratios, variation in mosquito species composition between trials and current settings, and temporal changes in resistance patterns since the studies in Pryce et al.\n\n## Data Sources to Examine\n**\n- Pryce et al. 2018 meta-analysis (full text and supplementary materials)\n- WHO Malaria Threat Maps for resistance data\n- National malaria control program reports from Chad, DRC, Guinea, Nigeria, South Sudan, Togo, and Uganda\n- Recent entomological surveillance data from program areas\n\n## Materiality Threshold\n** A reduction in the base efficacy parameter from 0.45 to 0.35 would reduce cost-effectiveness by approximately 22%, potentially moving several programs below funding thresholds. Location-specific findings that increase resistance adjustments by >0.15 would be material.\n\n## Known Concerns Already Surfaced\n** GiveWell acknowledges uncertainty about insecticide resistance through location-specific adjustments and notes the age of some studies in the meta-analysis.\n\n###\n"
+    },
+    {
+      "name": "Actual Net Usage and Retention in Mass Distribution Campaigns",
+      "scope": "** This thread examines whether the assumed 70% net usage rate and the implicit retention/replacement cycle accurately reflect real-world usage patterns in AMF-supported mass distribution campaigns, particularly focusing on post-distribution monitoring data and behavioral factors affecting usage.",
+      "key_questions": [
+        "** Seasonal variation in usage, differential usage by age group, net quality degradation in different climates, sharing of nets beyond intended recipients, and potential crowd-out effects where free distribution reduces future net purchases."
+      ],
+      "cea_parameters_affected": [
+        "Net usage in trials: 0.7",
+        "Person-years of protection (implicitly affected by retention assumptions)",
+        "Baseline net coverage (location-specific, ranging from 0.313 to 0.795)"
+      ],
+      "relevant_sources": [
+        "AMF post-distribution monitoring reports",
+        "DHS and MIS surveys from program countries",
+        "Behavioral studies on ITN usage patterns",
+        "Net durability monitoring studies from similar contexts"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Actual Net Usage and Retention in Mass Distribution Campaigns\n\n## Scope\n** This thread examines whether the assumed 70% net usage rate and the implicit retention/replacement cycle accurately reflect real-world usage patterns in AMF-supported mass distribution campaigns, particularly focusing on post-distribution monitoring data and behavioral factors affecting usage.\n\n## Key Parameters\n**\n- Net usage in trials: 0.7\n- Person-years of protection (implicitly affected by retention assumptions)\n- Baseline net coverage (location-specific, ranging from 0.313 to 0.795)\n\n## What GiveWell Already Accounts For\n** GiveWell uses a 70% usage rate based on trial data and accounts for baseline coverage to avoid double-counting protection.\n\n## What GiveWell Does Not Account For\n** Seasonal variation in usage, differential usage by age group, net quality degradation in different climates, sharing of nets beyond intended recipients, and potential crowd-out effects where free distribution reduces future net purchases.\n\n## Data Sources to Examine\n**\n- AMF post-distribution monitoring reports\n- DHS and MIS surveys from program countries\n- Behavioral studies on ITN usage patterns\n- Net durability monitoring studies from similar contexts\n\n## Materiality Threshold\n** A reduction in effective usage from 70% to 55% would reduce cost-effectiveness by approximately 21%. Evidence of faster degradation reducing average net lifespan from 2.5 to 2 years would reduce cost-effectiveness by approximately 20%.\n\n## Known Concerns Already Surfaced\n** GiveWell acknowledges uncertainty about distribution and usage rates in their report.\n\n###\n"
+    },
+    {
+      "name": "Marginal Impact Given Existing Coverage and Seasonal Malaria Chemoprevention",
+      "scope": "** This thread investigates whether GiveWell's methodology appropriately accounts for diminishing marginal returns as baseline coverage increases and the interaction effects between ITNs and seasonal malaria chemoprevention (SMC) programs.",
+      "key_questions": [
+        "** Non-linear coverage effects (e.g., herd immunity at high coverage), synergistic or antagonistic interactions between ITNs and SMC, spatial clustering of coverage gaps, and potential selection effects where remaining uncovered populations are systematically different."
+      ],
+      "cea_parameters_affected": [
+        "Baseline net coverage (location-specific)",
+        "SMC reduction factors (location-specific)",
+        "The implicit assumption of linear impact reduction with coverage"
+      ],
+      "relevant_sources": [
+        "Studies on ITN coverage and community-level protection",
+        "SMC and ITN interaction studies",
+        "Spatial analysis of coverage patterns",
+        "Mathematical modeling studies of malaria transmission dynamics"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Marginal Impact Given Existing Coverage and Seasonal Malaria Chemoprevention\n\n## Scope\n** This thread investigates whether GiveWell's methodology appropriately accounts for diminishing marginal returns as baseline coverage increases and the interaction effects between ITNs and seasonal malaria chemoprevention (SMC) programs.\n\n## Key Parameters\n**\n- Baseline net coverage (location-specific)\n- SMC reduction factors (location-specific)\n- The implicit assumption of linear impact reduction with coverage\n\n## What GiveWell Already Accounts For\n** GiveWell adjusts for baseline coverage and includes SMC reduction factors for each location.\n\n## What GiveWell Does Not Account For\n** Non-linear coverage effects (e.g., herd immunity at high coverage), synergistic or antagonistic interactions between ITNs and SMC, spatial clustering of coverage gaps, and potential selection effects where remaining uncovered populations are systematically different.\n\n## Data Sources to Examine\n**\n- Studies on ITN coverage and community-level protection\n- SMC and ITN interaction studies\n- Spatial analysis of coverage patterns\n- Mathematical modeling studies of malaria transmission dynamics\n\n## Materiality Threshold\n** Evidence that marginal impact decreases non-linearly above 60% coverage, reducing effectiveness by >30% in high-coverage areas like Togo (79.5% baseline), would materially affect program prioritization.\n\n## Known Concerns Already Surfaced\n** GiveWell notes uncertainty about interaction effects but treats them additively.\n\n###\n"
+    },
+    {
+      "name": "Mortality Estimation Methodology and Age-Specific Effects",
+      "scope": "** This thread examines whether GiveWell's method for estimating direct malaria mortality rates and the assumed 80% relative efficacy for over-5 populations accurately captures the mortality burden and intervention effect across age groups.",
+      "key_questions": [
+        "** Uncertainty in cause-of-death attribution in weak surveillance systems, changing age patterns of malaria mortality with declining transmission, potential protective effects beyond mortality (severe anemia, neurological sequelae), and variation in indirect mortality ratios by context."
+      ],
+      "cea_parameters_affected": [
+        "Direct malaria mortality (u5) - location specific",
+        "Over-5 relative efficacy: 0.8",
+        "Indirect deaths per direct death: 0.75",
+        "Age-specific moral weights"
+      ],
+      "relevant_sources": [
+        "Verbal autopsy studies from program countries",
+        "WHO Global Health Observatory malaria mortality data",
+        "Studies on age-shifting of malaria burden",
+        "Recent burden of disease estimates for malaria"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Mortality Estimation Methodology and Age-Specific Effects\n\n## Scope\n** This thread examines whether GiveWell's method for estimating direct malaria mortality rates and the assumed 80% relative efficacy for over-5 populations accurately captures the mortality burden and intervention effect across age groups.\n\n## Key Parameters\n**\n- Direct malaria mortality (u5) - location specific\n- Over-5 relative efficacy: 0.8\n- Indirect deaths per direct death: 0.75\n- Age-specific moral weights\n\n## What GiveWell Already Accounts For\n** GiveWell uses location-specific mortality estimates, applies an 80% efficacy discount for over-5 populations, and includes indirect mortality effects.\n\n## What GiveWell Does Not Account For\n** Uncertainty in cause-of-death attribution in weak surveillance systems, changing age patterns of malaria mortality with declining transmission, potential protective effects beyond mortality (severe anemia, neurological sequelae), and variation in indirect mortality ratios by context.\n\n## Data Sources to Examine\n**\n- Verbal autopsy studies from program countries\n- WHO Global Health Observatory malaria mortality data\n- Studies on age-shifting of malaria burden\n- Recent burden of disease estimates for malaria\n\n## Materiality Threshold\n** A 30% systematic overestimate of under-5 malaria mortality across locations would reduce cost-effectiveness by approximately 25%. Evidence that over-5 efficacy is 60% rather than 80% would reduce cost-effectiveness by 10-15%.\n\n## Known Concerns Already Surfaced\n** GiveWell acknowledges uncertainty in mortality estimates and the evidence base for over-5 effects.\n\n###\n"
+    },
+    {
+      "name": "Implementation Quality and Supply Chain Losses",
+      "scope": "** This thread investigates whether the program as implemented matches the program as modeled, focusing on supply chain efficiency, distribution quality, correct net sizing, and potential diversion or misuse of nets.",
+      "key_questions": [
+        "** Physical net losses in supply chain, systematic under-sizing leading to reduced protection, quality issues with nets procured at scale, distribution inequities within targeted areas, and potential resale or alternative use of nets."
+      ],
+      "cea_parameters_affected": [
+        "Implicitly affects all efficacy parameters if implementation differs from trials",
+        "Leverage and funging adjustments (partially capture this)"
+      ],
+      "relevant_sources": [
+        "AMF distribution reports and audits",
+        "Supply chain assessments from program countries",
+        "Independent monitoring reports",
+        "Studies on ITN misuse and resale markets"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Implementation Quality and Supply Chain Losses\n\n## Scope\n** This thread investigates whether the program as implemented matches the program as modeled, focusing on supply chain efficiency, distribution quality, correct net sizing, and potential diversion or misuse of nets.\n\n## Key Parameters\n**\n- Implicitly affects all efficacy parameters if implementation differs from trials\n- Leverage and funging adjustments (partially capture this)\n\n## What GiveWell Already Accounts For\n** GiveWell includes leverage and funging adjustments that partially account for implementation inefficiencies.\n\n## What GiveWell Does Not Account For\n** Physical net losses in supply chain, systematic under-sizing leading to reduced protection, quality issues with nets procured at scale, distribution inequities within targeted areas, and potential resale or alternative use of nets.\n\n## Data Sources to Examine\n**\n- AMF distribution reports and audits\n- Supply chain assessments from program countries\n- Independent monitoring reports\n- Studies on ITN misuse and resale markets\n\n## Materiality Threshold\n** Evidence of >15% net loss or misuse in the supply chain would reduce cost-effectiveness proportionally. Systematic quality issues reducing net efficacy by 20% would be material.\n\n## Known Concerns Already Surfaced\n** GiveWell mentions distribution uncertainties but doesn't quantify supply chain losses explicitly.\n\n###\n"
+    },
+    {
+      "name": "Long-term Economic Benefits and Development Effects",
+      "scope": "** This thread examines whether GiveWell's income effect estimates adequately capture the long-term economic benefits of malaria prevention, including educational attainment, cognitive development, and labor productivity effects.",
+      "key_questions": [
+        "** Heterogeneity in economic returns by severity of averted cases, potential threshold effects in cognitive development, general equilibrium effects of large-scale health improvements, and uncertainty in the persistence of economic benefits over decades."
+      ],
+      "cea_parameters_affected": [
+        "Income per case averted: 0.0058088",
+        "Additional benefits adjustment (location-specific, ranging from 0.379 to 0.529)",
+        "Discount rate: 0.04"
+      ],
+      "relevant_sources": [
+        "Long-term follow-up studies of malaria prevention programs",
+        "Recent literature on early-life health shocks and human capital",
+        "Studies on malaria's economic burden in African contexts",
+        "Evidence on complementarities between health and other investments"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Long-term Economic Benefits and Development Effects\n\n## Scope\n** This thread examines whether GiveWell's income effect estimates adequately capture the long-term economic benefits of malaria prevention, including educational attainment, cognitive development, and labor productivity effects.\n\n## Key Parameters\n**\n- Income per case averted: 0.0058088\n- Additional benefits adjustment (location-specific, ranging from 0.379 to 0.529)\n- Discount rate: 0.04\n\n## What GiveWell Already Accounts For\n** GiveWell includes income effects and additional benefits adjustments, with a 4% discount rate for future benefits.\n\n## What GiveWell Does Not Account For\n** Heterogeneity in economic returns by severity of averted cases, potential threshold effects in cognitive development, general equilibrium effects of large-scale health improvements, and uncertainty in the persistence of economic benefits over decades.\n\n## Data Sources to Examine\n**\n- Long-term follow-up studies of malaria prevention programs\n- Recent literature on early-life health shocks and human capital\n- Studies on malaria's economic burden in African contexts\n- Evidence on complementarities between health and other investments\n\n## Materiality Threshold\n** Evidence that income effects are 50% smaller than estimated would reduce the additional benefits component by approximately 20%, with varying impacts by location based on their additional benefits adjustments.\n\n## Known Concerns Already Surfaced\n** GiveWell acknowledges uncertainty in long-term effect estimates and uses conservative assumptions.\n\n###\n"
+    },
+    {
+      "name": "Structural Biases in the Cost-Effectiveness Framework",
+      "scope": "** This thread investigates whether GiveWell's analytical framework contains systematic biases that favor or disfavor ITNs relative to other interventions, including the choice of moral weights, the handling of uncertainty, and the decision to exclude certain benefit categories.",
+      "key_questions": [
+        "** Potential double-counting when comparing to cash transfers, exclusion of health system strengthening effects, distributional concerns within recipient populations, and option value of maintaining elimination potential."
+      ],
+      "cea_parameters_affected": [
+        "Moral weights (116.25 for under-5, 73.19 for over-5)",
+        "Benchmark value: 0.00333",
+        "The structure of the CEA model itself"
+      ],
+      "relevant_sources": [
+        "GiveWell's moral weights methodology documents",
+        "Literature on cost-effectiveness analysis in global health",
+        "Critiques of DALY-based frameworks",
+        "Alternative frameworks for valuing health interventions"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Structural Biases in the Cost-Effectiveness Framework\n\n## Scope\n** This thread investigates whether GiveWell's analytical framework contains systematic biases that favor or disfavor ITNs relative to other interventions, including the choice of moral weights, the handling of uncertainty, and the decision to exclude certain benefit categories.\n\n## Key Parameters\n**\n- Moral weights (116.25 for under-5, 73.19 for over-5)\n- Benchmark value: 0.00333\n- The structure of the CEA model itself\n\n## What GiveWell Already Accounts For\n** GiveWell uses explicit moral weights and benchmarks for comparison across interventions.\n\n## What GiveWell Does Not Account For\n** Potential double-counting when comparing to cash transfers, exclusion of health system strengthening effects, distributional concerns within recipient populations, and option value of maintaining elimination potential.\n\n## Data Sources to Examine\n**\n- GiveWell's moral weights methodology documents\n- Literature on cost-effectiveness analysis in global health\n- Critiques of DALY-based frameworks\n- Alternative frameworks for valuing health interventions\n\n## Materiality Threshold\n** Structural changes that alter relative cost-effectiveness by >30% compared to other GiveWell interventions would affect funding allocation decisions.\n\n## Known Concerns Already Surfaced\n** GiveWell acknowledges moral weight uncertainty and regularly reviews their framework.\n"
+    },
+    {
+      "name": "** External validity findings affect how marginal impact should be calculated",
+      "scope": "",
+      "key_questions": [],
+      "cea_parameters_affected": [],
+      "relevant_sources": [],
+      "out_of_scope": "",
+      "context_md": "# Thread: ** External validity findings affect how marginal impact should be calculated\n\n## Scope\n\n\n## Key Parameters\n\n\n## What GiveWell Already Accounts For\n\n\n## What GiveWell Does Not Account For\n\n\n## Data Sources to Examine\n\n\n## Materiality Threshold\n\n\n## Known Concerns Already Surfaced\n\n"
+    },
+    {
+      "name": "** Usage patterns inform what implementation quality means in practice",
+      "scope": "",
+      "key_questions": [],
+      "cea_parameters_affected": [],
+      "relevant_sources": [],
+      "out_of_scope": "",
+      "context_md": "# Thread: ** Usage patterns inform what implementation quality means in practice\n\n## Scope\n\n\n## Key Parameters\n\n\n## What GiveWell Already Accounts For\n\n\n## What GiveWell Does Not Account For\n\n\n## Data Sources to Examine\n\n\n## Materiality Threshold\n\n\n## Known Concerns Already Surfaced\n\n"
+    },
+    {
+      "name": "** Mortality methodology affects the denominators for economic benefit calculations",
+      "scope": "",
+      "key_questions": [],
+      "cea_parameters_affected": [],
+      "relevant_sources": [],
+      "out_of_scope": "",
+      "context_md": "# Thread: ** Mortality methodology affects the denominators for economic benefit calculations\n\n## Scope\n\n\n## Key Parameters\n\n\n## What GiveWell Already Accounts For\n\n\n## What GiveWell Does Not Account For\n\n\n## Data Sources to Examine\n\n\n## Materiality Threshold\n\n\n## Known Concerns Already Surfaced\n\n"
+    },
+    {
+      "name": "** Coverage interactions raise questions about the linear modeling framework",
+      "scope": "",
+      "key_questions": [],
+      "cea_parameters_affected": [],
+      "relevant_sources": [],
+      "out_of_scope": "",
+      "context_md": "# Thread: ** Coverage interactions raise questions about the linear modeling framework\n\n## Scope\n\n\n## Key Parameters\n\n\n## What GiveWell Already Accounts For\n\n\n## What GiveWell Does Not Account For\n\n\n## Data Sources to Examine\n\n\n## Materiality Threshold\n\n\n## Known Concerns Already Surfaced\n\n"
+    }
+  ],
+  "exclusion_list": [
+    "GiveWell acknowledges uncertainty about insecticide resistance through location-specific adjustments and notes the age of some studies in the meta-analysis.",
+    "###",
+    "GiveWell acknowledges uncertainty about distribution and usage rates in their report.",
+    "GiveWell notes uncertainty about interaction effects but treats them additively.",
+    "GiveWell acknowledges uncertainty in mortality estimates and the evidence base for over-5 effects.",
+    "GiveWell mentions distribution uncertainties but doesn't quantify supply chain losses explicitly.",
+    "GiveWell acknowledges uncertainty in long-term effect estimates and uses conservative assumptions.",
+    "GiveWell acknowledges moral weight uncertainty and regularly reviews their framework."
+  ],
+  "cea_parameter_map": "- Malaria incidence reduction (Pryce et al.): 0.45\n- External validity adjustment: -0.05\n- Location-specific insecticide resistance adjustments (ranging from -0.0377 to -0.5860)\n- Net usage in trials: 0.7\n- Person-years of protection (implicitly affected by retention assumptions)\n- Baseline net coverage (location-specific, ranging from 0.313 to 0.795)\n- Baseline net coverage (location-specific)\n- SMC reduction factors (location-specific)\n- The implicit assumption of linear impact reduction with coverage\n- Direct malaria mortality (u5) - location specific\n- Over-5 relative efficacy: 0.8\n- Indirect deaths per direct death: 0.75\n- Age-specific moral weights\n- Implicitly affects all efficacy parameters if implementation differs from trials\n- Leverage and funging adjustments (partially capture this)\n- Income per case averted: 0.0058088\n- Additional benefits adjustment (location-specific, ranging from 0.379 to 0.529)\n- Discount rate: 0.04\n- Moral weights (116.25 for under-5, 73.19 for over-5)\n- Benchmark value: 0.00333\n- The structure of the CEA model itself"
+}
