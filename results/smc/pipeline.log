@@ -1,0 +1,310 @@
+09:35:07 INFO Starting pipeline for 'smc' from stage 'decomposer' (index 0)
+09:35:07 INFO Loading CEA spreadsheet: /data/projects/givewell_redteam/data/MalariaCEA.xlsx
+09:35:08 INFO CEA spreadsheet loaded.
+09:35:08 INFO Fetching intervention report from https://www.givewell.org/international/technical/programs/seasonal-malaria-chemoprevention
+09:35:29 INFO [fetch_web] claude-sonnet-4-20250514 | 19449 in / 947 out | $0.0726 | cumulative $0.0726
+09:35:29 INFO Fetching baseline output from https://docs.google.com/document/d/1562HtXfGOQ3EYOWgDnCAV_s6uF2zbPmRAqZ817_lNpA/
+09:35:40 INFO [fetch_web] claude-sonnet-4-20250514 | 8716 in / 413 out | $0.0323 | cumulative $0.1049
+09:35:40 INFO === Stage 1: Decomposer ===
+09:37:08 INFO [decomposer] claude-opus-4-20250514 | 2540 in / 2766 out | $0.2455 | cumulative $0.3504
+09:37:08 INFO Saved stage output to 01-decomposer (.json + .md)
+09:37:08 INFO Decomposer produced 7 investigation threads.
+09:37:08 INFO === Stage 2: Investigators ===
+09:37:51 INFO [investigator-1] claude-sonnet-4-20250514 | 1523 in / 1742 out | $0.0307 | cumulative $0.3811
+09:38:32 INFO [investigator-2] claude-sonnet-4-20250514 | 1399 in / 1741 out | $0.0303 | cumulative $0.4115
+09:39:11 INFO [investigator-3] claude-sonnet-4-20250514 | 1371 in / 1677 out | $0.0293 | cumulative $0.4407
+09:39:52 INFO [investigator-4] claude-sonnet-4-20250514 | 1354 in / 1678 out | $0.0292 | cumulative $0.4700
+09:40:32 INFO [investigator-5] claude-sonnet-4-20250514 | 1356 in / 1739 out | $0.0302 | cumulative $0.5001
+09:41:12 INFO [investigator-6] claude-sonnet-4-20250514 | 1378 in / 1674 out | $0.0292 | cumulative $0.5294
+09:41:44 INFO [investigator-7] claude-sonnet-4-20250514 | 1347 in / 1292 out | $0.0234 | cumulative $0.5528
+09:41:44 INFO Saved stage output to 02-investigators (.json + .md)
+09:41:44 INFO Investigators produced 34 candidate critiques.
+09:41:44 INFO === Stage 3: Verifier ===
+09:42:40 INFO [verifier-1] claude-sonnet-4-20250514 | 257511 in / 1870 out | $0.8006 | cumulative $1.3534
+09:42:40 INFO Dropping critique 'Pharmacokinetic Evidence Suggests Lower True Adherence Than Caregiver Reports': verdict=unverified
+09:42:40 INFO Dropping critique 'Pharmacokinetic Evidence Suggests Lower True Adherence Than Caregiver Reports': verdict=unverified
+09:42:40 INFO Dropping critique 'Adherence Fatigue Across Monthly Cycles Not Captured in Weighted Average': verdict=unverified
+09:43:50 INFO [verifier-2] claude-sonnet-4-20250514 | 217631 in / 2150 out | $0.6851 | cumulative $2.0385
+09:43:50 INFO Dropping critique 'Geographic Distance Effects on Day 2-3 Home Administration': verdict=unverified
+09:43:50 INFO Dropping critique 'Spillage and Sharing Effects on Population-Level Protection': verdict=unverified
+09:44:59 INFO [verifier-3] claude-sonnet-4-20250514 | 219711 in / 2497 out | $0.6966 | cumulative $2.7351
+09:44:59 INFO Dropping critique 'Seasonal Resistance Dynamics Within SMC Cycles': verdict=unverified
+09:45:58 INFO [verifier-4] claude-sonnet-4-20250514 | 225342 in / 1971 out | $0.7056 | cumulative $3.4407
+09:46:51 INFO [verifier-5] claude-sonnet-4-20250514 | 166491 in / 2041 out | $0.5301 | cumulative $3.9708
+09:46:51 INFO Dropping critique 'Climate Change Is Extending Transmission Seasons Beyond Historical SMC Windows': verdict=unverified
+09:48:12 INFO [verifier-6] claude-sonnet-4-20250514 | 216224 in / 2796 out | $0.6906 | cumulative $4.6614
+09:48:12 INFO Dropping critique 'Cold Chain Failures in Large-Scale Distribution': verdict=unverified
+09:48:12 INFO Dropping critique 'Community Distributor Skill Dilution in Rapid Scale-Up': verdict=unverified
+09:48:12 INFO Dropping critique 'Supply Chain Stockouts in High-Burden, Remote Areas': verdict=unverified
+09:49:10 INFO [verifier-7] claude-sonnet-4-20250514 | 155444 in / 2253 out | $0.5001 | cumulative $5.1615
+09:50:12 INFO [verifier-8] claude-sonnet-4-20250514 | 214209 in / 2393 out | $0.6785 | cumulative $5.8400
+09:51:11 INFO [verifier-9] claude-sonnet-4-20250514 | 235291 in / 2108 out | $0.7375 | cumulative $6.5775
+09:52:14 INFO [verifier-10] claude-sonnet-4-20250514 | 248121 in / 2462 out | $0.7813 | cumulative $7.3588
+09:53:13 INFO [verifier-11] claude-sonnet-4-20250514 | 199429 in / 2097 out | $0.6297 | cumulative $7.9886
+09:54:04 INFO [verifier-12] claude-sonnet-4-20250514 | 185149 in / 1651 out | $0.5802 | cumulative $8.5688
+09:54:04 INFO Saved stage output to 03-verifier (.json + .md)
+09:54:04 INFO Verifier passed 29 / 34 critiques.
+09:54:04 INFO === Stage 4: Quantifier ===
+09:55:13 INFO [quantifier-1] claude-opus-4-20250514 | 2043 in / 3249 out | $0.2743 | cumulative $8.8431
+09:55:13 INFO   Quantifier [1/29] 'Socioeconomic Stratification in Adherence Not Refl': params=3, ranges=0, sensitivity=0, materiality=notable
+09:56:10 INFO [quantifier-2] claude-opus-4-20250514 | 2190 in / 2350 out | $0.2091 | cumulative $9.0522
+09:56:10 INFO   Quantifier [2/29] 'Rapid dhfr/dhps Mutation Selection Under SMC Press': params=4, ranges=0, sensitivity=0, materiality=material
+09:57:34 INFO [quantifier-3] claude-opus-4-20250514 | 2159 in / 3692 out | $0.3093 | cumulative $9.3615
+09:57:34 INFO   Quantifier [3/29] 'Treatment Drug Cross-Resistance Acceleration': params=2, ranges=0, sensitivity=0, materiality=immaterial
+09:58:30 INFO [quantifier-4] claude-opus-4-20250514 | 2191 in / 2683 out | $0.2341 | cumulative $9.5956
+09:58:30 INFO   Quantifier [4/29] 'Geographic Resistance Heterogeneity Not Captured': params=3, ranges=0, sensitivity=0, materiality=material
+09:59:19 INFO [quantifier-5] claude-opus-4-20250514 | 1957 in / 1918 out | $0.1732 | cumulative $9.7688
+09:59:19 INFO   Quantifier [5/29] 'Accelerated Evolution Under Mass Administration vs': params=3, ranges=0, sensitivity=0, materiality=material
+10:00:08 INFO [quantifier-6] claude-opus-4-20250514 | 2049 in / 2522 out | $0.2199 | cumulative $9.9887
+10:00:08 INFO   Quantifier [6/29] 'Rainfall Anomalies Shift Peak Transmission Beyond ': params=4, ranges=0, sensitivity=0, materiality=material
+10:01:01 INFO [quantifier-7] claude-opus-4-20250514 | 1983 in / 2541 out | $0.2203 | cumulative $10.2090
+10:01:01 INFO   Quantifier [7/29] 'Sub-National Heterogeneity Creates Mistimed Campai': params=3, ranges=0, sensitivity=0, materiality=material
+10:01:52 INFO [quantifier-8] claude-opus-4-20250514 | 1995 in / 1892 out | $0.1718 | cumulative $10.3808
+10:01:52 INFO   Quantifier [8/29] 'Climate Change Is Extending Transmission Seasons B': params=4, ranges=0, sensitivity=0, materiality=material
+10:02:39 INFO [quantifier-9] claude-opus-4-20250514 | 2001 in / 1891 out | $0.1718 | cumulative $10.5526
+10:02:39 INFO   Quantifier [9/29] '"Dry Season" Malaria Burden Is Higher Than Assumed': params=0, ranges=0, sensitivity=0, materiality=material
+10:03:20 INFO [quantifier-10] claude-opus-4-20250514 | 2035 in / 1752 out | $0.1619 | cumulative $10.7146
+10:03:20 INFO   Quantifier [10/29] 'Migration Patterns Expose Children to Transmission': params=2, ranges=0, sensitivity=0, materiality=material
+10:04:08 INFO [quantifier-11] claude-opus-4-20250514 | 2243 in / 1804 out | $0.1689 | cumulative $10.8835
+10:04:08 INFO   Quantifier [11/29] 'Cold Chain Failures in Large-Scale Distribution': params=5, ranges=1, sensitivity=0, materiality=notable
+10:05:01 INFO [quantifier-12] claude-opus-4-20250514 | 2085 in / 2574 out | $0.2243 | cumulative $11.1078
+10:05:01 INFO   Quantifier [12/29] 'Community Distributor Skill Dilution in Rapid Scal': params=3, ranges=0, sensitivity=0, materiality=material
+10:05:48 INFO [quantifier-13] claude-opus-4-20250514 | 2153 in / 2152 out | $0.1937 | cumulative $11.3015
+10:05:48 INFO   Quantifier [13/29] 'Supply Chain Stockouts in High-Burden, Remote Area': params=2, ranges=0, sensitivity=0, materiality=material
+10:06:43 INFO [quantifier-14] claude-opus-4-20250514 | 2042 in / 2520 out | $0.2196 | cumulative $11.5212
+10:06:43 INFO   Quantifier [14/29] 'Quality Assurance Surveillance Gaps in Mega-Scale ': params=4, ranges=1, sensitivity=0, materiality=material
+10:07:29 INFO [quantifier-15] claude-opus-4-20250514 | 2040 in / 2300 out | $0.2031 | cumulative $11.7243
+10:07:29 INFO   Quantifier [15/29] 'Community Distributor Retention Crisis in Multi-Ye': params=3, ranges=2, sensitivity=4, materiality=material
+10:07:29 INFO     burkina_faso/adherence_adjustment: baseline=6.73, low=7.43 (10.4%), high=6.86 (2.0%)
+10:07:29 INFO     chad/adherence_adjustment: baseline=7.49, low=8.28 (10.4%), high=7.65 (2.0%)
+10:07:29 INFO     nigeria/adherence_adjustment: baseline=5.62, low=6.20 (10.4%), high=5.73 (2.0%)
+10:07:29 INFO     togo/adherence_adjustment: baseline=8.37, low=9.24 (10.4%), high=8.54 (2.0%)
+10:08:16 INFO [quantifier-16] claude-opus-4-20250514 | 2074 in / 2049 out | $0.1848 | cumulative $11.9090
+10:08:16 INFO   Quantifier [16/29] 'Concurrent Health System Strengthening in SMC Impl': params=2, ranges=0, sensitivity=0, materiality=material
+10:08:57 INFO [quantifier-17] claude-opus-4-20250514 | 2072 in / 1801 out | $0.1662 | cumulative $12.0752
+10:08:57 INFO   Quantifier [17/29] 'Secular Trends in Child Mortality Masquerading as ': params=1, ranges=0, sensitivity=0, materiality=material
+10:09:32 INFO [quantifier-18] claude-opus-4-20250514 | 2020 in / 1282 out | $0.1265 | cumulative $12.2016
+10:09:32 INFO   Quantifier [18/29] 'Concurrent Scale-Up of Complementary Child Health ': params=1, ranges=1, sensitivity=0, materiality=material
+10:10:26 INFO [quantifier-19] claude-opus-4-20250514 | 2017 in / 2340 out | $0.2058 | cumulative $12.4074
+10:10:26 INFO   Quantifier [19/29] 'Inadequate Counterfactual in Quasi-Experimental St': params=1, ranges=0, sensitivity=0, materiality=material
+10:11:19 INFO [quantifier-20] claude-opus-4-20250514 | 2009 in / 2100 out | $0.1876 | cumulative $12.5950
+10:11:19 INFO   Quantifier [20/29] 'Spillover Effects Contaminating Control Areas in C': params=3, ranges=0, sensitivity=0, materiality=material
+10:12:02 INFO [quantifier-21] claude-opus-4-20250514 | 2025 in / 1454 out | $0.1394 | cumulative $12.7345
+10:12:02 INFO   Quantifier [21/29] 'Seasonal vs. Year-Round Exposure Developmental Imp': params=1, ranges=0, sensitivity=0, materiality=material
+10:12:55 INFO [quantifier-22] claude-opus-4-20250514 | 2084 in / 2101 out | $0.1888 | cumulative $12.9233
+10:12:55 INFO   Quantifier [22/29] 'Study Population Generalizability to Current SMC R': params=1, ranges=0, sensitivity=0, materiality=material
+10:13:33 INFO [quantifier-23] claude-opus-4-20250514 | 2201 in / 1475 out | $0.1436 | cumulative $13.0669
+10:13:33 INFO   Quantifier [23/29] 'Diminishing Returns in High Baseline Malaria Burde': params=3, ranges=0, sensitivity=0, materiality=material
+10:14:16 INFO [quantifier-24] claude-opus-4-20250514 | 2158 in / 1668 out | $0.1575 | cumulative $13.2244
+10:14:16 INFO   Quantifier [24/29] 'School Attendance Mechanism Weakness in SMC Contex': params=2, ranges=1, sensitivity=0, materiality=material
+10:15:17 INFO [quantifier-25] claude-opus-4-20250514 | 2192 in / 2675 out | $0.2335 | cumulative $13.4579
+10:15:17 INFO   Quantifier [25/29] 'Income Effect Study Follow-up Duration Inadequacy': params=2, ranges=0, sensitivity=0, materiality=notable
+10:16:05 INFO [quantifier-26] claude-opus-4-20250514 | 2182 in / 2325 out | $0.2071 | cumulative $13.6650
+10:16:05 INFO   Quantifier [26/29] 'Community Health Worker Wage Inflation': params=2, ranges=0, sensitivity=0, materiality=material
+10:16:56 INFO [quantifier-27] claude-opus-4-20250514 | 2086 in / 2547 out | $0.2223 | cumulative $13.8873
+10:16:56 INFO   Quantifier [27/29] 'Government Commitment Erosion': params=5, ranges=0, sensitivity=0, materiality=material
+10:17:38 INFO [quantifier-28] claude-opus-4-20250514 | 1984 in / 1691 out | $0.1566 | cumulative $14.0439
+10:17:38 INFO   Quantifier [28/29] 'Supervision Cost Escalation in Mature Programs': params=2, ranges=0, sensitivity=0, materiality=material
+10:18:31 INFO [quantifier-29] claude-opus-4-20250514 | 2372 in / 2498 out | $0.2229 | cumulative $14.2668
+10:18:31 INFO   Quantifier [29/29] 'Coverage Maintenance Costs in Post-Enthusiasm Phas': params=3, ranges=0, sensitivity=0, materiality=material
+10:18:31 INFO Saved stage output to 04-quantifier (.json + .md)
+10:18:31 INFO Quantifier processed 29 critiques.
+10:18:31 INFO === Stage 5: Adversarial ===
+10:18:51 INFO [advocate-1] claude-sonnet-4-20250514 | 2246 in / 759 out | $0.0181 | cumulative $14.2850
+10:19:10 INFO [challenger-1] claude-sonnet-4-20250514 | 2042 in / 782 out | $0.0179 | cumulative $14.3028
+10:19:30 INFO [advocate-2] claude-sonnet-4-20250514 | 2391 in / 815 out | $0.0194 | cumulative $14.3222
+10:19:57 INFO [challenger-2] claude-sonnet-4-20250514 | 2275 in / 1041 out | $0.0224 | cumulative $14.3447
+10:19:57 INFO Skipping adversarial for 'Treatment Drug Cross-Resistance Acceleration': materiality=immaterial
+10:20:20 INFO [advocate-4] claude-sonnet-4-20250514 | 2391 in / 908 out | $0.0208 | cumulative $14.3655
+10:20:51 INFO [challenger-4] claude-sonnet-4-20250514 | 2417 in / 1292 out | $0.0266 | cumulative $14.3921
+10:21:12 INFO [advocate-5] claude-sonnet-4-20250514 | 2162 in / 763 out | $0.0179 | cumulative $14.4100
+10:21:35 INFO [challenger-5] claude-sonnet-4-20250514 | 1950 in / 902 out | $0.0194 | cumulative $14.4294
+10:21:58 INFO [advocate-6] claude-sonnet-4-20250514 | 2254 in / 916 out | $0.0205 | cumulative $14.4499
+10:22:19 INFO [challenger-6] claude-sonnet-4-20250514 | 2197 in / 812 out | $0.0188 | cumulative $14.4687
+10:22:38 INFO [advocate-7] claude-sonnet-4-20250514 | 2188 in / 748 out | $0.0178 | cumulative $14.4865
+10:22:58 INFO [challenger-7] claude-sonnet-4-20250514 | 1946 in / 811 out | $0.0180 | cumulative $14.5045
+10:23:21 INFO [advocate-8] claude-sonnet-4-20250514 | 2197 in / 918 out | $0.0204 | cumulative $14.5248
+10:23:49 INFO [challenger-8] claude-sonnet-4-20250514 | 2156 in / 1046 out | $0.0222 | cumulative $14.5470
+10:24:08 INFO [advocate-9] claude-sonnet-4-20250514 | 2207 in / 747 out | $0.0178 | cumulative $14.5648
+10:24:31 INFO [challenger-9] claude-sonnet-4-20250514 | 1973 in / 916 out | $0.0197 | cumulative $14.5845
+10:24:53 INFO [advocate-10] claude-sonnet-4-20250514 | 2240 in / 879 out | $0.0199 | cumulative $14.6044
+10:25:17 INFO [challenger-10] claude-sonnet-4-20250514 | 2193 in / 956 out | $0.0209 | cumulative $14.6253
+10:25:45 INFO [advocate-11] claude-sonnet-4-20250514 | 2444 in / 1119 out | $0.0241 | cumulative $14.6494
+10:26:16 INFO [challenger-11] claude-sonnet-4-20250514 | 2630 in / 1176 out | $0.0255 | cumulative $14.6749
+10:26:36 INFO [advocate-12] claude-sonnet-4-20250514 | 2290 in / 777 out | $0.0185 | cumulative $14.6935
+10:27:01 INFO [challenger-12] claude-sonnet-4-20250514 | 2042 in / 872 out | $0.0192 | cumulative $14.7127
+10:27:25 INFO [advocate-13] claude-sonnet-4-20250514 | 2354 in / 982 out | $0.0218 | cumulative $14.7345
+10:27:57 INFO [challenger-13] claude-sonnet-4-20250514 | 2371 in / 1212 out | $0.0253 | cumulative $14.7598
+10:28:17 INFO [advocate-14] claude-sonnet-4-20250514 | 2245 in / 748 out | $0.0180 | cumulative $14.7777
+10:28:45 INFO [challenger-14] claude-sonnet-4-20250514 | 2000 in / 1059 out | $0.0219 | cumulative $14.7996
+10:29:10 INFO [advocate-15] claude-sonnet-4-20250514 | 2895 in / 1009 out | $0.0238 | cumulative $14.8234
+10:29:40 INFO [challenger-15] claude-sonnet-4-20250514 | 2900 in / 1176 out | $0.0263 | cumulative $14.8498
+10:30:04 INFO [advocate-16] claude-sonnet-4-20250514 | 2277 in / 901 out | $0.0203 | cumulative $14.8701
+10:30:30 INFO [challenger-16] claude-sonnet-4-20250514 | 2201 in / 1077 out | $0.0228 | cumulative $14.8929
+10:30:56 INFO [advocate-17] claude-sonnet-4-20250514 | 2276 in / 1038 out | $0.0224 | cumulative $14.9153
+10:31:24 INFO [challenger-17] claude-sonnet-4-20250514 | 2339 in / 1139 out | $0.0241 | cumulative $14.9394
+10:31:49 INFO [advocate-18] claude-sonnet-4-20250514 | 2222 in / 985 out | $0.0214 | cumulative $14.9608
+10:32:16 INFO [challenger-18] claude-sonnet-4-20250514 | 2213 in / 1090 out | $0.0230 | cumulative $14.9838
+10:32:38 INFO [advocate-19] claude-sonnet-4-20250514 | 2219 in / 949 out | $0.0209 | cumulative $15.0047
+10:32:38 WARNING Cumulative cost $15.00 exceeds warning threshold $15.00
+10:33:07 INFO [challenger-19] claude-sonnet-4-20250514 | 2172 in / 1228 out | $0.0249 | cumulative $15.0296
+10:33:07 WARNING Cumulative cost $15.03 exceeds warning threshold $15.00
+10:33:32 INFO [advocate-20] claude-sonnet-4-20250514 | 2210 in / 921 out | $0.0204 | cumulative $15.0501
+10:33:32 WARNING Cumulative cost $15.05 exceeds warning threshold $15.00
+10:33:58 INFO [challenger-20] claude-sonnet-4-20250514 | 2156 in / 1123 out | $0.0233 | cumulative $15.0734
+10:33:58 WARNING Cumulative cost $15.07 exceeds warning threshold $15.00
+10:34:25 INFO [advocate-21] claude-sonnet-4-20250514 | 2227 in / 1092 out | $0.0231 | cumulative $15.0964
+10:34:25 WARNING Cumulative cost $15.10 exceeds warning threshold $15.00
+10:34:56 INFO [challenger-21] claude-sonnet-4-20250514 | 2334 in / 1320 out | $0.0268 | cumulative $15.1232
+10:34:56 WARNING Cumulative cost $15.12 exceeds warning threshold $15.00
+10:35:19 INFO [advocate-22] claude-sonnet-4-20250514 | 2282 in / 929 out | $0.0208 | cumulative $15.1440
+10:35:19 WARNING Cumulative cost $15.14 exceeds warning threshold $15.00
+10:35:45 INFO [challenger-22] claude-sonnet-4-20250514 | 2283 in / 1032 out | $0.0223 | cumulative $15.1663
+10:35:45 WARNING Cumulative cost $15.17 exceeds warning threshold $15.00
+10:36:12 INFO [advocate-23] claude-sonnet-4-20250514 | 2401 in / 1030 out | $0.0227 | cumulative $15.1890
+10:36:12 WARNING Cumulative cost $15.19 exceeds warning threshold $15.00
+10:36:38 INFO [challenger-23] claude-sonnet-4-20250514 | 2488 in / 1010 out | $0.0226 | cumulative $15.2116
+10:36:38 WARNING Cumulative cost $15.21 exceeds warning threshold $15.00
+10:37:01 INFO [advocate-24] claude-sonnet-4-20250514 | 2356 in / 851 out | $0.0198 | cumulative $15.2314
+10:37:01 WARNING Cumulative cost $15.23 exceeds warning threshold $15.00
+10:37:27 INFO [challenger-24] claude-sonnet-4-20250514 | 2255 in / 977 out | $0.0214 | cumulative $15.2529
+10:37:27 WARNING Cumulative cost $15.25 exceeds warning threshold $15.00
+10:37:53 INFO [advocate-25] claude-sonnet-4-20250514 | 2391 in / 1002 out | $0.0222 | cumulative $15.2751
+10:37:53 WARNING Cumulative cost $15.28 exceeds warning threshold $15.00
+10:38:22 INFO [challenger-25] claude-sonnet-4-20250514 | 2493 in / 1041 out | $0.0231 | cumulative $15.2982
+10:38:22 WARNING Cumulative cost $15.30 exceeds warning threshold $15.00
+10:38:49 INFO [advocate-26] claude-sonnet-4-20250514 | 2383 in / 1073 out | $0.0232 | cumulative $15.3214
+10:38:49 WARNING Cumulative cost $15.32 exceeds warning threshold $15.00
+10:39:16 INFO [challenger-26] claude-sonnet-4-20250514 | 2498 in / 1054 out | $0.0233 | cumulative $15.3447
+10:39:16 WARNING Cumulative cost $15.34 exceeds warning threshold $15.00
+10:39:35 INFO [advocate-27] claude-sonnet-4-20250514 | 2288 in / 720 out | $0.0177 | cumulative $15.3624
+10:39:35 WARNING Cumulative cost $15.36 exceeds warning threshold $15.00
+10:39:58 INFO [challenger-27] claude-sonnet-4-20250514 | 2023 in / 898 out | $0.0195 | cumulative $15.3819
+10:39:58 WARNING Cumulative cost $15.38 exceeds warning threshold $15.00
+10:40:15 INFO [advocate-28] claude-sonnet-4-20250514 | 2187 in / 680 out | $0.0168 | cumulative $15.3987
+10:40:15 WARNING Cumulative cost $15.40 exceeds warning threshold $15.00
+10:40:38 INFO [challenger-28] claude-sonnet-4-20250514 | 1882 in / 907 out | $0.0193 | cumulative $15.4179
+10:40:38 WARNING Cumulative cost $15.42 exceeds warning threshold $15.00
+10:41:01 INFO [advocate-29] claude-sonnet-4-20250514 | 2562 in / 873 out | $0.0208 | cumulative $15.4387
+10:41:01 WARNING Cumulative cost $15.44 exceeds warning threshold $15.00
+10:41:28 INFO [challenger-29] claude-sonnet-4-20250514 | 2658 in / 1027 out | $0.0234 | cumulative $15.4621
+10:41:28 WARNING Cumulative cost $15.46 exceeds warning threshold $15.00
+10:41:28 INFO Saved stage output to 05-adversarial (.json + .md)
+10:41:28 INFO Adversarial stage produced 28 debated critiques.
+10:41:28 INFO === Stage 6: Synthesizer ===
+10:43:10 INFO [synthesizer] claude-opus-4-20250514 | 21126 in / 2449 out | $0.5006 | cumulative $15.9626
+10:43:10 WARNING Cumulative cost $15.96 exceeds warning threshold $15.00
+10:43:10 INFO Saved stage output to 06-synthesizer (.json + .md)
+10:43:10 INFO Synthesizer produced final report (11106 chars).
+10:43:10 INFO === Pipeline Complete ===
+10:43:10 INFO Total tokens: 2790626 in / 162361 out
+10:43:10 INFO Total cost: $15.9626
+10:43:10 WARNING Total cost $15.96 exceeded warning threshold $15.00
+10:43:10 INFO   [advocate-1] $0.0181
+10:43:10 INFO   [advocate-10] $0.0199
+10:43:10 INFO   [advocate-11] $0.0241
+10:43:10 INFO   [advocate-12] $0.0185
+10:43:10 INFO   [advocate-13] $0.0218
+10:43:10 INFO   [advocate-14] $0.0180
+10:43:10 INFO   [advocate-15] $0.0238
+10:43:10 INFO   [advocate-16] $0.0203
+10:43:10 INFO   [advocate-17] $0.0224
+10:43:10 INFO   [advocate-18] $0.0214
+10:43:10 INFO   [advocate-19] $0.0209
+10:43:10 INFO   [advocate-2] $0.0194
+10:43:10 INFO   [advocate-20] $0.0204
+10:43:10 INFO   [advocate-21] $0.0231
+10:43:10 INFO   [advocate-22] $0.0208
+10:43:10 INFO   [advocate-23] $0.0227
+10:43:10 INFO   [advocate-24] $0.0198
+10:43:10 INFO   [advocate-25] $0.0222
+10:43:10 INFO   [advocate-26] $0.0232
+10:43:10 INFO   [advocate-27] $0.0177
+10:43:10 INFO   [advocate-28] $0.0168
+10:43:10 INFO   [advocate-29] $0.0208
+10:43:10 INFO   [advocate-4] $0.0208
+10:43:10 INFO   [advocate-5] $0.0179
+10:43:10 INFO   [advocate-6] $0.0205
+10:43:10 INFO   [advocate-7] $0.0178
+10:43:10 INFO   [advocate-8] $0.0204
+10:43:10 INFO   [advocate-9] $0.0178
+10:43:10 INFO   [challenger-1] $0.0179
+10:43:10 INFO   [challenger-10] $0.0209
+10:43:10 INFO   [challenger-11] $0.0255
+10:43:10 INFO   [challenger-12] $0.0192
+10:43:10 INFO   [challenger-13] $0.0253
+10:43:10 INFO   [challenger-14] $0.0219
+10:43:10 INFO   [challenger-15] $0.0263
+10:43:10 INFO   [challenger-16] $0.0228
+10:43:10 INFO   [challenger-17] $0.0241
+10:43:10 INFO   [challenger-18] $0.0230
+10:43:10 INFO   [challenger-19] $0.0249
+10:43:10 INFO   [challenger-2] $0.0224
+10:43:10 INFO   [challenger-20] $0.0233
+10:43:10 INFO   [challenger-21] $0.0268
+10:43:10 INFO   [challenger-22] $0.0223
+10:43:10 INFO   [challenger-23] $0.0226
+10:43:10 INFO   [challenger-24] $0.0214
+10:43:10 INFO   [challenger-25] $0.0231
+10:43:10 INFO   [challenger-26] $0.0233
+10:43:10 INFO   [challenger-27] $0.0195
+10:43:10 INFO   [challenger-28] $0.0193
+10:43:10 INFO   [challenger-29] $0.0234
+10:43:10 INFO   [challenger-4] $0.0266
+10:43:10 INFO   [challenger-5] $0.0194
+10:43:10 INFO   [challenger-6] $0.0188
+10:43:10 INFO   [challenger-7] $0.0180
+10:43:10 INFO   [challenger-8] $0.0222
+10:43:10 INFO   [challenger-9] $0.0197
+10:43:10 INFO   [decomposer] $0.2455
+10:43:10 INFO   [fetch_web] $0.1049
+10:43:10 INFO   [investigator-1] $0.0307
+10:43:10 INFO   [investigator-2] $0.0303
+10:43:10 INFO   [investigator-3] $0.0293
+10:43:10 INFO   [investigator-4] $0.0292
+10:43:10 INFO   [investigator-5] $0.0302
+10:43:10 INFO   [investigator-6] $0.0292
+10:43:10 INFO   [investigator-7] $0.0234
+10:43:10 INFO   [quantifier-1] $0.2743
+10:43:10 INFO   [quantifier-10] $0.1619
+10:43:10 INFO   [quantifier-11] $0.1689
+10:43:10 INFO   [quantifier-12] $0.2243
+10:43:10 INFO   [quantifier-13] $0.1937
+10:43:10 INFO   [quantifier-14] $0.2196
+10:43:10 INFO   [quantifier-15] $0.2031
+10:43:10 INFO   [quantifier-16] $0.1848
+10:43:10 INFO   [quantifier-17] $0.1662
+10:43:10 INFO   [quantifier-18] $0.1265
+10:43:10 INFO   [quantifier-19] $0.2058
+10:43:10 INFO   [quantifier-2] $0.2091
+10:43:10 INFO   [quantifier-20] $0.1876
+10:43:10 INFO   [quantifier-21] $0.1394
+10:43:10 INFO   [quantifier-22] $0.1888
+10:43:10 INFO   [quantifier-23] $0.1436
+10:43:10 INFO   [quantifier-24] $0.1575
+10:43:10 INFO   [quantifier-25] $0.2335
+10:43:10 INFO   [quantifier-26] $0.2071
+10:43:10 INFO   [quantifier-27] $0.2223
+10:43:10 INFO   [quantifier-28] $0.1566
+10:43:10 INFO   [quantifier-29] $0.2229
+10:43:10 INFO   [quantifier-3] $0.3093
+10:43:10 INFO   [quantifier-4] $0.2341
+10:43:10 INFO   [quantifier-5] $0.1732
+10:43:10 INFO   [quantifier-6] $0.2199
+10:43:10 INFO   [quantifier-7] $0.2203
+10:43:10 INFO   [quantifier-8] $0.1718
+10:43:10 INFO   [quantifier-9] $0.1718
+10:43:10 INFO   [synthesizer] $0.5006
+10:43:10 INFO   [verifier-1] $0.8006
+10:43:10 INFO   [verifier-10] $0.7813
+10:43:10 INFO   [verifier-11] $0.6297
+10:43:10 INFO   [verifier-12] $0.5802
+10:43:10 INFO   [verifier-2] $0.6851
+10:43:10 INFO   [verifier-3] $0.6966
+10:43:10 INFO   [verifier-4] $0.7056
+10:43:10 INFO   [verifier-5] $0.5301
+10:43:10 INFO   [verifier-6] $0.6906
+10:43:10 INFO   [verifier-7] $0.5001
+10:43:10 INFO   [verifier-8] $0.6785
+10:43:10 INFO   [verifier-9] $0.7375
+10:43:10 INFO Pipeline stats saved to /data/projects/givewell_redteam/results/smc/pipeline-stats.json
