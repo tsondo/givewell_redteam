@@ -53,7 +53,16 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Baseline under-5 mortality rates",
+        "mapped": null
+      },
+      {
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
       }
     ],
     "alternative_range": [],
@@ -138,7 +147,12 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Adjusted diarrhea RR",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -212,14 +226,81 @@
     },
     "target_parameters": [
       {
-        "raw": "\")"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
       },
       {
-        "raw": "print(\"Which specific cells/parameters in the CEA does this"
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
+    "alternative_range": [
+      {
+        "name": "Pooled ln(RR)",
+        "current": -0.146,
+        "low": -0.07,
+        "high": -0.1,
+        "mapped": "relative_risk"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.0527516567406945,
+        "pct_change_low": -7.230562494463778,
+        "cap_binds_low": false,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.1960371299835355,
+        "pct_change_high": -18.499486826163864,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.005754546203534,
+        "pct_change_low": -9.405243806607631,
+        "cap_binds_low": false,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 3.6348595512101602,
+        "pct_change_high": -17.793461621056547,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 5.811641614773257,
+        "pct_change_low": -17.16242390854533,
+        "cap_binds_low": false,
+        "central": 7.007929191723701,
+        "pct_change_central": -0.11086261973715211,
+        "cap_binds_central": false,
+        "high": 5.001277497349889,
+        "pct_change_high": -28.713136028886872,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 7.561629051455307,
+        "pct_change_low": -12.656006557014004,
+        "cap_binds_low": false,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.499787159543998,
+        "pct_change_high": -24.92128836513701,
+        "cap_binds_high": false
+      }
+    },
     "materiality": "material",
     "interaction_effects": []
   },
@@ -280,12 +361,86 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Parameter 1: External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Parameter 2: Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Parameter 3: Baseline mortality rates (under-5 and over-5)",
+        "mapped": null
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
-    "materiality": "notable",
+    "alternative_range": [
+      {
+        "name": "Pooled ln(RR)",
+        "current": -0.1463,
+        "low": -0.1024,
+        "high": -0.1463,
+        "mapped": "relative_risk"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.602451676307519,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 7.120184949340118,
+        "pct_change_high": -6.343568463188655,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.421618551136074,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 4.034948250687246,
+        "pct_change_high": -8.744994530328231,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 7.0155518563143495,
+        "pct_change_low": -0.002211209360715954,
+        "cap_binds_low": false,
+        "central": 7.0155518563143495,
+        "pct_change_central": -0.002211209360715954,
+        "cap_binds_central": false,
+        "high": 5.875426596742837,
+        "pct_change_high": -16.25324993540051,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.657297145900683,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 7.645208228363412,
+        "pct_change_high": -11.690587725945223,
+        "cap_binds_high": false
+      }
+    },
+    "materiality": "material",
     "interaction_effects": []
   },
   {
@@ -330,7 +485,16 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Internal validity, under-5 mortality",
+        "mapped": "internal_validity_under5"
+      },
+      {
+        "name": "External validity adjustments",
+        "mapped": "external_validity"
       }
     ],
     "alternative_range": [],
@@ -384,12 +548,29 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Parameter 1: Pooled ln(RR) = -0.1463, which translates to RR = 0.8639",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Parameter 2: Internal validity adjustment for under-5 mortality = 0.7958",
+        "mapped": "internal_validity_under5"
+      },
+      {
+        "name": "Parameter 3: External validity adjustment = 0.558-1.214",
+        "mapped": "external_validity"
       }
     ],
-    "alternative_range": [],
+    "alternative_range": [
+      {
+        "name": "",
+        "current": 0.0,
+        "low": 20.0,
+        "high": 40.0,
+        "mapped": null
+      }
+    ],
     "sensitivity_results": {},
-    "materiality": "material",
+    "materiality": "notable",
     "interaction_effects": []
   },
   {
@@ -437,11 +618,211 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Parameter 1: Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Parameter 2: Internal validity, under-5 mortality",
+        "mapped": "internal_validity_under5"
+      },
+      {
+        "name": "Parameter 3: External validity adjustment",
+        "mapped": "external_validity"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
+    "alternative_range": [
+      {
+        "name": "Parameter 1: Pooled ln(RR)",
+        "current": -0.1463,
+        "low": -0.1463,
+        "high": 0.85,
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Parameter 2: Internal validity, under-5 mortality",
+        "current": -0.1463,
+        "low": -0.1463,
+        "high": 0.85,
+        "mapped": "internal_validity_under5"
+      },
+      {
+        "name": "Parameter 3: External validity adjustment",
+        "current": -0.1463,
+        "low": -0.1463,
+        "high": 0.85,
+        "mapped": "external_validity"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.602451676307519,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": -37.55474430522416,
+        "pct_change_high": -593.9820192775543,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.421618551136074,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": -15.306042411535783,
+        "pct_change_high": -446.16379125700706,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 7.0155518563143495,
+        "pct_change_low": -0.002211209360715954,
+        "cap_binds_low": false,
+        "central": 7.0155518563143495,
+        "pct_change_central": -0.002211209360715954,
+        "cap_binds_central": false,
+        "high": -36.38247669032067,
+        "pct_change_high": -618.5860348939634,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.657297145900683,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": -47.726458667763566,
+        "pct_change_high": -651.2859020943104,
+        "cap_binds_high": false
+      },
+      "ilc_kenya/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 2.5685052274494784,
+        "pct_change_low": -66.21477732697683,
+        "cap_binds_low": false,
+        "central": 2.5685052274494784,
+        "pct_change_central": -66.21477732697683,
+        "cap_binds_central": false,
+        "high": 7.669029380038308,
+        "pct_change_high": 0.8757399134580938,
+        "cap_binds_high": true
+      },
+      "dsw_kenya/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 2.1420199011764858,
+        "pct_change_low": -51.55575099018609,
+        "cap_binds_low": false,
+        "central": 2.1420199011764858,
+        "pct_change_central": -51.55575099018609,
+        "cap_binds_central": false,
+        "high": 4.440615433511825,
+        "pct_change_high": 0.4296363912004511,
+        "cap_binds_high": true
+      },
+      "dsw_uganda/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 3.2112192531432178,
+        "pct_change_low": -54.22814466872903,
+        "cap_binds_low": false,
+        "central": 3.2112192531432178,
+        "pct_change_central": -54.22814466872903,
+        "cap_binds_central": false,
+        "high": 7.23476331311421,
+        "pct_change_high": 3.122369922176515,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 3.405670921315305,
+        "pct_change_low": -60.66126801564244,
+        "cap_binds_low": false,
+        "central": 3.405670921315305,
+        "pct_change_central": -60.66126801564244,
+        "cap_binds_central": false,
+        "high": 8.649162303304617,
+        "pct_change_high": -0.09396515400788598,
+        "cap_binds_high": true
+      },
+      "ilc_kenya/external_validity": {
+        "parameter_name": "external_validity",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 1.148719612967977,
+        "pct_change_low": -84.8901425240508,
+        "cap_binds_low": false,
+        "central": 1.148719612967977,
+        "pct_change_central": -84.8901425240508,
+        "cap_binds_central": false,
+        "high": 6.405764393419565,
+        "pct_change_high": -15.740807490001437,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/external_validity": {
+        "parameter_name": "external_validity",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 1.3100731472783087,
+        "pct_change_low": -70.37118575183959,
+        "cap_binds_low": false,
+        "central": 1.3100731472783087,
+        "pct_change_central": -70.37118575183959,
+        "cap_binds_central": false,
+        "high": 4.80869152557331,
+        "pct_change_high": 8.75410146670799,
+        "cap_binds_high": true
+      },
+      "dsw_uganda/external_validity": {
+        "parameter_name": "external_validity",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 0.5540188162101009,
+        "pct_change_low": -92.1031648394767,
+        "cap_binds_low": false,
+        "central": 0.5540188162101009,
+        "pct_change_central": -92.1031648394767,
+        "cap_binds_central": false,
+        "high": 9.065400615378255,
+        "pct_change_high": 29.21578153872707,
+        "cap_binds_high": true
+      },
+      "dsw_malawi/external_validity": {
+        "parameter_name": "external_validity",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 1.5260874558192878,
+        "pct_change_low": -82.37224124226918,
+        "cap_binds_low": false,
+        "central": 1.5260874558192878,
+        "pct_change_central": -82.37224124226918,
+        "cap_binds_central": false,
+        "high": 7.572146662466827,
+        "pct_change_high": -12.53451816595767,
+        "cap_binds_high": false
+      }
+    },
     "materiality": "material",
     "interaction_effects": []
   },
@@ -494,11 +875,85 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Adjusted diarrhea RR",
+        "mapped": null
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
+    "alternative_range": [
+      {
+        "name": "Pooled ln(RR)",
+        "current": 0.864,
+        "low": 0.864,
+        "high": 0.93,
+        "mapped": "relative_risk"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.602451676307519,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.270459774040698,
+        "pct_change_high": -17.52055730150677,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.421618551136074,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 3.667079135835925,
+        "pct_change_high": -17.064778577660906,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 7.012566843716182,
+        "pct_change_low": -0.044758775887546544,
+        "cap_binds_low": false,
+        "central": 7.012566843716182,
+        "pct_change_central": -0.044758775887546544,
+        "cap_binds_central": false,
+        "high": 5.071673689294924,
+        "pct_change_high": -27.709727647342515,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.657297145900683,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.592029182643368,
+        "pct_change_high": -23.855805437326826,
+        "cap_binds_high": false
+      }
+    },
     "materiality": "material",
     "interaction_effects": []
   },
@@ -553,12 +1008,17 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
       }
     ],
     "alternative_range": [],
     "sensitivity_results": {},
-    "materiality": "notable",
+    "materiality": "material",
     "interaction_effects": []
   },
   {
@@ -593,7 +1053,12 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Effective mortality reduction",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Cost per person treated",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -646,11 +1111,85 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Internal validity, under-5 mortality",
+        "mapped": "internal_validity_under5"
+      },
+      {
+        "name": "Internal validity, over-5 mortality",
+        "mapped": "internal_validity_under5"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
+    "alternative_range": [
+      {
+        "name": "Adjusted internal validity parameters",
+        "current": 0.7958,
+        "low": 0.5305,
+        "high": 0.5969,
+        "mapped": "internal_validity_under5"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 6.704620722720609,
+        "pct_change_low": -11.809755481707748,
+        "cap_binds_low": false,
+        "central": 7.602499132430346,
+        "pct_change_central": 0.0006242213018579993,
+        "cap_binds_central": true,
+        "high": 7.110409831594726,
+        "pct_change_high": -6.472146955517057,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 3.876894170860796,
+        "pct_change_low": -12.319569722614785,
+        "cap_binds_low": false,
+        "central": 4.421631657020044,
+        "pct_change_central": 0.00029640467214680203,
+        "cap_binds_central": true,
+        "high": 4.047100511739991,
+        "pct_change_high": -8.47015713962607,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 5.94446688918494,
+        "pct_change_low": -15.269168180598067,
+        "cap_binds_low": false,
+        "central": 7.015877346989118,
+        "pct_change_central": 0.0024282471518217224,
+        "cap_binds_central": false,
+        "high": 6.212622390120476,
+        "pct_change_high": -11.446951811195142,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 7.524900944119694,
+        "pct_change_low": -13.080251061004533,
+        "cap_binds_low": false,
+        "central": 8.657285042340577,
+        "pct_change_central": -0.0001398076085663798,
+        "cap_binds_central": true,
+        "high": 7.9290334404468386,
+        "pct_change_high": -8.412137104462042,
+        "cap_binds_high": false
+      }
+    },
     "materiality": "material",
     "interaction_effects": []
   },
@@ -693,7 +1232,16 @@
     },
     "target_parameters": [
       {
-        "raw": "This"
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Cost per person",
+        "mapped": null
+      },
+      {
+        "name": "Effective coverage",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -749,12 +1297,29 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "external validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "ILC Kenya",
+        "mapped": null
+      },
+      {
+        "name": "DSW B",
+        "mapped": null
+      },
+      {
+        "name": "DSW C",
+        "mapped": null
+      },
+      {
+        "name": "DSW D",
+        "mapped": null
       }
     ],
     "alternative_range": [],
     "sensitivity_results": {},
-    "materiality": "material",
+    "materiality": "notable",
     "interaction_effects": []
   },
   {
@@ -805,12 +1370,95 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Primary Parameters",
+        "mapped": null
+      },
+      {
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Internal validity adjustments",
+        "mapped": "internal_validity_under5"
+      },
+      {
+        "name": "Secondary Parameters",
+        "mapped": null
+      },
+      {
+        "name": "External validity",
+        "mapped": "external_validity"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
-    "materiality": "notable",
+    "alternative_range": [
+      {
+        "name": "ln(RR)",
+        "current": -0.117,
+        "low": -0.117,
+        "high": -0.0878,
+        "mapped": "relative_risk",
+        "is_ln": true
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.526935575066754,
+        "pct_change_low": -0.9933124793953634,
+        "cap_binds_low": false,
+        "central": 7.526935575066754,
+        "pct_change_central": -0.9933124793953634,
+        "cap_binds_central": false,
+        "high": 6.7074522012466495,
+        "pct_change_high": -11.772511199907646,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.2110416477065264,
+        "pct_change_low": -4.762439387166106,
+        "cap_binds_low": false,
+        "central": 4.2110416477065264,
+        "pct_change_central": -4.762439387166106,
+        "cap_binds_central": false,
+        "high": 3.856265030365103,
+        "pct_change_high": -12.786121512578497,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 6.26017099120996,
+        "pct_change_low": -10.769206843098718,
+        "cap_binds_low": false,
+        "central": 6.26017099120996,
+        "pct_change_central": -10.769206843098718,
+        "cap_binds_central": false,
+        "high": 5.485023727765584,
+        "pct_change_high": -21.817947401090194,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.149349153337024,
+        "pct_change_low": -5.867281485240204,
+        "cap_binds_low": false,
+        "central": 8.149349153337024,
+        "pct_change_central": -5.867281485240204,
+        "cap_binds_central": false,
+        "high": 7.1336528520956435,
+        "pct_change_high": -17.599537917287506,
+        "cap_binds_high": false
+      }
+    },
+    "materiality": "material",
     "interaction_effects": []
   },
   {
@@ -863,7 +1511,12 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Moral weights for under-5 deaths",
+        "mapped": null
+      },
+      {
+        "name": "Years of life saved per death prevented",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -917,7 +1570,16 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Population under-5",
+        "mapped": null
+      },
+      {
+        "name": "Baseline mortality under-5",
+        "mapped": null
+      },
+      {
+        "name": "Relative risk reduction",
+        "mapped": "relative_risk"
       }
     ],
     "alternative_range": [],
@@ -989,7 +1651,20 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Under-5 mortality reduction",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Over-5 mortality reduction",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Adult mortality scaling factor",
+        "mapped": null
+      },
+      {
+        "name": "Age distribution of deaths prevented",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -1042,7 +1717,16 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Moral weight under-5",
+        "mapped": null
+      },
+      {
+        "name": "Effective mortality reduction",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Life expectancy of prevented deaths",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -1096,63 +1780,82 @@
     },
     "target_parameters": [
       {
-        "raw": "The stockout effects would primarily impact these parameters in the CEA:"
+        "name": "Effective coverage/treatment effect",
+        "mapped": "relative_risk"
       },
       {
-        "raw": "1. **Internal validity, under-5 mortality**"
-      },
-      {
-        "raw": "- Current value: 0.7958"
-      },
-      {
-        "raw": "- Location: Shared parameter affecting mortality reduction"
-      },
-      {
-        "raw": "- This represents the percentage of the treatment effect that applies"
-      },
-      {
-        "raw": "2. **Internal validity, over-5 mortality**"
-      },
-      {
-        "raw": "- Current value: 0.5041"
-      },
-      {
-        "raw": "- Location: Shared parameter affecting mortality reduction"
-      },
-      {
-        "raw": "- Lower than under-5 due to different evidence base"
-      },
-      {
-        "raw": "3. **External validity** (program-specific)"
-      },
-      {
-        "raw": "- Current values:"
-      },
-      {
-        "raw": "- ILC Kenya: 1.214"
-      },
-      {
-        "raw": "- DSW B: 0.558"
-      },
-      {
-        "raw": "- DSW C: 0.566"
-      },
-      {
-        "raw": "- DSW D: 1.108"
-      },
-      {
-        "raw": "- Location: Program-specific adjustment factors"
-      },
-      {
-        "raw": "- Captures how well RCT results generalize to each context"
-      },
-      {
-        "raw": "###"
+        "name": "External validity adjustments",
+        "mapped": "external_validity"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
-    "materiality": "material",
+    "alternative_range": [
+      {
+        "name": "Adjusted treatment effect",
+        "current": 0.864,
+        "low": 0.864,
+        "high": 0.864,
+        "mapped": "relative_risk"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.602451676307519,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 7.602451676307519,
+        "pct_change_high": 0.0,
+        "cap_binds_high": true
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.421618551136074,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 4.421618551136074,
+        "pct_change_high": 0.0,
+        "cap_binds_high": true
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 7.012566843716182,
+        "pct_change_low": -0.044758775887546544,
+        "cap_binds_low": false,
+        "central": 7.012566843716182,
+        "pct_change_central": -0.044758775887546544,
+        "cap_binds_central": false,
+        "high": 7.012566843716182,
+        "pct_change_high": -0.044758775887546544,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.657297145900683,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 8.657297145900683,
+        "pct_change_high": 0.0,
+        "cap_binds_high": true
+      }
+    },
+    "materiality": "immaterial",
     "interaction_effects": []
   },
   {
@@ -1206,12 +1909,25 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Relative risk of all-cause mortality",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "No explicit turbidity or dosing adequacy parameter",
+        "mapped": null
       }
     ],
     "alternative_range": [],
     "sensitivity_results": {},
-    "materiality": "notable",
+    "materiality": "material",
     "interaction_effects": []
   },
   {
@@ -1267,7 +1983,16 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Parameter 1: Cost per person",
+        "mapped": null
+      },
+      {
+        "name": "Parameter 2: External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Parameter 3: Coverage/effectiveness",
+        "mapped": null
       }
     ],
     "alternative_range": [],
@@ -1306,11 +2031,148 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "External validity adjustment",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Internal validity, under-5 mortality",
+        "mapped": "internal_validity_under5"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
+    "alternative_range": [
+      {
+        "name": "Pooled ln(RR)",
+        "current": -0.1463,
+        "low": -0.1463,
+        "high": -0.0731,
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "Internal validity, under-5 mortality",
+        "current": 0.7958,
+        "low": 0.6366,
+        "high": 0.7958,
+        "mapped": "internal_validity_under5"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.602451676307519,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.285759702862132,
+        "pct_change_high": -17.319307369605,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.421618551136074,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 3.6737028907115485,
+        "pct_change_high": -16.914974726446246,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 7.0155518563143495,
+        "pct_change_low": -0.002211209360715954,
+        "cap_binds_low": false,
+        "central": 7.0155518563143495,
+        "pct_change_central": -0.002211209360715954,
+        "cap_binds_central": false,
+        "high": 5.086145853509241,
+        "pct_change_high": -27.503445312027125,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.657297145900683,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.61099244853703,
+        "pct_change_high": -23.636761715318954,
+        "cap_binds_high": false
+      },
+      "ilc_kenya/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.3530277174727745,
+        "pct_change_low": -3.2808358336831738,
+        "cap_binds_low": false,
+        "central": 7.602499132430346,
+        "pct_change_central": 0.0006242213018579993,
+        "cap_binds_central": true,
+        "high": 7.602499132430346,
+        "pct_change_high": 0.0006242213018579993,
+        "cap_binds_high": true
+      },
+      "dsw_kenya/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.148865447476496,
+        "pct_change_low": -6.1686258211825695,
+        "cap_binds_low": false,
+        "central": 4.421631657020044,
+        "pct_change_central": 0.00029640467214680203,
+        "cap_binds_central": true,
+        "high": 4.421631657020044,
+        "pct_change_high": 0.00029640467214680203,
+        "cap_binds_high": true
+      },
+      "dsw_uganda/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 6.372950302577415,
+        "pct_change_low": -9.161680879488879,
+        "cap_binds_low": false,
+        "central": 7.015877346989118,
+        "pct_change_central": 0.0024282471518217224,
+        "cap_binds_central": false,
+        "high": 7.015877346989118,
+        "pct_change_high": 0.0024282471518217224,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/internal_validity_under5": {
+        "parameter_name": "internal_validity_under5",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.170660851654484,
+        "pct_change_low": -5.621111139481066,
+        "cap_binds_low": false,
+        "central": 8.657285042340577,
+        "pct_change_central": -0.0001398076085663798,
+        "cap_binds_central": true,
+        "high": 8.657285042340577,
+        "pct_change_high": -0.0001398076085663798,
+        "cap_binds_high": true
+      }
+    },
     "materiality": "material",
     "interaction_effects": []
   },
@@ -1353,7 +2215,16 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Plausibility caps",
+        "mapped": "plausibility_cap"
+      },
+      {
+        "name": "Implicit baseline diarrhea mortality fraction",
+        "mapped": null
+      },
+      {
+        "name": "External validity adjustments",
+        "mapped": "external_validity"
       }
     ],
     "alternative_range": [],
@@ -1413,11 +2284,96 @@
     },
     "target_parameters": [
       {
-        "raw": "Based on the"
+        "name": "Mills-Reincke multiplier",
+        "mapped": null
+      },
+      {
+        "name": "Pooled ln(RR)",
+        "mapped": "relative_risk"
+      },
+      {
+        "name": "External validity adjustments",
+        "mapped": "external_validity"
+      },
+      {
+        "name": "Plausibility caps",
+        "mapped": "plausibility_cap"
       }
     ],
-    "alternative_range": [],
-    "sensitivity_results": {},
+    "alternative_range": [
+      {
+        "name": "Mills-Reincke multiplier",
+        "current": 3.744,
+        "low": 1.5,
+        "high": 3.744,
+        "mapped": null
+      },
+      {
+        "name": "Pooled ln(RR)",
+        "current": -0.146,
+        "low": -0.146,
+        "high": -0.073,
+        "mapped": "relative_risk"
+      }
+    ],
+    "sensitivity_results": {
+      "ilc_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.602451676307519,
+        "cap_binds_baseline": true,
+        "low": 7.602451676307519,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 7.602451676307519,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.2828697656340164,
+        "pct_change_high": -17.35732059680014,
+        "cap_binds_high": false
+      },
+      "dsw_kenya/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 4.421618551136074,
+        "cap_binds_baseline": true,
+        "low": 4.421618551136074,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 4.421618551136074,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 3.672451758367838,
+        "pct_change_high": -16.943270526485104,
+        "cap_binds_high": false
+      },
+      "dsw_uganda/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 7.015706988283995,
+        "cap_binds_baseline": false,
+        "low": 7.007929191723701,
+        "pct_change_low": -0.11086261973715211,
+        "cap_binds_low": false,
+        "central": 7.007929191723701,
+        "pct_change_central": -0.11086261973715211,
+        "cap_binds_central": false,
+        "high": 5.083412269149307,
+        "pct_change_high": -27.542409088087027,
+        "cap_binds_high": false
+      },
+      "dsw_malawi/relative_risk": {
+        "parameter_name": "relative_risk",
+        "baseline": 8.657297145900683,
+        "cap_binds_baseline": true,
+        "low": 8.657297145900683,
+        "pct_change_low": 0.0,
+        "cap_binds_low": true,
+        "central": 8.657297145900683,
+        "pct_change_central": 0.0,
+        "cap_binds_central": true,
+        "high": 6.607410559450333,
+        "pct_change_high": -23.678135934389086,
+        "cap_binds_high": false
+      }
+    },
     "materiality": "material",
     "interaction_effects": []
   },
@@ -1474,7 +2430,24 @@
     },
     "target_parameters": [
       {
-        "raw": "Based on the"
+        "name": "plausibility caps",
+        "mapped": "plausibility_cap"
+      },
+      {
+        "name": "ILC Kenya plausibility cap",
+        "mapped": "plausibility_cap"
+      },
+      {
+        "name": "DSW B plausibility cap",
+        "mapped": "plausibility_cap"
+      },
+      {
+        "name": "DSW D plausibility cap",
+        "mapped": "plausibility_cap"
+      },
+      {
+        "name": "DSW C plausibility cap",
+        "mapped": "plausibility_cap"
       }
     ],
     "alternative_range": [],
@@ -1532,12 +2505,21 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Mills-Reincke multiplier",
+        "mapped": null
       }
     ],
-    "alternative_range": [],
+    "alternative_range": [
+      {
+        "name": "Mills-Reincke multiplier",
+        "current": 3.744,
+        "low": 2.0,
+        "high": 3.744,
+        "mapped": null
+      }
+    ],
     "sensitivity_results": {},
-    "materiality": "notable",
+    "materiality": "material",
     "interaction_effects": []
   },
   {
@@ -1592,12 +2574,21 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Parameter 1: Mills-Reincke multiplier",
+        "mapped": null
       }
     ],
-    "alternative_range": [],
+    "alternative_range": [
+      {
+        "name": "Mills-Reincke multiplier",
+        "current": 3.744,
+        "low": 2.8,
+        "high": 3.2,
+        "mapped": null
+      }
+    ],
     "sensitivity_results": {},
-    "materiality": "material",
+    "materiality": "notable",
     "interaction_effects": []
   },
   {
@@ -1663,12 +2654,21 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Mills-Reincke multiplier",
+        "mapped": null
       }
     ],
-    "alternative_range": [],
+    "alternative_range": [
+      {
+        "name": "",
+        "current": 3.744,
+        "low": 1.5,
+        "high": 5.0,
+        "mapped": null
+      }
+    ],
     "sensitivity_results": {},
-    "materiality": "notable",
+    "materiality": "material",
     "interaction_effects": []
   },
   {
@@ -1731,12 +2731,21 @@
     },
     "target_parameters": [
       {
-        "raw": "The"
+        "name": "Mills-Reincke multiplier",
+        "mapped": null
       }
     ],
-    "alternative_range": [],
+    "alternative_range": [
+      {
+        "name": "Mills-Reincke multiplier",
+        "current": 3.744,
+        "low": 2.6,
+        "high": 3.0,
+        "mapped": null
+      }
+    ],
     "sensitivity_results": {},
-    "materiality": "material",
+    "materiality": "immaterial",
     "interaction_effects": []
   },
   {
@@ -1784,7 +2793,8 @@
     },
     "target_parameters": [
       {
-        "raw": "Which specific cells/parameters in the CEA does this"
+        "name": "Mills-Reincke multiplier",
+        "mapped": null
       }
     ],
     "alternative_range": [],

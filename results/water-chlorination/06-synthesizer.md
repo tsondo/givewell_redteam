@@ -1,120 +1,184 @@
 # Red Team Report: Water Quality Interventions
 
 ## Pipeline Summary
-- Investigation threads examined: Not specified
+- Investigation threads examined: 11
 - Candidate critiques generated: 31
 - Verified critiques: 30
-- Critiques surviving adversarial review: 28
-- Signal rate: 90% (28 surviving / 31 generated)
+- Critiques surviving adversarial review: 26
+- Signal rate: 84%
 
 ## Critical Findings (surviving strength: STRONG)
 
-### Finding 1: Cryptosporidium Resistance Creates Systematic Effectiveness Gap
-**Impact:** Reduces mortality reduction parameter by 10-15%, potentially shifting multiple programs below the 6x cash threshold
-**Evidence:** GEMS and MAL-ED studies confirm Cryptosporidium as the second leading cause of moderate-to-severe diarrhea in African infants, with documented extreme chlorine resistance (oocysts can survive pure bleach for 24 hours). Contemporary molecular diagnostics show higher detection rates than methods available during original RCT periods.
-**GiveWell's best defense:** The pooled mortality effect already reflects real-world pathogen mix from RCTs conducted in field settings with Cryptosporidium present.
-**Why it survives:** The defense conflates historical baseline incorporation with dynamic risk assessment. RCTs from 1990s-2000s had limited diagnostic capabilities and couldn't detect temporal shifts in pathogen burden. GiveWell acknowledges but doesn't quantitatively adjust for this known limitation.
-**Recommended action:** Conduct contemporary pathogen surveillance in implementation areas to quantify current Cryptosporidium burden and adjust mortality parameters accordingly.
-**Key unresolved question:** What proportion of deaths attributed to "other causes" in historical RCTs were actually due to undetected Cryptosporidium?
+### Finding 1: Non-linear Relationship Between Baseline Mortality and Treatment Effect
+**Impact:** The pooled ln(RR) could be reduced from -0.146 by 20-40% in low-mortality contexts (baseline <0.010), shifting several programs below the 6x cash threshold.
+**Evidence:** Epidemiological research demonstrates that linear treatment effect assumptions can "lead to biased estimates and inaccurate conclusions" when the true relationship is non-linear. Recent water treatment meta-analyses show 16% heterogeneity across studies, suggesting context-dependent effects.
+**GiveWell's best defense:** External validity adjustments (0.558-1.214) already account for contextual differences, and the pooled effect comes from real-world trials that captured baseline variation.
+**Why it survives:** External validity adjustments are blanket discounts, not mathematical corrections for non-linearity. A single multiplier cannot capture how treatment effects vary with baseline risk.
+**Recommended action:** Test whether treatment effects in GiveWell's 5 core RCTs correlate with baseline mortality rates; develop non-linear adjustment methodology.
+**Key unresolved question:** What is the actual mathematical form of GiveWell's external validity adjustment, and has it been tested against baseline mortality patterns?
 
-### Finding 2: Age-Specific Vulnerability Windows Not Captured in Uniform Model
-**Impact:** Overestimates mortality reduction by 15-25% if applied uniformly across under-5 population when benefits concentrate in 6-23 month window
-**Evidence:** Cryptosporidium mortality peaks at 12-23 months, coinciding with waning maternal antibodies and weaning introduction of contaminated water. CDC data confirms highest incidence in this specific age window.
-**GiveWell's best defense:** External validity adjustments (0.558-1.214) account for population differences including age distributions.
-**Why it survives:** External validity adjustments are broad geographic/contextual corrections, not age-stratified mortality parameters. The biological mechanism of age-specific pathogen vulnerability requires targeted modeling, not generic adjustment factors.
-**Recommended action:** Implement age-stratified mortality parameters in the CEA model, particularly for chlorine-resistant pathogen impacts.
-**Key unresolved question:** What is the actual age distribution of children in households served by water treatment programs?
+### Finding 2: Chlorine-Resistant Pathogen Burden Limiting Treatment Effectiveness
+**Impact:** Could reduce the pooled treatment effect by 25-50% if Cryptosporidium burden has increased or varies geographically from RCT contexts.
+**Evidence:** Cryptosporidium accounts for 8-15% of severe childhood diarrhea in developing countries and is highly resistant to household chlorination levels. WHO guidelines acknowledge this limitation. Recent studies confirm it as the second leading cause of moderate-to-severe diarrhea in African infants.
+**GiveWell's best defense:** The pooled mortality effect from RCTs already captures real-world pathogen mix including Cryptosporidium presence.
+**Why it survives:** RCTs from 15-20 years ago cannot capture current pathogen distributions. Even if they measured effectiveness in their time, this doesn't address temporal or geographic shifts in pathogen burden.
+**Recommended action:** Commission contemporary pathogen surveillance in implementation areas; adjust mortality parameters by location-specific Cryptosporidium prevalence.
+**Key unresolved question:** What is the current Cryptosporidium burden in implementation areas versus original RCT sites?
 
-### Finding 3: Adherence Decay Creates Multi-Year Effectiveness Decline
-**Impact:** Reduces effective coverage by 30-50% over 3-year programs if adherence drops from ~60% to 20-30% after year 1
-**Evidence:** Systematic reviews show median adoption rates of 47-58% with sharp declines over time. Even with intensive promotion, "only a third of intervention households met the definition of confirmed users in any month."
-**GiveWell's best defense:** RCT-derived mortality effects inherently capture adherence patterns during study periods.
-**Why it survives:** RCTs typically run 6-24 months while programs operate for years. The temporal mismatch between trial duration and program duration creates systematic overestimation of long-term effectiveness.
-**Recommended action:** Model adherence decay trajectories based on long-term follow-up studies and adjust person-years of coverage accordingly.
-**Key unresolved question:** What is the actual adherence trajectory in GiveWell-recommended programs over 3-5 year periods?
+### Finding 3: Underestimated Cryptosporidium Burden in Contemporary African Settings
+**Impact:** Overall mortality effect could be reduced by 9-14% if Cryptosporidium accounts for 10-15% of preventable deaths with <10% chlorine effectiveness.
+**Evidence:** GEMS study confirmed Cryptosporidium as most common cause of mortality due to moderate-to-severe diarrhea among 12-23 month-olds. Contemporary molecular diagnostics show higher detection rates than methods available during original RCTs.
+**GiveWell's best defense:** External validity adjustments account for implementation differences, and RCT participants likely included Cryptosporidium-affected populations.
+**Why it survives:** External validity adjustments are geographic/demographic, not pathogen-specific. No evidence these factors were calibrated to molecular diagnostic improvements or pathogen evolution.
+**Recommended action:** Re-evaluate mortality parameters using contemporary pathogen burden data; consider pathogen-specific effectiveness modeling.
+**Key unresolved question:** How much has the relative burden of Cryptosporidium versus chlorine-susceptible pathogens shifted since the 1990s-2000s?
 
-### Finding 4: Seasonal Disease Transmission Patterns Create Protection Gaps
-**Impact:** Reduces annual mortality benefits by 15-30% if interventions miss peak transmission seasons
-**Evidence:** WASH meta-analyses show significantly larger mortality effects during summer rainy seasons. Bacterial pathogens peak during "monsoon" seasons when shorter RCTs typically measure effects.
-**GiveWell's best defense:** RCTs capture seasonal variation by running across multiple seasons.
-**Why it survives:** RCTs measure average effects, not seasonal performance variation. If baseline seasonal mortality varies 2-3x but interventions provide constant protection, the average masks critical implementation timing effects.
-**Recommended action:** Analyze seasonal patterns in both RCT timing and program implementation to ensure alignment with peak disease burden periods.
-**Key unresolved question:** What was the actual seasonal distribution of the five RCTs in GiveWell's pooled analysis?
+### Finding 4: Age-Specific Pathogen Susceptibility Within Under-5 Population
+**Impact:** If 40% of under-5 deaths occur in 6-23 month-olds with 50% higher chlorine-resistant pathogen exposure, mortality parameters could be overestimated by 15-25%.
+**Evidence:** Cryptosporidium "stood alone with increased mortality risk in children ages 12-23 months." This coincides with waning maternal immunity and weaning period exposure. CDC data confirms highest cryptosporidiosis incidence in children <5 years.
+**GiveWell's best defense:** Pooled RCT estimates inherently captured actual age distributions in study populations.
+**Why it survives:** RCTs capture age distributions in their specific populations, not current implementation contexts. If programs preferentially serve households with infants, age-specific vulnerabilities become more important.
+**Recommended action:** Stratify mortality parameters by age group; assess age distributions in current versus historical populations.
+**Key unresolved question:** Do current chlorination protocols achieve sufficient CT values for Cryptosporidium inactivation in high-risk age groups?
+
+### Finding 5: Adherence Decay Over Program Duration
+**Impact:** For 3-year programs with adherence dropping from ~60% to ~20-30% in years 2-3, effective coverage could be reduced by 30-50%.
+**Evidence:** Systematic reviews show "adoption declined over time" with median usage rates of 47-58%. Studies document that "adherence declined sharply over eight week surveillance periods" even with intensive promotion.
+**GiveWell's best defense:** RCT-based mortality estimates already embed realistic adherence patterns from study periods.
+**Why it survives:** RCTs had median follow-up of 1-2 years, while GiveWell amortizes benefits over longer periods. The temporal mismatch means adherence decay beyond study periods isn't captured.
+**Recommended action:** Model adherence as declining 10-20% annually rather than constant; adjust person-years protected accordingly.
+**Key unresolved question:** What is actual usage in years 3-5 versus year 1 for GiveWell-recommended interventions?
+
+### Finding 6: Seasonal and Source-Dependent Usage Variation
+**Impact:** If households skip chlorination during 3-4 months of rainy season annually, effective coverage drops by 25-33%.
+**Evidence:** Multiple studies confirm seasonal water source switching, with households preferring rainwater during wet seasons. Chlorination adherence varies systematically by season and water source availability.
+**GiveWell's best defense:** Pooled mortality effects from RCTs capture real-world usage patterns including seasonal variations.
+**Why it survives:** RCTs create artificial adherence conditions with regular visits and free products. Autonomous behavior in scaled programs differs substantially from trial conditions.
+**Recommended action:** Incorporate seasonal coverage gaps into person-years calculations; investigate rational non-use patterns.
+**Key unresolved question:** What is the quantitative impact of seasonal adherence gaps on mortality outcomes in scaled programs?
+
+### Finding 7: Source Water Turbidity Variation and Dosing Inadequacy
+**Impact:** If 25% of treatment events occur during high-turbidity conditions with minimal protection, overall effectiveness could be reduced by 35-45%.
+**Evidence:** Studies show "disinfection efficiency was negatively correlated with turbidity." Field guidelines recommend double dosing for turbid water, but implementation research finds "variations in quality are rarely considered when recommending chlorine doses."
+**GiveWell's best defense:** RCT effectiveness captures average effects across turbidity conditions.
+**Why it survives:** Averaging across seasons obscures systematic failure during high-turbidity periods. If chlorination is ineffective 25% of the time, the average masks critical protection gaps.
+**Recommended action:** Require turbidity-responsive dosing protocols; model effectiveness as varying with seasonal water quality.
+**Key unresolved question:** Do RCTs provide seasonal sub-analyses or only average effects across study periods?
+
+### Finding 8: Acquired Immunity Development Timeline
+**Impact:** If most mortality prevention occurs in first 2 years of life rather than distributed across 0-5, years of life saved could be reduced by 10-20%.
+**Evidence:** Meta-analyses show water interventions reduce mortality by 11% in under-5s but only 2% in over-5s. Studies confirm "peak immune function is reached around 5-14 years of age" with mortality risk concentrated earlier.
+**GiveWell's best defense:** The model uses different mortality rates for under-5 versus over-5 populations.
+**Why it survives:** Binary age cutoffs don't capture gradual immunity development within the under-5 group. If vulnerability is concentrated in 0-2 years, uniform under-5 parameters overestimate impact.
+**Recommended action:** Model immunity development as a continuous function; adjust mortality parameters by single-year age groups.
+**Key unresolved question:** How does GiveWell's binary age cutoff compare to a graduated immunity model?
+
+### Finding 9: Market Competition from Improving Water Infrastructure
+**Impact:** If 20-40% of target areas gain improved water access during program periods, cost per person effectively treated increases substantially.
+**Evidence:** $733 million in rural water infrastructure investments documented. Studies show systematic decline in household chlorination adherence as piped water access improves.
+**GiveWell's best defense:** External validity adjustments account for baseline infrastructure differences.
+**Why it survives:** Static adjustments cannot capture temporal infrastructure trajectories. Multi-year programs face declining addressable populations as infrastructure improves.
+**Recommended action:** Model infrastructure development timelines; adjust cost-effectiveness for shrinking target populations.
+**Key unresolved question:** What is the actual rate of infrastructure development in target regions over 5-10 year horizons?
+
+### Finding 10: Caps Fail to Account for Baseline Diarrhea Mortality Heterogeneity
+**Impact:** Could reduce cost-effectiveness by 30-100% in highest-burden contexts if caps undervalue interventions where they're most needed.
+**Evidence:** Diarrhea represents 9% of under-5 deaths globally but over 20% in high-burden African regions. Intervention areas have "higher percentage of deaths due to enteric infections" than national averages.
+**GiveWell's best defense:** Program-specific baseline rates vary (0.0083-0.0134) and caps aren't currently binding.
+**Why it survives:** 60% variation in baseline rates is far smaller than actual heterogeneity (9% to >20%). If caps were recalibrated to high-burden contexts, they might bind and reveal undervaluation.
+**Recommended action:** Recalibrate caps using subnational disease burden data from intervention areas.
+**Key unresolved question:** How would caps change if based on high-burden intervention areas rather than national averages?
+
+### Finding 11: Model Structure Creates Systematic Upward Bias That Caps Mask
+**Impact:** In Kenya programs, removing caps reduces cost-effectiveness by up to 594% in sensitivity analysis.
+**Evidence:** External analysis found cap methodology "flawed for multiple reasons." GiveWell acknowledges caps involve "really uncertain assumptions" with low confidence.
+**GiveWell's best defense:** Caps are conservative bounds, not corrections for bias. Most programs don't hit caps.
+**Why it survives:** Sensitivity analysis shows extreme parameter movements when caps are removed, suggesting underlying parameters may be optimistically set.
+**Recommended action:** Examine why uncapped models produce implausible results; recalibrate base parameters.
+**Key unresolved question:** Are the parameter distributions that generate implausible estimates evidence of systematic optimism?
 
 ## Significant Findings (surviving strength: MODERATE)
 
-### Finding 5: Healthcare System Improvements Reduce Intervention Impact
-**Impact:** Could reduce mortality benefits by 30-50% in areas with improved case management
-**Evidence:** Case fatality rates can drop rapidly with healthcare access. Cholera CFR decreased to 1% within three months with improved case management. ORT can reduce diarrhea mortality by up to 93%.
-**Why it survives:** While GiveWell adjusts for general contextual differences, specific healthcare system interactions with preventive interventions aren't modeled separately.
+### Interaction Effects with Improved Health Systems
+Healthcare improvements reducing case fatality rates by 30-50% would proportionally reduce mortality benefits from preventing cases, potentially shifting ln(RR) from -0.146 to -0.07 to -0.10.
 
-### Finding 6: Non-linear Baseline Mortality Relationships
-**Impact:** Programs in low-mortality contexts may see 20-40% reduced effectiveness
-**Evidence:** Epidemiological research shows treatment benefits inherently constrained by baseline risk. Multiple programs hitting plausibility caps suggest model strain at low baselines.
-**Why it survives:** Linear scaling assumptions may not hold across GiveWell's full range of implementation contexts.
+### Seasonal Heterogeneity in RCT Timing
+Meta-analyses show larger mortality effects when RCTs are conducted during peak disease seasons. If implementation occurs preferentially in dry seasons, benefits could be overestimated by 15-30%.
 
-### Finding 7: Field Chlorination Quality Falls Short of Trial Standards
-**Impact:** 25-30% reduction in effectiveness if field conditions achieve only 39-51% safe contamination levels
-**Evidence:** Studies document systematic gaps between laboratory and household treatment effectiveness. Higher turbidity and shorter contact times reduce pathogen elimination.
-**Why it survives:** RCT supervision intensity exceeds routine program monitoring, creating implementation quality gaps.
+### Temporal Increases in Chlorine-Resistant Pathogen Burden
+Climate change may enhance Cryptosporidium transmission through temperature and precipitation changes. Combined with potential pathogen mix shifts, effectiveness could decline over time.
 
-### Finding 8: Temporal Pathogen Shifts Toward Chlorine Resistance
-**Impact:** 15% effectiveness reduction if resistant pathogen burden increased from historical baselines
-**Evidence:** Climate change may enhance Cryptosporidium transmission. Studies show climate effects on protozoan transmission patterns.
-**Why it survives:** Static resistance acknowledgment doesn't capture dynamic epidemiological shifts over decades since RCTs.
+### Field-Deployable Chlorine Concentrations vs. Lab Efficacy
+Studies show household chlorination achieves safe contamination levels only 39-51% of the time. If field conditions reduce effectiveness by 20%, mortality impact could drop by 25-30%.
 
-## Minor Findings (surviving strength: WEAK to MODERATE)
+### Geographic Variation in Cryptosporidium Genotypes
+C. hominis predominates in Africa with anthroponotic transmission maintaining high infection pressure. Regional variation in transmission intensity may require location-specific parameters.
 
-**Geographic Cryptosporidium Variation:** Different genotype distributions and transmission patterns across African regions may require location-specific effectiveness parameters rather than pooled estimates.
+### Behavioral Fatigue and Habit Decay
+Studies show habit decay stabilizes within 1-65 days but continues eroding over years. A 10-20% annual decline in consistent users reduces effective coverage beyond initial adoption rates.
 
-**Seasonal Water Source Switching:** Households commonly switch to rainwater during wet seasons, creating 25-33% protection gaps if they skip chlorination when using perceived "clean" sources.
+### Usage Quality vs. Quantity Degradation
+Even 90% adherence can reduce health gains by 96%. If treatment quality degrades 20-40% through improper practices, mortality reduction per person-year declines accordingly.
 
-**Infrastructure Competition:** Improving piped water access reduces chlorination demand, potentially accelerating adherence decline in transitioning communities.
+### Age-Varying Water Consumption Patterns
+Peak exposure during 6-24 month weaning period doesn't align with uniform under-5 benefit assumptions. Could reduce cost-effectiveness by 10-15% through moral weight interactions.
 
-**Behavioral Habit Decay:** Even with supply availability, usage consistency declines 10-20% annually as initial motivation wanes, affecting long-term coverage calculations.
+### Maintenance Delay Compounding
+Water point failure rates of 20-36% create cascading system failures. Reactive maintenance costs 3-5x planned maintenance, reducing cost-effectiveness through both pathways.
 
-**Treatment Quality Degradation:** Proper dosing and storage practices deteriorate among continuing users, reducing per-use effectiveness without changing binary usage statistics.
+### Seasonal Water Volume Fluctuations
+Flow variations cause systematic over/under-chlorination. Evidence Action acknowledges "managing variable flow rates" as a key challenge affecting consistent dosing.
 
-**Seasonal Dosing Challenges:** Flow variations cause systematic over/under-chlorination, with taste issues reducing adoption in dry seasons and inadequate protection in wet seasons.
+### Caps May Not Reflect Multipathway Effects
+Mills-Reincke multiplier based on 1904 data may not capture modern WASH mechanisms. Mixed evidence for respiratory pathway effects suggests uncertainty in appropriate multipliers.
 
-**Mills-Reincke Multiplier Outdated:** The 3.744 indirect mortality multiplier derives from early 20th century typhoid contexts and may overestimate benefits by 25-40% in modern disease environments.
+### Disease Burden Composition Mismatch
+Historical multiplier from typhoid-era contexts may not apply to modern LMIC disease patterns. Japanese studies found lower ratios than historical US contexts.
 
-**Plausibility Cap Design Issues:** Caps based on national mortality averages may undervalue interventions in high-burden local contexts where enteric disease comprises 20%+ of deaths rather than 9% globally.
+### Healthcare System Mediation Effects
+ORT can reduce diarrhea mortality by 93%. If healthcare reduces the multiplier from 3.744 to 2.8-3.2, cost-effectiveness decreases by 15-25%.
+
+### Immunological Environment Differences
+Malaria/helminth co-infections modulate immune responses. Direction and magnitude of effects on water intervention benefits remain unknown.
+
+### Seasonal and Geographic Multiplier Variation
+If Mills-Reincke effects vary from 2.0-6.0 seasonally but interventions provide constant benefits, effective multiplier could be 25-35% lower during off-seasons.
+
+## Minor Findings (surviving strength: WEAK)
+
+Geographic variation in Cryptosporidium genotypes shows C. hominis predominance in Africa, but evidence linking this to differential chlorination effectiveness remains weak. The mechanism is plausible but lacks direct empirical support for susceptibility differences between species.
 
 ## Comparison with GiveWell's AI Output
 
 | Our Critique | Overlap with GiveWell AI Output? | What We Added |
 |---|---|---|
-| Cryptosporidium resistance gap | Unknown | Quantified 10-15% impact, verified with contemporary studies, identified diagnostic evolution issue |
-| Age-specific vulnerability | Unknown | Precise 6-23 month window identification, mechanistic explanation of maternal antibody waning |
-| Adherence decay trajectory | Unknown | Multi-year modeling need, specific decay rates from systematic reviews |
-| Seasonal transmission patterns | Unknown | Quantified seasonal mortality variation, identified RCT timing bias |
-| Healthcare system interactions | Unknown | Case fatality rate improvements, ORT impact quantification |
-| Field implementation quality | Unknown | Specific turbidity and contact time failures, 39-51% achievement rates |
+| Non-linear baseline mortality relationships | No | Quantified impact ranges, verified epidemiological evidence |
+| Cryptosporidium resistance (multiple findings) | No | Contemporary burden data, age-specific effects, geographic variation |
+| Adherence decay patterns | No | Temporal mismatch with RCT durations, quantified coverage losses |
+| Seasonal usage variation | No | Mechanism verification, rational non-use patterns |
+| Age-stratified immunity development | No | Continuous versus binary modeling implications |
+| Infrastructure competition | No | Quantified investment data, temporal trajectory modeling |
+| Cap methodology issues | No | Sensitivity analysis revealing parameter optimism |
+| Healthcare system interactions | No | Quantified case fatality rate improvements |
+| Turbidity dosing inadequacy | No | Field implementation gap documentation |
+| Mills-Reincke multiplier concerns | No | Contemporary disease pattern mismatches |
 
 ## Ungrounded Hypotheses Worth Investigating
 
-1. **Reinfection cycle intensity in anthroponotic transmission zones** - High Cryptosporidium diversity may maintain infection pressure despite water treatment
-2. **Supply chain resilience during peak disease seasons** - Stockouts may cluster when need is highest
-3. **Age-targeting effectiveness** - Programs may unknowingly serve households with older children, missing peak vulnerability windows
-4. **Immunological environment interactions** - Malaria/helminth co-infections may alter water intervention effectiveness
+1. **Temporal pathogen distribution shifts**: The hypothesis that pathogen mixes have shifted from bacterial to protozoan dominance over 15-25 years is mechanistically plausible but lacks direct surveillance data comparing RCT-era to contemporary distributions.
+
+2. **Implementation timing preferences**: Whether programs systematically implement during dry seasons (when disease burden is lower) versus peak transmission periods could substantially affect real-world effectiveness but requires operational data.
+
+3. **Cryptosporidium genotype-specific susceptibility**: While geographic variation in genotypes is documented, whether different Cryptosporidium species have differential chlorine susceptibility remains unverified.
 
 ## Meta-Observations
 
-**Systematic Blind Spots:**
-- Over-reliance on historical RCT evidence without accounting for temporal epidemiological shifts
-- Assumption of uniform effects across heterogeneous age groups and seasons
-- Limited modeling of long-term behavioral dynamics beyond trial periods
+**Systematic blind spots**: GiveWell's analysis shows consistent gaps in accounting for within-category heterogeneity (age groups within under-5s, seasonal variation within years, pathogen-specific effects within "diarrhea").
 
-**Structural Model Issues:**
-- Linear scaling assumptions strain at extremes (low baseline mortality, high resistance burden)
-- Multiplicative parameter chains may compound optimistic biases
-- External validity adjustments used as catch-all corrections rather than targeted adjustments
+**Temporal mismatches**: Multiple critiques identify disconnects between RCT timeframes (1-2 years) and program durations (5+ years), suggesting systematic overestimation of long-term effectiveness.
 
-**Data Gaps:**
-- Contemporary pathogen surveillance in implementation areas
-- Long-term adherence tracking beyond 2 years
-- Age-disaggregated mortality effects from water interventions
-- Seasonal program performance variation
+**Parameter optimism**: The necessity and binding nature of plausibility caps, combined with extreme sensitivity results when removed, suggests underlying parameters may be systematically optimistic rather than conservative.
 
-The pipeline's 90% signal rate suggests these critiques represent substantive concerns rather than speculative hypotheses. The concentration of findings around Cryptosporidium resistance, age-specific effects, and temporal dynamics indicates these may be the most critical areas for GiveWell to investigate.
+**Pathogen-blind modeling**: The repeated emergence of Cryptosporidium-related critiques across multiple threads indicates a fundamental gap in pathogen-specific effectiveness modeling.
+
+**Static versus dynamic**: Most parameters are modeled as constants when evidence suggests they vary over time (adherence, infrastructure, pathogen burden), creating systematic overestimation of multi-year benefits.
