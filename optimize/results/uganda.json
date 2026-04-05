@@ -1,0 +1,1267 @@
+{
+  "minimize": {
+    "country": "uganda",
+    "country_name": "Uganda",
+    "direction": "minimize",
+    "best_params": {
+      "incidence_reduction": 0.5,
+      "net_usage_adj": -0.003959100665421766,
+      "external_validity": 0.0,
+      "indirect_deaths_multiplier": 1.0,
+      "over5_relative_efficacy": 1.0
+    },
+    "best_metrics": {
+      "cost_per_daly": 55.2140979046037,
+      "deaths_averted_per_million": 624.0977414304175,
+      "ce_multiple": 24.388696144184852
+    },
+    "baseline_metrics": {
+      "cost_per_daly": 94.71570646294745,
+      "deaths_averted_per_million": 363.81498997593803,
+      "ce_multiple": 15.603039650236651
+    },
+    "at_bound": {
+      "incidence_reduction": "upper",
+      "external_validity": "upper",
+      "indirect_deaths_multiplier": "upper",
+      "over5_relative_efficacy": "upper"
+    },
+    "n_trials": 50,
+    "trial_history": [
+      {
+        "trial": 1,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.35775736859068274,
+          "net_usage_adj": -0.05568960830569267,
+          "external_validity": -0.048396808328107,
+          "indirect_deaths_multiplier": 0.43207401074469093,
+          "over5_relative_efficacy": 0.5787635389715433
+        },
+        "cost_per_daly": 163.2054625586068
+      },
+      {
+        "trial": 2,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.41964862821623683,
+          "net_usage_adj": -0.24559336714446545,
+          "external_validity": -0.24120670929551125,
+          "indirect_deaths_multiplier": 0.7463486360386014,
+          "over5_relative_efficacy": 0.9151913611218333
+        },
+        "cost_per_daly": 169.26856296827026
+      },
+      {
+        "trial": 3,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.46167435590177774,
+          "net_usage_adj": -0.117240531463176,
+          "external_validity": -0.10905999271199107,
+          "indirect_deaths_multiplier": 0.6107877863571047,
+          "over5_relative_efficacy": 0.7710909955203533
+        },
+        "cost_per_daly": 112.1552797738348
+      },
+      {
+        "trial": 4,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.27654465567320585,
+          "net_usage_adj": -0.18060010084882377,
+          "external_validity": -0.1649070808198303,
+          "indirect_deaths_multiplier": 0.867637138068676,
+          "over5_relative_efficacy": 0.42285228166729216
+        },
+        "cost_per_daly": 250.19353463862723
+      },
+      {
+        "trial": 5,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.30801282287575305,
+          "net_usage_adj": -0.09645551797002552,
+          "external_validity": -0.19233615091070533,
+          "indirect_deaths_multiplier": 0.9837519181892276,
+          "over5_relative_efficacy": 0.5281977701932192
+        },
+        "cost_per_daly": 189.29185537959597
+      },
+      {
+        "trial": 6,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.4927066939417273,
+          "net_usage_adj": -0.20196596849709747,
+          "external_validity": -0.003432489698752761,
+          "indirect_deaths_multiplier": 0.6425100728869438,
+          "over5_relative_efficacy": 0.7777054263278842
+        },
+        "cost_per_daly": 91.2431113547132
+      },
+      {
+        "trial": 7,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.38861628877930343,
+          "net_usage_adj": -0.030180477630347036,
+          "external_validity": -0.15118513186462224,
+          "indirect_deaths_multiplier": 0.806216812506318,
+          "over5_relative_efficacy": 0.9358597256243228
+        },
+        "cost_per_daly": 120.68092088144988
+      },
+      {
+        "trial": 8,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.3262891999911517,
+          "net_usage_adj": -0.271683359798044,
+          "external_validity": -0.09143180586397648,
+          "indirect_deaths_multiplier": 0.5200474785640836,
+          "over5_relative_efficacy": 0.6700367832556366
+        },
+        "cost_per_daly": 235.4182602325217
+      },
+      {
+        "trial": 9,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.32986035803332925,
+          "net_usage_adj": -0.13529598182067273,
+          "external_validity": -0.13661623373627663,
+          "indirect_deaths_multiplier": 0.6884672282263637,
+          "over5_relative_efficacy": 0.8732259625568985
+        },
+        "cost_per_daly": 179.18814574546704
+      },
+      {
+        "trial": 10,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.3927355674095452,
+          "net_usage_adj": -0.16569670988246799,
+          "external_validity": -0.07478777808137238,
+          "indirect_deaths_multiplier": 0.9378680139780045,
+          "over5_relative_efficacy": 0.621465802937746
+        },
+        "cost_per_daly": 123.07869182762694
+      },
+      {
+        "trial": 11,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.47589187137782574,
+          "net_usage_adj": -0.06678705085068942,
+          "external_validity": -0.20876554935239255,
+          "indirect_deaths_multiplier": 0.5109311480075122,
+          "over5_relative_efficacy": 0.46555470656603576
+        },
+        "cost_per_daly": 139.48134063236176
+      },
+      {
+        "trial": 12,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.2858872227370739,
+          "net_usage_adj": -0.23310696836560962,
+          "external_validity": -0.018274906557053328,
+          "indirect_deaths_multiplier": 0.8154063763096928,
+          "over5_relative_efficacy": 0.7291257221251726
+        },
+        "cost_per_daly": 198.33895459042398
+      },
+      {
+        "trial": 13,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.2548472557682544,
+          "net_usage_adj": -0.017254412267357133,
+          "external_validity": -0.12362686521373689,
+          "indirect_deaths_multiplier": 0.7367149610072374,
+          "over5_relative_efficacy": 0.8198221931234002
+        },
+        "cost_per_daly": 211.5212865493623
+      },
+      {
+        "trial": 14,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.4444313340354711,
+          "net_usage_adj": -0.2820484531112015,
+          "external_validity": -0.18154908111318946,
+          "indirect_deaths_multiplier": 0.4416344346478582,
+          "over5_relative_efficacy": 0.4856462620198727
+        },
+        "cost_per_daly": 198.77539819054132
+      },
+      {
+        "trial": 15,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.4241961070802063,
+          "net_usage_adj": -0.08111246041953563,
+          "external_validity": -0.031965384259819984,
+          "indirect_deaths_multiplier": 0.9154299972578883,
+          "over5_relative_efficacy": 0.6274851499125361
+        },
+        "cost_per_daly": 94.1274303613224
+      },
+      {
+        "trial": 16,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.3609003273304552,
+          "net_usage_adj": -0.21928906962275505,
+          "external_validity": -0.22636226494796574,
+          "indirect_deaths_multiplier": 0.5629216939210892,
+          "over5_relative_efficacy": 0.977976331487298
+        },
+        "cost_per_daly": 214.7277840134455
+      },
+      {
+        "trial": 17,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.3436350297118406,
+          "net_usage_adj": -0.014785708077025173,
+          "external_validity": -0.06700151454714873,
+          "indirect_deaths_multiplier": 0.759195090518222,
+          "over5_relative_efficacy": 0.4936111842654619
+        },
+        "cost_per_daly": 141.47461545003844
+      },
+      {
+        "trial": 18,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.5,
+          "net_usage_adj": -0.003959100665421766,
+          "external_validity": 0.0,
+          "indirect_deaths_multiplier": 1.0,
+          "over5_relative_efficacy": 1.0
+        },
+        "cost_per_daly": 55.2140979046037
+      },
+      {
+        "trial": 19,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4678651475469294,
+          "net_usage_adj": -0.05889837693026567,
+          "external_validity": -0.20335748527849104,
+          "indirect_deaths_multiplier": 0.9355353990939866,
+          "over5_relative_efficacy": 0.7236053451493905
+        },
+        "cost_per_daly": 102.63941713779938
+      },
+      {
+        "trial": 20,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.3373023936531652,
+          "net_usage_adj": -0.08221329633892818,
+          "external_validity": -0.025722435011855727,
+          "indirect_deaths_multiplier": 0.9322518545590703,
+          "over5_relative_efficacy": 0.8679253275145743
+        },
+        "cost_per_daly": 121.76039719178031
+      },
+      {
+        "trial": 21,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.5,
+          "net_usage_adj": -0.12278821572994239,
+          "external_validity": 0.0,
+          "indirect_deaths_multiplier": 1.0,
+          "over5_relative_efficacy": 1.0
+        },
+        "cost_per_daly": 62.6935259181585
+      },
+      {
+        "trial": 22,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4523402888696284,
+          "net_usage_adj": -0.056965981596245774,
+          "external_validity": -0.033231920354974076,
+          "indirect_deaths_multiplier": 0.9479443315338828,
+          "over5_relative_efficacy": 0.7068054393165627
+        },
+        "cost_per_daly": 80.1586546876995
+      },
+      {
+        "trial": 23,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4939630198656336,
+          "net_usage_adj": -0.1451098955096414,
+          "external_validity": -0.1692608817646885,
+          "indirect_deaths_multiplier": 0.8771117168612221,
+          "over5_relative_efficacy": 0.5624993507572446
+        },
+        "cost_per_daly": 105.06759673333062
+      },
+      {
+        "trial": 24,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4826893314008912,
+          "net_usage_adj": -0.04247617444709645,
+          "external_validity": -0.1427514931562454,
+          "indirect_deaths_multiplier": 0.8505226406748985,
+          "over5_relative_efficacy": 0.8527257244508094
+        },
+        "cost_per_daly": 87.44704316835313
+      },
+      {
+        "trial": 25,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.48681214434596465,
+          "net_usage_adj": -0.00419968085313871,
+          "external_validity": -0.061655453685264594,
+          "indirect_deaths_multiplier": 0.6257557513185494,
+          "over5_relative_efficacy": 0.4501004300192013
+        },
+        "cost_per_daly": 90.53653479456327
+      },
+      {
+        "trial": 26,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4982411990298251,
+          "net_usage_adj": -0.27786103057938033,
+          "external_validity": -0.1115364288996698,
+          "indirect_deaths_multiplier": 0.9815815213714594,
+          "over5_relative_efficacy": 0.7138587065020894
+        },
+        "cost_per_daly": 100.74861161168667
+      },
+      {
+        "trial": 27,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4532252522825194,
+          "net_usage_adj": -8.469801416083333e-05,
+          "external_validity": -0.0008407907315236551,
+          "indirect_deaths_multiplier": 0.7332590233615766,
+          "over5_relative_efficacy": 0.8613924491083063
+        },
+        "cost_per_daly": 77.38352247342347
+      },
+      {
+        "trial": 28,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.48738015591441053,
+          "net_usage_adj": -0.25587795572128863,
+          "external_validity": -0.0183530937096264,
+          "indirect_deaths_multiplier": 0.6952697758477229,
+          "over5_relative_efficacy": 0.5549466329793751
+        },
+        "cost_per_daly": 104.73301737321559
+      },
+      {
+        "trial": 29,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4283373964711381,
+          "net_usage_adj": -0.0314379486938402,
+          "external_validity": -0.12208063947108347,
+          "indirect_deaths_multiplier": 0.7192680911591893,
+          "over5_relative_efficacy": 0.46430320680386566
+        },
+        "cost_per_daly": 118.37320849821806
+      },
+      {
+        "trial": 30,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4955946542271516,
+          "net_usage_adj": -0.2663883293495843,
+          "external_validity": -0.1505361002385646,
+          "indirect_deaths_multiplier": 0.9816822599652213,
+          "over5_relative_efficacy": 0.9193042755363882
+        },
+        "cost_per_daly": 102.15630163418464
+      },
+      {
+        "trial": 31,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.48238228606195643,
+          "net_usage_adj": -0.050814177663681265,
+          "external_validity": -0.008743272333371854,
+          "indirect_deaths_multiplier": 0.4745783340913269,
+          "over5_relative_efficacy": 0.8385204851221866
+        },
+        "cost_per_daly": 88.07664470503421
+      },
+      {
+        "trial": 32,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.27922451017709105,
+          "net_usage_adj": -0.018050362915957463,
+          "external_validity": -0.09307298673214554,
+          "indirect_deaths_multiplier": 0.6009433687942517,
+          "over5_relative_efficacy": 0.4835632435980324
+        },
+        "cost_per_daly": 213.4677085928483
+      },
+      {
+        "trial": 33,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4962102997405836,
+          "net_usage_adj": -0.04833057406621977,
+          "external_validity": -0.2188343296991833,
+          "indirect_deaths_multiplier": 0.9525051295704234,
+          "over5_relative_efficacy": 0.921937817237277
+        },
+        "cost_per_daly": 90.55297768559471
+      },
+      {
+        "trial": 34,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2667691193471069,
+          "net_usage_adj": -0.07501185888024667,
+          "external_validity": -0.19752360172610356,
+          "indirect_deaths_multiplier": 0.9388325736644283,
+          "over5_relative_efficacy": 0.5230837842892043
+        },
+        "cost_per_daly": 228.31817917410436
+      },
+      {
+        "trial": 35,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.3019715637865068,
+          "net_usage_adj": -0.2920403388378541,
+          "external_validity": -0.20464114122755067,
+          "indirect_deaths_multiplier": 0.7498249365818153,
+          "over5_relative_efficacy": 0.6528547303554988
+        },
+        "cost_per_daly": 277.3640111676976
+      },
+      {
+        "trial": 36,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.40012921510841337,
+          "net_usage_adj": -0.10048899763612335,
+          "external_validity": -0.2061571803441376,
+          "indirect_deaths_multiplier": 0.9486471675549759,
+          "over5_relative_efficacy": 0.6512623149352439
+        },
+        "cost_per_daly": 136.09187078172178
+      },
+      {
+        "trial": 37,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.42435506681171,
+          "net_usage_adj": -0.21079529778823475,
+          "external_validity": -0.0189009511558674,
+          "indirect_deaths_multiplier": 0.9826349470992206,
+          "over5_relative_efficacy": 0.9665598934680604
+        },
+        "cost_per_daly": 95.50369038337686
+      },
+      {
+        "trial": 38,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.46867541817104985,
+          "net_usage_adj": -0.1413188597918364,
+          "external_validity": -0.015233075371775956,
+          "indirect_deaths_multiplier": 0.8792699414641992,
+          "over5_relative_efficacy": 0.9987604663200025
+        },
+        "cost_per_daly": 78.0244526628819
+      },
+      {
+        "trial": 39,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2644606691408491,
+          "net_usage_adj": -0.009269210957756624,
+          "external_validity": -0.029053528759143576,
+          "indirect_deaths_multiplier": 0.9566513699171277,
+          "over5_relative_efficacy": 0.9969446935878612
+        },
+        "cost_per_daly": 149.9557542248228
+      },
+      {
+        "trial": 40,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.46788420153809407,
+          "net_usage_adj": -0.007953309246780949,
+          "external_validity": -0.00778053617857713,
+          "indirect_deaths_multiplier": 0.8497910990457549,
+          "over5_relative_efficacy": 0.4780517440783792
+        },
+        "cost_per_daly": 77.21597788985623
+      },
+      {
+        "trial": 41,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4395657989822557,
+          "net_usage_adj": -0.2926239250623595,
+          "external_validity": -0.2444691121177507,
+          "indirect_deaths_multiplier": 0.5941661314897247,
+          "over5_relative_efficacy": 0.6931859142427994
+        },
+        "cost_per_daly": 196.87360647567866
+      },
+      {
+        "trial": 42,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4491343227440441,
+          "net_usage_adj": -0.15554329454623497,
+          "external_validity": -0.22067295275940138,
+          "indirect_deaths_multiplier": 0.4751114753215303,
+          "over5_relative_efficacy": 0.8113391723373828
+        },
+        "cost_per_daly": 160.83173307703305
+      },
+      {
+        "trial": 43,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2578965362064105,
+          "net_usage_adj": -0.019136326126893033,
+          "external_validity": -0.2370071790871319,
+          "indirect_deaths_multiplier": 0.7247778011806423,
+          "over5_relative_efficacy": 0.8254363116705499
+        },
+        "cost_per_daly": 248.57880615743818
+      },
+      {
+        "trial": 44,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.46675787403061214,
+          "net_usage_adj": -0.12639737742828197,
+          "external_validity": -0.14034614520260238,
+          "indirect_deaths_multiplier": 0.8351545962490818,
+          "over5_relative_efficacy": 0.6920013648548218
+        },
+        "cost_per_daly": 105.3291942807386
+      },
+      {
+        "trial": 45,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4912796741090114,
+          "net_usage_adj": -0.2985180057196771,
+          "external_validity": -0.012047053644190259,
+          "indirect_deaths_multiplier": 0.7834719626893003,
+          "over5_relative_efficacy": 0.9207509767120132
+        },
+        "cost_per_daly": 94.23067308639426
+      },
+      {
+        "trial": 46,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.37429369100210685,
+          "net_usage_adj": -0.11464582793963585,
+          "external_validity": -0.032773753880320444,
+          "indirect_deaths_multiplier": 0.7423658479832977,
+          "over5_relative_efficacy": 0.41823223581810215
+        },
+        "cost_per_daly": 136.69072841640335
+      },
+      {
+        "trial": 47,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.37977044628405454,
+          "net_usage_adj": -0.1562454367110807,
+          "external_validity": -0.24358948354839108,
+          "indirect_deaths_multiplier": 0.6047486965756939,
+          "over5_relative_efficacy": 0.6281173712715142
+        },
+        "cost_per_daly": 202.82373793241712
+      },
+      {
+        "trial": 48,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.48785083555166425,
+          "net_usage_adj": -0.11951645395610064,
+          "external_validity": -0.04520278514330245,
+          "indirect_deaths_multiplier": 0.9305238780090447,
+          "over5_relative_efficacy": 0.5368478631693595
+        },
+        "cost_per_daly": 81.64705859620763
+      },
+      {
+        "trial": 49,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2979668311796857,
+          "net_usage_adj": -0.20298853136534378,
+          "external_validity": -0.193335899443253,
+          "indirect_deaths_multiplier": 0.6129977834991625,
+          "over5_relative_efficacy": 0.44165430564765606
+        },
+        "cost_per_daly": 281.9181646449231
+      },
+      {
+        "trial": 50,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.25904009513119053,
+          "net_usage_adj": -0.2090614932164014,
+          "external_validity": -0.18422185752228928,
+          "indirect_deaths_multiplier": 0.6160818444829115,
+          "over5_relative_efficacy": 0.45258564805830315
+        },
+        "cost_per_daly": 331.4871397246926
+      }
+    ],
+    "elapsed_seconds": 4.1
+  },
+  "maximize": {
+    "country": "uganda",
+    "country_name": "Uganda",
+    "direction": "maximize",
+    "best_params": {
+      "incidence_reduction": 0.25,
+      "net_usage_adj": -0.3,
+      "external_validity": -0.25,
+      "indirect_deaths_multiplier": 0.4,
+      "over5_relative_efficacy": 0.4
+    },
+    "best_metrics": {
+      "cost_per_daly": 506.2501805376347,
+      "deaths_averted_per_million": 68.0671239678095,
+      "ce_multiple": 3.7585429207480066
+    },
+    "baseline_metrics": {
+      "cost_per_daly": 94.71570646294745,
+      "deaths_averted_per_million": 363.81498997593803,
+      "ce_multiple": 15.603039650236651
+    },
+    "at_bound": {
+      "incidence_reduction": "lower",
+      "net_usage_adj": "lower",
+      "external_validity": "lower",
+      "indirect_deaths_multiplier": "lower",
+      "over5_relative_efficacy": "lower"
+    },
+    "n_trials": 50,
+    "trial_history": [
+      {
+        "trial": 1,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.35775736859068274,
+          "net_usage_adj": -0.05568960830569267,
+          "external_validity": -0.048396808328107,
+          "indirect_deaths_multiplier": 0.43207401074469093,
+          "over5_relative_efficacy": 0.5787635389715433
+        },
+        "cost_per_daly": 163.2054625586068
+      },
+      {
+        "trial": 2,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.41964862821623683,
+          "net_usage_adj": -0.24559336714446545,
+          "external_validity": -0.24120670929551125,
+          "indirect_deaths_multiplier": 0.7463486360386014,
+          "over5_relative_efficacy": 0.9151913611218333
+        },
+        "cost_per_daly": 169.26856296827026
+      },
+      {
+        "trial": 3,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.46167435590177774,
+          "net_usage_adj": -0.117240531463176,
+          "external_validity": -0.10905999271199107,
+          "indirect_deaths_multiplier": 0.6107877863571047,
+          "over5_relative_efficacy": 0.7710909955203533
+        },
+        "cost_per_daly": 112.1552797738348
+      },
+      {
+        "trial": 4,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.27654465567320585,
+          "net_usage_adj": -0.18060010084882377,
+          "external_validity": -0.1649070808198303,
+          "indirect_deaths_multiplier": 0.867637138068676,
+          "over5_relative_efficacy": 0.42285228166729216
+        },
+        "cost_per_daly": 250.19353463862723
+      },
+      {
+        "trial": 5,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.30801282287575305,
+          "net_usage_adj": -0.09645551797002552,
+          "external_validity": -0.19233615091070533,
+          "indirect_deaths_multiplier": 0.9837519181892276,
+          "over5_relative_efficacy": 0.5281977701932192
+        },
+        "cost_per_daly": 189.29185537959597
+      },
+      {
+        "trial": 6,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.4927066939417273,
+          "net_usage_adj": -0.20196596849709747,
+          "external_validity": -0.003432489698752761,
+          "indirect_deaths_multiplier": 0.6425100728869438,
+          "over5_relative_efficacy": 0.7777054263278842
+        },
+        "cost_per_daly": 91.2431113547132
+      },
+      {
+        "trial": 7,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.38861628877930343,
+          "net_usage_adj": -0.030180477630347036,
+          "external_validity": -0.15118513186462224,
+          "indirect_deaths_multiplier": 0.806216812506318,
+          "over5_relative_efficacy": 0.9358597256243228
+        },
+        "cost_per_daly": 120.68092088144988
+      },
+      {
+        "trial": 8,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.3262891999911517,
+          "net_usage_adj": -0.271683359798044,
+          "external_validity": -0.09143180586397648,
+          "indirect_deaths_multiplier": 0.5200474785640836,
+          "over5_relative_efficacy": 0.6700367832556366
+        },
+        "cost_per_daly": 235.4182602325217
+      },
+      {
+        "trial": 9,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.32986035803332925,
+          "net_usage_adj": -0.13529598182067273,
+          "external_validity": -0.13661623373627663,
+          "indirect_deaths_multiplier": 0.6884672282263637,
+          "over5_relative_efficacy": 0.8732259625568985
+        },
+        "cost_per_daly": 179.18814574546704
+      },
+      {
+        "trial": 10,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.3927355674095452,
+          "net_usage_adj": -0.16569670988246799,
+          "external_validity": -0.07478777808137238,
+          "indirect_deaths_multiplier": 0.9378680139780045,
+          "over5_relative_efficacy": 0.621465802937746
+        },
+        "cost_per_daly": 123.07869182762694
+      },
+      {
+        "trial": 11,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.47589187137782574,
+          "net_usage_adj": -0.06678705085068942,
+          "external_validity": -0.20876554935239255,
+          "indirect_deaths_multiplier": 0.5109311480075122,
+          "over5_relative_efficacy": 0.46555470656603576
+        },
+        "cost_per_daly": 139.48134063236176
+      },
+      {
+        "trial": 12,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.2858872227370739,
+          "net_usage_adj": -0.23310696836560962,
+          "external_validity": -0.018274906557053328,
+          "indirect_deaths_multiplier": 0.8154063763096928,
+          "over5_relative_efficacy": 0.7291257221251726
+        },
+        "cost_per_daly": 198.33895459042398
+      },
+      {
+        "trial": 13,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.2548472557682544,
+          "net_usage_adj": -0.017254412267357133,
+          "external_validity": -0.12362686521373689,
+          "indirect_deaths_multiplier": 0.7367149610072374,
+          "over5_relative_efficacy": 0.8198221931234002
+        },
+        "cost_per_daly": 211.5212865493623
+      },
+      {
+        "trial": 14,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.4444313340354711,
+          "net_usage_adj": -0.2820484531112015,
+          "external_validity": -0.18154908111318946,
+          "indirect_deaths_multiplier": 0.4416344346478582,
+          "over5_relative_efficacy": 0.4856462620198727
+        },
+        "cost_per_daly": 198.77539819054132
+      },
+      {
+        "trial": 15,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.4241961070802063,
+          "net_usage_adj": -0.08111246041953563,
+          "external_validity": -0.031965384259819984,
+          "indirect_deaths_multiplier": 0.9154299972578883,
+          "over5_relative_efficacy": 0.6274851499125361
+        },
+        "cost_per_daly": 94.1274303613224
+      },
+      {
+        "trial": 16,
+        "phase": "sobol",
+        "params": {
+          "incidence_reduction": 0.3609003273304552,
+          "net_usage_adj": -0.21928906962275505,
+          "external_validity": -0.22636226494796574,
+          "indirect_deaths_multiplier": 0.5629216939210892,
+          "over5_relative_efficacy": 0.977976331487298
+        },
+        "cost_per_daly": 214.7277840134455
+      },
+      {
+        "trial": 17,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.25,
+          "net_usage_adj": -0.3,
+          "external_validity": -0.25,
+          "indirect_deaths_multiplier": 0.4,
+          "over5_relative_efficacy": 0.4
+        },
+        "cost_per_daly": 506.2501805376347
+      },
+      {
+        "trial": 18,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.38567402078956214,
+          "net_usage_adj": -0.2577227325075712,
+          "external_validity": -0.04945075481149008,
+          "indirect_deaths_multiplier": 0.44473038620786254,
+          "over5_relative_efficacy": 0.9921321619603104
+        },
+        "cost_per_daly": 167.52738982932442
+      },
+      {
+        "trial": 19,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2592217368386332,
+          "net_usage_adj": -0.11713069980603094,
+          "external_validity": -0.12433024419278463,
+          "indirect_deaths_multiplier": 0.4308872507499936,
+          "over5_relative_efficacy": 0.5671878785419668
+        },
+        "cost_per_daly": 298.2043390633786
+      },
+      {
+        "trial": 20,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.27327569195147483,
+          "net_usage_adj": -0.030835272614001985,
+          "external_validity": -0.024895485709167386,
+          "indirect_deaths_multiplier": 0.7798608743639608,
+          "over5_relative_efficacy": 0.6034178746292205
+        },
+        "cost_per_daly": 176.71090098737196
+      },
+      {
+        "trial": 21,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2522992629041574,
+          "net_usage_adj": -0.26955853714019035,
+          "external_validity": -0.08412455772298605,
+          "indirect_deaths_multiplier": 0.40303695030773123,
+          "over5_relative_efficacy": 0.4964848308504992
+        },
+        "cost_per_daly": 366.17311675350163
+      },
+      {
+        "trial": 22,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.25762506248476236,
+          "net_usage_adj": -0.28879554337523566,
+          "external_validity": -0.04434985983508544,
+          "indirect_deaths_multiplier": 0.6161143848467577,
+          "over5_relative_efficacy": 0.4762363075911309
+        },
+        "cost_per_daly": 303.16415846638927
+      },
+      {
+        "trial": 23,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.3389931696628154,
+          "net_usage_adj": -0.07264616686068925,
+          "external_validity": -0.24640162784256103,
+          "indirect_deaths_multiplier": 0.46964358430414976,
+          "over5_relative_efficacy": 0.4276015852130517
+        },
+        "cost_per_daly": 247.11022976667078
+      },
+      {
+        "trial": 24,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.27519450034435666,
+          "net_usage_adj": -0.2945334523045351,
+          "external_validity": -0.2263892598110179,
+          "indirect_deaths_multiplier": 0.8098040640498141,
+          "over5_relative_efficacy": 0.44271318907613744
+        },
+        "cost_per_daly": 329.7374634984594
+      },
+      {
+        "trial": 25,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4738808071240501,
+          "net_usage_adj": -0.18323949637975107,
+          "external_validity": -0.2472905871299254,
+          "indirect_deaths_multiplier": 0.9432291858515582,
+          "over5_relative_efficacy": 0.45477200607168017
+        },
+        "cost_per_daly": 134.41098514971316
+      },
+      {
+        "trial": 26,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4982411990298251,
+          "net_usage_adj": -0.27786103057938033,
+          "external_validity": -0.1115364288996698,
+          "indirect_deaths_multiplier": 0.9815815213714594,
+          "over5_relative_efficacy": 0.7138587065020894
+        },
+        "cost_per_daly": 100.74861161168667
+      },
+      {
+        "trial": 27,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4245404285049363,
+          "net_usage_adj": -0.13917109009676387,
+          "external_validity": -0.17261809592841806,
+          "indirect_deaths_multiplier": 0.8882770118241692,
+          "over5_relative_efficacy": 0.8108387035323276
+        },
+        "cost_per_daly": 122.65076082028462
+      },
+      {
+        "trial": 28,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.38004087527799835,
+          "net_usage_adj": -0.04434554990443795,
+          "external_validity": -0.11202329030637861,
+          "indirect_deaths_multiplier": 0.7365627829212318,
+          "over5_relative_efficacy": 0.925992161595007
+        },
+        "cost_per_daly": 123.68666546938482
+      },
+      {
+        "trial": 29,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.29223376576804116,
+          "net_usage_adj": -0.2164228982904124,
+          "external_validity": -0.2057473789308133,
+          "indirect_deaths_multiplier": 0.4532215202542334,
+          "over5_relative_efficacy": 0.4723815226603605
+        },
+        "cost_per_daly": 329.8027238358672
+      },
+      {
+        "trial": 30,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.27173007202185595,
+          "net_usage_adj": -0.13886803745443566,
+          "external_validity": -0.10328972049478022,
+          "indirect_deaths_multiplier": 0.8472636845105981,
+          "over5_relative_efficacy": 0.6589957277378076
+        },
+        "cost_per_daly": 211.79562565021342
+      },
+      {
+        "trial": 31,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.38314735813789647,
+          "net_usage_adj": -0.2844529389532719,
+          "external_validity": -0.16584893045151985,
+          "indirect_deaths_multiplier": 0.48064880616338457,
+          "over5_relative_efficacy": 0.43802498228366066
+        },
+        "cost_per_daly": 235.8559602907757
+      },
+      {
+        "trial": 32,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.27922451017709105,
+          "net_usage_adj": -0.018050362915957463,
+          "external_validity": -0.09307298673214554,
+          "indirect_deaths_multiplier": 0.6009433687942517,
+          "over5_relative_efficacy": 0.4835632435980324
+        },
+        "cost_per_daly": 213.4677085928483
+      },
+      {
+        "trial": 33,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4962102997405836,
+          "net_usage_adj": -0.04833057406621977,
+          "external_validity": -0.2188343296991833,
+          "indirect_deaths_multiplier": 0.9525051295704234,
+          "over5_relative_efficacy": 0.921937817237277
+        },
+        "cost_per_daly": 90.55297768559471
+      },
+      {
+        "trial": 34,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2667691193471069,
+          "net_usage_adj": -0.07501185888024667,
+          "external_validity": -0.19752360172610356,
+          "indirect_deaths_multiplier": 0.9388325736644283,
+          "over5_relative_efficacy": 0.5230837842892043
+        },
+        "cost_per_daly": 228.31817917410436
+      },
+      {
+        "trial": 35,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.3019715637865068,
+          "net_usage_adj": -0.2920403388378541,
+          "external_validity": -0.20464114122755067,
+          "indirect_deaths_multiplier": 0.7498249365818153,
+          "over5_relative_efficacy": 0.6528547303554988
+        },
+        "cost_per_daly": 277.3640111676976
+      },
+      {
+        "trial": 36,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.40012921510841337,
+          "net_usage_adj": -0.10048899763612335,
+          "external_validity": -0.2061571803441376,
+          "indirect_deaths_multiplier": 0.9486471675549759,
+          "over5_relative_efficacy": 0.6512623149352439
+        },
+        "cost_per_daly": 136.09187078172178
+      },
+      {
+        "trial": 37,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2962832322096549,
+          "net_usage_adj": -0.13742971578649255,
+          "external_validity": -0.03176354103089793,
+          "indirect_deaths_multiplier": 0.8393349318457367,
+          "over5_relative_efficacy": 0.8839366887168698
+        },
+        "cost_per_daly": 162.91169464756004
+      },
+      {
+        "trial": 38,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.46867541817104985,
+          "net_usage_adj": -0.1413188597918364,
+          "external_validity": -0.015233075371775956,
+          "indirect_deaths_multiplier": 0.8792699414641992,
+          "over5_relative_efficacy": 0.9987604663200025
+        },
+        "cost_per_daly": 78.0244526628819
+      },
+      {
+        "trial": 39,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2644606691408491,
+          "net_usage_adj": -0.009269210957756624,
+          "external_validity": -0.029053528759143576,
+          "indirect_deaths_multiplier": 0.9566513699171277,
+          "over5_relative_efficacy": 0.9969446935878612
+        },
+        "cost_per_daly": 149.9557542248228
+      },
+      {
+        "trial": 40,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4270907441787587,
+          "net_usage_adj": -0.0488960014908984,
+          "external_validity": -0.07563213458267909,
+          "indirect_deaths_multiplier": 0.8080844630561803,
+          "over5_relative_efficacy": 0.7711668269291105
+        },
+        "cost_per_daly": 98.6908401917269
+      },
+      {
+        "trial": 41,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4395657989822557,
+          "net_usage_adj": -0.2926239250623595,
+          "external_validity": -0.2444691121177507,
+          "indirect_deaths_multiplier": 0.5941661314897247,
+          "over5_relative_efficacy": 0.6931859142427994
+        },
+        "cost_per_daly": 196.87360647567866
+      },
+      {
+        "trial": 42,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.4491343227440441,
+          "net_usage_adj": -0.15554329454623497,
+          "external_validity": -0.22067295275940138,
+          "indirect_deaths_multiplier": 0.4751114753215303,
+          "over5_relative_efficacy": 0.8113391723373828
+        },
+        "cost_per_daly": 160.83173307703305
+      },
+      {
+        "trial": 43,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2578965362064105,
+          "net_usage_adj": -0.019136326126893033,
+          "external_validity": -0.2370071790871319,
+          "indirect_deaths_multiplier": 0.7247778011806423,
+          "over5_relative_efficacy": 0.8254363116705499
+        },
+        "cost_per_daly": 248.57880615743818
+      },
+      {
+        "trial": 44,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.46675787403061214,
+          "net_usage_adj": -0.12639737742828197,
+          "external_validity": -0.14034614520260238,
+          "indirect_deaths_multiplier": 0.8351545962490818,
+          "over5_relative_efficacy": 0.6920013648548218
+        },
+        "cost_per_daly": 105.3291942807386
+      },
+      {
+        "trial": 45,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.29176047697523744,
+          "net_usage_adj": -0.24971423511350468,
+          "external_validity": -0.24083214326661426,
+          "indirect_deaths_multiplier": 0.8418412090393843,
+          "over5_relative_efficacy": 0.798282716573083
+        },
+        "cost_per_daly": 265.30021347660653
+      },
+      {
+        "trial": 46,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.37429369100210685,
+          "net_usage_adj": -0.11464582793963585,
+          "external_validity": -0.032773753880320444,
+          "indirect_deaths_multiplier": 0.7423658479832977,
+          "over5_relative_efficacy": 0.41823223581810215
+        },
+        "cost_per_daly": 136.69072841640335
+      },
+      {
+        "trial": 47,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.37977044628405454,
+          "net_usage_adj": -0.1562454367110807,
+          "external_validity": -0.24358948354839108,
+          "indirect_deaths_multiplier": 0.6047486965756939,
+          "over5_relative_efficacy": 0.6281173712715142
+        },
+        "cost_per_daly": 202.82373793241712
+      },
+      {
+        "trial": 48,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.48785083555166425,
+          "net_usage_adj": -0.11951645395610064,
+          "external_validity": -0.04520278514330245,
+          "indirect_deaths_multiplier": 0.9305238780090447,
+          "over5_relative_efficacy": 0.5368478631693595
+        },
+        "cost_per_daly": 81.64705859620763
+      },
+      {
+        "trial": 49,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.2979668311796857,
+          "net_usage_adj": -0.20298853136534378,
+          "external_validity": -0.193335899443253,
+          "indirect_deaths_multiplier": 0.6129977834991625,
+          "over5_relative_efficacy": 0.44165430564765606
+        },
+        "cost_per_daly": 281.9181646449231
+      },
+      {
+        "trial": 50,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.25904009513119053,
+          "net_usage_adj": -0.2090614932164014,
+          "external_validity": -0.18422185752228928,
+          "indirect_deaths_multiplier": 0.6160818444829115,
+          "over5_relative_efficacy": 0.45258564805830315
+        },
+        "cost_per_daly": 331.4871397246926
+      }
+    ],
+    "elapsed_seconds": 3.5
+  }
+}
