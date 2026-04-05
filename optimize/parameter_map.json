@@ -1,0 +1,69 @@
+{
+  "description": "High-impact ITN CEA parameters identified from Phase 2 red-team findings and spreadsheet mapping",
+  "source_spreadsheet": "data/InsecticideCEA.xlsx",
+  "parameters": [
+    {
+      "parameter_name": "incidence_reduction",
+      "sheet": "Main CEA",
+      "cell": "H62",
+      "current_value": 0.45,
+      "type": "shared",
+      "description": "Reduction in malaria incidence for children under 5 receiving nets (Pryce et al. meta-analysis). Findings 1,2,7: may overstate due to mosquito species composition changes, housing quality differences, and behavioral adaptation.",
+      "plausible_range": [0.25, 0.50]
+    },
+    {
+      "parameter_name": "net_usage_adj",
+      "sheet": "Main CEA",
+      "cell": "H36",
+      "current_value": -0.10,
+      "type": "shared",
+      "description": "Adjustment for net usage in program vs. trial contexts. Applied multiplicatively to trial usage rate (0.7). Finding 3: post-distribution usage decline may be steeper than modeled; average usage over lifespan could be 55-60% vs 70%.",
+      "plausible_range": [-0.30, 0.0]
+    },
+    {
+      "parameter_name": "insecticide_resistance",
+      "sheet": "Main CEA",
+      "cell": "{col}66",
+      "current_value": {
+        "chad": -0.5860,
+        "drc": -0.0377,
+        "guinea": -0.2070,
+        "nigeria_gf": -0.1353,
+        "nigeria_pmi": -0.1353,
+        "south_sudan": -0.3073,
+        "togo": -0.3291,
+        "uganda": -0.1150
+      },
+      "type": "per_country",
+      "description": "Adjustment for insecticide resistance reducing net effectiveness. Quantifier Finding: temporal degradation of pyrethroid susceptibility since trial period means current adjustments may understate resistance by 20-40%.",
+      "plausible_range_multiplier": [1.0, 1.4]
+    },
+    {
+      "parameter_name": "indirect_deaths_multiplier",
+      "sheet": "Main CEA",
+      "cell": "H71",
+      "current_value": 0.75,
+      "type": "shared",
+      "description": "Indirect malaria deaths per direct malaria death. Finding 6: if verbal autopsy misclassification inflates baseline malaria mortality by 20-40%, this ratio may need downward revision.",
+      "plausible_range": [0.40, 1.00]
+    },
+    {
+      "parameter_name": "external_validity",
+      "sheet": "Main CEA",
+      "cell": "H65",
+      "current_value": -0.05,
+      "type": "shared",
+      "description": "External validity adjustment capturing systematic differences between trial and implementation settings. Finding 2: a generic 5% adjustment may be insufficient for housing quality effects (16-29% CE reduction) and other context differences.",
+      "plausible_range": [-0.25, 0.0]
+    },
+    {
+      "parameter_name": "over5_relative_efficacy",
+      "sheet": "Main CEA",
+      "cell": "H84",
+      "current_value": 0.80,
+      "type": "shared",
+      "description": "Relative efficacy of ITNs for reducing mortality in people age 5+. Synthesizer ungrounded hypothesis: no RCTs estimate bed net impact on over-5 mortality; the 0.8 assumption lacks direct evidence.",
+      "plausible_range": [0.40, 1.00]
+    }
+  ]
+}
