@@ -9,17 +9,17 @@
       "external_validity": 0.0,
       "indirect_deaths_multiplier": 1.0,
       "over5_relative_efficacy": 1.0,
-      "distribution_interval_months": 45.74436021616651,
-      "fixed_logistics_fraction": 0.12685297392083716,
+      "distribution_interval_months": 48.0,
+      "fixed_logistics_fraction": 0.05,
       "tau_physical": 30.0,
-      "tau_insecticide": 23.027756053650428,
+      "tau_insecticide": 24.0,
       "tau_usage": 72.0
     },
     "best_metrics": {
-      "cost_per_daly": 124.31537191422267,
-      "deaths_averted_per_million": 234.26438967876416,
-      "total_program_cost": 3380558.921762512,
-      "average_net_efficacy": 0.23738573666839083,
+      "cost_per_daly": 102.77338859268214,
+      "deaths_averted_per_million": 264.0416744745716,
+      "total_program_cost": 3150000.0,
+      "average_net_efficacy": 0.2675597750569407,
       "num_distribution_cycles": 3
     },
     "baseline_metrics": {
@@ -35,7 +35,10 @@
       "external_validity": "upper",
       "indirect_deaths_multiplier": "upper",
       "over5_relative_efficacy": "upper",
+      "distribution_interval_months": "upper",
+      "fixed_logistics_fraction": "lower",
       "tau_physical": "upper",
+      "tau_insecticide": "upper",
       "tau_usage": "upper"
     },
     "n_trials": 100,
@@ -55,7 +58,7 @@
           "tau_insecticide": 20.899663358926773,
           "tau_usage": 34.81565625965595
         },
-        "cost_per_daly": 454.4968937276725
+        "cost_per_daly": 431.6320122073876
       },
       {
         "trial": 2,
@@ -72,7 +75,7 @@
           "tau_insecticide": 14.401585593819618,
           "tau_usage": 59.14565162546933
         },
-        "cost_per_daly": 628.1768789323253
+        "cost_per_daly": 589.0555785772046
       },
       {
         "trial": 3,
@@ -89,7 +92,7 @@
           "tau_insecticide": 11.523537665605545,
           "tau_usage": 65.63133119232953
         },
-        "cost_per_daly": 438.64889835321463
+        "cost_per_daly": 424.8542946652233
       },
       {
         "trial": 4,
@@ -106,7 +109,7 @@
           "tau_insecticide": 17.025765791535378,
           "tau_usage": 49.33013691008091
         },
-        "cost_per_daly": 771.5943118737963
+        "cost_per_daly": 684.0376495582183
       },
       {
         "trial": 5,
@@ -123,7 +126,7 @@
           "tau_insecticide": 8.159146830439568,
           "tau_usage": 55.76373654976487
         },
-        "cost_per_daly": 1289.78414059305
+        "cost_per_daly": 1096.6718574925032
       },
       {
         "trial": 6,
@@ -140,7 +143,7 @@
           "tau_insecticide": 18.656797289848328,
           "tau_usage": 38.19618961773813
         },
-        "cost_per_daly": 259.32745879889836
+        "cost_per_daly": 246.6613731207805
       },
       {
         "trial": 7,
@@ -157,7 +160,7 @@
           "tau_insecticide": 23.284837648272514,
           "tau_usage": 44.68170896731317
         },
-        "cost_per_daly": 304.3291709662711
+        "cost_per_daly": 297.29940841438105
       },
       {
         "trial": 8,
@@ -174,7 +177,7 @@
           "tau_insecticide": 13.783036708831787,
           "tau_usage": 70.27805698290467
         },
-        "cost_per_daly": 655.6963006004473
+        "cost_per_daly": 654.525544071741
       },
       {
         "trial": 9,
@@ -191,7 +194,7 @@
           "tau_insecticide": 9.122028782963753,
           "tau_usage": 47.77158657833934
         },
-        "cost_per_daly": 876.7892673978133
+        "cost_per_daly": 747.9406675795344
       },
       {
         "trial": 10,
@@ -208,7 +211,7 @@
           "tau_insecticide": 19.62358483672142,
           "tau_usage": 61.61175668053329
         },
-        "cost_per_daly": 321.8749602200023
+        "cost_per_daly": 310.63268806059546
       },
       {
         "trial": 11,
@@ -225,7 +228,7 @@
           "tau_insecticide": 22.497734144330025,
           "tau_usage": 57.58701461367309
         },
-        "cost_per_daly": 371.402146939579
+        "cost_per_daly": 370.8344399013793
       },
       {
         "trial": 12,
@@ -242,7 +245,7 @@
           "tau_insecticide": 12.99984022974968,
           "tau_usage": 30.79616842791438
         },
-        "cost_per_daly": 584.5360117681745
+        "cost_per_daly": 569.325858943994
       },
       {
         "trial": 13,
@@ -259,7 +262,7 @@
           "tau_insecticide": 21.8195920586586,
           "tau_usage": 68.71942513436079
         },
-        "cost_per_daly": 405.94259921050536
+        "cost_per_daly": 372.5474970929841
       },
       {
         "trial": 14,
@@ -276,7 +279,7 @@
           "tau_insecticide": 15.317608818411827,
           "tau_usage": 40.66221565939486
         },
-        "cost_per_daly": 679.0258918543287
+        "cost_per_daly": 667.142294605791
       },
       {
         "trial": 15,
@@ -293,7 +296,7 @@
           "tau_insecticide": 10.693451821804047,
           "tau_usage": 36.63763380981982
         },
-        "cost_per_daly": 589.9084415816145
+        "cost_per_daly": 543.0282792500739
       },
       {
         "trial": 16,
@@ -310,7 +313,7 @@
           "tau_insecticide": 16.191773042082787,
           "tau_usage": 51.74416720122099
         },
-        "cost_per_daly": 502.4243176224923
+        "cost_per_daly": 459.3553792199235
       },
       {
         "trial": 17,
@@ -327,7 +330,7 @@
           "tau_insecticide": 19.23825167119503,
           "tau_usage": 40.09393903054297
         },
-        "cost_per_daly": 403.66762309500245
+        "cost_per_daly": 399.3497667812323
       },
       {
         "trial": 18,
@@ -344,7 +347,7 @@
           "tau_insecticide": 9.735840380191803,
           "tau_usage": 53.867529071867466
         },
-        "cost_per_daly": 672.3507917374544
+        "cost_per_daly": 628.0641576860774
       },
       {
         "trial": 19,
@@ -361,7 +364,7 @@
           "tau_insecticide": 12.361950501799583,
           "tau_usage": 71.00685951858759
         },
-        "cost_per_daly": 229.34744389948065
+        "cost_per_daly": 204.9870751367606
       },
       {
         "trial": 20,
@@ -378,7 +381,7 @@
           "tau_insecticide": 22.860211312770844,
           "tau_usage": 43.95444836653769
         },
-        "cost_per_daly": 1118.4132021623402
+        "cost_per_daly": 1027.0832952775972
       },
       {
         "trial": 21,
@@ -395,7 +398,7 @@
           "tau_insecticide": 15.945610135793686,
           "tau_usage": 61.14439691416919
         },
-        "cost_per_daly": 513.7211170955119
+        "cost_per_daly": 508.7878927832426
       },
       {
         "trial": 22,
@@ -412,7 +415,7 @@
           "tau_insecticide": 21.44747205078602,
           "tau_usage": 32.81536903604865
         },
-        "cost_per_daly": 554.1963292230796
+        "cost_per_daly": 503.28313759070386
       },
       {
         "trial": 23,
@@ -429,7 +432,7 @@
           "tau_insecticide": 16.571369618177414,
           "tau_usage": 49.95485970005393
         },
-        "cost_per_daly": 412.8603201679134
+        "cost_per_daly": 412.51392310391407
       },
       {
         "trial": 24,
@@ -446,7 +449,7 @@
           "tau_insecticide": 10.073658064007759,
           "tau_usage": 65.00506646744907
         },
-        "cost_per_daly": 564.3861432117858
+        "cost_per_daly": 545.1144335539151
       },
       {
         "trial": 25,
@@ -463,75 +466,75 @@
           "tau_insecticide": 14.77177608013153,
           "tau_usage": 42.55995427630842
         },
-        "cost_per_daly": 479.88422787722953
+        "cost_per_daly": 444.2554448546957
       },
       {
         "trial": 26,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.47440060641230897,
+          "incidence_reduction": 0.5,
           "net_usage_adj": 0.0,
           "external_validity": 0.0,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 17.637290476339192,
-          "fixed_logistics_fraction": 0.2205499713685069,
+          "distribution_interval_months": 45.16099784757351,
+          "fixed_logistics_fraction": 0.19218905151066323,
           "tau_physical": 30.0,
           "tau_insecticide": 24.0,
           "tau_usage": 72.0
         },
-        "cost_per_daly": 159.35036949691676
+        "cost_per_daly": 115.12174175515848
       },
       {
         "trial": 27,
         "phase": "bayesian",
         "params": {
           "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": -0.25,
+          "net_usage_adj": -0.013820529168542317,
+          "external_validity": 0.0,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 12.331104996078837,
-          "fixed_logistics_fraction": 0.05,
-          "tau_physical": 30.0,
+          "distribution_interval_months": 12.0,
+          "fixed_logistics_fraction": 0.17378080530979842,
+          "tau_physical": 24.051251110739678,
           "tau_insecticide": 24.0,
           "tau_usage": 72.0
         },
-        "cost_per_daly": 224.3151668222882
+        "cost_per_daly": 175.92641769905117
       },
       {
         "trial": 28,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3719713594053195,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 35.12706047444665,
-          "fixed_logistics_fraction": 0.12848333538511722,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.3298284093976037,
+          "net_usage_adj": -0.014981409884758545,
+          "external_validity": -0.012348213265610974,
+          "indirect_deaths_multiplier": 0.7440627328739717,
+          "over5_relative_efficacy": 0.7791023273018796,
+          "distribution_interval_months": 28.14403879121951,
+          "fixed_logistics_fraction": 0.12330269292451614,
+          "tau_physical": 19.92996818054874,
+          "tau_insecticide": 18.760295297232616,
+          "tau_usage": 61.59973023638256
         },
-        "cost_per_daly": 193.37561747127396
+        "cost_per_daly": 349.5256879302906
       },
       {
         "trial": 29,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": -0.09156435300188012,
+          "incidence_reduction": 0.47918930559635364,
+          "net_usage_adj": 0.0,
           "external_validity": 0.0,
-          "indirect_deaths_multiplier": 0.7763088554543357,
+          "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 12.0,
-          "fixed_logistics_fraction": 0.18260828204264007,
-          "tau_physical": 23.555863517532536,
-          "tau_insecticide": 24.0,
+          "distribution_interval_months": 46.024492662422404,
+          "fixed_logistics_fraction": 0.16978458686697026,
+          "tau_physical": 30.0,
+          "tau_insecticide": 15.154348134853569,
           "tau_usage": 72.0
         },
-        "cost_per_daly": 217.57070621598695
+        "cost_per_daly": 150.14774677183306
       },
       {
         "trial": 30,
@@ -539,16 +542,16 @@
         "params": {
           "incidence_reduction": 0.5,
           "net_usage_adj": 0.0,
-          "external_validity": 0.0,
+          "external_validity": -0.25,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 42.25733617196852,
-          "fixed_logistics_fraction": 0.1975892977416253,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.05,
           "tau_physical": 30.0,
-          "tau_insecticide": 14.628719383213959,
-          "tau_usage": 72.0
+          "tau_insecticide": 24.0,
+          "tau_usage": 36.98051829102605
         },
-        "cost_per_daly": 154.30648684523848
+        "cost_per_daly": 172.67437972476353
       },
       {
         "trial": 31,
@@ -556,33 +559,33 @@
         "params": {
           "incidence_reduction": 0.5,
           "net_usage_adj": 0.0,
-          "external_validity": -0.03770383291892887,
+          "external_validity": 0.0,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 19.379434423900896,
+          "distribution_interval_months": 48.0,
           "fixed_logistics_fraction": 0.05,
           "tau_physical": 30.0,
           "tau_insecticide": 24.0,
           "tau_usage": 72.0
         },
-        "cost_per_daly": 142.23436449630242
+        "cost_per_daly": 102.77338859268214
       },
       {
         "trial": 32,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.39350678446899723,
-          "net_usage_adj": 0.0,
-          "external_validity": -0.12380319522186228,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 34.17107477456297,
-          "fixed_logistics_fraction": 0.05,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.42435506681171,
+          "net_usage_adj": -0.21079529778823475,
+          "external_validity": -0.0189009511558674,
+          "indirect_deaths_multiplier": 0.9826349470992206,
+          "over5_relative_efficacy": 0.9665598934680604,
+          "distribution_interval_months": 29.071711799668694,
+          "fixed_logistics_fraction": 0.2655106627473284,
+          "tau_physical": 27.668240978026056,
+          "tau_insecticide": 13.10560757189209,
+          "tau_usage": 64.81444991432845
         },
-        "cost_per_daly": 193.8499707102789
+        "cost_per_daly": 330.3249847005245
       },
       {
         "trial": 33,
@@ -591,15 +594,15 @@
           "incidence_reduction": 0.5,
           "net_usage_adj": 0.0,
           "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
+          "indirect_deaths_multiplier": 0.4,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 18.26026205916576,
-          "fixed_logistics_fraction": 0.05,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.08130179654822195,
           "tau_physical": 30.0,
-          "tau_insecticide": 18.572861758630637,
-          "tau_usage": 30.0
+          "tau_insecticide": 24.0,
+          "tau_usage": 72.0
         },
-        "cost_per_daly": 158.72390488155696
+        "cost_per_daly": 151.1959860171643
       },
       {
         "trial": 34,
@@ -610,30 +613,30 @@
           "external_validity": 0.0,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 15.777486039310551,
+          "distribution_interval_months": 48.0,
           "fixed_logistics_fraction": 0.05,
-          "tau_physical": 30.0,
-          "tau_insecticide": 8.0,
+          "tau_physical": 15.0,
+          "tau_insecticide": 24.0,
           "tau_usage": 72.0
         },
-        "cost_per_daly": 213.20580722411057
+        "cost_per_daly": 137.0836402392134
       },
       {
         "trial": 35,
         "phase": "bayesian",
         "params": {
           "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
+          "net_usage_adj": -0.3,
+          "external_validity": -2.7755575615628914e-17,
           "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 0.7358059914916748,
-          "distribution_interval_months": 43.34699644581041,
-          "fixed_logistics_fraction": 0.13048211585428415,
+          "over5_relative_efficacy": 1.0,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.05,
           "tau_physical": 30.0,
           "tau_insecticide": 24.0,
-          "tau_usage": 54.903746697849144
+          "tau_usage": 72.0
         },
-        "cost_per_daly": 131.40516222560973
+        "cost_per_daly": 146.8191265609745
       },
       {
         "trial": 36,
@@ -644,30 +647,30 @@
           "external_validity": 0.0,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 0.4,
-          "distribution_interval_months": 12.271911780558913,
-          "fixed_logistics_fraction": 0.05,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.3,
           "tau_physical": 30.0,
           "tau_insecticide": 24.0,
-          "tau_usage": 68.93545088144488
+          "tau_usage": 72.0
         },
-        "cost_per_daly": 181.2849599174538
+        "cost_per_daly": 152.75369591709332
       },
       {
         "trial": 37,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": -0.08153412516883865,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 42.651309954633426,
-          "fixed_logistics_fraction": 0.16931019627839022,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 64.33308891161474
+          "incidence_reduction": 0.40014858334015435,
+          "net_usage_adj": -0.14529617169105066,
+          "external_validity": -0.020152006696395663,
+          "indirect_deaths_multiplier": 0.6981780897434982,
+          "over5_relative_efficacy": 0.9952948088939876,
+          "distribution_interval_months": 42.65129847882345,
+          "fixed_logistics_fraction": 0.10212762858933395,
+          "tau_physical": 28.958928219658745,
+          "tau_insecticide": 9.861862366167617,
+          "tau_usage": 64.33288775663004
         },
-        "cost_per_daly": 136.4382395355561
+        "cost_per_daly": 339.0745842909371
       },
       {
         "trial": 38,
@@ -678,149 +681,149 @@
           "external_validity": 0.0,
           "indirect_deaths_multiplier": 1.0,
           "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 45.74436021616651,
-          "fixed_logistics_fraction": 0.12685297392083716,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.05,
           "tau_physical": 30.0,
-          "tau_insecticide": 23.027756053650428,
-          "tau_usage": 72.0
+          "tau_insecticide": 24.0,
+          "tau_usage": 30.0
         },
-        "cost_per_daly": 124.31537191422267
+        "cost_per_daly": 122.61562639914231
       },
       {
         "trial": 39,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 0.4,
-          "distribution_interval_months": 21.365632762799336,
-          "fixed_logistics_fraction": 0.3,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 57.47533326191113
+          "incidence_reduction": 0.49085342906102253,
+          "net_usage_adj": -0.1319491685330788,
+          "external_validity": -0.01579087562455697,
+          "indirect_deaths_multiplier": 0.43135479369100616,
+          "over5_relative_efficacy": 0.6512750722118499,
+          "distribution_interval_months": 21.365702949350034,
+          "fixed_logistics_fraction": 0.23270517204915553,
+          "tau_physical": 29.719584815485653,
+          "tau_insecticide": 12.104478882024328,
+          "tau_usage": 57.47536379515292
         },
-        "cost_per_daly": 187.36132180453396
+        "cost_per_daly": 350.0986269205876
       },
       {
         "trial": 40,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": -0.04048038248407959,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 45.68768881178198,
-          "fixed_logistics_fraction": 0.12146548435197552,
-          "tau_physical": 28.273923867377015,
-          "tau_insecticide": 20.87347791749241,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.44864456967504757,
+          "net_usage_adj": -0.289598919982055,
+          "external_validity": -0.1042982912291276,
+          "indirect_deaths_multiplier": 0.9972625097147859,
+          "over5_relative_efficacy": 0.9134176563025237,
+          "distribution_interval_months": 30.77204480556922,
+          "fixed_logistics_fraction": 0.06591022732166059,
+          "tau_physical": 27.470602715785645,
+          "tau_insecticide": 17.58365613083537,
+          "tau_usage": 34.82718587650181
         },
-        "cost_per_daly": 140.03795972095168
+        "cost_per_daly": 273.98997878782086
       },
       {
         "trial": 41,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.45064641989495324,
-          "net_usage_adj": -0.12838540698920975,
-          "external_validity": -0.1218330685108959,
-          "indirect_deaths_multiplier": 0.576093293924873,
-          "over5_relative_efficacy": 0.9590522316596898,
-          "distribution_interval_months": 26.2925414845389,
-          "fixed_logistics_fraction": 0.07177319169894288,
-          "tau_physical": 24.25599774176702,
-          "tau_insecticide": 9.821414295625623,
-          "tau_usage": 44.49937199767107
+          "incidence_reduction": 0.45560559341706963,
+          "net_usage_adj": -0.04273129870161485,
+          "external_validity": -0.02084119103969817,
+          "indirect_deaths_multiplier": 0.6585911323079778,
+          "over5_relative_efficacy": 0.5913200909926833,
+          "distribution_interval_months": 32.9591548773881,
+          "fixed_logistics_fraction": 0.1427931058594069,
+          "tau_physical": 24.016112502003494,
+          "tau_insecticide": 19.289373802301192,
+          "tau_usage": 58.91301077666975
         },
-        "cost_per_daly": 420.3383899927171
+        "cost_per_daly": 231.20095920603225
       },
       {
         "trial": 42,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4007357191198654,
-          "net_usage_adj": -0.051987792077553774,
-          "external_validity": -0.00399670919738393,
-          "indirect_deaths_multiplier": 0.5730432626912474,
-          "over5_relative_efficacy": 0.9766812912445558,
-          "distribution_interval_months": 26.021348216487134,
-          "fixed_logistics_fraction": 0.1463779761842306,
-          "tau_physical": 20.105806563817588,
-          "tau_insecticide": 16.66252171756136,
-          "tau_usage": 36.47409181349646
+          "incidence_reduction": 0.41463512891751375,
+          "net_usage_adj": -0.07016522016132415,
+          "external_validity": -0.038519640080566964,
+          "indirect_deaths_multiplier": 0.768162468542475,
+          "over5_relative_efficacy": 0.45316282838180744,
+          "distribution_interval_months": 29.554601148019593,
+          "fixed_logistics_fraction": 0.06941233366790127,
+          "tau_physical": 21.11314546548646,
+          "tau_insecticide": 14.513703826010042,
+          "tau_usage": 32.772413453890145
         },
-        "cost_per_daly": 339.50942453558736
+        "cost_per_daly": 387.01252003925606
       },
       {
         "trial": 43,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.40817796968715025,
-          "net_usage_adj": -0.08884287250970063,
-          "external_validity": -0.24890918258742273,
-          "indirect_deaths_multiplier": 0.5001718532483193,
-          "over5_relative_efficacy": 0.8278276303805912,
-          "distribution_interval_months": 35.989874888815436,
-          "fixed_logistics_fraction": 0.2915118762821693,
-          "tau_physical": 26.415566853761746,
-          "tau_insecticide": 23.21236332370141,
-          "tau_usage": 59.50670106446189
+          "incidence_reduction": 0.4859194432433521,
+          "net_usage_adj": 0.0,
+          "external_validity": 0.0,
+          "indirect_deaths_multiplier": 1.0,
+          "over5_relative_efficacy": 0.6462577239119005,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.13026784463412594,
+          "tau_physical": 30.0,
+          "tau_insecticide": 24.0,
+          "tau_usage": 72.0
         },
-        "cost_per_daly": 482.67490919714504
+        "cost_per_daly": 127.90573644747141
       },
       {
         "trial": 44,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 0.4,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 33.368313628065124,
-          "fixed_logistics_fraction": 0.1019824670556141,
-          "tau_physical": 30.0,
-          "tau_insecticide": 23.458201595694682,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.4481487790720958,
+          "net_usage_adj": -0.027630361866114173,
+          "external_validity": -0.014074601794944797,
+          "indirect_deaths_multiplier": 0.9760813626432683,
+          "over5_relative_efficacy": 0.7128757832328831,
+          "distribution_interval_months": 47.183084687694134,
+          "fixed_logistics_fraction": 0.2393275517836097,
+          "tau_physical": 17.425071543554427,
+          "tau_insecticide": 15.63040170348752,
+          "tau_usage": 60.169909365624164
         },
-        "cost_per_daly": 173.43296177033093
+        "cost_per_daly": 244.1302967835053
       },
       {
         "trial": 45,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4666925886265001,
-          "net_usage_adj": -0.215256376806892,
-          "external_validity": -0.01238520735617607,
-          "indirect_deaths_multiplier": 0.7489733757935162,
-          "over5_relative_efficacy": 0.6619685138612597,
-          "distribution_interval_months": 32.88319804810037,
-          "fixed_logistics_fraction": 0.17917459630656696,
-          "tau_physical": 26.381643806359875,
-          "tau_insecticide": 12.519937055565636,
-          "tau_usage": 44.8281164472127
+          "incidence_reduction": 0.4735235756333127,
+          "net_usage_adj": -0.01606304605487835,
+          "external_validity": -0.026860443128381373,
+          "indirect_deaths_multiplier": 0.6516687963743881,
+          "over5_relative_efficacy": 0.868219301804129,
+          "distribution_interval_months": 29.148086398839556,
+          "fixed_logistics_fraction": 0.17438496303652556,
+          "tau_physical": 18.07020163585926,
+          "tau_insecticide": 17.458084852136263,
+          "tau_usage": 37.817707705640615
         },
-        "cost_per_daly": 346.19275522017944
+        "cost_per_daly": 285.0587722187661
       },
       {
         "trial": 46,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2731563707628418,
-          "net_usage_adj": -0.0754846950971306,
-          "external_validity": -0.021362834037860268,
-          "indirect_deaths_multiplier": 0.6604125836252552,
-          "over5_relative_efficacy": 0.5552269852932645,
-          "distribution_interval_months": 27.638519484237953,
-          "fixed_logistics_fraction": 0.23086195446250024,
-          "tau_physical": 15.135812423705564,
-          "tau_insecticide": 17.431263831755153,
-          "tau_usage": 55.75825076526992
+          "incidence_reduction": 0.45127257962391565,
+          "net_usage_adj": -0.053104858487469764,
+          "external_validity": -0.016822372966809662,
+          "indirect_deaths_multiplier": 0.7265523796682186,
+          "over5_relative_efficacy": 0.5201692107205755,
+          "distribution_interval_months": 34.20420988269149,
+          "fixed_logistics_fraction": 0.23572037341698476,
+          "tau_physical": 26.06876090031038,
+          "tau_insecticide": 16.34318438667008,
+          "tau_usage": 32.87526621201028
         },
-        "cost_per_daly": 723.1756206891042
+        "cost_per_daly": 291.64911965070945
       },
       {
         "trial": 47,
@@ -837,7 +840,7 @@
           "tau_insecticide": 22.428384456739657,
           "tau_usage": 38.545855184899025
         },
-        "cost_per_daly": 440.29968575708904
+        "cost_per_daly": 434.14197188905575
       },
       {
         "trial": 48,
@@ -854,41 +857,41 @@
           "tau_insecticide": 22.850913569823224,
           "tau_usage": 69.02385984064944
         },
-        "cost_per_daly": 258.996512772725
+        "cost_per_daly": 245.79450740936826
       },
       {
         "trial": 49,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.32846887418061765,
-          "net_usage_adj": -0.1385931883908291,
-          "external_validity": -0.03997298039020003,
-          "indirect_deaths_multiplier": 0.9936706785790339,
-          "over5_relative_efficacy": 0.9337115866262579,
-          "distribution_interval_months": 25.372821454477567,
-          "fixed_logistics_fraction": 0.0987916293046626,
-          "tau_physical": 22.34088806109883,
-          "tau_insecticide": 19.866263229376678,
-          "tau_usage": 50.6879009716385
+          "incidence_reduction": 0.32162988723178076,
+          "net_usage_adj": -0.05920790629412109,
+          "external_validity": -0.000690525024099331,
+          "indirect_deaths_multiplier": 0.4180156031976357,
+          "over5_relative_efficacy": 0.9384195194745591,
+          "distribution_interval_months": 34.414699209551685,
+          "fixed_logistics_fraction": 0.2933456547912053,
+          "tau_physical": 21.975142762896414,
+          "tau_insecticide": 21.558206889141978,
+          "tau_usage": 32.62055088112764
         },
-        "cost_per_daly": 325.14018746079967
+        "cost_per_daly": 479.30690815111694
       },
       {
         "trial": 50,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.41819115360311665,
-          "net_usage_adj": -0.23384872096930587,
-          "external_validity": -0.19544811636195694,
-          "indirect_deaths_multiplier": 0.924443063983111,
-          "over5_relative_efficacy": 0.5498013716441381,
-          "distribution_interval_months": 21.476904474648403,
-          "fixed_logistics_fraction": 0.05016334769032489,
-          "tau_physical": 28.060035511882766,
-          "tau_insecticide": 20.681517011346155,
-          "tau_usage": 56.34781527380848
+          "incidence_reduction": 0.4567146402431883,
+          "net_usage_adj": -0.14257930870157035,
+          "external_validity": -0.056188987041262684,
+          "indirect_deaths_multiplier": 0.5406553600069088,
+          "over5_relative_efficacy": 0.6070502473079402,
+          "distribution_interval_months": 13.083739399607481,
+          "fixed_logistics_fraction": 0.29037308114352806,
+          "tau_physical": 25.0180186005122,
+          "tau_insecticide": 22.931281404148898,
+          "tau_usage": 41.150849112021035
         },
-        "cost_per_daly": 359.01102713613284
+        "cost_per_daly": 435.4404639767493
       },
       {
         "trial": 51,
@@ -905,24 +908,24 @@
           "tau_insecticide": 14.879321916477148,
           "tau_usage": 64.89986518431287
         },
-        "cost_per_daly": 328.7294077539684
+        "cost_per_daly": 314.5760464264647
       },
       {
         "trial": 52,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4866890611730602,
-          "net_usage_adj": -0.1799363172450984,
-          "external_validity": -0.05417550426098808,
-          "indirect_deaths_multiplier": 0.5595570703792713,
-          "over5_relative_efficacy": 0.994199382276189,
-          "distribution_interval_months": 12.927705555516642,
-          "fixed_logistics_fraction": 0.20088220162528025,
-          "tau_physical": 24.892589724769906,
-          "tau_insecticide": 19.00872891318606,
-          "tau_usage": 35.05627830914174
+          "incidence_reduction": 0.4934501033392874,
+          "net_usage_adj": -0.13674040124888934,
+          "external_validity": -0.18119020474074793,
+          "indirect_deaths_multiplier": 0.8256633187803848,
+          "over5_relative_efficacy": 0.5628952015256268,
+          "distribution_interval_months": 44.552758490672346,
+          "fixed_logistics_fraction": 0.14368049262684413,
+          "tau_physical": 23.24802844164308,
+          "tau_insecticide": 8.809169661187662,
+          "tau_usage": 47.8970919939937
         },
-        "cost_per_daly": 366.13014034828
+        "cost_per_daly": 414.01175237594066
       },
       {
         "trial": 53,
@@ -939,109 +942,109 @@
           "tau_insecticide": 22.2386140218058,
           "tau_usage": 71.66243538402301
         },
-        "cost_per_daly": 318.2565148417474
+        "cost_per_daly": 312.35856864400375
       },
       {
         "trial": 54,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4112521149272459,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 48.0,
-          "fixed_logistics_fraction": 0.05,
-          "tau_physical": 30.0,
-          "tau_insecticide": 13.99636452953737,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.39516130647740855,
+          "net_usage_adj": -0.019218825525432137,
+          "external_validity": -0.08193732817645133,
+          "indirect_deaths_multiplier": 0.6887667707315421,
+          "over5_relative_efficacy": 0.8858050217595336,
+          "distribution_interval_months": 46.21918155435872,
+          "fixed_logistics_fraction": 0.05551653717057271,
+          "tau_physical": 29.73781908384058,
+          "tau_insecticide": 9.378114225018885,
+          "tau_usage": 64.20424472928798
         },
-        "cost_per_daly": 206.63383889726921
+        "cost_per_daly": 335.1199214038868
       },
       {
         "trial": 55,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.35068487118670766,
-          "net_usage_adj": -0.14411649725909775,
-          "external_validity": -0.0008684228003452144,
-          "indirect_deaths_multiplier": 0.48113038822771287,
-          "over5_relative_efficacy": 0.8052736272018554,
-          "distribution_interval_months": 26.256034789882147,
-          "fixed_logistics_fraction": 0.0832524497268322,
-          "tau_physical": 17.381051450614642,
-          "tau_insecticide": 23.188369699929872,
-          "tau_usage": 66.943262861894
+          "incidence_reduction": 0.419386451295944,
+          "net_usage_adj": -0.13592133720435692,
+          "external_validity": -0.13122753178330798,
+          "indirect_deaths_multiplier": 0.9534605701936747,
+          "over5_relative_efficacy": 0.44364096866720104,
+          "distribution_interval_months": 22.101629276564974,
+          "fixed_logistics_fraction": 0.1374844633926785,
+          "tau_physical": 26.736387183191816,
+          "tau_insecticide": 23.880233922591543,
+          "tau_usage": 40.10816161980043
         },
-        "cost_per_daly": 408.1887742273832
+        "cost_per_daly": 314.35302661355973
       },
       {
         "trial": 56,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 48.0,
-          "fixed_logistics_fraction": 0.05,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 30.0
+          "incidence_reduction": 0.48318823476507833,
+          "net_usage_adj": -0.29395864531521304,
+          "external_validity": -0.21155407362169595,
+          "indirect_deaths_multiplier": 0.9317027764335958,
+          "over5_relative_efficacy": 0.6751111373122092,
+          "distribution_interval_months": 32.32526300160468,
+          "fixed_logistics_fraction": 0.21575680093078686,
+          "tau_physical": 25.185999067434558,
+          "tau_insecticide": 22.90784645306413,
+          "tau_usage": 71.87187553129013
         },
-        "cost_per_daly": 143.7477713915121
+        "cost_per_daly": 309.02210692523516
       },
       {
         "trial": 57,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3407457101009679,
-          "net_usage_adj": -0.03621613315289801,
-          "external_validity": -0.06865709994128563,
-          "indirect_deaths_multiplier": 0.4675542799175167,
-          "over5_relative_efficacy": 0.6446668206436976,
-          "distribution_interval_months": 43.9096930305651,
-          "fixed_logistics_fraction": 0.06179917542434475,
-          "tau_physical": 29.42124929463074,
-          "tau_insecticide": 18.866601093113005,
-          "tau_usage": 56.51779106102182
+          "incidence_reduction": 0.37777840962237513,
+          "net_usage_adj": -0.11870610532790404,
+          "external_validity": -0.13477541544835453,
+          "indirect_deaths_multiplier": 0.8972253902908038,
+          "over5_relative_efficacy": 0.8977376294098299,
+          "distribution_interval_months": 37.5379975856779,
+          "fixed_logistics_fraction": 0.07635034434911557,
+          "tau_physical": 27.58280792856103,
+          "tau_insecticide": 18.736207688526555,
+          "tau_usage": 59.27501497218058
         },
-        "cost_per_daly": 372.86402334412446
+        "cost_per_daly": 300.50353072806007
       },
       {
         "trial": 58,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": -0.3,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 48.0,
-          "fixed_logistics_fraction": 0.05,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.4953143943478192,
+          "net_usage_adj": -0.1855150502672595,
+          "external_validity": -0.056191365275235994,
+          "indirect_deaths_multiplier": 0.605554649686679,
+          "over5_relative_efficacy": 0.7766013262952852,
+          "distribution_interval_months": 18.912579050641323,
+          "fixed_logistics_fraction": 0.08650525482424064,
+          "tau_physical": 29.07096209352197,
+          "tau_insecticide": 22.682356446470934,
+          "tau_usage": 67.27369548894106
         },
-        "cost_per_daly": 169.963754617493
+        "cost_per_daly": 246.03579920790213
       },
       {
         "trial": 59,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4938558409127414,
-          "net_usage_adj": -0.1279301000540576,
-          "external_validity": -0.16458958115927502,
-          "indirect_deaths_multiplier": 0.7890801826395568,
-          "over5_relative_efficacy": 0.44106474137397367,
-          "distribution_interval_months": 44.306374675848765,
-          "fixed_logistics_fraction": 0.0798433244151989,
-          "tau_physical": 19.91762872862187,
-          "tau_insecticide": 21.052091605081053,
-          "tau_usage": 55.08718728994086
+          "incidence_reduction": 0.49385259192118625,
+          "net_usage_adj": -0.127931015991987,
+          "external_validity": -0.16458972182734954,
+          "indirect_deaths_multiplier": 0.7890787341401422,
+          "over5_relative_efficacy": 0.4410644255455757,
+          "distribution_interval_months": 44.30630345957711,
+          "fixed_logistics_fraction": 0.0798452528345492,
+          "tau_physical": 19.917642568287274,
+          "tau_insecticide": 21.051926090017936,
+          "tau_usage": 55.0871198898899
         },
-        "cost_per_daly": 290.21177808730374
+        "cost_per_daly": 263.81706874861504
       },
       {
         "trial": 60,
@@ -1058,24 +1061,24 @@
           "tau_insecticide": 20.12442496600253,
           "tau_usage": 41.84057093508457
         },
-        "cost_per_daly": 262.23373169868177
+        "cost_per_daly": 234.77128511050174
       },
       {
         "trial": 61,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.43329009453419987,
-          "net_usage_adj": -0.0013735461223631784,
-          "external_validity": -0.17812220015406025,
-          "indirect_deaths_multiplier": 0.7229320611210852,
-          "over5_relative_efficacy": 0.719994128715763,
-          "distribution_interval_months": 26.60322934010055,
-          "fixed_logistics_fraction": 0.09229047346060505,
-          "tau_physical": 29.661848447757638,
-          "tau_insecticide": 21.653074986665377,
-          "tau_usage": 50.92998718835796
+          "incidence_reduction": 0.45267089258439797,
+          "net_usage_adj": -0.015489134163324314,
+          "external_validity": -0.22716856641661073,
+          "indirect_deaths_multiplier": 0.49686861161975265,
+          "over5_relative_efficacy": 0.9764477816628132,
+          "distribution_interval_months": 31.351445171052468,
+          "fixed_logistics_fraction": 0.05354915861793093,
+          "tau_physical": 18.864479981452938,
+          "tau_insecticide": 15.199098788301754,
+          "tau_usage": 59.10217426304024
         },
-        "cost_per_daly": 272.2868506602307
+        "cost_per_daly": 338.88947874872184
       },
       {
         "trial": 62,
@@ -1092,7 +1095,7 @@
           "tau_insecticide": 17.75491053241244,
           "tau_usage": 68.43413508858126
         },
-        "cost_per_daly": 315.8793183039988
+        "cost_per_daly": 270.9996507147038
       },
       {
         "trial": 63,
@@ -1109,24 +1112,24 @@
           "tau_insecticide": 22.58909711263115,
           "tau_usage": 48.44348775380372
         },
-        "cost_per_daly": 309.06090499452836
+        "cost_per_daly": 302.5431452808794
       },
       {
         "trial": 64,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4727463569606344,
-          "net_usage_adj": -0.12914654005462714,
-          "external_validity": -0.04190134613899782,
-          "indirect_deaths_multiplier": 0.9949815587203753,
-          "over5_relative_efficacy": 0.4981650851904196,
-          "distribution_interval_months": 36.90428862398595,
-          "fixed_logistics_fraction": 0.2185723653992921,
-          "tau_physical": 29.699626338520055,
-          "tau_insecticide": 23.769691975357134,
-          "tau_usage": 58.84092178744716
+          "incidence_reduction": 0.47274347117267596,
+          "net_usage_adj": -0.12915082244442722,
+          "external_validity": -0.04190223957452302,
+          "indirect_deaths_multiplier": 0.9949746057767369,
+          "over5_relative_efficacy": 0.49816972248296576,
+          "distribution_interval_months": 36.90399500911136,
+          "fixed_logistics_fraction": 0.21857339342500615,
+          "tau_physical": 29.699331710374175,
+          "tau_insecticide": 23.769611743244806,
+          "tau_usage": 58.84050169241344
         },
-        "cost_per_daly": 231.9552173975049
+        "cost_per_daly": 209.6969847674678
       },
       {
         "trial": 65,
@@ -1143,7 +1146,7 @@
           "tau_insecticide": 16.60129820882423,
           "tau_usage": 54.18328378713701
         },
-        "cost_per_daly": 345.2883993942655
+        "cost_per_daly": 300.60616119153565
       },
       {
         "trial": 66,
@@ -1160,58 +1163,58 @@
           "tau_insecticide": 12.240756598548533,
           "tau_usage": 58.22649911179289
         },
-        "cost_per_daly": 357.89157138257553
+        "cost_per_daly": 314.3248610347748
       },
       {
         "trial": 67,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4243579043092981,
-          "net_usage_adj": -0.1071580226741479,
-          "external_validity": -0.05431358143715331,
-          "indirect_deaths_multiplier": 0.9624887034394628,
-          "over5_relative_efficacy": 0.8151564179599552,
-          "distribution_interval_months": 17.610655315851965,
-          "fixed_logistics_fraction": 0.11086065419135267,
-          "tau_physical": 27.632905963096718,
-          "tau_insecticide": 11.348897213347337,
-          "tau_usage": 33.04593731208822
+          "incidence_reduction": 0.4496133762627976,
+          "net_usage_adj": -0.08783150149937302,
+          "external_validity": -0.20240455342574132,
+          "indirect_deaths_multiplier": 0.6200331451562795,
+          "over5_relative_efficacy": 0.46348301491390853,
+          "distribution_interval_months": 34.61543749534958,
+          "fixed_logistics_fraction": 0.08034298113715492,
+          "tau_physical": 29.789012529373768,
+          "tau_insecticide": 20.490913195005795,
+          "tau_usage": 46.39001908252779
         },
-        "cost_per_daly": 323.30461373278894
+        "cost_per_daly": 316.05520755277087
       },
       {
         "trial": 68,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.430362289277393,
-          "net_usage_adj": -0.017616321327960593,
-          "external_validity": -0.02959116270614734,
-          "indirect_deaths_multiplier": 0.7091153356829283,
-          "over5_relative_efficacy": 0.8647915718758106,
-          "distribution_interval_months": 32.23721113779306,
-          "fixed_logistics_fraction": 0.18817597251138501,
-          "tau_physical": 16.721129375072877,
-          "tau_insecticide": 10.018202528258433,
-          "tau_usage": 52.240411830943216
+          "incidence_reduction": 0.2518394574063536,
+          "net_usage_adj": -0.14453828034524374,
+          "external_validity": -0.24061783561704922,
+          "indirect_deaths_multiplier": 0.7415381272548688,
+          "over5_relative_efficacy": 0.9524625097816453,
+          "distribution_interval_months": 46.863088698014685,
+          "fixed_logistics_fraction": 0.18513816884723105,
+          "tau_physical": 21.87307207878324,
+          "tau_insecticide": 23.120273507975902,
+          "tau_usage": 58.291612943861196
         },
-        "cost_per_daly": 382.14145542867254
+        "cost_per_daly": 617.2639021403095
       },
       {
         "trial": 69,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4144874778011481,
-          "net_usage_adj": -0.05283108551260071,
-          "external_validity": -0.08812005110745921,
-          "indirect_deaths_multiplier": 0.9813666383045747,
-          "over5_relative_efficacy": 0.828374768718863,
-          "distribution_interval_months": 45.28770994496088,
-          "fixed_logistics_fraction": 0.1792829730026595,
-          "tau_physical": 16.75596619472794,
-          "tau_insecticide": 16.450843542768276,
-          "tau_usage": 35.32865877864992
+          "incidence_reduction": 0.2630832143251657,
+          "net_usage_adj": -0.06514541460400275,
+          "external_validity": -0.038622297289859886,
+          "indirect_deaths_multiplier": 0.8794492874631727,
+          "over5_relative_efficacy": 0.7050874211848157,
+          "distribution_interval_months": 20.38446619138134,
+          "fixed_logistics_fraction": 0.26133249392218166,
+          "tau_physical": 25.907442146102078,
+          "tau_insecticide": 23.692178790221625,
+          "tau_usage": 36.539089105749184
         },
-        "cost_per_daly": 342.94725992278387
+        "cost_per_daly": 486.16206015505014
       },
       {
         "trial": 70,
@@ -1228,24 +1231,24 @@
           "tau_insecticide": 18.971404301194895,
           "tau_usage": 66.07718297913326
         },
-        "cost_per_daly": 296.4528425328139
+        "cost_per_daly": 277.6474304336099
       },
       {
         "trial": 71,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.48288610177663005,
-          "net_usage_adj": -0.27329707953119736,
-          "external_validity": -0.12211858979762674,
-          "indirect_deaths_multiplier": 0.9511129182658727,
-          "over5_relative_efficacy": 0.9424681962877031,
-          "distribution_interval_months": 17.635051682966683,
-          "fixed_logistics_fraction": 0.1416594250241141,
-          "tau_physical": 24.286821000700442,
-          "tau_insecticide": 10.550318156342435,
-          "tau_usage": 70.65693122592103
+          "incidence_reduction": 0.30668965435012896,
+          "net_usage_adj": -0.020552883924322196,
+          "external_validity": -0.02289747318285762,
+          "indirect_deaths_multiplier": 0.8687743884434154,
+          "over5_relative_efficacy": 0.41164074737092926,
+          "distribution_interval_months": 23.772243665859676,
+          "fixed_logistics_fraction": 0.20698968383572697,
+          "tau_physical": 19.127853176602137,
+          "tau_insecticide": 22.553387120860435,
+          "tau_usage": 56.62335739696256
         },
-        "cost_per_daly": 359.44190296203914
+        "cost_per_daly": 467.12629114246204
       },
       {
         "trial": 72,
@@ -1262,24 +1265,24 @@
           "tau_insecticide": 22.119921681090183,
           "tau_usage": 30.84511231782911
         },
-        "cost_per_daly": 403.44072106253094
+        "cost_per_daly": 384.7314174833257
       },
       {
         "trial": 73,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.48582752796853745,
-          "net_usage_adj": -0.14393085326907298,
-          "external_validity": -0.08072655380408891,
-          "indirect_deaths_multiplier": 0.867109528036998,
-          "over5_relative_efficacy": 0.4786087711902794,
-          "distribution_interval_months": 33.6344590199099,
-          "fixed_logistics_fraction": 0.05857447532582792,
-          "tau_physical": 22.463491250830888,
-          "tau_insecticide": 10.477482905923639,
-          "tau_usage": 37.68276289040756
+          "incidence_reduction": 0.47686579408660634,
+          "net_usage_adj": -0.2632555749449108,
+          "external_validity": -0.11649097169883585,
+          "indirect_deaths_multiplier": 0.9276776161071354,
+          "over5_relative_efficacy": 0.6460142720450458,
+          "distribution_interval_months": 29.351817038383214,
+          "fixed_logistics_fraction": 0.06761516941673958,
+          "tau_physical": 19.172154606733663,
+          "tau_insecticide": 13.192106386703157,
+          "tau_usage": 69.69514284728525
         },
-        "cost_per_daly": 356.9926863036219
+        "cost_per_daly": 372.3746905815236
       },
       {
         "trial": 74,
@@ -1296,7 +1299,7 @@
           "tau_insecticide": 19.525971403715246,
           "tau_usage": 48.66815907506722
         },
-        "cost_per_daly": 284.8606902863943
+        "cost_per_daly": 269.6365499069837
       },
       {
         "trial": 75,
@@ -1313,7 +1316,7 @@
           "tau_insecticide": 12.580144566130931,
           "tau_usage": 47.79994377729012
         },
-        "cost_per_daly": 478.2916775529893
+        "cost_per_daly": 467.07627359783976
       },
       {
         "trial": 76,
@@ -1330,7 +1333,7 @@
           "tau_insecticide": 23.95876702485687,
           "tau_usage": 41.80510318869475
         },
-        "cost_per_daly": 500.52106645755947
+        "cost_per_daly": 425.42230363524334
       },
       {
         "trial": 77,
@@ -1347,75 +1350,75 @@
           "tau_insecticide": 22.938862498126962,
           "tau_usage": 52.78023552799843
         },
-        "cost_per_daly": 378.8684654921892
+        "cost_per_daly": 376.1118266595992
       },
       {
         "trial": 78,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.45980198825986474,
-          "net_usage_adj": -0.2904016619567026,
-          "external_validity": -0.014955041317689655,
-          "indirect_deaths_multiplier": 0.9352446106561724,
-          "over5_relative_efficacy": 0.7213131496515781,
-          "distribution_interval_months": 31.569440696806513,
-          "fixed_logistics_fraction": 0.2134444807390391,
-          "tau_physical": 20.805750179023306,
-          "tau_insecticide": 18.35555653436569,
-          "tau_usage": 31.880272324916447
+          "incidence_reduction": 0.4119592596520566,
+          "net_usage_adj": -0.08637840232562086,
+          "external_validity": -0.2053873314754063,
+          "indirect_deaths_multiplier": 0.44775288842322547,
+          "over5_relative_efficacy": 0.9642382203673265,
+          "distribution_interval_months": 21.38398977223566,
+          "fixed_logistics_fraction": 0.263336624402181,
+          "tau_physical": 27.952371756942274,
+          "tau_insecticide": 20.36036146820071,
+          "tau_usage": 37.091011479407946
         },
-        "cost_per_daly": 330.4431484273817
+        "cost_per_daly": 452.0058393427387
       },
       {
         "trial": 79,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": -0.22787517242932523,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 0.4,
-          "distribution_interval_months": 48.0,
-          "fixed_logistics_fraction": 0.3,
-          "tau_physical": 30.0,
-          "tau_insecticide": 24.0,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.4956631028733923,
+          "net_usage_adj": -0.10888573394891174,
+          "external_validity": -0.20959057655385205,
+          "indirect_deaths_multiplier": 0.9435096339995834,
+          "over5_relative_efficacy": 0.7097486939200364,
+          "distribution_interval_months": 17.53497523570505,
+          "fixed_logistics_fraction": 0.28043166736291536,
+          "tau_physical": 26.362035760846545,
+          "tau_insecticide": 19.707284363570423,
+          "tau_usage": 59.78558955936499
         },
-        "cost_per_daly": 253.05726137679116
+        "cost_per_daly": 298.4821847196946
       },
       {
         "trial": 80,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4540569629657001,
-          "net_usage_adj": -0.0035213654570439568,
-          "external_validity": -0.1527871258814709,
-          "indirect_deaths_multiplier": 0.428449381684051,
-          "over5_relative_efficacy": 0.8807029019771949,
-          "distribution_interval_months": 33.75770588698109,
-          "fixed_logistics_fraction": 0.09963571471705042,
-          "tau_physical": 22.422426849321305,
-          "tau_insecticide": 19.87696392853959,
-          "tau_usage": 62.35729505688304
+          "incidence_reduction": 0.44459297613637283,
+          "net_usage_adj": -0.11742852204780771,
+          "external_validity": -0.007273822137532637,
+          "indirect_deaths_multiplier": 0.6241633957204354,
+          "over5_relative_efficacy": 0.8088763675103028,
+          "distribution_interval_months": 14.28728600726107,
+          "fixed_logistics_fraction": 0.1490618367041015,
+          "tau_physical": 29.457264917822705,
+          "tau_insecticide": 16.62369399120193,
+          "tau_usage": 42.09093914006347
         },
-        "cost_per_daly": 307.69494763779466
+        "cost_per_daly": 320.66800642538755
       },
       {
         "trial": 81,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4803644340541326,
-          "net_usage_adj": -0.006448209920193015,
-          "external_validity": -0.2473324682484593,
-          "indirect_deaths_multiplier": 0.7736447658264866,
-          "over5_relative_efficacy": 0.6477036386553439,
-          "distribution_interval_months": 42.954761652064384,
-          "fixed_logistics_fraction": 0.11295367550228293,
-          "tau_physical": 29.71544233672614,
-          "tau_insecticide": 17.819327512699957,
-          "tau_usage": 63.3285708936109
+          "incidence_reduction": 0.5,
+          "net_usage_adj": 0.0,
+          "external_validity": -0.16668995910751414,
+          "indirect_deaths_multiplier": 1.0,
+          "over5_relative_efficacy": 0.45090227644068176,
+          "distribution_interval_months": 48.0,
+          "fixed_logistics_fraction": 0.12980919134146945,
+          "tau_physical": 30.0,
+          "tau_insecticide": 24.0,
+          "tau_usage": 72.0
         },
-        "cost_per_daly": 262.0633260349074
+        "cost_per_daly": 168.67243842301505
       },
       {
         "trial": 82,
@@ -1432,92 +1435,92 @@
           "tau_insecticide": 12.718898172861829,
           "tau_usage": 30.64112326513325
         },
-        "cost_per_daly": 307.65876832689065
+        "cost_per_daly": 295.1140871752406
       },
       {
         "trial": 83,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.35453289994840564,
-          "net_usage_adj": -0.026695290006233996,
-          "external_validity": -0.001709065266630394,
-          "indirect_deaths_multiplier": 0.4636552299687713,
-          "over5_relative_efficacy": 0.5398319127909152,
-          "distribution_interval_months": 46.213671053355355,
-          "fixed_logistics_fraction": 0.2895819216203467,
-          "tau_physical": 16.465609130801376,
-          "tau_insecticide": 8.239976006034187,
-          "tau_usage": 36.76620097676974
+          "incidence_reduction": 0.2926325973484438,
+          "net_usage_adj": -0.030774284976547883,
+          "external_validity": -0.08596347703813945,
+          "indirect_deaths_multiplier": 0.9291128804924097,
+          "over5_relative_efficacy": 0.691168430266119,
+          "distribution_interval_months": 31.513200423499274,
+          "fixed_logistics_fraction": 0.2797595692571678,
+          "tau_physical": 28.498643150320078,
+          "tau_insecticide": 15.170573973904032,
+          "tau_usage": 41.52533052869863
         },
-        "cost_per_daly": 842.2777379753508
+        "cost_per_daly": 456.6392155927245
       },
       {
         "trial": 84,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4409038247404142,
-          "net_usage_adj": -0.22252069263385094,
-          "external_validity": -0.12980345795506817,
-          "indirect_deaths_multiplier": 0.9952095816381014,
-          "over5_relative_efficacy": 0.8119902540124224,
-          "distribution_interval_months": 42.28884376698715,
-          "fixed_logistics_fraction": 0.15371190164013643,
-          "tau_physical": 26.51791384688783,
-          "tau_insecticide": 8.64814676706115,
-          "tau_usage": 35.16226966677429
+          "incidence_reduction": 0.45149253216773844,
+          "net_usage_adj": -0.2131506404640841,
+          "external_validity": -0.0839685651791624,
+          "indirect_deaths_multiplier": 0.655955140632636,
+          "over5_relative_efficacy": 0.9334716134364657,
+          "distribution_interval_months": 42.42812009378663,
+          "fixed_logistics_fraction": 0.18135799957741056,
+          "tau_physical": 25.372583187203915,
+          "tau_insecticide": 22.133595216353662,
+          "tau_usage": 50.82011442328757
         },
-        "cost_per_daly": 455.81782371091464
+        "cost_per_daly": 267.7509517914779
       },
       {
         "trial": 85,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4800284533306572,
-          "net_usage_adj": -0.15891113319252756,
-          "external_validity": -0.242750813916013,
-          "indirect_deaths_multiplier": 0.8138926427972571,
-          "over5_relative_efficacy": 0.6891023521457549,
-          "distribution_interval_months": 16.476431427926787,
-          "fixed_logistics_fraction": 0.1035679523275649,
-          "tau_physical": 15.967360206837695,
-          "tau_insecticide": 17.188696635337177,
-          "tau_usage": 56.125238128584385
+          "incidence_reduction": 0.4792746262929486,
+          "net_usage_adj": -0.2598075399750656,
+          "external_validity": -0.08212204817974064,
+          "indirect_deaths_multiplier": 0.4026157479739483,
+          "over5_relative_efficacy": 0.9547906632431085,
+          "distribution_interval_months": 16.050148796571293,
+          "fixed_logistics_fraction": 0.07372105753689366,
+          "tau_physical": 19.995114495783664,
+          "tau_insecticide": 13.97706057662529,
+          "tau_usage": 39.0006030375609
         },
-        "cost_per_daly": 435.34996496532
+        "cost_per_daly": 441.55624957665566
       },
       {
         "trial": 86,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.48582459931141314,
-          "net_usage_adj": -0.1416683372793369,
-          "external_validity": -0.11499270193482808,
-          "indirect_deaths_multiplier": 0.6766201408586872,
-          "over5_relative_efficacy": 0.5955340860361856,
-          "distribution_interval_months": 29.123581113297018,
-          "fixed_logistics_fraction": 0.20070188306668985,
-          "tau_physical": 29.789873582559892,
-          "tau_insecticide": 23.004232949091588,
-          "tau_usage": 66.21042424831111
+          "incidence_reduction": 0.4722826339262146,
+          "net_usage_adj": -0.1596452450123871,
+          "external_validity": -0.0856389182056338,
+          "indirect_deaths_multiplier": 0.9370400337617285,
+          "over5_relative_efficacy": 0.6357704589948119,
+          "distribution_interval_months": 46.623449220436875,
+          "fixed_logistics_fraction": 0.15394651551729577,
+          "tau_physical": 24.016239980898234,
+          "tau_insecticide": 19.35687541235795,
+          "tau_usage": 69.92486454918941
         },
-        "cost_per_daly": 292.5914293991468
+        "cost_per_daly": 223.96966010227817
       },
       {
         "trial": 87,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4772452229787161,
-          "net_usage_adj": -0.10862085312610034,
-          "external_validity": -0.057707532619103136,
-          "indirect_deaths_multiplier": 0.6211374814166283,
-          "over5_relative_efficacy": 0.9760071284914753,
-          "distribution_interval_months": 41.53660644569934,
-          "fixed_logistics_fraction": 0.2634871157536359,
-          "tau_physical": 17.582914011386315,
-          "tau_insecticide": 12.335411325939512,
-          "tau_usage": 41.996317186710236
+          "incidence_reduction": 0.37800584727718983,
+          "net_usage_adj": -0.13534747332195785,
+          "external_validity": -0.11541840699752198,
+          "indirect_deaths_multiplier": 0.7390442748880632,
+          "over5_relative_efficacy": 0.9692229509435085,
+          "distribution_interval_months": 44.48084243146433,
+          "fixed_logistics_fraction": 0.26892925913973487,
+          "tau_physical": 27.021252163629406,
+          "tau_insecticide": 23.094849716244568,
+          "tau_usage": 34.136774950534935
         },
-        "cost_per_daly": 360.5954660227763
+        "cost_per_daly": 342.30579564305305
       },
       {
         "trial": 88,
@@ -1534,24 +1537,24 @@
           "tau_insecticide": 15.813358608069354,
           "tau_usage": 30.94792725608459
         },
-        "cost_per_daly": 327.5450392430516
+        "cost_per_daly": 323.2958378457012
       },
       {
         "trial": 89,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3305846145202359,
-          "net_usage_adj": -0.11688184000678392,
-          "external_validity": -0.015222825422439856,
-          "indirect_deaths_multiplier": 0.8030469042864901,
-          "over5_relative_efficacy": 0.44484754218178935,
-          "distribution_interval_months": 28.584659045356815,
-          "fixed_logistics_fraction": 0.2727060328776569,
-          "tau_physical": 16.416936387016303,
-          "tau_insecticide": 23.822011394200693,
-          "tau_usage": 69.86091453310769
+          "incidence_reduction": 0.3662588311826682,
+          "net_usage_adj": -0.09303119900599177,
+          "external_validity": -0.029000555782203313,
+          "indirect_deaths_multiplier": 0.5241917818000718,
+          "over5_relative_efficacy": 0.9509158950770218,
+          "distribution_interval_months": 41.346488350916005,
+          "fixed_logistics_fraction": 0.29471400379455864,
+          "tau_physical": 28.203776599225307,
+          "tau_insecticide": 12.478997275070506,
+          "tau_usage": 34.45014827645
         },
-        "cost_per_daly": 510.637297589235
+        "cost_per_daly": 459.5389268801488
       },
       {
         "trial": 90,
@@ -1568,7 +1571,7 @@
           "tau_insecticide": 19.556978693179325,
           "tau_usage": 37.99919387526193
         },
-        "cost_per_daly": 357.2505204835026
+        "cost_per_daly": 334.13659884858765
       },
       {
         "trial": 91,
@@ -1585,7 +1588,7 @@
           "tau_insecticide": 23.776446851142875,
           "tau_usage": 37.57780052741756
         },
-        "cost_per_daly": 262.7854169007644
+        "cost_per_daly": 258.52318084909757
       },
       {
         "trial": 92,
@@ -1602,24 +1605,24 @@
           "tau_insecticide": 23.209788395886243,
           "tau_usage": 56.63861144496457
         },
-        "cost_per_daly": 554.1776116708147
+        "cost_per_daly": 536.0159675492678
       },
       {
         "trial": 93,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.49302399830307775,
-          "net_usage_adj": -0.11473280603711444,
-          "external_validity": -0.00464606954158403,
-          "indirect_deaths_multiplier": 0.6026535922793375,
-          "over5_relative_efficacy": 0.8218190199844789,
-          "distribution_interval_months": 20.013730915484558,
-          "fixed_logistics_fraction": 0.11530004281847823,
-          "tau_physical": 22.67853181904436,
-          "tau_insecticide": 13.11389000812914,
-          "tau_usage": 37.040105681304546
+          "incidence_reduction": 0.48408568834955695,
+          "net_usage_adj": -0.057788718062253164,
+          "external_validity": -0.0911016294979532,
+          "indirect_deaths_multiplier": 0.5822325721547132,
+          "over5_relative_efficacy": 0.9897669529721327,
+          "distribution_interval_months": 21.86890201890978,
+          "fixed_logistics_fraction": 0.10066423049760777,
+          "tau_physical": 21.632311706798742,
+          "tau_insecticide": 8.909449131398215,
+          "tau_usage": 71.09676751621521
         },
-        "cost_per_daly": 276.9506471603768
+        "cost_per_daly": 336.0996709051942
       },
       {
         "trial": 94,
@@ -1636,24 +1639,24 @@
           "tau_insecticide": 22.532136874833057,
           "tau_usage": 42.99822632618441
         },
-        "cost_per_daly": 375.7474804723412
+        "cost_per_daly": 337.40663087207247
       },
       {
         "trial": 95,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 33.39801854763569,
-          "fixed_logistics_fraction": 0.22966855930431068,
-          "tau_physical": 17.333260002486625,
-          "tau_insecticide": 16.258380448199336,
-          "tau_usage": 72.0
+          "incidence_reduction": 0.44714544127711775,
+          "net_usage_adj": -0.08759286480062647,
+          "external_validity": -0.18644554273332795,
+          "indirect_deaths_multiplier": 0.9172504515041389,
+          "over5_relative_efficacy": 0.936066079225759,
+          "distribution_interval_months": 18.989497078267767,
+          "fixed_logistics_fraction": 0.08261390913784848,
+          "tau_physical": 29.63407452883668,
+          "tau_insecticide": 21.893183418405886,
+          "tau_usage": 67.51591818281776
         },
-        "cost_per_daly": 193.047070558823
+        "cost_per_daly": 247.8899583316337
       },
       {
         "trial": 96,
@@ -1670,7 +1673,7 @@
           "tau_insecticide": 23.881438014941516,
           "tau_usage": 58.534526500721896
         },
-        "cost_per_daly": 376.04603793737874
+        "cost_per_daly": 370.8235995567897
       },
       {
         "trial": 97,
@@ -1687,24 +1690,24 @@
           "tau_insecticide": 19.4580422476278,
           "tau_usage": 44.46640811399742
         },
-        "cost_per_daly": 265.70270946405344
+        "cost_per_daly": 264.94334221102366
       },
       {
         "trial": 98,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4636518906833428,
-          "net_usage_adj": -0.15858956694810075,
-          "external_validity": -0.03284295737240975,
-          "indirect_deaths_multiplier": 0.5749460617454591,
-          "over5_relative_efficacy": 0.4772878442577929,
-          "distribution_interval_months": 42.79132071706578,
-          "fixed_logistics_fraction": 0.19685379094816668,
-          "tau_physical": 28.3363859737344,
-          "tau_insecticide": 23.00523531187813,
-          "tau_usage": 32.252392395600864
+          "incidence_reduction": 0.3735107167339333,
+          "net_usage_adj": -0.2834347119748783,
+          "external_validity": -0.011340621659986061,
+          "indirect_deaths_multiplier": 0.4771463564781271,
+          "over5_relative_efficacy": 0.8184767603360361,
+          "distribution_interval_months": 30.224317299271686,
+          "fixed_logistics_fraction": 0.05640806247110565,
+          "tau_physical": 28.871212137965426,
+          "tau_insecticide": 21.62938894110293,
+          "tau_usage": 52.01883297196109
         },
-        "cost_per_daly": 306.4196038756803
+        "cost_per_daly": 351.81565459981385
       },
       {
         "trial": 99,
@@ -1721,27 +1724,27 @@
           "tau_insecticide": 14.366057399637896,
           "tau_usage": 70.0266793936986
         },
-        "cost_per_daly": 372.85911110242574
+        "cost_per_daly": 332.35109283712586
       },
       {
         "trial": 100,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.5,
-          "net_usage_adj": 0.0,
-          "external_validity": 0.0,
-          "indirect_deaths_multiplier": 1.0,
-          "over5_relative_efficacy": 1.0,
-          "distribution_interval_months": 48.0,
-          "fixed_logistics_fraction": 0.2697899937783417,
-          "tau_physical": 30.0,
-          "tau_insecticide": 16.3824161665216,
-          "tau_usage": 30.0
+          "incidence_reduction": 0.46083308872298434,
+          "net_usage_adj": -0.08459813696770563,
+          "external_validity": -0.014091582337876302,
+          "indirect_deaths_multiplier": 0.8160801435784163,
+          "over5_relative_efficacy": 0.9642408233573113,
+          "distribution_interval_months": 31.96245200487474,
+          "fixed_logistics_fraction": 0.20005465276549234,
+          "tau_physical": 29.654565819393913,
+          "tau_insecticide": 18.274066349828168,
+          "tau_usage": 31.29303589215136
         },
-        "cost_per_daly": 204.22142780382677
+        "cost_per_daly": 217.30407736594194
       }
     ],
-    "elapsed_seconds": 10.7
+    "elapsed_seconds": 7.9
   },
   "maximize": {
     "country": "guinea",
@@ -1753,18 +1756,18 @@
       "external_validity": -0.25,
       "indirect_deaths_multiplier": 0.4,
       "over5_relative_efficacy": 0.4,
-      "distribution_interval_months": 46.10123578830299,
+      "distribution_interval_months": 30.800752456070963,
       "fixed_logistics_fraction": 0.3,
       "tau_physical": 15.0,
       "tau_insecticide": 8.0,
       "tau_usage": 30.0
     },
     "best_metrics": {
-      "cost_per_daly": 2968.2140970039086,
-      "deaths_averted_per_million": 11.319102279838793,
-      "total_program_cost": 3900000.0,
-      "average_net_efficacy": 0.09650527563940706,
-      "num_distribution_cycles": 3
+      "cost_per_daly": 2578.4609700672877,
+      "deaths_averted_per_million": 17.373422540278526,
+      "total_program_cost": 5200000.0,
+      "average_net_efficacy": 0.14812366648862413,
+      "num_distribution_cycles": 4
     },
     "baseline_metrics": {
       "cost_per_daly": 280.03447697527616,
@@ -1801,7 +1804,7 @@
           "tau_insecticide": 20.899663358926773,
           "tau_usage": 34.81565625965595
         },
-        "cost_per_daly": 454.4968937276725
+        "cost_per_daly": 431.6320122073876
       },
       {
         "trial": 2,
@@ -1818,7 +1821,7 @@
           "tau_insecticide": 14.401585593819618,
           "tau_usage": 59.14565162546933
         },
-        "cost_per_daly": 628.1768789323253
+        "cost_per_daly": 589.0555785772046
       },
       {
         "trial": 3,
@@ -1835,7 +1838,7 @@
           "tau_insecticide": 11.523537665605545,
           "tau_usage": 65.63133119232953
         },
-        "cost_per_daly": 438.64889835321463
+        "cost_per_daly": 424.8542946652233
       },
       {
         "trial": 4,
@@ -1852,7 +1855,7 @@
           "tau_insecticide": 17.025765791535378,
           "tau_usage": 49.33013691008091
         },
-        "cost_per_daly": 771.5943118737963
+        "cost_per_daly": 684.0376495582183
       },
       {
         "trial": 5,
@@ -1869,7 +1872,7 @@
           "tau_insecticide": 8.159146830439568,
           "tau_usage": 55.76373654976487
         },
-        "cost_per_daly": 1289.78414059305
+        "cost_per_daly": 1096.6718574925032
       },
       {
         "trial": 6,
@@ -1886,7 +1889,7 @@
           "tau_insecticide": 18.656797289848328,
           "tau_usage": 38.19618961773813
         },
-        "cost_per_daly": 259.32745879889836
+        "cost_per_daly": 246.6613731207805
       },
       {
         "trial": 7,
@@ -1903,7 +1906,7 @@
           "tau_insecticide": 23.284837648272514,
           "tau_usage": 44.68170896731317
         },
-        "cost_per_daly": 304.3291709662711
+        "cost_per_daly": 297.29940841438105
       },
       {
         "trial": 8,
@@ -1920,7 +1923,7 @@
           "tau_insecticide": 13.783036708831787,
           "tau_usage": 70.27805698290467
         },
-        "cost_per_daly": 655.6963006004473
+        "cost_per_daly": 654.525544071741
       },
       {
         "trial": 9,
@@ -1937,7 +1940,7 @@
           "tau_insecticide": 9.122028782963753,
           "tau_usage": 47.77158657833934
         },
-        "cost_per_daly": 876.7892673978133
+        "cost_per_daly": 747.9406675795344
       },
       {
         "trial": 10,
@@ -1954,7 +1957,7 @@
           "tau_insecticide": 19.62358483672142,
           "tau_usage": 61.61175668053329
         },
-        "cost_per_daly": 321.8749602200023
+        "cost_per_daly": 310.63268806059546
       },
       {
         "trial": 11,
@@ -1971,7 +1974,7 @@
           "tau_insecticide": 22.497734144330025,
           "tau_usage": 57.58701461367309
         },
-        "cost_per_daly": 371.402146939579
+        "cost_per_daly": 370.8344399013793
       },
       {
         "trial": 12,
@@ -1988,7 +1991,7 @@
           "tau_insecticide": 12.99984022974968,
           "tau_usage": 30.79616842791438
         },
-        "cost_per_daly": 584.5360117681745
+        "cost_per_daly": 569.325858943994
       },
       {
         "trial": 13,
@@ -2005,7 +2008,7 @@
           "tau_insecticide": 21.8195920586586,
           "tau_usage": 68.71942513436079
         },
-        "cost_per_daly": 405.94259921050536
+        "cost_per_daly": 372.5474970929841
       },
       {
         "trial": 14,
@@ -2022,7 +2025,7 @@
           "tau_insecticide": 15.317608818411827,
           "tau_usage": 40.66221565939486
         },
-        "cost_per_daly": 679.0258918543287
+        "cost_per_daly": 667.142294605791
       },
       {
         "trial": 15,
@@ -2039,7 +2042,7 @@
           "tau_insecticide": 10.693451821804047,
           "tau_usage": 36.63763380981982
         },
-        "cost_per_daly": 589.9084415816145
+        "cost_per_daly": 543.0282792500739
       },
       {
         "trial": 16,
@@ -2056,7 +2059,7 @@
           "tau_insecticide": 16.191773042082787,
           "tau_usage": 51.74416720122099
         },
-        "cost_per_daly": 502.4243176224923
+        "cost_per_daly": 459.3553792199235
       },
       {
         "trial": 17,
@@ -2073,7 +2076,7 @@
           "tau_insecticide": 19.23825167119503,
           "tau_usage": 40.09393903054297
         },
-        "cost_per_daly": 403.66762309500245
+        "cost_per_daly": 399.3497667812323
       },
       {
         "trial": 18,
@@ -2090,7 +2093,7 @@
           "tau_insecticide": 9.735840380191803,
           "tau_usage": 53.867529071867466
         },
-        "cost_per_daly": 672.3507917374544
+        "cost_per_daly": 628.0641576860774
       },
       {
         "trial": 19,
@@ -2107,7 +2110,7 @@
           "tau_insecticide": 12.361950501799583,
           "tau_usage": 71.00685951858759
         },
-        "cost_per_daly": 229.34744389948065
+        "cost_per_daly": 204.9870751367606
       },
       {
         "trial": 20,
@@ -2124,7 +2127,7 @@
           "tau_insecticide": 22.860211312770844,
           "tau_usage": 43.95444836653769
         },
-        "cost_per_daly": 1118.4132021623402
+        "cost_per_daly": 1027.0832952775972
       },
       {
         "trial": 21,
@@ -2141,7 +2144,7 @@
           "tau_insecticide": 15.945610135793686,
           "tau_usage": 61.14439691416919
         },
-        "cost_per_daly": 513.7211170955119
+        "cost_per_daly": 508.7878927832426
       },
       {
         "trial": 22,
@@ -2158,7 +2161,7 @@
           "tau_insecticide": 21.44747205078602,
           "tau_usage": 32.81536903604865
         },
-        "cost_per_daly": 554.1963292230796
+        "cost_per_daly": 503.28313759070386
       },
       {
         "trial": 23,
@@ -2175,7 +2178,7 @@
           "tau_insecticide": 16.571369618177414,
           "tau_usage": 49.95485970005393
         },
-        "cost_per_daly": 412.8603201679134
+        "cost_per_daly": 412.51392310391407
       },
       {
         "trial": 24,
@@ -2192,7 +2195,7 @@
           "tau_insecticide": 10.073658064007759,
           "tau_usage": 65.00506646744907
         },
-        "cost_per_daly": 564.3861432117858
+        "cost_per_daly": 545.1144335539151
       },
       {
         "trial": 25,
@@ -2209,7 +2212,7 @@
           "tau_insecticide": 14.77177608013153,
           "tau_usage": 42.55995427630842
         },
-        "cost_per_daly": 479.88422787722953
+        "cost_per_daly": 444.2554448546957
       },
       {
         "trial": 26,
@@ -2226,27 +2229,10 @@
           "tau_insecticide": 13.735451656708362,
           "tau_usage": 34.86650050005545
         },
-        "cost_per_daly": 690.299240249292
+        "cost_per_daly": 605.254766690086
       },
       {
         "trial": 27,
-        "phase": "bayesian",
-        "params": {
-          "incidence_reduction": 0.2576193826040939,
-          "net_usage_adj": -0.2887969203868383,
-          "external_validity": -0.04435074444980014,
-          "indirect_deaths_multiplier": 0.6161133173930349,
-          "over5_relative_efficacy": 0.4762336637472251,
-          "distribution_interval_months": 30.80075736146372,
-          "fixed_logistics_fraction": 0.24250123454240452,
-          "tau_physical": 18.237266604319487,
-          "tau_insecticide": 17.96618544770291,
-          "tau_usage": 33.58448852403375
-        },
-        "cost_per_daly": 969.2306617546994
-      },
-      {
-        "trial": 28,
         "phase": "bayesian",
         "params": {
           "incidence_reduction": 0.25,
@@ -2254,149 +2240,166 @@
           "external_validity": -0.25,
           "indirect_deaths_multiplier": 0.4,
           "over5_relative_efficacy": 0.4,
-          "distribution_interval_months": 46.10123578830299,
+          "distribution_interval_months": 30.800752456070963,
           "fixed_logistics_fraction": 0.3,
           "tau_physical": 15.0,
           "tau_insecticide": 8.0,
           "tau_usage": 30.0
         },
-        "cost_per_daly": 2968.2140970039086
+        "cost_per_daly": 2578.4609700672877
+      },
+      {
+        "trial": 28,
+        "phase": "bayesian",
+        "params": {
+          "incidence_reduction": 0.271209428521298,
+          "net_usage_adj": -0.004008126449647376,
+          "external_validity": -0.15643230106096992,
+          "indirect_deaths_multiplier": 0.6223852882401346,
+          "over5_relative_efficacy": 0.8876797403545016,
+          "distribution_interval_months": 46.100948785818915,
+          "fixed_logistics_fraction": 0.2965002659557177,
+          "tau_physical": 26.300672778884124,
+          "tau_insecticide": 14.020153368494652,
+          "tau_usage": 33.507030101344085
+        },
+        "cost_per_daly": 664.8076857039864
       },
       {
         "trial": 29,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2530386186724541,
-          "net_usage_adj": -0.009036351987708302,
-          "external_validity": -0.23921002201235597,
-          "indirect_deaths_multiplier": 0.9346858682188427,
-          "over5_relative_efficacy": 0.7166206654517799,
-          "distribution_interval_months": 47.74673266029481,
-          "fixed_logistics_fraction": 0.06844914118384972,
-          "tau_physical": 23.30781426601981,
-          "tau_insecticide": 23.508840569905583,
-          "tau_usage": 51.97010945514625
+          "incidence_reduction": 0.44428672898185917,
+          "net_usage_adj": -0.13247872507925848,
+          "external_validity": -0.14394449768825593,
+          "indirect_deaths_multiplier": 0.9438126310568415,
+          "over5_relative_efficacy": 0.4667184893836908,
+          "distribution_interval_months": 29.73450375447093,
+          "fixed_logistics_fraction": 0.05283841119185477,
+          "tau_physical": 22.029909629911895,
+          "tau_insecticide": 8.900852410909398,
+          "tau_usage": 34.990352483259024
         },
-        "cost_per_daly": 531.3634042769864
+        "cost_per_daly": 501.23863147893996
       },
       {
         "trial": 30,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.25982803496027473,
-          "net_usage_adj": -0.06017688032728721,
-          "external_validity": -0.09302490262727306,
-          "indirect_deaths_multiplier": 0.4490554191693232,
-          "over5_relative_efficacy": 0.9241471744640664,
-          "distribution_interval_months": 45.151406419145275,
-          "fixed_logistics_fraction": 0.06526948996371594,
-          "tau_physical": 19.153164722208054,
-          "tau_insecticide": 20.89922047668898,
-          "tau_usage": 61.42690699611365
+          "incidence_reduction": 0.2933433988236887,
+          "net_usage_adj": -0.030970372612072472,
+          "external_validity": -0.22994156358458945,
+          "indirect_deaths_multiplier": 0.7147068337421528,
+          "over5_relative_efficacy": 0.6462380961937969,
+          "distribution_interval_months": 47.36563020870983,
+          "fixed_logistics_fraction": 0.07800972554201309,
+          "tau_physical": 20.967833985686124,
+          "tau_insecticide": 23.5115269324059,
+          "tau_usage": 66.35129928754716
         },
-        "cost_per_daly": 582.9306400050397
+        "cost_per_daly": 452.61618380866486
       },
       {
         "trial": 31,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3077686991470179,
-          "net_usage_adj": -0.09843217692038148,
-          "external_validity": -0.24507236556140896,
-          "indirect_deaths_multiplier": 0.46246514919074433,
-          "over5_relative_efficacy": 0.8799496512239136,
-          "distribution_interval_months": 18.42760783395601,
-          "fixed_logistics_fraction": 0.2131865269629687,
-          "tau_physical": 18.572741715700896,
-          "tau_insecticide": 9.591062284149523,
-          "tau_usage": 40.21323202197707
+          "incidence_reduction": 0.2667691193471069,
+          "net_usage_adj": -0.07501185888024667,
+          "external_validity": -0.19752360172610356,
+          "indirect_deaths_multiplier": 0.9388325736644283,
+          "over5_relative_efficacy": 0.5230837842892043,
+          "distribution_interval_months": 18.864757943891995,
+          "fixed_logistics_fraction": 0.05913741696202372,
+          "tau_physical": 22.08100417664999,
+          "tau_insecticide": 17.037458132201863,
+          "tau_usage": 32.7597628559908
         },
-        "cost_per_daly": 1088.8733256474952
+        "cost_per_daly": 646.8259957429988
       },
       {
         "trial": 32,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.28483901851820603,
-          "net_usage_adj": -0.049520928960210264,
-          "external_validity": -0.0038994548241119698,
-          "indirect_deaths_multiplier": 0.7154141093816115,
-          "over5_relative_efficacy": 0.5030075715089821,
-          "distribution_interval_months": 21.803063754697284,
-          "fixed_logistics_fraction": 0.054597669136866686,
-          "tau_physical": 28.714482098407487,
-          "tau_insecticide": 9.884017326242258,
-          "tau_usage": 54.21369197159865
+          "incidence_reduction": 0.25925190867887316,
+          "net_usage_adj": -0.12111903645538408,
+          "external_validity": -0.19249779067807424,
+          "indirect_deaths_multiplier": 0.47234013146636733,
+          "over5_relative_efficacy": 0.4461719209775255,
+          "distribution_interval_months": 37.06639593161303,
+          "fixed_logistics_fraction": 0.13496874094201655,
+          "tau_physical": 25.87150157293142,
+          "tau_insecticide": 9.045701452783078,
+          "tau_usage": 43.242194188885634
         },
-        "cost_per_daly": 579.2624534199143
+        "cost_per_daly": 1200.1879249730582
       },
       {
         "trial": 33,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4907480009647487,
-          "net_usage_adj": -0.19743835018839417,
-          "external_validity": -0.09184452671651297,
-          "indirect_deaths_multiplier": 0.9592168633060105,
-          "over5_relative_efficacy": 0.4615058367944076,
-          "distribution_interval_months": 45.74022554051224,
-          "fixed_logistics_fraction": 0.22197143057520335,
-          "tau_physical": 16.01755588657758,
-          "tau_insecticide": 12.81541707114906,
-          "tau_usage": 59.743227723101825
+          "incidence_reduction": 0.3240770301139975,
+          "net_usage_adj": -0.229917674685027,
+          "external_validity": -0.23947670259090953,
+          "indirect_deaths_multiplier": 0.4107243608400483,
+          "over5_relative_efficacy": 0.992633433841619,
+          "distribution_interval_months": 27.399832814491045,
+          "fixed_logistics_fraction": 0.14608166178992044,
+          "tau_physical": 25.194709240396048,
+          "tau_insecticide": 11.492062205841027,
+          "tau_usage": 69.89836972590946
         },
-        "cost_per_daly": 405.6719340067671
+        "cost_per_daly": 833.662217262835
       },
       {
         "trial": 34,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3144207221278034,
-          "net_usage_adj": -0.1612131129782051,
-          "external_validity": -0.03293187364790487,
-          "indirect_deaths_multiplier": 0.8363014418597848,
-          "over5_relative_efficacy": 0.8456239127199887,
-          "distribution_interval_months": 27.317760040130715,
-          "fixed_logistics_fraction": 0.13648374813674075,
-          "tau_physical": 20.56558144476904,
-          "tau_insecticide": 23.802393019776925,
-          "tau_usage": 31.684586039324266
+          "incidence_reduction": 0.40453893357952975,
+          "net_usage_adj": -0.08926050883676881,
+          "external_validity": -0.11008782912827147,
+          "indirect_deaths_multiplier": 0.40586250845151023,
+          "over5_relative_efficacy": 0.5958767849463952,
+          "distribution_interval_months": 30.63761916184961,
+          "fixed_logistics_fraction": 0.07196662478620834,
+          "tau_physical": 20.25940396813771,
+          "tau_insecticide": 8.531249740661865,
+          "tau_usage": 33.30029688051087
         },
-        "cost_per_daly": 452.02331930412976
+        "cost_per_daly": 610.4839068143441
       },
       {
         "trial": 35,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4924780115268176,
-          "net_usage_adj": -0.2718297852631745,
-          "external_validity": -0.08184947044371843,
-          "indirect_deaths_multiplier": 0.6662501315827427,
-          "over5_relative_efficacy": 0.9208853526265032,
-          "distribution_interval_months": 18.377392420105892,
-          "fixed_logistics_fraction": 0.22315648805654115,
-          "tau_physical": 27.571729344721653,
-          "tau_insecticide": 23.113827511584372,
-          "tau_usage": 58.69641718816513
+          "incidence_reduction": 0.3014603025091921,
+          "net_usage_adj": -0.2664241141806816,
+          "external_validity": -0.1825625971207526,
+          "indirect_deaths_multiplier": 0.43425211365358896,
+          "over5_relative_efficacy": 0.7187017168006192,
+          "distribution_interval_months": 45.71780492261861,
+          "fixed_logistics_fraction": 0.059835885167127414,
+          "tau_physical": 16.831648710150404,
+          "tau_insecticide": 15.235184452534964,
+          "tau_usage": 69.222750736172
         },
-        "cost_per_daly": 310.7473677665646
+        "cost_per_daly": 805.0169187494829
       },
       {
         "trial": 36,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3663014030709295,
-          "net_usage_adj": -0.2819572972197644,
-          "external_validity": -0.10942579603052255,
-          "indirect_deaths_multiplier": 0.9745751707032281,
-          "over5_relative_efficacy": 0.5051817654145958,
-          "distribution_interval_months": 36.840176069543965,
-          "fixed_logistics_fraction": 0.10023342216476412,
-          "tau_physical": 23.03741526709622,
-          "tau_insecticide": 9.546823194347514,
-          "tau_usage": 48.915579322843776
+          "incidence_reduction": 0.42310903783109244,
+          "net_usage_adj": -0.002623201889343507,
+          "external_validity": -0.2179014276364687,
+          "indirect_deaths_multiplier": 0.46246578963049984,
+          "over5_relative_efficacy": 0.8346032902772447,
+          "distribution_interval_months": 32.821929012230726,
+          "fixed_logistics_fraction": 0.11854016663995147,
+          "tau_physical": 16.1912905348348,
+          "tau_insecticide": 9.370531993542889,
+          "tau_usage": 67.55601673589297
         },
-        "cost_per_daly": 695.0659590881473
+        "cost_per_daly": 542.2586918047408
       },
       {
         "trial": 37,
@@ -2413,7 +2416,7 @@
           "tau_insecticide": 23.73886280421462,
           "tau_usage": 40.04556437706888
         },
-        "cost_per_daly": 625.0846701554669
+        "cost_per_daly": 535.2288874909548
       },
       {
         "trial": 38,
@@ -2430,7 +2433,7 @@
           "tau_insecticide": 13.230905861409266,
           "tau_usage": 36.25329811396268
         },
-        "cost_per_daly": 785.6169795475021
+        "cost_per_daly": 751.4776454629731
       },
       {
         "trial": 39,
@@ -2447,211 +2450,211 @@
           "tau_insecticide": 8.349174348407832,
           "tau_usage": 57.879166819374746
         },
-        "cost_per_daly": 1143.7726820795453
+        "cost_per_daly": 1045.5103510656425
       },
       {
         "trial": 40,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.28517788201218963,
-          "net_usage_adj": -0.239395299479253,
-          "external_validity": -0.20394379019049347,
-          "indirect_deaths_multiplier": 0.9363938260047222,
-          "over5_relative_efficacy": 0.7925755313949772,
-          "distribution_interval_months": 17.475754196001823,
-          "fixed_logistics_fraction": 0.16008085459208726,
-          "tau_physical": 24.229470376047033,
-          "tau_insecticide": 9.335425359830133,
-          "tau_usage": 67.06148747310823
+          "incidence_reduction": 0.49420008212766486,
+          "net_usage_adj": -0.26678382200210526,
+          "external_validity": -0.14436289292201385,
+          "indirect_deaths_multiplier": 0.4252148051028432,
+          "over5_relative_efficacy": 0.8439424724601583,
+          "distribution_interval_months": 45.05075587916942,
+          "fixed_logistics_fraction": 0.12000933238762236,
+          "tau_physical": 27.875125151986815,
+          "tau_insecticide": 12.675491687390364,
+          "tau_usage": 68.25234678904444
         },
-        "cost_per_daly": 852.2178205247986
+        "cost_per_daly": 388.07786372485015
       },
       {
         "trial": 41,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3135978952104618,
-          "net_usage_adj": -0.19144407203845837,
-          "external_validity": -0.1318766612483716,
-          "indirect_deaths_multiplier": 0.42738924730143024,
-          "over5_relative_efficacy": 0.48401445853199065,
-          "distribution_interval_months": 21.96531508048701,
-          "fixed_logistics_fraction": 0.29288317272526265,
-          "tau_physical": 19.970205106545762,
-          "tau_insecticide": 15.71265692979332,
-          "tau_usage": 38.2361039350125
+          "incidence_reduction": 0.31440180508343046,
+          "net_usage_adj": -0.2821425898956685,
+          "external_validity": -0.09905113676265306,
+          "indirect_deaths_multiplier": 0.8119539480955641,
+          "over5_relative_efficacy": 0.46869258283954307,
+          "distribution_interval_months": 25.81819978961926,
+          "fixed_logistics_fraction": 0.1640591272388855,
+          "tau_physical": 20.535795326413748,
+          "tau_insecticide": 9.936400007763089,
+          "tau_usage": 47.595807187873966
         },
-        "cost_per_daly": 980.4148539533916
+        "cost_per_daly": 810.5721345563187
       },
       {
         "trial": 42,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.42206855894505924,
-          "net_usage_adj": -0.25783410972649173,
-          "external_validity": -0.12860257508515055,
-          "indirect_deaths_multiplier": 0.4165220319216793,
-          "over5_relative_efficacy": 0.70327307074627,
-          "distribution_interval_months": 46.70462665623728,
-          "fixed_logistics_fraction": 0.14605167824645005,
-          "tau_physical": 15.584940188623674,
-          "tau_insecticide": 8.495292654709496,
-          "tau_usage": 46.29544391776852
+          "incidence_reduction": 0.45687973052657577,
+          "net_usage_adj": -0.0706416616035847,
+          "external_validity": -0.10661776213610669,
+          "indirect_deaths_multiplier": 0.9736282861671599,
+          "over5_relative_efficacy": 0.5202847093170417,
+          "distribution_interval_months": 15.93351157114637,
+          "fixed_logistics_fraction": 0.2634904917388555,
+          "tau_physical": 21.587247249506223,
+          "tau_insecticide": 21.55150166731297,
+          "tau_usage": 67.50978861820744
         },
-        "cost_per_daly": 901.2937754498081
+        "cost_per_daly": 300.3936358520523
       },
       {
         "trial": 43,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3512756736318916,
-          "net_usage_adj": -0.028166699360250902,
-          "external_validity": -0.1696260746880295,
-          "indirect_deaths_multiplier": 0.6858621918062751,
-          "over5_relative_efficacy": 0.5356173986895998,
-          "distribution_interval_months": 35.05713751833038,
-          "fixed_logistics_fraction": 0.2947452787937022,
-          "tau_physical": 24.052396440650682,
-          "tau_insecticide": 13.725025345816782,
-          "tau_usage": 57.20833273160219
+          "incidence_reduction": 0.40817796968715025,
+          "net_usage_adj": -0.08884287250970063,
+          "external_validity": -0.24890918258742273,
+          "indirect_deaths_multiplier": 0.5001718532483193,
+          "over5_relative_efficacy": 0.8278276303805912,
+          "distribution_interval_months": 35.989874888815436,
+          "fixed_logistics_fraction": 0.2915118762821693,
+          "tau_physical": 26.415566853761746,
+          "tau_insecticide": 23.21236332370141,
+          "tau_usage": 59.50670106446189
         },
-        "cost_per_daly": 604.5509508541421
+        "cost_per_daly": 433.48991026872847
       },
       {
         "trial": 44,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3803240119135347,
-          "net_usage_adj": -0.007195853016235931,
-          "external_validity": -0.21861244630933666,
-          "indirect_deaths_multiplier": 0.41016859893374863,
-          "over5_relative_efficacy": 0.8620949270542576,
-          "distribution_interval_months": 41.05759934513577,
-          "fixed_logistics_fraction": 0.08005180728014406,
-          "tau_physical": 18.98374249437909,
-          "tau_insecticide": 8.280837813866063,
-          "tau_usage": 42.31896165278371
+          "incidence_reduction": 0.43686110164917347,
+          "net_usage_adj": -0.15785705148061602,
+          "external_validity": -0.23553888763820985,
+          "indirect_deaths_multiplier": 0.9746738805929224,
+          "over5_relative_efficacy": 0.9656345914564674,
+          "distribution_interval_months": 40.266823553342704,
+          "fixed_logistics_fraction": 0.29783197539105516,
+          "tau_physical": 23.167234992003944,
+          "tau_insecticide": 23.404293604051297,
+          "tau_usage": 33.175411705903535
         },
-        "cost_per_daly": 678.5347210995197
+        "cost_per_daly": 333.7834733310409
       },
       {
         "trial": 45,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4735235756333127,
-          "net_usage_adj": -0.01606304605487835,
-          "external_validity": -0.026860443128381373,
-          "indirect_deaths_multiplier": 0.6516687963743881,
-          "over5_relative_efficacy": 0.868219301804129,
-          "distribution_interval_months": 29.148086398839556,
-          "fixed_logistics_fraction": 0.17438496303652556,
-          "tau_physical": 18.07020163585926,
-          "tau_insecticide": 17.458084852136263,
-          "tau_usage": 37.817707705640615
+          "incidence_reduction": 0.2819667003056044,
+          "net_usage_adj": -0.07033597484524173,
+          "external_validity": -0.24999709131115846,
+          "indirect_deaths_multiplier": 0.6499394970893753,
+          "over5_relative_efficacy": 0.713506108651353,
+          "distribution_interval_months": 13.966839120035003,
+          "fixed_logistics_fraction": 0.2932695407430832,
+          "tau_physical": 18.39187996874508,
+          "tau_insecticide": 12.867179514180494,
+          "tau_usage": 42.76558551471115
         },
-        "cost_per_daly": 303.5613372191893
+        "cost_per_daly": 1028.4577967493135
       },
       {
         "trial": 46,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.36256356153572256,
-          "net_usage_adj": -0.012725695474854803,
-          "external_validity": -0.15024117058939132,
-          "indirect_deaths_multiplier": 0.903880963998656,
-          "over5_relative_efficacy": 0.5131243634495507,
-          "distribution_interval_months": 36.208577928901036,
-          "fixed_logistics_fraction": 0.29425173860973586,
-          "tau_physical": 16.52839651309405,
-          "tau_insecticide": 8.133119075635072,
-          "tau_usage": 48.2104772905698
+          "incidence_reduction": 0.3214395811481765,
+          "net_usage_adj": -0.17016993612022122,
+          "external_validity": -0.07863902919452462,
+          "indirect_deaths_multiplier": 0.5994736942892273,
+          "over5_relative_efficacy": 0.4339513936880294,
+          "distribution_interval_months": 25.46115769246129,
+          "fixed_logistics_fraction": 0.28611214567357585,
+          "tau_physical": 24.626015959478373,
+          "tau_insecticide": 18.74366637867531,
+          "tau_usage": 56.555850452780874
         },
-        "cost_per_daly": 785.2252291221112
+        "cost_per_daly": 581.7706293576472
       },
       {
         "trial": 47,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.37873333747831484,
-          "net_usage_adj": -0.25159115968338486,
-          "external_validity": -0.22911141562232756,
-          "indirect_deaths_multiplier": 0.4114773798623722,
-          "over5_relative_efficacy": 0.49944890617913246,
-          "distribution_interval_months": 44.07079925939328,
-          "fixed_logistics_fraction": 0.11038421042542045,
-          "tau_physical": 20.314069908258233,
-          "tau_insecticide": 9.685527751701331,
-          "tau_usage": 39.33917479942315
+          "incidence_reduction": 0.4075618048640395,
+          "net_usage_adj": -0.22548491737703774,
+          "external_validity": -0.07363479242912843,
+          "indirect_deaths_multiplier": 0.6565608002220025,
+          "over5_relative_efficacy": 0.6655273088888474,
+          "distribution_interval_months": 35.37560368476774,
+          "fixed_logistics_fraction": 0.2840701553672317,
+          "tau_physical": 15.960095199129313,
+          "tau_insecticide": 21.19589179755212,
+          "tau_usage": 42.280090637312114
         },
-        "cost_per_daly": 1023.1536418244119
+        "cost_per_daly": 476.5197184800837
       },
       {
         "trial": 48,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.26681397849184196,
-          "net_usage_adj": -0.27152461895349905,
-          "external_validity": -0.0002768469916773486,
-          "indirect_deaths_multiplier": 0.5959835496555466,
-          "over5_relative_efficacy": 0.8489103472293078,
-          "distribution_interval_months": 41.03994190896539,
-          "fixed_logistics_fraction": 0.2645058177518073,
-          "tau_physical": 29.964424461032348,
-          "tau_insecticide": 11.863943764109885,
-          "tau_usage": 31.694734728107388
+          "incidence_reduction": 0.3583680581889086,
+          "net_usage_adj": -0.0008452938291148571,
+          "external_validity": -0.11023517876334946,
+          "indirect_deaths_multiplier": 0.5926972915815721,
+          "over5_relative_efficacy": 0.5320667955428519,
+          "distribution_interval_months": 24.618739234301827,
+          "fixed_logistics_fraction": 0.1431333184398877,
+          "tau_physical": 16.030705165859416,
+          "tau_insecticide": 13.91318719082837,
+          "tau_usage": 49.49801782904745
         },
-        "cost_per_daly": 830.7056296142908
+        "cost_per_daly": 501.32679822068224
       },
       {
         "trial": 49,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3073414442594181,
-          "net_usage_adj": -0.1592678366857264,
-          "external_validity": -0.18285945813658935,
-          "indirect_deaths_multiplier": 0.4605868640906567,
-          "over5_relative_efficacy": 0.5004946534564646,
-          "distribution_interval_months": 17.301920287875273,
-          "fixed_logistics_fraction": 0.29326919947807456,
-          "tau_physical": 26.389387603777102,
-          "tau_insecticide": 23.48418344431299,
-          "tau_usage": 48.46910043333216
+          "incidence_reduction": 0.36369108563816527,
+          "net_usage_adj": -0.09756410934977683,
+          "external_validity": -0.08061709652907884,
+          "indirect_deaths_multiplier": 0.6238735710534302,
+          "over5_relative_efficacy": 0.9650151919948183,
+          "distribution_interval_months": 18.024853160524117,
+          "fixed_logistics_fraction": 0.17508986155389017,
+          "tau_physical": 25.363259648262343,
+          "tau_insecticide": 19.154172894268946,
+          "tau_usage": 57.242836184290255
         },
-        "cost_per_daly": 774.5679738361378
+        "cost_per_daly": 379.2914189209794
       },
       {
         "trial": 50,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.41819115360311665,
-          "net_usage_adj": -0.23384872096930587,
-          "external_validity": -0.19544811636195694,
-          "indirect_deaths_multiplier": 0.924443063983111,
-          "over5_relative_efficacy": 0.5498013716441381,
-          "distribution_interval_months": 21.476904474648403,
-          "fixed_logistics_fraction": 0.05016334769032489,
-          "tau_physical": 28.060035511882766,
-          "tau_insecticide": 20.681517011346155,
-          "tau_usage": 56.34781527380848
+          "incidence_reduction": 0.252571123983923,
+          "net_usage_adj": -0.08518500802735665,
+          "external_validity": -0.07343845936118445,
+          "indirect_deaths_multiplier": 0.7736137245698784,
+          "over5_relative_efficacy": 0.9940653076521194,
+          "distribution_interval_months": 23.22765968749411,
+          "fixed_logistics_fraction": 0.13499296594831206,
+          "tau_physical": 16.184091044198333,
+          "tau_insecticide": 15.0847701846998,
+          "tau_usage": 40.96403810186362
         },
-        "cost_per_daly": 359.01102713613284
+        "cost_per_daly": 673.7225868440984
       },
       {
         "trial": 51,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.34524781841709995,
-          "net_usage_adj": -0.05747827833189273,
-          "external_validity": -0.044094097312756625,
-          "indirect_deaths_multiplier": 0.6307666455872609,
-          "over5_relative_efficacy": 0.6754744139720086,
-          "distribution_interval_months": 22.918292070574186,
-          "fixed_logistics_fraction": 0.283138719604828,
-          "tau_physical": 16.779656486123706,
-          "tau_insecticide": 22.93999076802352,
-          "tau_usage": 58.722390977084416
+          "incidence_reduction": 0.3240894033783221,
+          "net_usage_adj": -0.018505281404605167,
+          "external_validity": -0.045314942628987304,
+          "indirect_deaths_multiplier": 0.9901403239081978,
+          "over5_relative_efficacy": 0.5558025033702484,
+          "distribution_interval_months": 46.910050780727175,
+          "fixed_logistics_fraction": 0.15780846744788946,
+          "tau_physical": 20.21278192970632,
+          "tau_insecticide": 8.805592431509652,
+          "tau_usage": 32.21614083010331
         },
-        "cost_per_daly": 495.47473472503395
+        "cost_per_daly": 523.1603366050653
       },
       {
         "trial": 52,
@@ -2668,24 +2671,24 @@
           "tau_insecticide": 8.809959556305186,
           "tau_usage": 31.654457015098416
         },
-        "cost_per_daly": 1095.2249861059108
+        "cost_per_daly": 1013.0841135475222
       },
       {
         "trial": 53,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.43353781476041153,
-          "net_usage_adj": -0.19760440621498437,
-          "external_validity": -0.13036790752011937,
-          "indirect_deaths_multiplier": 0.9573157299073394,
-          "over5_relative_efficacy": 0.5991829028415073,
-          "distribution_interval_months": 28.7521296218215,
-          "fixed_logistics_fraction": 0.05342060369017028,
-          "tau_physical": 16.223980800072574,
-          "tau_insecticide": 12.137465458156544,
-          "tau_usage": 31.169794114485125
+          "incidence_reduction": 0.48360825968836035,
+          "net_usage_adj": -0.0932737038755311,
+          "external_validity": -0.044181696829992456,
+          "indirect_deaths_multiplier": 0.733714415578007,
+          "over5_relative_efficacy": 0.8677100208544382,
+          "distribution_interval_months": 12.583214304220819,
+          "fixed_logistics_fraction": 0.2545951061948838,
+          "tau_physical": 15.602082886280497,
+          "tau_insecticide": 22.2386140218058,
+          "tau_usage": 71.66243538402301
         },
-        "cost_per_daly": 495.5051579708434
+        "cost_per_daly": 312.35856864400375
       },
       {
         "trial": 54,
@@ -2702,7 +2705,7 @@
           "tau_insecticide": 9.376514512527091,
           "tau_usage": 32.39513038815201
         },
-        "cost_per_daly": 676.8390883704881
+        "cost_per_daly": 627.2011356581318
       },
       {
         "trial": 55,
@@ -2719,7 +2722,7 @@
           "tau_insecticide": 9.568122956491857,
           "tau_usage": 31.85076618595602
         },
-        "cost_per_daly": 1228.8042489851439
+        "cost_per_daly": 1151.0496511352646
       },
       {
         "trial": 56,
@@ -2736,75 +2739,75 @@
           "tau_insecticide": 22.90784645306413,
           "tau_usage": 71.87187553129013
         },
-        "cost_per_daly": 327.45795931941717
+        "cost_per_daly": 309.02210692523516
       },
       {
         "trial": 57,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.27670017600059094,
-          "net_usage_adj": -0.013979136185371499,
-          "external_validity": -0.23494326377492564,
-          "indirect_deaths_multiplier": 0.5785901665409683,
-          "over5_relative_efficacy": 0.5788397207020025,
-          "distribution_interval_months": 23.534446301047737,
-          "fixed_logistics_fraction": 0.09107171081810232,
-          "tau_physical": 26.74742146385546,
-          "tau_insecticide": 9.959965791455827,
-          "tau_usage": 56.66607968443284
+          "incidence_reduction": 0.42967952831555056,
+          "net_usage_adj": -0.2668189203380517,
+          "external_validity": -0.2411024422983809,
+          "indirect_deaths_multiplier": 0.9965981816114289,
+          "over5_relative_efficacy": 0.5396370093493311,
+          "distribution_interval_months": 13.937898896704526,
+          "fixed_logistics_fraction": 0.09746883227398,
+          "tau_physical": 15.584367695226963,
+          "tau_insecticide": 14.268974313874747,
+          "tau_usage": 63.70087494695562
         },
-        "cost_per_daly": 933.1432683989198
+        "cost_per_daly": 559.1872258712565
       },
       {
         "trial": 58,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2515117607959946,
-          "net_usage_adj": -0.15484193434070656,
-          "external_validity": -0.21918813546686214,
-          "indirect_deaths_multiplier": 0.5846074536867691,
-          "over5_relative_efficacy": 0.9556357358909593,
-          "distribution_interval_months": 17.82100391786353,
-          "fixed_logistics_fraction": 0.29145807992958317,
-          "tau_physical": 18.086915654841327,
-          "tau_insecticide": 19.86505773546927,
-          "tau_usage": 52.96044512568709
+          "incidence_reduction": 0.4889123668166223,
+          "net_usage_adj": -0.013910217651093126,
+          "external_validity": -0.16191823643686518,
+          "indirect_deaths_multiplier": 0.42586006536899446,
+          "over5_relative_efficacy": 0.507456963596909,
+          "distribution_interval_months": 26.119840563607447,
+          "fixed_logistics_fraction": 0.28694492449230746,
+          "tau_physical": 17.117985953057776,
+          "tau_insecticide": 20.216253498691394,
+          "tau_usage": 34.56466665373706
         },
-        "cost_per_daly": 967.5561175989097
+        "cost_per_daly": 421.2295649201186
       },
       {
         "trial": 59,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.49385259192118625,
-          "net_usage_adj": -0.127931015991987,
-          "external_validity": -0.16458972182734954,
-          "indirect_deaths_multiplier": 0.7890787341401422,
-          "over5_relative_efficacy": 0.4410644255455757,
-          "distribution_interval_months": 44.30630345957711,
-          "fixed_logistics_fraction": 0.0798452528345492,
-          "tau_physical": 19.917642568287274,
-          "tau_insecticide": 21.051926090017936,
-          "tau_usage": 55.0871198898899
+          "incidence_reduction": 0.2591152627064046,
+          "net_usage_adj": -0.2841768143513348,
+          "external_validity": -0.041458972947889666,
+          "indirect_deaths_multiplier": 0.47078349017683696,
+          "over5_relative_efficacy": 0.4270908186473752,
+          "distribution_interval_months": 27.76439593714484,
+          "fixed_logistics_fraction": 0.2609983679855062,
+          "tau_physical": 18.93612564733953,
+          "tau_insecticide": 14.747401880414662,
+          "tau_usage": 31.676746367677552
         },
-        "cost_per_daly": 290.215936830737
+        "cost_per_daly": 1201.7459855753546
       },
       {
         "trial": 60,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3469931885994716,
-          "net_usage_adj": -0.05113025057148943,
-          "external_validity": -0.21657608640014095,
-          "indirect_deaths_multiplier": 0.9612366938006792,
-          "over5_relative_efficacy": 0.8508539905187815,
-          "distribution_interval_months": 45.88803814032846,
-          "fixed_logistics_fraction": 0.2191543083881266,
-          "tau_physical": 20.451058979991405,
-          "tau_insecticide": 23.01089876039556,
-          "tau_usage": 41.5738046049855
+          "incidence_reduction": 0.3563764148179607,
+          "net_usage_adj": -0.1303752180742386,
+          "external_validity": -0.24474771075340981,
+          "indirect_deaths_multiplier": 0.42065878514398874,
+          "over5_relative_efficacy": 0.6674953298962096,
+          "distribution_interval_months": 41.39958875525845,
+          "fixed_logistics_fraction": 0.2713097196768913,
+          "tau_physical": 16.300598513934602,
+          "tau_insecticide": 16.613809633616363,
+          "tau_usage": 68.35564682372936
         },
-        "cost_per_daly": 427.5763101651485
+        "cost_per_daly": 731.7423350281484
       },
       {
         "trial": 61,
@@ -2821,24 +2824,24 @@
           "tau_insecticide": 14.85362880910154,
           "tau_usage": 31.13847939812179
         },
-        "cost_per_daly": 1053.917322443365
+        "cost_per_daly": 1030.8996486589645
       },
       {
         "trial": 62,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.27667795477558854,
-          "net_usage_adj": -0.10513319797291146,
-          "external_validity": -0.033000102026227524,
-          "indirect_deaths_multiplier": 0.8969115215940717,
-          "over5_relative_efficacy": 0.7756328253884808,
-          "distribution_interval_months": 14.71003379946025,
-          "fixed_logistics_fraction": 0.07809925679400324,
-          "tau_physical": 15.73963480664737,
-          "tau_insecticide": 12.119667463879509,
-          "tau_usage": 35.69778162073587
+          "incidence_reduction": 0.3109988255881181,
+          "net_usage_adj": -0.00997973173946759,
+          "external_validity": -0.010465470048875963,
+          "indirect_deaths_multiplier": 0.5485789858428632,
+          "over5_relative_efficacy": 0.6088311732863922,
+          "distribution_interval_months": 44.24000667145986,
+          "fixed_logistics_fraction": 0.29165555522402686,
+          "tau_physical": 21.65158654254066,
+          "tau_insecticide": 13.135952730254365,
+          "tau_usage": 52.095948556564764
         },
-        "cost_per_daly": 669.7305204377632
+        "cost_per_daly": 538.5836362972702
       },
       {
         "trial": 63,
@@ -2855,24 +2858,24 @@
           "tau_insecticide": 8.279971423798218,
           "tau_usage": 32.05819508879349
         },
-        "cost_per_daly": 761.3833047160276
+        "cost_per_daly": 737.3391794157818
       },
       {
         "trial": 64,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.47274347117267596,
-          "net_usage_adj": -0.12915082244442722,
-          "external_validity": -0.04190223957452302,
-          "indirect_deaths_multiplier": 0.9949746057767369,
-          "over5_relative_efficacy": 0.49816972248296576,
-          "distribution_interval_months": 36.90399500911136,
-          "fixed_logistics_fraction": 0.21857339342500615,
-          "tau_physical": 29.699331710374175,
-          "tau_insecticide": 23.769611743244806,
-          "tau_usage": 58.84050169241344
+          "incidence_reduction": 0.29163462837431753,
+          "net_usage_adj": -0.004146960814891576,
+          "external_validity": -0.04478774768421781,
+          "indirect_deaths_multiplier": 0.5688863814705516,
+          "over5_relative_efficacy": 0.4420412174327137,
+          "distribution_interval_months": 14.038520065592088,
+          "fixed_logistics_fraction": 0.08009453737638346,
+          "tau_physical": 23.711528754216324,
+          "tau_insecticide": 22.860214739287876,
+          "tau_usage": 50.86322397625135
         },
-        "cost_per_daly": 231.9589884196493
+        "cost_per_daly": 522.3264449215661
       },
       {
         "trial": 65,
@@ -2889,7 +2892,7 @@
           "tau_insecticide": 18.655154657287426,
           "tau_usage": 64.55161367617795
         },
-        "cost_per_daly": 573.7076267518926
+        "cost_per_daly": 565.1866929359081
       },
       {
         "trial": 66,
@@ -2906,7 +2909,7 @@
           "tau_insecticide": 10.420228551402815,
           "tau_usage": 41.95633903155147
         },
-        "cost_per_daly": 970.4638856881949
+        "cost_per_daly": 962.7712143538874
       },
       {
         "trial": 67,
@@ -2923,58 +2926,58 @@
           "tau_insecticide": 12.849052178801626,
           "tau_usage": 56.805425431705686
         },
-        "cost_per_daly": 658.9748316820923
+        "cost_per_daly": 658.3106014115348
       },
       {
         "trial": 68,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4970926416803928,
-          "net_usage_adj": -0.160416740617223,
-          "external_validity": -0.2354405422949312,
-          "indirect_deaths_multiplier": 0.557364593088991,
-          "over5_relative_efficacy": 0.6616422881315875,
-          "distribution_interval_months": 17.648494469260324,
-          "fixed_logistics_fraction": 0.28689128158101074,
-          "tau_physical": 26.502733467266594,
-          "tau_insecticide": 12.292595206844362,
-          "tau_usage": 54.813790407752464
+          "incidence_reduction": 0.2518394574063536,
+          "net_usage_adj": -0.14453828034524374,
+          "external_validity": -0.24061783561704922,
+          "indirect_deaths_multiplier": 0.7415381272548688,
+          "over5_relative_efficacy": 0.9524625097816453,
+          "distribution_interval_months": 46.863088698014685,
+          "fixed_logistics_fraction": 0.18513816884723105,
+          "tau_physical": 21.87307207878324,
+          "tau_insecticide": 23.120273507975902,
+          "tau_usage": 58.291612943861196
         },
-        "cost_per_daly": 515.6708273494928
+        "cost_per_daly": 617.2639021403095
       },
       {
         "trial": 69,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2630832143251657,
-          "net_usage_adj": -0.06514541460400275,
-          "external_validity": -0.038622297289859886,
-          "indirect_deaths_multiplier": 0.8794492874631727,
-          "over5_relative_efficacy": 0.7050874211848157,
-          "distribution_interval_months": 20.38446619138134,
-          "fixed_logistics_fraction": 0.26133249392218166,
-          "tau_physical": 25.907442146102078,
-          "tau_insecticide": 23.692178790221625,
-          "tau_usage": 36.539089105749184
+          "incidence_reduction": 0.30029380807221984,
+          "net_usage_adj": -0.2759809792413103,
+          "external_validity": -0.13138670503886918,
+          "indirect_deaths_multiplier": 0.40598154084071114,
+          "over5_relative_efficacy": 0.45085969265579995,
+          "distribution_interval_months": 41.074531304267104,
+          "fixed_logistics_fraction": 0.24286833621490161,
+          "tau_physical": 28.72708230607344,
+          "tau_insecticide": 21.67224697457199,
+          "tau_usage": 58.69337365607236
         },
-        "cost_per_daly": 492.6069863197023
+        "cost_per_daly": 706.1508492036595
       },
       {
         "trial": 70,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2927714917142905,
-          "net_usage_adj": -0.266026964508054,
-          "external_validity": -0.10745319605004888,
-          "indirect_deaths_multiplier": 0.9171062939768979,
-          "over5_relative_efficacy": 0.6862658906163557,
-          "distribution_interval_months": 47.80431324064289,
-          "fixed_logistics_fraction": 0.2197929248844982,
-          "tau_physical": 16.111123608156717,
-          "tau_insecticide": 23.885314106911608,
-          "tau_usage": 47.131557944768
+          "incidence_reduction": 0.3833700521861957,
+          "net_usage_adj": -0.12108192009226154,
+          "external_validity": -0.15849293356337119,
+          "indirect_deaths_multiplier": 0.8842642121917077,
+          "over5_relative_efficacy": 0.7139717495801499,
+          "distribution_interval_months": 16.20292449967664,
+          "fixed_logistics_fraction": 0.08226628120726574,
+          "tau_physical": 23.052887197539278,
+          "tau_insecticide": 22.98512348913343,
+          "tau_usage": 42.95078911040035
         },
-        "cost_per_daly": 696.2470741314133
+        "cost_per_daly": 372.7039715425572
       },
       {
         "trial": 71,
@@ -2991,24 +2994,24 @@
           "tau_insecticide": 10.550318156342435,
           "tau_usage": 70.65693122592103
         },
-        "cost_per_daly": 359.44190296203914
+        "cost_per_daly": 352.0066353336614
       },
       {
         "trial": 72,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.45299193559770046,
-          "net_usage_adj": -0.03985435469966342,
-          "external_validity": -0.08174795842783075,
-          "indirect_deaths_multiplier": 0.4281786534446004,
-          "over5_relative_efficacy": 0.7397937280999193,
-          "distribution_interval_months": 39.47861683190214,
-          "fixed_logistics_fraction": 0.08412575302089555,
-          "tau_physical": 18.430061270769052,
-          "tau_insecticide": 22.119921681090183,
-          "tau_usage": 30.84511231782911
+          "incidence_reduction": 0.30742907092080796,
+          "net_usage_adj": -0.24012851523121836,
+          "external_validity": -0.24055387335108008,
+          "indirect_deaths_multiplier": 0.7860218350418564,
+          "over5_relative_efficacy": 0.5575061742898995,
+          "distribution_interval_months": 13.88449842352727,
+          "fixed_logistics_fraction": 0.10774482763201591,
+          "tau_physical": 27.028709292541897,
+          "tau_insecticide": 21.623826906344746,
+          "tau_usage": 50.28878229811871
         },
-        "cost_per_daly": 403.44072106253094
+        "cost_per_daly": 721.4536338221698
       },
       {
         "trial": 73,
@@ -3025,7 +3028,7 @@
           "tau_insecticide": 22.10377311342257,
           "tau_usage": 47.4683734804954
         },
-        "cost_per_daly": 729.2211339222849
+        "cost_per_daly": 712.3017526214038
       },
       {
         "trial": 74,
@@ -3042,7 +3045,7 @@
           "tau_insecticide": 23.158847968956692,
           "tau_usage": 47.78103714873301
         },
-        "cost_per_daly": 469.855788303001
+        "cost_per_daly": 404.8892769955643
       },
       {
         "trial": 75,
@@ -3059,7 +3062,7 @@
           "tau_insecticide": 11.153696621178435,
           "tau_usage": 66.76525607583196
         },
-        "cost_per_daly": 963.1121217753673
+        "cost_per_daly": 908.7626424700153
       },
       {
         "trial": 76,
@@ -3076,41 +3079,41 @@
           "tau_insecticide": 21.274300885646852,
           "tau_usage": 59.56534001544965
         },
-        "cost_per_daly": 721.929866155151
+        "cost_per_daly": 712.436319822899
       },
       {
         "trial": 77,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3638754238048051,
-          "net_usage_adj": -0.2907526143901889,
-          "external_validity": -0.03019891560365434,
-          "indirect_deaths_multiplier": 0.40780612805552363,
-          "over5_relative_efficacy": 0.9668500481261271,
-          "distribution_interval_months": 29.611784952771263,
-          "fixed_logistics_fraction": 0.13548362339368164,
-          "tau_physical": 28.8632765226399,
-          "tau_insecticide": 8.390255889761548,
-          "tau_usage": 54.41984558450166
+          "incidence_reduction": 0.381864115930433,
+          "net_usage_adj": -0.2576621645102034,
+          "external_validity": -0.2498026222266953,
+          "indirect_deaths_multiplier": 0.8860840544472768,
+          "over5_relative_efficacy": 0.452544737791743,
+          "distribution_interval_months": 34.81859347447166,
+          "fixed_logistics_fraction": 0.2786541136287979,
+          "tau_physical": 18.129778697376466,
+          "tau_insecticide": 18.64436537979057,
+          "tau_usage": 33.3053402217154
         },
-        "cost_per_daly": 826.5787709043244
+        "cost_per_daly": 677.8510212243593
       },
       {
         "trial": 78,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.26383309679083655,
-          "net_usage_adj": -0.24056077745292687,
-          "external_validity": -0.24769977559365514,
-          "indirect_deaths_multiplier": 0.776355040381587,
-          "over5_relative_efficacy": 0.5898252444326098,
-          "distribution_interval_months": 47.03320961136871,
-          "fixed_logistics_fraction": 0.09842926269407447,
-          "tau_physical": 20.18742855464391,
-          "tau_insecticide": 13.725458538264531,
-          "tau_usage": 30.354962834623343
+          "incidence_reduction": 0.47016264436614447,
+          "net_usage_adj": -0.176126643123236,
+          "external_validity": -0.11562656158169138,
+          "indirect_deaths_multiplier": 0.429579797445502,
+          "over5_relative_efficacy": 0.40140848432047194,
+          "distribution_interval_months": 20.81279542806213,
+          "fixed_logistics_fraction": 0.2201457732296918,
+          "tau_physical": 16.81897340038705,
+          "tau_insecticide": 9.82019134087279,
+          "tau_usage": 47.26034553750794
         },
-        "cost_per_daly": 1132.3426331528929
+        "cost_per_daly": 632.8365048326333
       },
       {
         "trial": 79,
@@ -3127,7 +3130,7 @@
           "tau_insecticide": 10.4049699597435,
           "tau_usage": 31.620845601401623
         },
-        "cost_per_daly": 517.5147833484834
+        "cost_per_daly": 500.4259378704994
       },
       {
         "trial": 80,
@@ -3144,24 +3147,24 @@
           "tau_insecticide": 16.32256356839033,
           "tau_usage": 45.322360044929994
         },
-        "cost_per_daly": 806.2000501041774
+        "cost_per_daly": 799.0416208987997
       },
       {
         "trial": 81,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4923598439189696,
-          "net_usage_adj": -0.09203713733433966,
-          "external_validity": -0.23227095214035762,
-          "indirect_deaths_multiplier": 0.5136165254751177,
-          "over5_relative_efficacy": 0.8627938859301101,
-          "distribution_interval_months": 42.291831358424815,
-          "fixed_logistics_fraction": 0.20442364654714773,
-          "tau_physical": 24.666347544447248,
-          "tau_insecticide": 8.453399206134154,
-          "tau_usage": 64.79827090242335
+          "incidence_reduction": 0.27139988820569205,
+          "net_usage_adj": -0.24496263457234047,
+          "external_validity": -0.0603990817414492,
+          "indirect_deaths_multiplier": 0.41319191322359416,
+          "over5_relative_efficacy": 0.8901267915362696,
+          "distribution_interval_months": 12.502164672908812,
+          "fixed_logistics_fraction": 0.21427970976531835,
+          "tau_physical": 20.47640880347709,
+          "tau_insecticide": 17.783917643507188,
+          "tau_usage": 59.233319093542775
         },
-        "cost_per_daly": 517.5473967623516
+        "cost_per_daly": 943.2573146028789
       },
       {
         "trial": 82,
@@ -3178,24 +3181,24 @@
           "tau_insecticide": 12.718898172861829,
           "tau_usage": 30.64112326513325
         },
-        "cost_per_daly": 307.65876832689065
+        "cost_per_daly": 295.1140871752406
       },
       {
         "trial": 83,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.35453289994840564,
-          "net_usage_adj": -0.026695290006233996,
-          "external_validity": -0.001709065266630394,
-          "indirect_deaths_multiplier": 0.4636552299687713,
-          "over5_relative_efficacy": 0.5398319127909152,
-          "distribution_interval_months": 46.213671053355355,
-          "fixed_logistics_fraction": 0.2895819216203467,
-          "tau_physical": 16.465609130801376,
-          "tau_insecticide": 8.239976006034187,
-          "tau_usage": 36.76620097676974
+          "incidence_reduction": 0.4990031958455621,
+          "net_usage_adj": -0.24600011501679392,
+          "external_validity": -0.12436309831949421,
+          "indirect_deaths_multiplier": 0.9090506358583066,
+          "over5_relative_efficacy": 0.41224096641292385,
+          "distribution_interval_months": 33.76160336130454,
+          "fixed_logistics_fraction": 0.11925636221740608,
+          "tau_physical": 27.935023746595974,
+          "tau_insecticide": 12.535378388225267,
+          "tau_usage": 58.843740251840174
         },
-        "cost_per_daly": 842.2777379753508
+        "cost_per_daly": 321.98845902625544
       },
       {
         "trial": 84,
@@ -3212,41 +3215,41 @@
           "tau_insecticide": 14.263268332711538,
           "tau_usage": 41.00874482470545
         },
-        "cost_per_daly": 922.6831113170455
+        "cost_per_daly": 867.6356834075322
       },
       {
         "trial": 85,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4792746262929486,
-          "net_usage_adj": -0.2598075399750656,
-          "external_validity": -0.08212204817974064,
-          "indirect_deaths_multiplier": 0.4026157479739483,
-          "over5_relative_efficacy": 0.9547906632431085,
-          "distribution_interval_months": 16.050148796571293,
-          "fixed_logistics_fraction": 0.07372105753689366,
-          "tau_physical": 19.995114495783664,
-          "tau_insecticide": 13.97706057662529,
-          "tau_usage": 39.0006030375609
+          "incidence_reduction": 0.4800284533306572,
+          "net_usage_adj": -0.15891113319252756,
+          "external_validity": -0.242750813916013,
+          "indirect_deaths_multiplier": 0.8138926427972571,
+          "over5_relative_efficacy": 0.6891023521457549,
+          "distribution_interval_months": 16.476431427926787,
+          "fixed_logistics_fraction": 0.1035679523275649,
+          "tau_physical": 15.967360206837695,
+          "tau_insecticide": 17.188696635337177,
+          "tau_usage": 56.125238128584385
         },
-        "cost_per_daly": 457.46295896186825
+        "cost_per_daly": 421.06398361070177
       },
       {
         "trial": 86,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4806247240756258,
-          "net_usage_adj": -0.0442001540694838,
-          "external_validity": -0.05627914193676281,
-          "indirect_deaths_multiplier": 0.6356410685345366,
-          "over5_relative_efficacy": 0.7026284225792601,
-          "distribution_interval_months": 28.715942812625503,
-          "fixed_logistics_fraction": 0.11334952688984316,
-          "tau_physical": 22.575420692231503,
-          "tau_insecticide": 8.487944765644071,
-          "tau_usage": 35.536035686893285
+          "incidence_reduction": 0.3216651453217557,
+          "net_usage_adj": -0.1899126504549014,
+          "external_validity": -0.22902550984277267,
+          "indirect_deaths_multiplier": 0.43136582336332346,
+          "over5_relative_efficacy": 0.5520742778038098,
+          "distribution_interval_months": 14.672886935899648,
+          "fixed_logistics_fraction": 0.07594367715868518,
+          "tau_physical": 27.19392608090906,
+          "tau_insecticide": 8.621979152267029,
+          "tau_usage": 57.67559734525919
         },
-        "cost_per_daly": 427.12636036720886
+        "cost_per_daly": 1096.2296769940922
       },
       {
         "trial": 87,
@@ -3263,58 +3266,58 @@
           "tau_insecticide": 18.85675746269057,
           "tau_usage": 53.96357899423347
         },
-        "cost_per_daly": 296.2948097429151
+        "cost_per_daly": 292.56460296583754
       },
       {
         "trial": 88,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2927961859587813,
-          "net_usage_adj": -0.2686552814076496,
-          "external_validity": -0.19062096985148497,
-          "indirect_deaths_multiplier": 0.6279403133936224,
-          "over5_relative_efficacy": 0.6855437964839204,
-          "distribution_interval_months": 13.60452146565471,
-          "fixed_logistics_fraction": 0.2926433331568401,
-          "tau_physical": 25.74094580129337,
-          "tau_insecticide": 13.171105045189378,
-          "tau_usage": 43.385284805986686
+          "incidence_reduction": 0.3162808153614349,
+          "net_usage_adj": -0.15148321630362452,
+          "external_validity": -0.03836637671914869,
+          "indirect_deaths_multiplier": 0.7030994269136395,
+          "over5_relative_efficacy": 0.8488208436049532,
+          "distribution_interval_months": 17.002556588960985,
+          "fixed_logistics_fraction": 0.11310345324414005,
+          "tau_physical": 25.976641425565084,
+          "tau_insecticide": 10.635744142203585,
+          "tau_usage": 44.756949255506925
         },
-        "cost_per_daly": 1084.8033374201573
+        "cost_per_daly": 609.7963309423907
       },
       {
         "trial": 89,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.26956862018246897,
-          "net_usage_adj": -0.01997600386513354,
-          "external_validity": -0.15921685243513445,
-          "indirect_deaths_multiplier": 0.9068255002455176,
-          "over5_relative_efficacy": 0.651030002627963,
-          "distribution_interval_months": 27.87078405729057,
-          "fixed_logistics_fraction": 0.20856077274438567,
-          "tau_physical": 26.61716128913975,
-          "tau_insecticide": 8.540626415171978,
-          "tau_usage": 54.91255181213964
+          "incidence_reduction": 0.3505390954609919,
+          "net_usage_adj": -0.26928166116204705,
+          "external_validity": -0.23462356588534036,
+          "indirect_deaths_multiplier": 0.43080062279420656,
+          "over5_relative_efficacy": 0.628090085174602,
+          "distribution_interval_months": 24.140559030090316,
+          "fixed_logistics_fraction": 0.22948425590564236,
+          "tau_physical": 26.14232252377299,
+          "tau_insecticide": 8.813663501339837,
+          "tau_usage": 39.28717704133863
         },
-        "cost_per_daly": 838.1901923499889
+        "cost_per_daly": 1116.2207187082631
       },
       {
         "trial": 90,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2547932276874746,
-          "net_usage_adj": -0.06825064617110582,
-          "external_validity": -0.20726377660810355,
-          "indirect_deaths_multiplier": 0.42634276817838235,
-          "over5_relative_efficacy": 0.7922192157430475,
-          "distribution_interval_months": 39.861700637652206,
-          "fixed_logistics_fraction": 0.2534572828982108,
-          "tau_physical": 22.402637739909,
-          "tau_insecticide": 11.285890955039765,
-          "tau_usage": 60.96356244449272
+          "incidence_reduction": 0.25233623837156105,
+          "net_usage_adj": -0.29010691689522194,
+          "external_validity": -0.037028004382404195,
+          "indirect_deaths_multiplier": 0.810414917015243,
+          "over5_relative_efficacy": 0.5592218398722064,
+          "distribution_interval_months": 36.766662244273526,
+          "fixed_logistics_fraction": 0.24811416728481583,
+          "tau_physical": 19.601914246651518,
+          "tau_insecticide": 8.576598039987,
+          "tau_usage": 69.17672323688484
         },
-        "cost_per_daly": 1318.4565354816177
+        "cost_per_daly": 1122.8023840467072
       },
       {
         "trial": 91,
@@ -3331,75 +3334,75 @@
           "tau_insecticide": 19.675194039147534,
           "tau_usage": 64.06264574714692
         },
-        "cost_per_daly": 562.5842220865829
+        "cost_per_daly": 552.7603356944909
       },
       {
         "trial": 92,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.2666569996025937,
-          "net_usage_adj": -0.007176094133559741,
-          "external_validity": -0.010752057782389635,
-          "indirect_deaths_multiplier": 0.43626192696433846,
-          "over5_relative_efficacy": 0.6659520648849773,
-          "distribution_interval_months": 18.70481777879189,
-          "fixed_logistics_fraction": 0.1713362242836045,
-          "tau_physical": 27.45265864499381,
-          "tau_insecticide": 23.209788395886243,
-          "tau_usage": 56.63861144496457
+          "incidence_reduction": 0.4715184917738813,
+          "net_usage_adj": -0.08128987715115177,
+          "external_validity": -0.018047484588075924,
+          "indirect_deaths_multiplier": 0.5995939598925348,
+          "over5_relative_efficacy": 0.7019256500509259,
+          "distribution_interval_months": 12.506867878184064,
+          "fixed_logistics_fraction": 0.051739396825822806,
+          "tau_physical": 18.601899306772797,
+          "tau_insecticide": 9.612915154225364,
+          "tau_usage": 40.92887745330165
         },
-        "cost_per_daly": 554.1776116708147
+        "cost_per_daly": 376.92405632845356
       },
       {
         "trial": 93,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.3157201754973315,
-          "net_usage_adj": -0.2892754816602406,
-          "external_validity": -0.07389409463062835,
-          "indirect_deaths_multiplier": 0.695269994251517,
-          "over5_relative_efficacy": 0.4565458398427154,
-          "distribution_interval_months": 18.180983752625686,
-          "fixed_logistics_fraction": 0.075633634528161,
-          "tau_physical": 24.18889212413815,
-          "tau_insecticide": 9.5073658177999,
-          "tau_usage": 61.679857987479075
+          "incidence_reduction": 0.4076002315089999,
+          "net_usage_adj": -0.20963227558131617,
+          "external_validity": -0.24535732030872529,
+          "indirect_deaths_multiplier": 0.9331856016177731,
+          "over5_relative_efficacy": 0.5361404603462849,
+          "distribution_interval_months": 45.454103460689126,
+          "fixed_logistics_fraction": 0.22935861271956343,
+          "tau_physical": 26.439802348672266,
+          "tau_insecticide": 11.223383932690567,
+          "tau_usage": 39.83616587590615
         },
-        "cost_per_daly": 816.7089436834204
+        "cost_per_daly": 565.4569444894086
       },
       {
         "trial": 94,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.47780857757866785,
-          "net_usage_adj": -0.05381178197428896,
-          "external_validity": -0.21801251477005879,
-          "indirect_deaths_multiplier": 0.9987490806473727,
-          "over5_relative_efficacy": 0.5551505329316643,
-          "distribution_interval_months": 38.07137686110132,
-          "fixed_logistics_fraction": 0.2770087190839304,
-          "tau_physical": 18.53530671496064,
-          "tau_insecticide": 22.532136874833057,
-          "tau_usage": 42.99822632618441
+          "incidence_reduction": 0.28163611467835203,
+          "net_usage_adj": -0.1303065352845634,
+          "external_validity": -0.21448459763923444,
+          "indirect_deaths_multiplier": 0.822877501679312,
+          "over5_relative_efficacy": 0.9430468766766887,
+          "distribution_interval_months": 27.645875539221123,
+          "fixed_logistics_fraction": 0.17202306506624399,
+          "tau_physical": 28.911342547241432,
+          "tau_insecticide": 16.335862218389714,
+          "tau_usage": 50.479134398081555
         },
-        "cost_per_daly": 375.7474804723412
+        "cost_per_daly": 574.1316363991045
       },
       {
         "trial": 95,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.4322255339476875,
-          "net_usage_adj": -0.01425260986970267,
-          "external_validity": -0.041257612629703566,
-          "indirect_deaths_multiplier": 0.9417406066980226,
-          "over5_relative_efficacy": 0.888651518328805,
-          "distribution_interval_months": 28.52972869353281,
-          "fixed_logistics_fraction": 0.1129471133367211,
-          "tau_physical": 20.554802631757834,
-          "tau_insecticide": 8.323779722239207,
-          "tau_usage": 52.007713033516026
+          "incidence_reduction": 0.44714544127711775,
+          "net_usage_adj": -0.08759286480062647,
+          "external_validity": -0.18644554273332795,
+          "indirect_deaths_multiplier": 0.9172504515041389,
+          "over5_relative_efficacy": 0.936066079225759,
+          "distribution_interval_months": 18.989497078267767,
+          "fixed_logistics_fraction": 0.08261390913784848,
+          "tau_physical": 29.63407452883668,
+          "tau_insecticide": 21.893183418405886,
+          "tau_usage": 67.51591818281776
         },
-        "cost_per_daly": 367.2071073008029
+        "cost_per_daly": 247.8899583316337
       },
       {
         "trial": 96,
@@ -3416,7 +3419,7 @@
           "tau_insecticide": 22.856353200678875,
           "tau_usage": 54.79256101373518
         },
-        "cost_per_daly": 831.932764901919
+        "cost_per_daly": 745.2462320385354
       },
       {
         "trial": 97,
@@ -3433,41 +3436,41 @@
           "tau_insecticide": 8.178473396989288,
           "tau_usage": 40.1776806703455
         },
-        "cost_per_daly": 508.5356287705315
+        "cost_per_daly": 507.96497562091145
       },
       {
         "trial": 98,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.337804254909622,
-          "net_usage_adj": -0.048828000145362205,
-          "external_validity": -0.233300730684457,
-          "indirect_deaths_multiplier": 0.9654061046028145,
-          "over5_relative_efficacy": 0.9917901053632078,
-          "distribution_interval_months": 15.188454257702883,
-          "fixed_logistics_fraction": 0.12281813056393424,
-          "tau_physical": 20.586009990530343,
-          "tau_insecticide": 20.422261898443615,
-          "tau_usage": 55.02892610890282
+          "incidence_reduction": 0.4636518906833428,
+          "net_usage_adj": -0.15858956694810075,
+          "external_validity": -0.03284295737240975,
+          "indirect_deaths_multiplier": 0.5749460617454591,
+          "over5_relative_efficacy": 0.4772878442577929,
+          "distribution_interval_months": 42.79132071706578,
+          "fixed_logistics_fraction": 0.19685379094816668,
+          "tau_physical": 28.3363859737344,
+          "tau_insecticide": 23.00523531187813,
+          "tau_usage": 32.252392395600864
         },
-        "cost_per_daly": 421.15700901684414
+        "cost_per_daly": 287.76235110771154
       },
       {
         "trial": 99,
         "phase": "bayesian",
         "params": {
-          "incidence_reduction": 0.29288067344679675,
-          "net_usage_adj": -0.06853606280628677,
-          "external_validity": -0.19414686376759374,
-          "indirect_deaths_multiplier": 0.4485080809859524,
-          "over5_relative_efficacy": 0.9249599946103894,
-          "distribution_interval_months": 42.915045330872104,
-          "fixed_logistics_fraction": 0.15089259811240036,
-          "tau_physical": 25.535942138106403,
-          "tau_insecticide": 16.913054922942674,
-          "tau_usage": 65.82415677429745
+          "incidence_reduction": 0.25577137013794254,
+          "net_usage_adj": -0.25998562900867717,
+          "external_validity": -0.08634462605073623,
+          "indirect_deaths_multiplier": 0.8813732898182125,
+          "over5_relative_efficacy": 0.9929220956361845,
+          "distribution_interval_months": 24.469086111905796,
+          "fixed_logistics_fraction": 0.19984480556527545,
+          "tau_physical": 29.05717450222683,
+          "tau_insecticide": 10.672668501410442,
+          "tau_usage": 60.14111462639519
         },
-        "cost_per_daly": 589.5936597857769
+        "cost_per_daly": 719.9171690230924
       },
       {
         "trial": 100,
@@ -3484,9 +3487,9 @@
           "tau_insecticide": 12.67664276334805,
           "tau_usage": 57.54264667493557
         },
-        "cost_per_daly": 572.8485542989035
+        "cost_per_daly": 556.9905667270702
       }
     ],
-    "elapsed_seconds": 6.3
+    "elapsed_seconds": 5.5
   }
 }

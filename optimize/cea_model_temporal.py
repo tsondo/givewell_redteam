@@ -160,13 +160,32 @@ def compute_temporal_cea(
         - num_distribution_cycles: number of distribution rounds
         - ce_scaling_factor: the temporal scaling applied to static results
     """
-    # --- Temporal scaling factor ---
-    avg_efficacy = integrate_efficacy_over_cycle(
-        distribution_interval_months,
-        tau_physical,
-        tau_insecticide,
-        tau_usage,
+    program_months = program_years * 12
+    D = distribution_interval_months
+
+    # --- Temporal scaling: prorate final cycle to avoid sawtooth artifact ---
+    # Full cycles: each has identical average efficacy (full replacement resets)
+    avg_efficacy_full = integrate_efficacy_over_cycle(
+        D, tau_physical, tau_insecticide, tau_usage,
     )
+    num_full_cycles = int(program_months // D)
+    remainder_months = program_months - num_full_cycles * D
+
+    if remainder_months > 1e-6:
+        # Partial final cycle: full distribution cost, but only partial benefit
+        avg_efficacy_partial = integrate_efficacy_over_cycle(
+            remainder_months, tau_physical, tau_insecticide, tau_usage,
+        )
+        num_cycles = num_full_cycles + 1
+        full_cycle_months = num_full_cycles * D
+        total_efficacy_months = (
+            avg_efficacy_full * full_cycle_months
+            + avg_efficacy_partial * remainder_months
+        )
+        avg_efficacy = total_efficacy_months / program_months
+    else:
+        num_cycles = num_full_cycles
+        avg_efficacy = avg_efficacy_full
 
     # --- Static model results ---
     static_result = compute_country_ce(
@@ -182,12 +201,12 @@ def compute_temporal_cea(
     deaths_averted_scaled = static_result["deaths_averted"] * avg_efficacy
 
     # --- Cost model ---
+    # Every cycle (including partial) incurs full distribution cost
     cost_per_py = derive_cost_per_person_year(country_key)
     c = COUNTRIES[country_key]
     total_py = c.person_years_u5 + c.person_years_5_14 + c.person_years_over14
     variable_cost_per_cycle = cost_per_py * total_py  # = grant_size
     cost_per_cycle = variable_cost_per_cycle * (1 + fixed_logistics_fraction)
-    num_cycles = math.ceil(program_years * 12 / distribution_interval_months)
     total_program_cost = num_cycles * cost_per_cycle
 
     # --- Deaths over horizon ---
