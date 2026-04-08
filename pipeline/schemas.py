@@ -183,6 +183,7 @@ class PipelineStats:
     total_output_tokens: int = 0
     total_cost: float = 0.0
     stage_costs: dict[str, float] = field(default_factory=dict)
+    cost_warning_threshold: float = 15.0  # default; overridden per-intervention at run start
 
     def record_call(
         self,

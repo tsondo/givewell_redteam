@@ -17,7 +17,6 @@ import anthropic
 
 from pipeline.config import (
     ANTHROPIC_API_KEY,
-    COST_WARNING_PER_INTERVENTION,
     MAX_RETRIES,
     MAX_TOKENS_ADVERSARIAL,
     MAX_TOKENS_DECOMPOSER,
@@ -30,9 +29,8 @@ from pipeline.config import (
     PROMPTS_DIR,
     RESULTS_DIR,
     SONNET_MODEL,
-    VERIFIER_ALLOWED_DOMAINS,
     VERIFIER_BATCH_SIZE,
-    VERIFIER_MAX_SEARCHES,
+    get_verifier_settings,
 )
 from pipeline.schemas import (
     CandidateCritique,
@@ -96,11 +94,11 @@ def call_api(
                 cost,
                 stats.total_cost,
             )
-            if stats.total_cost > COST_WARNING_PER_INTERVENTION:
+            if stats.total_cost > stats.cost_warning_threshold:
                 logger.warning(
                     "Cumulative cost $%.2f exceeds warning threshold $%.2f",
                     stats.total_cost,
-                    COST_WARNING_PER_INTERVENTION,
+                    stats.cost_warning_threshold,
                 )
             return text
 
@@ -1064,11 +1062,12 @@ def run_verifier(
     verified: list[VerifiedCritique] = []
     all_raw: list[str] = []
 
+    settings = get_verifier_settings(intervention)
     web_search_tool: dict[str, Any] = {
         "type": "web_search_20250305",
         "name": "web_search",
-        "max_uses": VERIFIER_MAX_SEARCHES,
-        "allowed_domains": VERIFIER_ALLOWED_DOMAINS,
+        "max_uses": settings["max_searches"],
+        "allowed_domains": settings["allowed_domains"],
     }
 
     # Process in batches
@@ -1103,7 +1102,7 @@ def run_verifier(
             user_message=user_message,
             stats=stats,
             stage=f"verifier-{batch_num}",
-            max_tokens=MAX_TOKENS_VERIFIER * len(batch),
+            max_tokens=settings["max_tokens"] * len(batch),
             tools=[web_search_tool],
         )
 

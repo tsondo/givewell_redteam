@@ -12,6 +12,7 @@ from pipeline.config import (
     DATA_DIR,
     INTERVENTION_URLS,
     RESULTS_DIR,
+    get_verifier_settings,
 )
 from pipeline.schemas import (
     CandidateCritique,
@@ -108,6 +109,7 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
 
     urls = INTERVENTION_URLS[intervention]
     stats = PipelineStats()
+    stats.cost_warning_threshold = get_verifier_settings(intervention)["cost_warning"]
 
     start_idx = STAGES.index(resume_from) if resume_from else 0
     logger.info(

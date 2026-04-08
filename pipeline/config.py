@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from typing import Any
 
 from dotenv import load_dotenv
 
@@ -43,6 +44,72 @@ VERIFIER_ALLOWED_DOMAINS: list[str] = [
     "worldbank.org",
     "unicef.org",
 ]
+
+# ---------------------------------------------------------------------------
+# Per-intervention verifier overrides
+# ---------------------------------------------------------------------------
+# Each intervention may override any of: allowed_domains, max_searches,
+# max_tokens, cost_warning. Keys not present fall back to the module-level
+# defaults above. This exists because different interventions need different
+# evidence-quality / cost trade-offs (e.g., VAS depends on DHS prevalence
+# data and grantee implementation reports that aren't on the default list).
+
+INTERVENTION_VERIFIER_OVERRIDES: dict[str, dict[str, Any]] = {
+    "vas": {
+        "allowed_domains": [
+            # Defaults retained
+            "givewell.org",
+            "who.int",
+            "ncbi.nlm.nih.gov",
+            "pubmed.ncbi.nlm.nih.gov",
+            "scholar.google.com",
+            "thelancet.com",
+            "bmj.com",
+            "nature.com",
+            "cochranelibrary.com",
+            "worldbank.org",
+            "unicef.org",
+            # Tier 1 — prevalence and implementation data
+            "dhsprogram.com",
+            "childmortality.org",
+            "healthdata.org",
+            "ghdx.healthdata.org",
+            "helenkellerintl.org",
+            "nutritionintl.org",
+            # Tier 2 — expanded biomedical access
+            "europepmc.org",
+            "nejm.org",
+            "ajcn.nutrition.org",
+            "journals.plos.org",
+            "micronutrient.org",
+            "micronutrientforum.org",
+            # Tier 3 — structural debate sources
+            "lshtm.ac.uk",
+            "jhsph.edu",
+            "gainhealth.org",
+            "advancingnutrition.org",
+        ],
+        "max_searches": 8,
+        "max_tokens": 6144,
+        "cost_warning": 40.0,
+    },
+}
+
+
+def get_verifier_settings(intervention: str) -> dict[str, Any]:
+    """Return verifier settings for an intervention, merging overrides with defaults.
+
+    Always returns a dict with all four keys populated. Interventions without
+    an override entry receive the module-level defaults unchanged.
+    """
+    overrides = INTERVENTION_VERIFIER_OVERRIDES.get(intervention, {})
+    return {
+        "allowed_domains": overrides.get("allowed_domains", VERIFIER_ALLOWED_DOMAINS),
+        "max_searches": overrides.get("max_searches", VERIFIER_MAX_SEARCHES),
+        "max_tokens": overrides.get("max_tokens", MAX_TOKENS_VERIFIER),
+        "cost_warning": overrides.get("cost_warning", COST_WARNING_PER_INTERVENTION),
+    }
+
 
 # Cost thresholds (warn, don't stop)
 COST_WARNING_PER_INTERVENTION: float = 15.0
