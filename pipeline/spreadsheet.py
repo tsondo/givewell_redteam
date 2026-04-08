@@ -981,3 +981,492 @@ class MalariaCEA:
             lines.append("")
 
         return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# VAS (Vitamin A Supplementation) CEA
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class VASLocationParams:
+    """Per-location parameters for VAS CEA."""
+
+    name: str
+    grantee: str  # "Helen Keller International" or "Nutrition International"
+
+    # Final CE (from Simple CEA row 37)
+    ce_multiple: float
+
+    # Initial CE before adjustments (Simple CEA row 21)
+    initial_ce_multiple: float
+
+    # Cost (Inputs sheet)
+    cost_per_supplement: float  # row 18
+    pct_costs_grantee: float  # row 11
+    pct_costs_ni: float  # row 12 (Nutrition International capsule procurement)
+    pct_costs_govt_financial: float  # row 14
+    pct_costs_govt_inkind: float  # row 15
+
+    # Mortality (Counterfactual mortality sheet)
+    total_under5_deaths: float  # row 8
+    early_neonatal_deaths: float  # row 9
+    late_neonatal_deaths: float  # row 10
+    post_neonatal_deaths: float  # row 11
+    mortality_rate_6_59mo: float  # row 24 (annual rate among 6-59mo)
+
+    # External validity
+    vad_prevalence: float  # External validity row 8
+    vad_survey_year: int  # External validity row 9
+    estimated_vad_2021: float  # External validity row 46
+    pct_under5_6_59mo: float  # Counterfactual mortality row 22
+
+    # Adjustments (Simple CEA rows 31-34)
+    adj_additional_benefits: float  # row 31
+    adj_grantee_factors: float  # row 32
+    adj_leverage: float  # row 33
+    adj_funging: float  # row 34
+
+    # Nigeria aggregation (only populated for the "nigeria" aggregate entry)
+    ce_multiple_min: float = 0.0
+    ce_multiple_max: float = 0.0
+    ce_multiple_mean: float = 0.0
+    n_states: int = 0
+
+
+class VASCEA:
+    """Reads GiveWell VAS CEA and produces a rich parameter summary.
+
+    Unlike WaterCEA/ITNCEA/MalariaCEA, this class reads pre-computed CE
+    multiples rather than replicating the formula chain. This is a deliberate
+    trade-off: the VAS model spans 5+ sheets with 37 location columns and
+    cross-sheet DUMMYFUNCTION references, making replication fragile and
+    unnecessary — the pipeline agents consume get_parameter_summary() text,
+    not Python computations.
+
+    Consequence: compute_cost_effectiveness() raises NotImplementedError if
+    overrides are passed. Any future Bayesian optimization on VAS parameters
+    would require a full formula-chain implementation.
+
+    Location layout (Inputs/Simple CEA sheets):
+        Col I-P: HKI countries (Burkina Faso through Niger)
+        Col Q-AK: 21 Nigerian locations (20 states + FCT), aggregated as one entry
+        Col AL-AO: Nutrition International countries (Angola, Chad, Togo, Uganda)
+    """
+
+    # Non-Nigerian locations: key -> (column index in Inputs/Simple CEA, grantee)
+    _LOC_COLS: dict[str, tuple[int, str]] = {
+        "burkina_faso": (9, "Helen Keller International"),
+        "cameroon": (10, "Helen Keller International"),
+        "cote_divoire": (11, "Helen Keller International"),
+        "drc": (12, "Helen Keller International"),
+        "guinea": (13, "Helen Keller International"),
+        "madagascar": (14, "Helen Keller International"),
+        "mali": (15, "Helen Keller International"),
+        "niger": (16, "Helen Keller International"),
+        "angola": (38, "Nutrition International"),
+        "chad": (39, "Nutrition International"),
+        "togo": (40, "Nutrition International"),
+        "uganda": (41, "Nutrition International"),
+    }
+
+    _LOC_NAMES: dict[str, str] = {
+        "burkina_faso": "Burkina Faso",
+        "cameroon": "Cameroon",
+        "cote_divoire": "Cote d'Ivoire",
+        "drc": "DRC",
+        "guinea": "Guinea",
+        "madagascar": "Madagascar",
+        "mali": "Mali",
+        "niger": "Niger",
+        "angola": "Angola",
+        "chad": "Chad",
+        "togo": "Togo",
+        "uganda": "Uganda",
+    }
+
+    # Nigerian location columns: Q=17 through AK=37 (20 states + FCT)
+    _NIGERIA_COLS: dict[str, int] = {
+        "Adamawa": 17, "Akwa Ibom": 18, "Anambra": 19, "Benue": 20,
+        "Delta": 21, "Ebonyi": 22, "Edo": 23, "Ekiti": 24,
+        "Imo": 25, "Kogi": 26, "Nasarawa": 27, "Ogun": 28,
+        "Osun": 29, "Rivers": 30, "Taraba": 31, "Kaduna": 32,
+        "Niger": 33, "Plateau": 34, "Sokoto": 35, "Kebbi": 36,
+        "FCT (Abuja)": 37,
+    }
+
+    # Sensitivity analysis: location -> start column (3 cols each: 25th, best, 75th)
+    _SENS_COLS: dict[str, int] = {
+        "burkina_faso": 6, "cameroon": 9, "cote_divoire": 12,
+        "drc": 15, "guinea": 18, "madagascar": 21,
+        "mali": 24, "niger": 27,
+        "angola": 93, "chad": 96, "togo": 99, "uganda": 102,
+    }
+
+    # Sensitivity parameter rows (percentage-change section, rows 56-67)
+    _SENS_ROWS: dict[str, int] = {
+        "cost_per_person": 56,
+        "counterfactual_coverage": 57,
+        "mortality_rate": 58,
+        "effect_of_vas_on_mortality": 59,
+        "developmental_benefits": 62,
+        "additional_benefits_downsides": 65,
+        "grantee_factors": 66,
+        "funging": 67,
+    }
+
+    def __init__(self, path: Path) -> None:
+        self._path = Path(path)
+        wb = openpyxl.load_workbook(str(self._path), data_only=True)
+        self._read_shared(wb)
+        self._read_locations(wb)
+        self._read_nigeria_aggregate(wb)
+        self._read_sensitivity(wb)
+        wb.close()
+
+    def _safe_float(self, ws: Any, row: int, col: int, default: float = 0.0) -> float:
+        """Read a cell as float, returning default for None or non-numeric values."""
+        val = ws.cell(row=row, column=col).value
+        if val is None or val == "-" or val == "":
+            return default
+        try:
+            return float(val)
+        except (ValueError, TypeError):
+            return default
+
+    def _safe_int(self, ws: Any, row: int, col: int, default: int = 0) -> int:
+        """Read a cell as int, returning default for None or non-numeric values."""
+        val = ws.cell(row=row, column=col).value
+        if val is None or val == "-" or val == "" or val == "n/a":
+            return default
+        try:
+            return int(float(val))
+        except (ValueError, TypeError):
+            return default
+
+    def _read_shared(self, wb: openpyxl.Workbook) -> None:
+        """Read shared (non-location-specific) parameters."""
+        inp = wb["Inputs"]
+        sc = wb["Simple CEA"]
+        cm = wb["Counterfactual mortality"]
+
+        self.grant_size: float = float(inp.cell(row=8, column=8).value)  # H8
+        self.rounds_per_year: float = float(inp.cell(row=19, column=8).value)  # H19
+        self.moral_value_under5: float = float(sc.cell(row=20, column=8).value)  # Simple CEA H20
+        self.prop_postneonatal_1_5mo: float = float(cm.cell(row=14, column=8).value)  # CM H14
+
+    def _read_locations(self, wb: openpyxl.Workbook) -> None:
+        """Read per-location parameters for all non-Nigerian locations."""
+        inp = wb["Inputs"]
+        sc = wb["Simple CEA"]
+        cm = wb["Counterfactual mortality"]
+        ev = wb["External validity"]
+
+        self.locations: dict[str, VASLocationParams] = {}
+
+        for key, (col, grantee) in self._LOC_COLS.items():
+            self.locations[key] = VASLocationParams(
+                name=self._LOC_NAMES[key],
+                grantee=grantee,
+                ce_multiple=self._safe_float(sc, 37, col),
+                initial_ce_multiple=self._safe_float(sc, 21, col),
+                cost_per_supplement=self._safe_float(inp, 18, col),
+                pct_costs_grantee=self._safe_float(inp, 11, col),
+                pct_costs_ni=self._safe_float(inp, 12, col),
+                pct_costs_govt_financial=self._safe_float(inp, 14, col),
+                pct_costs_govt_inkind=self._safe_float(inp, 15, col),
+                total_under5_deaths=self._safe_float(cm, 8, col),
+                early_neonatal_deaths=self._safe_float(cm, 9, col),
+                late_neonatal_deaths=self._safe_float(cm, 10, col),
+                post_neonatal_deaths=self._safe_float(cm, 11, col),
+                mortality_rate_6_59mo=self._safe_float(cm, 24, col),
+                vad_prevalence=self._safe_float(ev, 8, col),
+                vad_survey_year=self._safe_int(ev, 9, col),
+                estimated_vad_2021=self._safe_float(ev, 46, col),
+                pct_under5_6_59mo=self._safe_float(cm, 22, col),
+                adj_additional_benefits=self._safe_float(sc, 31, col),
+                adj_grantee_factors=self._safe_float(sc, 32, col),
+                adj_leverage=self._safe_float(sc, 33, col),
+                adj_funging=self._safe_float(sc, 34, col),
+            )
+
+    def _read_nigeria_aggregate(self, wb: openpyxl.Workbook) -> None:
+        """Aggregate 21 Nigerian locations (20 states + FCT) into a single summary entry."""
+        sc = wb["Simple CEA"]
+        inp = wb["Inputs"]
+        cm = wb["Counterfactual mortality"]
+        ev = wb["External validity"]
+
+        state_final_ce: list[float] = []
+        state_initial_ce: list[float] = []
+        state_costs: list[float] = []
+        total_deaths = 0.0
+        total_early_neo = 0.0
+        total_late_neo = 0.0
+        total_post_neo = 0.0
+
+        self.nigeria_states: dict[str, float] = {}
+
+        for state_name, col in self._NIGERIA_COLS.items():
+            final_ce = self._safe_float(sc, 37, col)
+            initial_ce = self._safe_float(sc, 21, col)
+            if final_ce > 0:
+                state_final_ce.append(final_ce)
+                self.nigeria_states[state_name] = final_ce
+            if initial_ce > 0:
+                state_initial_ce.append(initial_ce)
+            cost = self._safe_float(inp, 18, col)
+            if cost > 0:
+                state_costs.append(cost)
+            total_deaths += self._safe_float(cm, 8, col)
+            total_early_neo += self._safe_float(cm, 9, col)
+            total_late_neo += self._safe_float(cm, 10, col)
+            total_post_neo += self._safe_float(cm, 11, col)
+
+        first_col = 17
+        mean_final = sum(state_final_ce) / len(state_final_ce) if state_final_ce else 0.0
+        mean_initial = sum(state_initial_ce) / len(state_initial_ce) if state_initial_ce else 0.0
+
+        self.locations["nigeria"] = VASLocationParams(
+            name="Nigeria (20 states + FCT)",
+            grantee="Helen Keller International",
+            ce_multiple=mean_final,
+            initial_ce_multiple=mean_initial,
+            cost_per_supplement=sum(state_costs) / len(state_costs) if state_costs else 0.0,
+            pct_costs_grantee=self._safe_float(inp, 11, first_col),
+            pct_costs_ni=self._safe_float(inp, 12, first_col),
+            pct_costs_govt_financial=self._safe_float(inp, 14, first_col),
+            pct_costs_govt_inkind=self._safe_float(inp, 15, first_col),
+            total_under5_deaths=total_deaths,
+            early_neonatal_deaths=total_early_neo,
+            late_neonatal_deaths=total_late_neo,
+            post_neonatal_deaths=total_post_neo,
+            mortality_rate_6_59mo=self._safe_float(cm, 24, first_col),
+            vad_prevalence=self._safe_float(ev, 8, first_col),
+            vad_survey_year=self._safe_int(ev, 9, first_col),
+            estimated_vad_2021=self._safe_float(ev, 46, first_col),
+            pct_under5_6_59mo=self._safe_float(cm, 22, first_col),
+            adj_additional_benefits=self._safe_float(sc, 31, first_col),
+            adj_grantee_factors=self._safe_float(sc, 32, first_col),
+            adj_leverage=self._safe_float(sc, 33, first_col),
+            adj_funging=self._safe_float(sc, 34, first_col),
+            ce_multiple_min=min(state_final_ce) if state_final_ce else 0.0,
+            ce_multiple_max=max(state_final_ce) if state_final_ce else 0.0,
+            ce_multiple_mean=mean_final,
+            n_states=len(state_final_ce),
+        )
+
+    def _read_sensitivity(self, wb: openpyxl.Workbook) -> None:
+        """Read sensitivity percentage changes from the Sensitivity analysis sheet."""
+        sa = wb["Sensitivity analysis"]
+
+        self.sensitivity: dict[str, dict[str, dict[str, float]]] = {}
+        for loc_key, start_col in self._SENS_COLS.items():
+            loc_sens: dict[str, dict[str, float]] = {}
+            for param_name, row in self._SENS_ROWS.items():
+                pct_25th = self._safe_float(sa, row, start_col)
+                pct_75th = self._safe_float(sa, row, start_col + 2)
+                loc_sens[param_name] = {
+                    "pct_change_25th": pct_25th,
+                    "pct_change_75th": pct_75th,
+                }
+            self.sensitivity[loc_key] = loc_sens
+
+    def get_parameter_summary(self) -> str:
+        """Return a rich markdown summary for LLM agent consumption."""
+        lines: list[str] = []
+        lines.append("# Vitamin A Supplementation (VAS) CEA — Parameter Summary\n")
+
+        lines.append("## Model Overview\n")
+        lines.append(
+            "This CEA estimates the cost-effectiveness of vitamin A supplementation "
+            "programs funded via Helen Keller International (HKI) and Nutrition "
+            "International (NI). It covers 37 location columns: 8 HKI countries, "
+            "21 Nigerian locations (20 states + FCT, HKI), and 4 NI countries. "
+            "The model calculates cost-effectiveness as multiples of GiveDirectly's "
+            "unconditional cash transfer program.\n"
+        )
+
+        lines.append("## Key Shared Parameters\n")
+        lines.append(f"- **Grant size:** ${self.grant_size:,.0f}")
+        lines.append(f"- **Supplementation rounds per year:** {self.rounds_per_year:.0f}")
+        lines.append(f"- **Moral value of averting an under-5 death:** {self.moral_value_under5:.5f} UoV")
+        lines.append(
+            f"- **Proportion of post-neonatal deaths among 1-5 month-olds:** "
+            f"{self.prop_postneonatal_1_5mo:.2f} (used to estimate VAS-eligible "
+            f"6-59 month mortality from total under-5 mortality)"
+        )
+        lines.append("")
+
+        lines.append("## Per-Location Parameters\n")
+        lines.append(
+            "| Location | Grantee | CE Multiple (x-cash) | Cost/Supplement | "
+            "VAD Prevalence | VAD Survey Year | Mortality Rate (6-59mo) |"
+        )
+        lines.append("|---|---|---|---|---|---|---|")
+
+        for key in list(self._LOC_COLS.keys()) + ["nigeria"]:
+            loc = self.locations[key]
+            if key == "nigeria":
+                ce_str = (
+                    f"{loc.ce_multiple_mean:.2f} "
+                    f"(range: {loc.ce_multiple_min:.2f}-{loc.ce_multiple_max:.2f}, "
+                    f"{loc.n_states} locations)"
+                )
+            else:
+                ce_str = f"{loc.ce_multiple:.2f}"
+            year_str = str(loc.vad_survey_year) if loc.vad_survey_year > 0 else "N/A"
+            vad_str = f"{loc.vad_prevalence:.1%}" if loc.vad_prevalence > 0 else "N/A"
+            mort_str = f"{loc.mortality_rate_6_59mo:.6f}" if loc.mortality_rate_6_59mo > 0 else "N/A"
+            lines.append(
+                f"| {loc.name} | {loc.grantee} | {ce_str} | "
+                f"${loc.cost_per_supplement:.2f} | {vad_str} | {year_str} | {mort_str} |"
+            )
+        lines.append("")
+
+        lines.append("### Nigerian State/FCT Breakdown\n")
+        lines.append("| State/Territory | CE Multiple (x-cash) |")
+        lines.append("|---|---|")
+        for state_name, ce in sorted(self.nigeria_states.items(), key=lambda x: -x[1]):
+            lines.append(f"| {state_name} | {ce:.2f} |")
+        lines.append("")
+
+        lines.append("## Adjustment Factors (from Simple CEA)\n")
+        lines.append(
+            "| Location | Additional Benefits | Grantee Factors | Leverage | Funging |"
+        )
+        lines.append("|---|---|---|---|---|")
+        for key in list(self._LOC_COLS.keys()) + ["nigeria"]:
+            loc = self.locations[key]
+            lines.append(
+                f"| {loc.name} | {loc.adj_additional_benefits:.3f} | "
+                f"{loc.adj_grantee_factors:+.3f} | "
+                f"{loc.adj_leverage:+.4f} | {loc.adj_funging:+.4f} |"
+            )
+        lines.append("")
+
+        lines.append("## Sensitivity Analysis — Highest-Variance Parameters\n")
+        lines.append(
+            "Percentage change in final CE when each parameter moves to its "
+            "25th or 75th percentile value:\n"
+        )
+        for loc_key, loc_name in [("burkina_faso", "Burkina Faso"), ("angola", "Angola")]:
+            if loc_key not in self.sensitivity:
+                continue
+            sens = self.sensitivity[loc_key]
+            lines.append(f"### {loc_name}\n")
+            lines.append("| Parameter | 25th %ile Change | 75th %ile Change |")
+            lines.append("|---|---|---|")
+            for param, vals in sens.items():
+                label = param.replace("_", " ").title()
+                lines.append(
+                    f"| {label} | {vals['pct_change_25th']:+.1%} | "
+                    f"{vals['pct_change_75th']:+.1%} |"
+                )
+            lines.append("")
+
+        lines.append("## Structural Concerns\n")
+
+        stale_surveys: list[str] = []
+        for key, loc in self.locations.items():
+            if 0 < loc.vad_survey_year < 2015:
+                stale_surveys.append(
+                    f"- **{loc.name}**: VAD survey from {loc.vad_survey_year} "
+                    f"({2024 - loc.vad_survey_year} years old). Estimated 2021 "
+                    f"prevalence ({loc.estimated_vad_2021:.1%}) is extrapolated "
+                    f"from proxy indicators, not direct measurement."
+                )
+        if stale_surveys:
+            lines.append("### Stale VAD Prevalence Data\n")
+            lines.extend(stale_surveys)
+            lines.append("")
+
+        lines.append("### DUMMYFUNCTION Cells in Inputs Sheet\n")
+        lines.append(
+            "Inputs rows 24-27 (mortality data) use `IFERROR(DUMMYFUNCTION(...))` "
+            "formulas that resolve to numeric fallback values. These values match "
+            "the raw GBD data in the Counterfactual mortality sheet. The pipeline "
+            "reads from Counterfactual mortality directly.\n"
+        )
+
+        lines.append("### Nigerian State Disaggregation Asymmetry\n")
+        ng = self.locations["nigeria"]
+        lines.append(
+            f"21 Nigerian locations (20 states + FCT) have individual columns "
+            f"but share many national-level parameters. CE multiples range from "
+            f"{ng.ce_multiple_min:.2f}x to {ng.ce_multiple_max:.2f}x, a "
+            f"{ng.ce_multiple_max / ng.ce_multiple_min:.0f}x spread driven "
+            f"primarily by cost and mortality differences. See the per-state "
+            f"table above for the full breakdown.\n"
+        )
+
+        lines.append("### Static Mortality Effect\n")
+        lines.append(
+            "The VAS mortality effect estimate is applied as a single scalar "
+            "across all locations. This is the highest-variance parameter in the "
+            "sensitivity analysis (25th/75th percentile: -80%/+75% change in CE). "
+            "Temporal trends in disease burden are not modeled.\n"
+        )
+
+        lines.append("### VAD Deficiency as Mediator\n")
+        lines.append(
+            "The external validity adjustment uses proxy indicators (stunting, "
+            "wasting, poverty rates) rather than direct VAD measurement for most "
+            "locations. Changes in these proxies are weighted equally (1/3 each) "
+            "to estimate changes in VAD prevalence over time.\n"
+        )
+
+        return "\n".join(lines)
+
+    def compute_cost_effectiveness(self, program_key: str, **overrides: float) -> float:
+        """Return the pre-computed CE multiple for a location.
+
+        Raises NotImplementedError if overrides are passed — VASCEA reads
+        pre-computed values and cannot recompute with different parameters.
+        """
+        if overrides:
+            raise NotImplementedError(
+                "VASCEA reads pre-computed CE multiples and cannot recompute "
+                "with overrides. A full formula-chain implementation would be "
+                "needed for parameter sweeps."
+            )
+        return self.locations[program_key].ce_multiple
+
+    def detect_cap_binding(self, program_key: str, **overrides: float) -> bool:
+        """No plausibility cap concept in the VAS model."""
+        return False
+
+    def run_sensitivity(
+        self,
+        program_key: str,
+        parameter_name: str,
+        low: float,
+        central: float,
+        high: float,
+    ) -> dict[str, Any]:
+        """Return pre-computed sensitivity data from the Sensitivity analysis sheet.
+
+        Unlike WaterCEA/ITNCEA, this returns spreadsheet-sourced percentage changes
+        rather than recomputing CE at each parameter value.
+        """
+        if program_key in self.sensitivity and parameter_name in self.sensitivity[program_key]:
+            sens = self.sensitivity[program_key][parameter_name]
+            baseline = self.locations[program_key].ce_multiple
+            return {
+                "parameter_name": parameter_name,
+                "baseline": baseline,
+                "cap_binds_baseline": False,
+                "low": baseline * (1 + sens["pct_change_25th"]),
+                "central": baseline,
+                "high": baseline * (1 + sens["pct_change_75th"]),
+                "pct_change_low": sens["pct_change_25th"] * 100,
+                "pct_change_central": 0.0,
+                "pct_change_high": sens["pct_change_75th"] * 100,
+                "cap_binds_low": False,
+                "cap_binds_central": False,
+                "cap_binds_high": False,
+            }
+        return {
+            "parameter_name": parameter_name,
+            "baseline": self.locations.get(program_key, self.locations["burkina_faso"]).ce_multiple,
+        }

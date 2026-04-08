@@ -31,7 +31,7 @@ from pipeline.agents import (
     run_synthesizer,
     run_verifier,
 )
-from pipeline.spreadsheet import ITNCEA, MalariaCEA, WaterCEA
+from pipeline.spreadsheet import ITNCEA, MalariaCEA, VASCEA, WaterCEA
 
 logger = logging.getLogger("pipeline")
 
@@ -128,6 +128,7 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
         "water-chlorination": WaterCEA,
         "itns": ITNCEA,
         "smc": MalariaCEA,
+        "vas": VASCEA,
     }
     cea_cls = cea_classes.get(intervention, WaterCEA)
     cea = cea_cls(spreadsheet_path)
