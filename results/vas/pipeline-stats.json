@@ -1,0 +1,9 @@
+{
+  "total_input_tokens": 70568,
+  "total_output_tokens": 3462,
+  "total_cost": 0.658734,
+  "stage_costs": {
+    "fetch_web": 0.164859,
+    "synthesizer": 0.493875
+  }
+}

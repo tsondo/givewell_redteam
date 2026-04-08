@@ -1,3 +1,4 @@
 .env
 __pycache__/
 *.with-duplicates.json
+*.pre-dedup.*
