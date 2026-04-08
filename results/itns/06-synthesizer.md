@@ -1,5 +1,7 @@
 # Red Team Report: Insecticide-Treated Nets (ITNs)
 
+> **Note (April 2026):** The pipeline summary counts in this report were generated before a parser bug was discovered that double-counted critiques whose verifier output included a summary restatement section. The corrected counts are: 28 verified critiques (not 30), 28 surviving adversarial review (not 30), signal rate 93.3% (not 100%). The underlying findings are unchanged — only the headline counts were affected by the bug. See commit 5aeed0e for the data correction and commit 6680f59 for the parser fix.
+
 ## Pipeline Summary
 - Investigation threads examined: Not specified
 - Candidate critiques generated: 30
