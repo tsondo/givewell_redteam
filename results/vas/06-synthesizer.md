@@ -1,7 +1,7 @@
 # Red Team Report: Vitamin A Supplementation
 
 ## Pipeline Summary
-- Investigation threads examined: 5
+- Investigation threads examined: 7
 - Candidate critiques generated: 32
 - Verified critiques: 28
 - Critiques surviving adversarial review: 28
