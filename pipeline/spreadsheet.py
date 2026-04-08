@@ -1054,6 +1054,12 @@ class VASCEA:
         Col AL-AO: Nutrition International countries (Angola, Chad, Togo, Uganda)
     """
 
+    PROGRAMS = (
+        "burkina_faso", "cameroon", "cote_divoire", "drc", "guinea",
+        "madagascar", "mali", "niger", "angola", "chad", "togo", "uganda",
+        "nigeria",
+    )
+
     # Non-Nigerian locations: key -> (column index in Inputs/Simple CEA, grantee)
     _LOC_COLS: dict[str, tuple[int, str]] = {
         "burkina_faso": (9, "Helen Keller International"),
