@@ -1024,8 +1024,13 @@ def _parse_batched_verifier_output(
 
     if len(matches) >= 2 and len(batch) > 1:
         # Multiple sections found — parse each
+        seen_indices: set[int] = set()
         for i, m in enumerate(matches):
             critique_idx = int(m.group(1)) - 1
+            if critique_idx in seen_indices:
+                # Model restated the header in a summary section; skip duplicate
+                continue
+            seen_indices.add(critique_idx)
             start = m.end()
             end = matches[i + 1].start() if i + 1 < len(matches) else len(raw)
             section = raw[start:end].strip()
