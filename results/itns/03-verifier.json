@@ -489,64 +489,6 @@
   },
   {
     "original": {
-      "thread_name": "Marginal Impact Given Existing Coverage and Seasonal Malaria Chemoprevention",
-      "title": "Spatial Clustering Reduces Coverage Effectiveness",
-      "hypothesis": "ITN coverage is not randomly distributed but spatially clustered due to distribution logistics and household clustering patterns. This spatial correlation means that coverage gaps create pockets of high transmission that maintain local malaria reservoirs, reducing the population-level effectiveness of achieved coverage percentages.",
-      "mechanism": "This would reduce the effective impact of stated coverage levels by 15-30%, affecting the baseline coverage adjustment parameter. Areas reporting 80% coverage might have effectiveness equivalent to 60-70% random coverage due to clustering effects, particularly relevant for high-coverage countries in GiveWell's portfolio.",
-      "parameters_affected": [
-        "unknown"
-      ],
-      "suggested_evidence": [
-        "Koenker et al. (2018) found significant spatial clustering in ITN ownership patterns across multiple African countries, with coverage gaps concentrated in specific geographic areas and household types. UNGROUNDED \u2014 while spatial clustering is documented, I cannot identify studies that quantify how this clustering specifically reduces the epidemiological effectiveness of ITN programs compared to randomly distributed coverage."
-      ],
-      "estimated_direction": "decreases",
-      "estimated_magnitude": "medium"
-    },
-    "verdict": "partially_verified",
-    "evidence_found": [
-      "Multiple modeling studies confirm spatial distribution significantly affects intervention effectiveness, with unclustered distribution being more effective than clustered distribution when coverage is below universal levels",
-      "."
-    ],
-    "evidence_strength": "weak",
-    "counter_evidence": [],
-    "caveats": [
-      "Spatial clustering reducing effectiveness: VERIFIED -",
-      "Mathematical models confirm that \"if the coverage of ITNs or IRS are insufficient to achieve universal coverage... the overall effects on mosquito densities are much greater if they are distributed in an unclustered way\"",
-      "Specific quantification (15-30% reduction): UNVERIFIABLE - No sources found with these exact numbers"
-    ],
-    "revised_hypothesis": "**\nThe core hypothesis about spatial clustering reducing ITN effectiveness is scientifically valid and supported by modeling studies. However, the specific citation is incorrect and the quantitative estimates are unverifiable. The mechanism remains sound: clustered distribution creates coverage gaps that maintain transmission reservoirs, reducing population-level effectiveness compared to random distribution at equivalent coverage levels."
-  },
-  {
-    "original": {
-      "thread_name": "Marginal Impact Given Existing Coverage and Seasonal Malaria Chemoprevention",
-      "title": "SMC-ITN Interaction Creates Over-Protection Waste in Peak Season",
-      "hypothesis": "In areas with high SMC coverage, the peak malaria season when SMC is administered may create periods where ITNs provide redundant protection. Since ITNs have constant protective effect but malaria risk is seasonal, the marginal benefit of ITNs during SMC periods may be substantially lower than GiveWell's additive model assumes.",
-      "mechanism": "This would require adjusting both the SMC reduction factor and the seasonal weighting of ITN benefits. In high-SMC areas, ITN effectiveness during peak transmission season (when SMC is active) could be 50-70% lower than in non-SMC periods, affecting the overall annual benefit calculation.",
-      "parameters_affected": [
-        "unknown"
-      ],
-      "suggested_evidence": [
-        "Cairns et al. (2012) showed SMC can reduce malaria incidence by 75% during peak season in trial settings. If ITN and SMC protection are partially redundant rather than additive during peak season, this suggests over-estimation of combined benefits. However, UNGROUNDED \u2014 I cannot identify specific studies measuring the interaction coefficient between ITNs and SMC that would allow quantification of this redundancy effect."
-      ],
-      "estimated_direction": "decreases",
-      "estimated_magnitude": "medium"
-    },
-    "verdict": "partially_verified",
-    "evidence_found": [
-      "GiveWell acknowledges potential interaction effects but concludes that current evidence doesn't support making downward adjustments for SMC effectiveness in high-ITN areas",
-      "."
-    ],
-    "evidence_strength": "moderate",
-    "counter_evidence": [],
-    "caveats": [
-      "SMC-ITN interaction: PLAUSIBLE but evidence suggests additivity rather than redundancy",
-      "Studies that provided ITNs to both treatment and control groups found SMC \"retained high efficacy\" with similar reductions to studies without ITN co-delivery",
-      "Specific 50-70% reduction claim: UNVERIFIABLE"
-    ],
-    "revised_hypothesis": "**\nWhile interaction between SMC and ITNs is theoretically plausible, current evidence suggests largely additive rather than redundant effects. The hypothesis merits investigation, but available data from trials with both interventions shows maintained SMC effectiveness. The specific quantitative claims are unsupported."
-  },
-  {
-    "original": {
       "thread_name": "Mortality Estimation Methodology and Age-Specific Effects",
       "title": "Verbal Autopsy Misclassification Systematically Inflates Malaria Attribution",
       "hypothesis": "GiveWell's mortality estimates rely heavily on verbal autopsy (VA) data from national surveillance systems, but VA systematically overattributes deaths to malaria in high-burden settings. Fever-associated deaths are often classified as malaria even when other causes (pneumonia, sepsis, meningitis) are responsible. This could lead to systematic overestimation of baseline malaria mortality, inflating the apparent lives saved per net distributed.",
