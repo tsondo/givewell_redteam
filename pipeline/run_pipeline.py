@@ -198,18 +198,20 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
     # Stage 3: Verifier
     # ------------------------------------------------------------------
     verified_critiques: list[VerifiedCritique]
+    rejected_critiques: list[VerifiedCritique] = []
 
     if start_idx <= 2:
         logger.info("=== Stage 3: Verifier ===")
-        verified_critiques, _ = run_verifier(
+        verified_critiques, rejected_critiques, _ = run_verifier(
             critiques=candidate_critiques,
             stats=stats,
             intervention=intervention,
         )
         logger.info(
-            "Verifier passed %d / %d critiques.",
+            "Verifier passed %d / %d critiques (%d rejected).",
             len(verified_critiques),
             len(candidate_critiques),
+            len(rejected_critiques),
         )
     else:
         logger.info("Loading Stage 3 (verifier) from disk.")
@@ -220,10 +222,16 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
         verified_critiques = [
             v for v in all_verified if v.verdict in ("verified", "partially_verified")
         ]
+        # Load rejected critiques if available
+        rejected_path = RESULTS_DIR / intervention / "03-verifier-rejected.json"
+        if rejected_path.exists():
+            rejected_data = json.loads(rejected_path.read_text(encoding="utf-8"))
+            rejected_critiques = [VerifiedCritique.from_dict(d) for d in rejected_data]
         logger.info(
-            "Loaded %d verified critiques (%d passing) from disk.",
+            "Loaded %d verified critiques (%d passing, %d rejected) from disk.",
             len(all_verified),
             len(verified_critiques),
+            len(rejected_critiques),
         )
 
     # ------------------------------------------------------------------
@@ -294,6 +302,7 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
             debated=debated_critiques,
             all_critiques_count=len(candidate_critiques),
             verified_count=len(verified_critiques),
+            rejected_critiques=rejected_critiques,
             baseline_output=baseline_output,
             stats=stats,
             intervention=intervention,

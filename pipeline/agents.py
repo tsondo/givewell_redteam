@@ -451,7 +451,7 @@ def parse_verifier_output(
     elif "VERIFIED" in verdict_upper:
         verdict = "verified"
     elif "REJECTED" in verdict_upper:
-        verdict = "unverified"
+        verdict = "rejected"
     else:
         # UNVERIFIABLE or anything else
         verdict = "unverified"
@@ -1063,17 +1063,33 @@ def _parse_batched_verifier_output(
     return results
 
 
+def _save_rejected_critiques(
+    intervention: str, rejected: list[VerifiedCritique]
+) -> None:
+    """Save rejected critiques to 03-verifier-rejected.json (JSON only)."""
+    out_dir = RESULTS_DIR / intervention
+    out_dir.mkdir(parents=True, exist_ok=True)
+    json_data = [r.to_dict() if hasattr(r, "to_dict") else r for r in rejected]
+    path = out_dir / "03-verifier-rejected.json"
+    path.write_text(json.dumps(json_data, indent=2, default=str), encoding="utf-8")
+    logger.info(
+        "Saved %d rejected critiques to %s", len(rejected), path.name
+    )
+
+
 def run_verifier(
     critiques: list[CandidateCritique],
     stats: PipelineStats,
     intervention: str,
-) -> tuple[list[VerifiedCritique], str]:
+) -> tuple[list[VerifiedCritique], list[VerifiedCritique], str]:
     """Stage 3: Verify each critique with web search.
 
     Uses batching, search count limits, and domain focusing to reduce costs.
+    Returns (verified, rejected, raw_text).
     """
     system = load_prompt("verifier.md")
     verified: list[VerifiedCritique] = []
+    rejected: list[VerifiedCritique] = []
     all_raw: list[str] = []
 
     settings = get_verifier_settings(intervention)
@@ -1128,13 +1144,15 @@ def run_verifier(
             if result.verdict in ("verified", "partially_verified"):
                 verified.append(result)
             else:
+                rejected.append(result)
                 logger.info(
-                    "Dropping critique '%s': verdict=%s", title, result.verdict
+                    "Rejected critique '%s': verdict=%s", title, result.verdict
                 )
 
     combined_raw = "\n\n".join(all_raw)
     save_stage_output(intervention, 3, "verifier", verified, combined_raw)
-    return verified, combined_raw
+    _save_rejected_critiques(intervention, rejected)
+    return verified, rejected, combined_raw
 
 
 def run_quantifier(
@@ -1343,10 +1361,48 @@ def run_adversarial(
     return debated, combined_raw
 
 
+def _format_rejected_critiques_for_synthesizer(
+    rejected: list[VerifiedCritique],
+) -> str:
+    """Format rejected critiques as synthesizer input, split by verdict type."""
+    unverifiable: list[str] = []
+    contradicted: list[str] = []
+
+    for r in rejected:
+        orig = r.original
+        evidence_str = "\n".join(f"  - {e}" for e in r.evidence_found) or "  (none)"
+        caveats_str = "\n".join(f"  - {c}" for c in r.caveats) or "  (none)"
+
+        entry = (
+            f"#### {orig.title}\n"
+            f"- **Hypothesis:** {r.revised_hypothesis or orig.hypothesis}\n"
+            f"- **Mechanism:** {orig.mechanism}\n"
+            f"- **What the verifier searched for:**\n{caveats_str}\n"
+            f"- **Evidence found:**\n{evidence_str}\n"
+        )
+
+        if r.verdict == "rejected":
+            contradicted.append(entry)
+        else:
+            unverifiable.append(entry)
+
+    unverifiable_text = "\n".join(unverifiable) if unverifiable else "(none)\n"
+    contradicted_text = "\n".join(contradicted) if contradicted else "(none)\n"
+
+    return (
+        "## Rejected Critiques (from verifier — DO NOT generate new entries)\n\n"
+        "### Verdict: UNVERIFIABLE (no evidence found either way)\n\n"
+        f"{unverifiable_text}\n"
+        "### Verdict: REJECTED (contradicted by evidence)\n\n"
+        f"{contradicted_text}"
+    )
+
+
 def run_synthesizer(
     debated: list[DebatedCritique],
     all_critiques_count: int,
     verified_count: int,
+    rejected_critiques: list[VerifiedCritique],
     baseline_output: str,
     stats: PipelineStats,
     intervention: str,
@@ -1373,13 +1429,18 @@ def run_synthesizer(
             f"- **Challenger Rebuttal Summary:** {dc.challenger_rebuttal[:500]}...\n"
         )
 
+    # Compile rejected critique data, separated by verdict type
+    rejected_section = _format_rejected_critiques_for_synthesizer(rejected_critiques)
+
     user_message = (
         f"## Pipeline Statistics\n\n"
         f"- Candidate critiques generated: {all_critiques_count}\n"
         f"- Verified critiques: {verified_count}\n"
+        f"- Rejected by verifier: {len(rejected_critiques)}\n"
         f"- Critiques surviving adversarial review: {len(debated)}\n\n"
-        f"## Surviving Critiques\n\n"
+        f"## Surviving Critiques (from adversarial stage)\n\n"
         + "\n".join(critique_summaries)
+        + f"\n\n{rejected_section}"
         + f"\n\n## Baseline AI Output (for comparison)\n\n{baseline_output}\n\n"
         "Produce the final red team report."
     )

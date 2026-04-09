@@ -84,7 +84,7 @@ class CandidateCritique:
 @dataclass
 class VerifiedCritique:
     original: CandidateCritique
-    verdict: str  # "verified"|"partially_verified"|"unverified"
+    verdict: str  # "verified"|"partially_verified"|"unverified"|"rejected"
     evidence_found: list[str]
     evidence_strength: str  # "strong"|"moderate"|"weak"
     counter_evidence: list[str]

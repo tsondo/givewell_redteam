@@ -12,7 +12,9 @@ You will receive:
    - Verified evidence (from Verifier)
    - Quantified impact (from Quantifier)
    - Adversarial assessment and surviving strength (from Advocate/Challenger)
-2. The original thread decomposition (for context on scope and materiality thresholds)
+2. Rejected critiques from the verifier, separated into:
+   - UNVERIFIABLE (no evidence found either way)
+   - REJECTED (contradicted by evidence)
 3. GiveWell's previous AI red teaming output (for comparison)
 
 ## Task
@@ -52,9 +54,40 @@ Produce a single document with the following structure:
 |---|---|---|
 | [Title] | [Yes/No/Partial] | [Verification, quantification, etc.] |
 
-## Ungrounded Hypotheses Worth Investigating
-[Critiques that were logically sound but couldn't be verified —
-listed as research questions rather than findings]
+## Open Questions (from rejected_critiques input only)
+
+For each critique in the input section "Verdict: UNVERIFIABLE", produce
+one entry in this format:
+
+### [Title from input]
+**Hypothesis:** [hypothesis from input]
+**Why the verifier couldn't ground it:** [verifier's reasoning from input]
+**Why it's still worth investigating:** [one sentence on what makes this
+an open question rather than a closed one]
+
+CRITICAL RULES FOR THIS SECTION:
+- ONLY use entries from the "Verdict: UNVERIFIABLE" input section.
+- DO NOT generate new entries from your own reading of the surviving
+  critiques.
+- DO NOT combine, summarize, or paraphrase across multiple input entries.
+- If the input section is empty or says "(none)", write "(none — all
+  hypotheses were either grounded or contradicted)" and move on.
+
+## Resolved Negatives (from rejected_critiques input only)
+
+For each critique in the input section "Verdict: REJECTED", produce one
+entry in this format:
+
+### [Title from input]
+**Hypothesis:** [hypothesis from input]
+**Contradicting evidence:** [verifier's evidence from input]
+**Why this matters for GiveWell:** [one sentence on the value of knowing
+this hypothesis was tested and found wanting]
+
+CRITICAL RULES FOR THIS SECTION:
+- ONLY use entries from the "Verdict: REJECTED" input section.
+- DO NOT generate new entries.
+- If the input section is empty or says "(none)", write "(none)".
 
 ## Meta-Observations
 [Any patterns across critiques: systematic blind spots,
