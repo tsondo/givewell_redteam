@@ -603,6 +603,11 @@ def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
     if not blocks:
         blocks = [("", text)]
 
+    # Matches a number (int, float, or percent) without consuming trailing
+    # sentence periods.  "\d+(?:\.\d+)?" requires digits after the dot,
+    # so "0.76." only captures "0.76".
+    _NUM = r"-?\d+(?:\.\d+)?%?"
+
     for name, body in blocks:
         merged = name + " " + body
         # Determine the CEA parameter this block maps to
@@ -610,8 +615,6 @@ def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
 
         # Strategy 1: "Current value = X ... range = [Y, Z]" or
         # "Current = X ... Plausible range = [Y, Z]"
-        # Use \b or lookahead to avoid consuming trailing periods in "1.0."
-        _NUM = r"-?\d+(?:\.\d+)?%?"
         m = re.search(
             r"Current\s*(?:value)?\s*[:=]\s*(" + _NUM + r")"
             r".*?(?:Plausible\s+)?[Rr]ange\s*[:=]?\s*\[?\s*(" + _NUM + r")"
@@ -630,38 +633,39 @@ def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
         # Strategy 2: "could be X to Y" or "= X to Y" patterns with a parameter name
         m = re.search(
             r"(?:could\s+be|range\s*[:=]?|adjusted\s+(?:range|ln\(rr\))\s*[:=]?)"
-            r"\s*\[?\s*(-?[\d.]+)\s*(?:to|[,\-–])\s*(-?[\d.]+)\s*\]?",
+            r"\s*\[?\s*(" + _NUM + r")\s*(?:to|[,\-–])\s*(" + _NUM + r")\s*\]?",
             merged, re.IGNORECASE,
         )
         if m and mapped:
-            low = float(m.group(1))
-            high = float(m.group(2))
+            low = _parse_num(m.group(1))
+            high = _parse_num(m.group(2))
             # Try to find current value nearby
             cm = re.search(
-                r"Current(?:\s+value)?\s*[:=]\s*(-?[\d.]+)",
+                r"Current(?:\s+value)?\s*[:=]\s*(" + _NUM + r")",
                 merged, re.IGNORECASE,
             )
-            current = float(cm.group(1)) if cm else None
+            current = _parse_num(cm.group(1)) if cm else None
             # If no explicit current, try to infer from "currently -0.146"
             if current is None:
-                cm2 = re.search(r"[Cc]urrently\s+(-?[\d.]+)", merged)
-                current = float(cm2.group(1)) if cm2 else None
-            if current is not None:
+                cm2 = re.search(r"[Cc]urrently\s+(" + _NUM + r")", merged)
+                current = _parse_num(cm2.group(1)) if cm2 else None
+            if current is not None and low is not None and high is not None:
                 results.append({"name": name, "current": current, "low": low,
                                 "high": high, "mapped": mapped})
                 continue
 
         # Strategy 3: look for RR values like "RR = 0.95 ... RR = 0.90 ... RR = 0.92"
-        rr_values = re.findall(r"RR\s*=\s*([\d.]+)", merged, re.IGNORECASE)
-        if len(rr_values) >= 2 and (mapped or "relative risk" in merged.lower()
+        rr_values = re.findall(r"RR\s*=\s*(" + _NUM + r")", merged, re.IGNORECASE)
+        rr_parsed = [v for v in (_parse_num(r) for r in rr_values) if v is not None]
+        if len(rr_parsed) >= 2 and (mapped or "relative risk" in merged.lower()
                                      or "mortality" in merged.lower()):
-            vals = sorted(float(v) for v in rr_values)
+            vals = sorted(rr_parsed)
             if not mapped:
                 mapped = "relative_risk"
             # Current RR from the CEA is ~0.864
             results.append({
                 "name": name or "relative_risk",
-                "current": float(rr_values[0]),  # usually listed first
+                "current": rr_parsed[0],  # usually listed first
                 "low": vals[0],
                 "high": vals[-1],
                 "mapped": mapped,
@@ -669,12 +673,13 @@ def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
             continue
 
         # Strategy 4: ln(RR) values like "ln(RR) = -0.132" or "ln(RR) could be..."
-        lnrr_vals = re.findall(r"ln\s*\(?RR\)?\s*(?:=|could\s+be|:)\s*(-?[\d.]+)", merged, re.IGNORECASE)
-        if len(lnrr_vals) >= 2:
-            vals = sorted(float(v) for v in lnrr_vals)
+        lnrr_vals = re.findall(r"ln\s*\(?RR\)?\s*(?:=|could\s+be|:)\s*(" + _NUM + r")", merged, re.IGNORECASE)
+        lnrr_parsed = [v for v in (_parse_num(r) for r in lnrr_vals) if v is not None]
+        if len(lnrr_parsed) >= 2:
+            vals = sorted(lnrr_parsed)
             results.append({
                 "name": name or "ln(RR)",
-                "current": float(lnrr_vals[0]),
+                "current": lnrr_parsed[0],
                 "low": vals[0],
                 "high": vals[-1],
                 "mapped": "relative_risk",
@@ -766,13 +771,17 @@ def parse_quantifier_output(
             param_name = tp.get("name", "")
             # Look for current value and any alternative values
             section_text = plausible_range_raw
+            _NUM_FB = r"-?\d+(?:\.\d+)?%?"
             current_m = re.search(
-                r"(?:Current|currently)\s*[:=]?\s*(-?[\d.]+)",
+                r"(?:Current|currently)\s*[:=]?\s*(" + _NUM_FB + r")",
                 section_text, re.IGNORECASE,
             )
             if not current_m:
                 continue
-            current = float(current_m.group(1))
+            current_parsed = _parse_num(current_m.group(1))
+            if current_parsed is None:
+                continue
+            current = current_parsed
             # Find any other float values that could be alternatives
             all_floats = re.findall(r"(-?[\d]+\.[\d]+)", section_text)
             floats = sorted(set(float(f) for f in all_floats))
