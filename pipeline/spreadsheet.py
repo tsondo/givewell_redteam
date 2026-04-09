@@ -9,9 +9,62 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol, runtime_checkable
 
 import openpyxl
+
+
+# ---------------------------------------------------------------------------
+# CEA reader contract
+# ---------------------------------------------------------------------------
+
+@runtime_checkable
+class CEAReader(Protocol):
+    """Interface contract for CEA spreadsheet readers.
+
+    Every concrete CEA class consumed by the pipeline must implement these
+    members. The pipeline's quantifier stage iterates ``PROGRAMS`` to run
+    cross-program sensitivity analysis; missing this attribute caused a
+    mid-run crash on the VAS pipeline (quantifier critique 5/31, fixed in
+    a prior commit). This Protocol exists to surface that class of bug at
+    test time rather than at run time.
+
+    Note: this is a structural Protocol (PEP 544), not an ABC. Existing
+    classes conform automatically without inheriting — we only use it for
+    isinstance checks in tests.
+    """
+
+    PROGRAMS: tuple[str, ...]
+
+    def get_parameter_summary(self) -> str:
+        """Return a markdown-formatted summary of CEA parameters for LLM agents."""
+        ...
+
+    def compute_cost_effectiveness(
+        self, program_key: str, **overrides: float
+    ) -> float:
+        """Return the CE multiple for a program, optionally with parameter overrides.
+
+        Implementations that read pre-computed values (rather than replicating
+        the formula chain) should raise NotImplementedError if overrides are
+        passed, to fail loud rather than silently returning stale values.
+        """
+        ...
+
+    def detect_cap_binding(self, program_key: str, **overrides: float) -> bool:
+        """Return True if the plausibility cap binds at the given parameter values."""
+        ...
+
+    def run_sensitivity(
+        self,
+        program_key: str,
+        parameter_name: str,
+        low: float,
+        central: float,
+        high: float,
+    ) -> dict[str, Any]:
+        """Run sensitivity analysis on a parameter and return structured results."""
+        ...
 
 
 # ---------------------------------------------------------------------------

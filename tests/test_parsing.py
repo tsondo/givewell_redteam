@@ -446,7 +446,7 @@ def _make_cea():
     """Load the WaterCEA for quantifier tests."""
     from pathlib import Path
     from pipeline.spreadsheet import WaterCEA
-    return WaterCEA(Path("data/WaterCEA.xlsx"))
+    return WaterCEA(Path("data/GW/WaterCEA.xlsx"))
 
 
 def test_parse_quantifier_ln_rr_ranges() -> None:

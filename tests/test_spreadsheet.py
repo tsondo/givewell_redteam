@@ -6,10 +6,11 @@ from pathlib import Path
 
 import pytest
 
-from pipeline.spreadsheet import ITNCEA, VASCEA, WaterCEA
+from pipeline.spreadsheet import CEAReader, ITNCEA, MalariaCEA, VASCEA, WaterCEA
 
-DATA_PATH = Path(__file__).parent.parent / "data" / "WaterCEA.xlsx"
-ITN_DATA_PATH = Path(__file__).parent.parent / "data" / "InsecticideCEA.xlsx"
+DATA_PATH = Path(__file__).parent.parent / "data" / "GW" / "WaterCEA.xlsx"
+ITN_DATA_PATH = Path(__file__).parent.parent / "data" / "GW" / "InsecticideCEA.xlsx"
+MALARIA_DATA_PATH = Path(__file__).parent.parent / "data" / "GW" / "MalariaCEA.xlsx"
 VAS_DATA_PATH = Path(__file__).parent.parent / "data" / "VASCEA.xlsx"
 
 _VAS_EXPECTED_SHEETS = {
@@ -412,3 +413,93 @@ class TestVASCEAReading:
         # Per-state breakdown present
         assert "Sokoto" in summary
         assert "Anambra" in summary
+
+
+# -----------------------------------------------------------------------
+# TestCEAReaderInterface
+# -----------------------------------------------------------------------
+
+@pytest.fixture(scope="module")
+def all_ceas() -> dict[str, CEAReader]:
+    """Instantiate every concrete CEA class once for interface testing."""
+    return {
+        "water": WaterCEA(DATA_PATH),
+        "itns": ITNCEA(ITN_DATA_PATH),
+        "smc": MalariaCEA(MALARIA_DATA_PATH),
+        "vas": VASCEA(VAS_DATA_PATH),
+    }
+
+
+class TestCEAReaderInterface:
+    """Verify every CEA class conforms to the CEAReader Protocol.
+
+    This catches missing-attribute bugs at test time. The original motivation
+    was a mid-run crash on VAS at quantifier critique 5/31 caused by VASCEA
+    missing the PROGRAMS class attribute that parse_quantifier_output iterates.
+    """
+
+    @pytest.mark.parametrize("name", ["water", "itns", "smc", "vas"])
+    def test_isinstance_check(self, all_ceas: dict[str, CEAReader], name: str) -> None:
+        """Each CEA class is recognized as a CEAReader by runtime isinstance."""
+        cea = all_ceas[name]
+        assert isinstance(cea, CEAReader), (
+            f"{type(cea).__name__} does not satisfy the CEAReader Protocol. "
+            f"Check that all required members are present."
+        )
+
+    @pytest.mark.parametrize("name", ["water", "itns", "smc", "vas"])
+    def test_programs_is_tuple_of_strings(
+        self, all_ceas: dict[str, CEAReader], name: str
+    ) -> None:
+        cea = all_ceas[name]
+        assert isinstance(cea.PROGRAMS, tuple), (
+            f"{type(cea).__name__}.PROGRAMS must be a tuple"
+        )
+        assert len(cea.PROGRAMS) > 0, f"{type(cea).__name__}.PROGRAMS is empty"
+        assert all(isinstance(p, str) for p in cea.PROGRAMS), (
+            f"{type(cea).__name__}.PROGRAMS must contain only strings"
+        )
+
+    @pytest.mark.parametrize("name", ["water", "itns", "smc", "vas"])
+    def test_get_parameter_summary_returns_nonempty_string(
+        self, all_ceas: dict[str, CEAReader], name: str
+    ) -> None:
+        cea = all_ceas[name]
+        summary = cea.get_parameter_summary()
+        assert isinstance(summary, str)
+        assert len(summary) > 500, (
+            f"{type(cea).__name__}.get_parameter_summary() returned only "
+            f"{len(summary)} chars; expected > 500"
+        )
+
+    @pytest.mark.parametrize("name", ["water", "itns", "smc", "vas"])
+    def test_compute_cost_effectiveness_baseline(
+        self, all_ceas: dict[str, CEAReader], name: str
+    ) -> None:
+        """compute_cost_effectiveness returns a float for the first program key."""
+        cea = all_ceas[name]
+        first_program = cea.PROGRAMS[0]
+        result = cea.compute_cost_effectiveness(first_program)
+        assert isinstance(result, (int, float))
+        assert result > 0, (
+            f"{type(cea).__name__}.compute_cost_effectiveness({first_program!r}) "
+            f"returned {result}; expected > 0"
+        )
+
+    @pytest.mark.parametrize("name", ["water", "itns", "smc", "vas"])
+    def test_detect_cap_binding_returns_bool(
+        self, all_ceas: dict[str, CEAReader], name: str
+    ) -> None:
+        cea = all_ceas[name]
+        first_program = cea.PROGRAMS[0]
+        result = cea.detect_cap_binding(first_program)
+        assert isinstance(result, bool)
+
+    def test_vas_compute_with_overrides_raises(
+        self, all_ceas: dict[str, CEAReader]
+    ) -> None:
+        """VASCEA explicitly fails loud on overrides since it can't recompute."""
+        vas = all_ceas["vas"]
+        first_program = vas.PROGRAMS[0]
+        with pytest.raises(NotImplementedError):
+            vas.compute_cost_effectiveness(first_program, some_param=1.0)
