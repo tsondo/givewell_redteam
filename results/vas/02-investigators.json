@@ -1,0 +1,497 @@
+[
+  {
+    "thread_name": "External Validity of Mortality Effect Across Heterogeneous Modern Contexts",
+    "title": "Threshold Effects Below Critical VAD Prevalence Levels",
+    "hypothesis": "** VAS mortality benefits may exhibit threshold effects where supplementation becomes ineffective below certain VAD prevalence levels, rather than scaling linearly with GiveWell's proxy indicators. Many modern implementation contexts may fall below this effectiveness threshold, making GiveWell's linear external validity adjustments insufficient.",
+    "mechanism": "** This would affect the \"Effect of VAS on mortality\" parameter by introducing a step function rather than linear scaling. Locations with VAD prevalence below ~15-20% (estimated threshold) might see mortality effects drop to near zero, rather than the proportional reduction GiveWell models. This could eliminate cost-effectiveness for 10-15 of GiveWell's 37 locations, reducing overall program cost-effectiveness by 30-50%.",
+    "parameters_affected": [
+      "relative_risk",
+      "external_validity"
+    ],
+    "suggested_evidence": [
+      "The DEVTA trial in India (2013) found no mortality benefit in a population with relatively low VAD prevalence, contrasting sharply with earlier trials in higher-prevalence settings",
+      "Biological mechanism: VAS primarily prevents deaths through immune enhancement in severely VAD-deficient children; marginal improvements in already-adequate children may not translate to mortality benefits",
+      "UNGROUNDED \u2014 needs verification: I believe there are recent WHO technical consultations discussing minimum VAD thresholds for program effectiveness, but I cannot identify specific citations"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "External Validity of Mortality Effect Across Heterogeneous Modern Contexts",
+    "title": "Differential Effectiveness by Cause-Specific Mortality Patterns",
+    "hypothesis": "** VAS mortality benefits derive primarily from preventing deaths from specific infectious diseases (measles, severe diarrhea, respiratory infections). As cause-of-death patterns have shifted across implementation locations due to improved vaccination coverage and case management, VAS effectiveness should vary based on local disease burden composition, not just overall VAD proxies.",
+    "mechanism": "** This would require location-specific adjustments to the mortality effect parameter based on cause-specific death rates. Locations with high measles vaccination coverage (>90%) and improved diarrhea case management might see 40-60% lower VAS mortality benefits than locations where these diseases remain leading killers. Countries like Rwanda, Ghana, and Kenya might drop below the funding threshold while maintaining locations like Chad, Mali, and Niger.",
+    "parameters_affected": [
+      "relative_risk"
+    ],
+    "suggested_evidence": [
+      "Historical VAS trials showed strongest effects against measles deaths specifically (Beaton et al. 1993 meta-analysis)",
+      "WHO data shows dramatic improvements in measles vaccination coverage from ~30-50% in the 1980s to >85% in most GiveWell target countries by 2020",
+      "UNGROUNDED \u2014 needs verification: I believe recent studies have shown minimal VAS benefits in high-vaccination-coverage settings, but cannot identify specific citations"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "External Validity of Mortality Effect Across Heterogeneous Modern Contexts",
+    "title": "Interaction Effects with Improved Treatment Access",
+    "hypothesis": "** The mortality benefits of VAS may be substantially reduced in contexts where children have better access to oral rehydration therapy (ORT), antibiotics, and clinical case management compared to 1980s-1990s trial settings. GiveWell's external validity adjustments don't account for healthcare access improvements that could reduce VAS marginal impact.",
+    "mechanism": "** This would reduce the mortality effect parameter in locations with improved healthcare access. The effect would be multiplicative with VAD prevalence \u2014 even locations with high stunting/wasting might see reduced VAS benefits if treatment access has improved. Could reduce cost-effectiveness by 20-40% in countries with substantial health system improvements since the 1990s.",
+    "parameters_affected": [
+      "relative_risk",
+      "external_validity"
+    ],
+    "suggested_evidence": [
+      "Under-5 mortality rates have declined dramatically across Sub-Saharan Africa (from ~180/1000 in 1990 to ~76/1000 in 2019), suggesting improved case management",
+      "ORT coverage has increased from <30% to >40% in most target countries (WHO data)",
+      "UNGROUNDED \u2014 needs verification: I believe there are studies showing reduced VAS benefits in settings with better healthcare access, but cannot provide specific citations"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "External Validity of Mortality Effect Across Heterogeneous Modern Contexts",
+    "title": "Meta-Analysis Publication Bias in Historical Evidence Base",
+    "hypothesis": "** The core evidence base for VAS mortality effects may suffer from publication bias, as the original trials were conducted when VAS was a promising new intervention with strong advocacy. Negative or null results may have been less likely to be published, leading to overestimation of true effect sizes that GiveWell then applies globally.",
+    "mechanism": "** If true effect sizes are 20-40% smaller than current meta-analysis estimates, this would directly reduce the mortality effect parameter from ~8% to ~5-6%. Combined with external validity concerns, this could push multiple locations below the funding threshold.",
+    "parameters_affected": [
+      "relative_risk",
+      "external_validity"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification: Standard concern for any intervention with strong historical advocacy, but I cannot identify specific evidence of publication bias in VAS literature",
+      "The dramatic difference between earlier positive trials and recent null results (like DEVTA) suggests possible selection effects in the published literature",
+      "Small-study effects could bias meta-analyses if larger, more rigorous trials show smaller benefits"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "small"
+  },
+  {
+    "thread_name": "Systematic Bias in VAD Prevalence Estimates from Decades-Old Survey Data",
+    "title": "Proxy Weight Distribution Invalidated by Micronutrient Program Rollouts",
+    "hypothesis": "** GiveWell's equal weighting (1/3 each) of stunting, wasting, and poverty to extrapolate VAD prevalence fails to account for targeted micronutrient interventions that have occurred since the baseline surveys. Countries like DRC and Mali may have implemented vitamin A fortification programs, school-based supplementation, or maternal nutrition initiatives that reduce VAD prevalence independently of changes in stunting, wasting, or poverty rates.",
+    "mechanism": "** If micronutrient programs have reduced VAD prevalence beyond what the proxy indicators suggest, GiveWell would overestimate current VAD rates. For DRC (baseline 1997, CE 29.88x), even a 30% overestimate in VAD prevalence would inflate the cost-effectiveness by ~9x, potentially pushing it above truly effective interventions. The mortality reduction parameter would be proportionally overstated.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. I cannot identify specific sources documenting micronutrient program implementation in these countries post-baseline surveys, but this represents a systematic gap in the proxy methodology that could affect multiple high-CE locations."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Systematic Bias in VAD Prevalence Estimates from Decades-Old Survey Data",
+    "title": "Non-Linear Relationship Between Stunting/Wasting and VAD During Nutrition Transitions",
+    "hypothesis": "** The proxy methodology assumes linear relationships between stunting/wasting and VAD prevalence, but countries undergoing nutrition transitions may exhibit non-linear patterns. As countries develop, dietary diversification and access to vitamin A-rich foods may improve faster than anthropometric indicators, causing VAD to decline more rapidly than stunting or wasting rates would predict.",
+    "mechanism": "** This would cause overestimation of current VAD prevalence, particularly in countries that have experienced economic growth since baseline surveys. For locations like Angola (baseline 2000) and Madagascar (baseline 1997), if VAD has declined faster than the proxies suggest, the mortality benefit parameter could be overstated by 25-50%, significantly inflating cost-effectiveness estimates.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. The theoretical basis is that micronutrient deficiencies can respond more quickly to dietary changes than linear growth indicators, but I cannot cite specific validation studies comparing proxy-based VAD estimates to measured prevalence in transitioning populations."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Systematic Bias in VAD Prevalence Estimates from Decades-Old Survey Data",
+    "title": "Seasonal Variation in Historical VAD Surveys Not Reflected in Proxy Extrapolation",
+    "hypothesis": "** Many of the baseline VAD surveys from 1997-2000 were conducted during specific seasons, potentially capturing peak or trough VAD prevalence periods. The proxy extrapolation method (stunting, wasting, poverty) does not account for seasonal patterns, potentially systematically biasing estimates if baseline surveys were conducted during atypical periods.",
+    "mechanism": "** If baseline surveys were conducted during seasonal peaks of VAD (e.g., pre-harvest periods), current estimates would be inflated. Conversely, if conducted during troughs, current estimates would be understated. For the materiality threshold, a 40% seasonal bias in baseline prevalence would proportionally affect the mortality parameter, potentially changing CE estimates by 25-30% for high-rated locations.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. Seasonal variation in VAD prevalence is well-established in principle, but I cannot identify the specific survey timing for the 1997-2000 baseline data in DRC, Mali, Angola, and Madagascar to determine if systematic seasonal bias exists."
+    ],
+    "estimated_direction": "uncertain",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Systematic Bias in VAD Prevalence Estimates from Decades-Old Survey Data",
+    "title": "Urban-Rural VAD Pattern Shifts Not Captured by Aggregate Proxy Indicators",
+    "hypothesis": "** The proxy indicators (stunting, wasting, poverty) may not capture differential changes in urban versus rural VAD prevalence over the 20+ year extrapolation period. Rapid urbanization in countries like DRC and Mali could have created distinct VAD patterns that aggregate national proxy indicators fail to detect, particularly if urban populations have better access to fortified foods or diverse diets.",
+    "mechanism": "** If urbanization has reduced VAD prevalence in growing urban populations while rural areas remain unchanged, national averages based on stunting/wasting/poverty proxies might overestimate current VAD prevalence. This could inflate mortality benefit calculations, particularly if Helen Keller International's supplementation programs have better reach in urban areas where VAD is now lower. Effect size depends on urbanization rate and urban-rural VAD differentials.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. While urbanization trends in sub-Saharan Africa are well-documented, I cannot identify specific studies comparing urban-rural VAD prevalence changes over time or validating whether the proxy methodology captures these spatial patterns."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+    "title": "Administrative Coverage Inflation Due to Double-Counting and Beneficiary Mobility",
+    "hypothesis": "**: Post-campaign coverage evaluations (PCCEs) and administrative data systematically overstate true coverage because they don't account for beneficiary mobility between distribution points and double-counting of mobile children who receive supplements at multiple sites. This inflates the denominator used in GiveWell's counterfactual coverage calculations.",
+    "mechanism": "**: If administrative coverage is inflated by 10-15% due to double-counting, and GiveWell's counterfactual methodology relies on these inflated baselines, the true counterfactual coverage could be proportionally lower. This would directly reduce the \"additional children reached\" parameter in the CEA, potentially reducing cost-effectiveness by 10-15%.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      ":",
+      "UNGROUNDED \u2014 needs verification. I believe coverage validation studies from WHO and UNICEF have documented systematic discrepancies between administrative tallies and household survey results, but I cannot identify specific studies or quantify the magnitude.",
+      "Logical argument: Mobile populations (pastoralists, urban slum dwellers) are likely to appear in multiple distribution tallies if they move between areas during campaign periods, while also being systematically undercounted in denominator population estimates."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+    "title": "Vitamin A Potency Loss in Field Storage Conditions",
+    "hypothesis": "**: Vitamin A supplements lose potency during storage and transport in tropical field conditions at rates higher than assumed in the CEA. Heat, humidity, and light exposure in low-resource settings degrade vitamin A content below labeled doses, reducing biological efficacy even when coverage is achieved.",
+    "mechanism": "**: If supplements lose 20-30% potency on average between manufacture and consumption due to field storage conditions, this effectively reduces the \"dose per supplement\" parameter. Given that vitamin A benefits likely follow a dose-response relationship, this could reduce mortality reduction effects by 15-25%, directly impacting the deaths averted calculation.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      ":",
+      "UNGROUNDED \u2014 needs verification. I believe pharmaceutical stability studies have documented vitamin A degradation under tropical storage conditions, but I cannot cite specific studies or degradation rates.",
+      "Logical argument: Most GiveWell-funded programs operate in tropical climates with limited cold chain infrastructure. Standard pharmaceutical stability testing may not reflect field storage realities."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+    "title": "Systematic Timing Delays Between Supplementation Rounds",
+    "hypothesis": "**: The fixed assumption of 2 supplementation rounds per year doesn't account for systematic delays that extend intervals between doses beyond 6 months, reducing biological protection during gap periods. Real implementation often faces logistical delays, funding delays, or competing health priorities that push rounds later than planned.",
+    "mechanism": "**: If the average interval between rounds is 7-8 months instead of 6 months due to implementation delays, children experience longer periods of vulnerability. This could reduce the effective \"person-time protected\" by 15-25%, directly reducing mortality benefits in the CEA model.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      ":",
+      "UNGROUNDED \u2014 needs verification. Implementation reports from Helen Keller International and Nutrition International likely contain data on actual vs. planned campaign timing, but I cannot cite specific studies.",
+      "Logical argument: Campaign implementation depends on government capacity, competing health priorities, and funding flows, all of which are subject to delays in low-resource settings."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+    "title": "Geographic Clustering of Missed Children Creates Persistent Coverage Gaps",
+    "hypothesis": "**: Coverage failures are not randomly distributed but systematically cluster in hard-to-reach areas, ethnic minorities, or marginalized populations. The same children are repeatedly missed across rounds, creating subpopulations with zero effective coverage rather than the uniform partial coverage assumed in the CEA.",
+    "mechanism": "**: If 15-20% of target children are systematically excluded across all rounds (rather than different 20% being missed each round), the effective coverage rate becomes binary rather than proportional. This could create pockets of high VAD prevalence that drive continued mortality, reducing overall program effectiveness below what uniform coverage assumptions would predict.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      ":",
+      "UNGROUNDED \u2014 needs verification. Demographic and Health Survey (DHS) vitamin A coverage data likely shows coverage disparities by wealth quintile, geography, and ethnicity, but I cannot cite specific analyses.",
+      "Logical argument: Campaign logistics naturally favor accessible populations. Infrastructure barriers, social barriers, and systematic exclusion mechanisms (language, documentation requirements) would operate consistently across rounds."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+    "title": "Cold Chain Failures During Distribution Creating Spotty Potency",
+    "hypothesis": "**: Even with proper pre-distribution storage, vitamin A supplements lose potency during actual distribution events due to heat exposure in vehicles, outdoor distribution sites, and extended distribution hours under tropical sun. This creates geographic variation in supplement effectiveness within the same campaign.",
+    "mechanism": "**: If supplements delivered later in distribution days or in hotter geographic areas have 25-40% lower potency, but this isn't captured in coverage statistics, the effective \"average dose per child\" parameter is overstated. This could reduce mortality benefits by 10-20% while maintaining reported coverage rates.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      ":",
+      "UNGROUNDED \u2014 needs verification. Pharmaceutical field stability studies under distribution conditions likely exist but I cannot cite them.",
+      "Logical argument: Most VAS campaigns involve day-long outdoor distribution events in tropical climates without temperature control for supplements being actively distributed."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+    "title": "Record-Keeping Inflation Due to Performance Incentives",
+    "hypothesis": "**: Campaign workers face pressure to meet coverage targets, leading to systematic inflation of distribution records. Children who refuse supplements, are absent, or are deemed too sick to supplement may still be recorded as \"reached\" to meet administrative targets, inflating both numerator and denominator in coverage calculations.",
+    "mechanism": "**: If 5-10% of recorded distributions didn't actually occur due to record-keeping inflation, this directly reduces the \"supplements delivered\" parameter while maintaining reported coverage rates. Combined with denominator inflation, this could reduce true coverage by 10-15% relative to reported figures.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      ":",
+      "UNGROUNDED \u2014 needs verification. Monitoring and evaluation reports from implementing organizations likely document discrepancies between records and observation, but I cannot cite specific studies.",
+      "Logical argument: Campaign workers face target pressure, limited supervision, and incentives tied to coverage achievement, creating systematic bias toward over-reporting success."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+    "title": "Marginal Supplements Target Higher-Cost Remote Populations",
+    "hypothesis": "** GiveWell's cost estimates may systematically underestimate marginal supplement costs because the last children to be reached in any campaign are typically in remote, hard-to-access areas where delivery costs are substantially higher. The average cost per supplement across an entire campaign masks the much higher cost of the marginal supplements that GiveWell funding specifically enables.",
+    "mechanism": "** This would directly increase the cost per supplement parameter, potentially from the current range of $0.49-$1.54 to $2-4 per supplement for truly marginal coverage. If marginal costs are 2-3x average costs, this would reduce cost-effectiveness by 50-67%, easily crossing the materiality threshold.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. I believe geographic cost gradients exist in health service delivery (urban vs. remote), but I cannot identify specific studies quantifying this for VAS campaigns.",
+      "The logic follows from basic health economics principles where fixed costs are spread over fewer beneficiaries in remote areas, and variable costs (transport, health worker time) increase with distance and difficulty of access."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+    "title": "Government Health Worker Time Opportunity Costs Not Captured",
+    "hypothesis": "** Campaign budgets may capture direct payments to health workers but miss the opportunity cost of diverting government health workers from their regular duties during VAS campaigns. This hidden cost should be attributed proportionally to all funders, including GiveWell, but likely isn't included in cost calculations.",
+    "mechanism": "** If health worker opportunity costs add $0.20-$0.50 per supplement (based on daily wages and supplements administered per worker-day), this would increase costs by 20-50%, reducing cost-effectiveness proportionally. The effect scales with the intensity of government health worker involvement.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. I believe health worker time during campaigns represents foregone primary care services, but I cannot cite specific studies quantifying this opportunity cost for VAS programs.",
+      "Time-motion studies in other health interventions typically show substantial opportunity costs, but specific VAS data needed."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+    "title": "Diseconomies of Scale in Marginal Program Expansion",
+    "hypothesis": "** GiveWell's cost estimates may be based on established programs operating at efficient scale, but marginal funding might support program expansion into new areas where setup costs and operational inefficiencies make supplements significantly more expensive until new economies of scale develop.",
+    "mechanism": "** New program areas might have costs 50-100% higher than established programs during initial years due to training, logistics setup, and lower coverage density. This would affect the cost per supplement parameter for GiveWell-funded marginal expansion, potentially doubling costs in some contexts.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. Standard operations management theory suggests learning curves and scale economies, but I cannot cite specific evidence for VAS program expansion costs.",
+      "The concern is particularly relevant if GiveWell funding supports geographic expansion rather than intensification within existing program areas."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+    "title": "Seasonal and Campaign-Timing Cost Variations Not Reflected",
+    "hypothesis": "** The cost per supplement may vary significantly based on when campaigns occur (dry vs. rainy season, competing health priorities) and GiveWell funding might systematically support campaigns during higher-cost periods, but average annual costs mask this timing effect.",
+    "mechanism": "** If GiveWell-funded supplements occur during 20-40% higher cost periods (due to transport difficulties, competing demands, or timing constraints), this would directly inflate the true marginal cost compared to annual averages used in the model.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. Seasonal variation in health program costs is well-established in principle (transport, agricultural labor competition), but I cannot cite specific studies on VAS campaign timing effects.",
+      "The materiality depends on whether GiveWell funding is disproportionately allocated to higher-cost periods."
+    ],
+    "estimated_direction": "increases",
+    "estimated_magnitude": "small"
+  },
+  {
+    "thread_name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+    "title": "Hidden Government Infrastructure Costs Excluded from Marginal Analysis",
+    "hypothesis": "** Government co-funding may include substantial infrastructure costs (cold chain, vehicles, communication systems) that enable campaigns but aren't captured in per-supplement calculations. If GiveWell funding is truly marginal, it should bear proportional infrastructure costs, but these may be excluded from cost estimates.",
+    "mechanism": "** Including proportional infrastructure costs could add $0.10-$0.30 per supplement (rough estimate based on typical health system overhead ratios), increasing total costs by 15-30%. This would reduce cost-effectiveness proportionally across all locations.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. Health systems economics suggests substantial infrastructure costs exist, but I cannot identify specific data on VAS campaign infrastructure cost attribution.",
+      "Government budget analyses mentioned in the data sources would be needed to verify this concern."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Mortality Displacement vs. Mortality Reduction",
+    "title": "Frailty Selection and Competing Mortality Risks**",
+    "hypothesis": "** VAS may disproportionately save the frailest children who face the highest baseline mortality from multiple causes. These \"marginal survivors\" may have substantially shorter remaining life expectancy than the average child, meaning VAS prevents some deaths that would have occurred from other causes within months even without VAD.",
+    "mechanism": "** This would reduce the effective moral value per death averted below the assumed 118.73 UoV. If marginal VAS survivors have 50% shorter remaining life expectancy than average children, the moral value would decrease proportionally. Additionally, developmental benefits would be overestimated since they assume normal life trajectories for all survivors.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "The original DEVTA trial in India found VAS reduced all-cause mortality by 4% but showed heterogeneous effects across different baseline mortality contexts (Awasthi et al., Lancet 2013)",
+      "UNGROUNDED \u2014 needs verification: Studies examining whether VAS effects are strongest in highest-mortality settings where competing risks are most severe",
+      "Competing mortality literature from other child health interventions suggests interventions often save the most vulnerable children first"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Mortality Displacement vs. Mortality Reduction",
+    "title": "Short-Term Protection Window Creating Mortality Displacement**",
+    "hypothesis": "** VAS provides protection primarily in the 4-6 months immediately following supplementation, but children in high-mortality settings face continuous mortality pressure. Deaths \"prevented\" during the protection window may be displaced to the months following, when VAS effects wane but underlying vulnerabilities persist.",
+    "mechanism": "** This would reduce the number of truly prevented deaths versus merely displaced deaths. If 25% of prevented deaths are displaced by 6-9 months, the effective deaths averted per child supplemented would decrease proportionally, reducing cost-effectiveness by ~20-25%.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification: Analysis of mortality patterns in months 7-12 post-VAS in trial data to detect displacement effects",
+      "The DEVTA trial followed children for extended periods but I cannot identify specific analysis of post-protection period mortality spikes",
+      "Biological plausibility: VAD is often correlated with other nutritional deficiencies and poverty indicators that VAS doesn't address"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Mortality Displacement vs. Mortality Reduction",
+    "title": "Survivor Bias in Long-Term Benefit Calculations**",
+    "hypothesis": "** Children who survive due to VAS in high-mortality settings may systematically differ from the general population in ways that affect the validity of applying standard developmental benefit estimates. If VAS primarily saves children who would otherwise die from severe malnutrition or illness, these survivors may face ongoing health challenges that reduce their expected cognitive and economic benefits.",
+    "mechanism": "** This would reduce the developmental benefits component of the cost-effectiveness calculation. Standard cognitive and income benefits assume survivors have typical developmental trajectories, but marginal survivors may experience 20-40% lower benefits due to ongoing health burdens.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification: Long-term follow-up studies of children who received VAS in high-mortality settings",
+      "General literature on child health suggests early severe illness episodes can have lasting developmental impacts",
+      "UNGROUNDED \u2014 needs verification: Whether VAS trials collected data on nutritional status or health trajectories of survivors beyond mortality endpoints"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  },
+  {
+    "thread_name": "Mortality Displacement vs. Mortality Reduction",
+    "title": "Clustering of Prevented Deaths in Households with Multiple Risk Factors**",
+    "hypothesis": "** Deaths prevented by VAS may cluster within households or communities with multiple mortality risk factors (poor sanitation, food insecurity, limited healthcare access). These children face elevated mortality risk from causes unaddressed by VAS, leading to mortality displacement at the household/community level rather than true mortality reduction.",
+    "mechanism": "** If VAS-prevented deaths are concentrated among children with multiple risk exposures, the effective life-years gained per prevented death would be lower than assumed. This could reduce the moral value component by 15-30% depending on the degree of risk clustering.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification: Analysis of household-level and community-level mortality patterns in VAS trials",
+      "General epidemiological evidence suggests child mortality risks cluster geographically and socioeconomically",
+      "The DEVTA trial design across diverse Indian states provides potential data source but I cannot identify specific clustering analyses"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Interaction Effects with Concurrent Health Interventions",
+    "title": "VAS Effect Size May Include Benefits from Co-Delivered Vaccines",
+    "hypothesis": "** The mortality reductions measured in foundational VAS trials may partially reflect synergistic effects with vaccines delivered during the same health system contacts, not VAS alone. If current VAS programs piggyback on vaccination campaigns or integrated child health days, the incremental mortality benefit of adding VAS to an existing vaccine-delivery system could be substantially lower than the total effect measured when VAS and vaccines were scaled up together.",
+    "mechanism": "** This would directly reduce the \"Effect of VAS on mortality\" parameter. If 30-50% of the observed mortality reduction in trials reflected VAS-vaccine synergies rather than VAS alone, the standalone VAS effect could be overstated by this amount. Given that mortality reduction is the primary driver of cost-effectiveness, this could reduce the overall CE estimate proportionally.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "Benn et al. (2003) demonstrated that vitamin A supplementation enhanced vaccine responses and reduced mortality more when given with vaccines than when given alone in Guinea-Bissau",
+      "The WHO/UNICEF joint statement on vitamin A supplementation notes that VAS is typically delivered through \"child health days\" that include vaccination, but doesn't quantify interaction effects",
+      "UNGROUNDED \u2014 needs verification: I believe factorial trials have been conducted separating VAS effects from vaccine effects, but I cannot identify specific citations for these studies."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Interaction Effects with Concurrent Health Interventions",
+    "title": "Modern Malaria Control May Have Reduced VAS Effect Size",
+    "hypothesis": "** The mortality reductions from VAS measured in trials from the 1990s and early 2000s may be inflated for current contexts because malaria control interventions (bed nets, seasonal malaria chemoprevention, improved case management) have dramatically reduced child mortality in many target regions. VAS may have had larger effects when malaria was a bigger killer, both because vitamin A deficiency increases malaria susceptibility and because the absolute mortality baseline was higher.",
+    "mechanism": "** This could reduce the \"Effect of VAS on mortality\" parameter in regions with high malaria control coverage. If VAS mortality benefits were 20-40% lower in low-malaria environments, this could substantially reduce cost-effectiveness in countries that have successfully scaled malaria control.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "Villamor et al. (2002) systematic review found that vitamin A deficiency increases malaria incidence and severity",
+      "Roll Back Malaria Partnership data shows dramatic increases in bed net coverage and SMC since 2000 in key VAS target countries",
+      "UNGROUNDED \u2014 needs verification: I believe there may be studies showing reduced VAS effect sizes in areas with good malaria control, but cannot identify specific sources."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Interaction Effects with Concurrent Health Interventions",
+    "title": "Overlap with Other Micronutrient Programs Creates Attribution Problems",
+    "hypothesis": "** Many regions now have multiple micronutrient interventions (iron-folic acid supplementation, zinc for diarrhea, multiple micronutrient powders, fortified foods) that may address some of the same pathways through which VAS reduces mortality. The CEA may overestimate VAS effects by not accounting for diminishing returns when multiple micronutrient deficiencies are addressed simultaneously.",
+    "mechanism": "** This could affect both the \"Effect of VAS on mortality\" and the \"Additional benefits/downsides\" parameters. If other micronutrient programs already address 15-30% of the mortality pathways attributed to VAS (immune function, infection susceptibility), the marginal effect of adding VAS could be overestimated.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "The Lancet series on maternal and child undernutrition (Bhutta et al., 2013) shows overlapping pathways between different micronutrient deficiencies and child mortality",
+      "WHO guidelines now recommend multiple micronutrient supplementation in many contexts where VAS programs operate",
+      "UNGROUNDED \u2014 needs verification: I believe there are evaluations of integrated micronutrient programs that could inform this analysis, but I cannot cite specific studies."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Interaction Effects with Concurrent Health Interventions",
+    "title": "Baseline Child Health Service Quality Has Improved Since Original Trials",
+    "hypothesis": "** The mortality reductions measured in VAS trials from the 1990s and early 2000s occurred in contexts with poorer overall child health service quality. Improvements in case management of pneumonia, diarrhea, and other childhood illnesses may have reduced the marginal mortality benefit of VAS by addressing some of the same pathways (reduced severity of common infections).",
+    "mechanism": "** This would reduce the \"Effect of VAS on mortality\" parameter in areas with improved child health services. If better pneumonia and diarrhea case management has already achieved 20-30% of the mortality reduction that VAS provided through improved immune function, the current VAS effect could be overestimated.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNICEF/WHO data shows dramatic improvements in oral rehydration therapy coverage and pneumonia treatment seeking since 2000",
+      "The mechanism is plausible because VAS primarily reduces mortality by improving immune function and reducing severity of common childhood infections",
+      "UNGROUNDED \u2014 needs verification: I believe there are studies comparing VAS effects in settings with different baseline health service quality, but I cannot identify specific citations."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Interaction Effects with Concurrent Health Interventions",
+    "title": "Country-Specific Interaction Effects Not Modeled",
+    "hypothesis": "** The interaction effects between VAS and other interventions likely vary substantially by country based on vaccination coverage, malaria endemicity, nutrition program coverage, and health system strength, but the CEA appears to apply uniform parameters across contexts. This could lead to systematic over- or under-estimation of cost-effectiveness in specific country contexts.",
+    "mechanism": "** This would require country-specific adjustments to the \"Effect of VAS on mortality\" parameter based on the intervention landscape in each target country. Countries with high vaccine coverage and good malaria control might see 30-50% lower VAS effects than countries with poor coverage of other interventions.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "WHO/UNICEF Joint Monitoring Programme data shows dramatic variation in vaccination coverage, malaria control, and nutrition program coverage across VAS target countries",
+      "UNGROUNDED \u2014 needs verification: I believe there are studies showing geographic variation in VAS effectiveness, but I cannot cite specific sources for this claim."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "small"
+  },
+  {
+    "thread_name": "Structural Model Assumptions About Linear Dose-Response",
+    "title": "Threshold Effects for Herd Protection in High-Mortality Settings",
+    "hypothesis": "** GiveWell's linear dose-response assumption may miss critical threshold effects where vitamin A supplementation (VAS) programs provide disproportionate community-level protection once coverage exceeds certain levels. In high-mortality settings with endemic VAD, there may be epidemiological tipping points where increased coverage creates non-linear reductions in transmission of infectious diseases that interact with VAD.",
+    "mechanism": "** This would affect the coverage-to-mortality-reduction parameter by creating step-function improvements rather than linear scaling. If true community benefit requires 60%+ coverage to achieve herd protection against measles, diarrheal disease, or respiratory infections, then programs achieving 70-80% coverage could be 40-60% more cost-effective than the linear model suggests, while programs at 30-50% coverage could be 20-30% less effective.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. I believe this concern is valid based on epidemiological principles of herd immunity and the known interactions between VAD and infectious disease susceptibility, but I cannot identify specific VAS studies that demonstrate threshold effects at the community level. The original VAS trials typically measured individual-level outcomes rather than community-level dose-response curves."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Structural Model Assumptions About Linear Dose-Response",
+    "title": "Diminishing Returns for Hard-to-Reach Populations",
+    "hypothesis": "** The linear scaling assumption may underestimate cost-effectiveness in early-stage programs by missing that the \"last children reached\" in high-coverage programs may have systematically lower VAD prevalence or mortality risk than those reached first. Conversely, programs targeting previously unreached populations (geographic or socioeconomic) may achieve higher per-child impact than the linear model predicts.",
+    "mechanism": "** This would create a decreasing marginal benefit curve where moving from 60% to 80% coverage provides less than proportional mortality reduction, potentially reducing cost-effectiveness by 15-25% for high-coverage programs. Conversely, programs expanding into new high-VAD areas could see 20-40% higher cost-effectiveness than linear scaling suggests.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "UNGROUNDED \u2014 needs verification. This follows logically from targeting principles and socioeconomic gradients in malnutrition, but I cannot cite specific VAS studies that stratified effectiveness by baseline VAD status of different coverage segments."
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Structural Model Assumptions About Linear Dose-Response",
+    "title": "Non-Linear Cost Curves at High Coverage Levels",
+    "hypothesis": "** Achieving high coverage levels may require disproportionately expensive interventions (specialized outreach, multiple visit attempts, integration with other programs) that create accelerating rather than constant marginal costs. GiveWell's cost-per-supplement parameter may underestimate true delivery costs for reaching 80%+ coverage.",
+    "mechanism": "** If costs increase exponentially above 70% coverage due to geographic remoteness or household-level barriers, the cost-effectiveness of high-coverage programs could be 30-50% lower than linear scaling suggests. This would affect the cost-per-supplement parameter and could reverse funding priorities between established high-coverage programs and newer moderate-coverage programs.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "Economic principle: diminishing returns to outreach effort are standard in public health delivery",
+      "UNGROUNDED for VAS specifically \u2014 I believe this cost curve pattern exists but cannot cite specific studies of VAS delivery costs at different coverage targets"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "medium"
+  },
+  {
+    "thread_name": "Structural Model Assumptions About Linear Dose-Response",
+    "title": "Accelerating Benefits from Immunological Priming Effects",
+    "hypothesis": "** The linear model may underestimate benefits in sustained high-coverage programs by missing cumulative immunological effects. Children receiving consistent VAS over multiple rounds may develop enhanced immune responses that provide greater protection than single-dose or intermittent supplementation would suggest.",
+    "mechanism": "** This could increase the mortality reduction parameter by 20-30% in programs maintaining high coverage over 3+ years compared to new or intermittent programs. The effect would compound over time, making established programs significantly more cost-effective than linear scaling from single-round trial data would predict.",
+    "parameters_affected": [
+      "unknown"
+    ],
+    "suggested_evidence": [
+      "Biological plausibility: vitamin A's role in immune system development suggests cumulative effects are possible",
+      "UNGROUNDED for VAS mortality specifically \u2014 I cannot cite studies comparing mortality outcomes between sustained vs. intermittent VAS programs"
+    ],
+    "estimated_direction": "decreases",
+    "estimated_magnitude": "large"
+  }
+]

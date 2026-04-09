@@ -1,0 +1,152 @@
+{
+  "threads": [
+    {
+      "name": "External Validity of Mortality Effect Across Heterogeneous Modern Contexts",
+      "scope": "This thread investigates whether the ~4-12% mortality reduction from VAS (derived primarily from trials conducted 1980s-1990s) validly applies across the 37 diverse implementation locations in GiveWell's model, given substantial changes in disease burden, health systems, and nutritional status over the past 30-40 years.",
+      "key_questions": [
+        "- Heterogeneity in cause-specific mortality patterns across locations (VAS may differentially affect deaths from measles vs. diarrhea vs. malaria)\n- Potential threshold effects where VAS becomes ineffective below certain VAD prevalence levels\n- Interactions with improved vaccination coverage and treatment access since the 1980s-1990s trials"
+      ],
+      "cea_parameters_affected": [
+        "\"Effect of VAS on mortality\" (single scalar applied across all locations)",
+        "External validity adjustment factors (based on stunting, wasting, poverty proxies)"
+      ],
+      "relevant_sources": [
+        "Imdad et al. 2022 Cochrane review (update to 2017 version GiveWell cites)",
+        "Country-specific Demographic and Health Surveys showing cause-of-death patterns",
+        "WHO Global Health Observatory data on vaccination coverage trends",
+        "Recent VAS trials in low-VAD settings (e.g., DEVTA trial in India)"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: External Validity of Mortality Effect Across Heterogeneous Modern Contexts\n\n## Scope\nThis thread investigates whether the ~4-12% mortality reduction from VAS (derived primarily from trials conducted 1980s-1990s) validly applies across the 37 diverse implementation locations in GiveWell's model, given substantial changes in disease burden, health systems, and nutritional status over the past 30-40 years.\n\n## Key Parameters\n- \"Effect of VAS on mortality\" (single scalar applied across all locations)\n- External validity adjustment factors (based on stunting, wasting, poverty proxies)\n\n## What GiveWell Already Accounts For\nGiveWell acknowledges this uncertainty as their primary concern, stating they have \"more uncertainty about its effect on mortality compared to GiveWell's other top recommended programs.\" They apply an external validity adjustment using proxy indicators (stunting, wasting, poverty rates) to estimate how VAD prevalence has changed since the original trials.\n\n## What GiveWell Does Not Account For\n- Heterogeneity in cause-specific mortality patterns across locations (VAS may differentially affect deaths from measles vs. diarrhea vs. malaria)\n- Potential threshold effects where VAS becomes ineffective below certain VAD prevalence levels\n- Interactions with improved vaccination coverage and treatment access since the 1980s-1990s trials\n\n## Data Sources to Examine\n- Imdad et al. 2022 Cochrane review (update to 2017 version GiveWell cites)\n- Country-specific Demographic and Health Surveys showing cause-of-death patterns\n- WHO Global Health Observatory data on vaccination coverage trends\n- Recent VAS trials in low-VAD settings (e.g., DEVTA trial in India)\n\n## Materiality Threshold\nA reduction in the mortality effect from 4-12% to 2-6% would reduce cost-effectiveness by 50%, potentially dropping several locations below GiveWell's funding bar. The sensitivity analysis shows this parameter alone can change CE by -80% to +75%.\n\n## Known Concerns Already Surfaced\nGiveWell explicitly notes that \"some experts argue that vitamin A supplementation is no longer effective in modern contexts and should be discontinued.\" They've already incorporated external validity adjustments.\n\n##\n"
+    },
+    {
+      "name": "Systematic Bias in VAD Prevalence Estimates from Decades-Old Survey Data",
+      "scope": "This thread examines whether VAD prevalence estimates based on surveys from 1997-2011 (with 8 locations having data >15 years old) systematically over or understate current VAD levels, given that these estimates directly scale the mortality effect in the model.",
+      "key_questions": [
+        "- Whether the proxy weighting scheme (1/3, 1/3, 1/3) accurately captures VAD trends\n- Potential non-linear relationships between proxies and VAD\n- Country-specific factors that might invalidate the proxy approach (e.g., targeted micronutrient programs)"
+      ],
+      "cea_parameters_affected": [
+        "VAD prevalence estimates (especially for DRC, Mali, Angola, Madagascar with 1997-2000 surveys)",
+        "External validity adjustment methodology (1/3 weight each to stunting, wasting, poverty)"
+      ],
+      "relevant_sources": [
+        "More recent serum retinol or retinol-binding protein surveys from any of the 8 countries with stale data",
+        "Validation studies comparing proxy-based estimates to actual VAD measurements",
+        "National micronutrient survey reports",
+        "Food fortification program coverage data that might reduce VAD independent of the proxies"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Systematic Bias in VAD Prevalence Estimates from Decades-Old Survey Data\n\n## Scope\nThis thread examines whether VAD prevalence estimates based on surveys from 1997-2011 (with 8 locations having data >15 years old) systematically over or understate current VAD levels, given that these estimates directly scale the mortality effect in the model.\n\n## Key Parameters\n- VAD prevalence estimates (especially for DRC, Mali, Angola, Madagascar with 1997-2000 surveys)\n- External validity adjustment methodology (1/3 weight each to stunting, wasting, poverty)\n\n## What GiveWell Already Accounts For\nGiveWell extrapolates current VAD prevalence using proxy indicators (stunting, wasting, poverty rates) weighted equally at 1/3 each, acknowledging the age of direct survey data.\n\n## What GiveWell Does Not Account For\n- Whether the proxy weighting scheme (1/3, 1/3, 1/3) accurately captures VAD trends\n- Potential non-linear relationships between proxies and VAD\n- Country-specific factors that might invalidate the proxy approach (e.g., targeted micronutrient programs)\n\n## Data Sources to Examine\n- More recent serum retinol or retinol-binding protein surveys from any of the 8 countries with stale data\n- Validation studies comparing proxy-based estimates to actual VAD measurements\n- National micronutrient survey reports\n- Food fortification program coverage data that might reduce VAD independent of the proxies\n\n## Materiality Threshold\nFor high-CE locations like DRC (29.88x) and Mali (16.93x) with 25+ year old VAD data, a 50% error in current VAD prevalence would change CE by approximately 35-40%, potentially affecting funding decisions.\n\n## Known Concerns Already Surfaced\nGiveWell acknowledges using proxy indicators due to lack of recent direct VAD measurements.\n\n##\n"
+    },
+    {
+      "name": "Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery",
+      "scope": "This thread investigates whether the actual implementation of VAS campaigns achieves the coverage, dosing schedule, and quality assumed in the CEA, particularly examining the gap between reported administrative coverage and effective biological coverage.",
+      "key_questions": [
+        "- Coverage validation studies showing gaps between reported and actual coverage\n- Vitamin A potency degradation in supply chains\n- Inconsistent timing between rounds affecting biological efficacy\n- Geographic clustering of missed children (same children repeatedly missed)"
+      ],
+      "cea_parameters_affected": [
+        "Counterfactual coverage rates",
+        "Number of supplementation rounds per year (fixed at 2)",
+        "Cost per supplement delivered"
+      ],
+      "relevant_sources": [
+        "Post-campaign coverage evaluation surveys (PCCEs) for GiveWell-funded locations",
+        "Supply chain assessment reports from Helen Keller International and Nutrition International",
+        "Vitamin A stability studies under field storage conditions",
+        "Administrative vs. survey coverage validation studies"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Implementation Fidelity Gap Between Mass Campaigns and Steady-State Delivery\n\n## Scope\nThis thread investigates whether the actual implementation of VAS campaigns achieves the coverage, dosing schedule, and quality assumed in the CEA, particularly examining the gap between reported administrative coverage and effective biological coverage.\n\n## Key Parameters\n- Counterfactual coverage rates\n- Number of supplementation rounds per year (fixed at 2)\n- Cost per supplement delivered\n\n## What GiveWell Already Accounts For\nThe model includes counterfactual coverage estimates and assumes 2 rounds per year. Costs include implementation expenses.\n\n## What GiveWell Does Not Account For\n- Coverage validation studies showing gaps between reported and actual coverage\n- Vitamin A potency degradation in supply chains\n- Inconsistent timing between rounds affecting biological efficacy\n- Geographic clustering of missed children (same children repeatedly missed)\n\n## Data Sources to Examine\n- Post-campaign coverage evaluation surveys (PCCEs) for GiveWell-funded locations\n- Supply chain assessment reports from Helen Keller International and Nutrition International\n- Vitamin A stability studies under field storage conditions\n- Administrative vs. survey coverage validation studies\n\n## Materiality Threshold\nA 20% systematic overstatement of effective coverage (e.g., 80% reported but 60% biological coverage) would reduce cost-effectiveness by approximately 25%, sufficient to change funding allocations.\n\n## Known Concerns Already Surfaced\nNone explicitly mentioned beyond basic counterfactual coverage adjustments.\n\n##\n"
+    },
+    {
+      "name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+      "scope": "This thread examines whether the cost-per-supplement estimates accurately reflect the marginal cost of GiveWell-funded supplements versus the average cost of the entire campaign, particularly in contexts where government and other funders provide substantial co-funding.",
+      "key_questions": [
+        "- Whether marginal supplements are more expensive than average (reaching remote populations)\n- Hidden government costs not captured in budget analyses\n- Opportunity costs of health worker time during campaigns\n- Economics of scale that might be lost if programs contract"
+      ],
+      "cea_parameters_affected": [
+        "Cost per supplement ($0.49-$1.54 range)",
+        "Leverage adjustments (-0.4% to -6.7%)",
+        "Funging adjustments (-14% to -69%)"
+      ],
+      "relevant_sources": [
+        "Detailed campaign budgets showing cost breakdowns by geography",
+        "Government health budget analyses for VAS campaign contributions",
+        "Cost studies comparing first vs. last quintile of coverage",
+        "Time-motion studies of health worker allocation during campaigns"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Cost Attribution and Marginal vs. Average Cost Conflation\n\n## Scope\nThis thread examines whether the cost-per-supplement estimates accurately reflect the marginal cost of GiveWell-funded supplements versus the average cost of the entire campaign, particularly in contexts where government and other funders provide substantial co-funding.\n\n## Key Parameters\n- Cost per supplement ($0.49-$1.54 range)\n- Leverage adjustments (-0.4% to -6.7%)\n- Funging adjustments (-14% to -69%)\n\n## What GiveWell Already Accounts For\nThe model includes both leverage (additional funding crowded in) and funging (resources freed up) adjustments by location.\n\n## What GiveWell Does Not Account For\n- Whether marginal supplements are more expensive than average (reaching remote populations)\n- Hidden government costs not captured in budget analyses\n- Opportunity costs of health worker time during campaigns\n- Economics of scale that might be lost if programs contract\n\n## Data Sources to Examine\n- Detailed campaign budgets showing cost breakdowns by geography\n- Government health budget analyses for VAS campaign contributions\n- Cost studies comparing first vs. last quintile of coverage\n- Time-motion studies of health worker allocation during campaigns\n\n## Materiality Threshold\nA 50% underestimate of true marginal cost (e.g., $1.50 vs $1.00) would reduce cost-effectiveness by approximately 33%, affecting funding decisions for marginal locations.\n\n## Known Concerns Already Surfaced\nGiveWell includes leverage and funging adjustments but doesn't explicitly address marginal vs. average cost distinctions.\n\n##\n"
+    },
+    {
+      "name": "Mortality Displacement vs. Mortality Reduction",
+      "scope": "This thread investigates whether VAS primarily prevents deaths (assumed in the model) or merely delays them by weeks or months (mortality displacement), particularly for the frailest children who might die from other causes shortly after being saved from VAD-related mortality.",
+      "key_questions": [
+        "- Competing risks of mortality in high-mortality settings\n- Whether VAS-prevented deaths cluster among children with multiple vulnerabilities\n- Time horizon of mortality benefits (immediate vs. sustained protection)\n- Differential life expectancy of marginal survivors"
+      ],
+      "cea_parameters_affected": [
+        "Moral value of averting an under-5 death (118.73 UoV)",
+        "Long-term benefits calculations",
+        "Developmental effects adjustments"
+      ],
+      "relevant_sources": [
+        "Long-term follow-up studies of VAS trial participants",
+        "Analyses of cause-specific mortality in VAS trials",
+        "Studies on competing mortality risks in high-burden settings",
+        "Child cohort studies examining survival trajectories post-VAS"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Mortality Displacement vs. Mortality Reduction\n\n## Scope\nThis thread investigates whether VAS primarily prevents deaths (assumed in the model) or merely delays them by weeks or months (mortality displacement), particularly for the frailest children who might die from other causes shortly after being saved from VAD-related mortality.\n\n## Key Parameters\n- Moral value of averting an under-5 death (118.73 UoV)\n- Long-term benefits calculations\n- Developmental effects adjustments\n\n## What GiveWell Already Accounts For\nThe model assigns full moral weight to each death averted and includes developmental benefits for survivors.\n\n## What GiveWell Does Not Account For\n- Competing risks of mortality in high-mortality settings\n- Whether VAS-prevented deaths cluster among children with multiple vulnerabilities\n- Time horizon of mortality benefits (immediate vs. sustained protection)\n- Differential life expectancy of marginal survivors\n\n## Data Sources to Examine\n- Long-term follow-up studies of VAS trial participants\n- Analyses of cause-specific mortality in VAS trials\n- Studies on competing mortality risks in high-burden settings\n- Child cohort studies examining survival trajectories post-VAS\n\n## Materiality Threshold\nIf 30% of \"prevented\" deaths are merely displaced by 6-12 months, the effective moral value per death averted would decrease by ~25%, reducing cost-effectiveness proportionally.\n\n## Known Concerns Already Surfaced\nNot explicitly mentioned in the provided materials.\n\n##\n"
+    },
+    {
+      "name": "Interaction Effects with Concurrent Health Interventions",
+      "scope": "This thread examines whether the mortality reduction attributed to VAS in the CEA double-counts benefits that actually arise from synergies with other child health interventions (vaccines, malaria prevention, nutrition programs) that have scaled up since the original VAS trials.",
+      "key_questions": [
+        "- Explicit modeling of VAS-vaccine interaction effects\n- Synergies with malaria control programs (bed nets, SMC)\n- Overlap with other micronutrient supplementation programs\n- Whether base mortality rates already reflect these other interventions"
+      ],
+      "cea_parameters_affected": [
+        "Effect of VAS on mortality (main effect)",
+        "Additional benefits/downsides adjustments"
+      ],
+      "relevant_sources": [
+        "Studies on VAS-vaccine interaction effects (particularly measles, DPT)",
+        "Integrated child health program evaluations",
+        "Timeline analyses of child health intervention scale-up by country",
+        "Factorial trials examining VAS with and without other interventions"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Interaction Effects with Concurrent Health Interventions\n\n## Scope\nThis thread examines whether the mortality reduction attributed to VAS in the CEA double-counts benefits that actually arise from synergies with other child health interventions (vaccines, malaria prevention, nutrition programs) that have scaled up since the original VAS trials.\n\n## Key Parameters\n- Effect of VAS on mortality (main effect)\n- Additional benefits/downsides adjustments\n\n## What GiveWell Already Accounts For\nThe model includes an \"additional benefits downsides\" adjustment factor, though its specific components aren't detailed in the parameter summary.\n\n## What GiveWell Does Not Account For\n- Explicit modeling of VAS-vaccine interaction effects\n- Synergies with malaria control programs (bed nets, SMC)\n- Overlap with other micronutrient supplementation programs\n- Whether base mortality rates already reflect these other interventions\n\n## Data Sources to Examine\n- Studies on VAS-vaccine interaction effects (particularly measles, DPT)\n- Integrated child health program evaluations\n- Timeline analyses of child health intervention scale-up by country\n- Factorial trials examining VAS with and without other interventions\n\n## Materiality Threshold\nIf 40% of the mortality reduction attributed to VAS actually requires co-delivery with vaccines or other programs already in place, the incremental effect of VAS would be overstated by ~40%, substantially affecting cost-effectiveness.\n\n## Known Concerns Already Surfaced\nAdditional benefits are modeled but interaction effects aren't explicitly discussed.\n\n##\n"
+    },
+    {
+      "name": "Structural Model Assumptions About Linear Dose-Response",
+      "scope": "This thread investigates whether the CEA's implicit assumption of linear relationships (double the coverage = double the impact) holds across the full range of implementation contexts, or whether there are threshold effects, diminishing returns, or accelerating benefits at different coverage levels.",
+      "key_questions": [
+        "- Threshold effects (minimum effective coverage for herd protection)\n- Diminishing returns (hardest-to-reach children may benefit most)\n- Non-linear cost curves at high coverage levels\n- Community-level vs. individual-level benefits"
+      ],
+      "cea_parameters_affected": [
+        "The mathematical structure linking coverage to mortality reduction",
+        "Cost-per-supplement at different coverage levels",
+        "Counterfactual coverage estimates"
+      ],
+      "relevant_sources": [
+        "Dose-response analyses from VAS trials with varying coverage",
+        "Economic evaluations showing cost curves at different coverage levels",
+        "Ecological studies comparing mortality at different VAS coverage levels",
+        "Mathematical models of indirect protection effects"
+      ],
+      "out_of_scope": "",
+      "context_md": "# Thread: Structural Model Assumptions About Linear Dose-Response\n\n## Scope\nThis thread investigates whether the CEA's implicit assumption of linear relationships (double the coverage = double the impact) holds across the full range of implementation contexts, or whether there are threshold effects, diminishing returns, or accelerating benefits at different coverage levels.\n\n## Key Parameters\n- The mathematical structure linking coverage to mortality reduction\n- Cost-per-supplement at different coverage levels\n- Counterfactual coverage estimates\n\n## What GiveWell Already Accounts For\nThe model appears to use linear scaling of effects with coverage, with adjustments for counterfactual coverage.\n\n## What GiveWell Does Not Account For\n- Threshold effects (minimum effective coverage for herd protection)\n- Diminishing returns (hardest-to-reach children may benefit most)\n- Non-linear cost curves at high coverage levels\n- Community-level vs. individual-level benefits\n\n## Data Sources to Examine\n- Dose-response analyses from VAS trials with varying coverage\n- Economic evaluations showing cost curves at different coverage levels\n- Ecological studies comparing mortality at different VAS coverage levels\n- Mathematical models of indirect protection effects\n\n## Materiality Threshold\nIf the true dose-response curve shows 50% diminishing returns above 60% coverage, high-coverage locations would see 20-30% reductions in cost-effectiveness, affecting several funding decisions.\n\n## Known Concerns Already Surfaced\nNot explicitly mentioned; the model appears to assume linear relationships throughout.\n"
+    }
+  ],
+  "exclusion_list": [
+    "GiveWell explicitly notes that \"some experts argue that vitamin A supplementation is no longer effective in modern contexts and should be discontinued.\" They've already incorporated external validity adjustments.",
+    "##",
+    "GiveWell acknowledges using proxy indicators due to lack of recent direct VAD measurements.",
+    "None explicitly mentioned beyond basic counterfactual coverage adjustments.",
+    "GiveWell includes leverage and funging adjustments but doesn't explicitly address marginal vs. average cost distinctions.",
+    "Not explicitly mentioned in the provided materials.",
+    "Additional benefits are modeled but interaction effects aren't explicitly discussed.",
+    "Not explicitly mentioned; the model appears to assume linear relationships throughout."
+  ],
+  "cea_parameter_map": "- \"Effect of VAS on mortality\" (single scalar applied across all locations)\n- External validity adjustment factors (based on stunting, wasting, poverty proxies)\n- VAD prevalence estimates (especially for DRC, Mali, Angola, Madagascar with 1997-2000 surveys)\n- External validity adjustment methodology (1/3 weight each to stunting, wasting, poverty)\n- Counterfactual coverage rates\n- Number of supplementation rounds per year (fixed at 2)\n- Cost per supplement delivered\n- Cost per supplement ($0.49-$1.54 range)\n- Leverage adjustments (-0.4% to -6.7%)\n- Funging adjustments (-14% to -69%)\n- Moral value of averting an under-5 death (118.73 UoV)\n- Long-term benefits calculations\n- Developmental effects adjustments\n- Effect of VAS on mortality (main effect)\n- Additional benefits/downsides adjustments\n- The mathematical structure linking coverage to mortality reduction\n- Cost-per-supplement at different coverage levels\n- Counterfactual coverage estimates"
+}
