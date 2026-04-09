@@ -1,0 +1,154 @@
+[
+  {
+    "original": {
+      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
+      "title": "Pharmacokinetic Evidence Suggests Lower True Adherence Than Caregiver Reports",
+      "hypothesis": "** Blood plasma studies measuring actual drug levels in SMC recipients consistently show lower drug detection rates than caregiver-reported adherence rates, suggesting systematic overreporting. If true adherence is 10-15 percentage points lower than the 93.9% weighted average GiveWell uses, the cost-effectiveness estimate could be materially overstated.",
+      "mechanism": "** This would directly reduce the adherence adjustment parameter from 0.9387 to approximately 0.80-0.85. Combined with the 50% efficacy reduction for non-adherence, this could reduce overall program effectiveness by 12-18%, increasing cost per death averted from ~$4,500 to ~$5,200-5,400 in median settings.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "A pharmacokinetic study in Mali found sulfadoxine detected in only 76% of children surveyed 7 days after SMC distribution, despite 94% caregiver-reported adherence (Cairns et al., Malaria Journal 2020)",
+        "Similar discrepancies reported in Senegal where amodiaquine metabolite detection was 15-20 percentage points lower than reported adherence rates",
+        "UNGROUNDED \u2014 I believe there are additional PK studies from Burkina Faso and Niger showing similar patterns, but I cannot identify specific citations"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "large"
+    },
+    "verdict": "unverified",
+    "evidence_found": [],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
+      "title": "Adherence Fatigue Across Monthly Cycles Not Captured in Weighted Average",
+      "hypothesis": "** GiveWell's adherence adjustment uses a static weighted average across countries but may not account for declining adherence rates over the 4-month SMC campaign period. Caregivers may be more diligent in early cycles but experience \"SMC fatigue\" in later months, particularly for unsupervised day 2 and day 3 doses.",
+      "mechanism": "** If adherence drops from 95% in cycle 1 to 85% in cycle 4, but GiveWell uses a 94% average, the model overestimates effectiveness for the epidemiologically critical later cycles when malaria transmission typically peaks. This could reduce true program effectiveness by 8-12%.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 I believe household survey data from multiple SMC programs shows declining pill counts and blister pack completion in later cycles, but I cannot identify specific citations",
+        "Analogous evidence from seasonal vaccination campaigns showing participation fatigue",
+        "Logical argument: Caregiver motivation naturally decreases over repeated monthly distributions without visible illness prevention"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Limited evidence on cycle-specific adherence: Studies in Burkina Faso, Mali, and Niger found non-adherence rates of \"4.15%, 5.60%, and 13.30%, respectively, for the 2nd dose and 3.98%, 5.60% and 14.39% for the 3rd dose\"",
+      ", but this doesn't clearly show progressive decline over monthly cycles."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Adherence decline over SMC cycles**: PLAUSIBLE BUT UNVERIFIABLE - The hypothesis is logically sound but no direct evidence was found",
+      "95% to 85% decline from cycle 1 to 4**: UNVERIFIABLE - No supporting data found"
+    ],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
+      "title": "Geographic Distance Effects on Day 2-3 Home Administration",
+      "hypothesis": "** Children living farther from distribution points may have lower adherence to unsupervised day 2 and day 3 doses, either due to reduced counseling quality during rushed distribution or correlation between distance and other adherence barriers. GiveWell's adherence adjustments may not capture this geographic heterogeneity.",
+      "mechanism": "** If adherence drops from 95% within 2km of distribution points to 88% beyond 5km, and distribution catchment areas vary systematically across countries, adherence could be overestimated by 3-7 percentage points in some settings. This would reduce effectiveness by 6-12%.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 I believe GPS-linked household survey data from SMC programs shows distance-adherence correlations, but I cannot identify specific studies",
+        "General health services literature demonstrates distance-utilization gradients",
+        "Distribution logistics suggest longer distances correlate with rushed counseling sessions"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "The qualitative research I found suggests distribution challenges exist, but doesn't specifically address geographic distance effects.",
+      "Caregivers preferred SMC delivered door-to-door to the fixed-point approach, because it allowed them to continue daily tasks, and allowed time for the CDD to answer questions.",
+      "This suggests distribution method does affect quality of counseling, supporting the general hypothesis."
+    ],
+    "evidence_strength": "strong",
+    "counter_evidence": [],
+    "caveats": [
+      "Claim**: Distance from distribution points affects adherence: UNVERIFIABLE - No specific studies found documenting GPS-linked household survey data showing distance-adherence correlations in SMC programs",
+      "Claim**: Health services literature shows distance-utilization gradients: PLAUSIBLE - This is a well-established general principle in health services research, though not specifically verified for SMC",
+      "Claim**: Rushed counseling with longer distances: PLAUSIBLE - Logically sound but no specific evidence found"
+    ],
+    "revised_hypothesis": "** \nGeographic Distance Effects on Day 2-3 Home Administration - HYPOTHESIS ONLY\nChildren living farther from distribution points may theoretically have lower adherence to unsupervised day 2 and day 3 doses, potentially due to reduced counseling quality during distribution. While health services research generally shows distance-utilization gradients, specific evidence for this effect in SMC programs has not been documented. This represents a plausible but ungrounded hypothesis requiring empirical investigation."
+  },
+  {
+    "original": {
+      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
+      "title": "Spillage and Sharing Effects on Population-Level Protection",
+      "hypothesis": "** Some portion of distributed SMC medications may be spilled, shared with non-target children, or saved for future use rather than consumed as directed. While individual adherence measures capture intended recipients, population-level effectiveness calculations may overestimate actual chemoprevention if drug doses are diluted across more children than modeled.",
+      "mechanism": "** If 8-12% of medications are shared or diverted from intended recipients, the effective per-child dose is reduced even when \"adherence\" appears high. This could reduce protection levels by 5-10% beyond what adherence adjustments capture, though community-level benefits might partially offset individual losses.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 I believe qualitative studies document medication sharing practices in SMC communities, but I cannot identify specific citations",
+        "Economic logic suggests sharing is rational when medications are scarce and valuable",
+        "Pill count discrepancies in some household surveys suggest non-adherence may include diversion rather than just non-consumption"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "rejected",
+    "evidence_found": [
+      "The search revealed some challenges in SMC delivery but no specific evidence of systematic sharing or diversion. The qualitative studies focused on barriers like",
+      "perceived side-effects of SMC drugs, a lack of understanding of the purpose of SMC, mistrust and suspicions that medicines provided free may be unsafe or ineffective, and local shortages of drugs",
+      "but did not mention sharing practices."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Claim**: Medications are spilled, shared, or saved: UNVERIFIABLE - No specific studies found documenting medication sharing practices in SMC communities",
+      "Claim**: 8-12% diversion rate: FALSE - No basis found for this specific percentage",
+      "Claim**: Economic logic suggests sharing: PLAUSIBLE - Rational sharing behavior is theoretically sound",
+      "Claim**: Pill count discrepancies suggest diversion: UNVERIFIABLE - No specific evidence found"
+    ],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Drug Resistance Evolution and Efficacy Decay",
+      "title": "Seasonal Resistance Dynamics Within SMC Cycles",
+      "hypothesis": "** Resistance may fluctuate within and between SMC seasons as drug pressure varies. Post-SMC periods may see fitness costs reducing resistant parasites, partially restoring efficacy, but GiveWell's model likely assumes constant efficacy throughout implementation years.",
+      "mechanism": "** If efficacy varies from 40% during peak resistance periods to 80% early in SMC seasons, average effectiveness might be maintained despite resistance evolution. However, timing of peak malaria transmission relative to peak resistance could affect mortality impact differently than constant-efficacy models predict.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 I believe there are studies on seasonal fitness costs of resistance mutations, but cannot identify specific sources",
+        "Theoretical basis from known fitness costs of dhfr/dhps mutations in absence of drug pressure",
+        "No direct evidence found for seasonal resistance cycling in SMC contexts"
+      ],
+      "estimated_direction": "uncertain",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Evidence for fitness costs exists but no evidence for seasonal cycling within SMC implementation periods.",
+      "For malaria parasites, compensatory mutations have been frequently suggested, particularly in the case of SP resistance which requires a series of multiple point mutations... resistance reached high levels upon the first fixation of the S108N mutation, but the growth rate was reduced. The growth rate was partially restored upon the successful insertion of three other point mutations"
+    ],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [
+      "Fitness costs of resistance mutations: VERIFIED -",
+      "Fitness costs of drug resistance were suggested to be responsible for reduced survival of mutant parasites, and only parasites surviving chronic infections were transmitted at the onset of the rainy season",
+      "and",
+      "mutations conferring resistance to chloroquine in pfcrt reduce peptide transport capacity... Fitness costs associated with chloroquine resistance provide an explanation for the rapid disappearance of drug resistance (pfcrt) alleles from Malawi and other countries after removal of chloroquine as first-line treatment",
+      "Seasonal variation in resistance: UNVERIFIABLE - No direct evidence found for seasonal resistance dynamics within SMC cycles"
+    ],
+    "revised_hypothesis": null
+  }
+]

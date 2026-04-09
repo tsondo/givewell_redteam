@@ -1,0 +1,131 @@
+[
+  {
+    "original": {
+      "thread_name": "Cost Attribution and Marginal vs. Average Cost Conflation",
+      "title": "Seasonal and Campaign-Timing Cost Variations Not Reflected",
+      "hypothesis": "** The cost per supplement may vary significantly based on when campaigns occur (dry vs. rainy season, competing health priorities) and GiveWell funding might systematically support campaigns during higher-cost periods, but average annual costs mask this timing effect.",
+      "mechanism": "** If GiveWell-funded supplements occur during 20-40% higher cost periods (due to transport difficulties, competing demands, or timing constraints), this would directly inflate the true marginal cost compared to annual averages used in the model.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 needs verification. Seasonal variation in health program costs is well-established in principle (transport, agricultural labor competition), but I cannot cite specific studies on VAS campaign timing effects.",
+        "The materiality depends on whether GiveWell funding is disproportionately allocated to higher-cost periods."
+      ],
+      "estimated_direction": "increases",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "VAS campaigns are typically delivered as \"twice-yearly campaigns such as Child Health Days\" and have historically been \"delivered mainly through campaigns, such as polio supplementary immunization activities (SIAs).\"",
+      "The transition away from polio campaigns has created timing challenges, as \"countries are stopping their polio immunisation programmes\" which \"were typically the vehicle for delivery of vitamin A supplements.\""
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Seasonal variation in health program costs**: PLAUSIBLE.",
+      "Evidence shows VAS campaigns are often timed to specific periods - studies compare campaigns in different months (July vs October) and some programs deliver VAS \"as part of the final SMC cycle in each state (in October).\"",
+      "20-40% higher costs during certain periods**: UNVERIFIABLE. No evidence found supporting these specific figures.",
+      "Transport difficulties and competing demands**: PLAUSIBLE.",
+      "Studies note that \"External factors such as climate change, global health crises, and political instability have also disrupted campaigns, further straining health systems\" and that \"mass campaigns are costly and rely heavily on external funding.\""
+    ],
+    "revised_hypothesis": "**\n**Title:** Seasonal and Campaign-Timing Cost Variations Not Reflected  \n**Hypothesis:** The cost per supplement may vary based on when campaigns occur due to transport difficulties, competing health priorities, and timing constraints, but average annual costs may mask these variations.  \n**Mechanism:** IF cost variations exist due to seasonal factors, and IF GiveWell funding is systematically allocated during higher-cost periods, this could inflate true marginal costs compared to annual averages.  \n**Evidence:** Campaign timing is constrained by external factors including climate, health crises, and coordination with other health programs. However, no evidence found for systematic cost variations or biased allocation of GiveWell funding to higher-cost periods.  \n**Strength:** REJECTED due to lack of empirical support for both the existence of meaningful cost variations and any systematic bias in funding allocation timing."
+  },
+  {
+    "original": {
+      "thread_name": "Mortality Displacement vs. Mortality Reduction",
+      "title": "Short-Term Protection Window Creating Mortality Displacement**",
+      "hypothesis": "** VAS provides protection primarily in the 4-6 months immediately following supplementation, but children in high-mortality settings face continuous mortality pressure. Deaths \"prevented\" during the protection window may be displaced to the months following, when VAS effects wane but underlying vulnerabilities persist.",
+      "mechanism": "** This would reduce the number of truly prevented deaths versus merely displaced deaths. If 25% of prevented deaths are displaced by 6-9 months, the effective deaths averted per child supplemented would decrease proportionally, reducing cost-effectiveness by ~20-25%.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 needs verification: Analysis of mortality patterns in months 7-12 post-VAS in trial data to detect displacement effects",
+        "The DEVTA trial followed children for extended periods but I cannot identify specific analysis of post-protection period mortality spikes",
+        "Biological plausibility: VAD is often correlated with other nutritional deficiencies and poverty indicators that VAS doesn't address"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "rejected",
+    "evidence_found": [
+      "Evidence against mortality displacement: Results were \"similar when grouped by follow-up periods of zero to 12 months (RR 0.83, 95% CI [0.75 to 0.92], 13 trials) and 13 to 59 months (RR 0.88, 95% CI [0.81 to 0.97], 6 trials)\"",
+      "this suggests sustained rather than displaced effects."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Claim about 4-6 month protection window: VERIFIED - \"Provision of vitamin A supplements every four to six months\" is recommended, and \"Vitamin A can be stored in the liver, therefore, it is recommended to give high-dose vitamin A once every 4-6 months\"",
+      "Claim about 25% displaced deaths and 20-25% reduction in effectiveness: UNVERIFIABLE - No evidence found for mortality displacement",
+      "Claim about biological plausibility: PLAUSIBLE but not directly evidenced"
+    ],
+    "revised_hypothesis": "(for Critique 1 only):\n\n**Title:** Infrastructure and System Costs May Be Excluded from Marginal Cost Analysis\n**Hypothesis:** VAS co-funding arrangements may exclude substantial infrastructure costs (training, logistics, administration, personnel) from per-supplement calculations. If GiveWell funding is truly marginal, it should bear proportional infrastructure costs.\n**Mechanism:** Program delivery costs include substantial non-capsule expenses (labor ~70%, administration/training ~25%) that may not be fully captured in marginal cost estimates.\n**Evidence:** Helen Keller programs allocate ~50% to direct program costs including logistics, training, personnel, and equipment beyond capsule delivery. Infrastructure dependency varies significantly by health system strength.\n**Estimated Direction:** decreases (cost-effectiveness)\n**Estimated Magnitude:** small to medium (requires country-specific analysis)"
+  },
+  {
+    "original": {
+      "thread_name": "Structural Model Assumptions About Linear Dose-Response",
+      "title": "Threshold Effects for Herd Protection in High-Mortality Settings",
+      "hypothesis": "** GiveWell's linear dose-response assumption may miss critical threshold effects where vitamin A supplementation (VAS) programs provide disproportionate community-level protection once coverage exceeds certain levels. In high-mortality settings with endemic VAD, there may be epidemiological tipping points where increased coverage creates non-linear reductions in transmission of infectious diseases that interact with VAD.",
+      "mechanism": "** This would affect the coverage-to-mortality-reduction parameter by creating step-function improvements rather than linear scaling. If true community benefit requires 60%+ coverage to achieve herd protection against measles, diarrheal disease, or respiratory infections, then programs achieving 70-80% coverage could be 40-60% more cost-effective than the linear model suggests, while programs at 30-50% coverage could be 20-30% less effective.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 needs verification. I believe this concern is valid based on epidemiological principles of herd immunity and the known interactions between VAD and infectious disease susceptibility, but I cannot identify specific VAS studies that demonstrate threshold effects at the community level. The original VAS trials typically measured individual-level outcomes rather than community-level dose-response curves."
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Additional evidence suggests limitations of current VAS approach: \"high-dose supplementation only provides protection from hypo-retinolaemia for 2\u20133 months in children younger than 5 years and favourably shifts the distribution of serum retinol for less than 2 months, indicating that biannual supplementation is not sufficient by itself\""
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "VAS creating community-level herd protection:",
+      "PARTIALLY SUPPORTED - Evidence shows vitamin A supplementation affects immune function and \"decreases the risks of mortality and morbidity from some forms of diarrhea, measles, human immunodeficiency virus (HIV) infection, and malaria\" with \"effects on morbidity from measles related to enhanced antibody production\"",
+      "Threshold effects at 60%+ coverage: UNVERIFIABLE - No specific studies found demonstrating threshold effects for VAS at community level",
+      "Epidemiological tipping points:",
+      "CONCEPTUALLY PLAUSIBLE - Evidence shows vitamin A affects immune responses to infectious diseases, suggesting potential for community-level effects, but no empirical evidence for specific thresholds found"
+    ],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Structural Model Assumptions About Linear Dose-Response",
+      "title": "Accelerating Benefits from Immunological Priming Effects",
+      "hypothesis": "** The linear model may underestimate benefits in sustained high-coverage programs by missing cumulative immunological effects. Children receiving consistent VAS over multiple rounds may develop enhanced immune responses that provide greater protection than single-dose or intermittent supplementation would suggest.",
+      "mechanism": "** This could increase the mortality reduction parameter by 20-30% in programs maintaining high coverage over 3+ years compared to new or intermittent programs. The effect would compound over time, making established programs significantly more cost-effective than linear scaling from single-round trial data would predict.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "Biological plausibility: vitamin A's role in immune system development suggests cumulative effects are possible",
+        "UNGROUNDED for VAS mortality specifically \u2014 I cannot cite studies comparing mortality outcomes between sustained vs. intermittent VAS programs"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "large"
+    },
+    "verdict": "rejected",
+    "evidence_found": [
+      "Contradicting evidence found: \"high-dose vitamin A supplementation (VAS) provides no sustained improvement in vitamin A status\"",
+      "and the effects are primarily acute rather than cumulative.",
+      "WHO meta-analyses show similar effect sizes across different follow-up periods: \"Results were similar when grouped by follow-up periods of zero to 12 months (RR 0.83) and 13 to 59 months (RR 0.88)\"",
+      ", suggesting no evidence of cumulative benefits over time."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Claim:** \"Vitamin A's role in immune system development suggests cumulative effects are possible\" \u2014",
+      "VERIFIED: \"Vitamin A supplementation to preschool children is known to decrease the risks of mortality and morbidity... These effects are likely to be the result of the actions of vitamin A on immunity\"",
+      "Claim:** \"Children receiving consistent VAS over multiple rounds may develop enhanced immune responses\" \u2014",
+      "PLAUSIBLE: \"Vitamin A appears to play a key role in lymphopoiesis\" and affects \"antibody responses to T-cell-dependent antigens\"",
+      ", but no studies comparing sustained vs. intermittent VAS programs found",
+      "Claim:** \"20-30% increase in mortality reduction parameter\" \u2014 UNVERIFIABLE: No studies found comparing mortality outcomes between sustained high-coverage vs. intermittent programs",
+      "Claim:** \"Effects compound over time in programs maintaining high coverage over 3+ years\" \u2014 UNVERIFIABLE: No longitudinal studies found examining cumulative immunological effects of sustained VAS"
+    ],
+    "revised_hypothesis": "**\nNot applicable \u2014 critique is rejected due to contradictory evidence and lack of support for the proposed mechanism."
+  }
+]

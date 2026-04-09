@@ -1,0 +1,64 @@
+[
+  {
+    "original": {
+      "thread_name": "Marginal Impact Given Existing Coverage and Seasonal Malaria Chemoprevention",
+      "title": "High Coverage Threshold Effects in Transmission Intensity",
+      "hypothesis": "At very high ITN coverage levels (>75%), the relationship between coverage and transmission reduction may shift from linear to exponential due to vector population dynamics and breeding site accessibility. This could make marginal nets in high-coverage areas much more cost-effective than linear models predict.",
+      "mechanism": "This would increase the marginal impact parameter for high-coverage locations like Togo, potentially by 2-3x at coverage levels above 80%. This operates through vector population crashes when feeding success falls below sustainable levels, creating threshold effects not captured in linear models.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 I believe this threshold effect exists based on vector ecology theory, but I cannot identify specific empirical studies demonstrating these threshold effects at the coverage levels and transmission intensities relevant to GiveWell's target countries."
+      ],
+      "estimated_direction": "increases",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Some models suggest high coverage combinations can interrupt transmission: \"high-coverage levels of both interventions simultaneously can interrupt transmission\"",
+      ", but this doesn't support the specific exponential threshold claimed."
+    ],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [
+      "Coverage relationship is generally continuous: \"increasing the coverage of nets from 20% to 21% or from 70% to 71% would not produce an abrupt change in EIR\"",
+      "However, large changes can show dramatic effects: \"comparing the EIR at (for example) 20% coverage to the EIR at 70% or 80% coverage, where one would see such an abrupt change\"",
+      "High coverage can achieve very high effectiveness: \"EIR was 90% lower in the ITN community and 93% lower in the IRS community\"",
+      "The specific threshold at 75% coverage and 2-3x increase in marginal impact is UNVERIFIABLE"
+    ],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Long-term Economic Benefits and Development Effects",
+      "title": "Threshold Effects in Cognitive Development",
+      "hypothesis": "** GiveWell's linear treatment of malaria's cognitive effects may miss threshold effects where preventing malaria episodes only generates significant cognitive benefits if malaria burden falls below a certain level, potentially overestimating benefits in moderate-transmission areas.",
+      "mechanism": "** If cognitive benefits only materialize when childhood malaria episodes fall below 2-3 per year (rather than linearly with each prevented case), the income effects could be overestimated by 20-50% in areas with moderate transmission where ITNs reduce but don't eliminate malaria exposure.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 needs verification: I believe there is literature in cognitive development suggesting threshold effects for various health stressors, but I cannot cite specific studies on malaria and cognitive thresholds",
+        "The biological plausibility comes from research on how chronic inflammation affects brain development, suggesting non-linear dose-response relationships",
+        "Some RCTs of malaria prevention show larger cognitive effects in areas with higher baseline transmission, consistent with threshold effects"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Some evidence suggests that \"immediate educational and cognitive benefits are apparent only for children with heavy worm burdens\" and \"children are more ready to learn after treatment for worm infections\"",
+      ", which could support threshold-type effects, though this is for different parasitic infections."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Threshold effects for cognitive development: PLAUSIBLE - Biological literature often shows non-linear dose-response relationships for health stressors",
+      "Specific threshold of 2-3 malaria episodes per year: UNVERIFIABLE - No evidence found for this specific threshold",
+      "20-50% overestimation in moderate transmission areas: UNVERIFIABLE - No supporting evidence found",
+      "Non-linear dose-response for malaria and cognition: PLAUSIBLE - This would be consistent with biological mechanisms"
+    ],
+    "revised_hypothesis": null
+  }
+]
