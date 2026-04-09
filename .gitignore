@@ -2,3 +2,4 @@
 __pycache__/
 *.with-duplicates.json
 *.pre-dedup.*
+.worktrees/
