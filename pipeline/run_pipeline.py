@@ -18,6 +18,7 @@ from pipeline.schemas import (
     CandidateCritique,
     DebatedCritique,
     DecomposerOutput,
+    LinkerOutput,
     PipelineStats,
     QuantifiedCritique,
     VerifiedCritique,
@@ -27,6 +28,7 @@ from pipeline.agents import (
     run_adversarial,
     run_decomposer,
     run_investigators,
+    run_linker,
     run_quantifier,
     run_synthesizer,
     run_verifier,
@@ -41,8 +43,16 @@ STAGES = [
     "verifier",
     "quantifier",
     "adversarial",
+    "linker",
     "synthesizer",
 ]
+
+# The linker stage writes to "05b-linker.{json,md}" rather than the usual
+# "NN-stage.{json,md}" pattern, to preserve the "06 always means synthesizer"
+# invariant for historical continuity across results/ runs. This is the only
+# stage with a non-sequential disk filename; the special case is contained
+# to `load_linker_json` below. The in-memory identifier is plain "linker".
+LINKER_JSON_FILENAME = "05b-linker.json"
 
 
 # ---------------------------------------------------------------------------
@@ -89,6 +99,20 @@ def load_stage_json(intervention: str, stage_num: int, stage_name: str) -> dict 
     if not path.exists():
         raise FileNotFoundError(
             f"Cannot resume: expected stage output not found at {path}. "
+            f"Run the pipeline from an earlier stage first."
+        )
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_linker_json(intervention: str) -> dict:
+    """Load the linker stage output from disk. Special-cased because the
+    linker uses the "05b-linker.json" prefix rather than the usual
+    sequential "NN-stage.json" pattern.
+    """
+    path = RESULTS_DIR / intervention / LINKER_JSON_FILENAME
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Cannot resume: expected linker output not found at {path}. "
             f"Run the pipeline from an earlier stage first."
         )
     return json.loads(path.read_text(encoding="utf-8"))
@@ -288,9 +312,40 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
         logger.info("Loaded %d debated critiques from disk.", len(debated_critiques))
 
     # ------------------------------------------------------------------
+    # Stage 5b: Linker
+    # ------------------------------------------------------------------
+    # In-memory stage index 5 (between adversarial=4 and synthesizer=6),
+    # but disk filename is "05b-linker.json" to preserve the historical
+    # "06 always means synthesizer" invariant.
+    linker_output: LinkerOutput
+
+    if start_idx <= 5:
+        logger.info("=== Stage 5b: Linker ===")
+        linker_output = run_linker(
+            surviving_critiques=debated_critiques,
+            rejected_critiques=rejected_critiques,
+            stats=stats,
+            intervention=intervention,
+        )
+        logger.info(
+            "Linker identified %d dependencies (%d surviving examined, %d rejected available).",
+            linker_output.n_dependencies_found,
+            linker_output.n_surviving_critiques_examined,
+            linker_output.n_rejected_critiques_available,
+        )
+    else:
+        logger.info("Loading Stage 5b (linker) from disk.")
+        linker_data = load_linker_json(intervention)
+        linker_output = LinkerOutput.from_dict(linker_data)
+        logger.info(
+            "Loaded linker output with %d dependencies from disk.",
+            linker_output.n_dependencies_found,
+        )
+
+    # ------------------------------------------------------------------
     # Stage 6: Synthesizer
     # ------------------------------------------------------------------
-    if start_idx <= 5:
+    if start_idx <= 6:
         logger.info("=== Stage 6: Synthesizer ===")
         if start_idx > 0 and not baseline_output:
             logger.info(

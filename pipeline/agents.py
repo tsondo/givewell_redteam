@@ -22,6 +22,7 @@ from pipeline.config import (
     MAX_TOKENS_DECOMPOSER,
     MAX_TOKENS_INVESTIGATOR,
     MAX_TOKENS_JUDGE,
+    MAX_TOKENS_LINKER,
     MAX_TOKENS_QUANTIFIER,
     MAX_TOKENS_SYNTHESIZER,
     MAX_TOKENS_VERIFIER,
@@ -35,10 +36,12 @@ from pipeline.config import (
 )
 from pipeline.schemas import (
     CandidateCritique,
+    CritiqueDependency,
     DebatedCritique,
     DecomposerOutput,
     InvestigationThread,
     JudgeAudit,
+    LinkerOutput,
     PipelineStats,
     QuantifiedCritique,
     VerifiedCritique,
@@ -1115,6 +1118,153 @@ def _split_action_and_feasibility(raw: str) -> tuple[str, str]:
     return text, feasibility
 
 
+def parse_linker_output(text: str) -> LinkerOutput:
+    """Parse the Linker agent's structured output into a LinkerOutput.
+
+    Expects the format defined in prompts/linker.md — a single "## DEPENDENCIES"
+    section containing "### Dependency N" sub-blocks with key:value fields
+    (surviving, rejected, verdict, relationship, confidence, justification).
+
+    If the section contains "(none found)" (no Dependency blocks), returns an
+    empty LinkerOutput. Blocks with invalid relationship, verdict, or missing
+    titles are skipped with a warning rather than crashing the parser.
+
+    The n_surviving_critiques_examined / n_rejected_critiques_available fields
+    are set to 0 by this function; callers (run_linker) populate them from
+    the true input counts before persisting.
+    """
+    dep_section = _extract_section(text, "DEPENDENCIES", [])
+    empty = LinkerOutput(
+        dependencies=[],
+        n_surviving_critiques_examined=0,
+        n_rejected_critiques_available=0,
+        n_dependencies_found=0,
+    )
+    if not dep_section.strip():
+        return empty
+
+    # "(none found)" marker with no actual Dependency blocks -> empty result
+    has_blocks = bool(
+        re.search(r"(?im)^\s*#{2,}\s*Dependency\s+\d+", dep_section)
+    )
+    if not has_blocks:
+        return empty
+
+    # Split into blocks at "### Dependency N" headers. blocks[0] is any
+    # preamble before the first header.
+    blocks = re.split(
+        r"(?im)^\s*#{2,}\s*Dependency\s+\d+\s*$",
+        dep_section,
+    )
+
+    dependencies: list[CritiqueDependency] = []
+    seen: set[tuple[str, str]] = set()
+    for block in blocks[1:]:
+        dep = _parse_dependency_block(block)
+        if dep is None:
+            continue
+        # Deduplicate by (surviving, rejected) pair as a safety net
+        key = (dep.surviving_critique_title, dep.rejected_critique_title)
+        if key in seen:
+            continue
+        seen.add(key)
+        dependencies.append(dep)
+
+    return LinkerOutput(
+        dependencies=dependencies,
+        n_surviving_critiques_examined=0,
+        n_rejected_critiques_available=0,
+        n_dependencies_found=len(dependencies),
+    )
+
+
+def _parse_dependency_block(block: str) -> CritiqueDependency | None:
+    """Parse a single Dependency block into a CritiqueDependency, or None if invalid.
+
+    Returns None (with a warning log) when:
+    - surviving or rejected title is missing
+    - relationship is not one of {depends_on, engages_with, contradicts}
+    - verdict is not one of {unverified, rejected}
+
+    Confidence values outside {high, medium, low} default to "medium" (not
+    a skip condition — the model occasionally emits variants like "med").
+    """
+    surviving = _extract_linker_field(block, "surviving")
+    rejected = _extract_linker_field(block, "rejected")
+    verdict = _extract_linker_field(block, "verdict").lower()
+    relationship = _extract_linker_field(block, "relationship").lower()
+    confidence = _extract_linker_field(block, "confidence").lower()
+    justification = _extract_linker_field(block, "justification", multiline=True)
+
+    if not surviving or not rejected:
+        logger.warning(
+            "Linker parser: skipping block with missing title(s): %r",
+            block.strip()[:120],
+        )
+        return None
+    if relationship not in {"depends_on", "engages_with", "contradicts"}:
+        logger.warning(
+            "Linker parser: skipping block with invalid relationship %r (surviving=%r)",
+            relationship,
+            surviving[:80],
+        )
+        return None
+    if verdict not in {"unverified", "rejected"}:
+        logger.warning(
+            "Linker parser: skipping block with invalid verdict %r (surviving=%r)",
+            verdict,
+            surviving[:80],
+        )
+        return None
+    if confidence not in {"high", "medium", "low"}:
+        logger.warning(
+            "Linker parser: confidence %r not in {high, medium, low}; defaulting to medium",
+            confidence,
+        )
+        confidence = "medium"
+
+    return CritiqueDependency(
+        surviving_critique_title=surviving,
+        rejected_critique_title=rejected,
+        rejected_critique_verdict=verdict,
+        relationship=relationship,
+        justification=justification,
+        confidence=confidence,
+    )
+
+
+def _extract_linker_field(block: str, field: str, multiline: bool = False) -> str:
+    """Extract a 'field: value' line from a Dependency block.
+
+    Tolerant of leading bullet markers (-, *, •) and bold markers (**field**).
+    When multiline=True, continuation lines (non-empty lines that don't look
+    like another key:value line) are appended with a single space separator.
+    """
+    lines = block.splitlines()
+    pattern = re.compile(
+        rf"^\s*[-*•]?\s*\*{{0,2}}\s*{re.escape(field)}\s*\*{{0,2}}\s*:\s*(.*?)\s*$",
+        re.IGNORECASE,
+    )
+    next_field_pat = re.compile(
+        r"^\s*[-*•]?\s*\*{0,2}\s*[a-z_ ]+\s*\*{0,2}\s*:",
+        re.IGNORECASE,
+    )
+    for i, line in enumerate(lines):
+        m = pattern.match(line)
+        if m:
+            value = m.group(1).strip()
+            if multiline:
+                for j in range(i + 1, len(lines)):
+                    nxt = lines[j]
+                    if not nxt.strip():
+                        break
+                    if next_field_pat.match(nxt):
+                        break
+                    value = (value + " " + nxt.strip()).strip()
+            return value
+    return ""
+
+
 # ---------------------------------------------------------------------------
 # Stage runners
 # ---------------------------------------------------------------------------
@@ -1652,6 +1802,162 @@ def run_adversarial(
     combined_raw = "\n\n".join(all_raw)
     save_stage_output(intervention, 5, "adversarial", debated, combined_raw)
     return debated, combined_raw
+
+
+def _save_linker_artifact(
+    intervention: str,
+    linker_output: LinkerOutput,
+    raw_text: str | None = None,
+    short_circuited: bool = False,
+) -> None:
+    """Write 05b-linker.json and 05b-linker.md.
+
+    Uses a non-standard "05b" numeric prefix to preserve the "06 always means
+    synthesizer" invariant for historical continuity across results/ runs.
+    This is the only stage that needs a non-sequential prefix; save_stage_output
+    is not used to keep that helper clean.
+    """
+    out_dir = RESULTS_DIR / intervention
+    out_dir.mkdir(parents=True, exist_ok=True)
+    prefix = "05b-linker"
+
+    json_path = out_dir / f"{prefix}.json"
+    json_path.write_text(
+        json.dumps(linker_output.to_dict(), indent=2, default=str),
+        encoding="utf-8",
+    )
+
+    md_path = out_dir / f"{prefix}.md"
+    if short_circuited:
+        md_body = (
+            "# Linker — zero-state (short-circuit)\n\n"
+            "The Linker stage was short-circuited without an API call because one "
+            "or both inputs were empty. No dependencies are possible when either "
+            "side is empty. This empty artifact is written so `--resume-from "
+            "synthesizer` loads a well-formed LinkerOutput.\n\n"
+            f"- Surviving critiques examined: "
+            f"{linker_output.n_surviving_critiques_examined}\n"
+            f"- Rejected critiques available: "
+            f"{linker_output.n_rejected_critiques_available}\n"
+            f"- Dependencies found: {linker_output.n_dependencies_found}\n"
+        )
+    else:
+        md_body = raw_text or ""
+    md_path.write_text(md_body, encoding="utf-8")
+    logger.info("Saved stage output to %s (.json + .md)", prefix)
+
+
+def run_linker(
+    surviving_critiques: list[DebatedCritique],
+    rejected_critiques: list[VerifiedCritique],
+    stats: PipelineStats,
+    intervention: str,
+) -> LinkerOutput:
+    """Stage 5b: Linker identifies dependencies between surviving and rejected critiques.
+
+    Produces a structured list of CritiqueDependency records. Runs as a
+    separate stage (rather than inline in the synthesizer prompt) so the
+    dependency-matching task is auditable on its own.
+
+    Short-circuit: if either input is empty, no API call is made and a
+    zero-state 05b-linker artifact is written to preserve resume-from
+    consistency.
+    """
+    n_surviving = len(surviving_critiques)
+    n_rejected = len(rejected_critiques)
+
+    if n_surviving == 0 or n_rejected == 0:
+        logger.info(
+            "Linker short-circuit: surviving=%d, rejected=%d. No API call.",
+            n_surviving,
+            n_rejected,
+        )
+        result = LinkerOutput(
+            dependencies=[],
+            n_surviving_critiques_examined=n_surviving,
+            n_rejected_critiques_available=n_rejected,
+            n_dependencies_found=0,
+        )
+        _save_linker_artifact(intervention, result, short_circuited=True)
+        return result
+
+    system = load_prompt("linker.md")
+
+    # Build the surviving critiques section. Include title, hypothesis (revised
+    # when present), mechanism, and a compact judge audit summary — not the
+    # full failure mode lists, which don't help the dependency-matching task.
+    surviving_blocks: list[str] = []
+    for dc in surviving_critiques:
+        orig = dc.critique.critique.original
+        hypothesis = dc.critique.critique.revised_hypothesis or orig.hypothesis
+        if dc.judge_audit is not None:
+            ja = dc.judge_audit
+            audit_summary = (
+                f"  - Surviving strength: {ja.surviving_strength}\n"
+                f"  - Verdict justification: {ja.verdict_justification}\n"
+                f"  - Debate resolved: {ja.debate_resolved}\n"
+                f"  - Debate unresolved: {ja.debate_unresolved}"
+            )
+        else:
+            # Legacy pre-judge records: fall back to whatever we have.
+            audit_summary = (
+                f"  - Surviving strength: {dc.surviving_strength} "
+                f"(no judge audit available)"
+            )
+        surviving_blocks.append(
+            f"### {orig.title}\n"
+            f"- **Hypothesis:** {hypothesis}\n"
+            f"- **Mechanism:** {orig.mechanism}\n"
+            f"- **Judge audit:**\n{audit_summary}"
+        )
+
+    # Build the rejected critiques section. Include title, hypothesis,
+    # mechanism, verdict, and the verifier's reasoning (caveats + evidence).
+    rejected_blocks: list[str] = []
+    for r in rejected_critiques:
+        orig = r.original
+        verdict_label = "UNVERIFIABLE" if r.verdict == "unverified" else "REJECTED"
+        caveats_str = "\n".join(f"  - {c}" for c in r.caveats) or "  (none recorded)"
+        evidence_str = "\n".join(f"  - {e}" for e in r.evidence_found) or "  (none)"
+        rejected_blocks.append(
+            f"### {orig.title}\n"
+            f"- **Verdict:** {verdict_label} (schema field: `{r.verdict}`)\n"
+            f"- **Hypothesis:** {r.revised_hypothesis or orig.hypothesis}\n"
+            f"- **Mechanism:** {orig.mechanism}\n"
+            f"- **What the verifier searched for / reasoning:**\n{caveats_str}\n"
+            f"- **Evidence found:**\n{evidence_str}"
+        )
+
+    user_message = (
+        "## Surviving Critiques\n\n"
+        + "\n\n".join(surviving_blocks)
+        + "\n\n## Rejected Critiques\n\n"
+        + "\n\n".join(rejected_blocks)
+        + "\n\n---\n\n"
+        "Identify dependencies. Follow the output format in your system prompt "
+        "exactly — the parser depends on the `## DEPENDENCIES` section, the "
+        "`### Dependency N` sub-headers, and the key:value field lines. "
+        "Use `verdict: unverified` or `verdict: rejected` (lowercase, no other forms)."
+    )
+
+    raw = call_api(
+        model=SONNET_MODEL,
+        system=system,
+        user_message=user_message,
+        stats=stats,
+        stage="linker",
+        max_tokens=MAX_TOKENS_LINKER,
+    )
+
+    parsed = parse_linker_output(raw)
+    result = LinkerOutput(
+        dependencies=parsed.dependencies,
+        n_surviving_critiques_examined=n_surviving,
+        n_rejected_critiques_available=n_rejected,
+        n_dependencies_found=len(parsed.dependencies),
+    )
+    _save_linker_artifact(intervention, result, raw_text=raw)
+    return result
 
 
 def _format_rejected_critiques_for_synthesizer(
