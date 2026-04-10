@@ -6,10 +6,12 @@ import pytest
 
 from pipeline.schemas import (
     CandidateCritique,
+    CritiqueDependency,
     DebatedCritique,
     DecomposerOutput,
     InvestigationThread,
     JudgeAudit,
+    LinkerOutput,
     PipelineStats,
     QuantifiedCritique,
     VerifiedCritique,
@@ -322,6 +324,99 @@ class TestJudgeAuditRoundTrip:
         assert restored.advocate_failures == []
         assert restored.challenger_failures == []
         assert restored.action_feasibility == "open_question"
+
+
+# --- Linker schema tests ---
+
+
+def make_critique_dependency() -> CritiqueDependency:
+    return CritiqueDependency(
+        surviving_critique_title="Coverage rate overestimated",
+        rejected_critique_title="Threshold effects in VAD prevalence",
+        rejected_critique_verdict="unverified",
+        relationship="depends_on",
+        justification="The coverage argument implicitly relies on the threshold mechanism.",
+        confidence="high",
+    )
+
+
+class TestCritiqueDependencyRoundTrip:
+    def test_round_trip(self) -> None:
+        obj = make_critique_dependency()
+        serialized = json.dumps(obj.to_dict())
+        restored = CritiqueDependency.from_dict(json.loads(serialized))
+
+        assert restored.surviving_critique_title == obj.surviving_critique_title
+        assert restored.rejected_critique_title == obj.rejected_critique_title
+        assert restored.rejected_critique_verdict == "unverified"
+        assert restored.relationship == "depends_on"
+        assert restored.confidence == "high"
+        assert restored.justification == obj.justification
+
+    def test_schema_uses_unverified_not_unverifiable(self) -> None:
+        """Regression test for the plan-vs-schema terminology mismatch.
+        The schema field value is 'unverified' (matching VerifiedCritique.verdict);
+        'unverifiable' is only a human-facing label in prompts."""
+        obj = make_critique_dependency()
+        assert obj.rejected_critique_verdict == "unverified"
+        # And the other valid value:
+        obj.rejected_critique_verdict = "rejected"
+        restored = CritiqueDependency.from_dict(json.loads(json.dumps(obj.to_dict())))
+        assert restored.rejected_critique_verdict == "rejected"
+
+
+class TestLinkerOutputRoundTrip:
+    def test_round_trip_with_dependencies(self) -> None:
+        dep1 = make_critique_dependency()
+        dep2 = CritiqueDependency(
+            surviving_critique_title="Mortality effect magnitude",
+            rejected_critique_title="Admin data double-counting",
+            rejected_critique_verdict="rejected",
+            relationship="contradicts",
+            justification="Directly contradicts the admin data claim.",
+            confidence="medium",
+        )
+        obj = LinkerOutput(
+            dependencies=[dep1, dep2],
+            n_surviving_critiques_examined=10,
+            n_rejected_critiques_available=5,
+            n_dependencies_found=2,
+        )
+        serialized = json.dumps(obj.to_dict())
+        restored = LinkerOutput.from_dict(json.loads(serialized))
+
+        assert len(restored.dependencies) == 2
+        assert restored.dependencies[0].relationship == "depends_on"
+        assert restored.dependencies[1].relationship == "contradicts"
+        assert restored.n_surviving_critiques_examined == 10
+        assert restored.n_rejected_critiques_available == 5
+        assert restored.n_dependencies_found == 2
+
+    def test_round_trip_empty_dependencies(self) -> None:
+        """Empty dependencies is a valid state (no dependencies found, or
+        short-circuit from empty inputs). Must not crash."""
+        obj = LinkerOutput(
+            dependencies=[],
+            n_surviving_critiques_examined=0,
+            n_rejected_critiques_available=0,
+            n_dependencies_found=0,
+        )
+        serialized = json.dumps(obj.to_dict())
+        restored = LinkerOutput.from_dict(json.loads(serialized))
+
+        assert restored.dependencies == []
+        assert restored.n_surviving_critiques_examined == 0
+        assert restored.n_dependencies_found == 0
+
+    def test_from_dict_handles_missing_optional_fields(self) -> None:
+        """Backward compatibility pattern from JudgeAudit.from_dict: missing
+        optional stat fields default to zero rather than crashing."""
+        minimal = {"dependencies": []}
+        restored = LinkerOutput.from_dict(minimal)
+        assert restored.dependencies == []
+        assert restored.n_surviving_critiques_examined == 0
+        assert restored.n_rejected_critiques_available == 0
+        assert restored.n_dependencies_found == 0
 
 
 # --- PipelineStats tests ---

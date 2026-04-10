@@ -227,6 +227,80 @@ class DebatedCritique:
 
 
 @dataclass
+class CritiqueDependency:
+    """A dependency relationship between a surviving critique and a rejected
+    critique, identified by the Linker stage.
+
+    The relationship type captures whether the surviving critique's argument
+    requires the unverified claim to be true, merely engages with it, or
+    actively contradicts it. This distinction matters because findings that
+    depend on unverified claims must be tagged as conditional, while findings
+    that merely engage with them can stand on their own.
+
+    Note: rejected_critique_verdict stores the raw VerifiedCritique.verdict
+    value, which is "unverified" or "rejected". The synthesizer prompt uses
+    "UNVERIFIABLE" as the human-facing label for the "unverified" verdict.
+    """
+
+    surviving_critique_title: str
+    rejected_critique_title: str
+    rejected_critique_verdict: str  # "unverified" | "rejected"
+    relationship: str  # "depends_on" | "engages_with" | "contradicts"
+    justification: str  # 1-2 sentences citing where in the surviving critique
+    #                     the dependency appears
+    confidence: str  # "high" | "medium" | "low" — Linker's confidence in the link
+
+    def to_dict(self) -> dict[str, Any]:
+        return dataclasses.asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> CritiqueDependency:
+        return cls(
+            surviving_critique_title=d["surviving_critique_title"],
+            rejected_critique_title=d["rejected_critique_title"],
+            rejected_critique_verdict=d["rejected_critique_verdict"],
+            relationship=d["relationship"],
+            justification=d.get("justification", ""),
+            confidence=d.get("confidence", "medium"),
+        )
+
+
+@dataclass
+class LinkerOutput:
+    """Output of the Linker stage. Top-level artifact written to 05b-linker.json.
+
+    Contains the full list of dependencies identified across all surviving
+    critiques. May be empty (no dependencies found) — that is a valid result,
+    as is an empty output from the short-circuit case (no surviving or no
+    rejected critiques; no API call was made).
+    """
+
+    dependencies: list[CritiqueDependency]
+    n_surviving_critiques_examined: int
+    n_rejected_critiques_available: int
+    n_dependencies_found: int
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "dependencies": [d.to_dict() for d in self.dependencies],
+            "n_surviving_critiques_examined": self.n_surviving_critiques_examined,
+            "n_rejected_critiques_available": self.n_rejected_critiques_available,
+            "n_dependencies_found": self.n_dependencies_found,
+        }
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> LinkerOutput:
+        return cls(
+            dependencies=[
+                CritiqueDependency.from_dict(dep) for dep in d.get("dependencies", [])
+            ],
+            n_surviving_critiques_examined=d.get("n_surviving_critiques_examined", 0),
+            n_rejected_critiques_available=d.get("n_rejected_critiques_available", 0),
+            n_dependencies_found=d.get("n_dependencies_found", 0),
+        )
+
+
+@dataclass
 class PipelineStats:
     total_input_tokens: int = 0
     total_output_tokens: int = 0
