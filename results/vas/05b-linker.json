@@ -1,0 +1,31 @@
+{
+  "dependencies": [
+    {
+      "surviving_critique_title": "Threshold Effects Below Critical VAD Prevalence Levels",
+      "rejected_critique_title": "Threshold Effects for Herd Protection in High-Mortality Settings",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "Both critiques examine threshold effects in VAS effectiveness, though from different angles - the surviving critique focuses on individual-level VAD thresholds while the rejected one examined community-level herd protection thresholds.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Meta-Analysis Publication Bias in Historical Evidence Base",
+      "rejected_critique_title": "Short-Term Protection Window Creating Mortality Displacement",
+      "rejected_critique_verdict": "rejected",
+      "relationship": "contradicts",
+      "justification": "The surviving critique questions whether VAS effects are overstated due to publication bias, while the rejected critique argued for mortality displacement that would reduce true benefits - the rejection of displacement based on sustained effects across follow-up periods strengthens the publication bias concern.",
+      "confidence": "high"
+    },
+    {
+      "surviving_critique_title": "Systematic Timing Delays Between Supplementation Rounds",
+      "rejected_critique_title": "Seasonal and Campaign-Timing Cost Variations Not Reflected",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "Both critiques address timing-related challenges in VAS programs - the surviving critique focuses on delays extending protection intervals while the rejected one examined cost variations from timing factors.",
+      "confidence": "medium"
+    }
+  ],
+  "n_surviving_critiques_examined": 28,
+  "n_rejected_critiques_available": 4,
+  "n_dependencies_found": 3
+}
