@@ -2,4 +2,5 @@
 __pycache__/
 *.with-duplicates.json
 *.pre-dedup.*
+*.pre-judge.*
 .worktrees/
