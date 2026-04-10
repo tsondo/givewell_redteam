@@ -21,6 +21,7 @@ from pipeline.config import (
     MAX_TOKENS_ADVERSARIAL,
     MAX_TOKENS_DECOMPOSER,
     MAX_TOKENS_INVESTIGATOR,
+    MAX_TOKENS_JUDGE,
     MAX_TOKENS_QUANTIFIER,
     MAX_TOKENS_SYNTHESIZER,
     MAX_TOKENS_VERIFIER,
@@ -37,6 +38,7 @@ from pipeline.schemas import (
     DebatedCritique,
     DecomposerOutput,
     InvestigationThread,
+    JudgeAudit,
     PipelineStats,
     QuantifiedCritique,
     VerifiedCritique,
@@ -871,6 +873,14 @@ def parse_challenger_output(text: str) -> tuple[str, list[str], str]:
     """Parse adversarial challenger response.
 
     Returns (surviving_strength, key_unresolved_questions, recommended_action).
+
+    NOTE: As of the judge-agent update, the Challenger prompt no longer emits
+    SURVIVING STRENGTH or RECOMMENDED ACTION sections — those are produced by
+    run_judge. This parser now extracts only KEY UNRESOLVED QUESTIONS from
+    current Challenger outputs and returns advisory defaults for the other
+    two fields. It's retained for backward compatibility with old 05-adversarial
+    transcripts and for any ad-hoc analysis that still wants to peek at
+    legacy challenger verdicts.
     """
     challenger_headers = [
         "REBUTTAL",
@@ -884,14 +894,16 @@ def parse_challenger_output(text: str) -> tuple[str, list[str], str]:
     questions_raw = _extract_section(text, "KEY UNRESOLVED QUESTIONS", challenger_headers)
     action_raw = _extract_section(text, "RECOMMENDED ACTION", challenger_headers)
 
-    # Parse surviving strength
+    # Parse surviving strength (advisory only — judge is authoritative)
     strength_lower = strength_raw.lower().strip()
     if "strong" in strength_lower:
         surviving_strength = "strong"
     elif "moderate" in strength_lower:
         surviving_strength = "moderate"
-    else:
+    elif strength_lower:
         surviving_strength = "weak"
+    else:
+        surviving_strength = ""  # new challenger format omits this
 
     # Parse questions as list
     key_unresolved = [
@@ -900,7 +912,7 @@ def parse_challenger_output(text: str) -> tuple[str, list[str], str]:
         if line.strip() and line.strip().lstrip("-•*0123456789.) ").strip()
     ]
 
-    # Parse recommended action
+    # Parse recommended action (advisory only — judge is authoritative)
     action_lower = action_raw.lower().strip()
     if "investigate" in action_lower:
         recommended_action = "investigate"
@@ -914,6 +926,193 @@ def parse_challenger_output(text: str) -> tuple[str, list[str], str]:
         recommended_action = action_raw.strip()
 
     return surviving_strength, key_unresolved, recommended_action
+
+
+def parse_advocate_self_assessment(text: str) -> str:
+    """Extract the Advocate's OVERALL ASSESSMENT and normalize to strong|partial|weak.
+
+    The Advocate prompt emits an OVERALL ASSESSMENT section rating the defense
+    as "Strong defense", "Partial defense", or "Weak defense". We normalize to
+    the lowercase one-word form for downstream use. Returns "" if the section
+    is missing or unparseable (defensive — old runs may not have this).
+    """
+    advocate_headers = [
+        "DEFENSE OF GIVEWELL",
+        "EXISTING COVERAGE",
+        "EVIDENCE WEAKNESSES",
+        "MAGNITUDE CHALLENGE",
+        "OFFSETTING FACTORS",
+        "OVERALL ASSESSMENT",
+        "CONCESSIONS",
+    ]
+    raw = _extract_section(text, "OVERALL ASSESSMENT", advocate_headers)
+    if not raw:
+        return ""
+    lowered = raw.lower()
+    # Check for "Strong/Partial/Weak defense" ordered by specificity
+    if "strong" in lowered:
+        return "strong"
+    if "partial" in lowered:
+        return "partial"
+    if "weak" in lowered:
+        return "weak"
+    return ""
+
+
+def parse_judge_output(text: str) -> JudgeAudit:
+    """Parse the Judge agent's structured audit into a JudgeAudit dataclass.
+
+    Expects the section headers defined in prompts/adversarial-judge.md:
+    ADVOCATE FAILURES, CHALLENGER FAILURES, DEBATE RESOLVED, DEBATE UNRESOLVED,
+    SURVIVING STRENGTH, RECOMMENDED ACTION. Tolerant of markdown prefixes and
+    extra whitespace.
+    """
+    judge_headers = [
+        "ADVOCATE FAILURES",
+        "CHALLENGER FAILURES",
+        "DEBATE RESOLVED",
+        "DEBATE UNRESOLVED",
+        "SURVIVING STRENGTH",
+        "RECOMMENDED ACTION",
+    ]
+
+    advocate_raw = _extract_section(text, "ADVOCATE FAILURES", judge_headers)
+    challenger_raw = _extract_section(text, "CHALLENGER FAILURES", judge_headers)
+    resolved_raw = _extract_section(text, "DEBATE RESOLVED", judge_headers)
+    unresolved_raw = _extract_section(text, "DEBATE UNRESOLVED", judge_headers)
+    strength_raw = _extract_section(text, "SURVIVING STRENGTH", judge_headers)
+    action_raw = _extract_section(text, "RECOMMENDED ACTION", judge_headers)
+
+    advocate_failures = _parse_judge_failure_list(advocate_raw)
+    challenger_failures = _parse_judge_failure_list(challenger_raw)
+
+    # Surviving strength: first line is the verdict, remainder is the
+    # "Justification:" prose.
+    strength, justification = _split_strength_and_justification(strength_raw)
+
+    # Recommended action: free text (full "CONCLUDE NOW: ..." or similar).
+    # Extract action_feasibility if the judge emitted it as a trailing tag.
+    recommended_action, action_feasibility = _split_action_and_feasibility(action_raw)
+
+    return JudgeAudit(
+        advocate_failures=advocate_failures,
+        challenger_failures=challenger_failures,
+        surviving_strength=strength,
+        verdict_justification=justification,
+        recommended_action=recommended_action,
+        action_feasibility=action_feasibility,
+        debate_resolved=resolved_raw.strip(),
+        debate_unresolved=unresolved_raw.strip(),
+    )
+
+
+def _parse_judge_failure_list(raw: str) -> list[str]:
+    """Parse a judge failure-list block into a list of 'failure_type: evidence' strings.
+
+    The judge prompt specifies a bullet format like:
+        - failure_type: whataboutism
+          evidence: "The Challenger employs..."
+
+    We pair each failure_type line with the nearest following evidence line
+    and emit "type: evidence" for each pair. If the block contains only
+    "(none detected)" or is empty, return an empty list.
+    """
+    stripped = raw.strip()
+    if not stripped:
+        return []
+    # Handle explicit "(none detected)" marker (with or without parens, any case)
+    if re.search(r"\(?\s*none\s+detected\s*\)?", stripped, re.IGNORECASE) and len(stripped) < 60:
+        return []
+
+    results: list[str] = []
+    lines = stripped.splitlines()
+    current_type: str | None = None
+    for line in lines:
+        stripped_line = line.strip().lstrip("-•*").strip()
+        if not stripped_line:
+            continue
+        m_type = re.match(r"failure[_ ]type\s*:\s*(.+)", stripped_line, re.IGNORECASE)
+        if m_type:
+            # If we had a dangling type without evidence, emit it bare.
+            if current_type is not None:
+                results.append(current_type)
+            current_type = m_type.group(1).strip().rstrip(",")
+            continue
+        m_ev = re.match(r"evidence\s*:\s*(.+)", stripped_line, re.IGNORECASE)
+        if m_ev and current_type is not None:
+            evidence = m_ev.group(1).strip().strip('"').strip("'")
+            results.append(f"{current_type}: {evidence}")
+            current_type = None
+            continue
+    # Flush any trailing bare type
+    if current_type is not None:
+        results.append(current_type)
+
+    return results
+
+
+def _split_strength_and_justification(raw: str) -> tuple[str, str]:
+    """Split a SURVIVING STRENGTH block into (verdict, justification)."""
+    if not raw.strip():
+        return "weak", ""
+    # Drop any markdown/bracket decorations from the first line
+    lines = [ln for ln in raw.splitlines() if ln.strip()]
+    if not lines:
+        return "weak", ""
+    first = lines[0].strip().lstrip("[").rstrip("]").strip()
+    first_lower = first.lower()
+    if "strong" in first_lower:
+        verdict = "strong"
+    elif "moderate" in first_lower:
+        verdict = "moderate"
+    elif "weak" in first_lower:
+        verdict = "weak"
+    else:
+        verdict = "weak"  # defensive default
+
+    # Justification: any text on subsequent lines, stripping a leading
+    # "Justification:" label if present.
+    justification_text = "\n".join(lines[1:]).strip()
+    justification_text = re.sub(
+        r"^justification\s*:\s*", "", justification_text, flags=re.IGNORECASE
+    )
+    return verdict, justification_text.strip()
+
+
+def _split_action_and_feasibility(raw: str) -> tuple[str, str]:
+    """Split a RECOMMENDED ACTION block into (action_text, feasibility_tag).
+
+    The judge prompt asks for a trailing "action_feasibility: <tag>" line.
+    If missing, infer from the CONCLUDE NOW / SPECIFIC INVESTIGATION /
+    OPEN QUESTION prefix; default to "open_question".
+    """
+    text = raw.strip()
+    if not text:
+        return "", "open_question"
+
+    # Try to split off a trailing "action_feasibility:" line
+    feasibility = ""
+    feas_match = re.search(
+        r"^\s*action[_ ]feasibility\s*:\s*(actionable_now|requires_specified_evidence|open_question)\s*$",
+        text,
+        re.IGNORECASE | re.MULTILINE,
+    )
+    if feas_match:
+        feasibility = feas_match.group(1).strip().lower().replace(" ", "_")
+        # Remove the matched line from the action text
+        text = (text[: feas_match.start()] + text[feas_match.end() :]).strip()
+
+    if not feasibility:
+        # Infer from prefix
+        lowered = text.lower()
+        if "conclude now" in lowered:
+            feasibility = "actionable_now"
+        elif "specific investigation" in lowered:
+            feasibility = "requires_specified_evidence"
+        else:
+            feasibility = "open_question"
+
+    return text, feasibility
 
 
 # ---------------------------------------------------------------------------
@@ -1263,6 +1462,71 @@ def _extract_relevant_report_sections(report: str, max_chars: int = 8000) -> str
     return report[:max_chars]
 
 
+def run_judge(
+    verified_critique: VerifiedCritique,
+    advocate_raw: str,
+    advocate_self_assessment: str,
+    challenger_raw: str,
+    stats: PipelineStats,
+    intervention: str,
+    index: int,
+) -> JudgeAudit:
+    """Stage 5b: Neutral judge evaluates Advocate vs Challenger exchange.
+
+    Reads both sides plus the verifier evidence package and produces a
+    structured audit (failure modes, verdict, recommended action). The
+    judge's verdict SUPERSEDES any challenger-assigned verdict.
+    """
+    judge_prompt = load_prompt("adversarial-judge.md")
+    orig = verified_critique.original
+
+    # Format the verifier's evidence package (what was checked, what was
+    # found, what was contradicted, caveats). The debaters only saw
+    # `evidence_found`; the judge gets the full VerifiedCritique envelope.
+    evidence_found_block = (
+        "\n".join(f"- {e}" for e in verified_critique.evidence_found) or "(none)"
+    )
+    counter_evidence_block = (
+        "\n".join(f"- {e}" for e in verified_critique.counter_evidence) or "(none)"
+    )
+    caveats_block = "\n".join(f"- {c}" for c in verified_critique.caveats) or "(none)"
+
+    user_message = (
+        "## Original Critique\n\n"
+        f"**Title:** {orig.title}\n"
+        f"**Hypothesis:** {verified_critique.revised_hypothesis or orig.hypothesis}\n"
+        f"**Mechanism:** {orig.mechanism}\n\n"
+        "## Verifier's Evidence Package\n\n"
+        f"**Verdict:** {verified_critique.verdict}\n"
+        f"**Evidence strength:** {verified_critique.evidence_strength}\n\n"
+        f"**Evidence found:**\n{evidence_found_block}\n\n"
+        f"**Counter-evidence / contradictions:**\n{counter_evidence_block}\n\n"
+        f"**Caveats:**\n{caveats_block}\n\n"
+        "## Advocate's Defense\n\n"
+        f"{advocate_raw}\n\n"
+        f"**Advocate's self-assessment of defense quality:** "
+        f"{advocate_self_assessment or '(not stated)'}\n\n"
+        "## Challenger's Rebuttal\n\n"
+        f"{challenger_raw}\n\n"
+        "---\n\n"
+        "Audit this debate. Follow the output format in your system prompt "
+        "exactly — the parser depends on the section headers ADVOCATE FAILURES, "
+        "CHALLENGER FAILURES, DEBATE RESOLVED, DEBATE UNRESOLVED, SURVIVING "
+        "STRENGTH, and RECOMMENDED ACTION."
+    )
+
+    judge_raw = call_api(
+        model=OPUS_MODEL,
+        system=judge_prompt,
+        user_message=user_message,
+        stats=stats,
+        stage=f"judge-{index}",
+        max_tokens=MAX_TOKENS_JUDGE,
+    )
+
+    return parse_judge_output(judge_raw)
+
+
 def run_adversarial(
     critiques: list[QuantifiedCritique],
     intervention_report: str,
@@ -1270,7 +1534,12 @@ def run_adversarial(
     stats: PipelineStats,
     intervention: str,
 ) -> tuple[list[DebatedCritique], str]:
-    """Stage 5: Adversarial debate for material/notable critiques."""
+    """Stage 5: Adversarial debate for material/notable critiques.
+
+    Three API calls per critique: Advocate (Sonnet) -> Challenger (Sonnet) ->
+    Judge (Opus). The Judge assigns surviving_strength and recommended_action;
+    the Challenger no longer does so.
+    """
     advocate_prompt = load_prompt("adversarial-advocate.md")
     challenger_prompt = load_prompt("adversarial-challenger.md")
     all_raw: list[str] = []
@@ -1316,6 +1585,8 @@ def run_adversarial(
             max_tokens=MAX_TOKENS_ADVERSARIAL,
         )
 
+        advocate_self_assessment = parse_advocate_self_assessment(advocate_raw)
+
         # Step 2: Challenger rebuttal
         challenger_user = (
             f"## Original Critique\n\n{critique_summary}\n\n"
@@ -1334,9 +1605,17 @@ def run_adversarial(
             max_tokens=MAX_TOKENS_ADVERSARIAL,
         )
 
-        # Parse challenger output
-        surviving_strength, key_unresolved, recommended_action = parse_challenger_output(
-            challenger_raw
+        # Step 3: Neutral judge. The judge produces the authoritative
+        # verdict (surviving_strength) and recommended action, superseding
+        # any such fields the Challenger may have emitted.
+        judge_audit = run_judge(
+            verified_critique=qcrit.critique,
+            advocate_raw=advocate_raw,
+            advocate_self_assessment=advocate_self_assessment,
+            challenger_raw=challenger_raw,
+            stats=stats,
+            intervention=intervention,
+            index=i + 1,
         )
 
         debated.append(
@@ -1344,16 +1623,30 @@ def run_adversarial(
                 critique=qcrit,
                 advocate_defense=advocate_raw,
                 challenger_rebuttal=challenger_raw,
-                surviving_strength=surviving_strength,
-                key_unresolved=key_unresolved,
-                recommended_action=recommended_action,
+                # Populated from judge audit. Legacy fields retained for
+                # transcript / backward compatibility; judge_audit is the
+                # structured source of truth going forward.
+                surviving_strength=judge_audit.surviving_strength,
+                key_unresolved=[],
+                recommended_action=judge_audit.recommended_action,
+                advocate_self_assessment=advocate_self_assessment,
+                judge_audit=judge_audit,
             )
         )
 
         all_raw.append(
             f"--- Critique: {orig.title} ---\n\n"
             f"### Advocate\n{advocate_raw}\n\n"
-            f"### Challenger\n{challenger_raw}"
+            f"### Challenger\n{challenger_raw}\n\n"
+            f"### Judge Audit\n"
+            f"Surviving strength: {judge_audit.surviving_strength}\n"
+            f"Justification: {judge_audit.verdict_justification}\n"
+            f"Recommended action: {judge_audit.recommended_action}\n"
+            f"Action feasibility: {judge_audit.action_feasibility}\n"
+            f"Advocate failures: {judge_audit.advocate_failures}\n"
+            f"Challenger failures: {judge_audit.challenger_failures}\n"
+            f"Debate resolved: {judge_audit.debate_resolved}\n"
+            f"Debate unresolved: {judge_audit.debate_unresolved}"
         )
 
     combined_raw = "\n\n".join(all_raw)

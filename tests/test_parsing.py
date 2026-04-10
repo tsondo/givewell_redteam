@@ -6,9 +6,11 @@ each parser extracts structured data correctly.
 from __future__ import annotations
 
 from pipeline.agents import (
+    parse_advocate_self_assessment,
     parse_challenger_output,
     parse_decomposer_output,
     parse_investigator_output,
+    parse_judge_output,
     parse_quantifier_output,
     parse_verifier_output,
 )
@@ -508,3 +510,200 @@ def test_parse_quantifier_materiality_verdict() -> None:
     result = parse_quantifier_output(QUANTIFIER_LN_RR_SAMPLE, critique, cea)
     # With actual sensitivity results, materiality comes from pct_change
     assert result.materiality in ("material", "notable", "immaterial")
+
+
+# ---------------------------------------------------------------------------
+# Advocate self-assessment parser
+# ---------------------------------------------------------------------------
+
+
+ADVOCATE_SAMPLE_STRONG = """\
+DEFENSE OF GIVEWELL'S POSITION: Vitamin A Supplementation Cost-Effectiveness
+
+EXISTING COVERAGE:
+GiveWell already applies a 40% external validity adjustment...
+
+EVIDENCE WEAKNESSES:
+The Cochrane review's pooled estimate is driven heavily by DEVTA...
+
+MAGNITUDE CHALLENGE:
+Even at the conservative end, residual effectiveness of 6% justifies funding.
+
+OFFSETTING FACTORS:
+Indirect effects on morbidity and stunting are not quantified in the CEA.
+
+OVERALL ASSESSMENT:
+Strong defense. The critique's magnitude claim rests on a conflation of stores
+and protection, and the underlying evidence supports GiveWell's calibration.
+
+CONCESSIONS:
+None material to the cost-effectiveness conclusion.
+"""
+
+
+ADVOCATE_SAMPLE_PARTIAL = """\
+DEFENSE OF GIVEWELL'S POSITION: Mortality Reduction Estimate
+
+OVERALL ASSESSMENT:
+Partial defense. The critique identifies a real gap in GiveWell's modeling,
+but the magnitude is likely overstated by roughly 2x.
+
+CONCESSIONS:
+The mechanism the critique identifies is valid.
+"""
+
+
+ADVOCATE_SAMPLE_WEAK = """\
+DEFENSE OF GIVEWELL'S POSITION: Publication Bias
+
+OVERALL ASSESSMENT:
+Weak defense. GiveWell's position is genuinely vulnerable to this critique
+and the existing adjustments do not address the specific bias identified.
+"""
+
+
+ADVOCATE_SAMPLE_MISSING = """\
+DEFENSE OF GIVEWELL'S POSITION: Something
+
+EXISTING COVERAGE: blah
+EVIDENCE WEAKNESSES: blah
+"""
+
+
+def test_parse_advocate_self_assessment_strong() -> None:
+    assert parse_advocate_self_assessment(ADVOCATE_SAMPLE_STRONG) == "strong"
+
+
+def test_parse_advocate_self_assessment_partial() -> None:
+    assert parse_advocate_self_assessment(ADVOCATE_SAMPLE_PARTIAL) == "partial"
+
+
+def test_parse_advocate_self_assessment_weak() -> None:
+    assert parse_advocate_self_assessment(ADVOCATE_SAMPLE_WEAK) == "weak"
+
+
+def test_parse_advocate_self_assessment_missing() -> None:
+    """When OVERALL ASSESSMENT section is absent, return empty string."""
+    assert parse_advocate_self_assessment(ADVOCATE_SAMPLE_MISSING) == ""
+
+
+# ---------------------------------------------------------------------------
+# Judge parser
+# ---------------------------------------------------------------------------
+
+
+JUDGE_SAMPLE_MULTI_FAILURES = """\
+Some preamble from the judge before the structured output.
+
+## ADVOCATE FAILURES
+
+- failure_type: unsupported_estimate_fabricated
+  evidence: "I estimate 10-25% with no derivation chain shown"
+- failure_type: whataboutism
+  evidence: "Points to GiveWell's Y instead of defending the specific X at issue"
+
+## CHALLENGER FAILURES
+
+- failure_type: strawmanning
+  evidence: "Rebuts a claim about protection decline that was never made"
+- failure_type: unsupported_estimate_counter
+  evidence: "Offers 5-15% counter-range with no grounding of its own"
+
+## DEBATE RESOLVED
+
+The debate narrowed the plausible range from 5-50% to 10-25%, but did not
+settle the mechanism question.
+
+## DEBATE UNRESOLVED
+
+Whether the threshold effect is linear or exponential remains contested.
+
+## SURVIVING STRENGTH
+
+moderate
+
+Justification: The Challenger raised a grounded concern that the Advocate
+only partially defended. Both sides traded unsupported counter-estimates,
+but the underlying methodological critique survived substantively.
+
+## RECOMMENDED ACTION
+
+CONCLUDE NOW: The critique survives as a moderate concern; adjust the
+parameter range in the CEA to reflect the narrowed bounds of 10-25%.
+
+action_feasibility: actionable_now
+"""
+
+
+JUDGE_SAMPLE_NONE_DETECTED = """\
+## ADVOCATE FAILURES
+
+(none detected)
+
+## CHALLENGER FAILURES
+
+(none detected)
+
+## DEBATE RESOLVED
+
+Both sides engaged substantively with the grounded evidence.
+
+## DEBATE UNRESOLVED
+
+The quantitative magnitude question was explicitly acknowledged as
+dependent on further empirical work.
+
+## SURVIVING STRENGTH
+
+strong
+
+Justification: The Challenger made grounded arguments drawing directly
+from the verifier evidence package that the Advocate could not fully
+defend; concessions were honest and scope-appropriate.
+
+## RECOMMENDED ACTION
+
+SPECIFIC INVESTIGATION: Re-run the verifier with targeted searches for
+serum retinol studies in sub-Saharan African settings; this is feasible
+within existing tooling.
+
+action_feasibility: requires_specified_evidence
+"""
+
+
+def test_parse_judge_output_multiple_failures() -> None:
+    ja = parse_judge_output(JUDGE_SAMPLE_MULTI_FAILURES)
+
+    assert ja.surviving_strength == "moderate"
+    assert ja.action_feasibility == "actionable_now"
+    assert ja.recommended_action.startswith("CONCLUDE NOW:")
+    # The action text should NOT contain the action_feasibility tag line
+    assert "action_feasibility" not in ja.recommended_action
+
+    assert len(ja.advocate_failures) == 2
+    assert ja.advocate_failures[0].startswith("unsupported_estimate_fabricated:")
+    assert "10-25%" in ja.advocate_failures[0]
+    assert ja.advocate_failures[1].startswith("whataboutism:")
+
+    assert len(ja.challenger_failures) == 2
+    assert ja.challenger_failures[0].startswith("strawmanning:")
+    assert ja.challenger_failures[1].startswith("unsupported_estimate_counter:")
+
+    assert "narrowed the plausible range" in ja.debate_resolved
+    assert "linear or exponential" in ja.debate_unresolved
+
+    assert ja.verdict_justification
+    assert "Challenger raised a grounded concern" in ja.verdict_justification
+    # Justification should not include the bare verdict word on its own line
+    assert not ja.verdict_justification.startswith("moderate")
+
+
+def test_parse_judge_output_none_detected() -> None:
+    ja = parse_judge_output(JUDGE_SAMPLE_NONE_DETECTED)
+
+    assert ja.surviving_strength == "strong"
+    assert ja.advocate_failures == []
+    assert ja.challenger_failures == []
+    assert ja.action_feasibility == "requires_specified_evidence"
+    assert ja.recommended_action.startswith("SPECIFIC INVESTIGATION:")
+    assert "serum retinol" in ja.recommended_action
