@@ -1997,19 +1997,104 @@ def _format_rejected_critiques_for_synthesizer(
     )
 
 
-def run_synthesizer(
+# Nine "real" failure mode types the judge may detect, excluding the
+# positive marker sound_synthesis_noted (tracked separately). Order here
+# is the order they appear in the synthesizer user message.
+JUDGE_FAILURE_MODE_TYPES: list[str] = [
+    "unsupported_estimate_fabricated",
+    "unsupported_estimate_pseudo",
+    "unsupported_estimate_counter",
+    "whataboutism",
+    "call_to_ignorance",
+    "strawmanning",
+    "false_definitiveness",
+    "generic_recommendation",
+    "misrepresenting_evidence_status",
+]
+_JUDGE_POSITIVE_MARKER = "sound_synthesis_noted"
+
+
+def _compute_judge_audit_aggregate(
+    debated: list[DebatedCritique],
+) -> dict[str, Any]:
+    """Compute aggregate failure-mode statistics from judge audits.
+
+    Returns a dict with:
+    - total_debates: int (debates with a judge audit present)
+    - sound_synthesis_noted_count: int (the positive marker, across both sides)
+    - failure_mode_counts: dict[str, int] combined across both sides, keyed
+      by the nine real failure types (excluding sound_synthesis_noted)
+    - failure_mode_counts_advocate / _challenger: per-side dicts
+    - most_common_advocate_failure / _challenger_failure: str (or "(none)")
+
+    The judge's failure lists store entries as "failure_type: evidence"
+    strings; we split on the first colon to extract the type.
+    """
+    per_advocate: dict[str, int] = {t: 0 for t in JUDGE_FAILURE_MODE_TYPES}
+    per_challenger: dict[str, int] = {t: 0 for t in JUDGE_FAILURE_MODE_TYPES}
+    sound_count = 0
+    total_debates = 0
+
+    def _extract_type(entry: str) -> str:
+        return entry.split(":", 1)[0].strip().lower()
+
+    for dc in debated:
+        if dc.judge_audit is None:
+            continue
+        total_debates += 1
+        for entry in dc.judge_audit.advocate_failures:
+            ftype = _extract_type(entry)
+            if ftype == _JUDGE_POSITIVE_MARKER:
+                sound_count += 1
+            elif ftype in per_advocate:
+                per_advocate[ftype] += 1
+        for entry in dc.judge_audit.challenger_failures:
+            ftype = _extract_type(entry)
+            if ftype == _JUDGE_POSITIVE_MARKER:
+                sound_count += 1
+            elif ftype in per_challenger:
+                per_challenger[ftype] += 1
+
+    combined = {
+        t: per_advocate[t] + per_challenger[t] for t in JUDGE_FAILURE_MODE_TYPES
+    }
+
+    def _most_common(counts: dict[str, int]) -> str:
+        nonzero = {k: v for k, v in counts.items() if v > 0}
+        if not nonzero:
+            return "(none)"
+        return max(nonzero, key=lambda k: nonzero[k])
+
+    return {
+        "total_debates": total_debates,
+        "sound_synthesis_noted_count": sound_count,
+        "failure_mode_counts": combined,
+        "failure_mode_counts_advocate": per_advocate,
+        "failure_mode_counts_challenger": per_challenger,
+        "most_common_advocate_failure": _most_common(per_advocate),
+        "most_common_challenger_failure": _most_common(per_challenger),
+    }
+
+
+def _build_synthesizer_user_message(
     debated: list[DebatedCritique],
     all_critiques_count: int,
     verified_count: int,
     rejected_critiques: list[VerifiedCritique],
+    linker_output: LinkerOutput,
+    decomposer_output: DecomposerOutput,
     baseline_output: str,
-    stats: PipelineStats,
-    intervention: str,
 ) -> str:
-    """Stage 6: Synthesize final report."""
-    system = load_prompt("synthesizer.md")
+    """Construct the user message for the Synthesizer API call.
 
-    # Compile critique data
+    Extracted as a standalone helper for testability: the synthesizer prompt
+    contract (sections present, counts pre-computed, dependency formatting)
+    can be validated without an API call.
+    """
+    thread_titles_block = (
+        "\n".join(f"- {t.name}" for t in decomposer_output.threads) or "(none)"
+    )
+
     critique_summaries: list[str] = []
     for dc in debated:
         orig = dc.critique.critique.original
@@ -2031,17 +2116,88 @@ def run_synthesizer(
     # Compile rejected critique data, separated by verdict type
     rejected_section = _format_rejected_critiques_for_synthesizer(rejected_critiques)
 
-    user_message = (
-        f"## Pipeline Statistics\n\n"
+    # Linker dependencies block. Show UNVERIFIABLE as the human-facing label
+    # even though the schema value is "unverified".
+    if not linker_output.dependencies:
+        deps_block = "(no dependencies identified)"
+    else:
+        dep_lines: list[str] = []
+        for d in linker_output.dependencies:
+            verdict_label = (
+                "UNVERIFIABLE" if d.rejected_critique_verdict == "unverified" else "REJECTED"
+            )
+            dep_lines.append(
+                f"- surviving: {d.surviving_critique_title}\n"
+                f"  rejected: {d.rejected_critique_title} (verdict: {verdict_label})\n"
+                f"  relationship: {d.relationship} (confidence: {d.confidence})\n"
+                f"  justification: {d.justification}"
+            )
+        deps_block = "\n".join(dep_lines)
+
+    # Judge audit aggregate — pre-computed in Python, fed as text to the LLM.
+    agg = _compute_judge_audit_aggregate(debated)
+    failure_lines = "\n".join(
+        f"  - {t}: {agg['failure_mode_counts'][t]}" for t in JUDGE_FAILURE_MODE_TYPES
+    )
+    aggregate_block = (
+        f"- Total critiques debated: {agg['total_debates']}\n"
+        f"- Sound syntheses noted: {agg['sound_synthesis_noted_count']}\n"
+        f"- Failure mode counts (combined across both sides):\n"
+        f"{failure_lines}\n"
+        f"- Most common Advocate failure: {agg['most_common_advocate_failure']}\n"
+        f"- Most common Challenger failure: {agg['most_common_challenger_failure']}"
+    )
+
+    n_threads = len(decomposer_output.threads)
+    n_surviving = len(debated)
+    n_rejected = len(rejected_critiques)
+    n_deps = len(linker_output.dependencies)
+
+    return (
+        f"## Pipeline Summary\n\n"
+        f"- Investigation threads examined: {n_threads}\n"
         f"- Candidate critiques generated: {all_critiques_count}\n"
         f"- Verified critiques: {verified_count}\n"
-        f"- Rejected by verifier: {len(rejected_critiques)}\n"
-        f"- Critiques surviving adversarial review: {len(debated)}\n\n"
+        f"- Rejected by verifier: {n_rejected}\n"
+        f"- Critiques surviving adversarial review: {n_surviving}\n"
+        f"- Dependencies identified: {n_deps}\n\n"
+        f"## Decomposer Output (for accurate counts)\n\n"
+        f"Investigation threads examined: {n_threads}\n\n"
+        f"Thread titles:\n{thread_titles_block}\n\n"
         f"## Surviving Critiques (from adversarial stage)\n\n"
         + "\n".join(critique_summaries)
         + f"\n\n{rejected_section}"
-        + f"\n\n## Baseline AI Output (for comparison)\n\n{baseline_output}\n\n"
+        + f"\n\n## Critique Dependencies (from linker)\n\n"
+        f"{deps_block}\n\n"
+        f"## Judge Audit Aggregate (computed from surviving critiques)\n\n"
+        f"{aggregate_block}\n\n"
+        f"## Baseline AI Output (for comparison)\n\n{baseline_output}\n\n"
         "Produce the final red team report."
+    )
+
+
+def run_synthesizer(
+    debated: list[DebatedCritique],
+    all_critiques_count: int,
+    verified_count: int,
+    rejected_critiques: list[VerifiedCritique],
+    linker_output: LinkerOutput,
+    decomposer_output: DecomposerOutput,
+    baseline_output: str,
+    stats: PipelineStats,
+    intervention: str,
+) -> str:
+    """Stage 6: Synthesize final report."""
+    system = load_prompt("synthesizer.md")
+
+    user_message = _build_synthesizer_user_message(
+        debated=debated,
+        all_critiques_count=all_critiques_count,
+        verified_count=verified_count,
+        rejected_critiques=rejected_critiques,
+        linker_output=linker_output,
+        decomposer_output=decomposer_output,
+        baseline_output=baseline_output,
     )
 
     raw = call_api(

@@ -5,6 +5,9 @@ from pathlib import Path
 import pytest
 
 from pipeline.agents import (
+    JUDGE_FAILURE_MODE_TYPES,
+    _build_synthesizer_user_message,
+    _compute_judge_audit_aggregate,
     _format_rejected_critiques_for_synthesizer,
     _parse_batched_verifier_output,
     parse_linker_output,
@@ -15,6 +18,8 @@ from pipeline.schemas import (
     CandidateCritique,
     CritiqueDependency,
     DebatedCritique,
+    DecomposerOutput,
+    InvestigationThread,
     JudgeAudit,
     LinkerOutput,
     PipelineStats,
@@ -487,3 +492,244 @@ class TestRunLinkerShortCircuit:
 
         artifact = tmp_path / "test-intervention" / "05b-linker.json"
         assert artifact.exists()
+
+
+# ---------------------------------------------------------------------------
+# Judge audit aggregate tests
+# ---------------------------------------------------------------------------
+
+
+class TestComputeJudgeAuditAggregate:
+    def test_empty_input(self):
+        agg = _compute_judge_audit_aggregate([])
+        assert agg["total_debates"] == 0
+        assert agg["sound_synthesis_noted_count"] == 0
+        assert all(agg["failure_mode_counts"][t] == 0 for t in JUDGE_FAILURE_MODE_TYPES)
+        assert agg["most_common_advocate_failure"] == "(none)"
+        assert agg["most_common_challenger_failure"] == "(none)"
+
+    def test_sound_synthesis_separated_from_failures(self):
+        """sound_synthesis_noted is a positive marker and must NOT appear in
+        failure_mode_counts, only in sound_synthesis_noted_count."""
+        dc = _make_debated_critique(
+            "title",
+            advocate_failures=[
+                "sound_synthesis_noted: good framing",
+                "whataboutism: deflects",
+            ],
+            challenger_failures=[
+                "sound_synthesis_noted: clean rebuttal",
+                "strawmanning: rebuts non-claim",
+            ],
+        )
+        agg = _compute_judge_audit_aggregate([dc])
+        assert agg["total_debates"] == 1
+        assert agg["sound_synthesis_noted_count"] == 2
+        assert agg["failure_mode_counts"]["whataboutism"] == 1
+        assert agg["failure_mode_counts"]["strawmanning"] == 1
+        # Must not be keyed into failure_mode_counts
+        assert "sound_synthesis_noted" not in agg["failure_mode_counts"]
+
+    def test_most_common_per_side(self):
+        dc1 = _make_debated_critique(
+            "t1",
+            advocate_failures=["whataboutism: x", "whataboutism: y"],
+            challenger_failures=["strawmanning: z"],
+        )
+        dc2 = _make_debated_critique(
+            "t2",
+            advocate_failures=["whataboutism: a"],
+            challenger_failures=["strawmanning: b", "strawmanning: c"],
+        )
+        agg = _compute_judge_audit_aggregate([dc1, dc2])
+        assert agg["most_common_advocate_failure"] == "whataboutism"
+        assert agg["most_common_challenger_failure"] == "strawmanning"
+        assert agg["failure_mode_counts"]["whataboutism"] == 3
+        assert agg["failure_mode_counts"]["strawmanning"] == 3
+        assert agg["total_debates"] == 2
+
+    def test_debates_without_judge_audit_skipped(self):
+        """Legacy pre-judge critiques have judge_audit=None and should not
+        contribute to the total count."""
+        dc_with = _make_debated_critique("with", advocate_failures=["whataboutism: x"])
+        dc_without = _make_debated_critique("without")
+        dc_without.judge_audit = None
+
+        agg = _compute_judge_audit_aggregate([dc_with, dc_without])
+        assert agg["total_debates"] == 1  # only dc_with counted
+        assert agg["failure_mode_counts"]["whataboutism"] == 1
+
+    def test_unknown_failure_type_ignored(self):
+        """Unknown failure type strings (not in the nine real types and not
+        sound_synthesis_noted) should be silently ignored, not crash."""
+        dc = _make_debated_critique(
+            "title",
+            advocate_failures=["some_unknown_type: noise"],
+        )
+        agg = _compute_judge_audit_aggregate([dc])
+        assert agg["total_debates"] == 1
+        assert all(agg["failure_mode_counts"][t] == 0 for t in JUDGE_FAILURE_MODE_TYPES)
+
+
+# ---------------------------------------------------------------------------
+# Synthesizer user message builder tests
+# ---------------------------------------------------------------------------
+
+
+class TestBuildSynthesizerUserMessage:
+    """Contract tests for _build_synthesizer_user_message. The synthesizer
+    prompt depends on specific section headers and pre-computed counts;
+    these tests pin that contract without making an API call."""
+
+    def _decomposer(self, n_threads: int = 3) -> DecomposerOutput:
+        threads = [
+            InvestigationThread(
+                name=f"Thread {i}",
+                scope="",
+                key_questions=[],
+                cea_parameters_affected=[],
+                relevant_sources=[],
+                out_of_scope="",
+                context_md="",
+            )
+            for i in range(1, n_threads + 1)
+        ]
+        return DecomposerOutput(threads=threads, exclusion_list=[], cea_parameter_map="")
+
+    def test_all_required_sections_present(self):
+        debated = [
+            _make_debated_critique(
+                "Finding A",
+                advocate_failures=["whataboutism: x"],
+                challenger_failures=["strawmanning: y"],
+            )
+        ]
+        rejected = [
+            _make_verified_critique("Open Q", verdict="unverified"),
+            _make_verified_critique("Dead End", verdict="rejected", evidence=["contradicted"]),
+        ]
+        dep = CritiqueDependency(
+            surviving_critique_title="Finding A",
+            rejected_critique_title="Open Q",
+            rejected_critique_verdict="unverified",
+            relationship="depends_on",
+            justification="Finding A relies on the Open Q claim.",
+            confidence="high",
+        )
+        linker = LinkerOutput(
+            dependencies=[dep],
+            n_surviving_critiques_examined=1,
+            n_rejected_critiques_available=2,
+            n_dependencies_found=1,
+        )
+        decomp = self._decomposer(n_threads=3)
+
+        msg = _build_synthesizer_user_message(
+            debated=debated,
+            all_critiques_count=10,
+            verified_count=5,
+            rejected_critiques=rejected,
+            linker_output=linker,
+            decomposer_output=decomp,
+            baseline_output="[baseline]",
+        )
+
+        # Pipeline Summary with pre-computed counts
+        assert "## Pipeline Summary" in msg
+        assert "Investigation threads examined: 3" in msg
+        assert "Candidate critiques generated: 10" in msg
+        assert "Verified critiques: 5" in msg
+        assert "Rejected by verifier: 2" in msg
+        assert "Critiques surviving adversarial review: 1" in msg
+        assert "Dependencies identified: 1" in msg
+
+        # Decomposer Output
+        assert "## Decomposer Output" in msg
+        assert "- Thread 1" in msg
+        assert "- Thread 3" in msg
+
+        # Surviving and Rejected sections
+        assert "## Surviving Critiques" in msg
+        assert "### Finding A" in msg
+        assert "## Rejected Critiques" in msg
+        assert "Verdict: UNVERIFIABLE" in msg
+        assert "Verdict: REJECTED" in msg
+        assert "Open Q" in msg
+        assert "Dead End" in msg
+
+        # Dependencies
+        assert "## Critique Dependencies (from linker)" in msg
+        assert "surviving: Finding A" in msg
+        assert "rejected: Open Q" in msg
+        assert "verdict: UNVERIFIABLE" in msg  # human-facing label
+        assert "relationship: depends_on" in msg
+        assert "confidence: high" in msg
+
+        # Judge audit aggregate
+        assert "## Judge Audit Aggregate" in msg
+        assert "Total critiques debated: 1" in msg
+        assert "whataboutism: 1" in msg
+        assert "strawmanning: 1" in msg
+        # sound_synthesis_noted row should NOT appear (it's separate)
+        failure_mode_section = msg.split("## Judge Audit Aggregate")[1].split("## Baseline")[0]
+        assert "sound_synthesis_noted: " not in failure_mode_section
+        assert "Most common Advocate failure: whataboutism" in msg
+        assert "Most common Challenger failure: strawmanning" in msg
+
+        # Baseline at the end
+        assert "[baseline]" in msg
+
+    def test_empty_dependencies_message(self):
+        debated = [_make_debated_critique("Finding A")]
+        linker_empty = LinkerOutput(
+            dependencies=[],
+            n_surviving_critiques_examined=1,
+            n_rejected_critiques_available=0,
+            n_dependencies_found=0,
+        )
+        msg = _build_synthesizer_user_message(
+            debated=debated,
+            all_critiques_count=3,
+            verified_count=2,
+            rejected_critiques=[],
+            linker_output=linker_empty,
+            decomposer_output=self._decomposer(n_threads=2),
+            baseline_output="",
+        )
+        assert "## Critique Dependencies (from linker)" in msg
+        assert "(no dependencies identified)" in msg
+        assert "Dependencies identified: 0" in msg
+
+    def test_rejected_verdict_split_in_message(self):
+        """The rejected section must be split by verdict type even with
+        a mix of unverified and rejected critiques."""
+        debated = [_make_debated_critique("Finding A")]
+        rejected = [
+            _make_verified_critique("U1", verdict="unverified"),
+            _make_verified_critique("U2", verdict="unverified"),
+            _make_verified_critique("R1", verdict="rejected", evidence=["counter"]),
+        ]
+        linker = LinkerOutput(
+            dependencies=[],
+            n_surviving_critiques_examined=1,
+            n_rejected_critiques_available=3,
+            n_dependencies_found=0,
+        )
+        msg = _build_synthesizer_user_message(
+            debated=debated,
+            all_critiques_count=5,
+            verified_count=1,
+            rejected_critiques=rejected,
+            linker_output=linker,
+            decomposer_output=self._decomposer(n_threads=1),
+            baseline_output="",
+        )
+        # U1 and U2 in UNVERIFIABLE section; R1 in REJECTED section
+        unverifiable_section = msg.split("Verdict: UNVERIFIABLE")[1].split("Verdict: REJECTED")[0]
+        assert "U1" in unverifiable_section
+        assert "U2" in unverifiable_section
+        assert "R1" not in unverifiable_section
+
+        rejected_section = msg.split("Verdict: REJECTED")[1].split("## Critique Dependencies")[0]
+        assert "R1" in rejected_section
+        assert "U1" not in rejected_section
