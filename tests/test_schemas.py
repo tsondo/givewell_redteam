@@ -9,6 +9,7 @@ from pipeline.schemas import (
     DebatedCritique,
     DecomposerOutput,
     InvestigationThread,
+    JudgeAudit,
     PipelineStats,
     QuantifiedCritique,
     VerifiedCritique,
@@ -212,6 +213,28 @@ class TestQuantifiedCritiqueRoundTrip:
         assert restored.critique.original.title == obj.critique.original.title
 
 
+def make_judge_audit() -> JudgeAudit:
+    return JudgeAudit(
+        advocate_failures=[
+            "unsupported_estimate_fabricated: I estimate 10-25% with no chain shown",
+            "whataboutism: Challenger's Y also lacks rigorous testing",
+        ],
+        challenger_failures=["strawmanning: rebuts a category-swapped claim"],
+        surviving_strength="moderate",
+        verdict_justification=(
+            "The Challenger raised a grounded concern that the Advocate "
+            "only partially defended; both sides made some substantive moves."
+        ),
+        recommended_action=(
+            "CONCLUDE NOW: The critique survives as a moderate concern; "
+            "adjust the parameter range to reflect narrowed bounds."
+        ),
+        action_feasibility="actionable_now",
+        debate_resolved="The debate narrowed the range from 5-50% to 10-25%.",
+        debate_unresolved="Whether the threshold effect is linear or exponential.",
+    )
+
+
 class TestDebatedCritiqueRoundTrip:
     def test_round_trip(self) -> None:
         obj = make_debated_critique()
@@ -225,6 +248,80 @@ class TestDebatedCritiqueRoundTrip:
         assert restored.recommended_action == obj.recommended_action
         assert restored.critique.materiality == obj.critique.materiality
         assert restored.critique.critique.verdict == obj.critique.critique.verdict
+        # New fields default to neutral values for legacy-style objects.
+        assert restored.judge_audit is None
+        assert restored.advocate_self_assessment == ""
+
+    def test_round_trip_with_judge_audit(self) -> None:
+        obj = make_debated_critique()
+        obj.judge_audit = make_judge_audit()
+        obj.advocate_self_assessment = "partial"
+        serialized = json.dumps(obj.to_dict())
+        restored = DebatedCritique.from_dict(json.loads(serialized))
+
+        assert restored.judge_audit is not None
+        assert restored.judge_audit.surviving_strength == "moderate"
+        assert restored.judge_audit.action_feasibility == "actionable_now"
+        assert len(restored.judge_audit.advocate_failures) == 2
+        assert restored.judge_audit.advocate_failures[0].startswith(
+            "unsupported_estimate_fabricated:"
+        )
+        assert restored.judge_audit.challenger_failures == [
+            "strawmanning: rebuts a category-swapped claim"
+        ]
+        assert restored.advocate_self_assessment == "partial"
+
+    def test_backward_compat_load_without_judge_audit(self) -> None:
+        """Pre-judge 05-adversarial.json files have neither judge_audit nor
+        advocate_self_assessment. Loading them should succeed and populate
+        the new fields with safe defaults."""
+        legacy_dict = {
+            "critique": make_quantified_critique().to_dict(),
+            "advocate_defense": "old-format defense",
+            "challenger_rebuttal": "old-format rebuttal",
+            "surviving_strength": "strong",
+            "key_unresolved": ["legacy q1", "legacy q2"],
+            "recommended_action": "investigate",
+        }
+        restored = DebatedCritique.from_dict(legacy_dict)
+
+        assert restored.surviving_strength == "strong"
+        assert restored.recommended_action == "investigate"
+        assert restored.judge_audit is None
+        assert restored.advocate_self_assessment == ""
+
+
+class TestJudgeAuditRoundTrip:
+    def test_round_trip(self) -> None:
+        obj = make_judge_audit()
+        serialized = json.dumps(obj.to_dict())
+        restored = JudgeAudit.from_dict(json.loads(serialized))
+
+        assert restored.surviving_strength == obj.surviving_strength
+        assert restored.verdict_justification == obj.verdict_justification
+        assert restored.recommended_action == obj.recommended_action
+        assert restored.action_feasibility == obj.action_feasibility
+        assert restored.debate_resolved == obj.debate_resolved
+        assert restored.debate_unresolved == obj.debate_unresolved
+        assert restored.advocate_failures == obj.advocate_failures
+        assert restored.challenger_failures == obj.challenger_failures
+
+    def test_empty_failure_lists(self) -> None:
+        obj = JudgeAudit(
+            advocate_failures=[],
+            challenger_failures=[],
+            surviving_strength="weak",
+            verdict_justification="Neither side made grounded arguments.",
+            recommended_action="OPEN QUESTION: debate was unproductive.",
+            action_feasibility="open_question",
+            debate_resolved="Nothing.",
+            debate_unresolved="Everything.",
+        )
+        serialized = json.dumps(obj.to_dict())
+        restored = JudgeAudit.from_dict(json.loads(serialized))
+        assert restored.advocate_failures == []
+        assert restored.challenger_failures == []
+        assert restored.action_feasibility == "open_question"
 
 
 # --- PipelineStats tests ---

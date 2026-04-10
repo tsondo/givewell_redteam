@@ -147,13 +147,57 @@ class QuantifiedCritique:
 
 
 @dataclass
+class JudgeAudit:
+    """Structured audit of an adversarial debate by the neutral judge agent.
+
+    Produced by run_judge after Advocate and Challenger have completed their
+    exchange. The verdict and recommended_action fields supersede any values
+    the Challenger may have produced in its own output.
+    """
+
+    # Failure modes detected, by side. Each entry is a "failure_type: evidence"
+    # string (e.g., "unsupported_estimate_counter: 10-25% offered without derivation").
+    advocate_failures: list[str]
+    challenger_failures: list[str]
+    # Verdict with explicit justification
+    surviving_strength: str  # "strong" | "moderate" | "weak"
+    verdict_justification: str  # 2-4 sentences citing specific debate moves
+    # Recommended action with feasibility
+    recommended_action: str  # concrete, NOT "investigate further" alone
+    action_feasibility: str  # "actionable_now" | "requires_specified_evidence" | "open_question"
+    # Honest summary of what the debate established
+    debate_resolved: str  # 1-2 sentences on what (if anything) the debate settled
+    debate_unresolved: str  # 1-2 sentences on what remains contested
+
+    def to_dict(self) -> dict[str, Any]:
+        return dataclasses.asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> JudgeAudit:
+        return cls(
+            advocate_failures=d.get("advocate_failures", []),
+            challenger_failures=d.get("challenger_failures", []),
+            surviving_strength=d["surviving_strength"],
+            verdict_justification=d.get("verdict_justification", ""),
+            recommended_action=d["recommended_action"],
+            action_feasibility=d.get("action_feasibility", "open_question"),
+            debate_resolved=d.get("debate_resolved", ""),
+            debate_unresolved=d.get("debate_unresolved", ""),
+        )
+
+
+@dataclass
 class DebatedCritique:
     critique: QuantifiedCritique
     advocate_defense: str
     challenger_rebuttal: str
-    surviving_strength: str  # "strong"|"moderate"|"weak"
+    surviving_strength: str  # "strong"|"moderate"|"weak" (sourced from judge when present)
     key_unresolved: list[str]
-    recommended_action: str  # "investigate"|"adjust_model"|"monitor"|"dismiss"
+    recommended_action: str  # free-text from judge when present; legacy enum for old runs
+    # New fields added alongside the judge agent. Defaults preserve
+    # backward compatibility with pre-judge 05-adversarial.json files.
+    advocate_self_assessment: str = ""  # "strong" | "partial" | "weak" (from Advocate's OVERALL ASSESSMENT)
+    judge_audit: JudgeAudit | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -163,10 +207,13 @@ class DebatedCritique:
             "surviving_strength": self.surviving_strength,
             "key_unresolved": self.key_unresolved,
             "recommended_action": self.recommended_action,
+            "advocate_self_assessment": self.advocate_self_assessment,
+            "judge_audit": self.judge_audit.to_dict() if self.judge_audit is not None else None,
         }
 
     @classmethod
     def from_dict(cls, d: dict[str, Any]) -> DebatedCritique:
+        judge_audit_raw = d.get("judge_audit")
         return cls(
             critique=QuantifiedCritique.from_dict(d["critique"]),
             advocate_defense=d["advocate_defense"],
@@ -174,6 +221,8 @@ class DebatedCritique:
             surviving_strength=d["surviving_strength"],
             key_unresolved=d["key_unresolved"],
             recommended_action=d["recommended_action"],
+            advocate_self_assessment=d.get("advocate_self_assessment", ""),
+            judge_audit=JudgeAudit.from_dict(judge_audit_raw) if judge_audit_raw else None,
         )
 
 
