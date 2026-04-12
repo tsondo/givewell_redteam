@@ -17,11 +17,22 @@ Multi-agent pipeline for AI red teaming of GiveWell's cost-effectiveness analyse
 - **API key is in `.env` via python-dotenv. Do NOT use shell environment variables.**
 - **Budget is $50 total.** Log token usage and estimated cost per API call. Use Sonnet where the spec says Sonnet, Opus only where specified.
 - **Run Phase 1 (water chlorination) first.** Review costs before running Phase 2 and 3.
+- **No git worktrees.** Work directly on the current branch. Do not use the using-git-worktrees skill.
 - **No agent frameworks.** No LangChain, CrewAI, AutoGen. Direct Anthropic SDK calls.
 - **No streaming.** Batch API calls.
 - **Four dependencies only:** anthropic, openpyxl, pandas, python-dotenv.
 - **Save intermediate outputs after every stage.** Both JSON (for pipeline) and markdown (for humans) to `results/{intervention}/`.
+## Behavior
 
+**Surgical changes.** Touch only what you must. Don't "improve" adjacent code, comments, or formatting. Don't refactor things that aren't broken. **Every changed line should trace directly to the user's request or the spec.**
+
+**Prompts in `prompts/` are read-only.** They are the experimental treatment. Modifying them invalidates all results gathered so far and breaks comparability across runs. If a prompt seems wrong, raise it — don't edit it.
+
+**No speculative API calls.** The pipeline has exactly the stages defined in `docs/architecture.md`. Do not add "helpful" extra LLM calls (clarification passes, meta-critiques, retries with rephrasing) that aren't in the spec. Every API call costs real money against a $50 budget and contaminates the experiment by introducing variables not in the design.
+
+**Push back when warranted.** If the spec is ambiguous or a constraint conflicts with another, name the conflict and ask. Do not silently pick an interpretation — this is a research pipeline and silent choices become uncontrolled variables.
+
+---
 ## Workflow
 
 **Do not write code immediately.** Your process:
