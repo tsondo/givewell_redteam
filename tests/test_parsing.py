@@ -6,6 +6,7 @@ each parser extracts structured data correctly.
 from __future__ import annotations
 
 from pipeline.agents import (
+    _parse_bullet_list,
     parse_advocate_self_assessment,
     parse_challenger_output,
     parse_decomposer_output,
@@ -340,6 +341,61 @@ def test_parse_verifier_output_unverified() -> None:
     result = parse_verifier_output(VERIFIER_UNVERIFIABLE_SAMPLE, original)
 
     assert result.verdict == "unverified"
+
+
+def test_parse_bullet_list_joins_fragments() -> None:
+    """Regression test for P-004: parser fragments in verifier arrays.
+
+    The verifier LLM wraps evidence across lines with sentence-ending
+    punctuation on its own line.  _parse_bullet_list must join these
+    continuations instead of creating standalone fragment items.
+    """
+    # Reproduces the exact pattern from VAS Critique 4 evidence
+    raw = (
+        "Mali is specifically listed among 12 countries\n"
+        ". \n"
+        "DRC is among 15 countries\n"
+        ". \n"
+        "Mali implemented voluntary vitamin A oil fortification\n"
+        ". However, \n"
+        "the actual coverage may be limited\n"
+        ".\n"
+    )
+    result = _parse_bullet_list(raw)
+    # 3 items: Mali, DRC, and Mali+However+coverage joined
+    assert len(result) == 3
+    # No standalone fragments
+    assert "." not in result
+    assert ". However," not in result
+    # Continuation joined correctly
+    assert "However" in result[2]
+    assert "coverage" in result[2]
+
+
+def test_parse_bullet_list_filters_structural_markers() -> None:
+    """Regression test for P-004: structural markers like 'Evidence:' filtered."""
+    raw = (
+        "- Evidence:\n"
+        "Some actual evidence here\n"
+        "- Claim:\n"
+        "Another piece of evidence\n"
+    )
+    result = _parse_bullet_list(raw)
+    assert "Evidence:" not in result
+    assert "Claim:" not in result
+    assert any("actual evidence" in r for r in result)
+
+
+def test_parse_bullet_list_preserves_normal_bullets() -> None:
+    """Normal bulleted lists pass through unchanged."""
+    raw = (
+        "- First evidence item about something important\n"
+        "- Second evidence item with more details\n"
+        "- Third item about testing\n"
+    )
+    result = _parse_bullet_list(raw)
+    assert len(result) == 3
+    assert result[0] == "First evidence item about something important"
 
 
 def test_parse_challenger_output() -> None:

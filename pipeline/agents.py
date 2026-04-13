@@ -281,21 +281,9 @@ def parse_decomposer_output(text: str) -> DecomposerOutput:
         known_concerns = sections.get("KNOWN CONCERNS ALREADY SURFACED", "")
 
         # Parse bullet lists
-        key_params = [
-            line.strip().lstrip("-•* ").strip()
-            for line in key_params_raw.splitlines()
-            if line.strip() and line.strip().lstrip("-•* ").strip()
-        ]
-        data_sources = [
-            line.strip().lstrip("-•* ").strip()
-            for line in data_sources_raw.splitlines()
-            if line.strip() and line.strip().lstrip("-•* ").strip()
-        ]
-        exclusion_items = [
-            line.strip().lstrip("-•* ").strip()
-            for line in known_concerns.splitlines()
-            if line.strip() and line.strip().lstrip("-•* ").strip()
-        ]
+        key_params = _parse_bullet_list(key_params_raw)
+        data_sources = _parse_bullet_list(data_sources_raw)
+        exclusion_items = _parse_bullet_list(known_concerns)
 
         all_exclusions.extend(exclusion_items)
         all_parameters.extend(key_params)
@@ -372,11 +360,7 @@ def parse_investigator_output(
         # novelty_check not stored in dataclass but parsed for completeness
 
         # Parse evidence as list of items
-        evidence_items = [
-            line.strip().lstrip("-•* ").strip()
-            for line in evidence_raw.splitlines()
-            if line.strip() and line.strip().lstrip("-•* ").strip()
-        ]
+        evidence_items = _parse_bullet_list(evidence_raw)
 
         # Infer direction from mechanism text
         mech_lower = mechanism.lower()
@@ -442,6 +426,81 @@ def parse_investigator_output(
     return critiques
 
 
+_BULLET_RE = re.compile(r"^\s*[-•*]\s+|^\s*\d+\.\s+")
+_FRAGMENT_RE = re.compile(
+    r"^\s*[.,;:]\s*(?:However,?)?\s*$"          # bare punctuation / ". However,"
+    r"|^\s*(?:Evidence|Claim|Note|Additionally)\s*[:,.]?\s*$"  # structural markers
+    r"|^\s*(?:and|or|but)\s*$",                  # bare conjunctions
+    re.IGNORECASE,
+)
+
+
+def _is_continuation(stripped: str) -> bool:
+    """Return True if a line is a continuation of the previous item.
+
+    Catches: bare punctuation (``'.'``), transitions (``'. However,'``),
+    structural markers (``'Evidence:'``), and wrapped text that starts
+    with lowercase or leading punctuation (``', showing mixed results.'``).
+    """
+    if _FRAGMENT_RE.match(stripped):
+        return True
+    if len(stripped) < 15 and not re.search(r"[a-zA-Z]{5,}", stripped):
+        return True
+    # Starts with sentence/clause punctuation — continuation
+    if stripped[0] in ".,;":
+        return True
+    # Starts with lowercase — wrapped line after a line break
+    if stripped[0].islower():
+        return True
+    return False
+
+
+def _parse_bullet_list(raw: str) -> list[str]:
+    """Parse LLM prose into bullet items, joining continuation lines.
+
+    The verifier LLM often wraps evidence across multiple lines with
+    sentence-ending punctuation or transitions ('. However,') on their
+    own line.  A naive splitlines() treats these fragments as separate
+    items.  This function:
+      1. Lines with bullet markers (-, •, *, 1.) always start new items.
+      2. Continuation lines (fragments, lowercase/punctuation starts) join
+         the previous item.
+      3. Other substantial lines start new items.
+      4. Remaining trivial fragments are filtered in a final pass.
+    """
+    items: list[str] = []
+    for line in raw.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if _BULLET_RE.match(line):
+            # Bullet marker — always starts a new item
+            content = stripped.lstrip("-•* ").strip()
+            if content:
+                items.append(content)
+            # Empty bullet on its own line (e.g. "- \n") — skip; next
+            # line will start a new item via the else branch below.
+        elif items and _is_continuation(stripped):
+            # Fragment or wrapped continuation — join to previous item
+            items[-1] = items[-1] + " " + stripped
+        else:
+            # Substantial text without bullet marker — new item
+            items.append(stripped)
+
+    # Final pass: drop items that are still trivial after joining
+    cleaned: list[str] = []
+    for item in items:
+        item = item.strip()
+        if not item:
+            continue
+        if _FRAGMENT_RE.match(item):
+            continue
+        if len(item) < 15 and not re.search(r"[a-zA-Z]{5,}", item):
+            continue
+        cleaned.append(item)
+    return cleaned
+
+
 def parse_verifier_output(
     text: str, original: CandidateCritique
 ) -> VerifiedCritique:
@@ -473,11 +532,7 @@ def parse_verifier_output(
         verdict = "unverified"
 
     # Parse evidence found as list
-    evidence_items = [
-        line.strip().lstrip("-•* ").strip()
-        for line in evidence_raw.splitlines()
-        if line.strip() and line.strip().lstrip("-•* ").strip()
-    ]
+    evidence_items = _parse_bullet_list(evidence_raw)
 
     # Determine evidence strength from context
     evidence_lower = (evidence_raw + " " + claim_check_raw).lower()
@@ -495,11 +550,7 @@ def parse_verifier_output(
         evidence_strength = "weak"
 
     # Caveats from claim check
-    caveats = [
-        line.strip().lstrip("-•* ").strip()
-        for line in claim_check_raw.splitlines()
-        if line.strip() and line.strip().lstrip("-•* ").strip()
-    ]
+    caveats = _parse_bullet_list(claim_check_raw)
 
     # Clean up: the header often includes "(if partially verified):" — strip that
     revised_clean = re.sub(
@@ -920,11 +971,7 @@ def parse_challenger_output(text: str) -> tuple[str, list[str], str]:
         surviving_strength = ""  # new challenger format omits this
 
     # Parse questions as list
-    key_unresolved = [
-        line.strip().lstrip("-•*0123456789.) ").strip()
-        for line in questions_raw.splitlines()
-        if line.strip() and line.strip().lstrip("-•*0123456789.) ").strip()
-    ]
+    key_unresolved = _parse_bullet_list(questions_raw)
 
     # Parse recommended action (advisory only — judge is authoritative)
     action_lower = action_raw.lower().strip()
