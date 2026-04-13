@@ -28,7 +28,7 @@ MAX_TOKENS_QUANTIFIER: int = 8192
 MAX_TOKENS_ADVERSARIAL: int = 3072
 MAX_TOKENS_JUDGE: int = 4096
 MAX_TOKENS_LINKER: int = 4096  # linker output is structured, not narrative
-MAX_TOKENS_SYNTHESIZER: int = 8192
+MAX_TOKENS_SYNTHESIZER: int = 12288
 
 # Verifier web search settings
 VERIFIER_MAX_SEARCHES: int = 5  # max web searches per verifier call
