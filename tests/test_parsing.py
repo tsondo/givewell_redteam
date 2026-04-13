@@ -252,6 +252,32 @@ def test_parse_investigator_output() -> None:
     assert critiques[1].estimated_direction == "decreases"  # "reduce" in mechanism
 
 
+def test_parse_investigator_orphan_bold_markers() -> None:
+    """Regression test for P-001: orphan ** markers in investigator output."""
+    sample = """\
+CRITIQUE 1: Frailty Selection and Competing Mortality Risks**
+
+**HYPOTHESIS:** ** VAS mortality benefits may exhibit frailty selection effects.
+
+**MECHANISM:** ** This would affect the mortality parameter by introducing bias.
+
+EVIDENCE:
+- Some evidence here
+
+STRENGTH: HIGH
+"""
+    critiques = parse_investigator_output(sample, "Test Thread")
+    assert len(critiques) == 1
+    # Title must not end with **
+    assert not critiques[0].title.endswith("**")
+    assert critiques[0].title == "Frailty Selection and Competing Mortality Risks"
+    # Hypothesis and mechanism must not start with **
+    assert not critiques[0].hypothesis.startswith("**")
+    assert not critiques[0].mechanism.startswith("**")
+    assert critiques[0].hypothesis.startswith("VAS")
+    assert critiques[0].mechanism.startswith("This")
+
+
 def test_parse_verifier_output_verified() -> None:
     from pipeline.schemas import CandidateCritique
 

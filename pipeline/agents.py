@@ -191,6 +191,13 @@ def fetch_web_content(url: str, stats: PipelineStats) -> str:
 # ---------------------------------------------------------------------------
 
 
+def _strip_orphan_bold(value: str) -> str:
+    """Strip orphan bold markers (** or ***) from start and end of a value."""
+    value = re.sub(r"^(?:\*{2,3}\s*)+", "", value)
+    value = re.sub(r"(?:\s*\*{2,3})+$", "", value)
+    return value.strip()
+
+
 def _extract_section(text: str, header: str, next_headers: list[str]) -> str:
     """Extract content between a header and the next header in next_headers.
 
@@ -214,7 +221,7 @@ def _extract_section(text: str, header: str, next_headers: list[str]) -> str:
         if nh_match:
             end = min(end, start + nh_match.start())
 
-    return text[start:end].strip()
+    return _strip_orphan_bold(text[start:end].strip())
 
 
 def _split_on_pattern(text: str, pattern: str) -> list[tuple[str, str]]:
@@ -222,7 +229,7 @@ def _split_on_pattern(text: str, pattern: str) -> list[tuple[str, str]]:
     matches = list(re.finditer(pattern, text, re.IGNORECASE))
     results: list[tuple[str, str]] = []
     for i, m in enumerate(matches):
-        title = m.group(1).strip() if m.lastindex else ""
+        title = _strip_orphan_bold(m.group(1).strip()) if m.lastindex else ""
         start = m.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end].strip()
