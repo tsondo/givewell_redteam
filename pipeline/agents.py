@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 import anthropic
+import httpx
 
 from pipeline.config import (
     ANTHROPIC_API_KEY,
@@ -65,6 +66,7 @@ def call_api(
     stage: str,
     max_tokens: int,
     tools: list[dict[str, Any]] | None = None,
+    timeout: httpx.Timeout | None = None,
 ) -> str:
     """Call Anthropic API with retries and cost tracking. Returns text response."""
     last_error: Exception | None = None
@@ -78,6 +80,8 @@ def call_api(
             }
             if tools:
                 kwargs["tools"] = tools
+            if timeout is not None:
+                kwargs["timeout"] = timeout
             response = client.messages.create(**kwargs)
 
             # Extract text blocks
@@ -2207,6 +2211,7 @@ def run_synthesizer(
         stats=stats,
         stage="synthesizer",
         max_tokens=MAX_TOKENS_SYNTHESIZER,
+        timeout=httpx.Timeout(600.0),
     )
 
     save_stage_output(intervention, 6, "synthesizer", {"report": raw}, raw)
