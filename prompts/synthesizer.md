@@ -62,6 +62,35 @@ estimate or generate numbers.
 CRITICAL: If a count is missing from the input, write "(not available)"
 rather than estimating. Estimating counts is forbidden.
 
+## How to Read This Report
+
+Include this section verbatim — do not rewrite, paraphrase, or adapt
+the text below. It is reader-facing documentation of the rating system,
+not a content section for you to summarize. Copy it exactly as written:
+
+This report classifies findings by the surviving strength a neutral judge
+assigned after reviewing each Advocate/Challenger debate. The three levels
+mean:
+
+- **STRONG** — The Challenger made grounded arguments the Advocate could
+  not adequately defend. The critique identifies a real gap in the CEA
+  that warrants direct attention.
+
+- **MODERATE** — Both sides made some grounded arguments, and the
+  substantive question remains open. The critique identifies a real
+  concern but the evidence doesn't yet settle how to adjust.
+
+- **WEAK** — The debate was dominated by reasoning failures (unsupported
+  estimates, strawmanning, whataboutism, or similar) on one or both
+  sides. The critique may still be valid, but this particular debate
+  did not establish it. Weak findings are preserved in this report
+  because the underlying claim may deserve a better-argued examination
+  later.
+
+The Debate Quality Audit section further below quantifies the reasoning
+failure modes detected across all debates. Readers who want to assess
+the calibration of these labels should start there.
+
 ## Critical Findings (surviving strength: STRONG)
 
 For each finding, use the title field from the Surviving Critiques input
@@ -121,15 +150,34 @@ Aggregate input section — do not estimate or generate.
 **Most common Advocate failure:** [from input]
 **Most common Challenger failure:** [from input]
 
-**Patterns (1-3 sentences):** Interpret what these numbers mean. Acceptable
-interpretations include: "The Advocate side most frequently failed by [type],
-suggesting [observation]"; "Sound syntheses outnumbered failure modes by
-[ratio], indicating substantive analytical engagement"; "[type] failures
-clustered in [category of critique], suggesting the prompts may need
-[specific tuning]".
+**Patterns (1-3 sentences):** Interpret what these numbers mean. When
+referring to a specific failure type's count, you MUST specify whether
+the number is combined across both sides or is the per-side count. The
+input provides:
 
-DO NOT make up patterns that aren't supported by the numbers. If the numbers
-don't support a clear interpretation, write "No clear pattern across this run."
+- The combined table (totals across Advocate + Challenger)
+- "Most common Advocate failure: [type]" — per-side top for Advocate
+- "Most common Challenger failure: [type]" — per-side top for Challenger
+
+If you cite a number from the combined table, label it as such:
+"strawmanning appeared 27 times across both sides combined." Do not
+write "the Advocate side most frequently failed by strawmanning (27
+instances)" if 27 is the combined total — that conflates combined with
+per-side.
+
+If you want to comment on per-side patterns, use the "Most common X
+failure" lines and their underlying counts, not the combined table.
+
+Acceptable example: "The Advocate's most common failure was strawmanning
+(18 instances), while the Challenger's most common was
+unsupported_estimate_counter (14 instances). Across both sides combined,
+strawmanning (27) was the most frequent failure mode overall."
+
+Unacceptable example: "The Advocate side most frequently failed by
+strawmanning (27 instances)."
+
+If the numbers don't support a clear interpretation, write "No clear
+pattern across this run."
 
 ## Conditional Findings (from linker output)
 
