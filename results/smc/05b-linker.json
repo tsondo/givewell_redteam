@@ -1,0 +1,55 @@
+{
+  "dependencies": [
+    {
+      "surviving_critique_title": "Implementation Fidelity Degradation at Scale",
+      "rejected_critique_title": "Health Worker Training Quality at Scale",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "depends_on",
+      "justification": "The surviving critique's mechanism explicitly assumes \"intensive supervision and training that differs from routine program implementation at scale\" creates efficacy degradation, which directly requires the rejected claim about cascaded training degradation to be true for the full impact to materialize.",
+      "confidence": "high"
+    },
+    {
+      "surviving_critique_title": "Supply Chain Quality Degradation in Remote Areas",
+      "rejected_critique_title": "Drug Resistance Acceleration Under Mass Distribution",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "Both critiques address drug-related effectiveness reductions over time, though the surviving critique focuses on storage/quality while the rejected focuses on resistance development - they represent related but distinct pathways to efficacy decline.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Drug Quality and Resistance Acceleration",
+      "rejected_critique_title": "Drug Resistance Acceleration Under Mass Distribution",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "depends_on",
+      "justification": "The surviving critique's core mechanism that \"sub-therapeutic drug levels due to quality issues accelerate resistance development\" directly requires the rejected critique's premise about mass distribution creating resistance pressure to be valid - without that pressure mechanism, quality issues alone wouldn't accelerate resistance.",
+      "confidence": "high"
+    },
+    {
+      "surviving_critique_title": "Government Budget Substitution in Decentralized Health Systems",
+      "rejected_critique_title": "Global Fund Allocation Crowding Out",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "Both critiques address funding displacement effects, with the surviving critique focusing on subnational government responses while the rejected addresses international donor coordination - they represent different levels of the same crowding-out phenomenon.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Government Budget Substitution in Decentralized Health Systems",
+      "rejected_critique_title": "PMI Strategic Pivot Away from SMC-Heavy Areas",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "Both critiques concern strategic funding reallocation by major malaria funders in response to GiveWell presence, though focusing on different actors (district governments vs. PMI) - they share the core assumption that funders actively redirect resources.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Vertical Integration Reduces Cost-Effectiveness of Platform",
+      "rejected_critique_title": "Malaria Trust Fund Leveraging Assumptions",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "Both critiques question whether GiveWell's cost-effectiveness calculations properly account for alternative delivery mechanisms and funding structures, though they focus on different aspects of the funding and delivery system optimization.",
+      "confidence": "low"
+    }
+  ],
+  "n_surviving_critiques_examined": 19,
+  "n_rejected_critiques_available": 7,
+  "n_dependencies_found": 6
+}

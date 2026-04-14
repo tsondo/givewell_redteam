@@ -141,7 +141,7 @@ INTERVENTION_URLS: dict[str, dict[str, str]] = {
     "smc": {
         "report": "https://www.givewell.org/international/technical/programs/seasonal-malaria-chemoprevention",
         "baseline": "https://docs.google.com/document/d/1562HtXfGOQ3EYOWgDnCAV_s6uF2zbPmRAqZ817_lNpA/",
-        "spreadsheet": "MalariaCEA.xlsx",
+        "spreadsheet": "GW/MalariaCEA.xlsx",
     },
     "vas": {
         "report": "https://www.givewell.org/international/technical/programs/vitamin-A",

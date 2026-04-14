@@ -1,17 +1,16 @@
 [
   {
     "original": {
-      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
-      "title": "Pharmacokinetic Evidence Suggests Lower True Adherence Than Caregiver Reports",
-      "hypothesis": "** Blood plasma studies measuring actual drug levels in SMC recipients consistently show lower drug detection rates than caregiver-reported adherence rates, suggesting systematic overreporting. If true adherence is 10-15 percentage points lower than the 93.9% weighted average GiveWell uses, the cost-effectiveness estimate could be materially overstated.",
-      "mechanism": "** This would directly reduce the adherence adjustment parameter from 0.9387 to approximately 0.80-0.85. Combined with the 50% efficacy reduction for non-adherence, this could reduce overall program effectiveness by 12-18%, increasing cost per death averted from ~$4,500 to ~$5,200-5,400 in median settings.",
+      "thread_name": "External Validity of RCT Evidence to Current Implementation Scale",
+      "title": "Health Worker Training Quality at Scale",
+      "hypothesis": "The original RCTs involved intensive, researcher-led training of community health workers. At scale, training becomes cascaded through multiple levels (national \u2192 regional \u2192 district \u2192 community), leading to systematic degradation in knowledge transfer. Community health workers may misunderstand dosing schedules, fail to provide adequate counseling, or incorrectly assess child eligibility.",
+      "mechanism": "This affects multiple parameters: adherence rates (through poor counseling), appropriate dosing (affecting base efficacy), and targeting accuracy (affecting coverage assumptions). If training quality drops significantly, these combined effects could reduce real-world effectiveness by 20-35% compared to trial conditions.",
       "parameters_affected": [
         "unknown"
       ],
       "suggested_evidence": [
-        "A pharmacokinetic study in Mali found sulfadoxine detected in only 76% of children surveyed 7 days after SMC distribution, despite 94% caregiver-reported adherence (Cairns et al., Malaria Journal 2020)",
-        "Similar discrepancies reported in Senegal where amodiaquine metabolite detection was 15-20 percentage points lower than reported adherence rates",
-        "UNGROUNDED \u2014 I believe there are additional PK studies from Burkina Faso and Niger showing similar patterns, but I cannot identify specific citations"
+        "UNGROUNDED \u2014 needs verification. I believe training cascade effectiveness literature shows systematic knowledge degradation, but cannot cite specific studies.",
+        "Implementation reports from scaled SMC programs would need to document training protocols versus trial conditions."
       ],
       "estimated_direction": "decreases",
       "estimated_magnitude": "large"
@@ -25,130 +24,153 @@
   },
   {
     "original": {
-      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
-      "title": "Adherence Fatigue Across Monthly Cycles Not Captured in Weighted Average",
-      "hypothesis": "** GiveWell's adherence adjustment uses a static weighted average across countries but may not account for declining adherence rates over the 4-month SMC campaign period. Caregivers may be more diligent in early cycles but experience \"SMC fatigue\" in later months, particularly for unsupervised day 2 and day 3 doses.",
-      "mechanism": "** If adherence drops from 95% in cycle 1 to 85% in cycle 4, but GiveWell uses a 94% average, the model overestimates effectiveness for the epidemiologically critical later cycles when malaria transmission typically peaks. This could reduce true program effectiveness by 8-12%.",
+      "thread_name": "External Validity of RCT Evidence to Current Implementation Scale",
+      "title": "Drug Resistance Acceleration Under Mass Distribution",
+      "hypothesis": "While GiveWell mentions basic resistance monitoring, they may not account for the accelerated resistance development that occurs specifically under mass drug administration conditions. The selection pressure from treating millions of children simultaneously with the same drug combination could accelerate resistance emergence faster than the historical data suggests.",
+      "mechanism": "This would create a time-decay effect on SMC effectiveness not captured in GiveWell's model. If resistance develops 2-3x faster under mass distribution than historical rates suggest, the protective efficacy could decline significantly within 3-5 years, affecting the cost-effectiveness calculation's time horizon.",
       "parameters_affected": [
         "unknown"
       ],
       "suggested_evidence": [
-        "UNGROUNDED \u2014 I believe household survey data from multiple SMC programs shows declining pill counts and blister pack completion in later cycles, but I cannot identify specific citations",
-        "Analogous evidence from seasonal vaccination campaigns showing participation fatigue",
-        "Logical argument: Caregiver motivation naturally decreases over repeated monthly distributions without visible illness prevention"
+        "Mass drug administration of antimalarials has historically led to accelerated resistance (White et al., Trends in Parasitology 2004)",
+        "UNGROUNDED \u2014 needs verification. I believe modeling studies exist showing accelerated resistance under SMC specifically, but cannot cite them.",
+        "WHO surveillance data on SP resistance in SMC-implementing regions would be needed for verification."
+      ],
+      "estimated_direction": "uncertain",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Counterfactual Funding Displacement and Leverage Assumptions",
+      "title": "Global Fund Allocation Crowding Out",
+      "hypothesis": ": GiveWell's SMC funding may systematically crowd out Global Fund malaria allocations through the Global Fund's country allocation methodology. The Global Fund uses epidemiological burden and existing funding sources when determining country allocations, potentially reducing future grants to countries receiving significant GiveWell SMC support.",
+      "mechanism": ": This would affect the \"other philanthropic spending\" parameter by creating a negative feedback loop. If Global Fund reduces allocations by even 50% of GiveWell's contribution in subsequent funding cycles, the true marginal impact drops significantly. For countries like Mali receiving ~$8M in GiveWell SMC funding, a proportional Global Fund reduction would effectively halve the net additional coverage.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        ": UNGROUNDED \u2014 needs verification. The Global Fund's 2020-2022 allocation methodology documentation mentions consideration of \"other sources of financing\" but I cannot cite specific evidence of SMC-related crowding out. This mechanism is theoretically plausible given how multilateral funding agencies typically avoid duplication, but requires verification of actual allocation decisions."
       ],
       "estimated_direction": "decreases",
       "estimated_magnitude": "medium"
     },
     "verdict": "unverified",
-    "evidence_found": [
-      "Limited evidence on cycle-specific adherence: Studies in Burkina Faso, Mali, and Niger found non-adherence rates of \"4.15%, 5.60%, and 13.30%, respectively, for the 2nd dose and 3.98%, 5.60% and 14.39% for the 3rd dose\"",
-      ", but this doesn't clearly show progressive decline over monthly cycles."
-    ],
-    "evidence_strength": "moderate",
+    "evidence_found": [],
+    "evidence_strength": "weak",
     "counter_evidence": [],
-    "caveats": [
-      "Adherence decline over SMC cycles**: PLAUSIBLE BUT UNVERIFIABLE - The hypothesis is logically sound but no direct evidence was found",
-      "95% to 85% decline from cycle 1 to 4**: UNVERIFIABLE - No supporting data found"
-    ],
+    "caveats": [],
     "revised_hypothesis": null
   },
   {
     "original": {
-      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
-      "title": "Geographic Distance Effects on Day 2-3 Home Administration",
-      "hypothesis": "** Children living farther from distribution points may have lower adherence to unsupervised day 2 and day 3 doses, either due to reduced counseling quality during rushed distribution or correlation between distance and other adherence barriers. GiveWell's adherence adjustments may not capture this geographic heterogeneity.",
-      "mechanism": "** If adherence drops from 95% within 2km of distribution points to 88% beyond 5km, and distribution catchment areas vary systematically across countries, adherence could be overestimated by 3-7 percentage points in some settings. This would reduce effectiveness by 6-12%.",
+      "thread_name": "Counterfactual Funding Displacement and Leverage Assumptions",
+      "title": "PMI Strategic Pivot Away from SMC-Heavy Areas",
+      "hypothesis": ": PMI's operational plans may strategically reduce SMC investments in areas where GiveWell provides substantial funding, concentrating PMI resources in uncovered areas. This creates a geographic displacement that maintains total PMI spending while reducing overlap.",
+      "mechanism": ": This would systematically underestimate the true counterfactual SMC coverage by assuming PMI spending patterns remain constant. If PMI redirects 60% of its SMC budget away from GiveWell-supported areas, the effective displacement could reach 20-30% of GiveWell-attributed coverage in countries with significant PMI presence.",
       "parameters_affected": [
         "unknown"
       ],
       "suggested_evidence": [
-        "UNGROUNDED \u2014 I believe GPS-linked household survey data from SMC programs shows distance-adherence correlations, but I cannot identify specific studies",
-        "General health services literature demonstrates distance-utilization gradients",
-        "Distribution logistics suggest longer distances correlate with rushed counseling sessions"
+        ": UNGROUNDED \u2014 needs verification. PMI operational plans for 2019-2023 would need analysis to identify geographic reallocation patterns coinciding with GiveWell entry. The logic follows standard development practice of avoiding duplication, but requires specific documentation."
       ],
-      "estimated_direction": "decreases",
-      "estimated_magnitude": "small"
+      "estimated_direction": "increases",
+      "estimated_magnitude": "large"
     },
     "verdict": "unverified",
     "evidence_found": [
-      "The qualitative research I found suggests distribution challenges exist, but doesn't specifically address geographic distance effects.",
-      "Caregivers preferred SMC delivered door-to-door to the fixed-point approach, because it allowed them to continue daily tasks, and allowed time for the CDD to answer questions.",
-      "This suggests distribution method does affect quality of counseling, supporting the general hypothesis."
-    ],
-    "evidence_strength": "strong",
-    "counter_evidence": [],
-    "caveats": [
-      "Claim**: Distance from distribution points affects adherence: UNVERIFIABLE - No specific studies found documenting GPS-linked household survey data showing distance-adherence correlations in SMC programs",
-      "Claim**: Health services literature shows distance-utilization gradients: PLAUSIBLE - This is a well-established general principle in health services research, though not specifically verified for SMC",
-      "Claim**: Rushed counseling with longer distances: PLAUSIBLE - Logically sound but no specific evidence found"
-    ],
-    "revised_hypothesis": "** \nGeographic Distance Effects on Day 2-3 Home Administration - HYPOTHESIS ONLY\nChildren living farther from distribution points may theoretically have lower adherence to unsupervised day 2 and day 3 doses, potentially due to reduced counseling quality during distribution. While health services research generally shows distance-utilization gradients, specific evidence for this effect in SMC programs has not been documented. This represents a plausible but ungrounded hypothesis requiring empirical investigation."
-  },
-  {
-    "original": {
-      "thread_name": "Adherence Measurement Validity and Real-World Treatment Completion",
-      "title": "Spillage and Sharing Effects on Population-Level Protection",
-      "hypothesis": "** Some portion of distributed SMC medications may be spilled, shared with non-target children, or saved for future use rather than consumed as directed. While individual adherence measures capture intended recipients, population-level effectiveness calculations may overestimate actual chemoprevention if drug doses are diluted across more children than modeled.",
-      "mechanism": "** If 8-12% of medications are shared or diverted from intended recipients, the effective per-child dose is reduced even when \"adherence\" appears high. This could reduce protection levels by 5-10% beyond what adherence adjustments capture, though community-level benefits might partially offset individual losses.",
-      "parameters_affected": [
-        "unknown"
-      ],
-      "suggested_evidence": [
-        "UNGROUNDED \u2014 I believe qualitative studies document medication sharing practices in SMC communities, but I cannot identify specific citations",
-        "Economic logic suggests sharing is rational when medications are scarce and valuable",
-        "Pill count discrepancies in some household surveys suggest non-adherence may include diversion rather than just non-consumption"
-      ],
-      "estimated_direction": "decreases",
-      "estimated_magnitude": "small"
-    },
-    "verdict": "rejected",
-    "evidence_found": [
-      "The search revealed some challenges in SMC delivery but no specific evidence of systematic sharing or diversion. The qualitative studies focused on barriers like",
-      "perceived side-effects of SMC drugs, a lack of understanding of the purpose of SMC, mistrust and suspicions that medicines provided free may be unsafe or ineffective, and local shortages of drugs",
-      "but did not mention sharing practices."
-    ],
-    "evidence_strength": "moderate",
-    "counter_evidence": [],
-    "caveats": [
-      "Claim**: Medications are spilled, shared, or saved: UNVERIFIABLE - No specific studies found documenting medication sharing practices in SMC communities",
-      "Claim**: 8-12% diversion rate: FALSE - No basis found for this specific percentage",
-      "Claim**: Economic logic suggests sharing: PLAUSIBLE - Rational sharing behavior is theoretically sound",
-      "Claim**: Pill count discrepancies suggest diversion: UNVERIFIABLE - No specific evidence found"
-    ],
-    "revised_hypothesis": null
-  },
-  {
-    "original": {
-      "thread_name": "Drug Resistance Evolution and Efficacy Decay",
-      "title": "Seasonal Resistance Dynamics Within SMC Cycles",
-      "hypothesis": "** Resistance may fluctuate within and between SMC seasons as drug pressure varies. Post-SMC periods may see fitness costs reducing resistant parasites, partially restoring efficacy, but GiveWell's model likely assumes constant efficacy throughout implementation years.",
-      "mechanism": "** If efficacy varies from 40% during peak resistance periods to 80% early in SMC seasons, average effectiveness might be maintained despite resistance evolution. However, timing of peak malaria transmission relative to peak resistance could affect mortality impact differently than constant-efficacy models predict.",
-      "parameters_affected": [
-        "unknown"
-      ],
-      "suggested_evidence": [
-        "UNGROUNDED \u2014 I believe there are studies on seasonal fitness costs of resistance mutations, but cannot identify specific sources",
-        "Theoretical basis from known fitness costs of dhfr/dhps mutations in absence of drug pressure",
-        "No direct evidence found for seasonal resistance cycling in SMC contexts"
-      ],
-      "estimated_direction": "uncertain",
-      "estimated_magnitude": "small"
-    },
-    "verdict": "unverified",
-    "evidence_found": [
-      "Evidence for fitness costs exists but no evidence for seasonal cycling within SMC implementation periods.",
-      "For malaria parasites, compensatory mutations have been frequently suggested, particularly in the case of SP resistance which requires a series of multiple point mutations... resistance reached high levels upon the first fixation of the S108N mutation, but the growth rate was reduced. The growth rate was partially restored upon the successful insertion of three other point mutations"
+      "PMI operational plans show geographic targeting but no evidence found of systematic reallocation away from GiveWell-supported areas.",
+      "PMI and other funders appear to have distinct geographic coverage: \"Projected spatial extent of seasonal malaria chemoprevention in 2025, classified by funding support (PMI vs other funders)\""
     ],
     "evidence_strength": "weak",
     "counter_evidence": [],
     "caveats": [
-      "Fitness costs of resistance mutations: VERIFIED -",
-      "Fitness costs of drug resistance were suggested to be responsible for reduced survival of mutant parasites, and only parasites surviving chronic infections were transmitted at the onset of the rainy season",
-      "and",
-      "mutations conferring resistance to chloroquine in pfcrt reduce peptide transport capacity... Fitness costs associated with chloroquine resistance provide an explanation for the rapid disappearance of drug resistance (pfcrt) alleles from Malawi and other countries after removal of chloroquine as first-line treatment",
-      "Seasonal variation in resistance: UNVERIFIABLE - No direct evidence found for seasonal resistance dynamics within SMC cycles"
+      "GiveWell acknowledges PMI budget constraints: \"PMI's budget for Nigeria has trended down between 2020 and 2024, fluctuating between $77 million (2020) and $68 million (2024)\"",
+      "GiveWell adjusts for crowding out from PMI: \"In the case of SMC, this is typically the Global Fund and/or the President's Malaria Initiative (PMI)\"",
+      "PMI maintained SMC coverage during COVID: \"distributing SMC (all 9 planned countries)\""
     ],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Counterfactual Funding Displacement and Leverage Assumptions",
+      "title": "Malaria Trust Fund Leveraging Assumptions",
+      "hypothesis": ": GiveWell's cost-effectiveness calculations may not properly account for implicit leverage ratios when channeling funds through Malaria Consortium's trust fund mechanism, potentially overstating the marginal impact of GiveWell dollars versus other trust fund contributors.",
+      "mechanism": ": If the trust fund creates a 2:1 or 3:1 leverage ratio (GiveWell dollars attracting matching funds), but GiveWell attributes full coverage impact to its contribution, this inflates cost-effectiveness. Conversely, if other trust fund donors would have contributed anyway, GiveWell's marginal impact is smaller than modeled.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        ": UNGROUNDED \u2014 needs verification. Trust fund financial structures and donor coordination mechanisms would need examination to identify actual leverage ratios and attribution rules. The concern stems from standard challenges in multi-donor trust fund impact attribution."
+      ],
+      "estimated_direction": "uncertain",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "GiveWell acknowledges leverage effects in cost-effectiveness analysis: \"apply adjustments in our cost-effectiveness analysis to account for cases where we believe the charity's funds have caused other actors to shift funds from a less cost-effective use to a more cost-effective use ('leverage')\"",
+      "However, no specific evidence found for 2:1 or 3:1 leverage ratios through trust fund mechanisms or for attribution problems in multi-donor trust fund structures."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Malaria Consortium receives funding from multiple sources: \"The majority of Malaria Consortium's funding for SMC comes from philanthropic sources\"",
+      "Mixed funding attribution exists: \"Out of a total of 23.78 million children targeted with Malaria Consortium's support in 2022, 15.10 million were reached exclusively with philanthropic funding\""
+    ],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Age-Specific Mortality Risk and Targeting Efficiency",
+      "title": "Opportunity Cost of Broad Age Targeting Versus Geographic Expansion",
+      "hypothesis": "The current 3-59 month targeting standard may be suboptimal compared to either: (a) treating 6-35 months in the same villages, or (b) treating 3-59 months in additional high-burden villages. The fixed resources are being spread across lower-risk older children when they could achieve higher impact through different targeting strategies.",
+      "mechanism": "This affects the \"number of children treated\" and \"deaths averted per child treated\" parameters simultaneously. If narrower age targeting (6-35 months) maintains 80% of deaths averted while reducing costs by 25%, or if the same budget could treat 40% more high-risk children in new areas, this could improve cost-effectiveness by 15-30%.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 needs verification: Cost structure analysis comparing different targeting strategies.",
+        "Logical argument: Fixed administrative and distribution costs suggest economies of scale favor either deeper penetration in current areas or broader geographic coverage rather than broad age ranges.",
+        "Village-level heterogeneity in malaria burden suggests geographic expansion might yield higher returns than age expansion."
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [],
+    "revised_hypothesis": null
+  },
+  {
+    "original": {
+      "thread_name": "Seasonal Transmission Pattern Stability Under Climate Change",
+      "title": "Early Season Transmission Shifts Creating Pre-SMC Vulnerability Windows",
+      "hypothesis": "Climate variability is causing earlier onset of transmission seasons in some years, with significant transmission occurring in May-June before SMC typically begins in July. This creates a systematic vulnerability window where children experience high malaria risk before receiving protection, reducing SMC's annual protective effectiveness.",
+      "mechanism": "This affects the timing assumptions in the person-months coverage calculation. If 20-30% of annual transmission now occurs in May-June (pre-SMC), but GiveWell's model assumes transmission is minimal before July, the model overestimates SMC's protective coverage. The protective efficacy could be reduced by 15-25% in years with early transmission onset.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED \u2014 needs verification. I believe recent meteorological data shows earlier rainy season onset in parts of the Sahel, but cannot cite specific studies linking this to malaria transmission timing.",
+        "Theoretical support: Earlier precipitation would advance Anopheles breeding cycles",
+        "Some national malaria programs have discussed adjusting SMC timing, suggesting this is a recognized operational challenge"
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [],
     "revised_hypothesis": null
   }
 ]
