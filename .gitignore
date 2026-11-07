@@ -5,3 +5,4 @@ __pycache__/
 *.pre-judge.*
 *.pre-rubric.*
 .worktrees/
+.venv/
