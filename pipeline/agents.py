@@ -622,10 +622,17 @@ _PARAM_NAME_MAP: dict[str, str] = {
 }
 
 
-def _map_parameter_name(raw_name: str) -> str | None:
-    """Map a human-readable parameter name to a compute_cost_effectiveness kwarg."""
+def _map_parameter_name(
+    raw_name: str, name_map: dict[str, str] | None = None
+) -> str | None:
+    """Map a human-readable parameter name to a compute_cost_effectiveness kwarg.
+
+    A CEA class may supply its own PARAM_NAME_MAP (passed as name_map); when it
+    does, that map is used exclusively, since the default map is written for
+    GiveWell's parameter names.
+    """
     lower = raw_name.lower().strip()
-    for key, value in _PARAM_NAME_MAP.items():
+    for key, value in (name_map or _PARAM_NAME_MAP).items():
         if key in lower:
             return value
     return None
@@ -636,7 +643,9 @@ def _is_ln_rr_value(value: float) -> bool:
     return value < 0 and abs(value) < 1.0
 
 
-def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
+def _extract_ranges_from_text(
+    text: str, name_map: dict[str, str] | None = None
+) -> list[dict[str, Any]]:
     """Extract (parameter_name, low, current, high) from varied quantifier output.
 
     The API uses many formats, so we try multiple strategies:
@@ -678,7 +687,7 @@ def _extract_ranges_from_text(text: str) -> list[dict[str, Any]]:
     for name, body in blocks:
         merged = name + " " + body
         # Determine the CEA parameter this block maps to
-        mapped = _map_parameter_name(name) if name else None
+        mapped = _map_parameter_name(name, name_map) if name else None
 
         # Strategy 1: "Current value = X ... range = [Y, Z]" or
         # "Current = X ... Plausible range = [Y, Z]"
@@ -786,6 +795,7 @@ def parse_quantifier_output(
         "CODE",
     ]
 
+    name_map: dict[str, str] | None = getattr(cea, "PARAM_NAME_MAP", None)
     param_mapping_raw = _extract_section(text, "PARAMETER MAPPING", quant_headers)
     plausible_range_raw = _extract_section(text, "PLAUSIBLE RANGE", quant_headers)
     materiality_raw = _extract_section(text, "MATERIALITY VERDICT", quant_headers)
@@ -800,7 +810,7 @@ def parse_quantifier_output(
     seen_params: set[str] = set()
     for bp in bold_params:
         name = bp.strip().rstrip(":.")
-        mapped = _map_parameter_name(name)
+        mapped = _map_parameter_name(name, name_map)
         if mapped and mapped not in seen_params:
             target_parameters.append({"name": name, "mapped": mapped})
             seen_params.add(mapped)
@@ -816,13 +826,13 @@ def parse_quantifier_output(
             line = line.strip().lstrip("-•*0123456789.) ")
             if not line:
                 continue
-            mapped = _map_parameter_name(line)
+            mapped = _map_parameter_name(line, name_map)
             if mapped and mapped not in seen_params:
                 target_parameters.append({"name": line[:80], "mapped": mapped})
                 seen_params.add(mapped)
 
     # --- Extract ranges from PLAUSIBLE RANGE ---
-    extracted_ranges = _extract_ranges_from_text(plausible_range_raw)
+    extracted_ranges = _extract_ranges_from_text(plausible_range_raw, name_map)
     alternative_range: list[dict[str, Any]] = []
     for er in extracted_ranges:
         alternative_range.append(er)
@@ -875,7 +885,7 @@ def parse_quantifier_output(
     max_abs_pct_change = 0.0
 
     for rng in alternative_range:
-        mapped_param = rng.get("mapped") or _map_parameter_name(rng.get("name", ""))
+        mapped_param = rng.get("mapped") or _map_parameter_name(rng.get("name", ""), name_map)
         if not mapped_param:
             continue
 

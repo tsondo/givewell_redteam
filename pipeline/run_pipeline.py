@@ -33,9 +33,24 @@ from pipeline.agents import (
     run_synthesizer,
     run_verifier,
 )
+from pipeline.botec import TBStatinsBOTEC
 from pipeline.spreadsheet import ITNCEA, MalariaCEA, VASCEA, WaterCEA
 
 logger = logging.getLogger("pipeline")
+
+
+def load_source(ref: str, stats: PipelineStats) -> str:
+    """Load a report or baseline source.
+
+    "" means no source (returns "" without an API call; this also fixes the
+    empty-baseline fetch for VAS). "file:<path>" reads a file under data/.
+    Anything else is treated as a URL and fetched as before.
+    """
+    if not ref:
+        return ""
+    if ref.startswith("file:"):
+        return (DATA_DIR / ref[len("file:"):]).read_text(encoding="utf-8")
+    return fetch_web_content(ref, stats)
 
 STAGES = [
     "decomposer",
@@ -153,6 +168,7 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
         "itns": ITNCEA,
         "smc": MalariaCEA,
         "vas": VASCEA,
+        "cg-tb-statins": TBStatinsBOTEC,
     }
     cea_cls = cea_classes.get(intervention, WaterCEA)
     cea = cea_cls(spreadsheet_path)
@@ -167,9 +183,9 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
 
     if start_idx == 0:
         logger.info("Fetching intervention report from %s", urls["report"])
-        intervention_report = fetch_web_content(urls["report"], stats)
-        logger.info("Fetching baseline output from %s", urls["baseline"])
-        baseline_output = fetch_web_content(urls["baseline"], stats)
+        intervention_report = load_source(urls["report"], stats)
+        logger.info("Fetching baseline output from %s", urls["baseline"] or "(none)")
+        baseline_output = load_source(urls["baseline"], stats)
 
     # ------------------------------------------------------------------
     # Stage 1: Decomposer
@@ -287,7 +303,7 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
         logger.info(
             "Re-fetching intervention report for adversarial stage from %s", urls["report"]
         )
-        intervention_report = fetch_web_content(urls["report"], stats)
+        intervention_report = load_source(urls["report"], stats)
 
     # ------------------------------------------------------------------
     # Stage 5: Adversarial
@@ -351,7 +367,7 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
             logger.info(
                 "Fetching baseline output for synthesizer from %s", urls["baseline"]
             )
-            baseline_output = fetch_web_content(urls["baseline"], stats)
+            baseline_output = load_source(urls["baseline"], stats)
 
         final_report = run_synthesizer(
             debated=debated_critiques,

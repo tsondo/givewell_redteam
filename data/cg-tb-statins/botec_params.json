@@ -1,0 +1,17 @@
+{
+  "source": "Coefficient Giving (then Open Philanthropy), 'How we use back-of-the-envelope calculations in our grantmaking', May 2025, sample BOTEC: Trialing statins for treating tuberculosis",
+  "published_sroi": 3000,
+  "parameters": {
+    "eligible_people_at_8y": 5500000,
+    "years_to_adoption": 8,
+    "decline_per_year": 0.02,
+    "adult_uptake": 0.60,
+    "baseline_mortality": 0.06,
+    "relative_reduction": 0.10,
+    "dalys_per_death": 27,
+    "op_per_daly": 100000,
+    "speedup_years": 1,
+    "all_in_cost": 7000000,
+    "p_success": 0.40
+  }
+}

@@ -10,8 +10,11 @@ load_dotenv()
 
 # API
 ANTHROPIC_API_KEY: str = os.environ["ANTHROPIC_API_KEY"]
-OPUS_MODEL: str = "claude-opus-4-20250514"
-SONNET_MODEL: str = "claude-sonnet-4-20250514"
+# The original runs used claude-opus-4-20250514 / claude-sonnet-4-20250514,
+# which reached end-of-life on 2026-06-15. Override with REDTEAM_OPUS_MODEL /
+# REDTEAM_SONNET_MODEL in .env to pin a specific model for comparability.
+OPUS_MODEL: str = os.environ.get("REDTEAM_OPUS_MODEL", "claude-opus-5-5")
+SONNET_MODEL: str = os.environ.get("REDTEAM_SONNET_MODEL", "claude-sonnet-5-5")
 
 # Paths
 REPO_ROOT: Path = Path(__file__).parent.parent
@@ -95,6 +98,34 @@ INTERVENTION_VERIFIER_OVERRIDES: dict[str, dict[str, Any]] = {
         "max_tokens": 6144,
         "cost_warning": 40.0,
     },
+    # Coefficient Giving TB statins BOTEC. CG's own site and the EA Forum are
+    # deliberately NOT allowed: the same post contains CG's later revisions to
+    # this BOTEC, which are held out to score the pipeline blind.
+    "cg-tb-statins": {
+        "allowed_domains": [
+            "who.int",
+            "ncbi.nlm.nih.gov",
+            "pubmed.ncbi.nlm.nih.gov",
+            "europepmc.org",
+            "scholar.google.com",
+            "thelancet.com",
+            "bmj.com",
+            "nature.com",
+            "nejm.org",
+            "journals.plos.org",
+            "cochranelibrary.com",
+            "clinicaltrials.gov",
+            "medrxiv.org",
+            "atsjournals.org",
+            "tbonline.info",
+            "stoptb.org",
+            "worldbank.org",
+            "healthdata.org",
+        ],
+        "max_searches": 5,
+        "max_tokens": 4096,
+        "cost_warning": 15.0,
+    },
 }
 
 
@@ -122,9 +153,17 @@ HIGH_MATERIALITY_THRESHOLD: float = 0.10  # 10% change = "material"
 
 # Pricing per million tokens (as of 2025)
 PRICING: dict[str, dict[str, float]] = {
-    OPUS_MODEL: {"input": 15.0, "output": 75.0},
-    SONNET_MODEL: {"input": 3.0, "output": 15.0},
+    "claude-opus-4-20250514": {"input": 15.0, "output": 75.0},
+    "claude-sonnet-4-20250514": {"input": 3.0, "output": 15.0},
+    # platform.claude.com/docs/en/about-claude/pricing, checked 2026-11-07
+    "claude-opus-5-5": {"input": 4.0, "output": 20.0},
+    "claude-sonnet-5-5": {"input": 2.0, "output": 10.0},
 }
+if OPUS_MODEL not in PRICING or SONNET_MODEL not in PRICING:
+    # record_call() prices unknown models at $0, which would hide spend.
+    raise ValueError(
+        f"No pricing entry for {OPUS_MODEL!r} or {SONNET_MODEL!r}; add it to PRICING."
+    )
 
 # Intervention source URLs
 INTERVENTION_URLS: dict[str, dict[str, str]] = {
@@ -147,5 +186,11 @@ INTERVENTION_URLS: dict[str, dict[str, str]] = {
         "report": "https://www.givewell.org/international/technical/programs/vitamin-A",
         "baseline": "",
         "spreadsheet": "VASCEA.xlsx",
+    },
+    # Sources may be a URL, "file:<path under data/>", or "" (none).
+    "cg-tb-statins": {
+        "report": "file:cg-tb-statins/report.md",
+        "baseline": "",
+        "spreadsheet": "cg-tb-statins/botec_params.json",
     },
 }
