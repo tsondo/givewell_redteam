@@ -844,6 +844,45 @@ def _parse_num(s: str) -> float | None:
         return None
 
 
+_RANGE_LINE = re.compile(
+    r"^[\s>*`-]*RANGE\s*:\s*(?P<name>[^|\n]+?)\s*\|"
+    r"\s*current\s*(?P<current>[^|\n]+?)\s*\|"
+    r"\s*low\s*(?P<low>[^|\n]+?)\s*\|"
+    r"\s*central\s*(?P<central>[^|\n]+?)\s*\|"
+    r"\s*high\s*(?P<high>[^|\n`*]+?)\s*[`*]*\s*$",
+    re.IGNORECASE | re.MULTILINE,
+)
+
+
+def _extract_range_lines(
+    text: str, cea: Any, name_map: dict[str, str] | None
+) -> list[dict[str, Any]]:
+    """Parse "RANGE: name | current X | low Y | central Z | high W" lines.
+
+    The name may be the model's exact parameter name (preferred) or a
+    human-readable name resolved through the parameter-name map.
+    """
+    exact_names = set(getattr(cea, "params", {}) or {})
+    ranges: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for m in _RANGE_LINE.finditer(text.replace("**", "")):
+        name = m.group("name").strip().strip("`")
+        nums = [_parse_num(m.group(k).replace(",", "").replace("$", "")) for k in ("current", "low", "central", "high")]
+        if any(n is None for n in nums):
+            logger.warning("Unparseable RANGE line: %s", m.group(0).strip())
+            continue
+        mapped = name if name in exact_names else _map_parameter_name(name, name_map)
+        if not mapped or mapped in seen:
+            continue
+        seen.add(mapped)
+        current, low, central, high = nums
+        ranges.append({
+            "name": name, "mapped": mapped, "current": current,
+            "low": low, "central": central, "high": high, "source": "range_line",
+        })
+    return ranges
+
+
 def parse_quantifier_output(
     text: str,
     critique: VerifiedCritique,
@@ -907,10 +946,12 @@ def parse_quantifier_output(
     # parameter name as "name:** ..."; restore it so it is split as a block.
     if not re.match(r"\s*(?:\d+\.\s+|\-\s+)?\*\*", plain_range_text):
         plain_range_text = re.sub(r"^([^\n*]{1,80}?)\*\*", r"**\1**", plain_range_text)
-    extracted_ranges = _extract_ranges_from_text(plain_range_text, name_map)
-    alternative_range: list[dict[str, Any]] = []
-    for er in extracted_ranges:
-        alternative_range.append(er)
+    # Preferred source: the machine-readable "RANGE:" lines the quantifier
+    # prompt asks for. The regex strategies below are the fallback for output
+    # without them (older runs, or a model that omits the block).
+    alternative_range: list[dict[str, Any]] = _extract_range_lines(text, cea, name_map)
+    if not alternative_range:
+        alternative_range = _extract_ranges_from_text(plain_range_text, name_map)
 
     # If range extraction found nothing, try to match parameter names from
     # PARAMETER MAPPING against PLAUSIBLE RANGE to find any numbers
@@ -987,6 +1028,16 @@ def parse_quantifier_output(
                     program_key, mapped_param, low_val, current_val, high_val
                 )
                 key = f"{program_key}/{mapped_param}"
+                if rng.get("central") is not None and result.get("baseline"):
+                    # Point estimate at the quantifier's own central value.
+                    ce = cea.compute_cost_effectiveness(
+                        program_key, **{mapped_param: rng["central"]}
+                    )
+                    result["quantifier_central"] = rng["central"]
+                    result["ce_at_quantifier_central"] = ce
+                    result["pct_change_quantifier_central"] = (
+                        (ce - result["baseline"]) / result["baseline"] * 100
+                    )
                 sensitivity_results[key] = result
                 # Track max absolute pct change
                 for label in ("low", "central", "high"):
@@ -1676,7 +1727,7 @@ def run_quantifier(
             + f"\n\n## CEA Parameter Map\n\n{cea_parameter_map}\n\n"
             f"## CEA Parameter Summary\n\n{cea_summary}\n\n"
             "Quantify the impact. Map to specific parameters, provide plausible ranges, "
-            "and assess materiality."
+            "and assess materiality. End with the SENSITIVITY INPUTS lines."
         )
 
         raw = call_api(

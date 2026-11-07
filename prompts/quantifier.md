@@ -52,6 +52,12 @@ YES / NO / BORDERLINE
 
 CODE: [Include the actual code used for the sensitivity analysis,
 so results are reproducible]
+
+SENSITIVITY INPUTS:
+RANGE: <parameter name> | current <value> | low <value> | central <value> | high <value>
+[One line per model parameter this critique affects, in exactly this
+format, as plain text (not a table). The pipeline runs the actual CEA
+model on these lines; nothing else in your answer is executed.]
 ```
 
 ## Rules
@@ -66,4 +72,14 @@ so results are reproducible]
 
 5. **Handle parameter interactions.** If a critique affects multiple parameters, test them individually AND jointly. Note whether effects are additive or multiplicative.
 
-6. **Don't overstate precision.** If the plausible range for a parameter is wide, report the sensitivity across the range rather than picking a point estimate. Use the format "Δ = X% to Y%" rather than "Δ = Z%."
+6. **End with SENSITIVITY INPUTS.** Use the model's exact parameter names
+   from the CEA parameter summary. Give values in the model's own units
+   (fractions as decimals, e.g. 0.40, not 40%; money as plain numbers).
+   "current" must be the model's current value. If your analysis works
+   through a derived factor that is not a model parameter (for example a
+   shrinkage factor or a share of outcomes), translate it into the effective
+   value of the model parameter it changes, and give that range. If the
+   critique cannot be expressed through any model parameter, write
+   "RANGE: none" and say why in one line.
+
+7. **Don't overstate precision.** If the plausible range for a parameter is wide, report the sensitivity across the range rather than picking a point estimate. Use the format "Δ = X% to Y%" rather than "Δ = Z%."

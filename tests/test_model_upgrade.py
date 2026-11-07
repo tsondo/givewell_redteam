@@ -120,3 +120,35 @@ def test_complete_call_is_not_flagged() -> None:
     with patch.object(agents.client.messages, "create", return_value=_fake_response("end_turn")):
         agents.call_api("m", "s", "u", stats, "investigator-1", max_tokens=1000)
     assert stats.truncated_calls == []
+
+
+QUANTIFIER_WITH_RANGE_LINES = """## Plausible Range
+
+| Source | p_success | Basis |
+|---|---|---|
+| Industry base rates | 0.15-0.17 | BIO 2011-2020 |
+
+## Materiality Verdict
+YES
+
+SENSITIVITY INPUTS:
+RANGE: p_success | current 0.40 | low 0.20 | central 0.26 | high 0.32
+RANGE: `relative_reduction` | current 0.10 | low 0.05 | central 0.07 | high 0.10
+RANGE: none_of_the_model | current 1 | low 0 | central 0 | high 1
+"""
+
+
+def test_range_lines_drive_sensitivity_even_when_ranges_are_a_table() -> None:
+    cea = TBStatinsBOTEC(DATA_DIR / "cg-tb-statins" / "botec_params.json")
+    q = parse_quantifier_output(QUANTIFIER_WITH_RANGE_LINES, _critique(), cea)
+    assert set(q.sensitivity_results) == {"tb_statins/p_success", "tb_statins/relative_reduction"}
+    ps = q.sensitivity_results["tb_statins/p_success"]
+    assert ps["pct_change_low"] == pytest.approx(-50.0)
+    assert ps["pct_change_quantifier_central"] == pytest.approx(-35.0)
+    assert all(r["source"] == "range_line" for r in q.alternative_range)
+
+
+def test_without_range_lines_the_regex_fallback_still_works() -> None:
+    cea = TBStatinsBOTEC(DATA_DIR / "cg-tb-statins" / "botec_params.json")
+    q = parse_quantifier_output(QUANTIFIER_PROSE, _critique(), cea)
+    assert "tb_statins/relative_reduction" in q.sensitivity_results
