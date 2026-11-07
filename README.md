@@ -1,106 +1,156 @@
-# GiveWell AI Red Teaming — Multi-Agent Pipeline
+# AI Red Teaming of Cost-Effectiveness Analyses: Multi-Agent Pipeline
 
-A proof-of-concept multi-agent pipeline that red teams GiveWell's cost-effectiveness analyses. Demonstrates that architectural improvements (decomposition, verification, quantification, adversarial testing) beat single-pass prompting for research critique.
+A multi-agent pipeline that red teams published cost-effectiveness analyses (CEAs) for charitable grantmaking. It started with GiveWell's CEA spreadsheets and now also handles other funders' formats, such as Coefficient Giving's prose back-of-the-envelope calculations (BOTECs). The aim is to show that architecture (decomposition, verification, quantification, adversarial testing) beats single-pass prompting for research critique.
 
 ## Origin
 
-GiveWell published a [report on AI red teaming](https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness/ai-red-teaming-12-25) (January 2026) describing their experiment using ChatGPT 5 Pro with structured prompts. Their results: ~15–30% of AI critiques were useful, with persistent hallucination, lost context, and unreliable quantitative estimates.
+GiveWell published a [report on AI red teaming](https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness/ai-red-teaming-12-25) (January 2026) describing an experiment using ChatGPT 5 Pro with structured prompts. About 15 to 30% of the AI critiques were useful, with persistent hallucination, lost context, and unreliable quantitative estimates.
 
 ## Thesis
 
-GiveWell's limitations are architecture limitations, not model limitations. Decomposition, verification pipelines, adversarial agent structure, scoped context, and tool-augmented quantitative reasoning each independently improve results — and they compound.
+Those limitations come from architecture, not the model. Decomposition, verification, adversarial agent structure, scoped context, and tool-backed quantitative reasoning each improve results, and the improvements compound.
 
 ## Results
 
-Three interventions analyzed using only public materials and commodity models (Claude Sonnet for most stages, Opus for decomposition and quantification):
+### GiveWell CEAs
 
-| Intervention | Critiques | Signal Rate | Novel Findings | Cost |
-|---|---|---|---|---|
-| Water chlorination | 31 generated → 26 surviving | 84% | 10 novel | ~$30 (v1) |
-| Insecticide-treated nets | 30 generated → 30 surviving | 100% | 9 novel | $16.00 |
-| Seasonal malaria chemoprevention | 34 generated → 28 surviving | 82% | 6 novel | $15.96 |
+Four interventions, using only public materials. Figures are from each run's latest synthesizer report; signal rate is surviving critiques over generated critiques.
 
-GiveWell's baseline: ~15–30% useful. Our target: >60%. All three runs exceeded it.
+| Intervention | Critiques generated → surviving | Signal rate | Cost |
+|---|---|---|---|
+| Water chlorination | 31 → 26 | 84% | ~$30 (v1, before verifier batching) |
+| Insecticide-treated nets | 30 → 30 | 100% | $16.00 |
+| Seasonal malaria chemoprevention (re-run with v2 parsers) | 28 → 19 | 68% | $15.27 |
+| Vitamin A supplementation (re-run) | 32 → 28 | 88% | $6.36 |
 
-Zero hallucinated citations across all runs — the architectural separation of hypothesis generation (Investigators) from evidence retrieval (Verifier) eliminated the fabrication problem.
+GiveWell's single-pass baseline: about 15 to 30% useful. No hallucinated citations reached the final reports: separating hypothesis generation (Investigators) from evidence retrieval (Verifier) contains the fabrication problem.
 
-See [conclusions](docs/conclusions.md) for full analysis, limitations, and cross-intervention patterns.
+See [conclusions](docs/conclusions.md) for the full analysis, limitations, and cross-intervention patterns.
 
-## Pipeline Architecture
+### Coefficient Giving BOTEC: blind validation (November 2026)
+
+Coefficient Giving (formerly Open Philanthropy) published four sample BOTECs in May 2025, and later published its own corrections to one of them: trialing statins as an adjunct TB treatment. That makes a blind test possible. The pipeline sees only the original BOTEC. CG's later limitations and revisions are held out, and the verifier's web search excludes CG's site and the EA Forum, so it cannot find them. The pipeline's findings are then scored against CG's own follow-ups.
+
+- **Run #01** (archived in `results/cg-tb-statins-run01/`): 1 of CG's points caught, 1 partial, 6 missed. Three of the misses (adoption speedup, benefit horizon, competing treatments) were raised by the decomposer but lost to a parser bug. The run also exposed silent output truncation on the newer models. Both are fixed; see below.
+- **Run #02**: in progress.
+
+## Pipeline architecture
 
 ```
-1. DECOMPOSER (Opus)         → 11 investigation threads with scoped specs
-2. INVESTIGATORS (Sonnet×11)  → ~30 candidate critiques with cited evidence
-3. VERIFIER (Sonnet, batched) → Citations checked, claims grounded, or rejected
-4. QUANTIFIER (Opus)          → Sensitivity analysis against actual CEA spreadsheets
-5. ADVERSARIAL PAIR (Sonnet)  → Advocate + Challenger stress-test each critique
-6. SYNTHESIZER (Opus)         → Ranked final report with evidence and impact estimates
+1. DECOMPOSER (Opus)            Investigation threads with scoped specs and exclusion lists
+2. INVESTIGATORS (Sonnet)       Candidate critiques per thread
+3. VERIFIER (Sonnet, batched)   Citations and claims checked by web search; verified, unverifiable or rejected
+4. QUANTIFIER (Opus)            Sensitivity analysis run against an executable replica of the CEA
+5. ADVERSARIAL (Sonnet + Opus)  Advocate defends the CEA, Challenger rebuts, a neutral Judge audits
+                                the debate for reasoning failures and assigns surviving strength
+5b. LINKER (Sonnet)             Marks findings that depend on unverified claims as conditional
+6. SYNTHESIZER (Opus)           Ranked final report with evidence, impact, and debate-quality audit
+7. EXTRACTOR (extract.py)       graph.json for the red-team-explorer viewer (no API calls)
 ```
 
-Key design principles:
-- **Only public materials as inputs.** Proves improvement comes from methodology, not privileged access.
+Design principles:
+- **Only public materials as inputs.** Improvement has to come from method, not privileged access.
 - **Scoped context per agent.** Each agent gets a focused context document, not the whole filing cabinet.
-- **Verification is first-class.** Every factual claim is independently checked via web search before reaching a human.
-- **Quantitative grounding.** Impact claims are tied to computed perturbations against actual spreadsheet models.
+- **Verification is first-class.** Every factual claim is checked by web search before it reaches a human.
+- **Quantitative grounding.** Impact claims are tied to perturbations computed on a replica of the CEA's formula chain.
+- **Prompts are the experimental treatment.** Files in `prompts/` are read-only so runs stay comparable. Adapting the pipeline to a new funder happens in code and input files, never in prompts.
 
-## Repository Structure
+## Supported CEA formats
+
+| Format | Reader | Example |
+|---|---|---|
+| GiveWell spreadsheet (.xlsx) | `pipeline/spreadsheet.py`: `WaterCEA`, `ITNCEA`, `MalariaCEA`, `VASCEA` | water-chlorination, itns, smc, vas |
+| Prose BOTEC | `pipeline/botec.py`: formula-chain replica with parameters in JSON | cg-tb-statins |
+
+Every reader implements the `CEAReader` protocol in `spreadsheet.py` (`PROGRAMS`, `get_parameter_summary`, `compute_cost_effectiveness`, `run_sensitivity`). A reader can also supply its own `PARAM_NAME_MAP`, so the quantifier maps critique parameters onto that model's names instead of GiveWell's.
+
+### Adding a new CEA
+
+1. **Reader.** Write a class implementing `CEAReader`. For a BOTEC, follow `TBStatinsBOTEC`: put the published parameters in `data/<name>/botec_params.json` and reproduce the published bottom line in a test.
+2. **Inputs.** In `INTERVENTION_URLS` (`pipeline/config.py`), each source can be a URL, `file:<path under data/>`, or `""` for none. A local report file can open with a short context header that maps GiveWell terms to the funder's units and funding bar; see `data/cg-tb-statins/report.md`.
+3. **Verifier allowlist.** Add an `INTERVENTION_VERIFIER_OVERRIDES` entry with domains suited to the topic. For a blind test, leave out the sites that host the answer key.
+4. **Register** the reader in `cea_classes` in `run_pipeline.py`.
+
+## Recent improvements (November 2026)
+
+Found while adapting the pipeline to Coefficient Giving's BOTEC and moving to current models:
+
+- **Model end-of-life.** The original `claude-*-4-20250514` models reached end-of-life on 2026-06-15. Defaults are now `claude-opus-5-5` and `claude-sonnet-5-5`, overridable with `REDTEAM_OPUS_MODEL` / `REDTEAM_SONNET_MODEL` in `.env`. Results from the new models are not directly comparable with the April runs.
+- **Spend tracking.** Config refuses to start if a model has no pricing entry; unknown models used to be priced at $0, which hid spend. Web search fees ($10 per 1,000 searches) are still not counted.
+- **Thinking headroom.** The 5.5 models always use adaptive thinking, and thinking tokens count against `max_tokens`. With the old caps, 14 of 22 calls in run #01 were truncated. Every cap is now multiplied by `REDTEAM_TOKEN_MULTIPLIER` (default 4); you pay only for tokens used.
+- **Truncation is reported, not silent.** A call that stops at `max_tokens` is logged as an error and listed under `truncated_calls` in `pipeline-stats.json`.
+- **Decomposer parsing.** Annotated thread headers such as `THREAD 3 (Structural/Methodological):` were dropped, and sections like "What CG already accounts for" were blank in the investigators' context because the parser expected the word GiveWell. Both are fixed.
+- **Quantifier parsing.** Prose ranges ("current value 0.10 … range is 0.05–0.10"), markdown markers, code-style parameter names, and text before the first bold header now parse, so sensitivity analysis actually executes. Re-parsing the April SMC run gives identical results.
+- **SDK compatibility.** `anthropic` 2.x depends on `httpx2`, so the direct `httpx` import failed on fresh installs; the pipeline now uses `anthropic.Timeout`. Long non-streaming requests get the explicit timeout the 2.x SDK requires. Tested on `anthropic` 0.42 and 2.6.
+
+## Viewing results
+
+`extract.py` turns a run's stage outputs into a `graph.json` for [red-team-explorer](https://github.com/tsondo/red-team-explorer), a static viewer with a two-column debate reader and a dependency graph.
+
+```bash
+python extract.py --input-dir results/vas --run-id vas-2026-04-13 --output-dir results/vas
+```
+
+## Repository structure
 
 ```
 ├── README.md
+├── extract.py                   # Stage 7: graph.json for red-team-explorer
 ├── docs/
-│   ├── architecture.md          # Pipeline design document
+│   ├── Architecture.md          # Pipeline design document
 │   ├── conclusions.md           # Results analysis, limitations, cross-intervention patterns
 │   ├── analysis-givewell.md     # Critique of GiveWell's current approach
+│   ├── judge_info.md            # Judge stage: failure-mode taxonomy
+│   ├── linker_info.md           # Linker stage: conditional findings
 │   └── pipeline-spec.md         # Build spec with schemas and implementation details
-├── prompts/                     # System prompts for each agent (7 files)
+├── prompts/                     # System prompts for each agent (read-only)
 ├── pipeline/
-│   ├── run_pipeline.py          # Main orchestrator (--resume-from support)
-│   ├── agents.py                # All agent callers (decomposer through synthesizer)
-│   ├── spreadsheet.py           # CEA readers: WaterCEA, ITNCEA, MalariaCEA
+│   ├── run_pipeline.py          # Orchestrator (--resume-from support)
+│   ├── agents.py                # Agent callers and output parsers
+│   ├── spreadsheet.py           # GiveWell spreadsheet readers and the CEAReader protocol
+│   ├── botec.py                 # Prose BOTEC readers
 │   ├── schemas.py               # Dataclasses for pipeline data flow
-│   └── config.py                # API keys, model selection, cost thresholds
-├── data/                        # CEA spreadsheets (.xlsx, read-only)
-├── results/
-│   ├── water-chlorination/      # All 6 stage outputs (.json + .md) + stats
-│   ├── itns/                    # All 6 stage outputs (.json + .md) + stats
-│   └── smc/                     # All 6 stage outputs (.json + .md) + stats
-└── tests/                       # 62 tests (spreadsheet readers, parsers, schemas)
+│   └── config.py                # Models, pricing, token caps, per-intervention settings
+├── data/                        # CEA inputs (read-only)
+├── results/<intervention>/      # Stage outputs (.json + .md), log, and stats per run
+└── tests/                       # 186 tests (readers, parsers, schemas, model-upgrade regressions)
 ```
 
 ## Usage
 
 ```bash
-# Install dependencies (anthropic, openpyxl, pandas, python-dotenv)
+# Set up (Python 3.10+)
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 
-# Run a single intervention
-python -m pipeline.run_pipeline water-chlorination
-python -m pipeline.run_pipeline itns
-python -m pipeline.run_pipeline smc
+# API key in .env (not a shell variable)
+echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env
+
+# Run one intervention
+python -m pipeline.run_pipeline vas
+python -m pipeline.run_pipeline cg-tb-statins
 
 # Resume from a specific stage
 python -m pipeline.run_pipeline itns --resume-from quantifier
 
-# Run tests
-python -m pytest tests/ -v
-```
-
-Requires an Anthropic API key in `.env`:
-```
-ANTHROPIC_API_KEY=sk-ant-...
+# Tests (no API calls)
+python -m pytest tests/ -q
 ```
 
 ## Constraints
 
-- **No agent frameworks.** No LangChain, CrewAI, AutoGen — direct Anthropic SDK calls only.
+- **No agent frameworks.** No LangChain, CrewAI or AutoGen; direct Anthropic SDK calls only.
 - **Four dependencies:** anthropic, openpyxl, pandas, python-dotenv.
-- **Budget:** $50 total across all interventions. Actual spend: ~$62 (water v1 overrun before verifier optimization; subsequent runs within target).
+- **No streaming.** Requests are batch calls.
+- **Budget:** $50 for the original three GiveWell interventions. Actual spend was about $62, mostly the water v1 overrun before verifier batching; later runs came in within target.
 
-## Key Files
+## Key files
 
 | File | Purpose |
 |---|---|
-| `results/*/06-synthesizer.md` | Final red team reports for each intervention |
-| `docs/conclusions.md` | Cross-intervention analysis and honest limitations |
-| `docs/architecture.md` | Full pipeline specification |
-| `pipeline/spreadsheet.py` | Three CEA formula chain replications with sensitivity analysis |
+| `results/*/06-synthesizer.md` | Final red team report for each run |
+| `results/*/pipeline-stats.json` | Tokens, cost per stage, and any truncated calls |
+| `docs/conclusions.md` | Cross-intervention analysis and limitations |
+| `docs/Architecture.md` | Full pipeline specification |
+| `pipeline/spreadsheet.py`, `pipeline/botec.py` | CEA formula-chain replicas used for sensitivity analysis |
