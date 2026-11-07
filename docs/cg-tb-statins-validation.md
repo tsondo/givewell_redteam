@@ -43,7 +43,7 @@ Run #02: 2026-11-07, `claude-opus-5-5` and `claude-sonnet-5-5`, $22.23, no trunc
 | L4 newer treatments | Caught (moderate) | Finding 14: shorter and new regimens erode the eligible population and the incremental benefit; Finding 36 on the M72 vaccine. |
 | U1 success ~30% | Caught | Findings 4 and 18: base rates put "Phase II and III both succeed" at 15–25%. Same direction as CG, more pessimistic. |
 | U2 speedup ~3 years | Caught (moderate) | Findings 2 and 20: a generic statin has no natural funder, so "never adopted" is a live counterfactual and SROI rises. This is CG's own reasoning. Findings 24 and 35 argue the opposite. |
-| U3 longer horizon | Partial | Finding 5: a slower S-curve adoption ramp lowers SROI 20–31%, matching the direction. But Finding 13 disputes CG's falling-prevalence premise: notified cases rose from 7.5M (2022) to 8.3M (2024). |
+| U3 longer horizon | Partial | Finding 5: a slower S-curve adoption ramp lowers SROI 20–31%, matching the direction. But Finding 13 disputes CG's falling-prevalence premise because notified cases rose from 7.5M (2022) to 8.3M (2024). That reasoning is weak: notifications rose mostly because detection improved (8.3M is about 78% of estimated incidence), and TB deaths fell in 2024. |
 | U4 net higher | Partial | The report names the counterfactual framing, which pushes SROI up, "the single most decision-relevant question" and warns the downward adjustments double-count. It gives no net estimate. |
 
 **6 caught, 2 partial, 0 missed.**
@@ -93,6 +93,13 @@ Run #03 resumed from the verifier on run #02's exact 41 critiques, so difference
 1. The verifier rated 34 of 36 surviving core claims LOGIC ONLY, so the Open Questions note has 33 entries. On a BOTEC whose inputs are undocumented, almost every load-bearing claim is about CG's own definitions. Most "what would settle it" lines are the same few document requests.
 2. The verifier over-uses CONTRADICTED: it rejected "Phase IIc success is a weak gate" as contradicted while its own reason says whether this trial matches the design standard "is unchecked".
 3. Debate failure modes were dominated by false_definitiveness (47) and call_to_ignorance (40), both sides asserting what undefined parameters "already" include.
+
+Issues 1 and 2 are fixed in commit 275c389 and not yet tested in a run. The verifier now rates a claim CONTRADICTED only when evidence refutes it as it applies to this case. Open Questions is now a short checklist of the distinct questions, split into questions for the CEA's authors and questions needing new evidence, each listing the findings it settles. Issue 3 is open.
+
+## Spot check of findings after run #03
+
+- **TB case counts (run #03 Finding 21).** WHO does report a record 8.3M people newly diagnosed in 2024, up from 7.5M in 2022. But that is about 78% of estimated incidence, the rise mostly reflects better detection, and TB deaths fell (1.25M to 1.23M). It does not undercut a falling-burden assumption. Run #03 treated it as a stale starting figure and marked it not assessable, which is reasonable.
+- **Rifampicin interaction.** Real: rifampicin sharply lowers atorvastatin levels (Backman et al., 2005). But the trials give atorvastatin alongside rifampicin-based treatment, so the trial effect already includes the interaction. It matters only if routine-care dosing differs.
 
 ## Files
 
