@@ -61,17 +61,42 @@ Run #01 (same day) failed for mechanical reasons: silent output truncation on th
 - **Different models from the April runs.** Results are not directly comparable with the GiveWell runs.
 - **Single run.** No repeat yet to test stability.
 
-## Process issues found (to fix before any re-run)
+## Process issues found in run #02, and the fixes
 
-1. Verifier never rejects: it flags claims as ungrounded in its notes but passes every critique.
-2. Quantifier reasons in derived factors (e.g. "shrinkage factor s on relative_reduction") that do not map onto model parameters, so sensitivity rarely executes.
-3. Volume: 39 findings; overlapping haircuts on the same parameter are listed separately.
-4. Contradictory findings (speedup up vs. down) are not reconciled.
-5. Critiques skipped as immaterial are not reported in the final report.
-6. The extractor does not link the 9 weak findings to their critiques.
+| Issue in run #02 | Fix (commits b577583 to dc6c88e) |
+|---|---|
+| Verifier rejected 0 of 41 | Verifier names each critique's core claim and rates it SUPPORTED, LOGIC ONLY or CONTRADICTED; contradicted means rejected |
+| Sensitivity executed for 2 of 41 | Quantifier ends with plain-text `RANGE:` lines in the model's parameter names; the code runs those |
+| 39 findings, overlapping haircuts | New "Findings by Parameter" table with a do-not-stack note |
+| Opposing findings not reconciled | New "Conflicting Findings" section, each with what would decide it |
+| Immaterial critiques not reported | Listed and counted in the report |
+| Extractor missed weak findings | Fixed for both header and bold-paragraph formats |
+
+These changed the verifier, quantifier and synthesizer prompts, so run #03 is not directly comparable with run #02 on those stages.
+
+## Run #03: same critiques, fixed pipeline
+
+Run #03 resumed from the verifier on run #02's exact 41 critiques, so differences come only from the fixes. Cost $17.49 for the resumed stages, no truncated calls.
+
+| Measure | Run #02 | Run #03 |
+|---|---|---|
+| Verifier rejections | 0 of 41 | 5 of 41 (2 contradicted, 3 unverifiable) |
+| Critiques with executed sensitivity | 2 of 41 | 35 of 36 |
+| Surviving findings | 39 (some strong) | 35 (27 moderate, 8 weak, none strong) |
+| Score against CG's follow-ups | 6 caught, 2 partial | 6 caught, 2 partial |
+
+**What changed:** the report is far more usable. Every finding carries an executed range; 35 findings collapse into 10 parameter rows; the speedup disagreement appears as an explicit conflict whose decider ("has any funder committed to a statin-TB Phase III independently?") is essentially CG's own reason for revising the speedup. The upward counterfactual argument is now Finding 1. No finding reached STRONG: with the core-claim rating visible, the judge capped findings whose load-bearing claim could not be checked. The report attributes this to the BOTEC leaving p_success, adult_uptake, the 10% effect and the 6% mortality undefined, and recommends one document request to CG as the highest-value next step.
+
+**What did not change:** the same 6 caught and 2 partial. U4 is still partial, and the report now leans the other way from CG: it says most adjustments point down and a joint downside "would likely fall below 2,000x", while CG concluded the corrected SROI is higher.
+
+**New issues found in run #03:**
+1. The verifier rated 34 of 36 surviving core claims LOGIC ONLY, so the Open Questions note has 33 entries. On a BOTEC whose inputs are undocumented, almost every load-bearing claim is about CG's own definitions. Most "what would settle it" lines are the same few document requests.
+2. The verifier over-uses CONTRADICTED: it rejected "Phase IIc success is a weak gate" as contradicted while its own reason says whether this trial matches the design standard "is unchecked".
+3. Debate failure modes were dominated by false_definitiveness (47) and call_to_ignorance (40), both sides asserting what undefined parameters "already" include.
 
 ## Files
 
-- Run outputs: `results/cg-tb-statins-run02/` (graph: `cg-tb-statins-run02-2026-11-07/graph.json`)
+- Run #02 outputs: `results/cg-tb-statins-run02/` (graph: `cg-tb-statins-run02-2026-11-07/graph.json`)
+- Run #03 outputs: `results/cg-tb-statins/` (graph: `cg-tb-statins-run03-2026-11-07/graph.json`)
 - Input and model: `data/cg-tb-statins/`, `pipeline/botec.py`
 - Source: Coefficient Giving, "How we use back-of-the-envelope calculations in our grantmaking", May 2025 (also on the EA Forum).
