@@ -538,11 +538,13 @@ def parse_verifier_output(
         "CITATION CHECK",
         "CLAIM CHECK",
         "EVIDENCE FOUND",
+        "CORE CLAIM",
         "OVERALL VERDICT",
         "REVISED CRITIQUE",
     ]
 
     verdict_raw = _extract_section(text, "OVERALL VERDICT", ver_headers)
+    core_raw = _extract_section(text, "CORE CLAIM", ver_headers)
     evidence_raw = _extract_section(text, "EVIDENCE FOUND", ver_headers)
     revised_raw = _extract_section(text, "REVISED CRITIQUE", ver_headers)
     claim_check_raw = _extract_section(text, "CLAIM CHECK", ver_headers)
@@ -586,6 +588,11 @@ def parse_verifier_output(
     ).strip()
     revised_hypothesis = revised_clean if revised_clean else None
 
+    core_claim, core_support, core_reason = _parse_core_claim(core_raw)
+    if core_support == "contradicted":
+        # A contradicted load-bearing claim rejects the critique outright.
+        verdict = "rejected"
+
     return VerifiedCritique(
         original=original,
         verdict=verdict,
@@ -594,7 +601,32 @@ def parse_verifier_output(
         counter_evidence=[],
         caveats=caveats,
         revised_hypothesis=revised_hypothesis,
+        core_claim=core_claim,
+        core_claim_support=core_support,
+        core_claim_reason=core_reason,
     )
+
+
+def _parse_core_claim(section: str) -> tuple[str, str, str]:
+    """Parse the verifier's CORE CLAIM section into (claim, support, why)."""
+    if not section:
+        return "", "unknown", ""
+    plain = section.replace("**", "")
+
+    def field_value(name: str) -> str:
+        m = re.search(rf"^\s*[-*]?\s*{name}\s*:\s*(.+?)\s*$", plain, re.IGNORECASE | re.MULTILINE)
+        return m.group(1).strip() if m else ""
+
+    support_raw = field_value("Support").upper()
+    if "CONTRADICT" in support_raw:
+        support = "contradicted"
+    elif "LOGIC" in support_raw:
+        support = "logic_only"
+    elif "SUPPORTED" in support_raw:
+        support = "supported"
+    else:
+        support = "unknown"
+    return field_value("Claim"), support, field_value("Why")
 
 
 # Parameter name mapping from API response text to compute_cost_effectiveness kwargs.
@@ -1582,7 +1614,8 @@ def run_verifier(
                 f"Verify each of the following {len(batch)} critiques. "
                 f"For EACH critique, provide a separate section headed "
                 f"'## Critique N:' with OVERALL VERDICT, EVIDENCE FOUND, "
-                f"CLAIM CHECK, and (if partially verified) REVISED CRITIQUE.\n\n"
+                f"CLAIM CHECK, CORE CLAIM, and (if partially verified) "
+                f"REVISED CRITIQUE.\n\n"
                 + critique_blocks
             )
 
@@ -1759,7 +1792,10 @@ def run_judge(
         f"**Mechanism:** {orig.mechanism}\n\n"
         "## Verifier's Evidence Package\n\n"
         f"**Verdict:** {verified_critique.verdict}\n"
-        f"**Evidence strength:** {verified_critique.evidence_strength}\n\n"
+        f"**Evidence strength:** {verified_critique.evidence_strength}\n"
+        f"**Core claim:** {verified_critique.core_claim or '(not reported)'} "
+        f"(support: {_CORE_SUPPORT_LABELS[verified_critique.core_claim_support]}; "
+        f"{verified_critique.core_claim_reason or 'no reason given'})\n\n"
         f"**Evidence found:**\n{evidence_found_block}\n\n"
         f"**Counter-evidence / contradictions:**\n{counter_evidence_block}\n\n"
         f"**Caveats:**\n{caveats_block}\n\n"
@@ -2071,6 +2107,14 @@ def run_linker(
     return result
 
 
+_CORE_SUPPORT_LABELS: dict[str, str] = {
+    "supported": "SUPPORTED",
+    "logic_only": "LOGIC ONLY",
+    "contradicted": "CONTRADICTED",
+    "unknown": "not reported",
+}
+
+
 def _format_rejected_critiques_for_synthesizer(
     rejected: list[VerifiedCritique],
 ) -> str:
@@ -2090,6 +2134,12 @@ def _format_rejected_critiques_for_synthesizer(
             f"- **What the verifier searched for:**\n{caveats_str}\n"
             f"- **Evidence found:**\n{evidence_str}\n"
         )
+        if r.core_claim:
+            entry += (
+                f"- **Core claim:** {r.core_claim} "
+                f"(support: {_CORE_SUPPORT_LABELS[r.core_claim_support]})\n"
+                f"- **Verifier's reason:** {r.core_claim_reason or '(not given)'}\n"
+            )
 
         if r.verdict == "rejected":
             contradicted.append(entry)
@@ -2217,6 +2267,8 @@ def _build_synthesizer_user_message(
             f"- **Mechanism:** {orig.mechanism}\n"
             f"- **Evidence:** {', '.join(dc.critique.critique.evidence_found)}\n"
             f"- **Evidence Strength:** {dc.critique.critique.evidence_strength}\n"
+            f"- **Core Claim:** {dc.critique.critique.core_claim or '(not reported)'} "
+            f"(support: {_CORE_SUPPORT_LABELS[dc.critique.critique.core_claim_support]})\n"
             f"- **Materiality:** {dc.critique.materiality}\n"
             f"- **Sensitivity Results:** {json.dumps(dc.critique.sensitivity_results, default=str)}\n"
             f"- **Key Unresolved Questions:** {', '.join(dc.key_unresolved)}\n"
@@ -2226,6 +2278,23 @@ def _build_synthesizer_user_message(
 
     # Compile rejected critique data, separated by verdict type
     rejected_section = _format_rejected_critiques_for_synthesizer(rejected_critiques)
+
+    # Surviving findings whose load-bearing claim the verifier could not check.
+    # These get an Open Questions note: the reader should verify them by hand.
+    logic_only: list[str] = []
+    for dc in debated:
+        vc = dc.critique.critique
+        if vc.core_claim_support == "logic_only":
+            logic_only.append(
+                f"#### {vc.original.title}\n"
+                f"- **Core claim:** {vc.core_claim}\n"
+                f"- **Why the verifier could not check it:** {vc.core_claim_reason or '(not given)'}\n"
+            )
+    logic_only_section = (
+        "## Surviving Findings Resting on Unverified Core Claims "
+        "(for Open Questions — DO NOT generate new entries)\n\n"
+        + ("\n".join(logic_only) if logic_only else "(none)\n")
+    )
 
     # Linker dependencies block. Show UNVERIFIABLE as the human-facing label
     # even though the schema value is "unverified".
@@ -2278,6 +2347,7 @@ def _build_synthesizer_user_message(
         f"## Surviving Critiques (from adversarial stage)\n\n"
         + "\n".join(critique_summaries)
         + f"\n\n{rejected_section}"
+        + f"\n\n{logic_only_section}"
         + f"\n\n## Critique Dependencies (from linker)\n\n"
         f"{deps_block}\n\n"
         f"## Judge Audit Aggregate (computed from surviving critiques)\n\n"

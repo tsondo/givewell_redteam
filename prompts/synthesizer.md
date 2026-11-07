@@ -99,6 +99,9 @@ verbatim as the Finding header.
 ### Finding 1: [exact title from Surviving Critiques input] [CONDITIONAL — see dependencies]
 **Impact:** [One sentence: what changes in the CEA and by how much]
 **Evidence:** [2-3 sentences summarizing verified evidence]
+**Core claim:** [The Core Claim from the input, and its support label in
+parentheses: SUPPORTED or LOGIC ONLY. If the input says "not reported",
+omit this line.]
 **Conditional on:** [If this finding's title appears in the Critique
 Dependencies input as the `surviving` side of a `depends_on` relationship,
 list each one here in the format: "the unverified claim that X (rejected
@@ -228,6 +231,23 @@ CRITICAL RULES FOR THIS SECTION:
 - DO NOT combine, summarize, or paraphrase across multiple input entries.
 - If the input section is empty or says "(none)", write "(none — all
   hypotheses were either grounded or contradicted)" and move on.
+
+### Findings that rest on unverified claims
+
+Some surviving findings depend on a claim the verifier could not check
+(support: LOGIC ONLY). They stay in the findings above, but the reader
+should check that claim before acting on the finding. For each entry in
+the input section "Surviving Findings Resting on Unverified Core Claims",
+write one entry:
+
+**[Finding title, verbatim]** rests on: [core claim from input].
+*Why it could not be checked:* [reason from input].
+*What would settle it:* [one sentence naming the specific evidence or
+document that would confirm or refute the claim.]
+
+Rules: ONLY use entries from that input section, in its order. If it says
+"(none)", write "(none — every surviving finding's core claim was
+supported)".
 
 ## Resolved Negatives (from Rejected Critiques input — verdict: REJECTED)
 

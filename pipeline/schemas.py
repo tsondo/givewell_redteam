@@ -90,6 +90,12 @@ class VerifiedCritique:
     counter_evidence: list[str]
     caveats: list[str]
     revised_hypothesis: str | None
+    # The one claim the critique's conclusion rests on, as named by the
+    # verifier, and whether the verifier could support it:
+    # "supported" | "logic_only" | "contradicted" | "unknown" (not reported).
+    core_claim: str = ""
+    core_claim_support: str = "unknown"
+    core_claim_reason: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -100,6 +106,9 @@ class VerifiedCritique:
             "counter_evidence": self.counter_evidence,
             "caveats": self.caveats,
             "revised_hypothesis": self.revised_hypothesis,
+            "core_claim": self.core_claim,
+            "core_claim_support": self.core_claim_support,
+            "core_claim_reason": self.core_claim_reason,
         }
 
     @classmethod
@@ -112,6 +121,9 @@ class VerifiedCritique:
             counter_evidence=d["counter_evidence"],
             caveats=d["caveats"],
             revised_hypothesis=d.get("revised_hypothesis"),
+            core_claim=d.get("core_claim", ""),
+            core_claim_support=d.get("core_claim_support", "unknown"),
+            core_claim_reason=d.get("core_claim_reason", ""),
         )
 
 

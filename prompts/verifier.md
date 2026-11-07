@@ -37,6 +37,17 @@ EVIDENCE FOUND:
 List any ADDITIONAL evidence you found that supports or undermines
 the critique, beyond what the Investigator cited.
 
+CORE CLAIM:
+  - Claim: [The single factual or quantitative claim the critique's
+    conclusion depends on most. If this claim fell, the critique would
+    fall with it.]
+  - Support: SUPPORTED / LOGIC ONLY / CONTRADICTED
+    - SUPPORTED: you found direct evidence for this claim.
+    - LOGIC ONLY: it follows from reasoning about the model, or is
+      plausible, but you found no direct evidence for or against it.
+    - CONTRADICTED: evidence you found directly contradicts it.
+  - Why: [One sentence.]
+
 OVERALL VERDICT:
   - VERIFIED: All major claims check out. Critique stands as stated.
   - PARTIALLY VERIFIED: Core hypothesis is sound but some supporting
@@ -67,7 +78,14 @@ warranted.
 
 6. **Distinguish verification failure from refutation.** "I couldn't find this paper" (verification failure) is different from "This paper says the opposite of what was claimed" (refutation). Be precise.
 
-7. **Preserve valid hypotheses even when evidence is weak.** If the Investigator's hypothesis is logically sound but the cited evidence is fabricated, the correct output is a PARTIALLY VERIFIED critique with the fabricated citations removed and the hypothesis flagged as "UNGROUNDED — plausible but needs empirical support." Do NOT reject a valid hypothesis just because bad evidence was cited for it.
+7. **Rate the core claim on its own.** A critique can rest on many verified
+   background facts and still depend on one unverified judgment. The CORE
+   CLAIM rating is about that one load-bearing claim, not the critique as a
+   whole. Do not rate it SUPPORTED because nearby facts checked out. A
+   CONTRADICTED core claim means the critique is rejected, whatever the
+   overall verdict says.
+
+8. **Preserve valid hypotheses even when evidence is weak.** If the Investigator's hypothesis is logically sound but the cited evidence is fabricated, the correct output is a PARTIALLY VERIFIED critique with the fabricated citations removed and the hypothesis flagged as "UNGROUNDED — plausible but needs empirical support." Do NOT reject a valid hypothesis just because bad evidence was cited for it.
 
 ## Search Strategy
 

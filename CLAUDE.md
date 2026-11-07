@@ -8,7 +8,7 @@ Multi-agent pipeline for AI red teaming of GiveWell's cost-effectiveness analyse
 
 - `docs/architecture.md` — Full pipeline spec. Defines all six stages, inputs/outputs, information flow rules.
 - `pipeline-spec.md` — Your build spec. Contains schemas, API configuration, implementation details. **Follow the planning checklist at the bottom before writing code.**
-- `prompts/` — All seven agent prompts. These are the system prompts for each API call. Do not modify them.
+- `prompts/` — The agent prompts (system prompts for each API call). See "Prompts may evolve" below before changing them.
 - `results/water-chlorination/decomposer-output.md` — Example output from Stage 1. Your pipeline should produce comparable structured output.
 - `data/` — CEA spreadsheets (WaterCEA.xlsx, InsecticideCEA.xlsx, MalariaCEA.xlsx). Read-only inputs.
 
@@ -26,7 +26,7 @@ Multi-agent pipeline for AI red teaming of GiveWell's cost-effectiveness analyse
 
 **Surgical changes.** Touch only what you must. Don't "improve" adjacent code, comments, or formatting. Don't refactor things that aren't broken. **Every changed line should trace directly to the user's request or the spec.**
 
-**Prompts in `prompts/` are read-only.** They are the experimental treatment. Modifying them invalidates all results gathered so far and breaks comparability across runs. If a prompt seems wrong, raise it — don't edit it.
+**Prompts in `prompts/` may evolve (decision of 2026-11-07).** Usefulness now matters more than comparability with past runs; that may change if the pipeline goes live at an organization. Prompt changes still need the user's agreement first, belong in their own clearly described commits, and mean results from before and after the change are not directly comparable. Say so wherever results are reported.
 
 **No speculative API calls.** The pipeline has exactly the stages defined in `docs/architecture.md`. Do not add "helpful" extra LLM calls (clarification passes, meta-critiques, retries with rephrasing) that aren't in the spec. Every API call costs real money against a $50 budget and contaminates the experiment by introducing variables not in the design.
 
