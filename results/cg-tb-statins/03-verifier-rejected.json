@@ -1,1 +1,196 @@
-[]
+[
+  {
+    "original": {
+      "thread_name": "Realism of all-in cost (all_in_cost) \u2014 Phase III trial size,",
+      "title": "Unclear scope boundary for the sweat-diagnostic workstream",
+      "hypothesis": "The thread notes a sweat-diagnostic workstream. If the diagnostic work is part of the same program, its costs are either inside the $7M, which leaves less for statin Phase III and adoption, or outside it. If outside, the all-in cost is understated. If the diagnostic's benefits are included in the credited benefits but its costs are not, that is a mismatch. If it is a separate program, shared trial infrastructure could be double-counted or free-ridden in either direction.",
+      "mechanism": "Ambiguous in sign.\n- If diagnostic costs are excluded but diagnostic-linked benefits are counted, cost is understated by the diagnostic budget.\n- That budget is unknown. Any budget above about $3.7M would breach the 2,000x threshold.\n- If it is separate and its benefits are not counted, there is no effect.\n- Magnitude uncertain; this requires clarification of the grant structure.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "UNGROUNDED. I have no source on the structure of the workstream beyond the thread description. This is a clarification question for CG, not an established flaw."
+      ],
+      "estimated_direction": "uncertain",
+      "estimated_magnitude": "small"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Nothing on the grant structure. I did not find the CG grant page."
+    ],
+    "evidence_strength": "weak",
+    "counter_evidence": [],
+    "caveats": [
+      "\"A sweat-diagnostic workstream exists in this program\": UNVERIFIABLE.** I found no public link between the statin program and a sweat-based diagnostic. Sweat as a TB diagnostic matrix is a real research area: a proof-of-concept study found",
+      "26 proteins detected only in the sweat of active TB patients . That study says nothing about this program.",
+      "\"Any diagnostic budget above ~$3.7M breaches 2,000x\": VERIFIED arithmetic, conditional on the other numbers.** It uses the same $10.7M threshold as Critique 1.",
+      "Cost and benefit mismatch scenarios: logically coherent but hypothetical.** Only one of the four branches has any effect: costs excluded while diagnostic-linked benefits are counted. There is no evidence that this branch applies."
+    ],
+    "revised_hypothesis": null,
+    "core_claim": "Diagnostic costs sit outside the $7M while diagnostic-linked benefits are counted in the credited benefits.",
+    "core_claim_support": "logic_only",
+    "core_claim_reason": "The critique presents it as a scenario, and I found no evidence for or against it."
+  },
+  {
+    "original": {
+      "thread_name": "Structural \u2014 counterfactual definition of \"speedup,\" attribution",
+      "title": "Probability weighting is asymmetric between benefit and cost.",
+      "hypothesis": "Benefits are multiplied by p_success = 0.40. If the $7M cost is a nominal sum of all stages, the denominator ignores that later-stage spend only occurs if earlier stages succeed. Under a sequential, gated pathway (Phase IIc, then Phase III, then implementation or demonstration studies), expected spend is lower than nominal spend. The benefit is discounted for failure while the cost is not. This is a double penalty.",
+      "mechanism": "Expected all-in cost = $0.32M + s \u00d7 $6.7M, where s is the probability that downstream spending actually occurs. With s = 0.6 (illustrative), expected cost is about $4.3M, which raises SROI by about 1.6x. With s = 0.4 it is about $3.0M (about 2.3x). If the $7M already reflects expected values, the critique does not apply. The direction is up.\n\nThere is a subtle counterpoint. If p_success = 0.40 is the probability of the whole pathway succeeding, the probability that spending reaches Phase III may be higher than 0.40, since failure can occur late. Late failure still incurs most of the cost. The correct s therefore lies between 0.4 and 1, and the effect might be small. I cannot determine this without the CEA.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "Logical argument. UNGROUNDED as to how CG built the $7M and whether it weights costs by stage. This requires inspecting the CEA cells."
+      ],
+      "estimated_direction": "increases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "I searched for nothing specific on how CG built the $7M, and no result addressed it.",
+      "Context: other parties often fund the downstream spend (Phase III, implementation). Whether that spend belongs in CG's cost denominator at all is a separate counterfactual-attribution question. That could shrink the denominator further, or make the whole gating argument moot."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Expected cost = $0.32M + s \u00d7 $6.7M: **VERIFIED as arithmetic**.",
+      "s = 0.6 gives $4.34M, so SROI rises by about 1.62x (7.02/4.34).",
+      "s = 0.4 gives $3.0M, so SROI rises by about 2.34x.",
+      "These match the stated 1.6x and 2.3x.",
+      "\"The $7M is a nominal sum of all stages\": **UNVERIFIABLE**. I don't have the CEA cells, and the critique itself says the point fails if the $7M is already an expected value.",
+      "Counterpoint that s lies between p_success and 1 because late-stage failures still incur most of the cost: **LOGICALLY CORRECT**. If p_success is the product of per-stage probabilities, s for Phase III spend equals the probability of passing the earlier stage, which is at least 0.40. Whether s is closer to 0.4 or 1 depends on where the attrition occurs.",
+      "A \"double penalty\": **PLAUSIBLE**. It is a real methodological inconsistency if costs are unweighted. Matching expected benefits to expected costs is standard. It is only a \"penalty\" in the sense of an understated SROI."
+    ],
+    "revised_hypothesis": null,
+    "core_claim": "The $7M denominator is a nominal, unweighted sum of gated stage costs, while the benefit carries p = 0.40.",
+    "core_claim_support": "logic_only",
+    "core_claim_reason": "The mechanism is sound, but I found no evidence on how the CEA constructed the cost, and the critique is conditional on it."
+  },
+  {
+    "original": {
+      "thread_name": "Implementation \u2014 trial execution, guideline adoption pathway,",
+      "title": "Effective delivered dose and adherence diverge from trial conditions, and programmatic dose may be lower than the trial dose, notably with rifapentine regimens",
+      "hypothesis": "The model applies a trial-derived effect to 60% of patients as if \"prescribed\" equals \"treated at effective dose for the effective window.\" In programs, adjunct pills outside the FDC are self-administered and often unsupervised, and are less likely to be taken than anti-TB drugs, which are the patient's focus and may have DOT or digital adherence support. Statin adherence in general populations is known to be poor (a large fraction discontinue within a year in observational cohorts, though TB treatment is only 6 months and the motivating context differs). Trials measure adherence under research conditions with pill counts and supervision, so the real-world delivered dose and duration will be lower. In addition, the shift toward the 4-month rifapentine-containing regimen (HPMZ) matters because rifapentine is generally considered a strong CYP3A4 inducer, comparable to or stronger than rifampicin in some dosing contexts. That would further lower atorvastatin exposure in the very regimens programs are shifting toward, and shorten the treatment window over which a statin could be co-administered. Dose-finding in a Phase IIc is performed on one regimen (presumably rifampicin-based HRZE), so the dose selected may not carry over.",
+      "mechanism": "Effective uptake equals prescribed share \u00d7 adherence \u00d7 the fraction achieving effective exposure. At 70% adherence, 0.60 becomes 0.42, about a 30% reduction. This is near the materiality threshold alone, and it compounds with Critiques 1 and 3. It also reduces relative_reduction in effectiveness (Thread 1) if there is a dose-response relationship. The rifapentine concern affects only the share of patients on HPMZ, which is currently small but growing. The direction is downward and the magnitude uncertain.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "Logical argument plus general pharmacology (rifamycin induction of CYP3A4). I cannot identify a specific source on adherence to adjunctive non-TB drugs during TB treatment. The rifapentine/atorvastatin interaction magnitude is UNGROUNDED and needs checking (Liverpool interaction database, rifapentine label). The \"70% adherence\" figure is from the thread's materiality framing, not an empirical estimate."
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "rejected",
+    "evidence_found": [
+      "Possible double-counting.** If the Phase III is pragmatic or intention-to-treat, the effect size already embeds trial-level non-adherence. Applying an adherence haircut again to uptake would then overstate the downward adjustment. The Investigator did not address this.",
+      "Statin identity again.** If pravastatin is the candidate, rifamycin CYP3A4 induction is a minor concern. The rifapentine-specific argument then largely falls away.",
+      "The critique says it \"compounds with Critiques 1 and 3\". That appears to be a self-reference error and should probably read 1 and 2."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Rifapentine is a strong CYP3A4 inducer, \"comparable to or stronger than rifampicin in some dosing contexts\": PARTIALLY VERIFIED, mostly contradicted on direction.**",
+      "One review ranks relative inductive potency as rifampin > rifapentine > rifabutin. It says rifapentine's CYP3A4 induction approaches rifampin's (85\u2013100%) with daily dosing and is more moderate with once- or twice-weekly dosing.",
+      "The WHO prequalification document says rifapentine's induction potential may be less than rifampicin's but more potent than rifabutin's.",
+      "A clinical protocol gives relative potency as rifampin 100%, rifapentine 85% and rifabutin 40%.",
+      "There is supporting evidence for \"stronger in some contexts.\"",
+      "In one study, oral midazolam AUC fell 75% with rifampin versus 92% with rifapentine, each at 10 mg/kg daily.",
+      "One in vitro hepatocyte study found rifapentine to be the weakest of the three inducers.",
+      "The evidence is mixed. It does not support the stronger claim that HPMZ regimens would lower statin exposure \"further\" than rifampicin regimens. Daily rifapentine dosing, as in HPMZ, is the condition where induction is closest to rifampicin's. A modest difference in either direction is the best-supported reading.",
+      "HPMZ is a 4-month rifapentine-containing regimen that programs are moving toward, with a currently small but growing share: PLAUSIBLE.** I did not search this. From background knowledge, WHO recommended it in 2022. I have no uptake share data.",
+      "Statin non-adherence is high in general populations: PLAUSIBLE, not searched.** It is a well-known finding, but it was not checked for the TB context.",
+      "Adjunct pills outside an FDC are less likely to be taken than anti-TB drugs: PLAUSIBLE.** The Investigator admitted there is no specific source, and I found none.",
+      "0.60 \u00d7 0.70 = 0.42, about a 30% reduction: VERIFIED (arithmetic).** The 70% adherence figure is an assumption.",
+      "Dose-finding on one regimen may not carry over: PLAUSIBLE.** StAT-TB tests statins with first-line HRZE.",
+      "The protocol describes testing statins in combination with first-line TB drugs."
+    ],
+    "revised_hypothesis": "Programmatic adherence to an unsupervised adjunct pill is likely below trial adherence, and this lowers realized benefit. The size of the effect is **UNGROUNDED \u2014 plausible but needs empirical support.** The 70% figure is an assumption, and it risks double-counting if the trial effect is already pragmatic or intention-to-treat. The rifapentine point is weaker than stated. Daily rifapentine induces CYP3A4 at roughly 85\u2013100% of rifampicin's level. That is similar to the interaction already present in HRZE-based trials, not clearly worse, and it matters only for CYP3A4-metabolised statins. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.",
+    "core_claim": "Real-world delivered dose and adherence (about 70%) would reduce effective uptake by about 30%, and rifapentine regimens would further lower statin exposure.",
+    "core_claim_support": "contradicted",
+    "core_claim_reason": "The effectiveness-gap mechanism is generic and plausible. The 70% is assumed, and most pharmacology sources rank rifapentine at or below rifampicin for CYP3A4 induction."
+  },
+  {
+    "original": {
+      "thread_name": "Probability of success (p_success) \u2014 base rates and the",
+      "title": "P(adoption | Phase III success) and P(Phase III gets funded and run | Phase IIc success) are missing, and the 60% uptake factor may not cover them",
+      "hypothesis": "CG's chain has no explicit step for (a) WHO guideline adoption after a positive Phase III, or (b) securing the Phase III itself. Both are especially fragile for a generic repurposed drug.\n\nOn (a), WHO recommendations require a GRADE evidence review. A surrogate-based trial with low-certainty mortality evidence might yield a conditional recommendation or none. Guideline timing also adds delay, and the model already assumes 8 years to Phase III completion. The 60% uptake figure appears to be about country-level implementation after adoption. If so, adoption is still not captured. If instead 60% blends adoption and uptake, it should be disclosed.\n\nOn (b), a generic has no commercial sponsor with a registration incentive. In industry data, many Phase II\u2192III failures are strategic or funding exits, but for generics the funding risk is arguably greater. CG's $7M includes later trials, which assumes funding is secured with certainty. Yet p_success only covers scientific success, not the probability that someone pays for Phase III. If CG itself would fund Phase III, that is a commitment that needs to be modeled as cost conditional on IIc success. If CG would not, then another funder must be found with some probability below 1.",
+      "mechanism": "If P(adopted | III success) is 0.75\u20130.85, p_success_effective falls from 0.40 to 0.30\u20130.34, reducing cost-effectiveness by 15\u201325% (simple multiplication). If P(Phase III funded | IIc success) is also below 1 (say 0.8), the combined reduction is larger and takes the base case close to the 0.26 threshold. This depends on how CG's 60% was derived. If the 60% already embeds adoption, this critique mostly collapses to a documentation concern.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "Logical argument. The GRADE and WHO guideline process is institutional knowledge. I cannot cite a specific source for adoption probabilities after positive trials, and the numbers above are inference. UNGROUNDED quantitatively. The Verifier should check how CG derived the 60% and what it covers."
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "unverified",
+    "evidence_found": [
+      "Nothing directly confirms or contradicts the critique. Generic repurposed drugs lack a commercial sponsor, which is plausible. I found no data on adoption or funding probabilities for repurposed TB adjuncts.",
+      "There may be a double-counting issue. If the 40% came from industry base rates for reaching approval, it may already include some funding and strategic attrition. That would cut against this critique, but I could not check it."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "0.40 \u00d7 0.75\u20130.85 = 0.30\u20130.34, a 15\u201325% reduction: VERIFIED (arithmetic).**",
+      "Combined with funding at 0.8, the result is \"close to the 0.26 threshold\": UNVERIFIABLE.** The 0.26 break-even is internal to CG's model. Note that 0.40 \u00d7 0.8 \u00d7 0.8 \u2248 0.256, which is consistent with the claim.",
+      "WHO recommendations require a GRADE review and low-certainty evidence may give a conditional or no recommendation: PLAUSIBLE.** This is general institutional knowledge. My searches did not retrieve WHO guideline-methodology documents.",
+      "The 60% uptake figure covers only country-level implementation, or blends adoption and uptake: UNVERIFIABLE.** I could not find CG's model or grant documents.",
+      "\"$7M includes later trials\": UNVERIFIABLE.**",
+      "\"Many Phase II\u2192III failures are strategic or funding exits\": UNVERIFIED.** I did not search for it. It is a reasonable industry-data claim but needs a source.",
+      "\"8 years to Phase III completion\": UNVERIFIABLE."
+    ],
+    "revised_hypothesis": "- **Hypothesis (UNGROUNDED):** Separate adoption and funding steps may be missing from the p_success chain. If they are absent and each is below 1, cost-effectiveness falls roughly proportionally.\n- **Arithmetic:** 0.40 \u00d7 0.75\u20130.85 gives 0.30\u20130.34, a 15\u201325% reduction.\n- **Action:** The first step is to check how the 60% was derived. If it embeds adoption, this becomes a documentation point only. Medium strength at most, conditional on that check.\n\n---",
+    "core_claim": "The model has no separate factor for WHO adoption or Phase III funding, and the 60% uptake does not already cover them.",
+    "core_claim_support": "logic_only",
+    "core_claim_reason": "This depends on how CG derived the 60% and what it includes, which I could not check."
+  },
+  {
+    "original": {
+      "thread_name": "Probability of success (p_success) \u2014 base rates and the",
+      "title": "Phase IIc \"success\" is a weak gate. If it is defined by PK or dose selection, it passes easily and transmits little information, so the probability of the whole chain should be weighted toward Phase III",
+      "hypothesis": "The one-stage framing \"40% that II and III both succeed\" masks that the two stages carry very different risk. If the Phase IIc is chiefly dose-finding or PK/safety, as the exclusion list implies, then P(IIc success) is high (0.6\u20130.8). This is not strictly a probability of efficacy, and \"success\" at this stage may only mean \"a tolerable dose with acceptable exposure was found\". Industry Phase II rates of ~29% reflect proof-of-efficacy trials. A dose-finding IIc therefore does not de-risk Phase III the way a proof-of-concept Phase II would, and it may even produce an optimistic dose or a surrogate signal that Phase III later fails to confirm. REMoxTB-type experience, where Phase II culture-conversion signals did not translate, is relevant here (see Critique 2).\n\nImplication: the 40% cannot be sanity-checked against Phase II\u2192approval statistics without first defining the IIc endpoint. If IIc is easy and Phase III is the real hurdle, the realistic product is P(IIc) \u2248 0.7 \u00d7 P(III | weak signal) \u2248 0.3 \u2248 0.21 (illustrative inference), again at or below the break-even.",
+      "mechanism": "The same linear effect on p_success as in Critique 1, but with a different decomposition: the Phase III failure rate becomes the focus and the Phase IIc contributes little. This also affects the joint distribution of p_success and relative_reduction. A weak gate lets through a dose that may be too low for efficacy, which correlates a lower effect size with Phase III failure. If the true effect is below 10%, Phase III is also less likely to succeed. So modelling p_success and RR as independent point values can mislead. The expected value of the product E[p \u00d7 RR] is not p \u00d7 E[RR] when both depend on the true effect. The direction is ambiguous. Conditional on Phase III success, winner's curse suggests the realized effect on the endpoint is smaller than the 10% planning value. Conversely, successful trials select for larger true effects. A simple scenario analysis with a prior over true effect sizes would show which dominates.",
+      "parameters_affected": [
+        "unknown"
+      ],
+      "suggested_evidence": [
+        "Logical and theoretical argument, plus general knowledge about Phase IIc design. Direct evidence on how this specific Phase IIc defines success is UNGROUNDED here. The Verifier should check the trial protocol and the CG grant rationale."
+      ],
+      "estimated_direction": "decreases",
+      "estimated_magnitude": "medium"
+    },
+    "verdict": "rejected",
+    "evidence_found": [
+      "The STEP design was created precisely because Phase II endpoints at 14 days and 8 weeks were over-relied on. That runs against the \"weak gate\" framing for TB Phase IIc in general.",
+      "Phase IIc in TB can still be underpowered. In STEP's own simulation,",
+      "80 patients per arm with 2.5% unfavourable outcomes gives a probability of 0.99 that Phase III unfavourable outcomes would be below 12%.",
+      "That is a Bayesian prediction, not a guarantee, so some uncertainty remains."
+    ],
+    "evidence_strength": "moderate",
+    "counter_evidence": [],
+    "caveats": [
+      "Phase IIc is chiefly dose-finding or PK/safety: CONTRADICTED under standard TB usage.**",
+      "The Phase IIC STEP design is a hybrid in which the experimental regimen is given for its planned Phase III duration, with patients followed for failure and relapse for 12 months from randomisation.",
+      "The authors say their intention was to set a high bar for moving regimens forward, to reduce the risk of costly phase III failures.",
+      "A review describes the hybrid Phase IIC design as permitting earlier identification of candidate regimens likely to succeed in Phase III.",
+      "An ongoing Phase IIc protocol uses unfavorable outcome status as its efficacy endpoint. It uses",
+      "Stage 1 unfavorable outcome status to inform the decision to proceed to Stage 2.",
+      "The critique infers \"dose-finding\" from an exclusion list I cannot see. CG could be using \"IIc\" loosely, which I could not check.",
+      "\"Phase II culture-conversion signals did not translate in REMoxTB\": PARTIALLY VERIFIED.**",
+      "REMoxTB was itself a Phase III trial. It showed a faster initial decline in bacterial burden but was not sufficiently sterilizing to shorten treatment from six to four months.",
+      "Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited surrogate use in REMoxTB.",
+      "The analogy supports the point that early-phase surrogates mislead. It concerns Phase IIb culture-conversion endpoints, not Phase IIc dose-finding.",
+      "\"See Critique 2\" appears to be a wrong cross-reference. The surrogate point belongs to Critique 1.",
+      "\"Industry Phase II rate ~29%\": UNVERIFIED.** I did not search for it. It is plausible from general knowledge.",
+      "0.7 \u00d7 0.3 = 0.21: VERIFIED (arithmetic).** The inputs are illustrative.",
+      "E[p\u00b7RR] \u2260 p\u00b7E[RR] when both depend on the true effect: VERIFIED (statistical logic).** The critique itself says the direction is ambiguous."
+    ],
+    "revised_hypothesis": "(conditional, not a finding)**\n- **Retain only this conditional hypothesis.** If CG's Phase IIc is defined by PK or dose rather than clinical outcomes, the 40% should be decomposed into P(IIc) \u00d7 P(III | weak signal) before it is compared with Phase II\u2192approval base rates.\n- **Generic point that survives:** Modelling p_success and RR as independent point values is a modelling simplification. It can be tested by a scenario analysis over a prior on the true effect size.\n- **Flagged UNGROUNDED:** The 0.6\u20130.8 IIc pass rate, the 0.21 product, and the direction of the joint-distribution effect.\n- **Strength:** Downgrade from medium to low-to-medium, pending the check of CG's IIc definition.",
+    "core_claim": "The Phase IIc success criterion is PK or dose selection, so P(IIc) is about 0.6\u20130.8 and transmits little information about Phase III.",
+    "core_claim_support": "contradicted",
+    "core_claim_reason": "Phase IIc is designed to be a high-bar efficacy gate. Whether CG's IIc matches that design is unchecked."
+  }
+]

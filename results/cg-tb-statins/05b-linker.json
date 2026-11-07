@@ -1,6 +1,87 @@
 {
-  "dependencies": [],
-  "n_surviving_critiques_examined": 39,
-  "n_rejected_critiques_available": 0,
-  "n_dependencies_found": 0
+  "dependencies": [
+    {
+      "surviving_critique_title": "The sweat-based diagnostic carries real option value but is speculative (~10\u201330k central)",
+      "rejected_critique_title": "Unclear scope boundary for the sweat-diagnostic workstream",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "The surviving critique's mechanism raises the \"consistency point for the Verifier\" on whether the $7M all-in cost already includes the diagnostic's funding, and defers cost attribution to the model. Its omitted-benefit estimate holds either way, so it does not require the scope-boundary claim to be true.",
+      "confidence": "high"
+    },
+    {
+      "surviving_critique_title": "Discounting quantified properly with an S-curve ramp and discounted costs. The net effect is about \u221220% to \u221231%, not the benefit-only \u221221% to \u221235%.",
+      "rejected_critique_title": "Probability weighting is asymmetric between benefit and cost.",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "The mechanism says \"If costs are probability-weighted by stage (Critique 4), expected spend falls and weights toward the near term, so the cost-side offset changes only modestly.\" It addresses stage-weighted costs but does not depend on that claim being true.",
+      "confidence": "high"
+    },
+    {
+      "surviving_critique_title": "The all-in framing counts benefits for every treated patient but not the cost of treating them",
+      "rejected_critique_title": "Probability weighting is asymmetric between benefit and cost.",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "The judge audit and unresolved items note that weighting adoption cost by p_success = 0.4 was raised but never applied, and that it could cut the effect roughly in half. This is the same cost-weighting question the rejected critique raises. The core delivery-cost asymmetry stands without it.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Industry phase-transition base rates put \"II and III both succeed\" at roughly 15\u201325%, so 40% requires an unstated premium of about 1.6\u20132.7\u00d7",
+      "rejected_critique_title": "P(adoption | Phase III success) and P(Phase III gets funded and run | Phase IIc success) are missing, and the 60% uptake factor may not cover them",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "depends_on",
+      "justification": "The surviving critique's decomposition (central \u2248 0.20) includes \"P(adopted | III) \u2248 0.7\u20130.85 (Critique 4)\" as an explicit factor. The judge audit lists the adoption overlap as unresolved. The sub-0.26 claim therefore rests on the adoption-gate assumption.",
+      "confidence": "high"
+    },
+    {
+      "surviving_critique_title": "Industry phase-transition base rates put \"II and III both succeed\" at roughly 15\u201325%, so 40% requires an unstated premium of about 1.6\u20132.7\u00d7",
+      "rejected_critique_title": "Phase IIc \"success\" is a weak gate. If it is defined by PK or dose selection, it passes easily and transmits little information, so the probability of the whole chain should be weighted toward Phase III",
+      "rejected_critique_verdict": "rejected",
+      "relationship": "engages_with",
+      "justification": "The decomposition sets \"P(IIc success) \u2248 0.5\u2026 because a PK/dose-selection Phase IIc is easier to 'pass',\" which borrows the weak-gate framing the verifier contradicted for TB Phase IIc. The headline claim, that 40% needs an unexplained premium over base rates, does not require that framing.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "\"Success\" probably means a surrogate or composite endpoint, but the model needs a 10% mortality reduction, so P(adopted AND 10% mortality benefit) < P(trials succeed)",
+      "rejected_critique_title": "P(adoption | Phase III success) and P(Phase III gets funded and run | Phase IIc success) are missing, and the 60% uptake factor may not cover them",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "The mechanism frames the coherent quantity as \"P(trials succeed on surrogate) \u00d7 P(adopted | success) \u00d7 E[mortality reduction | \u2026].\" It references the adoption term but argues mainly from the surrogate-to-mortality gap, so it does not depend on the adoption claim.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "A Phase III cannot be powered on mortality, so the WHO GDG would be recommending on surrogate or composite endpoints",
+      "rejected_critique_title": "P(adoption | Phase III success) and P(Phase III gets funded and run | Phase IIc success) are missing, and the 60% uptake factor may not cover them",
+      "rejected_critique_verdict": "unverified",
+      "relationship": "engages_with",
+      "justification": "The critique's unresolved question is whether the 40% p_success covers \"trial positive, but the recommendation is narrowed.\" This overlaps with the rejected critique's concern that adoption after Phase III success is not modeled and may not be covered by the 60% uptake factor.",
+      "confidence": "low"
+    },
+    {
+      "surviving_critique_title": "Winner's-curse and reference-class patterns imply the conditional effect should sit well below the surrogate-implied one, and r and p_success should not be independent",
+      "rejected_critique_title": "Phase IIc \"success\" is a weak gate. If it is defined by PK or dose selection, it passes easily and transmits little information, so the probability of the whole chain should be weighted toward Phase III",
+      "rejected_critique_verdict": "rejected",
+      "relationship": "engages_with",
+      "justification": "Both argue that modeling r and p_success as independent point values is wrong and that E[r \u00d7 p_success] differs from the product of means. The surviving critique's covariance and winner's-curse argument is made through the surrogate-success definition and does not require the weak-gate premise.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Rifampicin induction structurally limits atorvastatin exposure in routine programs, and the trial exposure does not transfer",
+      "rejected_critique_title": "Effective delivered dose and adherence diverge from trial conditions, and programmatic dose may be lower than the trial dose, notably with rifapentine regimens",
+      "rejected_critique_verdict": "rejected",
+      "relationship": "engages_with",
+      "justification": "The surviving critique keeps \"Real-world dosing adherence matters\" and flags \"Applicability to rifapentine-based HPMZ\" as ungrounded. Its core argument is rifampicin's CYP3A4 induction, which holds regardless of the adherence claim.",
+      "confidence": "medium"
+    },
+    {
+      "surviving_critique_title": "Shorter and new regimens erode both the eligible population and the incremental benefit",
+      "rejected_critique_title": "Effective delivered dose and adherence diverge from trial conditions, and programmatic dose may be lower than the trial dose, notably with rifapentine regimens",
+      "rejected_critique_verdict": "rejected",
+      "relationship": "engages_with",
+      "justification": "The surviving critique notes \"Rifapentine is a CYP3A4 inducer, so the atorvastatin interaction question carries over\" and calls its strength relative to rifampicin unverified. This touches the rifapentine point the verifier mostly contradicted. The surviving critique's main displacement-and-transfer argument does not depend on it.",
+      "confidence": "low"
+    }
+  ],
+  "n_surviving_critiques_examined": 35,
+  "n_rejected_critiques_available": 5,
+  "n_dependencies_found": 10
 }

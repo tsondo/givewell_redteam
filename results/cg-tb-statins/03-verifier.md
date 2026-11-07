@@ -1,6319 +1,6253 @@
 --- Critique: "Success" in Phase III is unlikely to be a mortality result, so the 10% mortality effect is not what a "success" would establish ---
 
-Note: my search budget ran out during this pass. I could not check the Phillips/Wallis surrogate papers, Thwaites 2004, or the HPMZ regimen definition. They are flagged below as unverified. I also could not see the CG model, so any claim about "the SROI threshold" is unverifiable.
-
----
-
 ## Critique 1: "Success" in Phase III is unlikely to be a mortality result
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic is correct and the logical point stands. The claim that prior evidence is surrogate-only is supported. The claims about surrogate validity and about the Phase III design are not verified. The size of the effect depends on CG's model structure, which I could not inspect.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic and the surrogate-validity background check out. The claim that the model treats "success" as a demonstrated 10% mortality reduction, and the SROI threshold, could not be checked because I don't have the model or the Phase IIc/III registry design. Flag it as UNGROUNDED on model interpretation.
 
 **CLAIM CHECK**
-- **Sample size of about 36,000 per arm at 4% baseline and a 10% relative reduction:** VERIFIED. I recomputed it with the standard formula (80% power, two-sided α = 0.05) and got about 35,900 per arm.
-- **About 17,000 per arm at 8% baseline:** VERIFIED. I get about 17,200.
-- **"Larger still" at 2% baseline:** VERIFIED. I get about 73,000 per arm.
-- **Baseline mortality assumptions (4%, 8%, 2%):** PLAUSIBLE. These are illustrative, as the Investigator said.
-  - A five-country cohort of 23,799 adults on DS-TB treatment found 
-6% died during treatment
-.
-  - A systematic review reported 
-case fatality during TB treatment ranging from 1.8 to 33.3%
-.
-  - I did not find a source for the 2% trial-cohort figure.
-- **Prior human evidence is on surrogates:** VERIFIED. The atorvastatin Phase IIB (n=150) reported 
-culture-negative results in 97% vs 85.1% and a larger reduction in chest X-ray severity score
-. The Phase IIC (STEP) lists 
-time to sputum culture conversion, decline in chest X-ray severity score and lung function
- as outcomes in 440 patients. Mortality is not a primary outcome.
-- **No mortality-powered trial is planned:** PLAUSIBLE. The registry describes Phase IIC as 
-a pilot Phase III
- and says the Phase III 
-will be fully international and multicenter
-. I found no Phase III endpoint definition.
-- **Phillips/Wallis found 2-month culture conversion to be a weak individual-level predictor of relapse:** UNVERIFIABLE in this session. I recall Phillips et al. (AJRCCM, ~2013) making this argument, but I did not confirm it.
-- **No evidence that conversion speed predicts mortality:** UNVERIFIABLE. This is an absence claim and I found nothing either way.
-- **f = 0.5, r_s = 0.03, and "exactly at the threshold that pushes SROI below 2,000x":** UNVERIFIABLE. These are assumptions and depend on CG's model.
+- **Sample sizes of about 36,000, 17,000 and "larger still" per arm: VERIFIED.** I recomputed with the standard two-proportion formula (80% power, two-sided α = 0.05).
+  - 4.0% → 3.6% gives about 35,800 per arm.
+  - 8% → 7.2% gives about 17,200 per arm.
+  - 2% → 1.8% gives about 73,000 per arm.
+- **Mixture arithmetic (0.5 × 0.10 + 0.5 × 0.03 = 0.065, and 0.05 when r_s = 0): VERIFIED.** This is a calculation only. Whether 0.065 pushes SROI below 2,000x depends on the model, which I could not see.
+- **Baseline on-treatment mortality of 4–8%: PLAUSIBLE.**
+  - 
+A systematic review found case fatality during TB treatment ranged from 1.8 to 33.3%.
+
+  - 
+In a five-country adherence cohort of 23,799 participants, 6% died during treatment.
+
+  - I did not retrieve the WHO cohort figures or the trial-cohort figure of about 2%, so the 2% claim is UNVERIFIABLE here.
+- **"No TB drug trial approaches this scale": UNVERIFIED.** I did not search trial sizes. It is very likely true for DS-TB regimen trials, but I have no source.
+- **Phillips et al. and Wallis et al. on 2-month culture as a weak predictor: PARTIALLY VERIFIED.**
+  - Both papers exist: Phillips, Fielding & Nunn, PLoS ONE 2013, and Wallis et al. 2013 and 2015.
+  - 
+Wallis 2015 itself states that month 2 culture status remains a relatively weak predictor of outcomes for individual patients.
+
+  - 
+Phillips cites a systematic review finding the 2-month culture had modest specificity but low sensitivity for predicting failure and relapse.
+
+  - Wallis is better characterised as promoting a trial-level model that combines culture status with treatment duration. 
+Wallis et al. claim 2-month culture status is a good predictor in DS-TB when combined with treatment duration.
+
+  - The critique's lumping of the two authors is therefore slightly inaccurate.
+- **"No evidence that culture-conversion speed predicts mortality": UNVERIFIABLE.** I found none, but I did not search for it directly.
 
 **EVIDENCE FOUND**
-- The Phase IIB was open-label, and 
-muscle pain was more frequent with atorvastatin (16% vs 5%)
-. This affects how much the 97% vs 85% result can be trusted, but it is not mortality evidence.
-- The registry notes the Phase IIB also showed 
-reduced incidence of peripheral neuropathy
-. This is another non-mortality signal.
-- Nothing I found supports a 10% mortality reduction from human data. The Investigator's central point is therefore consistent with the registry record.
+- 
+A review argues that 2- or 3-month culture positivity on LJ is not an acceptable surrogate for long-term clinical outcome.
+ This supports the point that surrogate success does not imply a mortality effect.
+- The prior human atorvastatin data are on surrogates. 
+A Phase IIA atorvastatin study showed reduced sputum mycobacterial load, while a rosuvastatin trial did not affect sputum culture conversion.
+ This is consistent with the critique's premise.
+
+**CORE CLAIM**
+- **Claim:** A "success" in the Phase III used by the model would not be a demonstrated 10% mortality reduction, so a large share of success worlds carry a mortality effect well below 10%.
+- **Support: LOGIC ONLY.**
+- **Why:** The sample-size arithmetic is correct and the prior evidence is surrogate-based. How the model defines "success" was not available to me.
 
 **REVISED CRITIQUE**
-The prior atorvastatin evidence is surrogate-only (culture conversion, chest X-ray score). A mortality-powered DS-TB trial needs roughly 17,000–73,000+ per arm, depending on baseline mortality and assuming a 10% relative effect. A "Phase III success" is therefore most likely a composite-unfavourable-outcome or surrogate success. The mortality effect conditional on success should be discounted toward the surrogate-only value r_s, which is unknown. Keep the f and r_s numbers as flagged assumptions, and drop the Phillips/Wallis claim unless it is separately checked. Strength: **large in direction, with unknown magnitude**. It is conditional on how CG's model defines "success."
+- **Keep:** The sample-size arithmetic. A mortality-powered trial at a 10% relative reduction needs tens of thousands of participants per arm at plausible baselines. The existing atorvastatin signals are on bacterial-load and culture endpoints, which are imperfect individual-level surrogates.
+- **Remove or flag:**
+  - The model-interpretation claim and the SROI threshold, which are UNGROUNDED.
+  - The r_s = 0.03 value, which is an assumption.
+  - The "no TB trial approaches this scale" claim, which is unsourced.
+- **Strength:** Medium to large, conditional on how the model defines "success."
 
 ---
 
-## Critique 2: A large share of on-treatment deaths is unreachable by a weeks-scale adjunct
+## Critique 2: Much on-treatment mortality is unreachable by a weeks-scale adjunct
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis is supported by other studies. The numeric fractions and the HPMZ point are ungrounded. Waitt & Squire exists, but I could not confirm the details the Investigator attributes to it.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative premise (early, HIV-associated, comorbidity-driven deaths) is supported. The 25–35% unreachable fraction and the HPMZ headroom point are unsourced inferences.
 
 **CLAIM CHECK**
-- **Waitt & Squire 2011, systematic review of death risk factors:** VERIFIED as a citation. It is Int J Tuberc Lung Dis 2011;15(7):871–885, 
-"A systematic review of risk factors for death in adults during and after tuberculosis treatment"
-. It is cited as reporting 
-comorbidities as risk factors for TB deaths in areas with high TB incidence and HIV prevalence
-. Its early-clustering and "mainly Africa" details are UNVERIFIED.
-- **Deaths cluster early:** VERIFIED from other sources.
-  - In a US study, 
-48% of patients who died during treatment died within 30 days
-.
-  - In a Taiwan series, 
-most TB-related deaths occurred early (median survival 20 days)
-.
-  - In another Taiwan cohort, 
-underweight was associated with higher mortality only in the first 8 weeks
-.
-- **Many deaths are non-TB or comorbidity-driven:** VERIFIED. In the Taiwan series, 
-malignancy, liver cirrhosis and renal failure were independent predictors of all TB deaths
-, and deaths were classified as TB-related or non-TB-related.
-- **HIV is a major driver:** SUPPORTED indirectly. ART 
-cut mortality by 44–71% among HIV-positive TB patients
-.
-- **"25–35% unreachable":** UNVERIFIABLE. This is an illustrative number, and I found no source for the share of deaths that is modifiable.
-- **Thwaites 2004 (corticosteroids in TB meningitis):** NOT CHECKED. I recall it as a real NEJM trial showing a mortality benefit, but I did not verify it here.
-- **"4-month HPMZ shrinks headroom":** UNVERIFIABLE. The registered ATORTUB regimens use the standard six-month course, and the popPK sub-study lists 
-2RHZE/4RH plus 16 weeks of atorvastatin
-. I found no HPMZ arm. If CG's model assumes HPMZ, that is an external premise I could not check.
+- **Waitt & Squire 2011 exists: VERIFIED.** It is Int J Tuberc Lung Dis 2011;15(7):871–885, "A systematic review of risk factors for death in adults during and after tuberculosis treatment." 
+Waitt and Squire hypothesised that associations between comorbidities, social isolation and TB death may reflect delays in presenting to a provider.
+ I could not retrieve its own timing or cause fractions, so those remain UNVERIFIED.
+- **Deaths cluster early: VERIFIED by other sources.**
+  - 
+In US data, 47% of those who died during treatment died within 30 days of diagnosis.
+
+  - 
+In a Taiwanese review of culture-proven TB deaths, most TB-related deaths occurred early (median survival 20 days), typically from septic shock.
+
+  - 
+In a Taiwanese cohort, underweight was associated with elevated mortality only within the first 8 weeks.
+
+- **Non-TB and comorbid causes: VERIFIED.** 
+Malignancy, liver cirrhosis and renal failure were independent predictors of all TB deaths.
+
+- **HIV and advanced disease as drivers: PLAUSIBLE.** 
+A systematic review showed a 44–71% mortality reduction with ART among HIV-positive TB patients.
+ That indicates a large HIV-attributable mortality share.
+- **Thwaites 2004 (corticosteroids in TB meningitis): not re-checked in this session.** I recall it as a real NEJM 2004 trial. The framing, that there is no analogous result in pulmonary DS-TB, is a reasonable inference.
+- **25–35% unreachable, and the HPMZ headroom point: UNVERIFIABLE.** The critique labels these as its own inference. I did not verify the HPMZ regimen definition or its effect on lung-damage burden.
 
 **EVIDENCE FOUND**
-- Because early deaths dominate, the adjunct's window matters. Atorvastatin was given for 2 months in the Phase IIB and 16 weeks in the planned sub-study, so it overlaps the early-death period only partly, depending on onset of effect.
-- The 1.8–33.3% range shows that the reachable share depends strongly on setting and HIV prevalence. Any single 25–35% figure is therefore weakly grounded.
+- Early deaths are typically from fulminant septic shock, which supports "die before the adjunct could act." But that same shock is inflammatory, so a host-directed drug is not obviously irrelevant to it. This weakens the "unreachable" framing for some early deaths.
+- I found no data showing statins reduce early TB mortality.
+
+**CORE CLAIM**
+- **Claim:** A material share (25–35%) of on-treatment deaths is not modifiable by a weeks-scale adjunct, so the effective r is below 10%.
+- **Support: LOGIC ONLY.**
+- **Why:** The direction is supported by early-death and comorbidity data, but the fraction is not quantified in any source I found.
 
 **REVISED CRITIQUE**
-On-treatment deaths are early-clustered and often tied to advanced HIV, comorbidity and non-TB causes. A uniform 10% relative reduction across all deaths likely overstates the modifiable share. The decomposition r_eff = reachable fraction × effect among reachable deaths is logically sound. The 25–35% figure is **UNGROUNDED** and should be presented as a placeholder. Remove the HPMZ headroom claim, or flag it as UNGROUNDED, unless CG's model actually uses a 4-month regimen. Strength: **small-to-medium**, because the direction is well supported but the magnitude is not.
+- **Keep:** A 10% reduction applied to all-cause on-treatment deaths overstates the reachable pool, because many deaths are early, HIV-driven or non-TB.
+- **Remove or flag:** The 25–35% unreachable figure and the HPMZ headroom claim, both UNGROUNDED.
+- **Strength:** Medium, with direction supported and magnitude unknown.
 
 ---
 
-## Critique 3: Rifampicin induction limits atorvastatin exposure and trial exposure doesn't transfer
+## Critique 3: Rifampicin induction limits atorvastatin exposure
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The label and interaction mechanism are verified. One citation is misattributed. The "different statin" premise is largely contradicted by the registry record. The exposure-limitation concern has real support, but the evidence conflicts on steady-state net exposure.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The label wording and the dual-mechanism interaction are verified. Several secondary claims are wrong, and the magnitude multiplier is unsupported.
 
 **CITATION CHECK**
-- **Atorvastatin label statement on rifampicin:** VERIFIED. The label says 
-rifampin can lead to variable reductions in plasma atorvastatin, and simultaneous co-administration is recommended because delayed administration was associated with a significant reduction
-. It also states that 
-the effect of rifampin on atorvastatin concentrations in hepatocytes is unknown
-.
-- **Kyrklund et al. 2004, reduced simvastatin exposure:** MISREPRESENTED. The 2004 Kyrklund paper is about **pravastatin**: 
-mean AUC was 69% of the placebo phase (range 24–220%)
-. The simvastatin paper is Kyrklund et al. **2000**: 
-rifampin decreased the AUC of simvastatin and simvastatin acid by 87% and 93%
-.
-- **Johns Hopkins (Karakousis) pravastatin work:** PARTIALLY VERIFIED. StAT-TB is a Phase **IIb** two-week dose-finding PK/safety study of 
-pravastatin, with Karakousis as PI at Johns Hopkins
-, not Phase IIa. It is a safety/PK study, not an efficacy trial.
+- **Atorvastatin label statement: VERIFIED.**
+  - 
+The label says rifampin or other CYP3A4 inducers can lead to variable reductions in atorvastatin. It recommends simultaneous co-administration because delayed administration after rifampin is associated with a significant reduction in plasma concentrations.
+
+  - The label table gives the numbers. 
+Rifampin co-administered (600 mg for 7 days) raised AUC by 30% and Cmax 2.7-fold, while separated doses lowered AUC by 80% and Cmax by 40%.
+
+- **Atorvastatin-specific rifampin study: VERIFIED (a different study from the one the critique cited).** 
+Backman et al. found rifampin reduced atorvastatin acid AUC by 80%.
+ This was in healthy volunteers after 5 days of pretreatment.
+- **Kyrklund 2004 as a simvastatin study: LIKELY MISATTRIBUTED, not confirmed by search.**
+  - From my background knowledge, Kyrklund 2004 is a pravastatin–rifampicin study. The simvastatin paper is Kyrklund 2000.
+  - 
+The StAT-TB protocol states that pravastatin exposures are reduced by 30–50% with rifampin.
+ This is consistent with that attribution.
+- **Karakousis and pravastatin: VERIFIED.**
+  - 
+StAT-TB was led by Petros Karakousis at Johns Hopkins.
+
+  - 
+Its title describes it as a Phase 2b dose-finding study of pravastatin.
+
+  - It is therefore not "Phase IIa," and the registered study is a dose-finding safety and PK study. 
+Participants received standard anti-TB therapy (Rifafour) plus pravastatin for 14 days.
+
 
 **CLAIM CHECK**
-- **CYP3A4 induction plus OATP1B1 inhibition by rifampicin, with a timing trade-off:** VERIFIED. The label cites 
-the dual mechanism (CYP3A induction and OATP1B1 inhibition)
-.
-- **Atorvastatin-specific PK:** VERIFIED. The label table shows that with rifampin and atorvastatin 
-co-administered (7 days), AUC rose 30% and Cmax rose 2.7-fold; with doses separated (5 days), AUC fell 80% and Cmax fell 40%
-. Backman 2005 confirms the 80% fall: 
-rifampin reduced atorvastatin acid AUC by 80%
-.
-- **"Net steady-state exposure uncertain, plausibly lower":** CONFLICTING.
-  - The label's 7-day co-administration data show plasma AUC maintained or increased, not decreased.
-  - A review notes that 
-the consequences of prolonged simultaneous statin–rifampin administration have never been investigated
-.
-  - Another review says that 
-after multiple doses, induction can overcome the OATP effect and AUC decreases
-.
-  - Net: uncertain, which matches the Investigator's wording, but "plausibly lower" is not established.
-- **Protease inhibitors raise atorvastatin exposure:** VERIFIED. 
-Tipranavir/ritonavir raised AUC 9.4-fold
-. The efavirenz-lowers claim is supported by the label's inducer wording: 
-efavirenz and rifampin can lead to variable reductions
-.
-- **"Prior positive human data may be from pravastatin or rosuvastatin":** LARGELY FALSE for the likely source.
-  - The positive human data are atorvastatin. The ATORTUB Phase IIA/IIB used 
-atorvastatin 40 mg daily for 2 months with standard of care
-.
-  - A reviewer notes that 
-rosuvastatin did not affect sputum culture conversion
-, so rosuvastatin is a null result, not a positive signal.
-  - The pravastatin work is PK-only.
-- **Trial exposure doesn't transfer to routine programs:** WEAKENED. ATORTUB was run with rifampicin-containing standard therapy, so any rifampicin-induced exposure loss is already embedded in the observed signal. The remaining issue is whether dosing timing and adherence differ in routine care. I found no evidence on that.
-- **Multiplier 0.5–0.8 on r:** UNVERIFIABLE. It is a guess, as the Investigator said.
-- **Dolutegravir comment:** NOT CHECKED.
+- **Atorvastatin is a CYP3A4 and OATP1B1 substrate, and rifampicin both induces and inhibits: VERIFIED.** This follows from the label's "dual interaction mechanism" wording.
+- **Net steady-state exposure under chronic daily rifampicin is uncertain: VERIFIED as uncertain.** 
+A review notes that the consequences of prolonged simultaneous statin–rifampin administration have never been investigated.
+ The label also says the effect on hepatocyte concentrations is unknown.
+- **Pravastatin is "largely unaffected by rifampicin": FALSE.** The 30–50% exposure reduction cited above contradicts it.
+- **"The prior positive human data are from pravastatin or rosuvastatin": CONTRADICTED for atorvastatin.**
+  - 
+The positive human signal comes from a randomised Phase IIA trial of atorvastatin in Nigeria (Adewole et al., IJTLD 2023), which found significantly reduced mycobacterial load in sputum.
+
+  - Rosuvastatin (ROSETTA) was the null trial.
+  - Pravastatin has so far only a PK and safety study that I could find. So the transferability concern is mostly moot if the model's evidence is the atorvastatin trial. That trial was run under rifampicin-based therapy.
+- **Rifampicin is the relevant inducer: UNVERIFIED for this regimen.** If the Phase III regimen is rifapentine-based (HPMZ), the label data are by analogy only, since rifapentine is a somewhat weaker but still real CYP3A4 inducer.
+- **ART interactions (ritonavir-boosted PIs raise atorvastatin, efavirenz lowers it): VERIFIED.**
+  - 
+The label table shows tipranavir/ritonavir raising atorvastatin AUC 9.4-fold.
+
+  - 
+The label lists efavirenz among the inducers that can reduce plasma concentrations.
+
+- **"Programs cannot guarantee simultaneous dosing": PLAUSIBLE but unsupported.** Daily fixed-dose-combination dosing makes co-administration straightforward.
+- **Multiplier of 0.5–0.8 on r, and a steep dose-response: UNVERIFIABLE.** The critique itself calls this a guess.
 
 **EVIDENCE FOUND**
-- A population PK–PD sub-study is registered. It covers atorvastatin 20/40/60 mg with 2RHZE/4RH: 
-16 weeks of daily atorvastatin at each dose
-. The Phase IIC registry says 
-PK-PD evaluation at different doses, correlated with outcomes, will be essential
-. The investigators themselves treat exposure as an open question, which supports the Investigator's concern. The sub-study could also provide the missing data.
-- If a Phase III used a rifapentine-based regimen (as "HPMZ" suggests), the rifampicin-specific label guidance would not map directly. Rifapentine is also a CYP3A4 inducer, but I did not verify its atorvastatin interaction.
+- Preclinical rationale favours other statins. 
+At non-toxic doses atorvastatin was unable to inhibit Mtb growth in THP-1 cells, while simvastatin, fluvastatin and pravastatin showed the most favourable therapeutic index and enhanced first-line drug activity.
+ This independently raises doubt that atorvastatin's effect is exposure-limited rather than mechanism-limited.
+- The atorvastatin interaction has a large asymmetry. Co-administered dosing gives a modest AUC rise, whereas separated dosing gives an 80% AUC fall. Dosing-time adherence therefore matters, which supports the critique's concern in principle.
+
+**CORE CLAIM**
+- **Claim:** Under routine chronic rifampicin therapy, achieved atorvastatin exposure is low enough to reduce the realised mortality effect by about 20–50%.
+- **Support: LOGIC ONLY.**
+- **Why:** The interaction is real and the label confirms variable reductions. Chronic co-administered exposure is uninvestigated, and no data link exposure to a mortality effect.
 
 **REVISED CRITIQUE**
-Atorvastatin exposure under rifampicin depends on dosing timing: separated dosing cuts AUC by about 80%, while simultaneous dosing preserves or raises plasma AUC at 7 days. Net chronic-dosing exposure at the site of action (lung, hepatocyte) is **UNGROUNDED**. The atorvastatin label itself says the hepatocyte effect is unknown. Replace "Kyrklund 2004 (simvastatin)" with Kyrklund 2000 (simvastatin) and Backman 2005 (atorvastatin). Drop the premise that the positive human signal came from a different statin, because the Phase IIA/IIB was atorvastatin, so the signal was generated under rifampicin. The surviving concern is that routine-program dosing may not reproduce trial-condition timing and adherence, plus the ART interactions. Strength: **medium** (reduced from large), with magnitude unknown. A PK/PD model or the ATORTUB popPK-PD sub-study is needed.
+- **Keep:**
+  - Rifampicin has a dual interaction with atorvastatin.
+  - Separated dosing lowers AUC by about 80%.
+  - Chronic co-administered exposure is unknown.
+  - ART interactions run in both directions.
+  - Real-world dosing adherence matters.
+- **Remove:**
+  - The claim that prior positive data are pravastatin-based, since the atorvastatin signal is from atorvastatin itself.
+  - The claim that pravastatin is unaffected by rifampicin.
+  - The Kyrklund simvastatin attribution.
+- **Flag as UNGROUNDED:**
+  - The 0.5–0.8 multiplier.
+  - The steep dose-response assumption.
+  - Applicability to rifapentine-based HPMZ.
+- **Strength:** Medium rather than large, since the direction is plausible but the magnitude has no empirical basis.
 
 --- Critique: A large share of on-treatment deaths is unreachable by a weeks-scale host-directed adjunct, and shorter regimens shrink the headroom further ---
 
-Note: my search budget ran out during this pass. I could not check the Phillips/Wallis surrogate papers, Thwaites 2004, or the HPMZ regimen definition. They are flagged below as unverified. I also could not see the CG model, so any claim about "the SROI threshold" is unverifiable.
-
----
-
 ## Critique 1: "Success" in Phase III is unlikely to be a mortality result
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic is correct and the logical point stands. The claim that prior evidence is surrogate-only is supported. The claims about surrogate validity and about the Phase III design are not verified. The size of the effect depends on CG's model structure, which I could not inspect.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic and the surrogate-validity background check out. The claim that the model treats "success" as a demonstrated 10% mortality reduction, and the SROI threshold, could not be checked because I don't have the model or the Phase IIc/III registry design. Flag it as UNGROUNDED on model interpretation.
 
 **CLAIM CHECK**
-- **Sample size of about 36,000 per arm at 4% baseline and a 10% relative reduction:** VERIFIED. I recomputed it with the standard formula (80% power, two-sided α = 0.05) and got about 35,900 per arm.
-- **About 17,000 per arm at 8% baseline:** VERIFIED. I get about 17,200.
-- **"Larger still" at 2% baseline:** VERIFIED. I get about 73,000 per arm.
-- **Baseline mortality assumptions (4%, 8%, 2%):** PLAUSIBLE. These are illustrative, as the Investigator said.
-  - A five-country cohort of 23,799 adults on DS-TB treatment found 
-6% died during treatment
-.
-  - A systematic review reported 
-case fatality during TB treatment ranging from 1.8 to 33.3%
-.
-  - I did not find a source for the 2% trial-cohort figure.
-- **Prior human evidence is on surrogates:** VERIFIED. The atorvastatin Phase IIB (n=150) reported 
-culture-negative results in 97% vs 85.1% and a larger reduction in chest X-ray severity score
-. The Phase IIC (STEP) lists 
-time to sputum culture conversion, decline in chest X-ray severity score and lung function
- as outcomes in 440 patients. Mortality is not a primary outcome.
-- **No mortality-powered trial is planned:** PLAUSIBLE. The registry describes Phase IIC as 
-a pilot Phase III
- and says the Phase III 
-will be fully international and multicenter
-. I found no Phase III endpoint definition.
-- **Phillips/Wallis found 2-month culture conversion to be a weak individual-level predictor of relapse:** UNVERIFIABLE in this session. I recall Phillips et al. (AJRCCM, ~2013) making this argument, but I did not confirm it.
-- **No evidence that conversion speed predicts mortality:** UNVERIFIABLE. This is an absence claim and I found nothing either way.
-- **f = 0.5, r_s = 0.03, and "exactly at the threshold that pushes SROI below 2,000x":** UNVERIFIABLE. These are assumptions and depend on CG's model.
+- **Sample sizes of about 36,000, 17,000 and "larger still" per arm: VERIFIED.** I recomputed with the standard two-proportion formula (80% power, two-sided α = 0.05).
+  - 4.0% → 3.6% gives about 35,800 per arm.
+  - 8% → 7.2% gives about 17,200 per arm.
+  - 2% → 1.8% gives about 73,000 per arm.
+- **Mixture arithmetic (0.5 × 0.10 + 0.5 × 0.03 = 0.065, and 0.05 when r_s = 0): VERIFIED.** This is a calculation only. Whether 0.065 pushes SROI below 2,000x depends on the model, which I could not see.
+- **Baseline on-treatment mortality of 4–8%: PLAUSIBLE.**
+  - 
+A systematic review found case fatality during TB treatment ranged from 1.8 to 33.3%.
+
+  - 
+In a five-country adherence cohort of 23,799 participants, 6% died during treatment.
+
+  - I did not retrieve the WHO cohort figures or the trial-cohort figure of about 2%, so the 2% claim is UNVERIFIABLE here.
+- **"No TB drug trial approaches this scale": UNVERIFIED.** I did not search trial sizes. It is very likely true for DS-TB regimen trials, but I have no source.
+- **Phillips et al. and Wallis et al. on 2-month culture as a weak predictor: PARTIALLY VERIFIED.**
+  - Both papers exist: Phillips, Fielding & Nunn, PLoS ONE 2013, and Wallis et al. 2013 and 2015.
+  - 
+Wallis 2015 itself states that month 2 culture status remains a relatively weak predictor of outcomes for individual patients.
+
+  - 
+Phillips cites a systematic review finding the 2-month culture had modest specificity but low sensitivity for predicting failure and relapse.
+
+  - Wallis is better characterised as promoting a trial-level model that combines culture status with treatment duration. 
+Wallis et al. claim 2-month culture status is a good predictor in DS-TB when combined with treatment duration.
+
+  - The critique's lumping of the two authors is therefore slightly inaccurate.
+- **"No evidence that culture-conversion speed predicts mortality": UNVERIFIABLE.** I found none, but I did not search for it directly.
 
 **EVIDENCE FOUND**
-- The Phase IIB was open-label, and 
-muscle pain was more frequent with atorvastatin (16% vs 5%)
-. This affects how much the 97% vs 85% result can be trusted, but it is not mortality evidence.
-- The registry notes the Phase IIB also showed 
-reduced incidence of peripheral neuropathy
-. This is another non-mortality signal.
-- Nothing I found supports a 10% mortality reduction from human data. The Investigator's central point is therefore consistent with the registry record.
+- 
+A review argues that 2- or 3-month culture positivity on LJ is not an acceptable surrogate for long-term clinical outcome.
+ This supports the point that surrogate success does not imply a mortality effect.
+- The prior human atorvastatin data are on surrogates. 
+A Phase IIA atorvastatin study showed reduced sputum mycobacterial load, while a rosuvastatin trial did not affect sputum culture conversion.
+ This is consistent with the critique's premise.
+
+**CORE CLAIM**
+- **Claim:** A "success" in the Phase III used by the model would not be a demonstrated 10% mortality reduction, so a large share of success worlds carry a mortality effect well below 10%.
+- **Support: LOGIC ONLY.**
+- **Why:** The sample-size arithmetic is correct and the prior evidence is surrogate-based. How the model defines "success" was not available to me.
 
 **REVISED CRITIQUE**
-The prior atorvastatin evidence is surrogate-only (culture conversion, chest X-ray score). A mortality-powered DS-TB trial needs roughly 17,000–73,000+ per arm, depending on baseline mortality and assuming a 10% relative effect. A "Phase III success" is therefore most likely a composite-unfavourable-outcome or surrogate success. The mortality effect conditional on success should be discounted toward the surrogate-only value r_s, which is unknown. Keep the f and r_s numbers as flagged assumptions, and drop the Phillips/Wallis claim unless it is separately checked. Strength: **large in direction, with unknown magnitude**. It is conditional on how CG's model defines "success."
+- **Keep:** The sample-size arithmetic. A mortality-powered trial at a 10% relative reduction needs tens of thousands of participants per arm at plausible baselines. The existing atorvastatin signals are on bacterial-load and culture endpoints, which are imperfect individual-level surrogates.
+- **Remove or flag:**
+  - The model-interpretation claim and the SROI threshold, which are UNGROUNDED.
+  - The r_s = 0.03 value, which is an assumption.
+  - The "no TB trial approaches this scale" claim, which is unsourced.
+- **Strength:** Medium to large, conditional on how the model defines "success."
 
 ---
 
-## Critique 2: A large share of on-treatment deaths is unreachable by a weeks-scale adjunct
+## Critique 2: Much on-treatment mortality is unreachable by a weeks-scale adjunct
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis is supported by other studies. The numeric fractions and the HPMZ point are ungrounded. Waitt & Squire exists, but I could not confirm the details the Investigator attributes to it.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative premise (early, HIV-associated, comorbidity-driven deaths) is supported. The 25–35% unreachable fraction and the HPMZ headroom point are unsourced inferences.
 
 **CLAIM CHECK**
-- **Waitt & Squire 2011, systematic review of death risk factors:** VERIFIED as a citation. It is Int J Tuberc Lung Dis 2011;15(7):871–885, 
-"A systematic review of risk factors for death in adults during and after tuberculosis treatment"
-. It is cited as reporting 
-comorbidities as risk factors for TB deaths in areas with high TB incidence and HIV prevalence
-. Its early-clustering and "mainly Africa" details are UNVERIFIED.
-- **Deaths cluster early:** VERIFIED from other sources.
-  - In a US study, 
-48% of patients who died during treatment died within 30 days
-.
-  - In a Taiwan series, 
-most TB-related deaths occurred early (median survival 20 days)
-.
-  - In another Taiwan cohort, 
-underweight was associated with higher mortality only in the first 8 weeks
-.
-- **Many deaths are non-TB or comorbidity-driven:** VERIFIED. In the Taiwan series, 
-malignancy, liver cirrhosis and renal failure were independent predictors of all TB deaths
-, and deaths were classified as TB-related or non-TB-related.
-- **HIV is a major driver:** SUPPORTED indirectly. ART 
-cut mortality by 44–71% among HIV-positive TB patients
-.
-- **"25–35% unreachable":** UNVERIFIABLE. This is an illustrative number, and I found no source for the share of deaths that is modifiable.
-- **Thwaites 2004 (corticosteroids in TB meningitis):** NOT CHECKED. I recall it as a real NEJM trial showing a mortality benefit, but I did not verify it here.
-- **"4-month HPMZ shrinks headroom":** UNVERIFIABLE. The registered ATORTUB regimens use the standard six-month course, and the popPK sub-study lists 
-2RHZE/4RH plus 16 weeks of atorvastatin
-. I found no HPMZ arm. If CG's model assumes HPMZ, that is an external premise I could not check.
+- **Waitt & Squire 2011 exists: VERIFIED.** It is Int J Tuberc Lung Dis 2011;15(7):871–885, "A systematic review of risk factors for death in adults during and after tuberculosis treatment." 
+Waitt and Squire hypothesised that associations between comorbidities, social isolation and TB death may reflect delays in presenting to a provider.
+ I could not retrieve its own timing or cause fractions, so those remain UNVERIFIED.
+- **Deaths cluster early: VERIFIED by other sources.**
+  - 
+In US data, 47% of those who died during treatment died within 30 days of diagnosis.
+
+  - 
+In a Taiwanese review of culture-proven TB deaths, most TB-related deaths occurred early (median survival 20 days), typically from septic shock.
+
+  - 
+In a Taiwanese cohort, underweight was associated with elevated mortality only within the first 8 weeks.
+
+- **Non-TB and comorbid causes: VERIFIED.** 
+Malignancy, liver cirrhosis and renal failure were independent predictors of all TB deaths.
+
+- **HIV and advanced disease as drivers: PLAUSIBLE.** 
+A systematic review showed a 44–71% mortality reduction with ART among HIV-positive TB patients.
+ That indicates a large HIV-attributable mortality share.
+- **Thwaites 2004 (corticosteroids in TB meningitis): not re-checked in this session.** I recall it as a real NEJM 2004 trial. The framing, that there is no analogous result in pulmonary DS-TB, is a reasonable inference.
+- **25–35% unreachable, and the HPMZ headroom point: UNVERIFIABLE.** The critique labels these as its own inference. I did not verify the HPMZ regimen definition or its effect on lung-damage burden.
 
 **EVIDENCE FOUND**
-- Because early deaths dominate, the adjunct's window matters. Atorvastatin was given for 2 months in the Phase IIB and 16 weeks in the planned sub-study, so it overlaps the early-death period only partly, depending on onset of effect.
-- The 1.8–33.3% range shows that the reachable share depends strongly on setting and HIV prevalence. Any single 25–35% figure is therefore weakly grounded.
+- Early deaths are typically from fulminant septic shock, which supports "die before the adjunct could act." But that same shock is inflammatory, so a host-directed drug is not obviously irrelevant to it. This weakens the "unreachable" framing for some early deaths.
+- I found no data showing statins reduce early TB mortality.
+
+**CORE CLAIM**
+- **Claim:** A material share (25–35%) of on-treatment deaths is not modifiable by a weeks-scale adjunct, so the effective r is below 10%.
+- **Support: LOGIC ONLY.**
+- **Why:** The direction is supported by early-death and comorbidity data, but the fraction is not quantified in any source I found.
 
 **REVISED CRITIQUE**
-On-treatment deaths are early-clustered and often tied to advanced HIV, comorbidity and non-TB causes. A uniform 10% relative reduction across all deaths likely overstates the modifiable share. The decomposition r_eff = reachable fraction × effect among reachable deaths is logically sound. The 25–35% figure is **UNGROUNDED** and should be presented as a placeholder. Remove the HPMZ headroom claim, or flag it as UNGROUNDED, unless CG's model actually uses a 4-month regimen. Strength: **small-to-medium**, because the direction is well supported but the magnitude is not.
+- **Keep:** A 10% reduction applied to all-cause on-treatment deaths overstates the reachable pool, because many deaths are early, HIV-driven or non-TB.
+- **Remove or flag:** The 25–35% unreachable figure and the HPMZ headroom claim, both UNGROUNDED.
+- **Strength:** Medium, with direction supported and magnitude unknown.
 
 ---
 
-## Critique 3: Rifampicin induction limits atorvastatin exposure and trial exposure doesn't transfer
+## Critique 3: Rifampicin induction limits atorvastatin exposure
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The label and interaction mechanism are verified. One citation is misattributed. The "different statin" premise is largely contradicted by the registry record. The exposure-limitation concern has real support, but the evidence conflicts on steady-state net exposure.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The label wording and the dual-mechanism interaction are verified. Several secondary claims are wrong, and the magnitude multiplier is unsupported.
 
 **CITATION CHECK**
-- **Atorvastatin label statement on rifampicin:** VERIFIED. The label says 
-rifampin can lead to variable reductions in plasma atorvastatin, and simultaneous co-administration is recommended because delayed administration was associated with a significant reduction
-. It also states that 
-the effect of rifampin on atorvastatin concentrations in hepatocytes is unknown
-.
-- **Kyrklund et al. 2004, reduced simvastatin exposure:** MISREPRESENTED. The 2004 Kyrklund paper is about **pravastatin**: 
-mean AUC was 69% of the placebo phase (range 24–220%)
-. The simvastatin paper is Kyrklund et al. **2000**: 
-rifampin decreased the AUC of simvastatin and simvastatin acid by 87% and 93%
-.
-- **Johns Hopkins (Karakousis) pravastatin work:** PARTIALLY VERIFIED. StAT-TB is a Phase **IIb** two-week dose-finding PK/safety study of 
-pravastatin, with Karakousis as PI at Johns Hopkins
-, not Phase IIa. It is a safety/PK study, not an efficacy trial.
+- **Atorvastatin label statement: VERIFIED.**
+  - 
+The label says rifampin or other CYP3A4 inducers can lead to variable reductions in atorvastatin. It recommends simultaneous co-administration because delayed administration after rifampin is associated with a significant reduction in plasma concentrations.
+
+  - The label table gives the numbers. 
+Rifampin co-administered (600 mg for 7 days) raised AUC by 30% and Cmax 2.7-fold, while separated doses lowered AUC by 80% and Cmax by 40%.
+
+- **Atorvastatin-specific rifampin study: VERIFIED (a different study from the one the critique cited).** 
+Backman et al. found rifampin reduced atorvastatin acid AUC by 80%.
+ This was in healthy volunteers after 5 days of pretreatment.
+- **Kyrklund 2004 as a simvastatin study: LIKELY MISATTRIBUTED, not confirmed by search.**
+  - From my background knowledge, Kyrklund 2004 is a pravastatin–rifampicin study. The simvastatin paper is Kyrklund 2000.
+  - 
+The StAT-TB protocol states that pravastatin exposures are reduced by 30–50% with rifampin.
+ This is consistent with that attribution.
+- **Karakousis and pravastatin: VERIFIED.**
+  - 
+StAT-TB was led by Petros Karakousis at Johns Hopkins.
+
+  - 
+Its title describes it as a Phase 2b dose-finding study of pravastatin.
+
+  - It is therefore not "Phase IIa," and the registered study is a dose-finding safety and PK study. 
+Participants received standard anti-TB therapy (Rifafour) plus pravastatin for 14 days.
+
 
 **CLAIM CHECK**
-- **CYP3A4 induction plus OATP1B1 inhibition by rifampicin, with a timing trade-off:** VERIFIED. The label cites 
-the dual mechanism (CYP3A induction and OATP1B1 inhibition)
-.
-- **Atorvastatin-specific PK:** VERIFIED. The label table shows that with rifampin and atorvastatin 
-co-administered (7 days), AUC rose 30% and Cmax rose 2.7-fold; with doses separated (5 days), AUC fell 80% and Cmax fell 40%
-. Backman 2005 confirms the 80% fall: 
-rifampin reduced atorvastatin acid AUC by 80%
-.
-- **"Net steady-state exposure uncertain, plausibly lower":** CONFLICTING.
-  - The label's 7-day co-administration data show plasma AUC maintained or increased, not decreased.
-  - A review notes that 
-the consequences of prolonged simultaneous statin–rifampin administration have never been investigated
-.
-  - Another review says that 
-after multiple doses, induction can overcome the OATP effect and AUC decreases
-.
-  - Net: uncertain, which matches the Investigator's wording, but "plausibly lower" is not established.
-- **Protease inhibitors raise atorvastatin exposure:** VERIFIED. 
-Tipranavir/ritonavir raised AUC 9.4-fold
-. The efavirenz-lowers claim is supported by the label's inducer wording: 
-efavirenz and rifampin can lead to variable reductions
-.
-- **"Prior positive human data may be from pravastatin or rosuvastatin":** LARGELY FALSE for the likely source.
-  - The positive human data are atorvastatin. The ATORTUB Phase IIA/IIB used 
-atorvastatin 40 mg daily for 2 months with standard of care
-.
-  - A reviewer notes that 
-rosuvastatin did not affect sputum culture conversion
-, so rosuvastatin is a null result, not a positive signal.
-  - The pravastatin work is PK-only.
-- **Trial exposure doesn't transfer to routine programs:** WEAKENED. ATORTUB was run with rifampicin-containing standard therapy, so any rifampicin-induced exposure loss is already embedded in the observed signal. The remaining issue is whether dosing timing and adherence differ in routine care. I found no evidence on that.
-- **Multiplier 0.5–0.8 on r:** UNVERIFIABLE. It is a guess, as the Investigator said.
-- **Dolutegravir comment:** NOT CHECKED.
+- **Atorvastatin is a CYP3A4 and OATP1B1 substrate, and rifampicin both induces and inhibits: VERIFIED.** This follows from the label's "dual interaction mechanism" wording.
+- **Net steady-state exposure under chronic daily rifampicin is uncertain: VERIFIED as uncertain.** 
+A review notes that the consequences of prolonged simultaneous statin–rifampin administration have never been investigated.
+ The label also says the effect on hepatocyte concentrations is unknown.
+- **Pravastatin is "largely unaffected by rifampicin": FALSE.** The 30–50% exposure reduction cited above contradicts it.
+- **"The prior positive human data are from pravastatin or rosuvastatin": CONTRADICTED for atorvastatin.**
+  - 
+The positive human signal comes from a randomised Phase IIA trial of atorvastatin in Nigeria (Adewole et al., IJTLD 2023), which found significantly reduced mycobacterial load in sputum.
+
+  - Rosuvastatin (ROSETTA) was the null trial.
+  - Pravastatin has so far only a PK and safety study that I could find. So the transferability concern is mostly moot if the model's evidence is the atorvastatin trial. That trial was run under rifampicin-based therapy.
+- **Rifampicin is the relevant inducer: UNVERIFIED for this regimen.** If the Phase III regimen is rifapentine-based (HPMZ), the label data are by analogy only, since rifapentine is a somewhat weaker but still real CYP3A4 inducer.
+- **ART interactions (ritonavir-boosted PIs raise atorvastatin, efavirenz lowers it): VERIFIED.**
+  - 
+The label table shows tipranavir/ritonavir raising atorvastatin AUC 9.4-fold.
+
+  - 
+The label lists efavirenz among the inducers that can reduce plasma concentrations.
+
+- **"Programs cannot guarantee simultaneous dosing": PLAUSIBLE but unsupported.** Daily fixed-dose-combination dosing makes co-administration straightforward.
+- **Multiplier of 0.5–0.8 on r, and a steep dose-response: UNVERIFIABLE.** The critique itself calls this a guess.
 
 **EVIDENCE FOUND**
-- A population PK–PD sub-study is registered. It covers atorvastatin 20/40/60 mg with 2RHZE/4RH: 
-16 weeks of daily atorvastatin at each dose
-. The Phase IIC registry says 
-PK-PD evaluation at different doses, correlated with outcomes, will be essential
-. The investigators themselves treat exposure as an open question, which supports the Investigator's concern. The sub-study could also provide the missing data.
-- If a Phase III used a rifapentine-based regimen (as "HPMZ" suggests), the rifampicin-specific label guidance would not map directly. Rifapentine is also a CYP3A4 inducer, but I did not verify its atorvastatin interaction.
+- Preclinical rationale favours other statins. 
+At non-toxic doses atorvastatin was unable to inhibit Mtb growth in THP-1 cells, while simvastatin, fluvastatin and pravastatin showed the most favourable therapeutic index and enhanced first-line drug activity.
+ This independently raises doubt that atorvastatin's effect is exposure-limited rather than mechanism-limited.
+- The atorvastatin interaction has a large asymmetry. Co-administered dosing gives a modest AUC rise, whereas separated dosing gives an 80% AUC fall. Dosing-time adherence therefore matters, which supports the critique's concern in principle.
+
+**CORE CLAIM**
+- **Claim:** Under routine chronic rifampicin therapy, achieved atorvastatin exposure is low enough to reduce the realised mortality effect by about 20–50%.
+- **Support: LOGIC ONLY.**
+- **Why:** The interaction is real and the label confirms variable reductions. Chronic co-administered exposure is uninvestigated, and no data link exposure to a mortality effect.
 
 **REVISED CRITIQUE**
-Atorvastatin exposure under rifampicin depends on dosing timing: separated dosing cuts AUC by about 80%, while simultaneous dosing preserves or raises plasma AUC at 7 days. Net chronic-dosing exposure at the site of action (lung, hepatocyte) is **UNGROUNDED**. The atorvastatin label itself says the hepatocyte effect is unknown. Replace "Kyrklund 2004 (simvastatin)" with Kyrklund 2000 (simvastatin) and Backman 2005 (atorvastatin). Drop the premise that the positive human signal came from a different statin, because the Phase IIA/IIB was atorvastatin, so the signal was generated under rifampicin. The surviving concern is that routine-program dosing may not reproduce trial-condition timing and adherence, plus the ART interactions. Strength: **medium** (reduced from large), with magnitude unknown. A PK/PD model or the ATORTUB popPK-PD sub-study is needed.
+- **Keep:**
+  - Rifampicin has a dual interaction with atorvastatin.
+  - Separated dosing lowers AUC by about 80%.
+  - Chronic co-administered exposure is unknown.
+  - ART interactions run in both directions.
+  - Real-world dosing adherence matters.
+- **Remove:**
+  - The claim that prior positive data are pravastatin-based, since the atorvastatin signal is from atorvastatin itself.
+  - The claim that pravastatin is unaffected by rifampicin.
+  - The Kyrklund simvastatin attribution.
+- **Flag as UNGROUNDED:**
+  - The 0.5–0.8 multiplier.
+  - The steep dose-response assumption.
+  - Applicability to rifapentine-based HPMZ.
+- **Strength:** Medium rather than large, since the direction is plausible but the magnitude has no empirical basis.
 
 --- Critique: Rifampicin induction structurally limits atorvastatin exposure in routine programs, and the trial exposure does not transfer ---
 
-Note: my search budget ran out during this pass. I could not check the Phillips/Wallis surrogate papers, Thwaites 2004, or the HPMZ regimen definition. They are flagged below as unverified. I also could not see the CG model, so any claim about "the SROI threshold" is unverifiable.
-
----
-
 ## Critique 1: "Success" in Phase III is unlikely to be a mortality result
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic is correct and the logical point stands. The claim that prior evidence is surrogate-only is supported. The claims about surrogate validity and about the Phase III design are not verified. The size of the effect depends on CG's model structure, which I could not inspect.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic and the surrogate-validity background check out. The claim that the model treats "success" as a demonstrated 10% mortality reduction, and the SROI threshold, could not be checked because I don't have the model or the Phase IIc/III registry design. Flag it as UNGROUNDED on model interpretation.
 
 **CLAIM CHECK**
-- **Sample size of about 36,000 per arm at 4% baseline and a 10% relative reduction:** VERIFIED. I recomputed it with the standard formula (80% power, two-sided α = 0.05) and got about 35,900 per arm.
-- **About 17,000 per arm at 8% baseline:** VERIFIED. I get about 17,200.
-- **"Larger still" at 2% baseline:** VERIFIED. I get about 73,000 per arm.
-- **Baseline mortality assumptions (4%, 8%, 2%):** PLAUSIBLE. These are illustrative, as the Investigator said.
-  - A five-country cohort of 23,799 adults on DS-TB treatment found 
-6% died during treatment
-.
-  - A systematic review reported 
-case fatality during TB treatment ranging from 1.8 to 33.3%
-.
-  - I did not find a source for the 2% trial-cohort figure.
-- **Prior human evidence is on surrogates:** VERIFIED. The atorvastatin Phase IIB (n=150) reported 
-culture-negative results in 97% vs 85.1% and a larger reduction in chest X-ray severity score
-. The Phase IIC (STEP) lists 
-time to sputum culture conversion, decline in chest X-ray severity score and lung function
- as outcomes in 440 patients. Mortality is not a primary outcome.
-- **No mortality-powered trial is planned:** PLAUSIBLE. The registry describes Phase IIC as 
-a pilot Phase III
- and says the Phase III 
-will be fully international and multicenter
-. I found no Phase III endpoint definition.
-- **Phillips/Wallis found 2-month culture conversion to be a weak individual-level predictor of relapse:** UNVERIFIABLE in this session. I recall Phillips et al. (AJRCCM, ~2013) making this argument, but I did not confirm it.
-- **No evidence that conversion speed predicts mortality:** UNVERIFIABLE. This is an absence claim and I found nothing either way.
-- **f = 0.5, r_s = 0.03, and "exactly at the threshold that pushes SROI below 2,000x":** UNVERIFIABLE. These are assumptions and depend on CG's model.
+- **Sample sizes of about 36,000, 17,000 and "larger still" per arm: VERIFIED.** I recomputed with the standard two-proportion formula (80% power, two-sided α = 0.05).
+  - 4.0% → 3.6% gives about 35,800 per arm.
+  - 8% → 7.2% gives about 17,200 per arm.
+  - 2% → 1.8% gives about 73,000 per arm.
+- **Mixture arithmetic (0.5 × 0.10 + 0.5 × 0.03 = 0.065, and 0.05 when r_s = 0): VERIFIED.** This is a calculation only. Whether 0.065 pushes SROI below 2,000x depends on the model, which I could not see.
+- **Baseline on-treatment mortality of 4–8%: PLAUSIBLE.**
+  - 
+A systematic review found case fatality during TB treatment ranged from 1.8 to 33.3%.
+
+  - 
+In a five-country adherence cohort of 23,799 participants, 6% died during treatment.
+
+  - I did not retrieve the WHO cohort figures or the trial-cohort figure of about 2%, so the 2% claim is UNVERIFIABLE here.
+- **"No TB drug trial approaches this scale": UNVERIFIED.** I did not search trial sizes. It is very likely true for DS-TB regimen trials, but I have no source.
+- **Phillips et al. and Wallis et al. on 2-month culture as a weak predictor: PARTIALLY VERIFIED.**
+  - Both papers exist: Phillips, Fielding & Nunn, PLoS ONE 2013, and Wallis et al. 2013 and 2015.
+  - 
+Wallis 2015 itself states that month 2 culture status remains a relatively weak predictor of outcomes for individual patients.
+
+  - 
+Phillips cites a systematic review finding the 2-month culture had modest specificity but low sensitivity for predicting failure and relapse.
+
+  - Wallis is better characterised as promoting a trial-level model that combines culture status with treatment duration. 
+Wallis et al. claim 2-month culture status is a good predictor in DS-TB when combined with treatment duration.
+
+  - The critique's lumping of the two authors is therefore slightly inaccurate.
+- **"No evidence that culture-conversion speed predicts mortality": UNVERIFIABLE.** I found none, but I did not search for it directly.
 
 **EVIDENCE FOUND**
-- The Phase IIB was open-label, and 
-muscle pain was more frequent with atorvastatin (16% vs 5%)
-. This affects how much the 97% vs 85% result can be trusted, but it is not mortality evidence.
-- The registry notes the Phase IIB also showed 
-reduced incidence of peripheral neuropathy
-. This is another non-mortality signal.
-- Nothing I found supports a 10% mortality reduction from human data. The Investigator's central point is therefore consistent with the registry record.
+- 
+A review argues that 2- or 3-month culture positivity on LJ is not an acceptable surrogate for long-term clinical outcome.
+ This supports the point that surrogate success does not imply a mortality effect.
+- The prior human atorvastatin data are on surrogates. 
+A Phase IIA atorvastatin study showed reduced sputum mycobacterial load, while a rosuvastatin trial did not affect sputum culture conversion.
+ This is consistent with the critique's premise.
+
+**CORE CLAIM**
+- **Claim:** A "success" in the Phase III used by the model would not be a demonstrated 10% mortality reduction, so a large share of success worlds carry a mortality effect well below 10%.
+- **Support: LOGIC ONLY.**
+- **Why:** The sample-size arithmetic is correct and the prior evidence is surrogate-based. How the model defines "success" was not available to me.
 
 **REVISED CRITIQUE**
-The prior atorvastatin evidence is surrogate-only (culture conversion, chest X-ray score). A mortality-powered DS-TB trial needs roughly 17,000–73,000+ per arm, depending on baseline mortality and assuming a 10% relative effect. A "Phase III success" is therefore most likely a composite-unfavourable-outcome or surrogate success. The mortality effect conditional on success should be discounted toward the surrogate-only value r_s, which is unknown. Keep the f and r_s numbers as flagged assumptions, and drop the Phillips/Wallis claim unless it is separately checked. Strength: **large in direction, with unknown magnitude**. It is conditional on how CG's model defines "success."
+- **Keep:** The sample-size arithmetic. A mortality-powered trial at a 10% relative reduction needs tens of thousands of participants per arm at plausible baselines. The existing atorvastatin signals are on bacterial-load and culture endpoints, which are imperfect individual-level surrogates.
+- **Remove or flag:**
+  - The model-interpretation claim and the SROI threshold, which are UNGROUNDED.
+  - The r_s = 0.03 value, which is an assumption.
+  - The "no TB trial approaches this scale" claim, which is unsourced.
+- **Strength:** Medium to large, conditional on how the model defines "success."
 
 ---
 
-## Critique 2: A large share of on-treatment deaths is unreachable by a weeks-scale adjunct
+## Critique 2: Much on-treatment mortality is unreachable by a weeks-scale adjunct
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis is supported by other studies. The numeric fractions and the HPMZ point are ungrounded. Waitt & Squire exists, but I could not confirm the details the Investigator attributes to it.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative premise (early, HIV-associated, comorbidity-driven deaths) is supported. The 25–35% unreachable fraction and the HPMZ headroom point are unsourced inferences.
 
 **CLAIM CHECK**
-- **Waitt & Squire 2011, systematic review of death risk factors:** VERIFIED as a citation. It is Int J Tuberc Lung Dis 2011;15(7):871–885, 
-"A systematic review of risk factors for death in adults during and after tuberculosis treatment"
-. It is cited as reporting 
-comorbidities as risk factors for TB deaths in areas with high TB incidence and HIV prevalence
-. Its early-clustering and "mainly Africa" details are UNVERIFIED.
-- **Deaths cluster early:** VERIFIED from other sources.
-  - In a US study, 
-48% of patients who died during treatment died within 30 days
-.
-  - In a Taiwan series, 
-most TB-related deaths occurred early (median survival 20 days)
-.
-  - In another Taiwan cohort, 
-underweight was associated with higher mortality only in the first 8 weeks
-.
-- **Many deaths are non-TB or comorbidity-driven:** VERIFIED. In the Taiwan series, 
-malignancy, liver cirrhosis and renal failure were independent predictors of all TB deaths
-, and deaths were classified as TB-related or non-TB-related.
-- **HIV is a major driver:** SUPPORTED indirectly. ART 
-cut mortality by 44–71% among HIV-positive TB patients
-.
-- **"25–35% unreachable":** UNVERIFIABLE. This is an illustrative number, and I found no source for the share of deaths that is modifiable.
-- **Thwaites 2004 (corticosteroids in TB meningitis):** NOT CHECKED. I recall it as a real NEJM trial showing a mortality benefit, but I did not verify it here.
-- **"4-month HPMZ shrinks headroom":** UNVERIFIABLE. The registered ATORTUB regimens use the standard six-month course, and the popPK sub-study lists 
-2RHZE/4RH plus 16 weeks of atorvastatin
-. I found no HPMZ arm. If CG's model assumes HPMZ, that is an external premise I could not check.
+- **Waitt & Squire 2011 exists: VERIFIED.** It is Int J Tuberc Lung Dis 2011;15(7):871–885, "A systematic review of risk factors for death in adults during and after tuberculosis treatment." 
+Waitt and Squire hypothesised that associations between comorbidities, social isolation and TB death may reflect delays in presenting to a provider.
+ I could not retrieve its own timing or cause fractions, so those remain UNVERIFIED.
+- **Deaths cluster early: VERIFIED by other sources.**
+  - 
+In US data, 47% of those who died during treatment died within 30 days of diagnosis.
+
+  - 
+In a Taiwanese review of culture-proven TB deaths, most TB-related deaths occurred early (median survival 20 days), typically from septic shock.
+
+  - 
+In a Taiwanese cohort, underweight was associated with elevated mortality only within the first 8 weeks.
+
+- **Non-TB and comorbid causes: VERIFIED.** 
+Malignancy, liver cirrhosis and renal failure were independent predictors of all TB deaths.
+
+- **HIV and advanced disease as drivers: PLAUSIBLE.** 
+A systematic review showed a 44–71% mortality reduction with ART among HIV-positive TB patients.
+ That indicates a large HIV-attributable mortality share.
+- **Thwaites 2004 (corticosteroids in TB meningitis): not re-checked in this session.** I recall it as a real NEJM 2004 trial. The framing, that there is no analogous result in pulmonary DS-TB, is a reasonable inference.
+- **25–35% unreachable, and the HPMZ headroom point: UNVERIFIABLE.** The critique labels these as its own inference. I did not verify the HPMZ regimen definition or its effect on lung-damage burden.
 
 **EVIDENCE FOUND**
-- Because early deaths dominate, the adjunct's window matters. Atorvastatin was given for 2 months in the Phase IIB and 16 weeks in the planned sub-study, so it overlaps the early-death period only partly, depending on onset of effect.
-- The 1.8–33.3% range shows that the reachable share depends strongly on setting and HIV prevalence. Any single 25–35% figure is therefore weakly grounded.
+- Early deaths are typically from fulminant septic shock, which supports "die before the adjunct could act." But that same shock is inflammatory, so a host-directed drug is not obviously irrelevant to it. This weakens the "unreachable" framing for some early deaths.
+- I found no data showing statins reduce early TB mortality.
+
+**CORE CLAIM**
+- **Claim:** A material share (25–35%) of on-treatment deaths is not modifiable by a weeks-scale adjunct, so the effective r is below 10%.
+- **Support: LOGIC ONLY.**
+- **Why:** The direction is supported by early-death and comorbidity data, but the fraction is not quantified in any source I found.
 
 **REVISED CRITIQUE**
-On-treatment deaths are early-clustered and often tied to advanced HIV, comorbidity and non-TB causes. A uniform 10% relative reduction across all deaths likely overstates the modifiable share. The decomposition r_eff = reachable fraction × effect among reachable deaths is logically sound. The 25–35% figure is **UNGROUNDED** and should be presented as a placeholder. Remove the HPMZ headroom claim, or flag it as UNGROUNDED, unless CG's model actually uses a 4-month regimen. Strength: **small-to-medium**, because the direction is well supported but the magnitude is not.
+- **Keep:** A 10% reduction applied to all-cause on-treatment deaths overstates the reachable pool, because many deaths are early, HIV-driven or non-TB.
+- **Remove or flag:** The 25–35% unreachable figure and the HPMZ headroom claim, both UNGROUNDED.
+- **Strength:** Medium, with direction supported and magnitude unknown.
 
 ---
 
-## Critique 3: Rifampicin induction limits atorvastatin exposure and trial exposure doesn't transfer
+## Critique 3: Rifampicin induction limits atorvastatin exposure
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The label and interaction mechanism are verified. One citation is misattributed. The "different statin" premise is largely contradicted by the registry record. The exposure-limitation concern has real support, but the evidence conflicts on steady-state net exposure.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The label wording and the dual-mechanism interaction are verified. Several secondary claims are wrong, and the magnitude multiplier is unsupported.
 
 **CITATION CHECK**
-- **Atorvastatin label statement on rifampicin:** VERIFIED. The label says 
-rifampin can lead to variable reductions in plasma atorvastatin, and simultaneous co-administration is recommended because delayed administration was associated with a significant reduction
-. It also states that 
-the effect of rifampin on atorvastatin concentrations in hepatocytes is unknown
-.
-- **Kyrklund et al. 2004, reduced simvastatin exposure:** MISREPRESENTED. The 2004 Kyrklund paper is about **pravastatin**: 
-mean AUC was 69% of the placebo phase (range 24–220%)
-. The simvastatin paper is Kyrklund et al. **2000**: 
-rifampin decreased the AUC of simvastatin and simvastatin acid by 87% and 93%
-.
-- **Johns Hopkins (Karakousis) pravastatin work:** PARTIALLY VERIFIED. StAT-TB is a Phase **IIb** two-week dose-finding PK/safety study of 
-pravastatin, with Karakousis as PI at Johns Hopkins
-, not Phase IIa. It is a safety/PK study, not an efficacy trial.
+- **Atorvastatin label statement: VERIFIED.**
+  - 
+The label says rifampin or other CYP3A4 inducers can lead to variable reductions in atorvastatin. It recommends simultaneous co-administration because delayed administration after rifampin is associated with a significant reduction in plasma concentrations.
+
+  - The label table gives the numbers. 
+Rifampin co-administered (600 mg for 7 days) raised AUC by 30% and Cmax 2.7-fold, while separated doses lowered AUC by 80% and Cmax by 40%.
+
+- **Atorvastatin-specific rifampin study: VERIFIED (a different study from the one the critique cited).** 
+Backman et al. found rifampin reduced atorvastatin acid AUC by 80%.
+ This was in healthy volunteers after 5 days of pretreatment.
+- **Kyrklund 2004 as a simvastatin study: LIKELY MISATTRIBUTED, not confirmed by search.**
+  - From my background knowledge, Kyrklund 2004 is a pravastatin–rifampicin study. The simvastatin paper is Kyrklund 2000.
+  - 
+The StAT-TB protocol states that pravastatin exposures are reduced by 30–50% with rifampin.
+ This is consistent with that attribution.
+- **Karakousis and pravastatin: VERIFIED.**
+  - 
+StAT-TB was led by Petros Karakousis at Johns Hopkins.
+
+  - 
+Its title describes it as a Phase 2b dose-finding study of pravastatin.
+
+  - It is therefore not "Phase IIa," and the registered study is a dose-finding safety and PK study. 
+Participants received standard anti-TB therapy (Rifafour) plus pravastatin for 14 days.
+
 
 **CLAIM CHECK**
-- **CYP3A4 induction plus OATP1B1 inhibition by rifampicin, with a timing trade-off:** VERIFIED. The label cites 
-the dual mechanism (CYP3A induction and OATP1B1 inhibition)
-.
-- **Atorvastatin-specific PK:** VERIFIED. The label table shows that with rifampin and atorvastatin 
-co-administered (7 days), AUC rose 30% and Cmax rose 2.7-fold; with doses separated (5 days), AUC fell 80% and Cmax fell 40%
-. Backman 2005 confirms the 80% fall: 
-rifampin reduced atorvastatin acid AUC by 80%
-.
-- **"Net steady-state exposure uncertain, plausibly lower":** CONFLICTING.
-  - The label's 7-day co-administration data show plasma AUC maintained or increased, not decreased.
-  - A review notes that 
-the consequences of prolonged simultaneous statin–rifampin administration have never been investigated
-.
-  - Another review says that 
-after multiple doses, induction can overcome the OATP effect and AUC decreases
-.
-  - Net: uncertain, which matches the Investigator's wording, but "plausibly lower" is not established.
-- **Protease inhibitors raise atorvastatin exposure:** VERIFIED. 
-Tipranavir/ritonavir raised AUC 9.4-fold
-. The efavirenz-lowers claim is supported by the label's inducer wording: 
-efavirenz and rifampin can lead to variable reductions
-.
-- **"Prior positive human data may be from pravastatin or rosuvastatin":** LARGELY FALSE for the likely source.
-  - The positive human data are atorvastatin. The ATORTUB Phase IIA/IIB used 
-atorvastatin 40 mg daily for 2 months with standard of care
-.
-  - A reviewer notes that 
-rosuvastatin did not affect sputum culture conversion
-, so rosuvastatin is a null result, not a positive signal.
-  - The pravastatin work is PK-only.
-- **Trial exposure doesn't transfer to routine programs:** WEAKENED. ATORTUB was run with rifampicin-containing standard therapy, so any rifampicin-induced exposure loss is already embedded in the observed signal. The remaining issue is whether dosing timing and adherence differ in routine care. I found no evidence on that.
-- **Multiplier 0.5–0.8 on r:** UNVERIFIABLE. It is a guess, as the Investigator said.
-- **Dolutegravir comment:** NOT CHECKED.
+- **Atorvastatin is a CYP3A4 and OATP1B1 substrate, and rifampicin both induces and inhibits: VERIFIED.** This follows from the label's "dual interaction mechanism" wording.
+- **Net steady-state exposure under chronic daily rifampicin is uncertain: VERIFIED as uncertain.** 
+A review notes that the consequences of prolonged simultaneous statin–rifampin administration have never been investigated.
+ The label also says the effect on hepatocyte concentrations is unknown.
+- **Pravastatin is "largely unaffected by rifampicin": FALSE.** The 30–50% exposure reduction cited above contradicts it.
+- **"The prior positive human data are from pravastatin or rosuvastatin": CONTRADICTED for atorvastatin.**
+  - 
+The positive human signal comes from a randomised Phase IIA trial of atorvastatin in Nigeria (Adewole et al., IJTLD 2023), which found significantly reduced mycobacterial load in sputum.
+
+  - Rosuvastatin (ROSETTA) was the null trial.
+  - Pravastatin has so far only a PK and safety study that I could find. So the transferability concern is mostly moot if the model's evidence is the atorvastatin trial. That trial was run under rifampicin-based therapy.
+- **Rifampicin is the relevant inducer: UNVERIFIED for this regimen.** If the Phase III regimen is rifapentine-based (HPMZ), the label data are by analogy only, since rifapentine is a somewhat weaker but still real CYP3A4 inducer.
+- **ART interactions (ritonavir-boosted PIs raise atorvastatin, efavirenz lowers it): VERIFIED.**
+  - 
+The label table shows tipranavir/ritonavir raising atorvastatin AUC 9.4-fold.
+
+  - 
+The label lists efavirenz among the inducers that can reduce plasma concentrations.
+
+- **"Programs cannot guarantee simultaneous dosing": PLAUSIBLE but unsupported.** Daily fixed-dose-combination dosing makes co-administration straightforward.
+- **Multiplier of 0.5–0.8 on r, and a steep dose-response: UNVERIFIABLE.** The critique itself calls this a guess.
 
 **EVIDENCE FOUND**
-- A population PK–PD sub-study is registered. It covers atorvastatin 20/40/60 mg with 2RHZE/4RH: 
-16 weeks of daily atorvastatin at each dose
-. The Phase IIC registry says 
-PK-PD evaluation at different doses, correlated with outcomes, will be essential
-. The investigators themselves treat exposure as an open question, which supports the Investigator's concern. The sub-study could also provide the missing data.
-- If a Phase III used a rifapentine-based regimen (as "HPMZ" suggests), the rifampicin-specific label guidance would not map directly. Rifapentine is also a CYP3A4 inducer, but I did not verify its atorvastatin interaction.
+- Preclinical rationale favours other statins. 
+At non-toxic doses atorvastatin was unable to inhibit Mtb growth in THP-1 cells, while simvastatin, fluvastatin and pravastatin showed the most favourable therapeutic index and enhanced first-line drug activity.
+ This independently raises doubt that atorvastatin's effect is exposure-limited rather than mechanism-limited.
+- The atorvastatin interaction has a large asymmetry. Co-administered dosing gives a modest AUC rise, whereas separated dosing gives an 80% AUC fall. Dosing-time adherence therefore matters, which supports the critique's concern in principle.
+
+**CORE CLAIM**
+- **Claim:** Under routine chronic rifampicin therapy, achieved atorvastatin exposure is low enough to reduce the realised mortality effect by about 20–50%.
+- **Support: LOGIC ONLY.**
+- **Why:** The interaction is real and the label confirms variable reductions. Chronic co-administered exposure is uninvestigated, and no data link exposure to a mortality effect.
 
 **REVISED CRITIQUE**
-Atorvastatin exposure under rifampicin depends on dosing timing: separated dosing cuts AUC by about 80%, while simultaneous dosing preserves or raises plasma AUC at 7 days. Net chronic-dosing exposure at the site of action (lung, hepatocyte) is **UNGROUNDED**. The atorvastatin label itself says the hepatocyte effect is unknown. Replace "Kyrklund 2004 (simvastatin)" with Kyrklund 2000 (simvastatin) and Backman 2005 (atorvastatin). Drop the premise that the positive human signal came from a different statin, because the Phase IIA/IIB was atorvastatin, so the signal was generated under rifampicin. The surviving concern is that routine-program dosing may not reproduce trial-condition timing and adherence, plus the ART interactions. Strength: **medium** (reduced from large), with magnitude unknown. A PK/PD model or the ATORTUB popPK-PD sub-study is needed.
+- **Keep:**
+  - Rifampicin has a dual interaction with atorvastatin.
+  - Separated dosing lowers AUC by about 80%.
+  - Chronic co-administered exposure is unknown.
+  - ART interactions run in both directions.
+  - Real-world dosing adherence matters.
+- **Remove:**
+  - The claim that prior positive data are pravastatin-based, since the atorvastatin signal is from atorvastatin itself.
+  - The claim that pravastatin is unaffected by rifampicin.
+  - The Kyrklund simvastatin attribution.
+- **Flag as UNGROUNDED:**
+  - The 0.5–0.8 multiplier.
+  - The steep dose-response assumption.
+  - Applicability to rifapentine-based HPMZ.
+- **Strength:** Medium rather than large, since the direction is plausible but the magnitude has no empirical basis.
 
 --- Critique: Winner's-curse and reference-class patterns imply the conditional effect should sit well below the surrogate-implied one, and r and p_success should not be independent ---
 
-## Critique 1: Winner's curse and reference-class patterns
+## Critique 1: Winner's-curse and reference-class patterns, and r and p_success not independent
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The winner's-curse logic is sound, and the HDT reference class is partly real. But the Investigator overstates it as a track record of failure to translate. The covariance argument is also shakier than presented.
 
 **CLAIM CHECK**
-
-- **Martineau 2011 vitamin D trial, culture-conversion signal in a genotype subgroup:** VERIFIED, but the framing needs correcting.
+- **Martineau 2011 vitamin D signal:** VERIFIED.
   - 
-Median time to sputum culture conversion was 36.0 days with vitamin D and 43.5 days with placebo (adjusted HR 1.39, 95% CI 0.90–2.16, p=0.14).
- The primary endpoint was therefore null.
-  - 
-TaqI genotype modified the effect (p-interaction 0.03), with a response only in tt-genotype patients (HR 8.09, 95% CI 1.36–48.01).
- The tt subgroup estimate is very wide and imprecise, which is a textbook winner's-curse profile.
-  - This was a post-hoc subgroup signal, not a Phase II trial that "passed" a filter.
-- **No robust later benefit:** VERIFIED. 
-A meta-analysis found no shortening of time to sputum culture conversion overall (HR 1.04, 0.89–1.23).
- A later trial also 
-found that the tt genotype did not influence conversion, in contrast with the earlier report.
- The subgroup effect was not replicated in that trial.
-- **CC-11050 and everolimus "surrogate positives that fail to translate":** MISREPRESENTED.
-  - The relevant trial is Wallis et al. 2021, a phase 2 trial in South Africa (NCT02968927).
-  - 
-It found both drugs safe and well tolerated, and they might have improved FEV1 recovery.
- 
-FEV1 was significantly higher than control at day 180 (CC-11050 6.30%, p=0.048; everolimus 6.56%, p=0.044).
+Overall, the adjusted HR for time to culture conversion was 1.39 (95% CI 0.90–2.16, p=0.14).
 
   - 
-There was no effect of CC-11050 on stable culture conversion, which the authors attributed to small sample size.
+TaqI genotype modified the effect (p-interaction=0.03), with benefit seen only in tt patients (HR 8.09, 95% CI 1.36–48.01).
 
+  - The tt subgroup was tiny: 
+12 subjects.
+ This is a textbook winner's-curse case.
+  - Later evidence: a meta-analysis found 
+no shortening of time to culture conversion overall, with the tt subgroup effect still reported.
+
+  - The endpoint was culture conversion, not mortality. That fits "surrogate positive, no outcome benefit." But no mortality trial was run, so "no robust outcome benefit" is better stated as "no benefit on the surrogate in the full population."
+- **CC-11050 and everolimus:** PARTIALLY VERIFIED, and MISCHARACTERISED as failures.
+  - The Phase 2 TB-HDT trial found 
+improved FEV1 recovery at day 180 for CC-11050 and everolimus (6.30% and 6.56% differences).
+ The lower confidence limits were near zero, and the p-values were 0.048 and 0.044.
   - 
-The authors called for further definitive studies.
- I found no Phase III, so these drugs have not "failed to translate". They are untested at Phase III.
-  - Safety and FEV1 were the endpoints, not mortality.
-- **Metformin "mixed or no clear clinical benefit":** NOT SUPPORTED as stated.
-  - What exists is mostly observational or preclinical work. 
-A scoping review describes pilot preclinical and observational research recommending metformin as an adjunct.
+None of the arms showed accelerated eradication of MTB infection.
 
-  - 
-The impact of combining metformin with RHZE is described as still under investigation.
+  - I found no Phase 3 or mortality trial. So these are marginal, unreplicated early signals, which fits the winner's-curse argument. They are not documented "failures to translate."
+  - A Lancet Respiratory Medicine paper reported 
+two control-group patients with life-threatening, treatment-attributable liver injury.
 
-  - Metformin is therefore unproven, not a documented translation failure. I found no completed outcome RCT in these results.
-- **Observational statin cohorts exposed to healthy-user and indication bias:** PLAUSIBLE (logical argument).
-  - 
-Population-based studies found statin use related to lower TB incidence.
-
-  - I did not locate the specific Taiwan or Korea statin cohorts, so I could not verify them. A comparable Taiwan metformin cohort did find an association with lower TB risk. 
-The HR was 0.84 (0.74–0.96).
-
-- **Winner's curse as a general statistical result:** VERIFIED as standard theory (no search needed).
-- **Joint-distribution claim, "E[r × p_success] below the product of means":** LOGICALLY CONDITIONAL.
-  - The sign of the covariance depends on how p_success is defined.
-  - If success is defined on a surrogate and surrogate-only wins exist, high p_success pairs with r≈0. That gives a negative covariance, so E[rp] is below E[r]E[p], as the critique says.
-  - If p_success means success on a mortality-powered endpoint, real-effect worlds have both high p and high r. That gives a positive covariance and the effect reverses.
-  - I could not inspect the CG model to see which applies.
-- **Shrinkage arithmetic:** the 0.7–0.9 factor is explicitly an assumption, and 0.10 × 0.7–0.9 = 0.07–0.09 is arithmetically correct.
+- **Metformin:** PARTIALLY VERIFIED.
+  - One RCT concluded that 
+adding metformin to anti-TB therapy does not affect sputum conversion.
+ The same paper notes that 
+other studies (Abinaya, Marupuru) had found additional benefit.
+ Early positives that later fail to replicate are supported.
+  - A different source claims 
+a randomized trial showed faster conversion and better clinical outcomes.
+ The evidence is mixed, and I found no mortality data.
+- **Everolimus:** see the CC-11050 entry above. The only evidence is the Phase 2 trial.
+- **Observational statin cohorts exist:** VERIFIED in outline. 
+Several population-based studies found statin use associated with lower TB incidence.
+ I did not verify the healthy-user bias claim, but it is a standard and plausible concern.
+- **"Bayesian shrinkage 0.7–0.9 gives r = 0.07–0.09":** the arithmetic is correct. The shrinkage factor is an assumption with no empirical anchor.
+- **"E[r × p_success] below the product of means":** LOGIC ONLY, and it depends on how p_success is defined.
+  - Winner's curse shows that the true effect, given a pass, is below the estimate. It does not by itself create negative covariance between r and p_success.
+  - If p_success is the chance of true mortality benefit, r and p_success are positively correlated, and E[rp] would exceed the product of means.
+  - Negative covariance arises only if p_success is the chance of passing on a surrogate, because surrogate-only worlds then pass with r≈0.
+  - I could not see how the CG model defines p_success or where its 10% comes from. The "anchored on promising early signals" premise is therefore unverified.
 
 **EVIDENCE FOUND (additional)**
+- **Atorvastatin itself has only a surrogate signal.**
+  - A Phase II atorvastatin trial in Nigeria reported 
+a significant reduction in sputum mycobacterial load.
 
-- The directly relevant statin reference class contradicts the "early positive signal" premise. Human surrogate data for statins in TB are null so far.
+  - It was a Phase II trial using a bacteriological surrogate, with no mortality data. This is the strongest on-point support for the critique.
+- **Rosuvastatin Phase 2b was null.**
   - 
-Rosuvastatin phase 2b: median time to culture conversion was 42 days in both arms (HR 1.30, 0.88–1.91, p=0.19).
+Median time to culture conversion was 42 days in both arms (HR 1.30, 95% CI 0.88–1.91, p=0.19).
 
   - 
-Rosuvastatin had no impact on PET-CT changes.
+The authors concluded it was safe but gave no substantive benefit on culture conversion overall.
 
-  - 
-StAT-TB (pravastatin, phase 2b) is registered as completed.
- I found no results in this search.
-  - Atorvastatin evidence in these results is preclinical. 
-In guinea pigs, atorvastatin and anti-TB drugs showed a synergistic bactericidal action.
+  - This is a class-adjacent datapoint against optimism, though rosuvastatin is not atorvastatin.
 
-- So the 10% likely rests on preclinical and observational anchoring, not a winner's-curse-selected human trial. That is a different mechanism (translation risk and confounding) and arguably points to a larger downward adjustment than shrinkage alone.
-- 
-An editorial notes there is no clear consensus on appropriate biomarkers or study endpoints for HDT trials.
- This supports the surrogate-to-outcome concern in general terms.
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
+**CORE CLAIM**
+- Claim: the CG's 10% conditional mortality effect is inflated relative to the true effect because it is anchored on selected early or surrogate signals, so r should be shrunk.
+- Support: **LOGIC ONLY.** The reference class (vitamin D, metformin, CC-11050, everolimus, rosuvastatin, atorvastatin Phase IIa) shows that surrogate signals are mixed or unreplicated. I found no evidence on how CG derived 10%, and no mortality data for these agents.
 
 **REVISED CRITIQUE**
+The effect size is probably better treated as a prior with downward-skewed uncertainty than as a point estimate of 0.10. The supporting reference class is:
+- vitamin D: a subgroup-only conversion signal, with null results overall;
+- metformin: mixed on sputum conversion;
+- CC-11050 and everolimus: marginal FEV1 signals with no conversion benefit;
+- rosuvastatin: a null Phase 2b;
+- atorvastatin: only a Phase IIa bacillary-load signal.
 
-- **Survives:** The 10% conditional effect is probably over-optimistic.
-  - Early or subgroup estimates are upwardly biased.
-  - Martineau 2011 is a valid example, but of a post-hoc subgroup signal that did not replicate.
-  - Observational statin data are confounded.
-  - r and p_success are unlikely to be independent, though the sign of the effect on E[rp] depends on how success is defined.
-- **Removed:** The claims that CC-11050, everolimus and metformin are failed-translation examples. They are unproven, not refuted.
-- **Added:** Human statin-in-TB surrogate trials (rosuvastatin) are null. None of them used atorvastatin.
-- **Status:** The shrinkage factor is UNGROUNDED, an illustrative assumption. Direction: decreases. Magnitude: medium.
+The shrinkage factor of 0.7–0.9 is UNGROUNDED, and the sign of the r–p_success covariance depends on how p_success is defined. Drop the claim that these agents "failed to translate to outcome benefit." They were never tested on mortality. Strength: medium, direction: decreases (probably).
 
 ---
 
-## Critique 2: Hepatotoxicity, myopathy, and compounding
+## Critique 2: Hepatotoxicity and myopathy tail, and compounding attenuations
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative harm-tail hypothesis is plausible and UNGROUNDED on magnitude. The arithmetic is correct. The compounding ranges are assumptions drawn from critiques I was not given.
 
 **CLAIM CHECK**
+- **Statins and first-line TB drugs add hepatic risk, and statins carry myopathy risk:** PLAUSIBLE. This is standard labeling knowledge, and I did not search for it.
+- **Higher myopathy risk with some ART:** PLAUSIBLE, from background pharmacology (boosted protease inhibitors raise atorvastatin levels). I did not verify it in this session. One COVID trial lists 
+protease inhibitors among drugs with significant atorvastatin interactions.
 
-- **HRZ hepatotoxicity and statin liver/muscle warnings are well established:** PLAUSIBLE from standard labeling and general knowledge. I did not retrieve labels in this session.
-  - Supportive data point: in the Wallis HDT trial, 
-two control-group patients had life-threatening, treatment-attributable liver injury
- on standard therapy.
-- **Small phase II trials cannot detect excess mortality from hepatotoxicity:** PLAUSIBLE (statistical).
-  - The rosuvastatin trial is a data point. 
-Grade 3–5 adverse events occurred in 9% (6/70) with rosuvastatin versus 6% (4/67) in controls (p=0.75), none considered related to rosuvastatin.
+- **Small Phase II trials cannot detect excess hepatotoxicity:** LOGIC, and correct. The available trials are small and show no signal:
+  - Rosuvastatin Phase 2b: 
+grade 3–5 adverse events in 9% of the rosuvastatin arm and 6% of controls, none judged related.
 
-  - There was no signal, but the trial is too small to exclude a rare harm. Rosuvastatin also has less CYP3A4 involvement than atorvastatin, so it does not transfer directly.
-- **Myopathy risk higher with "some ART":** PLAUSIBLE but of limited relevance.
-  - From my own knowledge (not searched here), the main statin interaction is with boosted protease inhibitors and cobicistat. Those are generally avoided with rifampicin, and efavirenz or dolutegravir regimens are the usual choice.
-  - The ART argument is therefore weaker for rifampicin-based TB treatment.
-- **"CG models only a non-negative effect":** UNVERIFIABLE. The CG model is not available to me.
-- **−0.01 contribution:** arithmetic is correct (10% × 0.10 = 0.01).
-  - A "net-zero" outcome is already what a failed Phase III in p_success represents. Counting it again as a harm tail risks double-counting.
-  - Only the genuinely negative portion is incremental.
-- **Compounding product:** arithmetic VERIFIED. 0.65×0.5×0.7 = 0.23 and 0.75×0.8×0.9 = 0.54, so r ≈ 0.023–0.054. The inputs come from other critiques that I cannot see. The Investigator itself flags that the factors overlap and are correlated.
-- **PK attenuation (0.5–0.8):** this concerns rifampicin induction of atorvastatin metabolism.
-  - I did not search this specifically. I know from general pharmacology that rifampicin lowers atorvastatin exposure, but I did not verify the magnitude here.
-  - Supportive indirect evidence: the Wallis trial 
-substituted rifabutin for rifampin because of potentially deleterious pharmacokinetic interactions with the HDT drugs.
- The StAT-TB protocol 
-cites known pravastatin–rifampin interactions in humans.
+  - Atorvastatin Phase II (Nigeria): reported as 
+a safe additive to standard anti-TB treatment.
 
-  - Interaction-driven dosing problems are a recognized concern in this field.
+  - Absence of a signal in these trials is weak evidence either way, as the Investigator says.
+- **"10% probability of null or negative contributes about −0.01":** the arithmetic is correct (0.10 × 0.10). The loss may be double-counted if p_success already prices in a null world.
+- **Compounding:**
+  - 0.65 × 0.5 × 0.7 = 0.2275, and 0.75 × 0.8 × 0.9 = 0.54. So r ≈ 0.023–0.054, which matches the critique.
+  - All three factors are assumptions. The "reachable fraction" and "PK attenuation" come from other critiques I cannot see.
+  - The Investigator itself flags that the factors overlap and are correlated.
 
 **EVIDENCE FOUND (additional)**
+- Drug-interaction concerns with rifampicin are recognised in the statin-TB literature. The StAT-TB protocol cites 
+known drug interactions between pravastatin and rifampin in humans.
+ That supports the existence of PK attenuation, though not the 0.5–0.8 range, and it concerns pravastatin rather than atorvastatin.
+- Metformin shows the same pattern. A PK substudy found 
+metformin reduced rifampicin bioavailability by 24%.
+ This shows that adjunctive HDTs can erode first-line drug exposure, which is a reference-class point.
+- I could not complete my planned check of rifampicin's effect on atorvastatin exposure. From background knowledge, rifampicin induces CYP3A4 and lowers atorvastatin exposure, but this is not verified here.
 
-- StAT-TB chose pravastatin partly for lower toxicity. 
-Pravastatin showed the least toxicity in THP-1 and Vero cells.
- The programme's own choice of statin was driven by interaction and toxicity concerns.
-- The rosuvastatin trial's safety result is mildly reassuring but underpowered for mortality.
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is sound but largely ungrounded on magnitude, and the compounding is an upper bound.
+**CORE CLAIM**
+- Claim: the independent attenuation factors (reachable fraction, PK attenuation, shrinkage) multiply to cut r to about 0.023–0.054.
+- Support: **LOGIC ONLY.** The multiplication is correct, but each input is an unsourced assumption, and the factors are likely correlated and overlap with Critique 1.
 
 **REVISED CRITIQUE**
-
-- **Survives:** A harm tail for hepatotoxicity or myopathy is plausible and not testable in small trials. Adding hepatotoxic risk on top of HRZ is biologically coherent. Compounding of attenuations is a reasonable concern.
-- **Corrections:**
-  - The harm-tail adjustment is small (≈ −0.01 at most) and may double-count p_success.
-  - The ART-myopathy point is weak for rifampicin-based regimens.
-  - The 0.023–0.054 range is an upper-bound illustration. It uses correlated inputs from other critiques that could not be checked.
-- **Flag:** "UNGROUNDED – plausible but needs empirical support" on magnitude. Direction: decreases. Magnitude: small for the harm tail itself, medium for the compounding.
+A small harm tail is plausible. Existing small trials show no hepatic signal but cannot rule one out. The first-order effect on E[r] from a net-zero or harm world is modest, about −0.01 under the stated assumption. The compounded 0.023–0.054 range is an illustrative upper bound on attenuation, not an estimate. It is UNGROUNDED, "plausible but needs empirical support," and should not be added to Critique 1 without removing overlap. Strength: low to medium for the harm tail alone. The compounding claim stays flagged as hypothetical.
 
 ---
 
 ## Critique 3: A $7M Phase III cannot be powered on mortality
 
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic checks out. The cost-per-participant figures and the WHO endpoint requirement are unverified. The SROI scaling appears internally inconsistent.
+
 **CLAIM CHECK**
-
-I recomputed the sample sizes with the standard two-proportion formula, α=0.05 two-sided, 80% power (z-sum² = 7.849).
-
-- **5.0% → 4.5% mortality:** VERIFIED. n per arm = 7.849 × (0.0475 + 0.042975) / 0.000025 ≈ 28,400, so about 56,800 in total. The critique says about 28,000 per arm and 57,000 in total.
-- **8.0% → 7.2% mortality:** VERIFIED. n per arm = 7.849 × (0.0736 + 0.066816) / 0.000064 ≈ 17,200, so about 34,400 in total. The critique says about 17,000 per arm and 35,000 in total.
-- **Cost at $500–$1,000 per participant:** arithmetic is roughly right. The two scenarios give about $17M–$57M across the two enrolment sizes (35,000 and 57,000), so the quoted range is correct as a union.
-- **Cost-per-participant realism:** PARTIALLY SUPPORTED. The range is too narrow at the low end and too low for TB specifically.
-  - Embedded pragmatic trials have cost far less. 
-Across 64 such trials, mean cost per patient randomized was $478 and median $97 (2015 dollars).
- 
-Ten trials cost over $1,000 per patient.
-
-  - At the $97 median, 35,000–57,000 patients would cost only about $3.4M–$5.5M, which would fit inside $7M. These are mostly EHR- or registry-embedded trials in high-income settings, not 6-month TB trials with clinical follow-up in LMICs.
-  - At the other extreme, 
-TB-PRACTECAL cost €33.9M in total, an average of €61,460 per patient.
- That is an MDR-TB trial with hospital-based visits, but it shows TB-trial costs can be orders of magnitude above $1,000.
-  - 
-Standard trials are typically estimated at $2,000–$40,000 per subject.
-
-  - So the true cost range is wide, and "$500–$1,000" is a central pragmatic guess, not a verified figure.
-- **RECOVERY showed very low per-patient costs:** UNVERIFIED. I did not find a RECOVERY per-patient cost in my search. The embedded-trial review is the best support I found for low-cost designs.
-- **WHO GDG would require mortality for adjunctive HDT:** UNVERIFIABLE (I did not retrieve WHO GDG requirements). It is overstated as stated, since WHO can consider other patient-important outcomes. The critique's logic is still valid if the CEA's benefit is mortality-only: whatever evidence supports p_success has to support a mortality effect.
-- **SROI arithmetic:** 3,000 × 7/37 ≈ 568, which is correct. The 3–10× reduction is consistent (3,000 → ~1,000 to ~300). One ambiguity: the hypothesis calls the $7M a "Phase III" cost, but the SROI formula uses 7 as the base all-in cost. I cannot check this against the CG source model.
-- **The 3,000× baseline SROI, the 3.3M-patient base and the 25% materiality bar:** UNVERIFIABLE from my materials (CG model details).
-- **"Enriching for high-mortality groups shrinks N but loses generalisability":** logically sound. Absolute risk differences matter more than relative ones here.
+- **5% → 4.5% mortality (80% power, two-sided α=0.05):** VERIFIED.
+  - My recomputation: n per arm = (1.96 + 0.8416)² × (0.0475 + 0.042975) / 0.005² ≈ 28,400, so about 56,800 in total.
+- **8% → 7.2%:** VERIFIED.
+  - n per arm ≈ 7.849 × 0.1404 / 0.008² ≈ 17,200, so about 34,400 in total.
+- **Cost of $17M–$57M at $500–$1,000 per participant:** arithmetic correct (34k × $500 ≈ $17M; 57k × $1,000 ≈ $57M). The per-participant figures themselves are UNVERIFIABLE.
+  - My RECOVERY cost search returned nothing relevant, so I could not confirm the claim about RECOVERY.
+  - An unrelated cost source shows per-participant costs for conventional rehabilitation trials of order $16k–$36k. That is a different trial type and not informative here.
+  - For $7M to fund 35–57k participants, total cost per participant would have to be about $120–$200. Whether that is achievable in a streamlined TB trial is unknown.
+- **WHO GDG would require a mortality endpoint for adjunctive HDT:** UNVERIFIABLE. I found no source. WHO may accept a composite unfavourable outcome, which would change N.
+- **Enrichment (TB meningitis, advanced HIV) reduces N but limits generalisability:** LOGIC, sound.
+- **SROI ≈ 3,000 × 7/37 ≈ 570x:** the arithmetic is right (567). But the scaling uses $7M as the baseline all-in cost, while the title says $7M is the Phase III alone. If the baseline all-in cost is larger than $7M, the proportional drop is smaller than 3–10×. I could not see the CG model to resolve this.
+- **Baseline mortality of 5–8%:** PLAUSIBLE but unverified. Mortality in DS-TB trial populations is often lower than this (my recollection, not checked). That would raise N further, so this assumption is probably conservative for the critique.
+- **Not checked:** the 3.3M-patient benefit base and the "25% materiality bar." They come from the model, which I could not see.
 
 **EVIDENCE FOUND (additional)**
+- The Phase II HDT trials I found used surrogate or physiological endpoints, not mortality:
+  - the TB-HDT trial used FEV1 and culture conversion;
+  - the rosuvastatin trial used 
+time to culture conversion by week 8.
 
-- The pragmatic cost literature suggests the cost range should include a lower bound near $5M for a very lean design. The critique's central estimate of $25–40M therefore depends on assuming TB-trial costs of several hundred dollars or more per participant.
-- 
-No clear consensus exists on appropriate endpoints for HDT trials.
- This supports the open question about what evidence would be needed.
+- The critique's fork is therefore real: either the Phase III is surrogate-based, or it is far costlier than $7M. This is consistent with how this field has run trials, but it does not prove what CG assumed.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size core is solid and the cost estimate is plausible but uncertain.
+**CORE CLAIM**
+- Claim: a Phase III powered to detect a 10% relative mortality reduction needs about 35,000–57,000 participants and therefore costs well above $7M.
+- Support: **LOGIC ONLY.** The sample-size half is verified by my recomputation. The cost half depends on a per-participant cost that I could not verify, so the conclusion rests on reasoning and not on direct evidence.
 
 **REVISED CRITIQUE**
+Powering a Phase III on mortality at a 10% relative reduction needs about 34,000–57,000 participants (5–8% baseline mortality, 80% power). If CG's $7M budget is for that design, it implies about $120–$200 per participant, which looks implausibly low but is not shown to be impossible. If the trial instead uses a surrogate or composite endpoint, the cost may be reasonable but the model's mortality-only benefit stream is then unsupported. The $25–40M central estimate and the 3–10× SROI reduction are UNGROUNDED because they depend on unverified per-participant costs and an unclear baseline for the 7/37 scaling. Strength: medium to high on the internal-consistency point (cost versus endpoint), low to medium on the specific SROI magnitude. The direction (cost up, SROI down, or p_success overstated) is well supported by logic.
 
-- **Verified:**
-  - A mortality-powered Phase III of a 10% relative reduction needs about 17,000–28,000 per arm (about 34,000–57,000 total) at 8% and 5% baseline mortality.
-  - A $7M budget is very unlikely to fund that at conventional TB-trial per-patient costs.
-  - If the $7M funds a surrogate-endpoint trial, the mortality benefit in the CEA is not supported by the evidence that trial would produce.
-  - CG's cost and p_success are in tension.
-- **Revised:**
-  - Per-participant cost is UNGROUNDED but has a wide range. It runs from about $100 (embedded trials) to tens of thousands of dollars (TB-PRACTECAL).
-  - Phase III cost is better stated as roughly $5M–$100M+, with a central case of about $20–40M if sites are LMIC pragmatic TB sites.
-  - The 3–10× SROI reduction holds at the central case. It narrows toward about 1× if an ultra-lean embedded design is feasible.
-  - The RECOVERY comparison and the WHO GDG endpoint claim stay flagged as unverified.
-- **Direction:** decreases. **Magnitude:** large, with a wider uncertainty band than stated.
+**Search limitations:** I ran out of searches before checking the RECOVERY per-participant cost, the rifampicin–atorvastatin PK effect, and the WHO GDG endpoint requirement. Those items remain unverified.
 
 --- Critique: Hepatotoxicity and myopathy add a negative tail, and the combined attenuations compound ---
 
-## Critique 1: Winner's curse and reference-class patterns
+## Critique 1: Winner's-curse and reference-class patterns, and r and p_success not independent
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The winner's-curse logic is sound, and the HDT reference class is partly real. But the Investigator overstates it as a track record of failure to translate. The covariance argument is also shakier than presented.
 
 **CLAIM CHECK**
-
-- **Martineau 2011 vitamin D trial, culture-conversion signal in a genotype subgroup:** VERIFIED, but the framing needs correcting.
+- **Martineau 2011 vitamin D signal:** VERIFIED.
   - 
-Median time to sputum culture conversion was 36.0 days with vitamin D and 43.5 days with placebo (adjusted HR 1.39, 95% CI 0.90–2.16, p=0.14).
- The primary endpoint was therefore null.
-  - 
-TaqI genotype modified the effect (p-interaction 0.03), with a response only in tt-genotype patients (HR 8.09, 95% CI 1.36–48.01).
- The tt subgroup estimate is very wide and imprecise, which is a textbook winner's-curse profile.
-  - This was a post-hoc subgroup signal, not a Phase II trial that "passed" a filter.
-- **No robust later benefit:** VERIFIED. 
-A meta-analysis found no shortening of time to sputum culture conversion overall (HR 1.04, 0.89–1.23).
- A later trial also 
-found that the tt genotype did not influence conversion, in contrast with the earlier report.
- The subgroup effect was not replicated in that trial.
-- **CC-11050 and everolimus "surrogate positives that fail to translate":** MISREPRESENTED.
-  - The relevant trial is Wallis et al. 2021, a phase 2 trial in South Africa (NCT02968927).
-  - 
-It found both drugs safe and well tolerated, and they might have improved FEV1 recovery.
- 
-FEV1 was significantly higher than control at day 180 (CC-11050 6.30%, p=0.048; everolimus 6.56%, p=0.044).
+Overall, the adjusted HR for time to culture conversion was 1.39 (95% CI 0.90–2.16, p=0.14).
 
   - 
-There was no effect of CC-11050 on stable culture conversion, which the authors attributed to small sample size.
+TaqI genotype modified the effect (p-interaction=0.03), with benefit seen only in tt patients (HR 8.09, 95% CI 1.36–48.01).
 
+  - The tt subgroup was tiny: 
+12 subjects.
+ This is a textbook winner's-curse case.
+  - Later evidence: a meta-analysis found 
+no shortening of time to culture conversion overall, with the tt subgroup effect still reported.
+
+  - The endpoint was culture conversion, not mortality. That fits "surrogate positive, no outcome benefit." But no mortality trial was run, so "no robust outcome benefit" is better stated as "no benefit on the surrogate in the full population."
+- **CC-11050 and everolimus:** PARTIALLY VERIFIED, and MISCHARACTERISED as failures.
+  - The Phase 2 TB-HDT trial found 
+improved FEV1 recovery at day 180 for CC-11050 and everolimus (6.30% and 6.56% differences).
+ The lower confidence limits were near zero, and the p-values were 0.048 and 0.044.
   - 
-The authors called for further definitive studies.
- I found no Phase III, so these drugs have not "failed to translate". They are untested at Phase III.
-  - Safety and FEV1 were the endpoints, not mortality.
-- **Metformin "mixed or no clear clinical benefit":** NOT SUPPORTED as stated.
-  - What exists is mostly observational or preclinical work. 
-A scoping review describes pilot preclinical and observational research recommending metformin as an adjunct.
+None of the arms showed accelerated eradication of MTB infection.
 
-  - 
-The impact of combining metformin with RHZE is described as still under investigation.
+  - I found no Phase 3 or mortality trial. So these are marginal, unreplicated early signals, which fits the winner's-curse argument. They are not documented "failures to translate."
+  - A Lancet Respiratory Medicine paper reported 
+two control-group patients with life-threatening, treatment-attributable liver injury.
 
-  - Metformin is therefore unproven, not a documented translation failure. I found no completed outcome RCT in these results.
-- **Observational statin cohorts exposed to healthy-user and indication bias:** PLAUSIBLE (logical argument).
-  - 
-Population-based studies found statin use related to lower TB incidence.
-
-  - I did not locate the specific Taiwan or Korea statin cohorts, so I could not verify them. A comparable Taiwan metformin cohort did find an association with lower TB risk. 
-The HR was 0.84 (0.74–0.96).
-
-- **Winner's curse as a general statistical result:** VERIFIED as standard theory (no search needed).
-- **Joint-distribution claim, "E[r × p_success] below the product of means":** LOGICALLY CONDITIONAL.
-  - The sign of the covariance depends on how p_success is defined.
-  - If success is defined on a surrogate and surrogate-only wins exist, high p_success pairs with r≈0. That gives a negative covariance, so E[rp] is below E[r]E[p], as the critique says.
-  - If p_success means success on a mortality-powered endpoint, real-effect worlds have both high p and high r. That gives a positive covariance and the effect reverses.
-  - I could not inspect the CG model to see which applies.
-- **Shrinkage arithmetic:** the 0.7–0.9 factor is explicitly an assumption, and 0.10 × 0.7–0.9 = 0.07–0.09 is arithmetically correct.
+- **Metformin:** PARTIALLY VERIFIED.
+  - One RCT concluded that 
+adding metformin to anti-TB therapy does not affect sputum conversion.
+ The same paper notes that 
+other studies (Abinaya, Marupuru) had found additional benefit.
+ Early positives that later fail to replicate are supported.
+  - A different source claims 
+a randomized trial showed faster conversion and better clinical outcomes.
+ The evidence is mixed, and I found no mortality data.
+- **Everolimus:** see the CC-11050 entry above. The only evidence is the Phase 2 trial.
+- **Observational statin cohorts exist:** VERIFIED in outline. 
+Several population-based studies found statin use associated with lower TB incidence.
+ I did not verify the healthy-user bias claim, but it is a standard and plausible concern.
+- **"Bayesian shrinkage 0.7–0.9 gives r = 0.07–0.09":** the arithmetic is correct. The shrinkage factor is an assumption with no empirical anchor.
+- **"E[r × p_success] below the product of means":** LOGIC ONLY, and it depends on how p_success is defined.
+  - Winner's curse shows that the true effect, given a pass, is below the estimate. It does not by itself create negative covariance between r and p_success.
+  - If p_success is the chance of true mortality benefit, r and p_success are positively correlated, and E[rp] would exceed the product of means.
+  - Negative covariance arises only if p_success is the chance of passing on a surrogate, because surrogate-only worlds then pass with r≈0.
+  - I could not see how the CG model defines p_success or where its 10% comes from. The "anchored on promising early signals" premise is therefore unverified.
 
 **EVIDENCE FOUND (additional)**
+- **Atorvastatin itself has only a surrogate signal.**
+  - A Phase II atorvastatin trial in Nigeria reported 
+a significant reduction in sputum mycobacterial load.
 
-- The directly relevant statin reference class contradicts the "early positive signal" premise. Human surrogate data for statins in TB are null so far.
+  - It was a Phase II trial using a bacteriological surrogate, with no mortality data. This is the strongest on-point support for the critique.
+- **Rosuvastatin Phase 2b was null.**
   - 
-Rosuvastatin phase 2b: median time to culture conversion was 42 days in both arms (HR 1.30, 0.88–1.91, p=0.19).
+Median time to culture conversion was 42 days in both arms (HR 1.30, 95% CI 0.88–1.91, p=0.19).
 
   - 
-Rosuvastatin had no impact on PET-CT changes.
+The authors concluded it was safe but gave no substantive benefit on culture conversion overall.
 
-  - 
-StAT-TB (pravastatin, phase 2b) is registered as completed.
- I found no results in this search.
-  - Atorvastatin evidence in these results is preclinical. 
-In guinea pigs, atorvastatin and anti-TB drugs showed a synergistic bactericidal action.
+  - This is a class-adjacent datapoint against optimism, though rosuvastatin is not atorvastatin.
 
-- So the 10% likely rests on preclinical and observational anchoring, not a winner's-curse-selected human trial. That is a different mechanism (translation risk and confounding) and arguably points to a larger downward adjustment than shrinkage alone.
-- 
-An editorial notes there is no clear consensus on appropriate biomarkers or study endpoints for HDT trials.
- This supports the surrogate-to-outcome concern in general terms.
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
+**CORE CLAIM**
+- Claim: the CG's 10% conditional mortality effect is inflated relative to the true effect because it is anchored on selected early or surrogate signals, so r should be shrunk.
+- Support: **LOGIC ONLY.** The reference class (vitamin D, metformin, CC-11050, everolimus, rosuvastatin, atorvastatin Phase IIa) shows that surrogate signals are mixed or unreplicated. I found no evidence on how CG derived 10%, and no mortality data for these agents.
 
 **REVISED CRITIQUE**
+The effect size is probably better treated as a prior with downward-skewed uncertainty than as a point estimate of 0.10. The supporting reference class is:
+- vitamin D: a subgroup-only conversion signal, with null results overall;
+- metformin: mixed on sputum conversion;
+- CC-11050 and everolimus: marginal FEV1 signals with no conversion benefit;
+- rosuvastatin: a null Phase 2b;
+- atorvastatin: only a Phase IIa bacillary-load signal.
 
-- **Survives:** The 10% conditional effect is probably over-optimistic.
-  - Early or subgroup estimates are upwardly biased.
-  - Martineau 2011 is a valid example, but of a post-hoc subgroup signal that did not replicate.
-  - Observational statin data are confounded.
-  - r and p_success are unlikely to be independent, though the sign of the effect on E[rp] depends on how success is defined.
-- **Removed:** The claims that CC-11050, everolimus and metformin are failed-translation examples. They are unproven, not refuted.
-- **Added:** Human statin-in-TB surrogate trials (rosuvastatin) are null. None of them used atorvastatin.
-- **Status:** The shrinkage factor is UNGROUNDED, an illustrative assumption. Direction: decreases. Magnitude: medium.
+The shrinkage factor of 0.7–0.9 is UNGROUNDED, and the sign of the r–p_success covariance depends on how p_success is defined. Drop the claim that these agents "failed to translate to outcome benefit." They were never tested on mortality. Strength: medium, direction: decreases (probably).
 
 ---
 
-## Critique 2: Hepatotoxicity, myopathy, and compounding
+## Critique 2: Hepatotoxicity and myopathy tail, and compounding attenuations
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative harm-tail hypothesis is plausible and UNGROUNDED on magnitude. The arithmetic is correct. The compounding ranges are assumptions drawn from critiques I was not given.
 
 **CLAIM CHECK**
+- **Statins and first-line TB drugs add hepatic risk, and statins carry myopathy risk:** PLAUSIBLE. This is standard labeling knowledge, and I did not search for it.
+- **Higher myopathy risk with some ART:** PLAUSIBLE, from background pharmacology (boosted protease inhibitors raise atorvastatin levels). I did not verify it in this session. One COVID trial lists 
+protease inhibitors among drugs with significant atorvastatin interactions.
 
-- **HRZ hepatotoxicity and statin liver/muscle warnings are well established:** PLAUSIBLE from standard labeling and general knowledge. I did not retrieve labels in this session.
-  - Supportive data point: in the Wallis HDT trial, 
-two control-group patients had life-threatening, treatment-attributable liver injury
- on standard therapy.
-- **Small phase II trials cannot detect excess mortality from hepatotoxicity:** PLAUSIBLE (statistical).
-  - The rosuvastatin trial is a data point. 
-Grade 3–5 adverse events occurred in 9% (6/70) with rosuvastatin versus 6% (4/67) in controls (p=0.75), none considered related to rosuvastatin.
+- **Small Phase II trials cannot detect excess hepatotoxicity:** LOGIC, and correct. The available trials are small and show no signal:
+  - Rosuvastatin Phase 2b: 
+grade 3–5 adverse events in 9% of the rosuvastatin arm and 6% of controls, none judged related.
 
-  - There was no signal, but the trial is too small to exclude a rare harm. Rosuvastatin also has less CYP3A4 involvement than atorvastatin, so it does not transfer directly.
-- **Myopathy risk higher with "some ART":** PLAUSIBLE but of limited relevance.
-  - From my own knowledge (not searched here), the main statin interaction is with boosted protease inhibitors and cobicistat. Those are generally avoided with rifampicin, and efavirenz or dolutegravir regimens are the usual choice.
-  - The ART argument is therefore weaker for rifampicin-based TB treatment.
-- **"CG models only a non-negative effect":** UNVERIFIABLE. The CG model is not available to me.
-- **−0.01 contribution:** arithmetic is correct (10% × 0.10 = 0.01).
-  - A "net-zero" outcome is already what a failed Phase III in p_success represents. Counting it again as a harm tail risks double-counting.
-  - Only the genuinely negative portion is incremental.
-- **Compounding product:** arithmetic VERIFIED. 0.65×0.5×0.7 = 0.23 and 0.75×0.8×0.9 = 0.54, so r ≈ 0.023–0.054. The inputs come from other critiques that I cannot see. The Investigator itself flags that the factors overlap and are correlated.
-- **PK attenuation (0.5–0.8):** this concerns rifampicin induction of atorvastatin metabolism.
-  - I did not search this specifically. I know from general pharmacology that rifampicin lowers atorvastatin exposure, but I did not verify the magnitude here.
-  - Supportive indirect evidence: the Wallis trial 
-substituted rifabutin for rifampin because of potentially deleterious pharmacokinetic interactions with the HDT drugs.
- The StAT-TB protocol 
-cites known pravastatin–rifampin interactions in humans.
+  - Atorvastatin Phase II (Nigeria): reported as 
+a safe additive to standard anti-TB treatment.
 
-  - Interaction-driven dosing problems are a recognized concern in this field.
+  - Absence of a signal in these trials is weak evidence either way, as the Investigator says.
+- **"10% probability of null or negative contributes about −0.01":** the arithmetic is correct (0.10 × 0.10). The loss may be double-counted if p_success already prices in a null world.
+- **Compounding:**
+  - 0.65 × 0.5 × 0.7 = 0.2275, and 0.75 × 0.8 × 0.9 = 0.54. So r ≈ 0.023–0.054, which matches the critique.
+  - All three factors are assumptions. The "reachable fraction" and "PK attenuation" come from other critiques I cannot see.
+  - The Investigator itself flags that the factors overlap and are correlated.
 
 **EVIDENCE FOUND (additional)**
+- Drug-interaction concerns with rifampicin are recognised in the statin-TB literature. The StAT-TB protocol cites 
+known drug interactions between pravastatin and rifampin in humans.
+ That supports the existence of PK attenuation, though not the 0.5–0.8 range, and it concerns pravastatin rather than atorvastatin.
+- Metformin shows the same pattern. A PK substudy found 
+metformin reduced rifampicin bioavailability by 24%.
+ This shows that adjunctive HDTs can erode first-line drug exposure, which is a reference-class point.
+- I could not complete my planned check of rifampicin's effect on atorvastatin exposure. From background knowledge, rifampicin induces CYP3A4 and lowers atorvastatin exposure, but this is not verified here.
 
-- StAT-TB chose pravastatin partly for lower toxicity. 
-Pravastatin showed the least toxicity in THP-1 and Vero cells.
- The programme's own choice of statin was driven by interaction and toxicity concerns.
-- The rosuvastatin trial's safety result is mildly reassuring but underpowered for mortality.
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is sound but largely ungrounded on magnitude, and the compounding is an upper bound.
+**CORE CLAIM**
+- Claim: the independent attenuation factors (reachable fraction, PK attenuation, shrinkage) multiply to cut r to about 0.023–0.054.
+- Support: **LOGIC ONLY.** The multiplication is correct, but each input is an unsourced assumption, and the factors are likely correlated and overlap with Critique 1.
 
 **REVISED CRITIQUE**
-
-- **Survives:** A harm tail for hepatotoxicity or myopathy is plausible and not testable in small trials. Adding hepatotoxic risk on top of HRZ is biologically coherent. Compounding of attenuations is a reasonable concern.
-- **Corrections:**
-  - The harm-tail adjustment is small (≈ −0.01 at most) and may double-count p_success.
-  - The ART-myopathy point is weak for rifampicin-based regimens.
-  - The 0.023–0.054 range is an upper-bound illustration. It uses correlated inputs from other critiques that could not be checked.
-- **Flag:** "UNGROUNDED – plausible but needs empirical support" on magnitude. Direction: decreases. Magnitude: small for the harm tail itself, medium for the compounding.
+A small harm tail is plausible. Existing small trials show no hepatic signal but cannot rule one out. The first-order effect on E[r] from a net-zero or harm world is modest, about −0.01 under the stated assumption. The compounded 0.023–0.054 range is an illustrative upper bound on attenuation, not an estimate. It is UNGROUNDED, "plausible but needs empirical support," and should not be added to Critique 1 without removing overlap. Strength: low to medium for the harm tail alone. The compounding claim stays flagged as hypothetical.
 
 ---
 
 ## Critique 3: A $7M Phase III cannot be powered on mortality
 
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic checks out. The cost-per-participant figures and the WHO endpoint requirement are unverified. The SROI scaling appears internally inconsistent.
+
 **CLAIM CHECK**
-
-I recomputed the sample sizes with the standard two-proportion formula, α=0.05 two-sided, 80% power (z-sum² = 7.849).
-
-- **5.0% → 4.5% mortality:** VERIFIED. n per arm = 7.849 × (0.0475 + 0.042975) / 0.000025 ≈ 28,400, so about 56,800 in total. The critique says about 28,000 per arm and 57,000 in total.
-- **8.0% → 7.2% mortality:** VERIFIED. n per arm = 7.849 × (0.0736 + 0.066816) / 0.000064 ≈ 17,200, so about 34,400 in total. The critique says about 17,000 per arm and 35,000 in total.
-- **Cost at $500–$1,000 per participant:** arithmetic is roughly right. The two scenarios give about $17M–$57M across the two enrolment sizes (35,000 and 57,000), so the quoted range is correct as a union.
-- **Cost-per-participant realism:** PARTIALLY SUPPORTED. The range is too narrow at the low end and too low for TB specifically.
-  - Embedded pragmatic trials have cost far less. 
-Across 64 such trials, mean cost per patient randomized was $478 and median $97 (2015 dollars).
- 
-Ten trials cost over $1,000 per patient.
-
-  - At the $97 median, 35,000–57,000 patients would cost only about $3.4M–$5.5M, which would fit inside $7M. These are mostly EHR- or registry-embedded trials in high-income settings, not 6-month TB trials with clinical follow-up in LMICs.
-  - At the other extreme, 
-TB-PRACTECAL cost €33.9M in total, an average of €61,460 per patient.
- That is an MDR-TB trial with hospital-based visits, but it shows TB-trial costs can be orders of magnitude above $1,000.
-  - 
-Standard trials are typically estimated at $2,000–$40,000 per subject.
-
-  - So the true cost range is wide, and "$500–$1,000" is a central pragmatic guess, not a verified figure.
-- **RECOVERY showed very low per-patient costs:** UNVERIFIED. I did not find a RECOVERY per-patient cost in my search. The embedded-trial review is the best support I found for low-cost designs.
-- **WHO GDG would require mortality for adjunctive HDT:** UNVERIFIABLE (I did not retrieve WHO GDG requirements). It is overstated as stated, since WHO can consider other patient-important outcomes. The critique's logic is still valid if the CEA's benefit is mortality-only: whatever evidence supports p_success has to support a mortality effect.
-- **SROI arithmetic:** 3,000 × 7/37 ≈ 568, which is correct. The 3–10× reduction is consistent (3,000 → ~1,000 to ~300). One ambiguity: the hypothesis calls the $7M a "Phase III" cost, but the SROI formula uses 7 as the base all-in cost. I cannot check this against the CG source model.
-- **The 3,000× baseline SROI, the 3.3M-patient base and the 25% materiality bar:** UNVERIFIABLE from my materials (CG model details).
-- **"Enriching for high-mortality groups shrinks N but loses generalisability":** logically sound. Absolute risk differences matter more than relative ones here.
+- **5% → 4.5% mortality (80% power, two-sided α=0.05):** VERIFIED.
+  - My recomputation: n per arm = (1.96 + 0.8416)² × (0.0475 + 0.042975) / 0.005² ≈ 28,400, so about 56,800 in total.
+- **8% → 7.2%:** VERIFIED.
+  - n per arm ≈ 7.849 × 0.1404 / 0.008² ≈ 17,200, so about 34,400 in total.
+- **Cost of $17M–$57M at $500–$1,000 per participant:** arithmetic correct (34k × $500 ≈ $17M; 57k × $1,000 ≈ $57M). The per-participant figures themselves are UNVERIFIABLE.
+  - My RECOVERY cost search returned nothing relevant, so I could not confirm the claim about RECOVERY.
+  - An unrelated cost source shows per-participant costs for conventional rehabilitation trials of order $16k–$36k. That is a different trial type and not informative here.
+  - For $7M to fund 35–57k participants, total cost per participant would have to be about $120–$200. Whether that is achievable in a streamlined TB trial is unknown.
+- **WHO GDG would require a mortality endpoint for adjunctive HDT:** UNVERIFIABLE. I found no source. WHO may accept a composite unfavourable outcome, which would change N.
+- **Enrichment (TB meningitis, advanced HIV) reduces N but limits generalisability:** LOGIC, sound.
+- **SROI ≈ 3,000 × 7/37 ≈ 570x:** the arithmetic is right (567). But the scaling uses $7M as the baseline all-in cost, while the title says $7M is the Phase III alone. If the baseline all-in cost is larger than $7M, the proportional drop is smaller than 3–10×. I could not see the CG model to resolve this.
+- **Baseline mortality of 5–8%:** PLAUSIBLE but unverified. Mortality in DS-TB trial populations is often lower than this (my recollection, not checked). That would raise N further, so this assumption is probably conservative for the critique.
+- **Not checked:** the 3.3M-patient benefit base and the "25% materiality bar." They come from the model, which I could not see.
 
 **EVIDENCE FOUND (additional)**
+- The Phase II HDT trials I found used surrogate or physiological endpoints, not mortality:
+  - the TB-HDT trial used FEV1 and culture conversion;
+  - the rosuvastatin trial used 
+time to culture conversion by week 8.
 
-- The pragmatic cost literature suggests the cost range should include a lower bound near $5M for a very lean design. The critique's central estimate of $25–40M therefore depends on assuming TB-trial costs of several hundred dollars or more per participant.
-- 
-No clear consensus exists on appropriate endpoints for HDT trials.
- This supports the open question about what evidence would be needed.
+- The critique's fork is therefore real: either the Phase III is surrogate-based, or it is far costlier than $7M. This is consistent with how this field has run trials, but it does not prove what CG assumed.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size core is solid and the cost estimate is plausible but uncertain.
+**CORE CLAIM**
+- Claim: a Phase III powered to detect a 10% relative mortality reduction needs about 35,000–57,000 participants and therefore costs well above $7M.
+- Support: **LOGIC ONLY.** The sample-size half is verified by my recomputation. The cost half depends on a per-participant cost that I could not verify, so the conclusion rests on reasoning and not on direct evidence.
 
 **REVISED CRITIQUE**
+Powering a Phase III on mortality at a 10% relative reduction needs about 34,000–57,000 participants (5–8% baseline mortality, 80% power). If CG's $7M budget is for that design, it implies about $120–$200 per participant, which looks implausibly low but is not shown to be impossible. If the trial instead uses a surrogate or composite endpoint, the cost may be reasonable but the model's mortality-only benefit stream is then unsupported. The $25–40M central estimate and the 3–10× SROI reduction are UNGROUNDED because they depend on unverified per-participant costs and an unclear baseline for the 7/37 scaling. Strength: medium to high on the internal-consistency point (cost versus endpoint), low to medium on the specific SROI magnitude. The direction (cost up, SROI down, or p_success overstated) is well supported by logic.
 
-- **Verified:**
-  - A mortality-powered Phase III of a 10% relative reduction needs about 17,000–28,000 per arm (about 34,000–57,000 total) at 8% and 5% baseline mortality.
-  - A $7M budget is very unlikely to fund that at conventional TB-trial per-patient costs.
-  - If the $7M funds a surrogate-endpoint trial, the mortality benefit in the CEA is not supported by the evidence that trial would produce.
-  - CG's cost and p_success are in tension.
-- **Revised:**
-  - Per-participant cost is UNGROUNDED but has a wide range. It runs from about $100 (embedded trials) to tens of thousands of dollars (TB-PRACTECAL).
-  - Phase III cost is better stated as roughly $5M–$100M+, with a central case of about $20–40M if sites are LMIC pragmatic TB sites.
-  - The 3–10× SROI reduction holds at the central case. It narrows toward about 1× if an ultra-lean embedded design is feasible.
-  - The RECOVERY comparison and the WHO GDG endpoint claim stay flagged as unverified.
-- **Direction:** decreases. **Magnitude:** large, with a wider uncertainty band than stated.
+**Search limitations:** I ran out of searches before checking the RECOVERY per-participant cost, the rifampicin–atorvastatin PK effect, and the WHO GDG endpoint requirement. Those items remain unverified.
 
 --- Critique: A $7M Phase III cannot be powered on mortality, and the CEA's benefit is mortality only ---
 
-## Critique 1: Winner's curse and reference-class patterns
+## Critique 1: Winner's-curse and reference-class patterns, and r and p_success not independent
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The winner's-curse logic is sound, and the HDT reference class is partly real. But the Investigator overstates it as a track record of failure to translate. The covariance argument is also shakier than presented.
 
 **CLAIM CHECK**
-
-- **Martineau 2011 vitamin D trial, culture-conversion signal in a genotype subgroup:** VERIFIED, but the framing needs correcting.
+- **Martineau 2011 vitamin D signal:** VERIFIED.
   - 
-Median time to sputum culture conversion was 36.0 days with vitamin D and 43.5 days with placebo (adjusted HR 1.39, 95% CI 0.90–2.16, p=0.14).
- The primary endpoint was therefore null.
-  - 
-TaqI genotype modified the effect (p-interaction 0.03), with a response only in tt-genotype patients (HR 8.09, 95% CI 1.36–48.01).
- The tt subgroup estimate is very wide and imprecise, which is a textbook winner's-curse profile.
-  - This was a post-hoc subgroup signal, not a Phase II trial that "passed" a filter.
-- **No robust later benefit:** VERIFIED. 
-A meta-analysis found no shortening of time to sputum culture conversion overall (HR 1.04, 0.89–1.23).
- A later trial also 
-found that the tt genotype did not influence conversion, in contrast with the earlier report.
- The subgroup effect was not replicated in that trial.
-- **CC-11050 and everolimus "surrogate positives that fail to translate":** MISREPRESENTED.
-  - The relevant trial is Wallis et al. 2021, a phase 2 trial in South Africa (NCT02968927).
-  - 
-It found both drugs safe and well tolerated, and they might have improved FEV1 recovery.
- 
-FEV1 was significantly higher than control at day 180 (CC-11050 6.30%, p=0.048; everolimus 6.56%, p=0.044).
+Overall, the adjusted HR for time to culture conversion was 1.39 (95% CI 0.90–2.16, p=0.14).
 
   - 
-There was no effect of CC-11050 on stable culture conversion, which the authors attributed to small sample size.
+TaqI genotype modified the effect (p-interaction=0.03), with benefit seen only in tt patients (HR 8.09, 95% CI 1.36–48.01).
 
+  - The tt subgroup was tiny: 
+12 subjects.
+ This is a textbook winner's-curse case.
+  - Later evidence: a meta-analysis found 
+no shortening of time to culture conversion overall, with the tt subgroup effect still reported.
+
+  - The endpoint was culture conversion, not mortality. That fits "surrogate positive, no outcome benefit." But no mortality trial was run, so "no robust outcome benefit" is better stated as "no benefit on the surrogate in the full population."
+- **CC-11050 and everolimus:** PARTIALLY VERIFIED, and MISCHARACTERISED as failures.
+  - The Phase 2 TB-HDT trial found 
+improved FEV1 recovery at day 180 for CC-11050 and everolimus (6.30% and 6.56% differences).
+ The lower confidence limits were near zero, and the p-values were 0.048 and 0.044.
   - 
-The authors called for further definitive studies.
- I found no Phase III, so these drugs have not "failed to translate". They are untested at Phase III.
-  - Safety and FEV1 were the endpoints, not mortality.
-- **Metformin "mixed or no clear clinical benefit":** NOT SUPPORTED as stated.
-  - What exists is mostly observational or preclinical work. 
-A scoping review describes pilot preclinical and observational research recommending metformin as an adjunct.
+None of the arms showed accelerated eradication of MTB infection.
 
-  - 
-The impact of combining metformin with RHZE is described as still under investigation.
+  - I found no Phase 3 or mortality trial. So these are marginal, unreplicated early signals, which fits the winner's-curse argument. They are not documented "failures to translate."
+  - A Lancet Respiratory Medicine paper reported 
+two control-group patients with life-threatening, treatment-attributable liver injury.
 
-  - Metformin is therefore unproven, not a documented translation failure. I found no completed outcome RCT in these results.
-- **Observational statin cohorts exposed to healthy-user and indication bias:** PLAUSIBLE (logical argument).
-  - 
-Population-based studies found statin use related to lower TB incidence.
-
-  - I did not locate the specific Taiwan or Korea statin cohorts, so I could not verify them. A comparable Taiwan metformin cohort did find an association with lower TB risk. 
-The HR was 0.84 (0.74–0.96).
-
-- **Winner's curse as a general statistical result:** VERIFIED as standard theory (no search needed).
-- **Joint-distribution claim, "E[r × p_success] below the product of means":** LOGICALLY CONDITIONAL.
-  - The sign of the covariance depends on how p_success is defined.
-  - If success is defined on a surrogate and surrogate-only wins exist, high p_success pairs with r≈0. That gives a negative covariance, so E[rp] is below E[r]E[p], as the critique says.
-  - If p_success means success on a mortality-powered endpoint, real-effect worlds have both high p and high r. That gives a positive covariance and the effect reverses.
-  - I could not inspect the CG model to see which applies.
-- **Shrinkage arithmetic:** the 0.7–0.9 factor is explicitly an assumption, and 0.10 × 0.7–0.9 = 0.07–0.09 is arithmetically correct.
+- **Metformin:** PARTIALLY VERIFIED.
+  - One RCT concluded that 
+adding metformin to anti-TB therapy does not affect sputum conversion.
+ The same paper notes that 
+other studies (Abinaya, Marupuru) had found additional benefit.
+ Early positives that later fail to replicate are supported.
+  - A different source claims 
+a randomized trial showed faster conversion and better clinical outcomes.
+ The evidence is mixed, and I found no mortality data.
+- **Everolimus:** see the CC-11050 entry above. The only evidence is the Phase 2 trial.
+- **Observational statin cohorts exist:** VERIFIED in outline. 
+Several population-based studies found statin use associated with lower TB incidence.
+ I did not verify the healthy-user bias claim, but it is a standard and plausible concern.
+- **"Bayesian shrinkage 0.7–0.9 gives r = 0.07–0.09":** the arithmetic is correct. The shrinkage factor is an assumption with no empirical anchor.
+- **"E[r × p_success] below the product of means":** LOGIC ONLY, and it depends on how p_success is defined.
+  - Winner's curse shows that the true effect, given a pass, is below the estimate. It does not by itself create negative covariance between r and p_success.
+  - If p_success is the chance of true mortality benefit, r and p_success are positively correlated, and E[rp] would exceed the product of means.
+  - Negative covariance arises only if p_success is the chance of passing on a surrogate, because surrogate-only worlds then pass with r≈0.
+  - I could not see how the CG model defines p_success or where its 10% comes from. The "anchored on promising early signals" premise is therefore unverified.
 
 **EVIDENCE FOUND (additional)**
+- **Atorvastatin itself has only a surrogate signal.**
+  - A Phase II atorvastatin trial in Nigeria reported 
+a significant reduction in sputum mycobacterial load.
 
-- The directly relevant statin reference class contradicts the "early positive signal" premise. Human surrogate data for statins in TB are null so far.
+  - It was a Phase II trial using a bacteriological surrogate, with no mortality data. This is the strongest on-point support for the critique.
+- **Rosuvastatin Phase 2b was null.**
   - 
-Rosuvastatin phase 2b: median time to culture conversion was 42 days in both arms (HR 1.30, 0.88–1.91, p=0.19).
+Median time to culture conversion was 42 days in both arms (HR 1.30, 95% CI 0.88–1.91, p=0.19).
 
   - 
-Rosuvastatin had no impact on PET-CT changes.
+The authors concluded it was safe but gave no substantive benefit on culture conversion overall.
 
-  - 
-StAT-TB (pravastatin, phase 2b) is registered as completed.
- I found no results in this search.
-  - Atorvastatin evidence in these results is preclinical. 
-In guinea pigs, atorvastatin and anti-TB drugs showed a synergistic bactericidal action.
+  - This is a class-adjacent datapoint against optimism, though rosuvastatin is not atorvastatin.
 
-- So the 10% likely rests on preclinical and observational anchoring, not a winner's-curse-selected human trial. That is a different mechanism (translation risk and confounding) and arguably points to a larger downward adjustment than shrinkage alone.
-- 
-An editorial notes there is no clear consensus on appropriate biomarkers or study endpoints for HDT trials.
- This supports the surrogate-to-outcome concern in general terms.
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
+**CORE CLAIM**
+- Claim: the CG's 10% conditional mortality effect is inflated relative to the true effect because it is anchored on selected early or surrogate signals, so r should be shrunk.
+- Support: **LOGIC ONLY.** The reference class (vitamin D, metformin, CC-11050, everolimus, rosuvastatin, atorvastatin Phase IIa) shows that surrogate signals are mixed or unreplicated. I found no evidence on how CG derived 10%, and no mortality data for these agents.
 
 **REVISED CRITIQUE**
+The effect size is probably better treated as a prior with downward-skewed uncertainty than as a point estimate of 0.10. The supporting reference class is:
+- vitamin D: a subgroup-only conversion signal, with null results overall;
+- metformin: mixed on sputum conversion;
+- CC-11050 and everolimus: marginal FEV1 signals with no conversion benefit;
+- rosuvastatin: a null Phase 2b;
+- atorvastatin: only a Phase IIa bacillary-load signal.
 
-- **Survives:** The 10% conditional effect is probably over-optimistic.
-  - Early or subgroup estimates are upwardly biased.
-  - Martineau 2011 is a valid example, but of a post-hoc subgroup signal that did not replicate.
-  - Observational statin data are confounded.
-  - r and p_success are unlikely to be independent, though the sign of the effect on E[rp] depends on how success is defined.
-- **Removed:** The claims that CC-11050, everolimus and metformin are failed-translation examples. They are unproven, not refuted.
-- **Added:** Human statin-in-TB surrogate trials (rosuvastatin) are null. None of them used atorvastatin.
-- **Status:** The shrinkage factor is UNGROUNDED, an illustrative assumption. Direction: decreases. Magnitude: medium.
+The shrinkage factor of 0.7–0.9 is UNGROUNDED, and the sign of the r–p_success covariance depends on how p_success is defined. Drop the claim that these agents "failed to translate to outcome benefit." They were never tested on mortality. Strength: medium, direction: decreases (probably).
 
 ---
 
-## Critique 2: Hepatotoxicity, myopathy, and compounding
+## Critique 2: Hepatotoxicity and myopathy tail, and compounding attenuations
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative harm-tail hypothesis is plausible and UNGROUNDED on magnitude. The arithmetic is correct. The compounding ranges are assumptions drawn from critiques I was not given.
 
 **CLAIM CHECK**
+- **Statins and first-line TB drugs add hepatic risk, and statins carry myopathy risk:** PLAUSIBLE. This is standard labeling knowledge, and I did not search for it.
+- **Higher myopathy risk with some ART:** PLAUSIBLE, from background pharmacology (boosted protease inhibitors raise atorvastatin levels). I did not verify it in this session. One COVID trial lists 
+protease inhibitors among drugs with significant atorvastatin interactions.
 
-- **HRZ hepatotoxicity and statin liver/muscle warnings are well established:** PLAUSIBLE from standard labeling and general knowledge. I did not retrieve labels in this session.
-  - Supportive data point: in the Wallis HDT trial, 
-two control-group patients had life-threatening, treatment-attributable liver injury
- on standard therapy.
-- **Small phase II trials cannot detect excess mortality from hepatotoxicity:** PLAUSIBLE (statistical).
-  - The rosuvastatin trial is a data point. 
-Grade 3–5 adverse events occurred in 9% (6/70) with rosuvastatin versus 6% (4/67) in controls (p=0.75), none considered related to rosuvastatin.
+- **Small Phase II trials cannot detect excess hepatotoxicity:** LOGIC, and correct. The available trials are small and show no signal:
+  - Rosuvastatin Phase 2b: 
+grade 3–5 adverse events in 9% of the rosuvastatin arm and 6% of controls, none judged related.
 
-  - There was no signal, but the trial is too small to exclude a rare harm. Rosuvastatin also has less CYP3A4 involvement than atorvastatin, so it does not transfer directly.
-- **Myopathy risk higher with "some ART":** PLAUSIBLE but of limited relevance.
-  - From my own knowledge (not searched here), the main statin interaction is with boosted protease inhibitors and cobicistat. Those are generally avoided with rifampicin, and efavirenz or dolutegravir regimens are the usual choice.
-  - The ART argument is therefore weaker for rifampicin-based TB treatment.
-- **"CG models only a non-negative effect":** UNVERIFIABLE. The CG model is not available to me.
-- **−0.01 contribution:** arithmetic is correct (10% × 0.10 = 0.01).
-  - A "net-zero" outcome is already what a failed Phase III in p_success represents. Counting it again as a harm tail risks double-counting.
-  - Only the genuinely negative portion is incremental.
-- **Compounding product:** arithmetic VERIFIED. 0.65×0.5×0.7 = 0.23 and 0.75×0.8×0.9 = 0.54, so r ≈ 0.023–0.054. The inputs come from other critiques that I cannot see. The Investigator itself flags that the factors overlap and are correlated.
-- **PK attenuation (0.5–0.8):** this concerns rifampicin induction of atorvastatin metabolism.
-  - I did not search this specifically. I know from general pharmacology that rifampicin lowers atorvastatin exposure, but I did not verify the magnitude here.
-  - Supportive indirect evidence: the Wallis trial 
-substituted rifabutin for rifampin because of potentially deleterious pharmacokinetic interactions with the HDT drugs.
- The StAT-TB protocol 
-cites known pravastatin–rifampin interactions in humans.
+  - Atorvastatin Phase II (Nigeria): reported as 
+a safe additive to standard anti-TB treatment.
 
-  - Interaction-driven dosing problems are a recognized concern in this field.
+  - Absence of a signal in these trials is weak evidence either way, as the Investigator says.
+- **"10% probability of null or negative contributes about −0.01":** the arithmetic is correct (0.10 × 0.10). The loss may be double-counted if p_success already prices in a null world.
+- **Compounding:**
+  - 0.65 × 0.5 × 0.7 = 0.2275, and 0.75 × 0.8 × 0.9 = 0.54. So r ≈ 0.023–0.054, which matches the critique.
+  - All three factors are assumptions. The "reachable fraction" and "PK attenuation" come from other critiques I cannot see.
+  - The Investigator itself flags that the factors overlap and are correlated.
 
 **EVIDENCE FOUND (additional)**
+- Drug-interaction concerns with rifampicin are recognised in the statin-TB literature. The StAT-TB protocol cites 
+known drug interactions between pravastatin and rifampin in humans.
+ That supports the existence of PK attenuation, though not the 0.5–0.8 range, and it concerns pravastatin rather than atorvastatin.
+- Metformin shows the same pattern. A PK substudy found 
+metformin reduced rifampicin bioavailability by 24%.
+ This shows that adjunctive HDTs can erode first-line drug exposure, which is a reference-class point.
+- I could not complete my planned check of rifampicin's effect on atorvastatin exposure. From background knowledge, rifampicin induces CYP3A4 and lowers atorvastatin exposure, but this is not verified here.
 
-- StAT-TB chose pravastatin partly for lower toxicity. 
-Pravastatin showed the least toxicity in THP-1 and Vero cells.
- The programme's own choice of statin was driven by interaction and toxicity concerns.
-- The rosuvastatin trial's safety result is mildly reassuring but underpowered for mortality.
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is sound but largely ungrounded on magnitude, and the compounding is an upper bound.
+**CORE CLAIM**
+- Claim: the independent attenuation factors (reachable fraction, PK attenuation, shrinkage) multiply to cut r to about 0.023–0.054.
+- Support: **LOGIC ONLY.** The multiplication is correct, but each input is an unsourced assumption, and the factors are likely correlated and overlap with Critique 1.
 
 **REVISED CRITIQUE**
-
-- **Survives:** A harm tail for hepatotoxicity or myopathy is plausible and not testable in small trials. Adding hepatotoxic risk on top of HRZ is biologically coherent. Compounding of attenuations is a reasonable concern.
-- **Corrections:**
-  - The harm-tail adjustment is small (≈ −0.01 at most) and may double-count p_success.
-  - The ART-myopathy point is weak for rifampicin-based regimens.
-  - The 0.023–0.054 range is an upper-bound illustration. It uses correlated inputs from other critiques that could not be checked.
-- **Flag:** "UNGROUNDED – plausible but needs empirical support" on magnitude. Direction: decreases. Magnitude: small for the harm tail itself, medium for the compounding.
+A small harm tail is plausible. Existing small trials show no hepatic signal but cannot rule one out. The first-order effect on E[r] from a net-zero or harm world is modest, about −0.01 under the stated assumption. The compounded 0.023–0.054 range is an illustrative upper bound on attenuation, not an estimate. It is UNGROUNDED, "plausible but needs empirical support," and should not be added to Critique 1 without removing overlap. Strength: low to medium for the harm tail alone. The compounding claim stays flagged as hypothetical.
 
 ---
 
 ## Critique 3: A $7M Phase III cannot be powered on mortality
 
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic checks out. The cost-per-participant figures and the WHO endpoint requirement are unverified. The SROI scaling appears internally inconsistent.
+
 **CLAIM CHECK**
-
-I recomputed the sample sizes with the standard two-proportion formula, α=0.05 two-sided, 80% power (z-sum² = 7.849).
-
-- **5.0% → 4.5% mortality:** VERIFIED. n per arm = 7.849 × (0.0475 + 0.042975) / 0.000025 ≈ 28,400, so about 56,800 in total. The critique says about 28,000 per arm and 57,000 in total.
-- **8.0% → 7.2% mortality:** VERIFIED. n per arm = 7.849 × (0.0736 + 0.066816) / 0.000064 ≈ 17,200, so about 34,400 in total. The critique says about 17,000 per arm and 35,000 in total.
-- **Cost at $500–$1,000 per participant:** arithmetic is roughly right. The two scenarios give about $17M–$57M across the two enrolment sizes (35,000 and 57,000), so the quoted range is correct as a union.
-- **Cost-per-participant realism:** PARTIALLY SUPPORTED. The range is too narrow at the low end and too low for TB specifically.
-  - Embedded pragmatic trials have cost far less. 
-Across 64 such trials, mean cost per patient randomized was $478 and median $97 (2015 dollars).
- 
-Ten trials cost over $1,000 per patient.
-
-  - At the $97 median, 35,000–57,000 patients would cost only about $3.4M–$5.5M, which would fit inside $7M. These are mostly EHR- or registry-embedded trials in high-income settings, not 6-month TB trials with clinical follow-up in LMICs.
-  - At the other extreme, 
-TB-PRACTECAL cost €33.9M in total, an average of €61,460 per patient.
- That is an MDR-TB trial with hospital-based visits, but it shows TB-trial costs can be orders of magnitude above $1,000.
-  - 
-Standard trials are typically estimated at $2,000–$40,000 per subject.
-
-  - So the true cost range is wide, and "$500–$1,000" is a central pragmatic guess, not a verified figure.
-- **RECOVERY showed very low per-patient costs:** UNVERIFIED. I did not find a RECOVERY per-patient cost in my search. The embedded-trial review is the best support I found for low-cost designs.
-- **WHO GDG would require mortality for adjunctive HDT:** UNVERIFIABLE (I did not retrieve WHO GDG requirements). It is overstated as stated, since WHO can consider other patient-important outcomes. The critique's logic is still valid if the CEA's benefit is mortality-only: whatever evidence supports p_success has to support a mortality effect.
-- **SROI arithmetic:** 3,000 × 7/37 ≈ 568, which is correct. The 3–10× reduction is consistent (3,000 → ~1,000 to ~300). One ambiguity: the hypothesis calls the $7M a "Phase III" cost, but the SROI formula uses 7 as the base all-in cost. I cannot check this against the CG source model.
-- **The 3,000× baseline SROI, the 3.3M-patient base and the 25% materiality bar:** UNVERIFIABLE from my materials (CG model details).
-- **"Enriching for high-mortality groups shrinks N but loses generalisability":** logically sound. Absolute risk differences matter more than relative ones here.
+- **5% → 4.5% mortality (80% power, two-sided α=0.05):** VERIFIED.
+  - My recomputation: n per arm = (1.96 + 0.8416)² × (0.0475 + 0.042975) / 0.005² ≈ 28,400, so about 56,800 in total.
+- **8% → 7.2%:** VERIFIED.
+  - n per arm ≈ 7.849 × 0.1404 / 0.008² ≈ 17,200, so about 34,400 in total.
+- **Cost of $17M–$57M at $500–$1,000 per participant:** arithmetic correct (34k × $500 ≈ $17M; 57k × $1,000 ≈ $57M). The per-participant figures themselves are UNVERIFIABLE.
+  - My RECOVERY cost search returned nothing relevant, so I could not confirm the claim about RECOVERY.
+  - An unrelated cost source shows per-participant costs for conventional rehabilitation trials of order $16k–$36k. That is a different trial type and not informative here.
+  - For $7M to fund 35–57k participants, total cost per participant would have to be about $120–$200. Whether that is achievable in a streamlined TB trial is unknown.
+- **WHO GDG would require a mortality endpoint for adjunctive HDT:** UNVERIFIABLE. I found no source. WHO may accept a composite unfavourable outcome, which would change N.
+- **Enrichment (TB meningitis, advanced HIV) reduces N but limits generalisability:** LOGIC, sound.
+- **SROI ≈ 3,000 × 7/37 ≈ 570x:** the arithmetic is right (567). But the scaling uses $7M as the baseline all-in cost, while the title says $7M is the Phase III alone. If the baseline all-in cost is larger than $7M, the proportional drop is smaller than 3–10×. I could not see the CG model to resolve this.
+- **Baseline mortality of 5–8%:** PLAUSIBLE but unverified. Mortality in DS-TB trial populations is often lower than this (my recollection, not checked). That would raise N further, so this assumption is probably conservative for the critique.
+- **Not checked:** the 3.3M-patient benefit base and the "25% materiality bar." They come from the model, which I could not see.
 
 **EVIDENCE FOUND (additional)**
+- The Phase II HDT trials I found used surrogate or physiological endpoints, not mortality:
+  - the TB-HDT trial used FEV1 and culture conversion;
+  - the rosuvastatin trial used 
+time to culture conversion by week 8.
 
-- The pragmatic cost literature suggests the cost range should include a lower bound near $5M for a very lean design. The critique's central estimate of $25–40M therefore depends on assuming TB-trial costs of several hundred dollars or more per participant.
-- 
-No clear consensus exists on appropriate endpoints for HDT trials.
- This supports the open question about what evidence would be needed.
+- The critique's fork is therefore real: either the Phase III is surrogate-based, or it is far costlier than $7M. This is consistent with how this field has run trials, but it does not prove what CG assumed.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size core is solid and the cost estimate is plausible but uncertain.
+**CORE CLAIM**
+- Claim: a Phase III powered to detect a 10% relative mortality reduction needs about 35,000–57,000 participants and therefore costs well above $7M.
+- Support: **LOGIC ONLY.** The sample-size half is verified by my recomputation. The cost half depends on a per-participant cost that I could not verify, so the conclusion rests on reasoning and not on direct evidence.
 
 **REVISED CRITIQUE**
+Powering a Phase III on mortality at a 10% relative reduction needs about 34,000–57,000 participants (5–8% baseline mortality, 80% power). If CG's $7M budget is for that design, it implies about $120–$200 per participant, which looks implausibly low but is not shown to be impossible. If the trial instead uses a surrogate or composite endpoint, the cost may be reasonable but the model's mortality-only benefit stream is then unsupported. The $25–40M central estimate and the 3–10× SROI reduction are UNGROUNDED because they depend on unverified per-participant costs and an unclear baseline for the 7/37 scaling. Strength: medium to high on the internal-consistency point (cost versus endpoint), low to medium on the specific SROI magnitude. The direction (cost up, SROI down, or p_success overstated) is well supported by logic.
 
-- **Verified:**
-  - A mortality-powered Phase III of a 10% relative reduction needs about 17,000–28,000 per arm (about 34,000–57,000 total) at 8% and 5% baseline mortality.
-  - A $7M budget is very unlikely to fund that at conventional TB-trial per-patient costs.
-  - If the $7M funds a surrogate-endpoint trial, the mortality benefit in the CEA is not supported by the evidence that trial would produce.
-  - CG's cost and p_success are in tension.
-- **Revised:**
-  - Per-participant cost is UNGROUNDED but has a wide range. It runs from about $100 (embedded trials) to tens of thousands of dollars (TB-PRACTECAL).
-  - Phase III cost is better stated as roughly $5M–$100M+, with a central case of about $20–40M if sites are LMIC pragmatic TB sites.
-  - The 3–10× SROI reduction holds at the central case. It narrows toward about 1× if an ultra-lean embedded design is feasible.
-  - The RECOVERY comparison and the WHO GDG endpoint claim stay flagged as unverified.
-- **Direction:** decreases. **Magnitude:** large, with a wider uncertainty band than stated.
+**Search limitations:** I ran out of searches before checking the RECOVERY per-participant cost, the rifampicin–atorvastatin PK effect, and the WHO GDG endpoint requirement. Those items remain unverified.
 
 --- Critique: The all-in framing counts benefits for every treated patient but not the cost of treating them ---
 
 ## Critique 1: The all-in framing counts benefits for every treated patient but not the cost of treating them
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logical-consistency argument is sound. The numbers are illustrative and unsourced, and the decisive input (how CG values third-party spending) is unverified.
+**CITATION CHECK:** The critique cites no papers. It points to the Stop TB GDF catalog and the MSH price guide as places to look for prices.
+- Stop TB GDF catalog: it exists, and 
+its prices are ex-works (EXW)
+. I did not find atorvastatin in the retrieved portion. It is a TB-medicines catalog and probably doesn't stock a statin, so it may not be the right source.
+- MSH International Drug Price Indicator Guide: it exists. It is 
+published by Management Sciences for Health
+ and 
+lists package price and unit price in USD
+. I could not retrieve the atorvastatin line itself.
 
-**CLAIM CHECK**
-- **Arithmetic: VERIFIED, with one small inconsistency.**
-  - $3.7M ÷ 3.3M patients ≈ $1.12 per patient. 3,000 × 7/17 ≈ 1,235x. $1–10 × 3.3M = $3.3–33M.
-  - The break-even is derived from the $10.7M threshold used in Critique 2. A flat 3,000x on $7M gives about $21B in benefits, and $21B ÷ 2,000 is $10.5M, not $10.7M. The difference is small, but the 3,000x figure is evidently rounded.
-- **"About 3.3M patients in the credited year": UNVERIFIABLE.** I found no source for this number.
-- **"Generic atorvastatin costs $1–10 per course": PLAUSIBLE, with caveats.**
-  - The trial regimens are 16 weeks of 20, 40 or 60 mg daily, which is about 112 tablets. 
-The ATORTUB sub-study arms are 20, 40 and 60 mg atorvastatin, each given for 16 weeks.
+**CLAIM CHECK:**
+- **"$1–10 per course in procurement": PLAUSIBLE.**
+  - Canadian generic atorvastatin is listed at 
+about $0.17–0.23 per tablet
+.
+  - UK generic packs of 28 tablets 
+cost about £1 in 2014
+.
+  - The ATORTUB phase IIB gave 
+40 mg for 2 months
+. A related popPK sub-study uses 
+16 weeks of 20, 40 or 60 mg
+.
+  - That is roughly 56–112 tablets. At LMIC tender prices of a few cents each, this gives about $1–6. At rich-country list prices it is $10–25.
+  - So $1–10 is a reasonable range, and the low end is close to the critique's break-even of $1.10 per patient.
+- **"$3.7M break-even = $1.10 × 3.3M": VERIFIED arithmetic.** If $10.7M is the 2,000x threshold, then $10.7M − $7M = $3.7M, and $3.7M ÷ 3.3M patients ≈ $1.12.
+- **"D = $10M gives about 1,250x": VERIFIED arithmetic.** 3,000 × 7/17 ≈ 1,235.
+- **The $7M figure, 3.3M patients, ~3,000x SROI and 2,000x threshold: UNVERIFIABLE.** I found no public Coefficient Giving (CG) write-up of this grant or its model. I take these as given inputs.
+- **"The $7M excludes delivery costs": UNVERIFIABLE.** I can't see CG's model. It may already net out delivery costs or treat them as a separate counterfactual. The critique itself concedes it can't cite CG's convention for third-party spending.
 
-  - Canadian public-formulary prices are about $0.17–0.23 per tablet, which gives roughly $19–26 per course. 
-One CADTH table lists 20 mg and 40 mg atorvastatin tablets at 0.1743 to 0.2342 per tablet for the generic strengths.
- Another CADTH table lists $0.39–0.42 per tablet. 
-Daily drug cost there is $0.31–0.42.
+**EVIDENCE FOUND:**
+- ATORTUB phase IIC (NCT06199921) lists Open Philanthropy as a collaborator and plans 
+440 patients
+. This suggests the program is real and in the right area, though I can't confirm it is the grant in question.
+- The registry notes that 
+phase III is "more expensive"
+ than phase IIB. That supports the idea that the $7M leaves little headroom.
+- Procurement alone is cheap, so the critique's result depends mostly on monitoring and clinic costs and on the counterfactual-value convention. The critique already says this.
 
-  - UK generics were under £2 per 28-tablet pack. 
-The generic 10, 20 and 40 mg doses are priced below £2 per pack.
- That is about £8 for 112 tablets.
-  - Tender prices in LMICs would be lower than any of these. So $1–10 is plausible at tender prices and may be low at retail.
-  - I could not retrieve the MSH International Drug Price Indicator Guide or the GDF catalog entries for atorvastatin. The MSH guide is a real source: 
-it is published by Management Sciences for Health and provides medicine price information.
+**CORE CLAIM:**
+- Claim: CG's all-in cost omits delivery cost for the ~3.3M treated patients while counting their benefits. Including it would push SROI materially below the threshold unless third-party money is heavily discounted.
+- Support: **LOGIC ONLY.**
+- Why: The arithmetic and plausible prices hold, but I found no evidence on how CG's model treats delivery costs or third-party spending.
 
-- **"CG values government and Global Fund money at 20–30% of face value": UNGROUNDED.** The Investigator flags this as an assumption. I found no CG or Open Philanthropy statement on how it values third-party spending.
-- **Asymmetry claim (benefits counted, delivery cost not): UNVERIFIABLE.** I could not retrieve the CG SROI documentation. The claim depends on how CG defined "all-in" and on the $7M scope.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The consistency argument and the arithmetic are sound, and the price range is plausible. The factual premise that CG excludes delivery costs is unverified, and the critique correctly flags it as ungrounded.
 
-**EVIDENCE FOUND**
-- The Phase IIC trial is real and Open Philanthropy-linked. 
-The ClinicalTrials.gov record for NCT06199921 lists Open Philanthropy as a collaborator.
-
-- Dosing matters for D. 
-Phase IIC tests different atorvastatin doses in 440 patients.
- The cost of delivery therefore depends on which dose is eventually adopted.
-- Monitoring costs are plausibly material. First-line TB drugs already carry liver-monitoring needs (see Critique 2).
-
-**REVISED CRITIQUE**
-Retain the hypothesis: if benefits are counted for all treated patients, then the cost of delivering the intervention to them, or an explicit convention for excluding it, belongs in the denominator.
-- Drug procurement alone is likely in the low-to-tens of dollars per course (verified at retail and plausible at tender prices). This puts D anywhere from a few million dollars to tens of millions across 3.3M patients. The 3.3M figure is unverified.
-- Flag the "counterfactual-value convention" point as UNGROUNDED but logically sound.
-- Strength: medium to large, and conditional on CG's convention. The Investigator's "large" is defensible only if third-party funds are valued near face value.
+**REVISED CRITIQUE:** If CG credits benefits to all treated patients but counts only R&D and adoption costs, the framing is asymmetric.
+- Generic atorvastatin costs roughly $1–10 per course, plausibly more once monitoring is included. That is $3–33M across 3.3M patients.
+- This could take SROI from above 2,000x to roughly 1,000–1,250x at $10M. It could have little effect if government and Global Fund money is heavily discounted.
+- Status: UNGROUNDED on CG's actual convention. Direction: decreases. Magnitude: **medium**, downgraded from large because it depends on an unverified convention and on procurement being cheap.
 
 ---
 
-## Critique 2: Regulatory, pharmacovigilance and dissemination costs for an off-patent drug have no obvious payer
+## Critique 2: Regulatory, pharmacovigilance and dissemination costs have no obvious payer, and the $7M likely under-budgets them
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The pharmacological and incentive arguments hold. The cost magnitudes are admitted illustrations with no empirical basis.
+**CITATION CHECK:** No papers are cited. The critique says it cannot cite a source for the hepatotoxicity overlap. It names Unitaid and Global Fund transition grants as candidate sources for rollout costs, and I did not check those.
 
-**CLAIM CHECK**
-- **Rifampicin, isoniazid and pyrazinamide are hepatotoxic: VERIFIED.**
-  - 
-First-line anti-TB drugs associated with hepatotoxicity include isoniazid, rifampicin and pyrazinamide, and their patterns of liver injury overlap.
+**CLAIM CHECK:**
+- **"Statins cause hepatotoxicity and myopathy": VERIFIED.**
+  - Atorvastatin is the statin most often reported in statin liver-injury cases: 
+53.48% of FAERS statin DILI reports
+.
+  - Case reports also describe 
+liver injury with rhabdomyolysis
+.
+  - Serious cases are rare. 
+Statin liver injury is described as frequent but usually not severe
+, and 
+idiosyncratic injury as "very rare"
+.
+- **"This overlaps with first-line TB drug hepatotoxicity": VERIFIED (pharmacological argument).** Anti-TB drug-induced liver injury 
+occurs in 2–28% of patients
+, and 
+it can reduce treatment effectiveness and cause treatment failure
+.
+- **"Safety monitoring and adverse-event management are a real cost": PLAUSIBLE.** The phase II ATORTUB reports describe atorvastatin as 
+generally safe and well tolerated
+. Those are small trials (40 and 150 patients) run by the sponsors. They do not show that no monitoring is needed at scale.
+- **"No sponsor has a commercial incentive for a generic": PLAUSIBLE (logic).** It is not contradicted. Other statin-TB trials are publicly funded, for example StatinTB under 
+EDCTP2
+. That shows academic and public funders can pay for generic repurposing trials, but not for guideline rollout.
+- **"$5–20M rollout programme, or a $4M add-on, pushes the total past $10.7M": the arithmetic is correct ($7M + $4M = $11M), but the magnitude is UNGROUNDED.** I found no rollout-cost benchmark.
+- **"A Phase IIc of $320k plus any plausible Phase III already uses most of the $7M": UNVERIFIABLE.** I found no budget figures.
+- **"Adverse-event harms are not netted against the mortality benefit": UNVERIFIABLE.** It depends on CG's model.
 
-  - 
-Rifampicin enhances the hepatotoxicity of other antitubercular drugs.
+**EVIDENCE FOUND:**
+- The ATORTUB phase IIC registry entry describes it as 
+a pilot phase III
+ and notes that 
+the phase III will be fully international and multicenter
+. A multi-country phase III is likely to take a large share of $7M before any adoption work.
+- This critique overlaps with Critique 1, because both include monitoring and delivery costs. Adding both would double-count them.
+- Sources for the rollout-cost gap are still missing. I did not pull Unitaid or Global Fund documents.
 
-- **Statins cause hepatotoxicity and myopathy: PLAUSIBLE.** This is well-established pharmacology, but I did not retrieve a source in this session. I also found no retrospective data on statin-plus-TB-drug liver injury. 
-One review notes that no retrospective studies were found evaluating statins during TB treatment.
+**CORE CLAIM:**
+- Claim: The $7M is too small to cover the unfunded adoption infrastructure (guidelines, training, supply chain, pharmacovigilance) on top of the trials.
+- Support: **LOGIC ONLY.**
+- Why: The incentive argument and the hepatotoxicity concern hold, but I found no budget data or comparable rollout costs.
 
-- **Overlap means safety monitoring is a real cost: PLAUSIBLE.** The trials treat this as a primary safety endpoint. 
-The ATORTUB protocol measures treatment-emergent adverse events through lab abnormalities, ECGs and physical exams.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis survives. The cost magnitudes are ungrounded.
 
-- **Existing safety signal is favourable, which cuts against the severity of the concern:**
-  - 
-ATORTUB Phase IIB found atorvastatin generally safe, with reduced peripheral neuropathy in that group.
-
-  - 
-Rosuvastatin was also safe in a separate trial but did not improve sputum culture conversion.
-
-- **No sponsor has a commercial incentive: PLAUSIBLE, logical.** I found nothing contradicting it.
-- **"A Phase IIc of $320k": UNVERIFIABLE.** The trial design is real, but I found no budget figure.
-- **"$5–20M adds 70–300%": arithmetic VERIFIED** (71–286%). **"$4M add-on exceeds $10.7M": VERIFIED** ($11M).
-- **"Adverse-event harms are not netted against the mortality benefit": UNVERIFIABLE.** I could not see the CG model.
-- **Rollout costs for comparable TB regimen changes (Unitaid, Global Fund): not found in this session.**
-
-**EVIDENCE FOUND**
-- The Phase IIC is explicitly a stepping stone to a more expensive trial. 
-The record says important questions need answering before a more expensive Phase III study.
- This supports the point that the $7M leaves little headroom, but it is not a budget figure.
-- The efficacy evidence is mixed across statins. The rosuvastatin result above is relevant to benefit magnitude, which is outside this critique's cost scope.
-
-**REVISED CRITIQUE**
-- Keep: no natural payer exists for post-adoption pharmacovigilance and dissemination of a generic adjunct. The TB-drug hepatotoxicity overlap is real, so monitoring is a genuine cost item.
-- Flag as UNGROUNDED: all dollar magnitudes ($5–20M, $4M, $320k).
-- Add the countervailing evidence: early-phase safety data are favourable, so the cost of monitoring is likely a guideline-driven choice rather than a demonstrated necessity.
-- Direction: uncertain, leaning up. Magnitude: medium, but wholly unquantified.
+**REVISED CRITIQUE:** Atorvastatin is generic, so the costs of guideline change, dissemination and pharmacovigilance have no obvious commercial payer. There is a verified safety concern: atorvastatin is the statin most often linked to liver injury, and anti-TB drugs are also hepatotoxic.
+- The size of any shortfall in the $7M is **UNGROUNDED — plausible but needs empirical support.** Drop the $5–20M illustration, or keep it flagged as illustrative only.
+- The direction is uncertain and should not be stated as "likely under-budgets" without evidence. Magnitude: medium to small. Merge the monitoring-cost part with Critique 1 to avoid double counting.
 
 ---
 
 ## Critique 3: Unclear scope boundary for the sweat-diagnostic workstream
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** This is a legitimate clarification question rather than an established flaw, and the Investigator frames it that way. The search provided some grounding for it.
+**CITATION CHECK:** No citations. The critique itself says it has no source on the workstream's structure.
 
-**CLAIM CHECK**
-- **A sweat-diagnostic component exists alongside the statin work: VERIFIED in a related form.** 
-The ATORTUB Phase IIA/B record lists an exploratory outcome, the diagnostic utility of a sweat TB test, measured by sensitivity, specificity, PPV and agreement.
- This shows the sweat test is run within the same trial infrastructure. That makes the shared-infrastructure and double-counting concerns real rather than hypothetical.
-- **It is not clear whether the Phase IIC record includes the sweat test.** I did not confirm this.
-- **Separate sweat-protein research exists.** 
-A German study (SwEaTB, NCT03667742) collects sweat samples with the Macroduct system in patients with suspected TB.
- It is unrelated to the statin program, which shows "sweat diagnostic" can refer to different efforts. The Investigator's "if it is a separate program" branch is therefore live.
-- **"Any budget above about $3.7M would breach 2,000x": arithmetic VERIFIED** (same $10.7M threshold). Note the internal tension with "magnitude small". A sweat test embedded as an exploratory outcome in a 150-patient trial would likely cost far less than $3.7M, which supports "small". But the Investigator's stated magnitude rests on an unknown budget.
-- **Whether diagnostic-linked benefits are counted in the credited benefits: UNVERIFIABLE.** I could not see the CG model.
+**CLAIM CHECK:**
+- **"A sweat-diagnostic workstream exists in this program": UNVERIFIABLE.** I found no public link between the statin program and a sweat-based diagnostic. Sweat as a TB diagnostic matrix is a real research area: a proof-of-concept study found 
+26 proteins detected only in the sweat of active TB patients
+. That study says nothing about this program.
+- **"Any diagnostic budget above ~$3.7M breaches 2,000x": VERIFIED arithmetic, conditional on the other numbers.** It uses the same $10.7M threshold as Critique 1.
+- **Cost and benefit mismatch scenarios: logically coherent but hypothetical.** Only one of the four branches has any effect: costs excluded while diagnostic-linked benefits are counted. There is no evidence that this branch applies.
 
-**EVIDENCE FOUND**
-- The exploratory sweat-test outcome in ATORTUB is the main new evidence. It suggests the diagnostic is a low-cost add-on to the trial rather than a standalone large program. This favours "small magnitude" and weakens the "breaches threshold" scenario.
-- Funding links: 
-the Phase IIC record lists Open Philanthropy as a collaborator.
+**EVIDENCE FOUND:** Nothing on the grant structure. I did not find the CG grant page.
 
+**CORE CLAIM:**
+- Claim: Diagnostic costs sit outside the $7M while diagnostic-linked benefits are counted in the credited benefits.
+- Support: **LOGIC ONLY.**
+- Why: The critique presents it as a scenario, and I found no evidence for or against it.
 
-**REVISED CRITIQUE**
-- Keep as a clarification question for CG. The diagnostic appears to have been an exploratory outcome inside the ATORTUB trial infrastructure, so cost sharing with the statin trials is plausible.
-- Direction: uncertain, leaning toward no material effect. Magnitude: small. The scope boundary is still unconfirmed. This item should rank below Critiques 1 and 2 in priority.
+**OVERALL VERDICT: UNVERIFIABLE.** Keep it only as a low-priority clarification question for CG about grant structure and whether diagnostic benefits are credited. It is not an established flaw. I recommend dropping it from any list of substantive critiques unless the thread text shows that diagnostic benefits are actually counted.
 
 --- Critique: Regulatory, pharmacovigilance and dissemination costs for an off-patent drug have no obvious payer, and the $7M likely under-budgets them ---
 
 ## Critique 1: The all-in framing counts benefits for every treated patient but not the cost of treating them
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logical-consistency argument is sound. The numbers are illustrative and unsourced, and the decisive input (how CG values third-party spending) is unverified.
+**CITATION CHECK:** The critique cites no papers. It points to the Stop TB GDF catalog and the MSH price guide as places to look for prices.
+- Stop TB GDF catalog: it exists, and 
+its prices are ex-works (EXW)
+. I did not find atorvastatin in the retrieved portion. It is a TB-medicines catalog and probably doesn't stock a statin, so it may not be the right source.
+- MSH International Drug Price Indicator Guide: it exists. It is 
+published by Management Sciences for Health
+ and 
+lists package price and unit price in USD
+. I could not retrieve the atorvastatin line itself.
 
-**CLAIM CHECK**
-- **Arithmetic: VERIFIED, with one small inconsistency.**
-  - $3.7M ÷ 3.3M patients ≈ $1.12 per patient. 3,000 × 7/17 ≈ 1,235x. $1–10 × 3.3M = $3.3–33M.
-  - The break-even is derived from the $10.7M threshold used in Critique 2. A flat 3,000x on $7M gives about $21B in benefits, and $21B ÷ 2,000 is $10.5M, not $10.7M. The difference is small, but the 3,000x figure is evidently rounded.
-- **"About 3.3M patients in the credited year": UNVERIFIABLE.** I found no source for this number.
-- **"Generic atorvastatin costs $1–10 per course": PLAUSIBLE, with caveats.**
-  - The trial regimens are 16 weeks of 20, 40 or 60 mg daily, which is about 112 tablets. 
-The ATORTUB sub-study arms are 20, 40 and 60 mg atorvastatin, each given for 16 weeks.
+**CLAIM CHECK:**
+- **"$1–10 per course in procurement": PLAUSIBLE.**
+  - Canadian generic atorvastatin is listed at 
+about $0.17–0.23 per tablet
+.
+  - UK generic packs of 28 tablets 
+cost about £1 in 2014
+.
+  - The ATORTUB phase IIB gave 
+40 mg for 2 months
+. A related popPK sub-study uses 
+16 weeks of 20, 40 or 60 mg
+.
+  - That is roughly 56–112 tablets. At LMIC tender prices of a few cents each, this gives about $1–6. At rich-country list prices it is $10–25.
+  - So $1–10 is a reasonable range, and the low end is close to the critique's break-even of $1.10 per patient.
+- **"$3.7M break-even = $1.10 × 3.3M": VERIFIED arithmetic.** If $10.7M is the 2,000x threshold, then $10.7M − $7M = $3.7M, and $3.7M ÷ 3.3M patients ≈ $1.12.
+- **"D = $10M gives about 1,250x": VERIFIED arithmetic.** 3,000 × 7/17 ≈ 1,235.
+- **The $7M figure, 3.3M patients, ~3,000x SROI and 2,000x threshold: UNVERIFIABLE.** I found no public Coefficient Giving (CG) write-up of this grant or its model. I take these as given inputs.
+- **"The $7M excludes delivery costs": UNVERIFIABLE.** I can't see CG's model. It may already net out delivery costs or treat them as a separate counterfactual. The critique itself concedes it can't cite CG's convention for third-party spending.
 
-  - Canadian public-formulary prices are about $0.17–0.23 per tablet, which gives roughly $19–26 per course. 
-One CADTH table lists 20 mg and 40 mg atorvastatin tablets at 0.1743 to 0.2342 per tablet for the generic strengths.
- Another CADTH table lists $0.39–0.42 per tablet. 
-Daily drug cost there is $0.31–0.42.
+**EVIDENCE FOUND:**
+- ATORTUB phase IIC (NCT06199921) lists Open Philanthropy as a collaborator and plans 
+440 patients
+. This suggests the program is real and in the right area, though I can't confirm it is the grant in question.
+- The registry notes that 
+phase III is "more expensive"
+ than phase IIB. That supports the idea that the $7M leaves little headroom.
+- Procurement alone is cheap, so the critique's result depends mostly on monitoring and clinic costs and on the counterfactual-value convention. The critique already says this.
 
-  - UK generics were under £2 per 28-tablet pack. 
-The generic 10, 20 and 40 mg doses are priced below £2 per pack.
- That is about £8 for 112 tablets.
-  - Tender prices in LMICs would be lower than any of these. So $1–10 is plausible at tender prices and may be low at retail.
-  - I could not retrieve the MSH International Drug Price Indicator Guide or the GDF catalog entries for atorvastatin. The MSH guide is a real source: 
-it is published by Management Sciences for Health and provides medicine price information.
+**CORE CLAIM:**
+- Claim: CG's all-in cost omits delivery cost for the ~3.3M treated patients while counting their benefits. Including it would push SROI materially below the threshold unless third-party money is heavily discounted.
+- Support: **LOGIC ONLY.**
+- Why: The arithmetic and plausible prices hold, but I found no evidence on how CG's model treats delivery costs or third-party spending.
 
-- **"CG values government and Global Fund money at 20–30% of face value": UNGROUNDED.** The Investigator flags this as an assumption. I found no CG or Open Philanthropy statement on how it values third-party spending.
-- **Asymmetry claim (benefits counted, delivery cost not): UNVERIFIABLE.** I could not retrieve the CG SROI documentation. The claim depends on how CG defined "all-in" and on the $7M scope.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The consistency argument and the arithmetic are sound, and the price range is plausible. The factual premise that CG excludes delivery costs is unverified, and the critique correctly flags it as ungrounded.
 
-**EVIDENCE FOUND**
-- The Phase IIC trial is real and Open Philanthropy-linked. 
-The ClinicalTrials.gov record for NCT06199921 lists Open Philanthropy as a collaborator.
-
-- Dosing matters for D. 
-Phase IIC tests different atorvastatin doses in 440 patients.
- The cost of delivery therefore depends on which dose is eventually adopted.
-- Monitoring costs are plausibly material. First-line TB drugs already carry liver-monitoring needs (see Critique 2).
-
-**REVISED CRITIQUE**
-Retain the hypothesis: if benefits are counted for all treated patients, then the cost of delivering the intervention to them, or an explicit convention for excluding it, belongs in the denominator.
-- Drug procurement alone is likely in the low-to-tens of dollars per course (verified at retail and plausible at tender prices). This puts D anywhere from a few million dollars to tens of millions across 3.3M patients. The 3.3M figure is unverified.
-- Flag the "counterfactual-value convention" point as UNGROUNDED but logically sound.
-- Strength: medium to large, and conditional on CG's convention. The Investigator's "large" is defensible only if third-party funds are valued near face value.
+**REVISED CRITIQUE:** If CG credits benefits to all treated patients but counts only R&D and adoption costs, the framing is asymmetric.
+- Generic atorvastatin costs roughly $1–10 per course, plausibly more once monitoring is included. That is $3–33M across 3.3M patients.
+- This could take SROI from above 2,000x to roughly 1,000–1,250x at $10M. It could have little effect if government and Global Fund money is heavily discounted.
+- Status: UNGROUNDED on CG's actual convention. Direction: decreases. Magnitude: **medium**, downgraded from large because it depends on an unverified convention and on procurement being cheap.
 
 ---
 
-## Critique 2: Regulatory, pharmacovigilance and dissemination costs for an off-patent drug have no obvious payer
+## Critique 2: Regulatory, pharmacovigilance and dissemination costs have no obvious payer, and the $7M likely under-budgets them
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The pharmacological and incentive arguments hold. The cost magnitudes are admitted illustrations with no empirical basis.
+**CITATION CHECK:** No papers are cited. The critique says it cannot cite a source for the hepatotoxicity overlap. It names Unitaid and Global Fund transition grants as candidate sources for rollout costs, and I did not check those.
 
-**CLAIM CHECK**
-- **Rifampicin, isoniazid and pyrazinamide are hepatotoxic: VERIFIED.**
-  - 
-First-line anti-TB drugs associated with hepatotoxicity include isoniazid, rifampicin and pyrazinamide, and their patterns of liver injury overlap.
+**CLAIM CHECK:**
+- **"Statins cause hepatotoxicity and myopathy": VERIFIED.**
+  - Atorvastatin is the statin most often reported in statin liver-injury cases: 
+53.48% of FAERS statin DILI reports
+.
+  - Case reports also describe 
+liver injury with rhabdomyolysis
+.
+  - Serious cases are rare. 
+Statin liver injury is described as frequent but usually not severe
+, and 
+idiosyncratic injury as "very rare"
+.
+- **"This overlaps with first-line TB drug hepatotoxicity": VERIFIED (pharmacological argument).** Anti-TB drug-induced liver injury 
+occurs in 2–28% of patients
+, and 
+it can reduce treatment effectiveness and cause treatment failure
+.
+- **"Safety monitoring and adverse-event management are a real cost": PLAUSIBLE.** The phase II ATORTUB reports describe atorvastatin as 
+generally safe and well tolerated
+. Those are small trials (40 and 150 patients) run by the sponsors. They do not show that no monitoring is needed at scale.
+- **"No sponsor has a commercial incentive for a generic": PLAUSIBLE (logic).** It is not contradicted. Other statin-TB trials are publicly funded, for example StatinTB under 
+EDCTP2
+. That shows academic and public funders can pay for generic repurposing trials, but not for guideline rollout.
+- **"$5–20M rollout programme, or a $4M add-on, pushes the total past $10.7M": the arithmetic is correct ($7M + $4M = $11M), but the magnitude is UNGROUNDED.** I found no rollout-cost benchmark.
+- **"A Phase IIc of $320k plus any plausible Phase III already uses most of the $7M": UNVERIFIABLE.** I found no budget figures.
+- **"Adverse-event harms are not netted against the mortality benefit": UNVERIFIABLE.** It depends on CG's model.
 
-  - 
-Rifampicin enhances the hepatotoxicity of other antitubercular drugs.
+**EVIDENCE FOUND:**
+- The ATORTUB phase IIC registry entry describes it as 
+a pilot phase III
+ and notes that 
+the phase III will be fully international and multicenter
+. A multi-country phase III is likely to take a large share of $7M before any adoption work.
+- This critique overlaps with Critique 1, because both include monitoring and delivery costs. Adding both would double-count them.
+- Sources for the rollout-cost gap are still missing. I did not pull Unitaid or Global Fund documents.
 
-- **Statins cause hepatotoxicity and myopathy: PLAUSIBLE.** This is well-established pharmacology, but I did not retrieve a source in this session. I also found no retrospective data on statin-plus-TB-drug liver injury. 
-One review notes that no retrospective studies were found evaluating statins during TB treatment.
+**CORE CLAIM:**
+- Claim: The $7M is too small to cover the unfunded adoption infrastructure (guidelines, training, supply chain, pharmacovigilance) on top of the trials.
+- Support: **LOGIC ONLY.**
+- Why: The incentive argument and the hepatotoxicity concern hold, but I found no budget data or comparable rollout costs.
 
-- **Overlap means safety monitoring is a real cost: PLAUSIBLE.** The trials treat this as a primary safety endpoint. 
-The ATORTUB protocol measures treatment-emergent adverse events through lab abnormalities, ECGs and physical exams.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis survives. The cost magnitudes are ungrounded.
 
-- **Existing safety signal is favourable, which cuts against the severity of the concern:**
-  - 
-ATORTUB Phase IIB found atorvastatin generally safe, with reduced peripheral neuropathy in that group.
-
-  - 
-Rosuvastatin was also safe in a separate trial but did not improve sputum culture conversion.
-
-- **No sponsor has a commercial incentive: PLAUSIBLE, logical.** I found nothing contradicting it.
-- **"A Phase IIc of $320k": UNVERIFIABLE.** The trial design is real, but I found no budget figure.
-- **"$5–20M adds 70–300%": arithmetic VERIFIED** (71–286%). **"$4M add-on exceeds $10.7M": VERIFIED** ($11M).
-- **"Adverse-event harms are not netted against the mortality benefit": UNVERIFIABLE.** I could not see the CG model.
-- **Rollout costs for comparable TB regimen changes (Unitaid, Global Fund): not found in this session.**
-
-**EVIDENCE FOUND**
-- The Phase IIC is explicitly a stepping stone to a more expensive trial. 
-The record says important questions need answering before a more expensive Phase III study.
- This supports the point that the $7M leaves little headroom, but it is not a budget figure.
-- The efficacy evidence is mixed across statins. The rosuvastatin result above is relevant to benefit magnitude, which is outside this critique's cost scope.
-
-**REVISED CRITIQUE**
-- Keep: no natural payer exists for post-adoption pharmacovigilance and dissemination of a generic adjunct. The TB-drug hepatotoxicity overlap is real, so monitoring is a genuine cost item.
-- Flag as UNGROUNDED: all dollar magnitudes ($5–20M, $4M, $320k).
-- Add the countervailing evidence: early-phase safety data are favourable, so the cost of monitoring is likely a guideline-driven choice rather than a demonstrated necessity.
-- Direction: uncertain, leaning up. Magnitude: medium, but wholly unquantified.
+**REVISED CRITIQUE:** Atorvastatin is generic, so the costs of guideline change, dissemination and pharmacovigilance have no obvious commercial payer. There is a verified safety concern: atorvastatin is the statin most often linked to liver injury, and anti-TB drugs are also hepatotoxic.
+- The size of any shortfall in the $7M is **UNGROUNDED — plausible but needs empirical support.** Drop the $5–20M illustration, or keep it flagged as illustrative only.
+- The direction is uncertain and should not be stated as "likely under-budgets" without evidence. Magnitude: medium to small. Merge the monitoring-cost part with Critique 1 to avoid double counting.
 
 ---
 
 ## Critique 3: Unclear scope boundary for the sweat-diagnostic workstream
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** This is a legitimate clarification question rather than an established flaw, and the Investigator frames it that way. The search provided some grounding for it.
+**CITATION CHECK:** No citations. The critique itself says it has no source on the workstream's structure.
 
-**CLAIM CHECK**
-- **A sweat-diagnostic component exists alongside the statin work: VERIFIED in a related form.** 
-The ATORTUB Phase IIA/B record lists an exploratory outcome, the diagnostic utility of a sweat TB test, measured by sensitivity, specificity, PPV and agreement.
- This shows the sweat test is run within the same trial infrastructure. That makes the shared-infrastructure and double-counting concerns real rather than hypothetical.
-- **It is not clear whether the Phase IIC record includes the sweat test.** I did not confirm this.
-- **Separate sweat-protein research exists.** 
-A German study (SwEaTB, NCT03667742) collects sweat samples with the Macroduct system in patients with suspected TB.
- It is unrelated to the statin program, which shows "sweat diagnostic" can refer to different efforts. The Investigator's "if it is a separate program" branch is therefore live.
-- **"Any budget above about $3.7M would breach 2,000x": arithmetic VERIFIED** (same $10.7M threshold). Note the internal tension with "magnitude small". A sweat test embedded as an exploratory outcome in a 150-patient trial would likely cost far less than $3.7M, which supports "small". But the Investigator's stated magnitude rests on an unknown budget.
-- **Whether diagnostic-linked benefits are counted in the credited benefits: UNVERIFIABLE.** I could not see the CG model.
+**CLAIM CHECK:**
+- **"A sweat-diagnostic workstream exists in this program": UNVERIFIABLE.** I found no public link between the statin program and a sweat-based diagnostic. Sweat as a TB diagnostic matrix is a real research area: a proof-of-concept study found 
+26 proteins detected only in the sweat of active TB patients
+. That study says nothing about this program.
+- **"Any diagnostic budget above ~$3.7M breaches 2,000x": VERIFIED arithmetic, conditional on the other numbers.** It uses the same $10.7M threshold as Critique 1.
+- **Cost and benefit mismatch scenarios: logically coherent but hypothetical.** Only one of the four branches has any effect: costs excluded while diagnostic-linked benefits are counted. There is no evidence that this branch applies.
 
-**EVIDENCE FOUND**
-- The exploratory sweat-test outcome in ATORTUB is the main new evidence. It suggests the diagnostic is a low-cost add-on to the trial rather than a standalone large program. This favours "small magnitude" and weakens the "breaches threshold" scenario.
-- Funding links: 
-the Phase IIC record lists Open Philanthropy as a collaborator.
+**EVIDENCE FOUND:** Nothing on the grant structure. I did not find the CG grant page.
 
+**CORE CLAIM:**
+- Claim: Diagnostic costs sit outside the $7M while diagnostic-linked benefits are counted in the credited benefits.
+- Support: **LOGIC ONLY.**
+- Why: The critique presents it as a scenario, and I found no evidence for or against it.
 
-**REVISED CRITIQUE**
-- Keep as a clarification question for CG. The diagnostic appears to have been an exploratory outcome inside the ATORTUB trial infrastructure, so cost sharing with the statin trials is plausible.
-- Direction: uncertain, leaning toward no material effect. Magnitude: small. The scope boundary is still unconfirmed. This item should rank below Critiques 1 and 2 in priority.
+**OVERALL VERDICT: UNVERIFIABLE.** Keep it only as a low-priority clarification question for CG about grant structure and whether diagnostic benefits are credited. It is not an established flaw. I recommend dropping it from any list of substantive critiques unless the thread text shows that diagnostic benefits are actually counted.
 
 --- Critique: Unclear scope boundary for the sweat-diagnostic workstream ---
 
 ## Critique 1: The all-in framing counts benefits for every treated patient but not the cost of treating them
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logical-consistency argument is sound. The numbers are illustrative and unsourced, and the decisive input (how CG values third-party spending) is unverified.
+**CITATION CHECK:** The critique cites no papers. It points to the Stop TB GDF catalog and the MSH price guide as places to look for prices.
+- Stop TB GDF catalog: it exists, and 
+its prices are ex-works (EXW)
+. I did not find atorvastatin in the retrieved portion. It is a TB-medicines catalog and probably doesn't stock a statin, so it may not be the right source.
+- MSH International Drug Price Indicator Guide: it exists. It is 
+published by Management Sciences for Health
+ and 
+lists package price and unit price in USD
+. I could not retrieve the atorvastatin line itself.
 
-**CLAIM CHECK**
-- **Arithmetic: VERIFIED, with one small inconsistency.**
-  - $3.7M ÷ 3.3M patients ≈ $1.12 per patient. 3,000 × 7/17 ≈ 1,235x. $1–10 × 3.3M = $3.3–33M.
-  - The break-even is derived from the $10.7M threshold used in Critique 2. A flat 3,000x on $7M gives about $21B in benefits, and $21B ÷ 2,000 is $10.5M, not $10.7M. The difference is small, but the 3,000x figure is evidently rounded.
-- **"About 3.3M patients in the credited year": UNVERIFIABLE.** I found no source for this number.
-- **"Generic atorvastatin costs $1–10 per course": PLAUSIBLE, with caveats.**
-  - The trial regimens are 16 weeks of 20, 40 or 60 mg daily, which is about 112 tablets. 
-The ATORTUB sub-study arms are 20, 40 and 60 mg atorvastatin, each given for 16 weeks.
+**CLAIM CHECK:**
+- **"$1–10 per course in procurement": PLAUSIBLE.**
+  - Canadian generic atorvastatin is listed at 
+about $0.17–0.23 per tablet
+.
+  - UK generic packs of 28 tablets 
+cost about £1 in 2014
+.
+  - The ATORTUB phase IIB gave 
+40 mg for 2 months
+. A related popPK sub-study uses 
+16 weeks of 20, 40 or 60 mg
+.
+  - That is roughly 56–112 tablets. At LMIC tender prices of a few cents each, this gives about $1–6. At rich-country list prices it is $10–25.
+  - So $1–10 is a reasonable range, and the low end is close to the critique's break-even of $1.10 per patient.
+- **"$3.7M break-even = $1.10 × 3.3M": VERIFIED arithmetic.** If $10.7M is the 2,000x threshold, then $10.7M − $7M = $3.7M, and $3.7M ÷ 3.3M patients ≈ $1.12.
+- **"D = $10M gives about 1,250x": VERIFIED arithmetic.** 3,000 × 7/17 ≈ 1,235.
+- **The $7M figure, 3.3M patients, ~3,000x SROI and 2,000x threshold: UNVERIFIABLE.** I found no public Coefficient Giving (CG) write-up of this grant or its model. I take these as given inputs.
+- **"The $7M excludes delivery costs": UNVERIFIABLE.** I can't see CG's model. It may already net out delivery costs or treat them as a separate counterfactual. The critique itself concedes it can't cite CG's convention for third-party spending.
 
-  - Canadian public-formulary prices are about $0.17–0.23 per tablet, which gives roughly $19–26 per course. 
-One CADTH table lists 20 mg and 40 mg atorvastatin tablets at 0.1743 to 0.2342 per tablet for the generic strengths.
- Another CADTH table lists $0.39–0.42 per tablet. 
-Daily drug cost there is $0.31–0.42.
+**EVIDENCE FOUND:**
+- ATORTUB phase IIC (NCT06199921) lists Open Philanthropy as a collaborator and plans 
+440 patients
+. This suggests the program is real and in the right area, though I can't confirm it is the grant in question.
+- The registry notes that 
+phase III is "more expensive"
+ than phase IIB. That supports the idea that the $7M leaves little headroom.
+- Procurement alone is cheap, so the critique's result depends mostly on monitoring and clinic costs and on the counterfactual-value convention. The critique already says this.
 
-  - UK generics were under £2 per 28-tablet pack. 
-The generic 10, 20 and 40 mg doses are priced below £2 per pack.
- That is about £8 for 112 tablets.
-  - Tender prices in LMICs would be lower than any of these. So $1–10 is plausible at tender prices and may be low at retail.
-  - I could not retrieve the MSH International Drug Price Indicator Guide or the GDF catalog entries for atorvastatin. The MSH guide is a real source: 
-it is published by Management Sciences for Health and provides medicine price information.
+**CORE CLAIM:**
+- Claim: CG's all-in cost omits delivery cost for the ~3.3M treated patients while counting their benefits. Including it would push SROI materially below the threshold unless third-party money is heavily discounted.
+- Support: **LOGIC ONLY.**
+- Why: The arithmetic and plausible prices hold, but I found no evidence on how CG's model treats delivery costs or third-party spending.
 
-- **"CG values government and Global Fund money at 20–30% of face value": UNGROUNDED.** The Investigator flags this as an assumption. I found no CG or Open Philanthropy statement on how it values third-party spending.
-- **Asymmetry claim (benefits counted, delivery cost not): UNVERIFIABLE.** I could not retrieve the CG SROI documentation. The claim depends on how CG defined "all-in" and on the $7M scope.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The consistency argument and the arithmetic are sound, and the price range is plausible. The factual premise that CG excludes delivery costs is unverified, and the critique correctly flags it as ungrounded.
 
-**EVIDENCE FOUND**
-- The Phase IIC trial is real and Open Philanthropy-linked. 
-The ClinicalTrials.gov record for NCT06199921 lists Open Philanthropy as a collaborator.
-
-- Dosing matters for D. 
-Phase IIC tests different atorvastatin doses in 440 patients.
- The cost of delivery therefore depends on which dose is eventually adopted.
-- Monitoring costs are plausibly material. First-line TB drugs already carry liver-monitoring needs (see Critique 2).
-
-**REVISED CRITIQUE**
-Retain the hypothesis: if benefits are counted for all treated patients, then the cost of delivering the intervention to them, or an explicit convention for excluding it, belongs in the denominator.
-- Drug procurement alone is likely in the low-to-tens of dollars per course (verified at retail and plausible at tender prices). This puts D anywhere from a few million dollars to tens of millions across 3.3M patients. The 3.3M figure is unverified.
-- Flag the "counterfactual-value convention" point as UNGROUNDED but logically sound.
-- Strength: medium to large, and conditional on CG's convention. The Investigator's "large" is defensible only if third-party funds are valued near face value.
+**REVISED CRITIQUE:** If CG credits benefits to all treated patients but counts only R&D and adoption costs, the framing is asymmetric.
+- Generic atorvastatin costs roughly $1–10 per course, plausibly more once monitoring is included. That is $3–33M across 3.3M patients.
+- This could take SROI from above 2,000x to roughly 1,000–1,250x at $10M. It could have little effect if government and Global Fund money is heavily discounted.
+- Status: UNGROUNDED on CG's actual convention. Direction: decreases. Magnitude: **medium**, downgraded from large because it depends on an unverified convention and on procurement being cheap.
 
 ---
 
-## Critique 2: Regulatory, pharmacovigilance and dissemination costs for an off-patent drug have no obvious payer
+## Critique 2: Regulatory, pharmacovigilance and dissemination costs have no obvious payer, and the $7M likely under-budgets them
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The pharmacological and incentive arguments hold. The cost magnitudes are admitted illustrations with no empirical basis.
+**CITATION CHECK:** No papers are cited. The critique says it cannot cite a source for the hepatotoxicity overlap. It names Unitaid and Global Fund transition grants as candidate sources for rollout costs, and I did not check those.
 
-**CLAIM CHECK**
-- **Rifampicin, isoniazid and pyrazinamide are hepatotoxic: VERIFIED.**
-  - 
-First-line anti-TB drugs associated with hepatotoxicity include isoniazid, rifampicin and pyrazinamide, and their patterns of liver injury overlap.
+**CLAIM CHECK:**
+- **"Statins cause hepatotoxicity and myopathy": VERIFIED.**
+  - Atorvastatin is the statin most often reported in statin liver-injury cases: 
+53.48% of FAERS statin DILI reports
+.
+  - Case reports also describe 
+liver injury with rhabdomyolysis
+.
+  - Serious cases are rare. 
+Statin liver injury is described as frequent but usually not severe
+, and 
+idiosyncratic injury as "very rare"
+.
+- **"This overlaps with first-line TB drug hepatotoxicity": VERIFIED (pharmacological argument).** Anti-TB drug-induced liver injury 
+occurs in 2–28% of patients
+, and 
+it can reduce treatment effectiveness and cause treatment failure
+.
+- **"Safety monitoring and adverse-event management are a real cost": PLAUSIBLE.** The phase II ATORTUB reports describe atorvastatin as 
+generally safe and well tolerated
+. Those are small trials (40 and 150 patients) run by the sponsors. They do not show that no monitoring is needed at scale.
+- **"No sponsor has a commercial incentive for a generic": PLAUSIBLE (logic).** It is not contradicted. Other statin-TB trials are publicly funded, for example StatinTB under 
+EDCTP2
+. That shows academic and public funders can pay for generic repurposing trials, but not for guideline rollout.
+- **"$5–20M rollout programme, or a $4M add-on, pushes the total past $10.7M": the arithmetic is correct ($7M + $4M = $11M), but the magnitude is UNGROUNDED.** I found no rollout-cost benchmark.
+- **"A Phase IIc of $320k plus any plausible Phase III already uses most of the $7M": UNVERIFIABLE.** I found no budget figures.
+- **"Adverse-event harms are not netted against the mortality benefit": UNVERIFIABLE.** It depends on CG's model.
 
-  - 
-Rifampicin enhances the hepatotoxicity of other antitubercular drugs.
+**EVIDENCE FOUND:**
+- The ATORTUB phase IIC registry entry describes it as 
+a pilot phase III
+ and notes that 
+the phase III will be fully international and multicenter
+. A multi-country phase III is likely to take a large share of $7M before any adoption work.
+- This critique overlaps with Critique 1, because both include monitoring and delivery costs. Adding both would double-count them.
+- Sources for the rollout-cost gap are still missing. I did not pull Unitaid or Global Fund documents.
 
-- **Statins cause hepatotoxicity and myopathy: PLAUSIBLE.** This is well-established pharmacology, but I did not retrieve a source in this session. I also found no retrospective data on statin-plus-TB-drug liver injury. 
-One review notes that no retrospective studies were found evaluating statins during TB treatment.
+**CORE CLAIM:**
+- Claim: The $7M is too small to cover the unfunded adoption infrastructure (guidelines, training, supply chain, pharmacovigilance) on top of the trials.
+- Support: **LOGIC ONLY.**
+- Why: The incentive argument and the hepatotoxicity concern hold, but I found no budget data or comparable rollout costs.
 
-- **Overlap means safety monitoring is a real cost: PLAUSIBLE.** The trials treat this as a primary safety endpoint. 
-The ATORTUB protocol measures treatment-emergent adverse events through lab abnormalities, ECGs and physical exams.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis survives. The cost magnitudes are ungrounded.
 
-- **Existing safety signal is favourable, which cuts against the severity of the concern:**
-  - 
-ATORTUB Phase IIB found atorvastatin generally safe, with reduced peripheral neuropathy in that group.
-
-  - 
-Rosuvastatin was also safe in a separate trial but did not improve sputum culture conversion.
-
-- **No sponsor has a commercial incentive: PLAUSIBLE, logical.** I found nothing contradicting it.
-- **"A Phase IIc of $320k": UNVERIFIABLE.** The trial design is real, but I found no budget figure.
-- **"$5–20M adds 70–300%": arithmetic VERIFIED** (71–286%). **"$4M add-on exceeds $10.7M": VERIFIED** ($11M).
-- **"Adverse-event harms are not netted against the mortality benefit": UNVERIFIABLE.** I could not see the CG model.
-- **Rollout costs for comparable TB regimen changes (Unitaid, Global Fund): not found in this session.**
-
-**EVIDENCE FOUND**
-- The Phase IIC is explicitly a stepping stone to a more expensive trial. 
-The record says important questions need answering before a more expensive Phase III study.
- This supports the point that the $7M leaves little headroom, but it is not a budget figure.
-- The efficacy evidence is mixed across statins. The rosuvastatin result above is relevant to benefit magnitude, which is outside this critique's cost scope.
-
-**REVISED CRITIQUE**
-- Keep: no natural payer exists for post-adoption pharmacovigilance and dissemination of a generic adjunct. The TB-drug hepatotoxicity overlap is real, so monitoring is a genuine cost item.
-- Flag as UNGROUNDED: all dollar magnitudes ($5–20M, $4M, $320k).
-- Add the countervailing evidence: early-phase safety data are favourable, so the cost of monitoring is likely a guideline-driven choice rather than a demonstrated necessity.
-- Direction: uncertain, leaning up. Magnitude: medium, but wholly unquantified.
+**REVISED CRITIQUE:** Atorvastatin is generic, so the costs of guideline change, dissemination and pharmacovigilance have no obvious commercial payer. There is a verified safety concern: atorvastatin is the statin most often linked to liver injury, and anti-TB drugs are also hepatotoxic.
+- The size of any shortfall in the $7M is **UNGROUNDED — plausible but needs empirical support.** Drop the $5–20M illustration, or keep it flagged as illustrative only.
+- The direction is uncertain and should not be stated as "likely under-budgets" without evidence. Magnitude: medium to small. Merge the monitoring-cost part with Critique 1 to avoid double counting.
 
 ---
 
 ## Critique 3: Unclear scope boundary for the sweat-diagnostic workstream
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** This is a legitimate clarification question rather than an established flaw, and the Investigator frames it that way. The search provided some grounding for it.
+**CITATION CHECK:** No citations. The critique itself says it has no source on the workstream's structure.
 
-**CLAIM CHECK**
-- **A sweat-diagnostic component exists alongside the statin work: VERIFIED in a related form.** 
-The ATORTUB Phase IIA/B record lists an exploratory outcome, the diagnostic utility of a sweat TB test, measured by sensitivity, specificity, PPV and agreement.
- This shows the sweat test is run within the same trial infrastructure. That makes the shared-infrastructure and double-counting concerns real rather than hypothetical.
-- **It is not clear whether the Phase IIC record includes the sweat test.** I did not confirm this.
-- **Separate sweat-protein research exists.** 
-A German study (SwEaTB, NCT03667742) collects sweat samples with the Macroduct system in patients with suspected TB.
- It is unrelated to the statin program, which shows "sweat diagnostic" can refer to different efforts. The Investigator's "if it is a separate program" branch is therefore live.
-- **"Any budget above about $3.7M would breach 2,000x": arithmetic VERIFIED** (same $10.7M threshold). Note the internal tension with "magnitude small". A sweat test embedded as an exploratory outcome in a 150-patient trial would likely cost far less than $3.7M, which supports "small". But the Investigator's stated magnitude rests on an unknown budget.
-- **Whether diagnostic-linked benefits are counted in the credited benefits: UNVERIFIABLE.** I could not see the CG model.
+**CLAIM CHECK:**
+- **"A sweat-diagnostic workstream exists in this program": UNVERIFIABLE.** I found no public link between the statin program and a sweat-based diagnostic. Sweat as a TB diagnostic matrix is a real research area: a proof-of-concept study found 
+26 proteins detected only in the sweat of active TB patients
+. That study says nothing about this program.
+- **"Any diagnostic budget above ~$3.7M breaches 2,000x": VERIFIED arithmetic, conditional on the other numbers.** It uses the same $10.7M threshold as Critique 1.
+- **Cost and benefit mismatch scenarios: logically coherent but hypothetical.** Only one of the four branches has any effect: costs excluded while diagnostic-linked benefits are counted. There is no evidence that this branch applies.
 
-**EVIDENCE FOUND**
-- The exploratory sweat-test outcome in ATORTUB is the main new evidence. It suggests the diagnostic is a low-cost add-on to the trial rather than a standalone large program. This favours "small magnitude" and weakens the "breaches threshold" scenario.
-- Funding links: 
-the Phase IIC record lists Open Philanthropy as a collaborator.
+**EVIDENCE FOUND:** Nothing on the grant structure. I did not find the CG grant page.
 
+**CORE CLAIM:**
+- Claim: Diagnostic costs sit outside the $7M while diagnostic-linked benefits are counted in the credited benefits.
+- Support: **LOGIC ONLY.**
+- Why: The critique presents it as a scenario, and I found no evidence for or against it.
 
-**REVISED CRITIQUE**
-- Keep as a clarification question for CG. The diagnostic appears to have been an exploratory outcome inside the ATORTUB trial infrastructure, so cost sharing with the statin trials is plausible.
-- Direction: uncertain, leaning toward no material effect. Magnitude: small. The scope boundary is still unconfirmed. This item should rank below Critiques 1 and 2 in priority.
+**OVERALL VERDICT: UNVERIFIABLE.** Keep it only as a low-priority clarification question for CG about grant structure and whether diagnostic benefits are credited. It is not an established flaw. I recommend dropping it from any list of substantive critiques unless the thread text shows that diagnostic benefits are actually counted.
 
 --- Critique: Reference-class check: TB Phase III trials, and the evidence package WHO may require, point to more than one trial ---
 
-## Critique 1: TB Phase III reference class and WHO evidence package
+## Critique 1: Reference-class check for TB Phase III trial cost
+
+**CITATION CHECK**
+- The critique cites no papers. It names five trials: Study 31/A5349, STREAM, endTB, TRUNCATE-TB and SimpliciTB.
+- **Study 31/A5349: VERIFIED.** 
+Target enrollment is 2500 participants.
+ The record also lists 
+TBTC Study 31, ACTG Study A5349
+ as the same trial.
+- **STREAM: VERIFIED as a Phase III TB trial.** 
+The first participant was enrolled in July 2012.
+ I did not retrieve its enrollment number.
+- **endTB: VERIFIED as a Phase III trial.** 
+It is funded by a Unitaid grant.
+ I did not retrieve enrollment.
+- **TRUNCATE-TB and SimpliciTB: NOT CHECKED.** I found no source for their sizes.
+- The "hundreds to thousands" range is plausible but only partly confirmed.
 
 **CLAIM CHECK**
-- **"Phase III TB trials (Study 31/A5349, STREAM, endTB, TRUNCATE-TB, SimpliciTB) enrolled hundreds to thousands of participants": PLAUSIBLE, only partly verified.**
-  - The trials are real. I confirmed that 
-endTB is a Phase III, randomized, open-label, non-inferiority, multi-country trial of five shortened all-oral MDR-TB regimens
-. I also confirmed that 
-STREAM was a phase-III non-inferiority RCT.
+- **TB Phase III budgets are "generally in the tens of millions": PLAUSIBLE, with one direct TB data point.**
+  - TB-PRACTECAL is a Phase 2b-3 drug-resistant TB trial. 
+Its total cost was €33.9 million, or €61,460 per patient.
 
-  - The endTB launch statement said 
-750 patients would take part in the clinical trial across six countries.
+  - A TB-specific cost model gives 
+a mean of $48.9 million for trials with an active-drug control arm.
 
-  - I did not retrieve enrollment figures for Study 31, TRUNCATE-TB or SimpliciTB, so those remain from memory. SimpliciTB may be registered as a Phase 2 or 2/3 trial rather than Phase III, so the label needs a check.
-- **"Budgets were generally in the tens of millions of dollars": PLAUSIBLE, with partial support.**
-  - TB-PRACTECAL was an MSF-sponsored phase 2b-3 trial. Its 
-total cost was €33.9 million, an average of €61,460 per patient.
+  - A systematic review found 
+a range of US$7–221 million per Phase 2/3 trial.
 
-  - The same paper reports a literature range of 
-US$7–221 million per trial for pharmaceutical phase 2 and 3 trials.
+  - The general median is 
+$19 million for a single Phase III trial, from 138 FDA pivotal trials (2015–16).
 
-  - It also cites an 
-average of US$23 million for anti-infective and respiratory phase 3 trials.
+  - TAG's bedaquiline analysis used 
+Sertkaya (2016) estimates, with a Phase III upper bound of US$26.6 million,
+ then adjusted downward for lower trial costs in LMICs.
+- **I found no actual budgets for Study 31, STREAM, endTB, TRUNCATE-TB or SimpliciTB. UNVERIFIABLE.** The critique already flags its figures as recalled and ungrounded.
+- **The counterargument about cheap trials with routine-care endpoints: PLAUSIBLE, with some support.**
+  - An EDCTP-funded pragmatic DS-TB trial protocol (NCT05575518) lists 
+a grand total of £226,734 in its per-site budget table.
 
-  - Outside TB, 
-the median cost of a single phase III trial was $19 million
- in a JAMA IM analysis of 138 pivotal trials for FDA-approved drugs.
-  - The endTB "US$60M" figure is not a trial budget. 
-It is a four-year Unitaid project that also covers an estimated 2,600-patient treatment cohort.
- Do not use it as a single-trial cost.
-  - I found no budgets for Study 31, STREAM or TRUNCATE-TB. Those would need NIH RePORTER, EDCTP and Unitaid lookups.
-- **"WHO may require more than one trial or an IPD meta-analysis": UNVERIFIABLE.**
-  - I found no WHO requirement of this kind. The WHO Global TB Report 2025 says its drug-resistant TB update drew on 
-two clinical trials, BEAT-TB and endTB.
- That shows WHO sometimes relies on more than one trial. It is a drug-resistant TB example, and it does not show a requirement.
-  - Subgroup evidence looks less likely to multiply costs for statins. A preprint notes 
-pregnant women are unlikely to be on statins because of teratogenicity concerns.
- That suggests a pregnancy subgroup would probably be excluded, and the recommendation would likely carry a caveat instead. This is a weak source.
-  - The StAT-TB protocol notes that 
-statins and antiretrovirals can be co-administered with drug and dose selection.
- The HIV subgroup is therefore a real design question.
-- **Arithmetic: VERIFIED.**
-  - $20–60M divided by $7M is 2.9–8.6×.
-  - $3,050 divided by 3–9 is about 340–1,020×.
-  - $30M gives about 710×.
+  - The document is ambiguous. The budget is stated for 
+a minimal number of 436 patients per site.
+
+  - Pragmatic DS-TB trials can therefore be much cheaper per patient than TB-PRACTECAL. The $20–60M range is probably the upper part of the plausible distribution for this design.
+- **Arithmetic: VERIFIED.** $20–60M against $7M is about 2.9–8.6×. 3,050 divided by that gives about 355–1,050. $30M gives about 710.
+- **WHO may require subgroup evidence, multiple trials or an IPD meta-analysis: UNVERIFIABLE.** I found no WHO document setting a number-of-trials requirement. The critique concedes this. A 2026 review of host-directed therapy (HDT) says 
+moving these agents into standard practice requires large-scale, stratified Phase III trials.
+ That loosely supports the stratification point.
 
 **EVIDENCE FOUND**
-- The reference class is supported, but it mixes novel-drug registrational trials with different cost drivers. The TB-PRACTECAL paper says its cost 
-included investment in trial infrastructure and medical expenditures not typical of standard clinical trials.
- A cheap oral adjunct with a routine-care endpoint could cost well below $20M. The Investigator's counterargument stands.
-- Cost scales with per-patient cost and sample size. The review's lower bound of $7M overlaps the BOTEC figure. The $7M budget is therefore at the very bottom of the range and is not impossible.
+- TB-PRACTECAL's cost per patient, €61,460, is high because it ran in hospital-based drug-resistant TB settings. Using it for a DS-TB adjunct probably overstates cost.
+- The Mullard/JAMA median of $19M comes from FDA-approved pivotal trials, so it is not TB-specific.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- **Claim:** A Phase III trial for this intervention would plausibly cost well above $7M, in the range $20–60M.
+- **Support: SUPPORTED for the reference class, not for this trial design.**
+- **Why:** TB-PRACTECAL and the JAMA/TAG estimates directly show tens of millions per TB Phase III. I found no cost for a cheap DS-TB adjunct trial, and one pragmatic protocol hints at a much lower cost.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction (a $7M all-in cost looks low) survives. The specific trial budgets and the WHO multi-trial requirement are unverified.
 
 **REVISED CRITIQUE**
-- Published cost data support a reference class of roughly $19–34M for a single Phase III trial, with a very wide range ($7–221M). Examples are the $19M Phase III median, $23M for anti-infective trials and €33.9M for TB-PRACTECAL.
-- A $7M all-in budget sits at the low end of that range. It is not clearly implausible for a low-cost adjunct trial.
-- The "multiple trials or IPD meta-analysis" requirement is UNGROUNDED. The pregnancy subgroup would probably be excluded for statins, so the multiplier is probably smaller than implied.
-- Drop endTB's $60M as a trial cost.
-- The 350–1,000× SROI range is correct arithmetic, but only if a $20–60M cost is accepted.
-- Strength: medium, direction: uncertain, with a downward lean on SROI.
+- Documented TB Phase III costs include €33.9M for TB-PRACTECAL (drug-resistant TB) and a general pivotal-trial median of about $19M.
+- A $7M all-in budget is below that reference class unless the trial is a cheap pragmatic design with routine-care endpoints.
+- A central all-in cost of $15–30M gives SROI of roughly 700–1,400x. This range is my adjustment, wider than the original "about 700x."
+- Mark as UNGROUNDED: the claim that WHO requires multiple trials or an IPD meta-analysis, and the budgets of the five named trials.
+- Strength: **medium**. Direction: SROI down.
 
 ---
 
-## Critique 2: Mismatched counterfactuals (speedup benefit vs. all-in cost)
+## Critique 2: Benefit and cost come from different counterfactuals
+
+**CITATION CHECK**
+- The critique cites no external sources. It is an algebraic argument.
+- I could not see the CEA or BOTEC, so I cannot confirm the "1 year × plateau deaths" benefit, the 3,050x SROI, the $7M or $6.7M figures, or the 2% case decline. These are **UNVERIFIABLE** from what I was given.
 
 **CLAIM CHECK**
-- **Pure-delay algebra: VERIFIED as a derivation, with one caveat.**
-  - If the whole program shifts by D years, benefits and costs both scale by e^(−rD). The net effect is (1−e^(−rD))·PV_B against (1−e^(−rD))·PV_C. The ratio is PV_B/PV_C, independent of D.
-  - This is a standard result for pure time-shifts under a constant discount rate. It holds only if the benefit stream and cost stream shift by the same D. If the benefit lag is longer than the cost lag, the ratio changes.
-- **"Never" and mixture branches: VERIFIED.** Both numerator and denominator scale by the same factor, so the ratio is PV_B/PV_C.
-- **Numbers: VERIFIED as arithmetic, with one undocumented input.**
-  - 1/0.06 ≈ 16.7. Multiplying by 0.6–0.7 gives about 10–11.7. Dividing by 0.85 gives about 12–13.8.
-  - With r = 4% only, 25 × 0.6–0.7 ÷ 0.85 is about 17.6–20.6, so "about 18x" holds.
-  - 3,050 × 12.5 ≈ 38,000 and 3,050 × 18 ≈ 55,000. The "30,000–55,000x" range is consistent.
-  - The 0.6–0.7 delay factor is unexplained. It presumably reflects benefit onset after trial, WHO review and rollout. It should be stated explicitly because it drives the result.
-- **"The BOTEC counts one year of plateau deaths averted and charges the full $7M": UNVERIFIABLE.** I do not have the CEA, so the diagnosis that the numerator and denominator come from different counterfactuals rests on the Investigator's reading.
-- **Hybrid framing may be deliberate conservatism: UNGROUNDED, as the Investigator says.**
-- **Displacement of other funders' money: a valid conceptual point.** The delay-branch ratio is PV_B/PV_C only if the other funders' dollars are valued at zero opportunity cost. The Investigator flags this but does not quantify it. If the displaced money would fund equally cost-effective research, the delay benefit shrinks toward zero and the 10–20× uplift would not hold.
+- **Pure delay gives PV_B/PV_C, independent of D: PLAUSIBLE, with a hidden assumption.** I re-derived it. Shifting the whole stream by D scales both PVs by e^(−rD), so the ratio of differences is PV_B/PV_C. For a perpetuity, the benefit lost is about D × one plateau year. That matches the BOTEC's benefit term, so the critique correctly isolates the denominator as the inconsistent part.
+- **The assumption: other funders' $6.7M costs the grant only the time value of money, r·D·PV_C.**
+  - This holds only if money is valued at the discount rate r.
+  - If displaced dollars would fund other TB work at a high cost-effectiveness bar, the cost is not just interest.
+  - By my rough calculation, the ratio is then about (1−e^(−rD))·PV_B/PV_C + CE_other·e^(−rD).
+  - With D=1 and r=4%, that is about 0.4–0.5× the BOTEC plus CE_other. It could fall at or below the BOTEC unless CE_other is very high.
+  - The critique mentions displacement only as a separate issue. It is actually load-bearing for the delay branch.
+- **Never branch gives PV_B/PV_C: VERIFIED algebraically.** This depends on the grant being truly decisive and on attributing the whole program's benefit to it.
+- **Mixture is the same: VERIFIED algebraically.**
+- **Multiplier arithmetic: VERIFIED.** 1/0.06 ≈ 16.7. Times 0.6–0.7 is about 10–11.7. Dividing by 0.85 gives about 12–14. Without the decline, 1/0.04 = 25, which gives about 18–20. 3,050 × 10–18 gives about 30,500–55,000.
+- **The 0.6–0.7 "delay factor" and 0.85 "cost-discount adjustment": UNGROUNDED.** They are not derived or sourced. They probably reflect lag before benefits start, but that is not stated.
+- **Internal inconsistency:** Estimated Direction is "decreases," yet the critique argues SROI is 10–20× higher. It presumably means "the BOTEC understates SROI," but the label is confusing.
 
 **EVIDENCE FOUND**
-- No external empirical evidence is needed for the core argument. I found nothing that contradicts it.
-- The result is highly sensitive to the benefit horizon. The Investigator notes this but then states a 30,000–55,000× headline. That headline should be treated as an upper-bound illustration only.
-- Real-world constraints on the horizon are visible in the statin evidence. ROSETTA found 
+- None external. Nothing I found speaks to whether CG's framing was deliberately conservative.
+
+**CORE CLAIM**
+- **Claim:** Under every coherent counterfactual the ratio equals PV_B/PV_C, so the BOTEC understates SROI by roughly 10–20×.
+- **Support: LOGIC ONLY.**
+- **Why:** The algebra holds when other funders' money is valued at the discount rate. It fails if displacement is priced at the funder's opportunity cost, and the multiplier rests on assumed horizon and delay parameters.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hybrid-counterfactual diagnosis is sound. "Every coherent framing" and the 10–20× multiple are overstated.
+
+**REVISED CRITIQUE**
+- The BOTEC pairs a delay-world benefit (one year of plateau deaths averted) with a never-world cost (the full pathway). That is internally inconsistent.
+- If other funders' dollars are treated as costing only time value, a consistent framing gives PV_B/PV_C. That is higher than the BOTEC by roughly the number of discounted benefit-years, which is **UNGROUNDED but plausibly about 5–20×** under a finite horizon.
+- If displaced funding is valued at CG's own bar, the delay branch could be near or below the BOTEC. Only the never branch reliably raises the ratio.
+- Do not report 30,000–55,000x. Report it as a conditional upper scenario.
+- Strength: **medium**, not large. Direction: SROI up in the never branch, ambiguous in the delay branch.
+
+---
+
+## Critique 3: "Never" is a live branch for a generic-statin TB program
+
+**CITATION CHECK**
+- The critique cites no papers and flags the funder landscape as ungrounded.
+- **NIH and Johns Hopkins preclinical and early clinical work: PARTIALLY VERIFIED.**
+  - StAT-TB is 
+a Phase 2b dose-finding study of pravastatin in adults with TB, sponsored by NIAID. It started in February 2020 and completed in 2022.
+
+  - Preclinical statin mouse work acknowledges 
+NIH grant R00 AI114952 and a Bill & Melinda Gates Foundation grant (OPP 1066499).
+
+  - Hopkins affiliation did not appear in the retrieved text.
+- **Searches of ClinicalTrials.gov, ICTRP, TAG, EDCTP, Unitaid and RePORTER were not possible with my tools.** The absence of a Phase III statin-TB trial in my results is therefore only weak evidence.
+
+**CLAIM CHECK**
+- **Statins are off-patent and have no commercial sponsor: PLAUSIBLE.** This is a general repurposing argument. I did not locate a source for it.
+- **Public-health funders have favored novel regimens, shortened regimens and vaccines over HDTs: UNVERIFIABLE.**
+  - Gates did fund a four-arm HDT Phase 2 trial. 
+It "provided funding for this trial and contributed to the selection of host-directed therapy candidates."
+ Statins were not among its four arms.
+  - Statins also drew NIH and Gates support at the preclinical stage and NIAID at Phase 2b. Funders have not ignored statins.
+- **The grant is the gating event, with dose-finding preceding Phase III: QUESTIONABLE.**
+  - StAT-TB, a Phase 2b dose-finding trial, is already completed.
+  - A separate rosuvastatin Phase 2b trial reported: 
+median time to culture conversion was 42 days in both arms (HR 1.30, 0.88–1.91, p=0.19).
+ The authors concluded that 
 rosuvastatin 10 mg was safe but did not produce substantive benefits on culture conversion overall.
- Its PET-CT analysis showed 
-no effect on microbiological or radiological outcomes.
- A 
-phase IIA atorvastatin study showed a significant reduction in sputum mycobacterial load.
- Statin class and dose effects are uncertain, and p_success should be modest. The Investigator says p_success is included in PV_B, so this lowers the level but not the ratio logic.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+  - A PET-CT sub-study found 
+no impact on PET-CT changes.
 
-**REVISED CRITIQUE**
-- Under a pure time-shift, "never", or a mixture of the two, the benefit-to-cost ratio is PV_B/PV_C. The BOTEC's "one year of benefit against full cost" is internally inconsistent if that is what the BOTEC does. That last point needs confirmation against the CEA.
-- The uplift is plausibly about 10–20× under the stated horizon and discount assumptions. It depends heavily on the unexplained delay factor, the horizon, and treating other funders' dollars as free.
-- Report the uplift as an illustrative range, not as "30,000–55,000×".
-- Direction: the ratio rises, but displacement and horizon limits could pull it back down. Strength: large conceptually, medium once displacement is applied.
-
----
-
-## Critique 3: Funding landscape and the "never" branch
-
-**CLAIM CHECK**
-- **"NIH and Johns Hopkins have published preclinical and early clinical work": VERIFIED.**
-  - StAT-TB (NCT03882177) is a 
-NIAID-sponsored Phase 2b dose-finding pravastatin study.
- It is 
-completed.
-
-  - The protocol lists 
-Petros Karakousis of Johns Hopkins as US Principal Investigator.
-
-  - It states the findings will 
-inform dose selection for an anticipated larger follow-up study testing treatment-shortening potential.
- This supports the "dose-finding precedes Phase III" structure.
-- **"Public-health funders have so far favored novel regimens and vaccines over host-directed therapies": UNVERIFIED, and partly contradicted.**
-  - EDCTP funded StatinTB, a 
-proof-of-concept Phase IIB placebo-controlled trial in Khayelitsha
- under grant RIA2017T-2004.
-  - NIAID also funded it, through 
-R01AI160501.
-
-  - Wellcome has co-funded related work.
-  - ROSETTA was a 
-phase 2b trial run in the Philippines, Viet Nam and Uganda.
- I did not identify its funder.
-  - Public funders have clearly supported Phase II statin-TB work. The open question is Phase III, where I found no funded trial.
-- **"No commercial sponsor for generic statins": PLAUSIBLE.** The StAT-TB protocol itself says 
-statins are attractive because of the widespread availability of less costly generics.
- That is the flip side of weak commercial incentive. I found no repurposing-literature source for the sponsor gap.
-- **"Phase IIc" competitor: NOTABLE.**
-  - ATORTUB has a registered 
-Phase IIC selection trial with extended follow-up, designed as a pilot Phase III.
- (NCT06199921).
-  - The ATORTUB group 
-recently completed Phase IIA and IIB studies.
-
-  - I cannot say whether this is the CG-funded trial. If the grant funds this trial, it is not a new gating step. If it funds a different trial, ATORTUB is an existing parallel pipeline, which lowers q. Check this first.
-- **Expected speedup formula: VERIFIED.** q·H_eff + (1−q)·D with H_eff ≈ 10 and q = 0.1–0.2 gives about 1.9–3 years, assuming D ≈ 1.
-- **"SROI roughly 20× higher": ARITHMETICALLY EXPLAINED, but conceptually weak.**
-  - 7 ÷ 0.32 ≈ 22, so the 20× is just the ratio of the all-in cost to CG's own cost.
-  - It credits CG with all benefits while charging only CG's $320k. If the counterfactual is "never", the other funders' $6.7M is a real cost that exists only because of the grant (see Critique 2). Under a delay counterfactual it is displaced spending.
-  - Either way the 20× needs a justified attribution rule, such as a leverage or fractional-credit approach, before it can be reported.
-- **Cross-reference error.** The text says the ratio is robust to q "(see Critique 1)", and uses H_eff from "my Critique 1 calculation". In this set that derivation is in Critique 2, not Critique 1. The finding also conflicts with the claim that SROI could be 20× higher: robustness to q means the all-in ratio does not change, so the uplift comes only from the change of cost basis.
+  - The critique does not mention this null result. It lowers p_success. It also makes a "never" outcome more likely, but through low prior efficacy rather than lack of funding.
+  - Whether the CG Phase IIc is gating depends on the grant's design, which I could not see.
+- **Observational support exists.** 
+A meta-analysis found statins associated with reduced active TB risk (OR 0.66; 95% CI 0.54–0.81).
+ This is observational and confounded.
+- **Expected speedup q·H_eff + (1−q)·D exceeds 1 year for q = 0.1–0.2: VERIFIED arithmetically.** For example, 0.1×10 + 0.9×1 = 1.9. The "break-even at q ≈ 0" is loose, because at q=0 with D=0.5 the speedup is below 1.
+- **"About 20× higher" SROI: arithmetic VERIFIED, framing problematic.** $7M / $0.32M ≈ 22. But crediting the whole downstream benefit while charging only the grant's cost ignores that the never branch needs the other funders' $6.7M. This contradicts Critique 2, which charges the full cost in that branch.
+- **Cross-references to "Critique 1" appear to refer to the speedup critique (Critique 2 here).** The numbering is mismatched.
 
 **EVIDENCE FOUND**
-- There is a real pipeline: StAT-TB (NIAID), StatinTB (EDCTP/NIAID), ROSETTA, and ATORTUB. A review noted 
-four ongoing statin-TB clinical trials, calling statins one of the most promising HDT drugs in the pipeline.
+- The negative rosuvastatin Phase 2b is the main added evidence. It weakens efficacy priors and the case for a Phase III.
+- A 2026 review says HDT candidates, including statins, still need 
+large-scale, stratified Phase III trials.
+ That is consistent with the gap the critique describes.
+- I found no registered statin-TB Phase III trial in these searches. This is not exhaustive.
 
-- The ROSETTA null result reduces expected Phase III appetite for the whole class. That raises q for "never" for rosuvastatin-like approaches, and it reduces p_success.
-- I did not search the TAG pipeline, Working Group on New TB Drugs, Unitaid portfolio, or NIH RePORTER directly. Those remain open.
+**CORE CLAIM**
+- **Claim:** The realistic counterfactual for a CG-funded statin Phase IIc has a substantial probability (q about 0.1–0.2 or more) of long delay or never, so expected speedup is above 1 year.
+- **Support: LOGIC ONLY.**
+- **Why:** The reasoning is coherent and consistent with no Phase III being found. I found no direct evidence on q, and existing NIH, Gates and other Phase 2b statin trials show funding has occurred.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis stays as UNGROUNDED but plausible. The gating-event premise and the "20× higher" figure are weakened.
 
 **REVISED CRITIQUE**
-- Verified facts: the Phase II statin-TB landscape is populated by NIH, EDCTP and Wellcome-funded work; dose-finding explicitly precedes a larger follow-up trial; generics have no obvious commercial sponsor.
-- The claim that funders disfavor HDT is UNGROUNDED, and Phase II funding evidence cuts against it. No Phase III statin-TB trial funder was found, so the "never" branch remains plausible but unquantified.
-- A competing registered Phase IIC trial (ATORTUB) must be checked against the CG grant. If it is the same trial, the redundancy case in the critique's last sentence applies, not the leverage case.
-- The "20× higher SROI" should be dropped or re-derived with an explicit attribution rule. Fix the cross-reference to Critique 2.
-- Direction: uncertain rather than clearly up. Strength: medium.
+- Statin-TB trials have been funded at Phase 2b by NIAID, and a rosuvastatin Phase 2b exists. A Phase III sponsor is plausibly still lacking, but I could not confirm that.
+- The speedup is better modeled as a distribution than as a fixed 1 year. This is logic-only and depends on an unestimated q.
+- The null rosuvastatin result should lower p_success. That partly offsets any gain from a longer speedup.
+- Drop the "SROI about 20× higher" claim. It credits the full downstream benefit against only the grant cost, which conflicts with Critique 2's accounting.
+- Strength: **low to medium**. Direction: ambiguous, with up in the never branch and down if p_success falls or the grant is redundant.
 
 --- Critique: The speedup benefit and the all-in cost come from different counterfactuals. Every coherent framing gives roughly 10–20x higher SROI. ---
 
-## Critique 1: TB Phase III reference class and WHO evidence package
+## Critique 1: Reference-class check for TB Phase III trial cost
+
+**CITATION CHECK**
+- The critique cites no papers. It names five trials: Study 31/A5349, STREAM, endTB, TRUNCATE-TB and SimpliciTB.
+- **Study 31/A5349: VERIFIED.** 
+Target enrollment is 2500 participants.
+ The record also lists 
+TBTC Study 31, ACTG Study A5349
+ as the same trial.
+- **STREAM: VERIFIED as a Phase III TB trial.** 
+The first participant was enrolled in July 2012.
+ I did not retrieve its enrollment number.
+- **endTB: VERIFIED as a Phase III trial.** 
+It is funded by a Unitaid grant.
+ I did not retrieve enrollment.
+- **TRUNCATE-TB and SimpliciTB: NOT CHECKED.** I found no source for their sizes.
+- The "hundreds to thousands" range is plausible but only partly confirmed.
 
 **CLAIM CHECK**
-- **"Phase III TB trials (Study 31/A5349, STREAM, endTB, TRUNCATE-TB, SimpliciTB) enrolled hundreds to thousands of participants": PLAUSIBLE, only partly verified.**
-  - The trials are real. I confirmed that 
-endTB is a Phase III, randomized, open-label, non-inferiority, multi-country trial of five shortened all-oral MDR-TB regimens
-. I also confirmed that 
-STREAM was a phase-III non-inferiority RCT.
+- **TB Phase III budgets are "generally in the tens of millions": PLAUSIBLE, with one direct TB data point.**
+  - TB-PRACTECAL is a Phase 2b-3 drug-resistant TB trial. 
+Its total cost was €33.9 million, or €61,460 per patient.
 
-  - The endTB launch statement said 
-750 patients would take part in the clinical trial across six countries.
+  - A TB-specific cost model gives 
+a mean of $48.9 million for trials with an active-drug control arm.
 
-  - I did not retrieve enrollment figures for Study 31, TRUNCATE-TB or SimpliciTB, so those remain from memory. SimpliciTB may be registered as a Phase 2 or 2/3 trial rather than Phase III, so the label needs a check.
-- **"Budgets were generally in the tens of millions of dollars": PLAUSIBLE, with partial support.**
-  - TB-PRACTECAL was an MSF-sponsored phase 2b-3 trial. Its 
-total cost was €33.9 million, an average of €61,460 per patient.
+  - A systematic review found 
+a range of US$7–221 million per Phase 2/3 trial.
 
-  - The same paper reports a literature range of 
-US$7–221 million per trial for pharmaceutical phase 2 and 3 trials.
+  - The general median is 
+$19 million for a single Phase III trial, from 138 FDA pivotal trials (2015–16).
 
-  - It also cites an 
-average of US$23 million for anti-infective and respiratory phase 3 trials.
+  - TAG's bedaquiline analysis used 
+Sertkaya (2016) estimates, with a Phase III upper bound of US$26.6 million,
+ then adjusted downward for lower trial costs in LMICs.
+- **I found no actual budgets for Study 31, STREAM, endTB, TRUNCATE-TB or SimpliciTB. UNVERIFIABLE.** The critique already flags its figures as recalled and ungrounded.
+- **The counterargument about cheap trials with routine-care endpoints: PLAUSIBLE, with some support.**
+  - An EDCTP-funded pragmatic DS-TB trial protocol (NCT05575518) lists 
+a grand total of £226,734 in its per-site budget table.
 
-  - Outside TB, 
-the median cost of a single phase III trial was $19 million
- in a JAMA IM analysis of 138 pivotal trials for FDA-approved drugs.
-  - The endTB "US$60M" figure is not a trial budget. 
-It is a four-year Unitaid project that also covers an estimated 2,600-patient treatment cohort.
- Do not use it as a single-trial cost.
-  - I found no budgets for Study 31, STREAM or TRUNCATE-TB. Those would need NIH RePORTER, EDCTP and Unitaid lookups.
-- **"WHO may require more than one trial or an IPD meta-analysis": UNVERIFIABLE.**
-  - I found no WHO requirement of this kind. The WHO Global TB Report 2025 says its drug-resistant TB update drew on 
-two clinical trials, BEAT-TB and endTB.
- That shows WHO sometimes relies on more than one trial. It is a drug-resistant TB example, and it does not show a requirement.
-  - Subgroup evidence looks less likely to multiply costs for statins. A preprint notes 
-pregnant women are unlikely to be on statins because of teratogenicity concerns.
- That suggests a pregnancy subgroup would probably be excluded, and the recommendation would likely carry a caveat instead. This is a weak source.
-  - The StAT-TB protocol notes that 
-statins and antiretrovirals can be co-administered with drug and dose selection.
- The HIV subgroup is therefore a real design question.
-- **Arithmetic: VERIFIED.**
-  - $20–60M divided by $7M is 2.9–8.6×.
-  - $3,050 divided by 3–9 is about 340–1,020×.
-  - $30M gives about 710×.
+  - The document is ambiguous. The budget is stated for 
+a minimal number of 436 patients per site.
+
+  - Pragmatic DS-TB trials can therefore be much cheaper per patient than TB-PRACTECAL. The $20–60M range is probably the upper part of the plausible distribution for this design.
+- **Arithmetic: VERIFIED.** $20–60M against $7M is about 2.9–8.6×. 3,050 divided by that gives about 355–1,050. $30M gives about 710.
+- **WHO may require subgroup evidence, multiple trials or an IPD meta-analysis: UNVERIFIABLE.** I found no WHO document setting a number-of-trials requirement. The critique concedes this. A 2026 review of host-directed therapy (HDT) says 
+moving these agents into standard practice requires large-scale, stratified Phase III trials.
+ That loosely supports the stratification point.
 
 **EVIDENCE FOUND**
-- The reference class is supported, but it mixes novel-drug registrational trials with different cost drivers. The TB-PRACTECAL paper says its cost 
-included investment in trial infrastructure and medical expenditures not typical of standard clinical trials.
- A cheap oral adjunct with a routine-care endpoint could cost well below $20M. The Investigator's counterargument stands.
-- Cost scales with per-patient cost and sample size. The review's lower bound of $7M overlaps the BOTEC figure. The $7M budget is therefore at the very bottom of the range and is not impossible.
+- TB-PRACTECAL's cost per patient, €61,460, is high because it ran in hospital-based drug-resistant TB settings. Using it for a DS-TB adjunct probably overstates cost.
+- The Mullard/JAMA median of $19M comes from FDA-approved pivotal trials, so it is not TB-specific.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- **Claim:** A Phase III trial for this intervention would plausibly cost well above $7M, in the range $20–60M.
+- **Support: SUPPORTED for the reference class, not for this trial design.**
+- **Why:** TB-PRACTECAL and the JAMA/TAG estimates directly show tens of millions per TB Phase III. I found no cost for a cheap DS-TB adjunct trial, and one pragmatic protocol hints at a much lower cost.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction (a $7M all-in cost looks low) survives. The specific trial budgets and the WHO multi-trial requirement are unverified.
 
 **REVISED CRITIQUE**
-- Published cost data support a reference class of roughly $19–34M for a single Phase III trial, with a very wide range ($7–221M). Examples are the $19M Phase III median, $23M for anti-infective trials and €33.9M for TB-PRACTECAL.
-- A $7M all-in budget sits at the low end of that range. It is not clearly implausible for a low-cost adjunct trial.
-- The "multiple trials or IPD meta-analysis" requirement is UNGROUNDED. The pregnancy subgroup would probably be excluded for statins, so the multiplier is probably smaller than implied.
-- Drop endTB's $60M as a trial cost.
-- The 350–1,000× SROI range is correct arithmetic, but only if a $20–60M cost is accepted.
-- Strength: medium, direction: uncertain, with a downward lean on SROI.
+- Documented TB Phase III costs include €33.9M for TB-PRACTECAL (drug-resistant TB) and a general pivotal-trial median of about $19M.
+- A $7M all-in budget is below that reference class unless the trial is a cheap pragmatic design with routine-care endpoints.
+- A central all-in cost of $15–30M gives SROI of roughly 700–1,400x. This range is my adjustment, wider than the original "about 700x."
+- Mark as UNGROUNDED: the claim that WHO requires multiple trials or an IPD meta-analysis, and the budgets of the five named trials.
+- Strength: **medium**. Direction: SROI down.
 
 ---
 
-## Critique 2: Mismatched counterfactuals (speedup benefit vs. all-in cost)
+## Critique 2: Benefit and cost come from different counterfactuals
+
+**CITATION CHECK**
+- The critique cites no external sources. It is an algebraic argument.
+- I could not see the CEA or BOTEC, so I cannot confirm the "1 year × plateau deaths" benefit, the 3,050x SROI, the $7M or $6.7M figures, or the 2% case decline. These are **UNVERIFIABLE** from what I was given.
 
 **CLAIM CHECK**
-- **Pure-delay algebra: VERIFIED as a derivation, with one caveat.**
-  - If the whole program shifts by D years, benefits and costs both scale by e^(−rD). The net effect is (1−e^(−rD))·PV_B against (1−e^(−rD))·PV_C. The ratio is PV_B/PV_C, independent of D.
-  - This is a standard result for pure time-shifts under a constant discount rate. It holds only if the benefit stream and cost stream shift by the same D. If the benefit lag is longer than the cost lag, the ratio changes.
-- **"Never" and mixture branches: VERIFIED.** Both numerator and denominator scale by the same factor, so the ratio is PV_B/PV_C.
-- **Numbers: VERIFIED as arithmetic, with one undocumented input.**
-  - 1/0.06 ≈ 16.7. Multiplying by 0.6–0.7 gives about 10–11.7. Dividing by 0.85 gives about 12–13.8.
-  - With r = 4% only, 25 × 0.6–0.7 ÷ 0.85 is about 17.6–20.6, so "about 18x" holds.
-  - 3,050 × 12.5 ≈ 38,000 and 3,050 × 18 ≈ 55,000. The "30,000–55,000x" range is consistent.
-  - The 0.6–0.7 delay factor is unexplained. It presumably reflects benefit onset after trial, WHO review and rollout. It should be stated explicitly because it drives the result.
-- **"The BOTEC counts one year of plateau deaths averted and charges the full $7M": UNVERIFIABLE.** I do not have the CEA, so the diagnosis that the numerator and denominator come from different counterfactuals rests on the Investigator's reading.
-- **Hybrid framing may be deliberate conservatism: UNGROUNDED, as the Investigator says.**
-- **Displacement of other funders' money: a valid conceptual point.** The delay-branch ratio is PV_B/PV_C only if the other funders' dollars are valued at zero opportunity cost. The Investigator flags this but does not quantify it. If the displaced money would fund equally cost-effective research, the delay benefit shrinks toward zero and the 10–20× uplift would not hold.
+- **Pure delay gives PV_B/PV_C, independent of D: PLAUSIBLE, with a hidden assumption.** I re-derived it. Shifting the whole stream by D scales both PVs by e^(−rD), so the ratio of differences is PV_B/PV_C. For a perpetuity, the benefit lost is about D × one plateau year. That matches the BOTEC's benefit term, so the critique correctly isolates the denominator as the inconsistent part.
+- **The assumption: other funders' $6.7M costs the grant only the time value of money, r·D·PV_C.**
+  - This holds only if money is valued at the discount rate r.
+  - If displaced dollars would fund other TB work at a high cost-effectiveness bar, the cost is not just interest.
+  - By my rough calculation, the ratio is then about (1−e^(−rD))·PV_B/PV_C + CE_other·e^(−rD).
+  - With D=1 and r=4%, that is about 0.4–0.5× the BOTEC plus CE_other. It could fall at or below the BOTEC unless CE_other is very high.
+  - The critique mentions displacement only as a separate issue. It is actually load-bearing for the delay branch.
+- **Never branch gives PV_B/PV_C: VERIFIED algebraically.** This depends on the grant being truly decisive and on attributing the whole program's benefit to it.
+- **Mixture is the same: VERIFIED algebraically.**
+- **Multiplier arithmetic: VERIFIED.** 1/0.06 ≈ 16.7. Times 0.6–0.7 is about 10–11.7. Dividing by 0.85 gives about 12–14. Without the decline, 1/0.04 = 25, which gives about 18–20. 3,050 × 10–18 gives about 30,500–55,000.
+- **The 0.6–0.7 "delay factor" and 0.85 "cost-discount adjustment": UNGROUNDED.** They are not derived or sourced. They probably reflect lag before benefits start, but that is not stated.
+- **Internal inconsistency:** Estimated Direction is "decreases," yet the critique argues SROI is 10–20× higher. It presumably means "the BOTEC understates SROI," but the label is confusing.
 
 **EVIDENCE FOUND**
-- No external empirical evidence is needed for the core argument. I found nothing that contradicts it.
-- The result is highly sensitive to the benefit horizon. The Investigator notes this but then states a 30,000–55,000× headline. That headline should be treated as an upper-bound illustration only.
-- Real-world constraints on the horizon are visible in the statin evidence. ROSETTA found 
+- None external. Nothing I found speaks to whether CG's framing was deliberately conservative.
+
+**CORE CLAIM**
+- **Claim:** Under every coherent counterfactual the ratio equals PV_B/PV_C, so the BOTEC understates SROI by roughly 10–20×.
+- **Support: LOGIC ONLY.**
+- **Why:** The algebra holds when other funders' money is valued at the discount rate. It fails if displacement is priced at the funder's opportunity cost, and the multiplier rests on assumed horizon and delay parameters.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hybrid-counterfactual diagnosis is sound. "Every coherent framing" and the 10–20× multiple are overstated.
+
+**REVISED CRITIQUE**
+- The BOTEC pairs a delay-world benefit (one year of plateau deaths averted) with a never-world cost (the full pathway). That is internally inconsistent.
+- If other funders' dollars are treated as costing only time value, a consistent framing gives PV_B/PV_C. That is higher than the BOTEC by roughly the number of discounted benefit-years, which is **UNGROUNDED but plausibly about 5–20×** under a finite horizon.
+- If displaced funding is valued at CG's own bar, the delay branch could be near or below the BOTEC. Only the never branch reliably raises the ratio.
+- Do not report 30,000–55,000x. Report it as a conditional upper scenario.
+- Strength: **medium**, not large. Direction: SROI up in the never branch, ambiguous in the delay branch.
+
+---
+
+## Critique 3: "Never" is a live branch for a generic-statin TB program
+
+**CITATION CHECK**
+- The critique cites no papers and flags the funder landscape as ungrounded.
+- **NIH and Johns Hopkins preclinical and early clinical work: PARTIALLY VERIFIED.**
+  - StAT-TB is 
+a Phase 2b dose-finding study of pravastatin in adults with TB, sponsored by NIAID. It started in February 2020 and completed in 2022.
+
+  - Preclinical statin mouse work acknowledges 
+NIH grant R00 AI114952 and a Bill & Melinda Gates Foundation grant (OPP 1066499).
+
+  - Hopkins affiliation did not appear in the retrieved text.
+- **Searches of ClinicalTrials.gov, ICTRP, TAG, EDCTP, Unitaid and RePORTER were not possible with my tools.** The absence of a Phase III statin-TB trial in my results is therefore only weak evidence.
+
+**CLAIM CHECK**
+- **Statins are off-patent and have no commercial sponsor: PLAUSIBLE.** This is a general repurposing argument. I did not locate a source for it.
+- **Public-health funders have favored novel regimens, shortened regimens and vaccines over HDTs: UNVERIFIABLE.**
+  - Gates did fund a four-arm HDT Phase 2 trial. 
+It "provided funding for this trial and contributed to the selection of host-directed therapy candidates."
+ Statins were not among its four arms.
+  - Statins also drew NIH and Gates support at the preclinical stage and NIAID at Phase 2b. Funders have not ignored statins.
+- **The grant is the gating event, with dose-finding preceding Phase III: QUESTIONABLE.**
+  - StAT-TB, a Phase 2b dose-finding trial, is already completed.
+  - A separate rosuvastatin Phase 2b trial reported: 
+median time to culture conversion was 42 days in both arms (HR 1.30, 0.88–1.91, p=0.19).
+ The authors concluded that 
 rosuvastatin 10 mg was safe but did not produce substantive benefits on culture conversion overall.
- Its PET-CT analysis showed 
-no effect on microbiological or radiological outcomes.
- A 
-phase IIA atorvastatin study showed a significant reduction in sputum mycobacterial load.
- Statin class and dose effects are uncertain, and p_success should be modest. The Investigator says p_success is included in PV_B, so this lowers the level but not the ratio logic.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+  - A PET-CT sub-study found 
+no impact on PET-CT changes.
 
-**REVISED CRITIQUE**
-- Under a pure time-shift, "never", or a mixture of the two, the benefit-to-cost ratio is PV_B/PV_C. The BOTEC's "one year of benefit against full cost" is internally inconsistent if that is what the BOTEC does. That last point needs confirmation against the CEA.
-- The uplift is plausibly about 10–20× under the stated horizon and discount assumptions. It depends heavily on the unexplained delay factor, the horizon, and treating other funders' dollars as free.
-- Report the uplift as an illustrative range, not as "30,000–55,000×".
-- Direction: the ratio rises, but displacement and horizon limits could pull it back down. Strength: large conceptually, medium once displacement is applied.
-
----
-
-## Critique 3: Funding landscape and the "never" branch
-
-**CLAIM CHECK**
-- **"NIH and Johns Hopkins have published preclinical and early clinical work": VERIFIED.**
-  - StAT-TB (NCT03882177) is a 
-NIAID-sponsored Phase 2b dose-finding pravastatin study.
- It is 
-completed.
-
-  - The protocol lists 
-Petros Karakousis of Johns Hopkins as US Principal Investigator.
-
-  - It states the findings will 
-inform dose selection for an anticipated larger follow-up study testing treatment-shortening potential.
- This supports the "dose-finding precedes Phase III" structure.
-- **"Public-health funders have so far favored novel regimens and vaccines over host-directed therapies": UNVERIFIED, and partly contradicted.**
-  - EDCTP funded StatinTB, a 
-proof-of-concept Phase IIB placebo-controlled trial in Khayelitsha
- under grant RIA2017T-2004.
-  - NIAID also funded it, through 
-R01AI160501.
-
-  - Wellcome has co-funded related work.
-  - ROSETTA was a 
-phase 2b trial run in the Philippines, Viet Nam and Uganda.
- I did not identify its funder.
-  - Public funders have clearly supported Phase II statin-TB work. The open question is Phase III, where I found no funded trial.
-- **"No commercial sponsor for generic statins": PLAUSIBLE.** The StAT-TB protocol itself says 
-statins are attractive because of the widespread availability of less costly generics.
- That is the flip side of weak commercial incentive. I found no repurposing-literature source for the sponsor gap.
-- **"Phase IIc" competitor: NOTABLE.**
-  - ATORTUB has a registered 
-Phase IIC selection trial with extended follow-up, designed as a pilot Phase III.
- (NCT06199921).
-  - The ATORTUB group 
-recently completed Phase IIA and IIB studies.
-
-  - I cannot say whether this is the CG-funded trial. If the grant funds this trial, it is not a new gating step. If it funds a different trial, ATORTUB is an existing parallel pipeline, which lowers q. Check this first.
-- **Expected speedup formula: VERIFIED.** q·H_eff + (1−q)·D with H_eff ≈ 10 and q = 0.1–0.2 gives about 1.9–3 years, assuming D ≈ 1.
-- **"SROI roughly 20× higher": ARITHMETICALLY EXPLAINED, but conceptually weak.**
-  - 7 ÷ 0.32 ≈ 22, so the 20× is just the ratio of the all-in cost to CG's own cost.
-  - It credits CG with all benefits while charging only CG's $320k. If the counterfactual is "never", the other funders' $6.7M is a real cost that exists only because of the grant (see Critique 2). Under a delay counterfactual it is displaced spending.
-  - Either way the 20× needs a justified attribution rule, such as a leverage or fractional-credit approach, before it can be reported.
-- **Cross-reference error.** The text says the ratio is robust to q "(see Critique 1)", and uses H_eff from "my Critique 1 calculation". In this set that derivation is in Critique 2, not Critique 1. The finding also conflicts with the claim that SROI could be 20× higher: robustness to q means the all-in ratio does not change, so the uplift comes only from the change of cost basis.
+  - The critique does not mention this null result. It lowers p_success. It also makes a "never" outcome more likely, but through low prior efficacy rather than lack of funding.
+  - Whether the CG Phase IIc is gating depends on the grant's design, which I could not see.
+- **Observational support exists.** 
+A meta-analysis found statins associated with reduced active TB risk (OR 0.66; 95% CI 0.54–0.81).
+ This is observational and confounded.
+- **Expected speedup q·H_eff + (1−q)·D exceeds 1 year for q = 0.1–0.2: VERIFIED arithmetically.** For example, 0.1×10 + 0.9×1 = 1.9. The "break-even at q ≈ 0" is loose, because at q=0 with D=0.5 the speedup is below 1.
+- **"About 20× higher" SROI: arithmetic VERIFIED, framing problematic.** $7M / $0.32M ≈ 22. But crediting the whole downstream benefit while charging only the grant's cost ignores that the never branch needs the other funders' $6.7M. This contradicts Critique 2, which charges the full cost in that branch.
+- **Cross-references to "Critique 1" appear to refer to the speedup critique (Critique 2 here).** The numbering is mismatched.
 
 **EVIDENCE FOUND**
-- There is a real pipeline: StAT-TB (NIAID), StatinTB (EDCTP/NIAID), ROSETTA, and ATORTUB. A review noted 
-four ongoing statin-TB clinical trials, calling statins one of the most promising HDT drugs in the pipeline.
+- The negative rosuvastatin Phase 2b is the main added evidence. It weakens efficacy priors and the case for a Phase III.
+- A 2026 review says HDT candidates, including statins, still need 
+large-scale, stratified Phase III trials.
+ That is consistent with the gap the critique describes.
+- I found no registered statin-TB Phase III trial in these searches. This is not exhaustive.
 
-- The ROSETTA null result reduces expected Phase III appetite for the whole class. That raises q for "never" for rosuvastatin-like approaches, and it reduces p_success.
-- I did not search the TAG pipeline, Working Group on New TB Drugs, Unitaid portfolio, or NIH RePORTER directly. Those remain open.
+**CORE CLAIM**
+- **Claim:** The realistic counterfactual for a CG-funded statin Phase IIc has a substantial probability (q about 0.1–0.2 or more) of long delay or never, so expected speedup is above 1 year.
+- **Support: LOGIC ONLY.**
+- **Why:** The reasoning is coherent and consistent with no Phase III being found. I found no direct evidence on q, and existing NIH, Gates and other Phase 2b statin trials show funding has occurred.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis stays as UNGROUNDED but plausible. The gating-event premise and the "20× higher" figure are weakened.
 
 **REVISED CRITIQUE**
-- Verified facts: the Phase II statin-TB landscape is populated by NIH, EDCTP and Wellcome-funded work; dose-finding explicitly precedes a larger follow-up trial; generics have no obvious commercial sponsor.
-- The claim that funders disfavor HDT is UNGROUNDED, and Phase II funding evidence cuts against it. No Phase III statin-TB trial funder was found, so the "never" branch remains plausible but unquantified.
-- A competing registered Phase IIC trial (ATORTUB) must be checked against the CG grant. If it is the same trial, the redundancy case in the critique's last sentence applies, not the leverage case.
-- The "20× higher SROI" should be dropped or re-derived with an explicit attribution rule. Fix the cross-reference to Critique 2.
-- Direction: uncertain rather than clearly up. Strength: medium.
+- Statin-TB trials have been funded at Phase 2b by NIAID, and a rosuvastatin Phase 2b exists. A Phase III sponsor is plausibly still lacking, but I could not confirm that.
+- The speedup is better modeled as a distribution than as a fixed 1 year. This is logic-only and depends on an unestimated q.
+- The null rosuvastatin result should lower p_success. That partly offsets any gain from a longer speedup.
+- Drop the "SROI about 20× higher" claim. It credits the full downstream benefit against only the grant cost, which conflicts with Critique 2's accounting.
+- Strength: **low to medium**. Direction: ambiguous, with up in the never branch and down if p_success falls or the grant is redundant.
 
 --- Critique: The funding landscape for a generic-statin TB program makes "never" a live branch. The speedup is a poor proxy for the grant's real counterfactual. ---
 
-## Critique 1: TB Phase III reference class and WHO evidence package
+## Critique 1: Reference-class check for TB Phase III trial cost
+
+**CITATION CHECK**
+- The critique cites no papers. It names five trials: Study 31/A5349, STREAM, endTB, TRUNCATE-TB and SimpliciTB.
+- **Study 31/A5349: VERIFIED.** 
+Target enrollment is 2500 participants.
+ The record also lists 
+TBTC Study 31, ACTG Study A5349
+ as the same trial.
+- **STREAM: VERIFIED as a Phase III TB trial.** 
+The first participant was enrolled in July 2012.
+ I did not retrieve its enrollment number.
+- **endTB: VERIFIED as a Phase III trial.** 
+It is funded by a Unitaid grant.
+ I did not retrieve enrollment.
+- **TRUNCATE-TB and SimpliciTB: NOT CHECKED.** I found no source for their sizes.
+- The "hundreds to thousands" range is plausible but only partly confirmed.
 
 **CLAIM CHECK**
-- **"Phase III TB trials (Study 31/A5349, STREAM, endTB, TRUNCATE-TB, SimpliciTB) enrolled hundreds to thousands of participants": PLAUSIBLE, only partly verified.**
-  - The trials are real. I confirmed that 
-endTB is a Phase III, randomized, open-label, non-inferiority, multi-country trial of five shortened all-oral MDR-TB regimens
-. I also confirmed that 
-STREAM was a phase-III non-inferiority RCT.
+- **TB Phase III budgets are "generally in the tens of millions": PLAUSIBLE, with one direct TB data point.**
+  - TB-PRACTECAL is a Phase 2b-3 drug-resistant TB trial. 
+Its total cost was €33.9 million, or €61,460 per patient.
 
-  - The endTB launch statement said 
-750 patients would take part in the clinical trial across six countries.
+  - A TB-specific cost model gives 
+a mean of $48.9 million for trials with an active-drug control arm.
 
-  - I did not retrieve enrollment figures for Study 31, TRUNCATE-TB or SimpliciTB, so those remain from memory. SimpliciTB may be registered as a Phase 2 or 2/3 trial rather than Phase III, so the label needs a check.
-- **"Budgets were generally in the tens of millions of dollars": PLAUSIBLE, with partial support.**
-  - TB-PRACTECAL was an MSF-sponsored phase 2b-3 trial. Its 
-total cost was €33.9 million, an average of €61,460 per patient.
+  - A systematic review found 
+a range of US$7–221 million per Phase 2/3 trial.
 
-  - The same paper reports a literature range of 
-US$7–221 million per trial for pharmaceutical phase 2 and 3 trials.
+  - The general median is 
+$19 million for a single Phase III trial, from 138 FDA pivotal trials (2015–16).
 
-  - It also cites an 
-average of US$23 million for anti-infective and respiratory phase 3 trials.
+  - TAG's bedaquiline analysis used 
+Sertkaya (2016) estimates, with a Phase III upper bound of US$26.6 million,
+ then adjusted downward for lower trial costs in LMICs.
+- **I found no actual budgets for Study 31, STREAM, endTB, TRUNCATE-TB or SimpliciTB. UNVERIFIABLE.** The critique already flags its figures as recalled and ungrounded.
+- **The counterargument about cheap trials with routine-care endpoints: PLAUSIBLE, with some support.**
+  - An EDCTP-funded pragmatic DS-TB trial protocol (NCT05575518) lists 
+a grand total of £226,734 in its per-site budget table.
 
-  - Outside TB, 
-the median cost of a single phase III trial was $19 million
- in a JAMA IM analysis of 138 pivotal trials for FDA-approved drugs.
-  - The endTB "US$60M" figure is not a trial budget. 
-It is a four-year Unitaid project that also covers an estimated 2,600-patient treatment cohort.
- Do not use it as a single-trial cost.
-  - I found no budgets for Study 31, STREAM or TRUNCATE-TB. Those would need NIH RePORTER, EDCTP and Unitaid lookups.
-- **"WHO may require more than one trial or an IPD meta-analysis": UNVERIFIABLE.**
-  - I found no WHO requirement of this kind. The WHO Global TB Report 2025 says its drug-resistant TB update drew on 
-two clinical trials, BEAT-TB and endTB.
- That shows WHO sometimes relies on more than one trial. It is a drug-resistant TB example, and it does not show a requirement.
-  - Subgroup evidence looks less likely to multiply costs for statins. A preprint notes 
-pregnant women are unlikely to be on statins because of teratogenicity concerns.
- That suggests a pregnancy subgroup would probably be excluded, and the recommendation would likely carry a caveat instead. This is a weak source.
-  - The StAT-TB protocol notes that 
-statins and antiretrovirals can be co-administered with drug and dose selection.
- The HIV subgroup is therefore a real design question.
-- **Arithmetic: VERIFIED.**
-  - $20–60M divided by $7M is 2.9–8.6×.
-  - $3,050 divided by 3–9 is about 340–1,020×.
-  - $30M gives about 710×.
+  - The document is ambiguous. The budget is stated for 
+a minimal number of 436 patients per site.
+
+  - Pragmatic DS-TB trials can therefore be much cheaper per patient than TB-PRACTECAL. The $20–60M range is probably the upper part of the plausible distribution for this design.
+- **Arithmetic: VERIFIED.** $20–60M against $7M is about 2.9–8.6×. 3,050 divided by that gives about 355–1,050. $30M gives about 710.
+- **WHO may require subgroup evidence, multiple trials or an IPD meta-analysis: UNVERIFIABLE.** I found no WHO document setting a number-of-trials requirement. The critique concedes this. A 2026 review of host-directed therapy (HDT) says 
+moving these agents into standard practice requires large-scale, stratified Phase III trials.
+ That loosely supports the stratification point.
 
 **EVIDENCE FOUND**
-- The reference class is supported, but it mixes novel-drug registrational trials with different cost drivers. The TB-PRACTECAL paper says its cost 
-included investment in trial infrastructure and medical expenditures not typical of standard clinical trials.
- A cheap oral adjunct with a routine-care endpoint could cost well below $20M. The Investigator's counterargument stands.
-- Cost scales with per-patient cost and sample size. The review's lower bound of $7M overlaps the BOTEC figure. The $7M budget is therefore at the very bottom of the range and is not impossible.
+- TB-PRACTECAL's cost per patient, €61,460, is high because it ran in hospital-based drug-resistant TB settings. Using it for a DS-TB adjunct probably overstates cost.
+- The Mullard/JAMA median of $19M comes from FDA-approved pivotal trials, so it is not TB-specific.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- **Claim:** A Phase III trial for this intervention would plausibly cost well above $7M, in the range $20–60M.
+- **Support: SUPPORTED for the reference class, not for this trial design.**
+- **Why:** TB-PRACTECAL and the JAMA/TAG estimates directly show tens of millions per TB Phase III. I found no cost for a cheap DS-TB adjunct trial, and one pragmatic protocol hints at a much lower cost.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction (a $7M all-in cost looks low) survives. The specific trial budgets and the WHO multi-trial requirement are unverified.
 
 **REVISED CRITIQUE**
-- Published cost data support a reference class of roughly $19–34M for a single Phase III trial, with a very wide range ($7–221M). Examples are the $19M Phase III median, $23M for anti-infective trials and €33.9M for TB-PRACTECAL.
-- A $7M all-in budget sits at the low end of that range. It is not clearly implausible for a low-cost adjunct trial.
-- The "multiple trials or IPD meta-analysis" requirement is UNGROUNDED. The pregnancy subgroup would probably be excluded for statins, so the multiplier is probably smaller than implied.
-- Drop endTB's $60M as a trial cost.
-- The 350–1,000× SROI range is correct arithmetic, but only if a $20–60M cost is accepted.
-- Strength: medium, direction: uncertain, with a downward lean on SROI.
+- Documented TB Phase III costs include €33.9M for TB-PRACTECAL (drug-resistant TB) and a general pivotal-trial median of about $19M.
+- A $7M all-in budget is below that reference class unless the trial is a cheap pragmatic design with routine-care endpoints.
+- A central all-in cost of $15–30M gives SROI of roughly 700–1,400x. This range is my adjustment, wider than the original "about 700x."
+- Mark as UNGROUNDED: the claim that WHO requires multiple trials or an IPD meta-analysis, and the budgets of the five named trials.
+- Strength: **medium**. Direction: SROI down.
 
 ---
 
-## Critique 2: Mismatched counterfactuals (speedup benefit vs. all-in cost)
+## Critique 2: Benefit and cost come from different counterfactuals
+
+**CITATION CHECK**
+- The critique cites no external sources. It is an algebraic argument.
+- I could not see the CEA or BOTEC, so I cannot confirm the "1 year × plateau deaths" benefit, the 3,050x SROI, the $7M or $6.7M figures, or the 2% case decline. These are **UNVERIFIABLE** from what I was given.
 
 **CLAIM CHECK**
-- **Pure-delay algebra: VERIFIED as a derivation, with one caveat.**
-  - If the whole program shifts by D years, benefits and costs both scale by e^(−rD). The net effect is (1−e^(−rD))·PV_B against (1−e^(−rD))·PV_C. The ratio is PV_B/PV_C, independent of D.
-  - This is a standard result for pure time-shifts under a constant discount rate. It holds only if the benefit stream and cost stream shift by the same D. If the benefit lag is longer than the cost lag, the ratio changes.
-- **"Never" and mixture branches: VERIFIED.** Both numerator and denominator scale by the same factor, so the ratio is PV_B/PV_C.
-- **Numbers: VERIFIED as arithmetic, with one undocumented input.**
-  - 1/0.06 ≈ 16.7. Multiplying by 0.6–0.7 gives about 10–11.7. Dividing by 0.85 gives about 12–13.8.
-  - With r = 4% only, 25 × 0.6–0.7 ÷ 0.85 is about 17.6–20.6, so "about 18x" holds.
-  - 3,050 × 12.5 ≈ 38,000 and 3,050 × 18 ≈ 55,000. The "30,000–55,000x" range is consistent.
-  - The 0.6–0.7 delay factor is unexplained. It presumably reflects benefit onset after trial, WHO review and rollout. It should be stated explicitly because it drives the result.
-- **"The BOTEC counts one year of plateau deaths averted and charges the full $7M": UNVERIFIABLE.** I do not have the CEA, so the diagnosis that the numerator and denominator come from different counterfactuals rests on the Investigator's reading.
-- **Hybrid framing may be deliberate conservatism: UNGROUNDED, as the Investigator says.**
-- **Displacement of other funders' money: a valid conceptual point.** The delay-branch ratio is PV_B/PV_C only if the other funders' dollars are valued at zero opportunity cost. The Investigator flags this but does not quantify it. If the displaced money would fund equally cost-effective research, the delay benefit shrinks toward zero and the 10–20× uplift would not hold.
+- **Pure delay gives PV_B/PV_C, independent of D: PLAUSIBLE, with a hidden assumption.** I re-derived it. Shifting the whole stream by D scales both PVs by e^(−rD), so the ratio of differences is PV_B/PV_C. For a perpetuity, the benefit lost is about D × one plateau year. That matches the BOTEC's benefit term, so the critique correctly isolates the denominator as the inconsistent part.
+- **The assumption: other funders' $6.7M costs the grant only the time value of money, r·D·PV_C.**
+  - This holds only if money is valued at the discount rate r.
+  - If displaced dollars would fund other TB work at a high cost-effectiveness bar, the cost is not just interest.
+  - By my rough calculation, the ratio is then about (1−e^(−rD))·PV_B/PV_C + CE_other·e^(−rD).
+  - With D=1 and r=4%, that is about 0.4–0.5× the BOTEC plus CE_other. It could fall at or below the BOTEC unless CE_other is very high.
+  - The critique mentions displacement only as a separate issue. It is actually load-bearing for the delay branch.
+- **Never branch gives PV_B/PV_C: VERIFIED algebraically.** This depends on the grant being truly decisive and on attributing the whole program's benefit to it.
+- **Mixture is the same: VERIFIED algebraically.**
+- **Multiplier arithmetic: VERIFIED.** 1/0.06 ≈ 16.7. Times 0.6–0.7 is about 10–11.7. Dividing by 0.85 gives about 12–14. Without the decline, 1/0.04 = 25, which gives about 18–20. 3,050 × 10–18 gives about 30,500–55,000.
+- **The 0.6–0.7 "delay factor" and 0.85 "cost-discount adjustment": UNGROUNDED.** They are not derived or sourced. They probably reflect lag before benefits start, but that is not stated.
+- **Internal inconsistency:** Estimated Direction is "decreases," yet the critique argues SROI is 10–20× higher. It presumably means "the BOTEC understates SROI," but the label is confusing.
 
 **EVIDENCE FOUND**
-- No external empirical evidence is needed for the core argument. I found nothing that contradicts it.
-- The result is highly sensitive to the benefit horizon. The Investigator notes this but then states a 30,000–55,000× headline. That headline should be treated as an upper-bound illustration only.
-- Real-world constraints on the horizon are visible in the statin evidence. ROSETTA found 
+- None external. Nothing I found speaks to whether CG's framing was deliberately conservative.
+
+**CORE CLAIM**
+- **Claim:** Under every coherent counterfactual the ratio equals PV_B/PV_C, so the BOTEC understates SROI by roughly 10–20×.
+- **Support: LOGIC ONLY.**
+- **Why:** The algebra holds when other funders' money is valued at the discount rate. It fails if displacement is priced at the funder's opportunity cost, and the multiplier rests on assumed horizon and delay parameters.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hybrid-counterfactual diagnosis is sound. "Every coherent framing" and the 10–20× multiple are overstated.
+
+**REVISED CRITIQUE**
+- The BOTEC pairs a delay-world benefit (one year of plateau deaths averted) with a never-world cost (the full pathway). That is internally inconsistent.
+- If other funders' dollars are treated as costing only time value, a consistent framing gives PV_B/PV_C. That is higher than the BOTEC by roughly the number of discounted benefit-years, which is **UNGROUNDED but plausibly about 5–20×** under a finite horizon.
+- If displaced funding is valued at CG's own bar, the delay branch could be near or below the BOTEC. Only the never branch reliably raises the ratio.
+- Do not report 30,000–55,000x. Report it as a conditional upper scenario.
+- Strength: **medium**, not large. Direction: SROI up in the never branch, ambiguous in the delay branch.
+
+---
+
+## Critique 3: "Never" is a live branch for a generic-statin TB program
+
+**CITATION CHECK**
+- The critique cites no papers and flags the funder landscape as ungrounded.
+- **NIH and Johns Hopkins preclinical and early clinical work: PARTIALLY VERIFIED.**
+  - StAT-TB is 
+a Phase 2b dose-finding study of pravastatin in adults with TB, sponsored by NIAID. It started in February 2020 and completed in 2022.
+
+  - Preclinical statin mouse work acknowledges 
+NIH grant R00 AI114952 and a Bill & Melinda Gates Foundation grant (OPP 1066499).
+
+  - Hopkins affiliation did not appear in the retrieved text.
+- **Searches of ClinicalTrials.gov, ICTRP, TAG, EDCTP, Unitaid and RePORTER were not possible with my tools.** The absence of a Phase III statin-TB trial in my results is therefore only weak evidence.
+
+**CLAIM CHECK**
+- **Statins are off-patent and have no commercial sponsor: PLAUSIBLE.** This is a general repurposing argument. I did not locate a source for it.
+- **Public-health funders have favored novel regimens, shortened regimens and vaccines over HDTs: UNVERIFIABLE.**
+  - Gates did fund a four-arm HDT Phase 2 trial. 
+It "provided funding for this trial and contributed to the selection of host-directed therapy candidates."
+ Statins were not among its four arms.
+  - Statins also drew NIH and Gates support at the preclinical stage and NIAID at Phase 2b. Funders have not ignored statins.
+- **The grant is the gating event, with dose-finding preceding Phase III: QUESTIONABLE.**
+  - StAT-TB, a Phase 2b dose-finding trial, is already completed.
+  - A separate rosuvastatin Phase 2b trial reported: 
+median time to culture conversion was 42 days in both arms (HR 1.30, 0.88–1.91, p=0.19).
+ The authors concluded that 
 rosuvastatin 10 mg was safe but did not produce substantive benefits on culture conversion overall.
- Its PET-CT analysis showed 
-no effect on microbiological or radiological outcomes.
- A 
-phase IIA atorvastatin study showed a significant reduction in sputum mycobacterial load.
- Statin class and dose effects are uncertain, and p_success should be modest. The Investigator says p_success is included in PV_B, so this lowers the level but not the ratio logic.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+  - A PET-CT sub-study found 
+no impact on PET-CT changes.
 
-**REVISED CRITIQUE**
-- Under a pure time-shift, "never", or a mixture of the two, the benefit-to-cost ratio is PV_B/PV_C. The BOTEC's "one year of benefit against full cost" is internally inconsistent if that is what the BOTEC does. That last point needs confirmation against the CEA.
-- The uplift is plausibly about 10–20× under the stated horizon and discount assumptions. It depends heavily on the unexplained delay factor, the horizon, and treating other funders' dollars as free.
-- Report the uplift as an illustrative range, not as "30,000–55,000×".
-- Direction: the ratio rises, but displacement and horizon limits could pull it back down. Strength: large conceptually, medium once displacement is applied.
-
----
-
-## Critique 3: Funding landscape and the "never" branch
-
-**CLAIM CHECK**
-- **"NIH and Johns Hopkins have published preclinical and early clinical work": VERIFIED.**
-  - StAT-TB (NCT03882177) is a 
-NIAID-sponsored Phase 2b dose-finding pravastatin study.
- It is 
-completed.
-
-  - The protocol lists 
-Petros Karakousis of Johns Hopkins as US Principal Investigator.
-
-  - It states the findings will 
-inform dose selection for an anticipated larger follow-up study testing treatment-shortening potential.
- This supports the "dose-finding precedes Phase III" structure.
-- **"Public-health funders have so far favored novel regimens and vaccines over host-directed therapies": UNVERIFIED, and partly contradicted.**
-  - EDCTP funded StatinTB, a 
-proof-of-concept Phase IIB placebo-controlled trial in Khayelitsha
- under grant RIA2017T-2004.
-  - NIAID also funded it, through 
-R01AI160501.
-
-  - Wellcome has co-funded related work.
-  - ROSETTA was a 
-phase 2b trial run in the Philippines, Viet Nam and Uganda.
- I did not identify its funder.
-  - Public funders have clearly supported Phase II statin-TB work. The open question is Phase III, where I found no funded trial.
-- **"No commercial sponsor for generic statins": PLAUSIBLE.** The StAT-TB protocol itself says 
-statins are attractive because of the widespread availability of less costly generics.
- That is the flip side of weak commercial incentive. I found no repurposing-literature source for the sponsor gap.
-- **"Phase IIc" competitor: NOTABLE.**
-  - ATORTUB has a registered 
-Phase IIC selection trial with extended follow-up, designed as a pilot Phase III.
- (NCT06199921).
-  - The ATORTUB group 
-recently completed Phase IIA and IIB studies.
-
-  - I cannot say whether this is the CG-funded trial. If the grant funds this trial, it is not a new gating step. If it funds a different trial, ATORTUB is an existing parallel pipeline, which lowers q. Check this first.
-- **Expected speedup formula: VERIFIED.** q·H_eff + (1−q)·D with H_eff ≈ 10 and q = 0.1–0.2 gives about 1.9–3 years, assuming D ≈ 1.
-- **"SROI roughly 20× higher": ARITHMETICALLY EXPLAINED, but conceptually weak.**
-  - 7 ÷ 0.32 ≈ 22, so the 20× is just the ratio of the all-in cost to CG's own cost.
-  - It credits CG with all benefits while charging only CG's $320k. If the counterfactual is "never", the other funders' $6.7M is a real cost that exists only because of the grant (see Critique 2). Under a delay counterfactual it is displaced spending.
-  - Either way the 20× needs a justified attribution rule, such as a leverage or fractional-credit approach, before it can be reported.
-- **Cross-reference error.** The text says the ratio is robust to q "(see Critique 1)", and uses H_eff from "my Critique 1 calculation". In this set that derivation is in Critique 2, not Critique 1. The finding also conflicts with the claim that SROI could be 20× higher: robustness to q means the all-in ratio does not change, so the uplift comes only from the change of cost basis.
+  - The critique does not mention this null result. It lowers p_success. It also makes a "never" outcome more likely, but through low prior efficacy rather than lack of funding.
+  - Whether the CG Phase IIc is gating depends on the grant's design, which I could not see.
+- **Observational support exists.** 
+A meta-analysis found statins associated with reduced active TB risk (OR 0.66; 95% CI 0.54–0.81).
+ This is observational and confounded.
+- **Expected speedup q·H_eff + (1−q)·D exceeds 1 year for q = 0.1–0.2: VERIFIED arithmetically.** For example, 0.1×10 + 0.9×1 = 1.9. The "break-even at q ≈ 0" is loose, because at q=0 with D=0.5 the speedup is below 1.
+- **"About 20× higher" SROI: arithmetic VERIFIED, framing problematic.** $7M / $0.32M ≈ 22. But crediting the whole downstream benefit while charging only the grant's cost ignores that the never branch needs the other funders' $6.7M. This contradicts Critique 2, which charges the full cost in that branch.
+- **Cross-references to "Critique 1" appear to refer to the speedup critique (Critique 2 here).** The numbering is mismatched.
 
 **EVIDENCE FOUND**
-- There is a real pipeline: StAT-TB (NIAID), StatinTB (EDCTP/NIAID), ROSETTA, and ATORTUB. A review noted 
-four ongoing statin-TB clinical trials, calling statins one of the most promising HDT drugs in the pipeline.
+- The negative rosuvastatin Phase 2b is the main added evidence. It weakens efficacy priors and the case for a Phase III.
+- A 2026 review says HDT candidates, including statins, still need 
+large-scale, stratified Phase III trials.
+ That is consistent with the gap the critique describes.
+- I found no registered statin-TB Phase III trial in these searches. This is not exhaustive.
 
-- The ROSETTA null result reduces expected Phase III appetite for the whole class. That raises q for "never" for rosuvastatin-like approaches, and it reduces p_success.
-- I did not search the TAG pipeline, Working Group on New TB Drugs, Unitaid portfolio, or NIH RePORTER directly. Those remain open.
+**CORE CLAIM**
+- **Claim:** The realistic counterfactual for a CG-funded statin Phase IIc has a substantial probability (q about 0.1–0.2 or more) of long delay or never, so expected speedup is above 1 year.
+- **Support: LOGIC ONLY.**
+- **Why:** The reasoning is coherent and consistent with no Phase III being found. I found no direct evidence on q, and existing NIH, Gates and other Phase 2b statin trials show funding has occurred.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis stays as UNGROUNDED but plausible. The gating-event premise and the "20× higher" figure are weakened.
 
 **REVISED CRITIQUE**
-- Verified facts: the Phase II statin-TB landscape is populated by NIH, EDCTP and Wellcome-funded work; dose-finding explicitly precedes a larger follow-up trial; generics have no obvious commercial sponsor.
-- The claim that funders disfavor HDT is UNGROUNDED, and Phase II funding evidence cuts against it. No Phase III statin-TB trial funder was found, so the "never" branch remains plausible but unquantified.
-- A competing registered Phase IIC trial (ATORTUB) must be checked against the CG grant. If it is the same trial, the redundancy case in the critique's last sentence applies, not the leverage case.
-- The "20× higher SROI" should be dropped or re-derived with an explicit attribution rule. Fix the cross-reference to Critique 2.
-- Direction: uncertain rather than clearly up. Strength: medium.
+- Statin-TB trials have been funded at Phase 2b by NIAID, and a rosuvastatin Phase 2b exists. A Phase III sponsor is plausibly still lacking, but I could not confirm that.
+- The speedup is better modeled as a distribution than as a fixed 1 year. This is logic-only and depends on an unestimated q.
+- The null rosuvastatin result should lower p_success. That partly offsets any gain from a longer speedup.
+- Drop the "SROI about 20× higher" claim. It credits the full downstream benefit against only the grant cost, which conflicts with Critique 2's accounting.
+- Strength: **low to medium**. Direction: ambiguous, with up in the never branch and down if p_success falls or the grant is redundant.
 
 --- Critique: Discounting quantified properly with an S-curve ramp and discounted costs. The net effect is about −20% to −31%, not the benefit-only −21% to −35%. ---
 
-## Critique 1: Discounting with an S-curve ramp and discounted costs
+## Critique 1: Discounting with an S-curve ramp and discounted costs (net about −20% to −31%)
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The arithmetic is largely correct, and the direction and size of the effect hold.
-- The institutional claims (GiveWell rate, CG convention, the ~2,000x bar) could not be verified.
-- The critique has labelling and consistency problems.
-- Because the ramp, spend timing, and baseline SROI are assumed, it is still a sensitivity illustration and not a finding.
+**CITATION CHECK**
+- No papers are cited. The Investigator names "How we use BOTECs" (May 2025) and GiveWell's 4% rate as things to check.
+  - "How we use BOTECs": NOT FOUND. My search returned only irrelevant results.
+  - GiveWell's ~4% rate: UNVERIFIABLE. My searches returned no GiveWell or Coefficient Giving (CG) source. The general literature does not settle the question. 
+Global health evaluations typically apply a 3% discount rate to health outcomes and costs.
+ 
+One paper argues for at least 5% in low- and lower-middle-income countries.
+ The 3–5% range is therefore reasonable, but it is not tied to CG.
 
 **CLAIM CHECK**
+- Benefit factors of 0.71 / 0.63 / 0.57 (T0 = 8.5, L = 6, linear ramp): **VERIFIED**.
+  - I recomputed the formula e^(−rT0)(1−e^(−rL))/(rL) and got 0.709, 0.633 and 0.565.
+- Flat 8.5-year factors of 0.77 / 0.71 / 0.65: **VERIFIED** (0.775, 0.712, 0.654).
+- All-in cost factors of 0.88 / 0.85 / 0.82: **VERIFIED**.
+  - This assumes $0.32M at t=0 and $6.7M spread uniformly over years 1–8.
+  - I got 0.881, 0.845 and 0.812, so the 5% figure is closer to 0.81.
+- Net factors of 0.80 / 0.73 / 0.69, i.e. −20% / −27% / −31%: **MOSTLY VERIFIED**.
+  - The 4% figure mixes two benefit factors. It uses 0.62 (the "exact" version) rather than the 0.633 from the stated formula.
+  - With 0.633 the 4% net factor is about 0.75, which is −25%.
+  - The cleaner statement is "about −20% / −25 to −27% / −31%".
+- The back-calculated base SROI of about 3,050x is consistent across the three rows (2,440/0.80, 2,230/0.73, 2,100/0.69). That at least makes the table internally coherent.
+- The "one-year shift" approximation is **PLAUSIBLE but approximate**.
+  - Shifting a ramp-to-plateau curve earlier by one year yields a bump of the difference B(t)−B(t−1). That bump spans [T0, T0+L+1] with mass 1.
+  - The formula uses support [T0, T0+L] instead. The exact 4% factor is about 0.62, so the error is small.
+- Directional logic (a benefit-only discount overstates the penalty when costs also fall earlier): **VERIFIED**, and standard. 
+Health effects valued in monetary terms, as in cost-benefit analysis, should be discounted at the same rate as costs.
 
-I recomputed each number by hand. I could not open the source CEA or the BOTEC document.
-
-- **Flat-discount factors at 8.5 years (0.77 / 0.71 / 0.65): VERIFIED.** e^(−0.255)=0.775, e^(−0.34)=0.712, e^(−0.425)=0.654.
-- **Thread's 8–9 year range (×0.64–0.79) and "−21% to −35%": VERIFIED.** The range is 0.787 to 0.638, so the upper end is closer to −36%, which is rounding.
-- **Ramp formula e^(−rT0)(1−e^(−rL))/(rL): VERIFIED as an approximation.**
-  - The exact value for a shifted, infinite-horizon ramp multiplies it by (1−e^(−rΔ))/(rΔ).
-  - That extra factor is about 0.98, which explains the critique's "about 0.62" note at 4%.
-- **Benefit factors (0.71 / 0.63 / 0.57): VERIFIED, with a small rounding issue.**
-  - The formula gives 0.709 / 0.633 / 0.565.
-  - The exact versions are about 0.698 / 0.620 / 0.551.
-  - The 3% and 5% table values use the approximation, while the 4% net factor uses the exact one. This is a minor inconsistency.
-- **Cost factors (0.88 / 0.85 / 0.82): VERIFIED.**
-  - Spreading $6.7M uniformly over years 1–8 and adding $0.32M at t=0 gives about 0.881 / 0.845 / 0.812.
-- **Net factors (0.80 / 0.73 / 0.69) and "−20 / −27 / −31%": VERIFIED within rounding.**
-  - Using exact benefit factors gives about −21 / −27 / −32%.
-- **L=10 ramp (≈0.57 at 4%, ≈0.51 at 5%): VERIFIED.**
-  - The approximate formula gives 0.587 at 4% (about 0.575 with the exact version) and 0.515 at 5%.
-- **SROI levels (≈2,440x / 2,230x / 2,100x): internally consistent but depend on an unstated baseline.**
-  - They imply an undiscounted SROI of about 3,050x. The critique never states this figure, and I cannot verify it.
-- **"Conflict with Critique 1" / "Critique 4": FLAG.**
-  - This critique appears to be Critique 1 and cites itself, and Critique 4 is not in this batch.
-  - These cross-references should be removed or re-keyed.
-- **GiveWell uses roughly 4%: UNVERIFIED.** My search returned nothing on GiveWell's rate. I believe this is roughly right from memory, but I have no source to cite here.
-- **CG applies or omits discounting inconsistently; "How we use BOTECs" (May 2025): UNVERIFIABLE.** The search did not surface that document or any CG discounting guidance.
-- **Bar of about 2,000x: UNVERIFIED.** I found no source in this session. I recall Open Phil's GHW bar being raised from 1,000x to about 2,000x, but that is memory, not a finding.
+- "Conflict with Critique 1": **ERROR**. This is Critique 1, so the cross-reference is wrong or garbled. The "(Critique 4)" reference points to a critique I wasn't given.
+- A 25% materiality line and a ~2,000x bar: **UNVERIFIABLE**. The Investigator said so too.
+- The claim that the ramp and cost timing are illustrative: honest. T0 = 8.5, L = 6, and costs uniform over years 1–8 are all assumed.
 
 **EVIDENCE FOUND**
-- 
-In global health, evaluations typically apply a 3% discount rate to health outcomes and costs.
- 
-One review argues for at least 5% for low- and lower-middle-income countries and about 4% for upper-middle-income countries.
- This supports the critique's 3–5% range and shows that costs and benefits are conventionally discounted together.
-- Inference, not sourced:
-  - The Critique 3 threshold of about 0.65 years is consistent with a bar of about 2,000x against a baseline of about 3,050x (2,000/3,050 ≈ 0.656).
-  - That means the bar is crossed at about −34%, not at the "25% materiality line".
-  - Under this critique's own numbers, the L=10 ramp at 5% gives about −37% (≈1,900x), which falls below the bar. The other scenarios stay above it.
-  - The investigator should state which threshold defines "material".
+- I found no CG or GiveWell rule on discounting R&D BOTECs.
+- Sensitivity to ramp length is mathematically correct. For L = 10 at 4%, the formula gives e^(−0.34)·(1−e^(−0.4))/0.4 ≈ 0.712 × 0.824 ≈ 0.59. The Investigator said ~0.57, which is close.
+
+**CORE CLAIM**
+- Claim: Consistent discounting of costs and benefits gives a net penalty of about 20–31%, smaller than the benefit-only penalty of 21–35%.
+- Support: **LOGIC ONLY**
+- Why: The arithmetic checks out and the principle is standard, but the inputs (T0, L, cost timing) are unsourced assumptions and CG's actual convention is unknown.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the "discount costs too" logic survive. The specific percentages depend on assumed timing. The cross-reference to "Critique 1" is erroneous. Whether CG discounts at all is unverified.
 
 **REVISED CRITIQUE**
-- Discounting benefits alone (about −21% to −35%) overstates the penalty when costs are discounted consistently. Under the assumed ramp (T0=8.5, L=6) and uniform spend over years 1–8, the net effect is about −21% / −27% / −32% at 3% / 4% / 5%.
-- A longer ramp (L=10) deepens the benefit penalty. At 5% it could push SROI below the bar if the baseline is about 3,050x. This relies on the inferred baseline.
-- **Strength: medium, direction a reduction in SROI.** All timing assumptions are illustrative and need the CEA's real timeline. The CG discounting convention and the bar level remain UNGROUNDED.
-- Remove the self-referential "Critique 1" and "Critique 4" cross-references.
+- If benefits are discounted, costs should be discounted consistently.
+- Under illustrative timing (ramp starting at about year 8.5, 6-year linear ramp, costs spread over years 1–8), the net discount penalty is about −20% at 3%, −25 to −27% at 4%, and −31% at 5%.
+- This is smaller than the benefit-only penalty.
+- Flag these as sensitive to the CEA's real timeline.
+- Remove the claim about CG/GiveWell conventions and the "conflict with Critique 1" sentence.
+- Strength: **medium-low**. It is a second-order refinement, and the Investigator concedes this.
 
 ---
 
 ## Critique 2: Asymmetric probability weighting of benefit and cost
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The logic and arithmetic are sound. The factual premise (that CG's $7M is a nominal, ungated sum) is unverifiable without the CEA.
-- Retain it as a flagged hypothesis, **UNGROUNDED — plausible but needs empirical support.** The investigator already conditions it correctly.
+**CITATION CHECK**
+- No citations. The critique is explicitly "UNGROUNDED" and "logical argument."
 
 **CLAIM CHECK**
-- **Expected cost = $0.32M + s×$6.7M: VERIFIED as arithmetic.**
-  - At s=0.6, cost is $4.34M and SROI rises by 7.02/4.34 ≈ 1.62x. ✔
-  - At s=0.4, cost is $3.0M and SROI rises by about 2.34x. ✔
-  - The "$7M" is really $7.02M, which is immaterial.
-- **Benefit risk-adjusted while cost is nominal is a "double penalty": PLAUSIBLE.**
-  - Stage-weighting costs is standard practice in risk-adjusted pharma valuation (general knowledge, not searched).
-  - Whether the CEA does this is UNVERIFIABLE.
-- **Counterpoint that s lies between p_success (0.4) and 1: VERIFIED as logic.**
-  - Stage-reach probability cannot be below the end-to-end success probability.
-  - Late failures incur most of the cost, so the correction may be modest.
-- **Direction "increases": correct conditional on a nominal-sum cost.** It would not apply if the $7M is already an expected value, as the investigator says.
+- Expected cost = $0.32M + s × $6.7M: **VERIFIED as arithmetic**.
+  - s = 0.6 gives $4.34M, so SROI rises by about 1.62x (7.02/4.34).
+  - s = 0.4 gives $3.0M, so SROI rises by about 2.34x.
+  - These match the stated 1.6x and 2.3x.
+- "The $7M is a nominal sum of all stages": **UNVERIFIABLE**. I don't have the CEA cells, and the critique itself says the point fails if the $7M is already an expected value.
+- Counterpoint that s lies between p_success and 1 because late-stage failures still incur most of the cost: **LOGICALLY CORRECT**. If p_success is the product of per-stage probabilities, s for Phase III spend equals the probability of passing the earlier stage, which is at least 0.40. Whether s is closer to 0.4 or 1 depends on where the attrition occurs.
+- A "double penalty": **PLAUSIBLE**. It is a real methodological inconsistency if costs are unweighted. Matching expected benefits to expected costs is standard. It is only a "penalty" in the sense of an understated SROI.
 
 **EVIDENCE FOUND**
-- No external evidence on how CG built the $7M. My searches were not designed to surface this, and the CEA cells were not accessible.
-- Two further ways the critique could fail:
-  - If p_success=0.40 refers only to the final stage, gating the earlier costs adds nothing.
-  - If some downstream spend is by other funders and excluded from "all-in cost," s matters less.
+- I searched for nothing specific on how CG built the $7M, and no result addressed it.
+- Context: other parties often fund the downstream spend (Phase III, implementation). Whether that spend belongs in CG's cost denominator at all is a separate counterfactual-attribution question. That could shrink the denominator further, or make the whole gating argument moot.
 
-**REVISED CRITIQUE**
-- If the CEA's all-in cost is a nominal sum while benefits are multiplied by p_success, the SROI is understated.
-  - The understatement is bounded roughly between 1.0x and 1.6–2.3x for s between 1.0 and 0.4.
-  - Late-stage failure pushes the effective s toward 1, so a realistic effect is probably at the low end.
-- **Strength: medium-to-low until the cost build-up is inspected. Direction: increases.** The key unknown is whether the $7M is nominal or expected.
+**CORE CLAIM**
+- Claim: The $7M denominator is a nominal, unweighted sum of gated stage costs, while the benefit carries p = 0.40.
+- Support: **LOGIC ONLY**
+- Why: The mechanism is sound, but I found no evidence on how the CEA constructed the cost, and the critique is conditional on it.
+
+**OVERALL VERDICT: UNVERIFIABLE.** The hypothesis is logically sound, with correct arithmetic and no fabricated evidence. Retain it as a flagged hypothesis marked "UNGROUNDED — plausible but needs empirical support." It should be checked against the CEA's cost cells before use. If the $7M is nominal, the direction is up, with a magnitude of roughly 1.2–2.3x depending on s.
 
 ---
 
-## Critique 3: A 1-year speedup of trial results is not necessarily a 1-year speedup of adoption
+## Critique 3: A 1-year trial speedup is not necessarily a 1-year adoption speedup
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The structural point stands. Speedup is an uncertain quantity and not a defensible point value.
-- The specific "lumpy guideline cycle" mechanism is weakened for TB by the cases the investigator suggested checking. Direction should be treated as uncertain, with a lean toward "approximately 1 year at the WHO step."
-- The investigator's arithmetic is right: slack of more than 0.35 years takes the speedup below 0.65.
+**CITATION CHECK**
+- Study 31/A5349 and BPaLM were named only as case studies. Both exist and the Investigator's characterisation is generally fair.
+  - Study 31 is VERIFIED. It was a 
+randomized, multi-national, open-label, controlled phase 3 trial comparing two 4-month rifapentine-containing regimens to the standard 6-month control.
+
+  - BPaLM was based on TB-PRACTECAL and ZeNix. VERIFIED.
 
 **CLAIM CHECK**
-- **WHO guidelines come via a GDG process: VERIFIED.**
-  - For Study 31, WHO 
-received data from the Study 31 investigators in 2021 and convened a GDG to review the results.
+- WHO uses a GDG process to change TB guidelines: **VERIFIED**. 
+In 2021, the WHO Global TB Programme received data from the Study 31 investigators and convened a Guideline Development Group to review results.
 
-- **WHO updates occur on a roughly fixed schedule, so earlier results are absorbed into waiting time: NOT SUPPORTED by the two TB examples.**
-  - Study 31 was 
-published online May 5, 2021
-, and WHO's rapid communication on it was dated June 2021 (
-GDG convened in 2021 after Study 31 data were received, with detailed results published 6 May 2021
-).
-  - That is roughly one month, so the GDG was convened in response to data and not on a fixed cycle.
-  - The consolidated guideline update followed in 
-May 2022
-.
-- **BPaLM: GDG timing followed data availability.**
-  - 
-The GDG met in February–March 2022, using new evidence from the TB-PRACTECAL and ZeNix trials.
-
-  - 
-TB-PRACTECAL stopped enrolling once its data safety board indicated BPaLM was superior.
-
-  - 
-The interim analysis used outcomes up to March 18, 2021.
- That is about 11 months before the GDG, so most of the delay sat in data analysis and sponsor sharing, not in a WHO queue.
-  - 
-WHO then published its rapid communication in May 2022.
-
-- **Downstream lags exist and are additive: VERIFIED for Study 31.**
-  - 
-CDC issued guidance on a 4-month rifapentine-moxifloxacin regimen on February 25, 2022
-, about 9.5 months after publication.
-  - These sequential lags shift with the trial date and do not by themselves absorb the speedup.
-- **Missing a guideline window costs a full cycle (2+ years): UNVERIFIED.** I found no evidence of fixed windows at WHO's TB programme. The sources suggest ad hoc GDGs, so the asymmetry may not apply.
-- **Threshold arithmetic ("more than a third of a year" of slack): VERIFIED.** It is 1−0.65=0.35.
+- "WHO guideline updates occur on a roughly fixed schedule": **NOT SUPPORTED, and partly CONTRADICTED by these two cases**. GDGs appear to be convened ad hoc when data arrive.
+  - Study 31: 
+results were presented at the 51st virtual Union World Conference in October 2020
+. 
+The GDG met virtually from 27–30 April 2021.
+ 
+Detailed results were published on 6 May 2021.
+ 
+WHO then issued a rapid communication in June 2021
+. The lag from conference presentation to rapid communication was about 8 months, and from the NEJM paper about 5–6 weeks.
+  - BPaLM: 
+WHO convened a GDG in February–March 2022 after the TB-PRACTECAL and ZeNix results.
+ 
+A rapid communication followed in May 2022.
+ The full guideline update was published later in the year (the Lancet Respiratory Medicine page lists Dec 15, 2022).
+  - A WHO "rapid communication" route exists, which weakens the idea of a fixed window with a 2+ year miss penalty. I found no evidence supporting the "2+ years" cycle claim.
+- Trial results are not the only binding constraint on uptake: **SUPPORTED**. WHO said 
+implementation and uptake of the new regimen in the short to medium term will be more feasible if the cost of rifapentine is reduced and availability improved.
+ The same communication flagged 
+a need for rigorous antibacterial stewardship because the regimen contains moxifloxacin.
+ This supports the "speedup less than one year" direction through downstream bottlenecks (price, supply, national adoption). It does not support the lumpy "WHO-window" mechanism.
+- A public call for data and national policy/procurement lags: **PLAUSIBLE, not checked**.
+- "Materiality threshold of about 0.65 years" and "speedup_years linear in SROI": **UNVERIFIABLE** without the CEA. Linearity follows from the stated structure.
 
 **EVIDENCE FOUND**
-- **Limits of the evidence:**
-  - These are two TB regimen cases with unusually high-profile, sponsor-supported trials. The investigator's "generic adjunct drug" may face a slower process.
-  - The BPaLM case shows WHO acting on interim, pre-publication data. For a trial result, "available to WHO" and "published" are different dates, and the speedup definition needs to say which one is meant.
-- No source found quantifying lags for adjunct or host-directed therapies, or for national policy and procurement steps.
+- Both case studies show a short gap between pivotal data and WHO guidance (months, not years). Real WHO timing therefore looks more responsive than the critique assumes.
+- I did not find data on national adoption lags, which is where slack-absorption would most plausibly occur.
+- Direction: the evidence points more toward "less than one year" through downstream bottlenecks than toward "more than one year" through missed guideline windows.
+
+**CORE CLAIM**
+- Claim: The trial is not the sole binding constraint, so a 1-year trial speedup need not translate into a 1-year adoption speedup, and the effective speedup is a lumpy random variable.
+- Support: **LOGIC ONLY** for the general point, with partial direct support for non-trial bottlenecks (price, availability).
+- Why: Downstream constraints are documented, but the specific "fixed WHO schedule, missed-window" mechanism is not supported by the two cases I checked.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The core concern, that speedup is not a pure translation of the adoption curve, is sound and partly supported. The "roughly fixed WHO guideline schedule" and "lose a full 2+ year cycle" mechanisms are unsupported, and the TB cases lean against them.
 
 **REVISED CRITIQUE**
-- The model's one-for-one translation of the adoption curve holds only if the trial is the binding constraint at every step, and the speedup should be treated as a distribution.
-- For TB specifically, two recent regimens show WHO's GDG responding within about one to two months of data being shared. That favours a speedup close to 1 year at the WHO stage and weakens the "fixed guideline cycle" mechanism and the asymmetric "lost cycle" upside.
-- The remaining uncertainty lies in national adoption and procurement lags, plus the unspecified definition of the trial-result date. The post-WHO lags are untested here.
-- **Strength: low-to-medium. Direction: uncertain (slightly toward "≈1 year or modestly less").** The lumpy-cycle claim is UNGROUNDED for TB. I recommend a sensitivity band on speedup_years instead of a point value.
+- The model's assumption that a 1-year trial speedup gives a 1-year adoption speedup is untested.
+- Adoption also depends on national policy change, procurement and drug price/availability (documented for rifapentine), so the effective speedup could be below 1 year.
+- WHO's guideline step in recent TB cases (Study 31, BPaLM) was ad hoc and fast (months), so the upside "missed window" scenario is weakly supported.
+- Direction: **leaning down or uncertain**, rather than symmetric.
+- Magnitude: medium, and sensitivity analysis is needed.
+- Flag as UNGROUNDED for national-level lags.
+- Remove the "fixed schedule" and "2+ year cycle" claims.
 
 --- Critique: Probability weighting is asymmetric between benefit and cost. ---
 
-## Critique 1: Discounting with an S-curve ramp and discounted costs
+## Critique 1: Discounting with an S-curve ramp and discounted costs (net about −20% to −31%)
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The arithmetic is largely correct, and the direction and size of the effect hold.
-- The institutional claims (GiveWell rate, CG convention, the ~2,000x bar) could not be verified.
-- The critique has labelling and consistency problems.
-- Because the ramp, spend timing, and baseline SROI are assumed, it is still a sensitivity illustration and not a finding.
+**CITATION CHECK**
+- No papers are cited. The Investigator names "How we use BOTECs" (May 2025) and GiveWell's 4% rate as things to check.
+  - "How we use BOTECs": NOT FOUND. My search returned only irrelevant results.
+  - GiveWell's ~4% rate: UNVERIFIABLE. My searches returned no GiveWell or Coefficient Giving (CG) source. The general literature does not settle the question. 
+Global health evaluations typically apply a 3% discount rate to health outcomes and costs.
+ 
+One paper argues for at least 5% in low- and lower-middle-income countries.
+ The 3–5% range is therefore reasonable, but it is not tied to CG.
 
 **CLAIM CHECK**
+- Benefit factors of 0.71 / 0.63 / 0.57 (T0 = 8.5, L = 6, linear ramp): **VERIFIED**.
+  - I recomputed the formula e^(−rT0)(1−e^(−rL))/(rL) and got 0.709, 0.633 and 0.565.
+- Flat 8.5-year factors of 0.77 / 0.71 / 0.65: **VERIFIED** (0.775, 0.712, 0.654).
+- All-in cost factors of 0.88 / 0.85 / 0.82: **VERIFIED**.
+  - This assumes $0.32M at t=0 and $6.7M spread uniformly over years 1–8.
+  - I got 0.881, 0.845 and 0.812, so the 5% figure is closer to 0.81.
+- Net factors of 0.80 / 0.73 / 0.69, i.e. −20% / −27% / −31%: **MOSTLY VERIFIED**.
+  - The 4% figure mixes two benefit factors. It uses 0.62 (the "exact" version) rather than the 0.633 from the stated formula.
+  - With 0.633 the 4% net factor is about 0.75, which is −25%.
+  - The cleaner statement is "about −20% / −25 to −27% / −31%".
+- The back-calculated base SROI of about 3,050x is consistent across the three rows (2,440/0.80, 2,230/0.73, 2,100/0.69). That at least makes the table internally coherent.
+- The "one-year shift" approximation is **PLAUSIBLE but approximate**.
+  - Shifting a ramp-to-plateau curve earlier by one year yields a bump of the difference B(t)−B(t−1). That bump spans [T0, T0+L+1] with mass 1.
+  - The formula uses support [T0, T0+L] instead. The exact 4% factor is about 0.62, so the error is small.
+- Directional logic (a benefit-only discount overstates the penalty when costs also fall earlier): **VERIFIED**, and standard. 
+Health effects valued in monetary terms, as in cost-benefit analysis, should be discounted at the same rate as costs.
 
-I recomputed each number by hand. I could not open the source CEA or the BOTEC document.
-
-- **Flat-discount factors at 8.5 years (0.77 / 0.71 / 0.65): VERIFIED.** e^(−0.255)=0.775, e^(−0.34)=0.712, e^(−0.425)=0.654.
-- **Thread's 8–9 year range (×0.64–0.79) and "−21% to −35%": VERIFIED.** The range is 0.787 to 0.638, so the upper end is closer to −36%, which is rounding.
-- **Ramp formula e^(−rT0)(1−e^(−rL))/(rL): VERIFIED as an approximation.**
-  - The exact value for a shifted, infinite-horizon ramp multiplies it by (1−e^(−rΔ))/(rΔ).
-  - That extra factor is about 0.98, which explains the critique's "about 0.62" note at 4%.
-- **Benefit factors (0.71 / 0.63 / 0.57): VERIFIED, with a small rounding issue.**
-  - The formula gives 0.709 / 0.633 / 0.565.
-  - The exact versions are about 0.698 / 0.620 / 0.551.
-  - The 3% and 5% table values use the approximation, while the 4% net factor uses the exact one. This is a minor inconsistency.
-- **Cost factors (0.88 / 0.85 / 0.82): VERIFIED.**
-  - Spreading $6.7M uniformly over years 1–8 and adding $0.32M at t=0 gives about 0.881 / 0.845 / 0.812.
-- **Net factors (0.80 / 0.73 / 0.69) and "−20 / −27 / −31%": VERIFIED within rounding.**
-  - Using exact benefit factors gives about −21 / −27 / −32%.
-- **L=10 ramp (≈0.57 at 4%, ≈0.51 at 5%): VERIFIED.**
-  - The approximate formula gives 0.587 at 4% (about 0.575 with the exact version) and 0.515 at 5%.
-- **SROI levels (≈2,440x / 2,230x / 2,100x): internally consistent but depend on an unstated baseline.**
-  - They imply an undiscounted SROI of about 3,050x. The critique never states this figure, and I cannot verify it.
-- **"Conflict with Critique 1" / "Critique 4": FLAG.**
-  - This critique appears to be Critique 1 and cites itself, and Critique 4 is not in this batch.
-  - These cross-references should be removed or re-keyed.
-- **GiveWell uses roughly 4%: UNVERIFIED.** My search returned nothing on GiveWell's rate. I believe this is roughly right from memory, but I have no source to cite here.
-- **CG applies or omits discounting inconsistently; "How we use BOTECs" (May 2025): UNVERIFIABLE.** The search did not surface that document or any CG discounting guidance.
-- **Bar of about 2,000x: UNVERIFIED.** I found no source in this session. I recall Open Phil's GHW bar being raised from 1,000x to about 2,000x, but that is memory, not a finding.
+- "Conflict with Critique 1": **ERROR**. This is Critique 1, so the cross-reference is wrong or garbled. The "(Critique 4)" reference points to a critique I wasn't given.
+- A 25% materiality line and a ~2,000x bar: **UNVERIFIABLE**. The Investigator said so too.
+- The claim that the ramp and cost timing are illustrative: honest. T0 = 8.5, L = 6, and costs uniform over years 1–8 are all assumed.
 
 **EVIDENCE FOUND**
-- 
-In global health, evaluations typically apply a 3% discount rate to health outcomes and costs.
- 
-One review argues for at least 5% for low- and lower-middle-income countries and about 4% for upper-middle-income countries.
- This supports the critique's 3–5% range and shows that costs and benefits are conventionally discounted together.
-- Inference, not sourced:
-  - The Critique 3 threshold of about 0.65 years is consistent with a bar of about 2,000x against a baseline of about 3,050x (2,000/3,050 ≈ 0.656).
-  - That means the bar is crossed at about −34%, not at the "25% materiality line".
-  - Under this critique's own numbers, the L=10 ramp at 5% gives about −37% (≈1,900x), which falls below the bar. The other scenarios stay above it.
-  - The investigator should state which threshold defines "material".
+- I found no CG or GiveWell rule on discounting R&D BOTECs.
+- Sensitivity to ramp length is mathematically correct. For L = 10 at 4%, the formula gives e^(−0.34)·(1−e^(−0.4))/0.4 ≈ 0.712 × 0.824 ≈ 0.59. The Investigator said ~0.57, which is close.
+
+**CORE CLAIM**
+- Claim: Consistent discounting of costs and benefits gives a net penalty of about 20–31%, smaller than the benefit-only penalty of 21–35%.
+- Support: **LOGIC ONLY**
+- Why: The arithmetic checks out and the principle is standard, but the inputs (T0, L, cost timing) are unsourced assumptions and CG's actual convention is unknown.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the "discount costs too" logic survive. The specific percentages depend on assumed timing. The cross-reference to "Critique 1" is erroneous. Whether CG discounts at all is unverified.
 
 **REVISED CRITIQUE**
-- Discounting benefits alone (about −21% to −35%) overstates the penalty when costs are discounted consistently. Under the assumed ramp (T0=8.5, L=6) and uniform spend over years 1–8, the net effect is about −21% / −27% / −32% at 3% / 4% / 5%.
-- A longer ramp (L=10) deepens the benefit penalty. At 5% it could push SROI below the bar if the baseline is about 3,050x. This relies on the inferred baseline.
-- **Strength: medium, direction a reduction in SROI.** All timing assumptions are illustrative and need the CEA's real timeline. The CG discounting convention and the bar level remain UNGROUNDED.
-- Remove the self-referential "Critique 1" and "Critique 4" cross-references.
+- If benefits are discounted, costs should be discounted consistently.
+- Under illustrative timing (ramp starting at about year 8.5, 6-year linear ramp, costs spread over years 1–8), the net discount penalty is about −20% at 3%, −25 to −27% at 4%, and −31% at 5%.
+- This is smaller than the benefit-only penalty.
+- Flag these as sensitive to the CEA's real timeline.
+- Remove the claim about CG/GiveWell conventions and the "conflict with Critique 1" sentence.
+- Strength: **medium-low**. It is a second-order refinement, and the Investigator concedes this.
 
 ---
 
 ## Critique 2: Asymmetric probability weighting of benefit and cost
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The logic and arithmetic are sound. The factual premise (that CG's $7M is a nominal, ungated sum) is unverifiable without the CEA.
-- Retain it as a flagged hypothesis, **UNGROUNDED — plausible but needs empirical support.** The investigator already conditions it correctly.
+**CITATION CHECK**
+- No citations. The critique is explicitly "UNGROUNDED" and "logical argument."
 
 **CLAIM CHECK**
-- **Expected cost = $0.32M + s×$6.7M: VERIFIED as arithmetic.**
-  - At s=0.6, cost is $4.34M and SROI rises by 7.02/4.34 ≈ 1.62x. ✔
-  - At s=0.4, cost is $3.0M and SROI rises by about 2.34x. ✔
-  - The "$7M" is really $7.02M, which is immaterial.
-- **Benefit risk-adjusted while cost is nominal is a "double penalty": PLAUSIBLE.**
-  - Stage-weighting costs is standard practice in risk-adjusted pharma valuation (general knowledge, not searched).
-  - Whether the CEA does this is UNVERIFIABLE.
-- **Counterpoint that s lies between p_success (0.4) and 1: VERIFIED as logic.**
-  - Stage-reach probability cannot be below the end-to-end success probability.
-  - Late failures incur most of the cost, so the correction may be modest.
-- **Direction "increases": correct conditional on a nominal-sum cost.** It would not apply if the $7M is already an expected value, as the investigator says.
+- Expected cost = $0.32M + s × $6.7M: **VERIFIED as arithmetic**.
+  - s = 0.6 gives $4.34M, so SROI rises by about 1.62x (7.02/4.34).
+  - s = 0.4 gives $3.0M, so SROI rises by about 2.34x.
+  - These match the stated 1.6x and 2.3x.
+- "The $7M is a nominal sum of all stages": **UNVERIFIABLE**. I don't have the CEA cells, and the critique itself says the point fails if the $7M is already an expected value.
+- Counterpoint that s lies between p_success and 1 because late-stage failures still incur most of the cost: **LOGICALLY CORRECT**. If p_success is the product of per-stage probabilities, s for Phase III spend equals the probability of passing the earlier stage, which is at least 0.40. Whether s is closer to 0.4 or 1 depends on where the attrition occurs.
+- A "double penalty": **PLAUSIBLE**. It is a real methodological inconsistency if costs are unweighted. Matching expected benefits to expected costs is standard. It is only a "penalty" in the sense of an understated SROI.
 
 **EVIDENCE FOUND**
-- No external evidence on how CG built the $7M. My searches were not designed to surface this, and the CEA cells were not accessible.
-- Two further ways the critique could fail:
-  - If p_success=0.40 refers only to the final stage, gating the earlier costs adds nothing.
-  - If some downstream spend is by other funders and excluded from "all-in cost," s matters less.
+- I searched for nothing specific on how CG built the $7M, and no result addressed it.
+- Context: other parties often fund the downstream spend (Phase III, implementation). Whether that spend belongs in CG's cost denominator at all is a separate counterfactual-attribution question. That could shrink the denominator further, or make the whole gating argument moot.
 
-**REVISED CRITIQUE**
-- If the CEA's all-in cost is a nominal sum while benefits are multiplied by p_success, the SROI is understated.
-  - The understatement is bounded roughly between 1.0x and 1.6–2.3x for s between 1.0 and 0.4.
-  - Late-stage failure pushes the effective s toward 1, so a realistic effect is probably at the low end.
-- **Strength: medium-to-low until the cost build-up is inspected. Direction: increases.** The key unknown is whether the $7M is nominal or expected.
+**CORE CLAIM**
+- Claim: The $7M denominator is a nominal, unweighted sum of gated stage costs, while the benefit carries p = 0.40.
+- Support: **LOGIC ONLY**
+- Why: The mechanism is sound, but I found no evidence on how the CEA constructed the cost, and the critique is conditional on it.
+
+**OVERALL VERDICT: UNVERIFIABLE.** The hypothesis is logically sound, with correct arithmetic and no fabricated evidence. Retain it as a flagged hypothesis marked "UNGROUNDED — plausible but needs empirical support." It should be checked against the CEA's cost cells before use. If the $7M is nominal, the direction is up, with a magnitude of roughly 1.2–2.3x depending on s.
 
 ---
 
-## Critique 3: A 1-year speedup of trial results is not necessarily a 1-year speedup of adoption
+## Critique 3: A 1-year trial speedup is not necessarily a 1-year adoption speedup
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The structural point stands. Speedup is an uncertain quantity and not a defensible point value.
-- The specific "lumpy guideline cycle" mechanism is weakened for TB by the cases the investigator suggested checking. Direction should be treated as uncertain, with a lean toward "approximately 1 year at the WHO step."
-- The investigator's arithmetic is right: slack of more than 0.35 years takes the speedup below 0.65.
+**CITATION CHECK**
+- Study 31/A5349 and BPaLM were named only as case studies. Both exist and the Investigator's characterisation is generally fair.
+  - Study 31 is VERIFIED. It was a 
+randomized, multi-national, open-label, controlled phase 3 trial comparing two 4-month rifapentine-containing regimens to the standard 6-month control.
+
+  - BPaLM was based on TB-PRACTECAL and ZeNix. VERIFIED.
 
 **CLAIM CHECK**
-- **WHO guidelines come via a GDG process: VERIFIED.**
-  - For Study 31, WHO 
-received data from the Study 31 investigators in 2021 and convened a GDG to review the results.
+- WHO uses a GDG process to change TB guidelines: **VERIFIED**. 
+In 2021, the WHO Global TB Programme received data from the Study 31 investigators and convened a Guideline Development Group to review results.
 
-- **WHO updates occur on a roughly fixed schedule, so earlier results are absorbed into waiting time: NOT SUPPORTED by the two TB examples.**
-  - Study 31 was 
-published online May 5, 2021
-, and WHO's rapid communication on it was dated June 2021 (
-GDG convened in 2021 after Study 31 data were received, with detailed results published 6 May 2021
-).
-  - That is roughly one month, so the GDG was convened in response to data and not on a fixed cycle.
-  - The consolidated guideline update followed in 
-May 2022
-.
-- **BPaLM: GDG timing followed data availability.**
-  - 
-The GDG met in February–March 2022, using new evidence from the TB-PRACTECAL and ZeNix trials.
-
-  - 
-TB-PRACTECAL stopped enrolling once its data safety board indicated BPaLM was superior.
-
-  - 
-The interim analysis used outcomes up to March 18, 2021.
- That is about 11 months before the GDG, so most of the delay sat in data analysis and sponsor sharing, not in a WHO queue.
-  - 
-WHO then published its rapid communication in May 2022.
-
-- **Downstream lags exist and are additive: VERIFIED for Study 31.**
-  - 
-CDC issued guidance on a 4-month rifapentine-moxifloxacin regimen on February 25, 2022
-, about 9.5 months after publication.
-  - These sequential lags shift with the trial date and do not by themselves absorb the speedup.
-- **Missing a guideline window costs a full cycle (2+ years): UNVERIFIED.** I found no evidence of fixed windows at WHO's TB programme. The sources suggest ad hoc GDGs, so the asymmetry may not apply.
-- **Threshold arithmetic ("more than a third of a year" of slack): VERIFIED.** It is 1−0.65=0.35.
+- "WHO guideline updates occur on a roughly fixed schedule": **NOT SUPPORTED, and partly CONTRADICTED by these two cases**. GDGs appear to be convened ad hoc when data arrive.
+  - Study 31: 
+results were presented at the 51st virtual Union World Conference in October 2020
+. 
+The GDG met virtually from 27–30 April 2021.
+ 
+Detailed results were published on 6 May 2021.
+ 
+WHO then issued a rapid communication in June 2021
+. The lag from conference presentation to rapid communication was about 8 months, and from the NEJM paper about 5–6 weeks.
+  - BPaLM: 
+WHO convened a GDG in February–March 2022 after the TB-PRACTECAL and ZeNix results.
+ 
+A rapid communication followed in May 2022.
+ The full guideline update was published later in the year (the Lancet Respiratory Medicine page lists Dec 15, 2022).
+  - A WHO "rapid communication" route exists, which weakens the idea of a fixed window with a 2+ year miss penalty. I found no evidence supporting the "2+ years" cycle claim.
+- Trial results are not the only binding constraint on uptake: **SUPPORTED**. WHO said 
+implementation and uptake of the new regimen in the short to medium term will be more feasible if the cost of rifapentine is reduced and availability improved.
+ The same communication flagged 
+a need for rigorous antibacterial stewardship because the regimen contains moxifloxacin.
+ This supports the "speedup less than one year" direction through downstream bottlenecks (price, supply, national adoption). It does not support the lumpy "WHO-window" mechanism.
+- A public call for data and national policy/procurement lags: **PLAUSIBLE, not checked**.
+- "Materiality threshold of about 0.65 years" and "speedup_years linear in SROI": **UNVERIFIABLE** without the CEA. Linearity follows from the stated structure.
 
 **EVIDENCE FOUND**
-- **Limits of the evidence:**
-  - These are two TB regimen cases with unusually high-profile, sponsor-supported trials. The investigator's "generic adjunct drug" may face a slower process.
-  - The BPaLM case shows WHO acting on interim, pre-publication data. For a trial result, "available to WHO" and "published" are different dates, and the speedup definition needs to say which one is meant.
-- No source found quantifying lags for adjunct or host-directed therapies, or for national policy and procurement steps.
+- Both case studies show a short gap between pivotal data and WHO guidance (months, not years). Real WHO timing therefore looks more responsive than the critique assumes.
+- I did not find data on national adoption lags, which is where slack-absorption would most plausibly occur.
+- Direction: the evidence points more toward "less than one year" through downstream bottlenecks than toward "more than one year" through missed guideline windows.
+
+**CORE CLAIM**
+- Claim: The trial is not the sole binding constraint, so a 1-year trial speedup need not translate into a 1-year adoption speedup, and the effective speedup is a lumpy random variable.
+- Support: **LOGIC ONLY** for the general point, with partial direct support for non-trial bottlenecks (price, availability).
+- Why: Downstream constraints are documented, but the specific "fixed WHO schedule, missed-window" mechanism is not supported by the two cases I checked.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The core concern, that speedup is not a pure translation of the adoption curve, is sound and partly supported. The "roughly fixed WHO guideline schedule" and "lose a full 2+ year cycle" mechanisms are unsupported, and the TB cases lean against them.
 
 **REVISED CRITIQUE**
-- The model's one-for-one translation of the adoption curve holds only if the trial is the binding constraint at every step, and the speedup should be treated as a distribution.
-- For TB specifically, two recent regimens show WHO's GDG responding within about one to two months of data being shared. That favours a speedup close to 1 year at the WHO stage and weakens the "fixed guideline cycle" mechanism and the asymmetric "lost cycle" upside.
-- The remaining uncertainty lies in national adoption and procurement lags, plus the unspecified definition of the trial-result date. The post-WHO lags are untested here.
-- **Strength: low-to-medium. Direction: uncertain (slightly toward "≈1 year or modestly less").** The lumpy-cycle claim is UNGROUNDED for TB. I recommend a sensitivity band on speedup_years instead of a point value.
+- The model's assumption that a 1-year trial speedup gives a 1-year adoption speedup is untested.
+- Adoption also depends on national policy change, procurement and drug price/availability (documented for rifapentine), so the effective speedup could be below 1 year.
+- WHO's guideline step in recent TB cases (Study 31, BPaLM) was ad hoc and fast (months), so the upside "missed window" scenario is weakly supported.
+- Direction: **leaning down or uncertain**, rather than symmetric.
+- Magnitude: medium, and sensitivity analysis is needed.
+- Flag as UNGROUNDED for national-level lags.
+- Remove the "fixed schedule" and "2+ year cycle" claims.
 
 --- Critique: A 1-year speedup of trial results does not necessarily become a 1-year speedup of adoption, in either direction. ---
 
-## Critique 1: Discounting with an S-curve ramp and discounted costs
+## Critique 1: Discounting with an S-curve ramp and discounted costs (net about −20% to −31%)
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The arithmetic is largely correct, and the direction and size of the effect hold.
-- The institutional claims (GiveWell rate, CG convention, the ~2,000x bar) could not be verified.
-- The critique has labelling and consistency problems.
-- Because the ramp, spend timing, and baseline SROI are assumed, it is still a sensitivity illustration and not a finding.
+**CITATION CHECK**
+- No papers are cited. The Investigator names "How we use BOTECs" (May 2025) and GiveWell's 4% rate as things to check.
+  - "How we use BOTECs": NOT FOUND. My search returned only irrelevant results.
+  - GiveWell's ~4% rate: UNVERIFIABLE. My searches returned no GiveWell or Coefficient Giving (CG) source. The general literature does not settle the question. 
+Global health evaluations typically apply a 3% discount rate to health outcomes and costs.
+ 
+One paper argues for at least 5% in low- and lower-middle-income countries.
+ The 3–5% range is therefore reasonable, but it is not tied to CG.
 
 **CLAIM CHECK**
+- Benefit factors of 0.71 / 0.63 / 0.57 (T0 = 8.5, L = 6, linear ramp): **VERIFIED**.
+  - I recomputed the formula e^(−rT0)(1−e^(−rL))/(rL) and got 0.709, 0.633 and 0.565.
+- Flat 8.5-year factors of 0.77 / 0.71 / 0.65: **VERIFIED** (0.775, 0.712, 0.654).
+- All-in cost factors of 0.88 / 0.85 / 0.82: **VERIFIED**.
+  - This assumes $0.32M at t=0 and $6.7M spread uniformly over years 1–8.
+  - I got 0.881, 0.845 and 0.812, so the 5% figure is closer to 0.81.
+- Net factors of 0.80 / 0.73 / 0.69, i.e. −20% / −27% / −31%: **MOSTLY VERIFIED**.
+  - The 4% figure mixes two benefit factors. It uses 0.62 (the "exact" version) rather than the 0.633 from the stated formula.
+  - With 0.633 the 4% net factor is about 0.75, which is −25%.
+  - The cleaner statement is "about −20% / −25 to −27% / −31%".
+- The back-calculated base SROI of about 3,050x is consistent across the three rows (2,440/0.80, 2,230/0.73, 2,100/0.69). That at least makes the table internally coherent.
+- The "one-year shift" approximation is **PLAUSIBLE but approximate**.
+  - Shifting a ramp-to-plateau curve earlier by one year yields a bump of the difference B(t)−B(t−1). That bump spans [T0, T0+L+1] with mass 1.
+  - The formula uses support [T0, T0+L] instead. The exact 4% factor is about 0.62, so the error is small.
+- Directional logic (a benefit-only discount overstates the penalty when costs also fall earlier): **VERIFIED**, and standard. 
+Health effects valued in monetary terms, as in cost-benefit analysis, should be discounted at the same rate as costs.
 
-I recomputed each number by hand. I could not open the source CEA or the BOTEC document.
-
-- **Flat-discount factors at 8.5 years (0.77 / 0.71 / 0.65): VERIFIED.** e^(−0.255)=0.775, e^(−0.34)=0.712, e^(−0.425)=0.654.
-- **Thread's 8–9 year range (×0.64–0.79) and "−21% to −35%": VERIFIED.** The range is 0.787 to 0.638, so the upper end is closer to −36%, which is rounding.
-- **Ramp formula e^(−rT0)(1−e^(−rL))/(rL): VERIFIED as an approximation.**
-  - The exact value for a shifted, infinite-horizon ramp multiplies it by (1−e^(−rΔ))/(rΔ).
-  - That extra factor is about 0.98, which explains the critique's "about 0.62" note at 4%.
-- **Benefit factors (0.71 / 0.63 / 0.57): VERIFIED, with a small rounding issue.**
-  - The formula gives 0.709 / 0.633 / 0.565.
-  - The exact versions are about 0.698 / 0.620 / 0.551.
-  - The 3% and 5% table values use the approximation, while the 4% net factor uses the exact one. This is a minor inconsistency.
-- **Cost factors (0.88 / 0.85 / 0.82): VERIFIED.**
-  - Spreading $6.7M uniformly over years 1–8 and adding $0.32M at t=0 gives about 0.881 / 0.845 / 0.812.
-- **Net factors (0.80 / 0.73 / 0.69) and "−20 / −27 / −31%": VERIFIED within rounding.**
-  - Using exact benefit factors gives about −21 / −27 / −32%.
-- **L=10 ramp (≈0.57 at 4%, ≈0.51 at 5%): VERIFIED.**
-  - The approximate formula gives 0.587 at 4% (about 0.575 with the exact version) and 0.515 at 5%.
-- **SROI levels (≈2,440x / 2,230x / 2,100x): internally consistent but depend on an unstated baseline.**
-  - They imply an undiscounted SROI of about 3,050x. The critique never states this figure, and I cannot verify it.
-- **"Conflict with Critique 1" / "Critique 4": FLAG.**
-  - This critique appears to be Critique 1 and cites itself, and Critique 4 is not in this batch.
-  - These cross-references should be removed or re-keyed.
-- **GiveWell uses roughly 4%: UNVERIFIED.** My search returned nothing on GiveWell's rate. I believe this is roughly right from memory, but I have no source to cite here.
-- **CG applies or omits discounting inconsistently; "How we use BOTECs" (May 2025): UNVERIFIABLE.** The search did not surface that document or any CG discounting guidance.
-- **Bar of about 2,000x: UNVERIFIED.** I found no source in this session. I recall Open Phil's GHW bar being raised from 1,000x to about 2,000x, but that is memory, not a finding.
+- "Conflict with Critique 1": **ERROR**. This is Critique 1, so the cross-reference is wrong or garbled. The "(Critique 4)" reference points to a critique I wasn't given.
+- A 25% materiality line and a ~2,000x bar: **UNVERIFIABLE**. The Investigator said so too.
+- The claim that the ramp and cost timing are illustrative: honest. T0 = 8.5, L = 6, and costs uniform over years 1–8 are all assumed.
 
 **EVIDENCE FOUND**
-- 
-In global health, evaluations typically apply a 3% discount rate to health outcomes and costs.
- 
-One review argues for at least 5% for low- and lower-middle-income countries and about 4% for upper-middle-income countries.
- This supports the critique's 3–5% range and shows that costs and benefits are conventionally discounted together.
-- Inference, not sourced:
-  - The Critique 3 threshold of about 0.65 years is consistent with a bar of about 2,000x against a baseline of about 3,050x (2,000/3,050 ≈ 0.656).
-  - That means the bar is crossed at about −34%, not at the "25% materiality line".
-  - Under this critique's own numbers, the L=10 ramp at 5% gives about −37% (≈1,900x), which falls below the bar. The other scenarios stay above it.
-  - The investigator should state which threshold defines "material".
+- I found no CG or GiveWell rule on discounting R&D BOTECs.
+- Sensitivity to ramp length is mathematically correct. For L = 10 at 4%, the formula gives e^(−0.34)·(1−e^(−0.4))/0.4 ≈ 0.712 × 0.824 ≈ 0.59. The Investigator said ~0.57, which is close.
+
+**CORE CLAIM**
+- Claim: Consistent discounting of costs and benefits gives a net penalty of about 20–31%, smaller than the benefit-only penalty of 21–35%.
+- Support: **LOGIC ONLY**
+- Why: The arithmetic checks out and the principle is standard, but the inputs (T0, L, cost timing) are unsourced assumptions and CG's actual convention is unknown.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the "discount costs too" logic survive. The specific percentages depend on assumed timing. The cross-reference to "Critique 1" is erroneous. Whether CG discounts at all is unverified.
 
 **REVISED CRITIQUE**
-- Discounting benefits alone (about −21% to −35%) overstates the penalty when costs are discounted consistently. Under the assumed ramp (T0=8.5, L=6) and uniform spend over years 1–8, the net effect is about −21% / −27% / −32% at 3% / 4% / 5%.
-- A longer ramp (L=10) deepens the benefit penalty. At 5% it could push SROI below the bar if the baseline is about 3,050x. This relies on the inferred baseline.
-- **Strength: medium, direction a reduction in SROI.** All timing assumptions are illustrative and need the CEA's real timeline. The CG discounting convention and the bar level remain UNGROUNDED.
-- Remove the self-referential "Critique 1" and "Critique 4" cross-references.
+- If benefits are discounted, costs should be discounted consistently.
+- Under illustrative timing (ramp starting at about year 8.5, 6-year linear ramp, costs spread over years 1–8), the net discount penalty is about −20% at 3%, −25 to −27% at 4%, and −31% at 5%.
+- This is smaller than the benefit-only penalty.
+- Flag these as sensitive to the CEA's real timeline.
+- Remove the claim about CG/GiveWell conventions and the "conflict with Critique 1" sentence.
+- Strength: **medium-low**. It is a second-order refinement, and the Investigator concedes this.
 
 ---
 
 ## Critique 2: Asymmetric probability weighting of benefit and cost
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The logic and arithmetic are sound. The factual premise (that CG's $7M is a nominal, ungated sum) is unverifiable without the CEA.
-- Retain it as a flagged hypothesis, **UNGROUNDED — plausible but needs empirical support.** The investigator already conditions it correctly.
+**CITATION CHECK**
+- No citations. The critique is explicitly "UNGROUNDED" and "logical argument."
 
 **CLAIM CHECK**
-- **Expected cost = $0.32M + s×$6.7M: VERIFIED as arithmetic.**
-  - At s=0.6, cost is $4.34M and SROI rises by 7.02/4.34 ≈ 1.62x. ✔
-  - At s=0.4, cost is $3.0M and SROI rises by about 2.34x. ✔
-  - The "$7M" is really $7.02M, which is immaterial.
-- **Benefit risk-adjusted while cost is nominal is a "double penalty": PLAUSIBLE.**
-  - Stage-weighting costs is standard practice in risk-adjusted pharma valuation (general knowledge, not searched).
-  - Whether the CEA does this is UNVERIFIABLE.
-- **Counterpoint that s lies between p_success (0.4) and 1: VERIFIED as logic.**
-  - Stage-reach probability cannot be below the end-to-end success probability.
-  - Late failures incur most of the cost, so the correction may be modest.
-- **Direction "increases": correct conditional on a nominal-sum cost.** It would not apply if the $7M is already an expected value, as the investigator says.
+- Expected cost = $0.32M + s × $6.7M: **VERIFIED as arithmetic**.
+  - s = 0.6 gives $4.34M, so SROI rises by about 1.62x (7.02/4.34).
+  - s = 0.4 gives $3.0M, so SROI rises by about 2.34x.
+  - These match the stated 1.6x and 2.3x.
+- "The $7M is a nominal sum of all stages": **UNVERIFIABLE**. I don't have the CEA cells, and the critique itself says the point fails if the $7M is already an expected value.
+- Counterpoint that s lies between p_success and 1 because late-stage failures still incur most of the cost: **LOGICALLY CORRECT**. If p_success is the product of per-stage probabilities, s for Phase III spend equals the probability of passing the earlier stage, which is at least 0.40. Whether s is closer to 0.4 or 1 depends on where the attrition occurs.
+- A "double penalty": **PLAUSIBLE**. It is a real methodological inconsistency if costs are unweighted. Matching expected benefits to expected costs is standard. It is only a "penalty" in the sense of an understated SROI.
 
 **EVIDENCE FOUND**
-- No external evidence on how CG built the $7M. My searches were not designed to surface this, and the CEA cells were not accessible.
-- Two further ways the critique could fail:
-  - If p_success=0.40 refers only to the final stage, gating the earlier costs adds nothing.
-  - If some downstream spend is by other funders and excluded from "all-in cost," s matters less.
+- I searched for nothing specific on how CG built the $7M, and no result addressed it.
+- Context: other parties often fund the downstream spend (Phase III, implementation). Whether that spend belongs in CG's cost denominator at all is a separate counterfactual-attribution question. That could shrink the denominator further, or make the whole gating argument moot.
 
-**REVISED CRITIQUE**
-- If the CEA's all-in cost is a nominal sum while benefits are multiplied by p_success, the SROI is understated.
-  - The understatement is bounded roughly between 1.0x and 1.6–2.3x for s between 1.0 and 0.4.
-  - Late-stage failure pushes the effective s toward 1, so a realistic effect is probably at the low end.
-- **Strength: medium-to-low until the cost build-up is inspected. Direction: increases.** The key unknown is whether the $7M is nominal or expected.
+**CORE CLAIM**
+- Claim: The $7M denominator is a nominal, unweighted sum of gated stage costs, while the benefit carries p = 0.40.
+- Support: **LOGIC ONLY**
+- Why: The mechanism is sound, but I found no evidence on how the CEA constructed the cost, and the critique is conditional on it.
+
+**OVERALL VERDICT: UNVERIFIABLE.** The hypothesis is logically sound, with correct arithmetic and no fabricated evidence. Retain it as a flagged hypothesis marked "UNGROUNDED — plausible but needs empirical support." It should be checked against the CEA's cost cells before use. If the $7M is nominal, the direction is up, with a magnitude of roughly 1.2–2.3x depending on s.
 
 ---
 
-## Critique 3: A 1-year speedup of trial results is not necessarily a 1-year speedup of adoption
+## Critique 3: A 1-year trial speedup is not necessarily a 1-year adoption speedup
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- The structural point stands. Speedup is an uncertain quantity and not a defensible point value.
-- The specific "lumpy guideline cycle" mechanism is weakened for TB by the cases the investigator suggested checking. Direction should be treated as uncertain, with a lean toward "approximately 1 year at the WHO step."
-- The investigator's arithmetic is right: slack of more than 0.35 years takes the speedup below 0.65.
+**CITATION CHECK**
+- Study 31/A5349 and BPaLM were named only as case studies. Both exist and the Investigator's characterisation is generally fair.
+  - Study 31 is VERIFIED. It was a 
+randomized, multi-national, open-label, controlled phase 3 trial comparing two 4-month rifapentine-containing regimens to the standard 6-month control.
+
+  - BPaLM was based on TB-PRACTECAL and ZeNix. VERIFIED.
 
 **CLAIM CHECK**
-- **WHO guidelines come via a GDG process: VERIFIED.**
-  - For Study 31, WHO 
-received data from the Study 31 investigators in 2021 and convened a GDG to review the results.
+- WHO uses a GDG process to change TB guidelines: **VERIFIED**. 
+In 2021, the WHO Global TB Programme received data from the Study 31 investigators and convened a Guideline Development Group to review results.
 
-- **WHO updates occur on a roughly fixed schedule, so earlier results are absorbed into waiting time: NOT SUPPORTED by the two TB examples.**
-  - Study 31 was 
-published online May 5, 2021
-, and WHO's rapid communication on it was dated June 2021 (
-GDG convened in 2021 after Study 31 data were received, with detailed results published 6 May 2021
-).
-  - That is roughly one month, so the GDG was convened in response to data and not on a fixed cycle.
-  - The consolidated guideline update followed in 
-May 2022
-.
-- **BPaLM: GDG timing followed data availability.**
-  - 
-The GDG met in February–March 2022, using new evidence from the TB-PRACTECAL and ZeNix trials.
-
-  - 
-TB-PRACTECAL stopped enrolling once its data safety board indicated BPaLM was superior.
-
-  - 
-The interim analysis used outcomes up to March 18, 2021.
- That is about 11 months before the GDG, so most of the delay sat in data analysis and sponsor sharing, not in a WHO queue.
-  - 
-WHO then published its rapid communication in May 2022.
-
-- **Downstream lags exist and are additive: VERIFIED for Study 31.**
-  - 
-CDC issued guidance on a 4-month rifapentine-moxifloxacin regimen on February 25, 2022
-, about 9.5 months after publication.
-  - These sequential lags shift with the trial date and do not by themselves absorb the speedup.
-- **Missing a guideline window costs a full cycle (2+ years): UNVERIFIED.** I found no evidence of fixed windows at WHO's TB programme. The sources suggest ad hoc GDGs, so the asymmetry may not apply.
-- **Threshold arithmetic ("more than a third of a year" of slack): VERIFIED.** It is 1−0.65=0.35.
+- "WHO guideline updates occur on a roughly fixed schedule": **NOT SUPPORTED, and partly CONTRADICTED by these two cases**. GDGs appear to be convened ad hoc when data arrive.
+  - Study 31: 
+results were presented at the 51st virtual Union World Conference in October 2020
+. 
+The GDG met virtually from 27–30 April 2021.
+ 
+Detailed results were published on 6 May 2021.
+ 
+WHO then issued a rapid communication in June 2021
+. The lag from conference presentation to rapid communication was about 8 months, and from the NEJM paper about 5–6 weeks.
+  - BPaLM: 
+WHO convened a GDG in February–March 2022 after the TB-PRACTECAL and ZeNix results.
+ 
+A rapid communication followed in May 2022.
+ The full guideline update was published later in the year (the Lancet Respiratory Medicine page lists Dec 15, 2022).
+  - A WHO "rapid communication" route exists, which weakens the idea of a fixed window with a 2+ year miss penalty. I found no evidence supporting the "2+ years" cycle claim.
+- Trial results are not the only binding constraint on uptake: **SUPPORTED**. WHO said 
+implementation and uptake of the new regimen in the short to medium term will be more feasible if the cost of rifapentine is reduced and availability improved.
+ The same communication flagged 
+a need for rigorous antibacterial stewardship because the regimen contains moxifloxacin.
+ This supports the "speedup less than one year" direction through downstream bottlenecks (price, supply, national adoption). It does not support the lumpy "WHO-window" mechanism.
+- A public call for data and national policy/procurement lags: **PLAUSIBLE, not checked**.
+- "Materiality threshold of about 0.65 years" and "speedup_years linear in SROI": **UNVERIFIABLE** without the CEA. Linearity follows from the stated structure.
 
 **EVIDENCE FOUND**
-- **Limits of the evidence:**
-  - These are two TB regimen cases with unusually high-profile, sponsor-supported trials. The investigator's "generic adjunct drug" may face a slower process.
-  - The BPaLM case shows WHO acting on interim, pre-publication data. For a trial result, "available to WHO" and "published" are different dates, and the speedup definition needs to say which one is meant.
-- No source found quantifying lags for adjunct or host-directed therapies, or for national policy and procurement steps.
+- Both case studies show a short gap between pivotal data and WHO guidance (months, not years). Real WHO timing therefore looks more responsive than the critique assumes.
+- I did not find data on national adoption lags, which is where slack-absorption would most plausibly occur.
+- Direction: the evidence points more toward "less than one year" through downstream bottlenecks than toward "more than one year" through missed guideline windows.
+
+**CORE CLAIM**
+- Claim: The trial is not the sole binding constraint, so a 1-year trial speedup need not translate into a 1-year adoption speedup, and the effective speedup is a lumpy random variable.
+- Support: **LOGIC ONLY** for the general point, with partial direct support for non-trial bottlenecks (price, availability).
+- Why: Downstream constraints are documented, but the specific "fixed WHO schedule, missed-window" mechanism is not supported by the two cases I checked.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The core concern, that speedup is not a pure translation of the adoption curve, is sound and partly supported. The "roughly fixed WHO guideline schedule" and "lose a full 2+ year cycle" mechanisms are unsupported, and the TB cases lean against them.
 
 **REVISED CRITIQUE**
-- The model's one-for-one translation of the adoption curve holds only if the trial is the binding constraint at every step, and the speedup should be treated as a distribution.
-- For TB specifically, two recent regimens show WHO's GDG responding within about one to two months of data being shared. That favours a speedup close to 1 year at the WHO stage and weakens the "fixed guideline cycle" mechanism and the asymmetric "lost cycle" upside.
-- The remaining uncertainty lies in national adoption and procurement lags, plus the unspecified definition of the trial-result date. The post-WHO lags are untested here.
-- **Strength: low-to-medium. Direction: uncertain (slightly toward "≈1 year or modestly less").** The lumpy-cycle claim is UNGROUNDED for TB. I recommend a sensitivity band on speedup_years instead of a point value.
+- The model's assumption that a 1-year trial speedup gives a 1-year adoption speedup is untested.
+- Adoption also depends on national policy change, procurement and drug price/availability (documented for rifapentine), so the effective speedup could be below 1 year.
+- WHO's guideline step in recent TB cases (Study 31, BPaLM) was ad hoc and fast (months), so the upside "missed window" scenario is weakly supported.
+- Direction: **leaning down or uncertain**, rather than symmetric.
+- Magnitude: medium, and sensitivity analysis is needed.
+- Flag as UNGROUNDED for national-level lags.
+- Remove the "fixed schedule" and "2+ year cycle" claims.
 
 --- Critique: Post-TB lung disease morbidity is likely the largest unvalued channel (~50–60k central, wide range) ---
 
-## Critique 1: Post-TB lung disease morbidity (~55k central)
+## Critique 1: Post-TB lung disease morbidity (~50–60k central)
 
 **CITATION CHECK**
-- Menzies et al. 2021 (Lancet Glob Health 9:e1679–87): **VERIFIED, and the Investigator's baseline looks too low.**
-  - 
-The paper estimates 12.1 DALYs per incident TB case, of which 6.3 are from the disease episode and 5.8 from the post-TB period.
- That makes post-TB roughly half of lifetime burden. A later paper says it contributes 
-up to 47% of the disease burden in DALYs.
-
-  - 
-Post-TB mortality and morbidity were both estimated from decreased lung function.
- The 5.8 DALYs therefore combine morbidity and premature death. I could not find the split in the sources retrieved.
-  - 
-28% of total DALYs accrue 15 or more years after incident TB.
- This supports the point that these are long-tail DALYs.
-- International Post-TB Symposium and Allwood et al.: **PARTIALLY VERIFIED.** The symposium paper and Allwood's "The long shadow post-tuberculosis" exist (
-"Post-tuberculosis lung health: perspectives from the First International Symposium"
-). I did not check their prevalence figures in detail.
+- Menzies et al. 2021 (Lancet Glob Health): **VERIFIED**, and the exact share can now be filled in. The paper exists. 
+It estimates 12.1 DALYs per incident TB case, of which 6.3 come from the disease episode and 5.8 from post-TB.
+ 
+Globally, 58 million of 122 million DALYs (47%) are attributed to post-TB sequelae.
+ 
+The post-TB estimates are based on decreased lung function caused by pulmonary TB.
+ The Investigator's "substantial share" is correct.
+- International Post-TB Symposium consensus and Allwood et al.: **NOT CHECKED.** The Investigator gave no specific citation. 
+Allwood et al.'s 2019 Lancet Infect Dis correspondence ("The long shadow post-tuberculosis") does highlight the hidden epidemic of chronic disease and impairment after microbiological cure.
+ That fits the general claim.
 
 **CLAIM CHECK**
-- Post-TB lung disease is common and long-lasting: **VERIFIED.** 
-Reviews put respiratory impairment among TB survivors at 15–60%.
- The "~30% with meaningful impairment" input sits inside that range.
-- Baseline of 0.75 DALYs per patient: **PLAUSIBLE but probably low.**
-  - Menzies reports 5.8 post-TB DALYs per case, including deaths, against the Investigator's 0.75 for morbidity alone.
-  - The morbidity-only share is unknown, so the gap cannot be quantified. It is likely large.
-  - Menzies may also be discounted or modelled differently, which I did not check.
-- Arithmetic: **VERIFIED.** 3.3M × 0.75 ≈ 2.5M, × 5% ≈ 124k, × 0.45 ≈ 56k. The high end of ~300k is also consistent.
-- 5% reduction in long-term lung burden: **UNGROUNDED**, as the Investigator stated.
-- "The trial's strongest signal was reduced lung damage": **UNVERIFIABLE, and possibly contradicted.** The source trial is not identified in my materials.
-  - The ROSETTA trial (rosuvastatin) 
-found no substantive benefit on culture conversion, on proportion of lung affected by chest x-ray, or on spirometry.
-
-  - 
-Its PET-CT sub-study also found no effect.
-
-  - If the critique's premise comes from a different statin trial, such as StAT-TB with pravastatin, I found no published results to check it against. The premise needs confirming.
-- Intervention-to-long-term link: **UNGROUNDED.** I found no long-term outcome data. A 2025 case-definition paper says 
-the definition was developed without data on long-term patient outcomes.
-
+- "Post-TB lung disease affects a large share of survivors": **VERIFIED** qualitatively. 
+One source says pulmonary TB causes structural lung changes in more than two-thirds of patients that persist after cure.
+ 
+Another study found 31% of survivors reported respiratory symptoms 1 year after treatment.
+ The "~30% clinically meaningful impairment" input is plausible.
+- Disability weight of 0.1–0.2 over 15–25 years, giving ~0.75 DALYs per treated patient: **UNVERIFIABLE.** These are the Investigator's own inputs. They sit well below Menzies' post-TB total of 5.8 per case. Menzies includes post-TB mortality, and I could not confirm the morbidity/mortality split.
+- Arithmetic (3.3M × 0.75 × 5% × 0.45 ≈ 55k, range 10k–300k): **VERIFIED.** It reproduces correctly.
+- "Trial's strongest signal was reduced lung damage": **UNVERIFIABLE.** The trial is not identified in what I was given. For context, in the ROSETTA rosuvastatin trial 
+10 mg rosuvastatin for the first eight weeks did not produce substantive benefit on culture conversion, chest x-ray lung involvement, or spirometry.
+ Whether the source trial differs from ROSETTA should be checked.
+- "Link between early lung damage and long-term function is not established in a long-follow-up RCT": **PLAUSIBLE.** I found no counter-evidence.
+- "No-discounting inflates this channel": **PLAUSIBLE.** 
+Menzies found 28% of total DALYs accrue 15 or more years after incident TB.
+ That supports the point that a large share of the burden is very long-dated.
 
 **EVIDENCE FOUND**
-- Menzies's 5.8 post-TB DALYs per case suggests the unvalued pool could be several times larger than 2.5M DALYs per adoption-year if the Investigator's baseline is raised. That would raise the ceiling, but not the central estimate unless the effect size is also supported.
-- Double-counting risk with Critique 2: post-TB mortality is inside Menzies's post-TB DALYs. If baselines are taken from Menzies, Critiques 1 and 2 overlap.
-- The convention flag is correct. Menzies shows a large share of DALYs accrue after 15 or more years, so discounting would cut this channel materially.
+- The Investigator's baseline looks too low relative to Menzies. 
+Menzies puts post-TB burden at 5.8 DALYs per case.
+ For 3.3M patients that is ~19M DALYs, versus the Investigator's ~2.5M for lung morbidity alone. This is a different scope (mortality included, extrapulmonary cases included), so it isn't a direct contradiction. It does suggest the 5% × baseline term could be understated if the lung-damage-to-long-term-outcome link holds.
+- 
+A 2025 Lancet Glob Health modelling paper on progressive lung damage found post-TB DALYs were 52.5% of total DALYs with prompt treatment.
+ This supports a large post-TB share.
+- Overlap with Critique 2: both apply the same 5% reduction to the same lung-damage pathway. Menzies models post-TB mortality and morbidity jointly from lung function, so these two channels should be combined rather than added as independent terms.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: A ~5% proportional reduction in long-term post-TB lung burden follows from the trial's early lung-damage signal.
+- Support: **LOGIC ONLY**
+- Why: The baseline burden is well supported, but I found no evidence on surrogate-to-long-term transfer, and the 5% is admitted to be an assumption.
 
-**REVISED CRITIQUE:** Post-TB lung disease is a large, real burden. Menzies 2021 puts about 5.8 of 12.1 lifetime DALYs per case in the post-TB phase, and these are long-tail DALYs that discounting would cut. A BOTEC that assigns this channel zero value omits a potentially important term. The central estimate of ~55k rests on two unsupported inputs: the 5% effect size and the "lung damage signal" premise. The premise is **UNVERIFIED** and is contradicted by ROSETTA, which found no lung benefit on x-ray, spirometry or PET-CT. The 0.75 DALY baseline is probably too low compared with Menzies, though that source mixes morbidity and mortality. Keep the strength at medium-to-low, conditional on identifying which trial showed the lung signal. Report discounted and undiscounted versions. Avoid double-counting with Critique 2.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The channel exists and is large. The 5% effect size and the 0.45 probability weight are ungrounded.
+
+**REVISED CRITIQUE**
+- Post-TB sequelae account for about 5.8 of 12.1 lifetime DALYs per incident case (Menzies 2021). The BOTEC assigns this channel zero value.
+- The Investigator's baseline of 0.75 DALYs per patient is probably conservative for morbidity alone, and could be much larger if mortality is included.
+- The 5% reduction attributable to the intervention is UNGROUNDED, as is the claim that early lung-damage reductions persist. Treat the central estimate (~55k) as illustrative.
+- Combine with Critique 2 to avoid double counting.
+- Strength: medium, with higher upside uncertainty than stated.
+- Report both discounted and undiscounted versions, as the Investigator suggested.
 
 ---
 
 ## Critique 2: Post-treatment excess mortality and life-expectancy adjustment
 
 **CITATION CHECK**
-- Romanowski et al. 2019 (Lancet Infect Dis 19:1129–37): **VERIFIED.**
-  - It is a systematic review and meta-analysis of long-term all-cause mortality in people treated for TB.
-  - Commentary describes 
-TB survivors as having approximately three to four times the mortality of local populations.
-
-  - The pooled figure is cited as 
-2.91 (95% CI 2.21–3.84) times higher than in those who never had TB.
-
-  - This fills in the number the Investigator could not recall. "A multiple of the general population's" is correct.
+- Romanowski et al. 2019 (Lancet Infect Dis 19:1129–37): **VERIFIED.** 
+It found the force of mortality in TB survivors to be 2.91 (95% CI 2.21–3.84) times that of people who never had TB.
+ 
+A commentary describes it as roughly three to four times greater mortality than local populations.
+ The "multiple of the general population" recollection is correct. The Investigator's cumulative 10% excess over 10 years is flagged as illustrative and is not from the paper.
 
 **CLAIM CHECK**
-- Elevated post-treatment mortality: **VERIFIED.** A large 2025 Brazilian cohort also found 
-an elevated natural-cause mortality risk in the treated cohort (RR 1.77, 95% CI 1.55–2.03).
- 
-Risk ratios were raised for respiratory deaths, among other causes.
-
-- Respiratory disease as a major driver of excess deaths: **PARTIALLY VERIFIED.** One review states that 
-respiratory diseases remain the leading cause of excess deaths in people who recover from TB.
- The 40% attributable share is not directly sourced. For comparison, Romanowski attributed 20% (95% CI 15–26) of the excess to cardiovascular disease (
-per the Basham et al. discussion
-). A respiratory share of 40% is therefore plausible but **UNGROUNDED**.
-- ~10% cumulative excess mortality over 10 years: **PLAUSIBLE.** An SMR of ~2.9 on typical LMIC adult background mortality could give excess mortality of that order. The Investigator labelled this as illustrative.
-- 5% intervention effect: **UNGROUNDED.**
-- Arithmetic for (a): **VERIFIED.** 0.1 × 0.4 × 0.05 = 0.002; × 15 = 0.03; × 3.3M ≈ 99k; × 0.45 ≈ 45k. Part (b): 5–10% of 535k = 27–54k, which matches the stated −25k to −55k.
-- Part (b), that rescued patients have worse residual life expectancy: **UNVERIFIABLE.** It is logically sound, since late diagnosis and immunocompromise raise the risk of lasting impairment (
-per a Lancet ID commentary
-). I found no quantification. The 5–10% overstatement is the Investigator's own figure.
-- Statin cardiovascular benefit over about 6 months treated as zero: **PLAUSIBLE.** I did not verify it.
+- Elevated long-term all-cause mortality after TB: **VERIFIED.**
+- ~40% of excess deaths attributable to respiratory sequelae: **PLAUSIBLE, UNGROUNDED.**
+  - 
+Romanowski attributed 20% (95% CI 15–26) of the excess to cardiovascular disease.
+ That leaves room for a respiratory share.
+  - 
+A 2025 lung-function meta-analysis says respiratory diseases remain the leading cause of excess deaths in people who recover from TB.
+ This is a secondary claim, so I can't pin the share at 40%.
+- ~10% cumulative excess mortality over 10 years: **PLAUSIBLE.** With an SMR of ~2.9 the figure depends on background mortality, so 10% is within a reasonable range. It is not directly verified.
+- Arithmetic: **VERIFIED.** 0.1 × 0.4 × 0.05 = 0.002; × 15 DALYs × 3.3M ≈ 99k; × 0.45 ≈ 45k. The (b) range of 25–55k also reproduces from 5–10% of 535k.
+- (b) The 5–10% overstatement from the life-expectancy adjustment: **UNVERIFIABLE.**
+  - 
+Menzies finds young age, HIV and living in a high-incidence country associated with higher DALYs per incident case.
+ That is about post-TB burden, not remaining life expectancy of those rescued from death.
+  - The direction of the Investigator's argument is plausible, but the magnitude is invented.
+- Statin's own cardiovascular benefit over ~6 months is negligible: **PLAUSIBLE.** I did not search for this.
 
 **EVIDENCE FOUND**
-- Menzies's post-TB DALYs include post-TB mortality, so this channel overlaps with Critique 1 if both are added.
-- Mortality is elevated in the Cerqueira-Silva cohort even in treated patients, supporting the existence of the excess-death pool but not the 40% lung share or the 5% effect.
-- The net effect is unsigned. The Investigator's own conclusion that the two adjustments may cancel is reasonable.
+- Post-TB mortality is already modelled in Menzies' per-case DALYs, so channel (a) overlaps Critique 1 and the Menzies framework.
+- The "Estimated Direction: decreases" label is ambiguous. (a) adds benefit and (b) subtracts it, so the net sign is genuinely unclear, as the Investigator says.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: About 40% of post-treatment excess deaths are lung-related and reducible by ~5% via the intervention, roughly offset by a 5–10% overstatement of on-treatment benefit.
+- Support: **LOGIC ONLY**
+- Why: The excess mortality is verified, but I found no evidence on the respiratory share, the 5% reduction, or the life-expectancy adjustment.
 
-**REVISED CRITIQUE:** TB survivors have substantially elevated long-term mortality (pooled SMR ~2.9 in Romanowski 2019). Respiratory causes are a major contributor, but the 40% share is **UNGROUNDED**. The upside channel (~45k) depends on three unsupported inputs: a 5% effect, a 10% excess mortality, and a 40% respiratory share. Treat it as a flagged hypothesis with a wide range of roughly 0–50k. The downside life-expectancy adjustment is logically sound but its size is unquantified (**UNGROUNDED**). Treat the net as approximately zero with uncertain sign. Merge or net this against Critique 1 to avoid double-counting. Strength: low-to-medium.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The elevated mortality is real. The magnitudes are all assumptions.
+
+**REVISED CRITIQUE**
+- TB survivors have about 2.9× background mortality (Romanowski 2019). Some of it is respiratory, and CVD accounts for ~20%.
+- A lung-sparing adjunct could avert some post-treatment deaths, but the respiratory share, the 5% reduction, and the 10% cumulative excess are UNGROUNDED.
+- The sign-reversing life-expectancy adjustment is a logically coherent hypothesis. It is flagged UNGROUNDED, and the 5–10% is unsupported.
+- The net could be anywhere between about −25k and +45k. Because it overlaps with Critique 1, merge the two.
+- Strength: low–medium.
 
 ---
 
 ## Critique 3: Transmission benefit (~10–30k central)
 
 **CITATION CHECK**
-No specific studies were cited. The Investigator asked the Verifier to find relevant modelling studies.
+- No specific studies were cited, so there is nothing to check. Supporting literature I found is listed below.
 
 **CLAIM CHECK**
-- Most transmission occurs before diagnosis and treatment start: **VERIFIED.** A review on infectiousness and treatment effect says 
-most TB transmission occurs before diagnosis and effective treatment initiation.
- A Bayesian modelling study finds 
-a disproportionate share of future transmission arises from undiagnosed smear-positive subclinical TB.
+- "Infectiousness falls quickly after effective therapy starts": **VERIFIED.**
+  - 
+In early guinea-pig experiments, animals exposed to patients on effective treatment were only 2% as likely to be infected as those exposed to untreated patients.
 
-- Infectiousness falls quickly after effective therapy starts: **VERIFIED, with caveats.**
-  - A population model of shorter regimens assumes 
-bacillary burden drops rapidly and patients are non-infectious after the first two weeks.
+  - 
+A systematic review says data from diverse experimental studies suggest infectiousness declines rapidly after effective treatment starts, before smear and culture conversion.
 
-  - The same review reports that 
-30–40% of patients who produce cough aerosols rapidly become nonculturable after treatment initiation.
+  - 
+A 2025 review says the exact duration remains uncertain.
 
-  - Human-to-guinea-pig experiments show a rapid effect of effective treatment on transmission.
-  - However, 
-the exact duration of infectiousness after treatment initiation remains uncertain and likely varies between individuals.
- A 1–5% post-start transmission share is directionally supported but not directly measured.
-- Culture conversion at 8 weeks does not map one-to-one to infectiousness: **PLAUSIBLE.** Conversion at 8 weeks is a phase 2b efficacy endpoint (
-usually measured at 2 months
-). Infectiousness collapses much earlier than culture conversion, so the Investigator's discount is warranted.
-- ROSETTA, a statin trial, found no benefit on culture conversion. 
-Another trial using rosuvastatin did not affect sputum culture conversion.
- 
-An atorvastatin phase IIA study did show a significant reduction in sputum mycobacterial load.
- The premise of faster conversion is therefore contested across trials.
-- Secondary cases per index case of 0.3–1: **UNVERIFIABLE** here. It is plausible for high-burden settings but not sourced.
-- 10 DALYs per secondary case: **PLAUSIBLE.** Menzies gives an average of 12.1 DALYs per incident case.
-- Arithmetic: **VERIFIED.** 3.3M × 0.5 × 0.003 × 10 ≈ 49.5k; × 0.4 ≈ 20k. The net 0.1–1% follows from 1–5% × 10–20%. The 3k–150k range is unverified.
+- "Most transmission occurs before diagnosis": **PLAUSIBLE, partly supported.**
+  - 
+A Valencia whole-genome-sequencing study found 5 of 14 cases (35.7%) likely transmitted well before symptom onset.
+
+  - 
+In rural China (Songjiang), 40.6% of determinate transmission events occurred before the index case's symptom onset.
+
+  - These figures are for before symptom onset, not before diagnosis. Diagnostic delay would push the pre-diagnosis share higher.
+  - 
+A modelling study estimated roughly 68% of global transmission came from asymptomatic TB.
+ The range is wide (27–92%).
+- Post-start share of lifetime transmission is 1–5%: **UNVERIFIABLE, plausible.** The guinea-pig 2% figure and the pre-diagnosis shares are consistent with a small number. I found no direct estimate of this parameter.
+- "Culture conversion at 8 weeks does not map to infectiousness one-to-one": **VERIFIED.**
+  - 
+A WHO-commissioned meta-analysis found most patients remained culture positive at 2 weeks. It notes culture positivity is only one component of infectiousness, with cough frequency and aerosol generation also important.
+
+  - 
+It also states there are no data describing how infectiousness changed over time after treatment initiation.
+
+  - This supports the Investigator's downward adjustment, and also means the 10–20% fractional reduction is poorly anchored.
+- Arithmetic: **VERIFIED.** 3.3M × 0.5 × 0.003 × 10 ≈ 50k, and ~20k after weighting.
+- 10 DALYs per secondary case: **PLAUSIBLE.** It is consistent with Menzies' 12.1 DALYs per incident case.
 
 **EVIDENCE FOUND**
-- Modelling sources that fit the Investigator's logic:
-  - The shorter-regimen model (PMC4015982).
-  - Dowdy-type pre-diagnosis transmission analyses (PMC9907102).
-  - The infectiousness and effective-treatment review (PMC12054730).
-- Shorter-regimen modelling treats on-treatment infectiousness as short-lived. This supports the idea that conversion speed after week 2 matters little.
-- Counterweight to the Investigator's logic: a lung-sparing adjunct does not shorten diagnostic delay, which is the dominant transmission window. This reinforces the small-effect conclusion.
+- The guinea-pig data show infectiousness drops sharply with effective therapy regardless of culture status, which weakens the case that a faster culture conversion adds much extra transmission reduction.
+- 
+In one MDR-TB guinea-pig experiment, patients infected 26.7% of animals before treatment and 27.8% at 72 hours after drug initiation.
+ Early post-start infectiousness is therefore not always near zero, which keeps some upper tail alive.
+- 
+The ROSETTA trial found no substantive benefit of rosuvastatin on culture conversion.
+ If the trial under evaluation has a similarly weak conversion signal, this channel shrinks further. I can't confirm this for the actual trial.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: The net reduction in total transmission from faster conversion is ~0.3% (range 0.1–1%).
+- Support: **LOGIC ONLY**
+- Why: Qualitative literature supports "small", but the 1–5% post-start share and the 10–20% fractional reduction are unsupported, and the evidence cuts toward a smaller effect.
 
-**REVISED CRITIQUE:** Most transmission occurs before diagnosis, and infectiousness falls within days to weeks of effective treatment. Any transmission benefit from faster culture conversion is therefore small. This is supported by the transmission and modelling literature above. The numerical inputs (post-start transmission share of 1–5%, 10–20% reduction, 0.5 secondary cases) are unsourced and should be flagged **UNGROUNDED**. The central estimate of ~20k is a bounded order-of-magnitude figure, with real downside if the statin has no culture-conversion effect (ROSETTA found none). Consider lowering the central estimate toward ~10k or below, and widening the low end toward zero. Strength: low. This is a minor channel, and the thread label ("post-TB lung disease") does not match its content.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction and the logic that the benefit is small are supported. The numbers are unanchored.
+
+**REVISED CRITIQUE**
+- Most transmission occurs before treatment starts, and effective therapy rapidly reduces infectiousness. Culture conversion is an imperfect proxy for infectiousness, so the incremental transmission benefit is small.
+- The specific figures (0.3% net reduction, 1–5% post-start share, 10–20% fractional reduction) are UNGROUNDED.
+- Treat ~10–30k as an order-of-magnitude placeholder. The true value is probably at or below the low end if the trial's culture-conversion effect is weak.
+- Strength: low. This is the least material of the three channels.
 
 --- Critique: Post-treatment excess mortality (~40–50k central) and a related sign-reversing adjustment ---
 
-## Critique 1: Post-TB lung disease morbidity (~55k central)
+## Critique 1: Post-TB lung disease morbidity (~50–60k central)
 
 **CITATION CHECK**
-- Menzies et al. 2021 (Lancet Glob Health 9:e1679–87): **VERIFIED, and the Investigator's baseline looks too low.**
-  - 
-The paper estimates 12.1 DALYs per incident TB case, of which 6.3 are from the disease episode and 5.8 from the post-TB period.
- That makes post-TB roughly half of lifetime burden. A later paper says it contributes 
-up to 47% of the disease burden in DALYs.
-
-  - 
-Post-TB mortality and morbidity were both estimated from decreased lung function.
- The 5.8 DALYs therefore combine morbidity and premature death. I could not find the split in the sources retrieved.
-  - 
-28% of total DALYs accrue 15 or more years after incident TB.
- This supports the point that these are long-tail DALYs.
-- International Post-TB Symposium and Allwood et al.: **PARTIALLY VERIFIED.** The symposium paper and Allwood's "The long shadow post-tuberculosis" exist (
-"Post-tuberculosis lung health: perspectives from the First International Symposium"
-). I did not check their prevalence figures in detail.
+- Menzies et al. 2021 (Lancet Glob Health): **VERIFIED**, and the exact share can now be filled in. The paper exists. 
+It estimates 12.1 DALYs per incident TB case, of which 6.3 come from the disease episode and 5.8 from post-TB.
+ 
+Globally, 58 million of 122 million DALYs (47%) are attributed to post-TB sequelae.
+ 
+The post-TB estimates are based on decreased lung function caused by pulmonary TB.
+ The Investigator's "substantial share" is correct.
+- International Post-TB Symposium consensus and Allwood et al.: **NOT CHECKED.** The Investigator gave no specific citation. 
+Allwood et al.'s 2019 Lancet Infect Dis correspondence ("The long shadow post-tuberculosis") does highlight the hidden epidemic of chronic disease and impairment after microbiological cure.
+ That fits the general claim.
 
 **CLAIM CHECK**
-- Post-TB lung disease is common and long-lasting: **VERIFIED.** 
-Reviews put respiratory impairment among TB survivors at 15–60%.
- The "~30% with meaningful impairment" input sits inside that range.
-- Baseline of 0.75 DALYs per patient: **PLAUSIBLE but probably low.**
-  - Menzies reports 5.8 post-TB DALYs per case, including deaths, against the Investigator's 0.75 for morbidity alone.
-  - The morbidity-only share is unknown, so the gap cannot be quantified. It is likely large.
-  - Menzies may also be discounted or modelled differently, which I did not check.
-- Arithmetic: **VERIFIED.** 3.3M × 0.75 ≈ 2.5M, × 5% ≈ 124k, × 0.45 ≈ 56k. The high end of ~300k is also consistent.
-- 5% reduction in long-term lung burden: **UNGROUNDED**, as the Investigator stated.
-- "The trial's strongest signal was reduced lung damage": **UNVERIFIABLE, and possibly contradicted.** The source trial is not identified in my materials.
-  - The ROSETTA trial (rosuvastatin) 
-found no substantive benefit on culture conversion, on proportion of lung affected by chest x-ray, or on spirometry.
-
-  - 
-Its PET-CT sub-study also found no effect.
-
-  - If the critique's premise comes from a different statin trial, such as StAT-TB with pravastatin, I found no published results to check it against. The premise needs confirming.
-- Intervention-to-long-term link: **UNGROUNDED.** I found no long-term outcome data. A 2025 case-definition paper says 
-the definition was developed without data on long-term patient outcomes.
-
+- "Post-TB lung disease affects a large share of survivors": **VERIFIED** qualitatively. 
+One source says pulmonary TB causes structural lung changes in more than two-thirds of patients that persist after cure.
+ 
+Another study found 31% of survivors reported respiratory symptoms 1 year after treatment.
+ The "~30% clinically meaningful impairment" input is plausible.
+- Disability weight of 0.1–0.2 over 15–25 years, giving ~0.75 DALYs per treated patient: **UNVERIFIABLE.** These are the Investigator's own inputs. They sit well below Menzies' post-TB total of 5.8 per case. Menzies includes post-TB mortality, and I could not confirm the morbidity/mortality split.
+- Arithmetic (3.3M × 0.75 × 5% × 0.45 ≈ 55k, range 10k–300k): **VERIFIED.** It reproduces correctly.
+- "Trial's strongest signal was reduced lung damage": **UNVERIFIABLE.** The trial is not identified in what I was given. For context, in the ROSETTA rosuvastatin trial 
+10 mg rosuvastatin for the first eight weeks did not produce substantive benefit on culture conversion, chest x-ray lung involvement, or spirometry.
+ Whether the source trial differs from ROSETTA should be checked.
+- "Link between early lung damage and long-term function is not established in a long-follow-up RCT": **PLAUSIBLE.** I found no counter-evidence.
+- "No-discounting inflates this channel": **PLAUSIBLE.** 
+Menzies found 28% of total DALYs accrue 15 or more years after incident TB.
+ That supports the point that a large share of the burden is very long-dated.
 
 **EVIDENCE FOUND**
-- Menzies's 5.8 post-TB DALYs per case suggests the unvalued pool could be several times larger than 2.5M DALYs per adoption-year if the Investigator's baseline is raised. That would raise the ceiling, but not the central estimate unless the effect size is also supported.
-- Double-counting risk with Critique 2: post-TB mortality is inside Menzies's post-TB DALYs. If baselines are taken from Menzies, Critiques 1 and 2 overlap.
-- The convention flag is correct. Menzies shows a large share of DALYs accrue after 15 or more years, so discounting would cut this channel materially.
+- The Investigator's baseline looks too low relative to Menzies. 
+Menzies puts post-TB burden at 5.8 DALYs per case.
+ For 3.3M patients that is ~19M DALYs, versus the Investigator's ~2.5M for lung morbidity alone. This is a different scope (mortality included, extrapulmonary cases included), so it isn't a direct contradiction. It does suggest the 5% × baseline term could be understated if the lung-damage-to-long-term-outcome link holds.
+- 
+A 2025 Lancet Glob Health modelling paper on progressive lung damage found post-TB DALYs were 52.5% of total DALYs with prompt treatment.
+ This supports a large post-TB share.
+- Overlap with Critique 2: both apply the same 5% reduction to the same lung-damage pathway. Menzies models post-TB mortality and morbidity jointly from lung function, so these two channels should be combined rather than added as independent terms.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: A ~5% proportional reduction in long-term post-TB lung burden follows from the trial's early lung-damage signal.
+- Support: **LOGIC ONLY**
+- Why: The baseline burden is well supported, but I found no evidence on surrogate-to-long-term transfer, and the 5% is admitted to be an assumption.
 
-**REVISED CRITIQUE:** Post-TB lung disease is a large, real burden. Menzies 2021 puts about 5.8 of 12.1 lifetime DALYs per case in the post-TB phase, and these are long-tail DALYs that discounting would cut. A BOTEC that assigns this channel zero value omits a potentially important term. The central estimate of ~55k rests on two unsupported inputs: the 5% effect size and the "lung damage signal" premise. The premise is **UNVERIFIED** and is contradicted by ROSETTA, which found no lung benefit on x-ray, spirometry or PET-CT. The 0.75 DALY baseline is probably too low compared with Menzies, though that source mixes morbidity and mortality. Keep the strength at medium-to-low, conditional on identifying which trial showed the lung signal. Report discounted and undiscounted versions. Avoid double-counting with Critique 2.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The channel exists and is large. The 5% effect size and the 0.45 probability weight are ungrounded.
+
+**REVISED CRITIQUE**
+- Post-TB sequelae account for about 5.8 of 12.1 lifetime DALYs per incident case (Menzies 2021). The BOTEC assigns this channel zero value.
+- The Investigator's baseline of 0.75 DALYs per patient is probably conservative for morbidity alone, and could be much larger if mortality is included.
+- The 5% reduction attributable to the intervention is UNGROUNDED, as is the claim that early lung-damage reductions persist. Treat the central estimate (~55k) as illustrative.
+- Combine with Critique 2 to avoid double counting.
+- Strength: medium, with higher upside uncertainty than stated.
+- Report both discounted and undiscounted versions, as the Investigator suggested.
 
 ---
 
 ## Critique 2: Post-treatment excess mortality and life-expectancy adjustment
 
 **CITATION CHECK**
-- Romanowski et al. 2019 (Lancet Infect Dis 19:1129–37): **VERIFIED.**
-  - It is a systematic review and meta-analysis of long-term all-cause mortality in people treated for TB.
-  - Commentary describes 
-TB survivors as having approximately three to four times the mortality of local populations.
-
-  - The pooled figure is cited as 
-2.91 (95% CI 2.21–3.84) times higher than in those who never had TB.
-
-  - This fills in the number the Investigator could not recall. "A multiple of the general population's" is correct.
+- Romanowski et al. 2019 (Lancet Infect Dis 19:1129–37): **VERIFIED.** 
+It found the force of mortality in TB survivors to be 2.91 (95% CI 2.21–3.84) times that of people who never had TB.
+ 
+A commentary describes it as roughly three to four times greater mortality than local populations.
+ The "multiple of the general population" recollection is correct. The Investigator's cumulative 10% excess over 10 years is flagged as illustrative and is not from the paper.
 
 **CLAIM CHECK**
-- Elevated post-treatment mortality: **VERIFIED.** A large 2025 Brazilian cohort also found 
-an elevated natural-cause mortality risk in the treated cohort (RR 1.77, 95% CI 1.55–2.03).
- 
-Risk ratios were raised for respiratory deaths, among other causes.
-
-- Respiratory disease as a major driver of excess deaths: **PARTIALLY VERIFIED.** One review states that 
-respiratory diseases remain the leading cause of excess deaths in people who recover from TB.
- The 40% attributable share is not directly sourced. For comparison, Romanowski attributed 20% (95% CI 15–26) of the excess to cardiovascular disease (
-per the Basham et al. discussion
-). A respiratory share of 40% is therefore plausible but **UNGROUNDED**.
-- ~10% cumulative excess mortality over 10 years: **PLAUSIBLE.** An SMR of ~2.9 on typical LMIC adult background mortality could give excess mortality of that order. The Investigator labelled this as illustrative.
-- 5% intervention effect: **UNGROUNDED.**
-- Arithmetic for (a): **VERIFIED.** 0.1 × 0.4 × 0.05 = 0.002; × 15 = 0.03; × 3.3M ≈ 99k; × 0.45 ≈ 45k. Part (b): 5–10% of 535k = 27–54k, which matches the stated −25k to −55k.
-- Part (b), that rescued patients have worse residual life expectancy: **UNVERIFIABLE.** It is logically sound, since late diagnosis and immunocompromise raise the risk of lasting impairment (
-per a Lancet ID commentary
-). I found no quantification. The 5–10% overstatement is the Investigator's own figure.
-- Statin cardiovascular benefit over about 6 months treated as zero: **PLAUSIBLE.** I did not verify it.
+- Elevated long-term all-cause mortality after TB: **VERIFIED.**
+- ~40% of excess deaths attributable to respiratory sequelae: **PLAUSIBLE, UNGROUNDED.**
+  - 
+Romanowski attributed 20% (95% CI 15–26) of the excess to cardiovascular disease.
+ That leaves room for a respiratory share.
+  - 
+A 2025 lung-function meta-analysis says respiratory diseases remain the leading cause of excess deaths in people who recover from TB.
+ This is a secondary claim, so I can't pin the share at 40%.
+- ~10% cumulative excess mortality over 10 years: **PLAUSIBLE.** With an SMR of ~2.9 the figure depends on background mortality, so 10% is within a reasonable range. It is not directly verified.
+- Arithmetic: **VERIFIED.** 0.1 × 0.4 × 0.05 = 0.002; × 15 DALYs × 3.3M ≈ 99k; × 0.45 ≈ 45k. The (b) range of 25–55k also reproduces from 5–10% of 535k.
+- (b) The 5–10% overstatement from the life-expectancy adjustment: **UNVERIFIABLE.**
+  - 
+Menzies finds young age, HIV and living in a high-incidence country associated with higher DALYs per incident case.
+ That is about post-TB burden, not remaining life expectancy of those rescued from death.
+  - The direction of the Investigator's argument is plausible, but the magnitude is invented.
+- Statin's own cardiovascular benefit over ~6 months is negligible: **PLAUSIBLE.** I did not search for this.
 
 **EVIDENCE FOUND**
-- Menzies's post-TB DALYs include post-TB mortality, so this channel overlaps with Critique 1 if both are added.
-- Mortality is elevated in the Cerqueira-Silva cohort even in treated patients, supporting the existence of the excess-death pool but not the 40% lung share or the 5% effect.
-- The net effect is unsigned. The Investigator's own conclusion that the two adjustments may cancel is reasonable.
+- Post-TB mortality is already modelled in Menzies' per-case DALYs, so channel (a) overlaps Critique 1 and the Menzies framework.
+- The "Estimated Direction: decreases" label is ambiguous. (a) adds benefit and (b) subtracts it, so the net sign is genuinely unclear, as the Investigator says.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: About 40% of post-treatment excess deaths are lung-related and reducible by ~5% via the intervention, roughly offset by a 5–10% overstatement of on-treatment benefit.
+- Support: **LOGIC ONLY**
+- Why: The excess mortality is verified, but I found no evidence on the respiratory share, the 5% reduction, or the life-expectancy adjustment.
 
-**REVISED CRITIQUE:** TB survivors have substantially elevated long-term mortality (pooled SMR ~2.9 in Romanowski 2019). Respiratory causes are a major contributor, but the 40% share is **UNGROUNDED**. The upside channel (~45k) depends on three unsupported inputs: a 5% effect, a 10% excess mortality, and a 40% respiratory share. Treat it as a flagged hypothesis with a wide range of roughly 0–50k. The downside life-expectancy adjustment is logically sound but its size is unquantified (**UNGROUNDED**). Treat the net as approximately zero with uncertain sign. Merge or net this against Critique 1 to avoid double-counting. Strength: low-to-medium.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The elevated mortality is real. The magnitudes are all assumptions.
+
+**REVISED CRITIQUE**
+- TB survivors have about 2.9× background mortality (Romanowski 2019). Some of it is respiratory, and CVD accounts for ~20%.
+- A lung-sparing adjunct could avert some post-treatment deaths, but the respiratory share, the 5% reduction, and the 10% cumulative excess are UNGROUNDED.
+- The sign-reversing life-expectancy adjustment is a logically coherent hypothesis. It is flagged UNGROUNDED, and the 5–10% is unsupported.
+- The net could be anywhere between about −25k and +45k. Because it overlaps with Critique 1, merge the two.
+- Strength: low–medium.
 
 ---
 
 ## Critique 3: Transmission benefit (~10–30k central)
 
 **CITATION CHECK**
-No specific studies were cited. The Investigator asked the Verifier to find relevant modelling studies.
+- No specific studies were cited, so there is nothing to check. Supporting literature I found is listed below.
 
 **CLAIM CHECK**
-- Most transmission occurs before diagnosis and treatment start: **VERIFIED.** A review on infectiousness and treatment effect says 
-most TB transmission occurs before diagnosis and effective treatment initiation.
- A Bayesian modelling study finds 
-a disproportionate share of future transmission arises from undiagnosed smear-positive subclinical TB.
+- "Infectiousness falls quickly after effective therapy starts": **VERIFIED.**
+  - 
+In early guinea-pig experiments, animals exposed to patients on effective treatment were only 2% as likely to be infected as those exposed to untreated patients.
 
-- Infectiousness falls quickly after effective therapy starts: **VERIFIED, with caveats.**
-  - A population model of shorter regimens assumes 
-bacillary burden drops rapidly and patients are non-infectious after the first two weeks.
+  - 
+A systematic review says data from diverse experimental studies suggest infectiousness declines rapidly after effective treatment starts, before smear and culture conversion.
 
-  - The same review reports that 
-30–40% of patients who produce cough aerosols rapidly become nonculturable after treatment initiation.
+  - 
+A 2025 review says the exact duration remains uncertain.
 
-  - Human-to-guinea-pig experiments show a rapid effect of effective treatment on transmission.
-  - However, 
-the exact duration of infectiousness after treatment initiation remains uncertain and likely varies between individuals.
- A 1–5% post-start transmission share is directionally supported but not directly measured.
-- Culture conversion at 8 weeks does not map one-to-one to infectiousness: **PLAUSIBLE.** Conversion at 8 weeks is a phase 2b efficacy endpoint (
-usually measured at 2 months
-). Infectiousness collapses much earlier than culture conversion, so the Investigator's discount is warranted.
-- ROSETTA, a statin trial, found no benefit on culture conversion. 
-Another trial using rosuvastatin did not affect sputum culture conversion.
- 
-An atorvastatin phase IIA study did show a significant reduction in sputum mycobacterial load.
- The premise of faster conversion is therefore contested across trials.
-- Secondary cases per index case of 0.3–1: **UNVERIFIABLE** here. It is plausible for high-burden settings but not sourced.
-- 10 DALYs per secondary case: **PLAUSIBLE.** Menzies gives an average of 12.1 DALYs per incident case.
-- Arithmetic: **VERIFIED.** 3.3M × 0.5 × 0.003 × 10 ≈ 49.5k; × 0.4 ≈ 20k. The net 0.1–1% follows from 1–5% × 10–20%. The 3k–150k range is unverified.
+- "Most transmission occurs before diagnosis": **PLAUSIBLE, partly supported.**
+  - 
+A Valencia whole-genome-sequencing study found 5 of 14 cases (35.7%) likely transmitted well before symptom onset.
+
+  - 
+In rural China (Songjiang), 40.6% of determinate transmission events occurred before the index case's symptom onset.
+
+  - These figures are for before symptom onset, not before diagnosis. Diagnostic delay would push the pre-diagnosis share higher.
+  - 
+A modelling study estimated roughly 68% of global transmission came from asymptomatic TB.
+ The range is wide (27–92%).
+- Post-start share of lifetime transmission is 1–5%: **UNVERIFIABLE, plausible.** The guinea-pig 2% figure and the pre-diagnosis shares are consistent with a small number. I found no direct estimate of this parameter.
+- "Culture conversion at 8 weeks does not map to infectiousness one-to-one": **VERIFIED.**
+  - 
+A WHO-commissioned meta-analysis found most patients remained culture positive at 2 weeks. It notes culture positivity is only one component of infectiousness, with cough frequency and aerosol generation also important.
+
+  - 
+It also states there are no data describing how infectiousness changed over time after treatment initiation.
+
+  - This supports the Investigator's downward adjustment, and also means the 10–20% fractional reduction is poorly anchored.
+- Arithmetic: **VERIFIED.** 3.3M × 0.5 × 0.003 × 10 ≈ 50k, and ~20k after weighting.
+- 10 DALYs per secondary case: **PLAUSIBLE.** It is consistent with Menzies' 12.1 DALYs per incident case.
 
 **EVIDENCE FOUND**
-- Modelling sources that fit the Investigator's logic:
-  - The shorter-regimen model (PMC4015982).
-  - Dowdy-type pre-diagnosis transmission analyses (PMC9907102).
-  - The infectiousness and effective-treatment review (PMC12054730).
-- Shorter-regimen modelling treats on-treatment infectiousness as short-lived. This supports the idea that conversion speed after week 2 matters little.
-- Counterweight to the Investigator's logic: a lung-sparing adjunct does not shorten diagnostic delay, which is the dominant transmission window. This reinforces the small-effect conclusion.
+- The guinea-pig data show infectiousness drops sharply with effective therapy regardless of culture status, which weakens the case that a faster culture conversion adds much extra transmission reduction.
+- 
+In one MDR-TB guinea-pig experiment, patients infected 26.7% of animals before treatment and 27.8% at 72 hours after drug initiation.
+ Early post-start infectiousness is therefore not always near zero, which keeps some upper tail alive.
+- 
+The ROSETTA trial found no substantive benefit of rosuvastatin on culture conversion.
+ If the trial under evaluation has a similarly weak conversion signal, this channel shrinks further. I can't confirm this for the actual trial.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: The net reduction in total transmission from faster conversion is ~0.3% (range 0.1–1%).
+- Support: **LOGIC ONLY**
+- Why: Qualitative literature supports "small", but the 1–5% post-start share and the 10–20% fractional reduction are unsupported, and the evidence cuts toward a smaller effect.
 
-**REVISED CRITIQUE:** Most transmission occurs before diagnosis, and infectiousness falls within days to weeks of effective treatment. Any transmission benefit from faster culture conversion is therefore small. This is supported by the transmission and modelling literature above. The numerical inputs (post-start transmission share of 1–5%, 10–20% reduction, 0.5 secondary cases) are unsourced and should be flagged **UNGROUNDED**. The central estimate of ~20k is a bounded order-of-magnitude figure, with real downside if the statin has no culture-conversion effect (ROSETTA found none). Consider lowering the central estimate toward ~10k or below, and widening the low end toward zero. Strength: low. This is a minor channel, and the thread label ("post-TB lung disease") does not match its content.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction and the logic that the benefit is small are supported. The numbers are unanchored.
+
+**REVISED CRITIQUE**
+- Most transmission occurs before treatment starts, and effective therapy rapidly reduces infectiousness. Culture conversion is an imperfect proxy for infectiousness, so the incremental transmission benefit is small.
+- The specific figures (0.3% net reduction, 1–5% post-start share, 10–20% fractional reduction) are UNGROUNDED.
+- Treat ~10–30k as an order-of-magnitude placeholder. The true value is probably at or below the low end if the trial's culture-conversion effect is weak.
+- Strength: low. This is the least material of the three channels.
 
 --- Critique: Transmission benefit is small, with a bounded calculation (~10–30k central) ---
 
-## Critique 1: Post-TB lung disease morbidity (~55k central)
+## Critique 1: Post-TB lung disease morbidity (~50–60k central)
 
 **CITATION CHECK**
-- Menzies et al. 2021 (Lancet Glob Health 9:e1679–87): **VERIFIED, and the Investigator's baseline looks too low.**
-  - 
-The paper estimates 12.1 DALYs per incident TB case, of which 6.3 are from the disease episode and 5.8 from the post-TB period.
- That makes post-TB roughly half of lifetime burden. A later paper says it contributes 
-up to 47% of the disease burden in DALYs.
-
-  - 
-Post-TB mortality and morbidity were both estimated from decreased lung function.
- The 5.8 DALYs therefore combine morbidity and premature death. I could not find the split in the sources retrieved.
-  - 
-28% of total DALYs accrue 15 or more years after incident TB.
- This supports the point that these are long-tail DALYs.
-- International Post-TB Symposium and Allwood et al.: **PARTIALLY VERIFIED.** The symposium paper and Allwood's "The long shadow post-tuberculosis" exist (
-"Post-tuberculosis lung health: perspectives from the First International Symposium"
-). I did not check their prevalence figures in detail.
+- Menzies et al. 2021 (Lancet Glob Health): **VERIFIED**, and the exact share can now be filled in. The paper exists. 
+It estimates 12.1 DALYs per incident TB case, of which 6.3 come from the disease episode and 5.8 from post-TB.
+ 
+Globally, 58 million of 122 million DALYs (47%) are attributed to post-TB sequelae.
+ 
+The post-TB estimates are based on decreased lung function caused by pulmonary TB.
+ The Investigator's "substantial share" is correct.
+- International Post-TB Symposium consensus and Allwood et al.: **NOT CHECKED.** The Investigator gave no specific citation. 
+Allwood et al.'s 2019 Lancet Infect Dis correspondence ("The long shadow post-tuberculosis") does highlight the hidden epidemic of chronic disease and impairment after microbiological cure.
+ That fits the general claim.
 
 **CLAIM CHECK**
-- Post-TB lung disease is common and long-lasting: **VERIFIED.** 
-Reviews put respiratory impairment among TB survivors at 15–60%.
- The "~30% with meaningful impairment" input sits inside that range.
-- Baseline of 0.75 DALYs per patient: **PLAUSIBLE but probably low.**
-  - Menzies reports 5.8 post-TB DALYs per case, including deaths, against the Investigator's 0.75 for morbidity alone.
-  - The morbidity-only share is unknown, so the gap cannot be quantified. It is likely large.
-  - Menzies may also be discounted or modelled differently, which I did not check.
-- Arithmetic: **VERIFIED.** 3.3M × 0.75 ≈ 2.5M, × 5% ≈ 124k, × 0.45 ≈ 56k. The high end of ~300k is also consistent.
-- 5% reduction in long-term lung burden: **UNGROUNDED**, as the Investigator stated.
-- "The trial's strongest signal was reduced lung damage": **UNVERIFIABLE, and possibly contradicted.** The source trial is not identified in my materials.
-  - The ROSETTA trial (rosuvastatin) 
-found no substantive benefit on culture conversion, on proportion of lung affected by chest x-ray, or on spirometry.
-
-  - 
-Its PET-CT sub-study also found no effect.
-
-  - If the critique's premise comes from a different statin trial, such as StAT-TB with pravastatin, I found no published results to check it against. The premise needs confirming.
-- Intervention-to-long-term link: **UNGROUNDED.** I found no long-term outcome data. A 2025 case-definition paper says 
-the definition was developed without data on long-term patient outcomes.
-
+- "Post-TB lung disease affects a large share of survivors": **VERIFIED** qualitatively. 
+One source says pulmonary TB causes structural lung changes in more than two-thirds of patients that persist after cure.
+ 
+Another study found 31% of survivors reported respiratory symptoms 1 year after treatment.
+ The "~30% clinically meaningful impairment" input is plausible.
+- Disability weight of 0.1–0.2 over 15–25 years, giving ~0.75 DALYs per treated patient: **UNVERIFIABLE.** These are the Investigator's own inputs. They sit well below Menzies' post-TB total of 5.8 per case. Menzies includes post-TB mortality, and I could not confirm the morbidity/mortality split.
+- Arithmetic (3.3M × 0.75 × 5% × 0.45 ≈ 55k, range 10k–300k): **VERIFIED.** It reproduces correctly.
+- "Trial's strongest signal was reduced lung damage": **UNVERIFIABLE.** The trial is not identified in what I was given. For context, in the ROSETTA rosuvastatin trial 
+10 mg rosuvastatin for the first eight weeks did not produce substantive benefit on culture conversion, chest x-ray lung involvement, or spirometry.
+ Whether the source trial differs from ROSETTA should be checked.
+- "Link between early lung damage and long-term function is not established in a long-follow-up RCT": **PLAUSIBLE.** I found no counter-evidence.
+- "No-discounting inflates this channel": **PLAUSIBLE.** 
+Menzies found 28% of total DALYs accrue 15 or more years after incident TB.
+ That supports the point that a large share of the burden is very long-dated.
 
 **EVIDENCE FOUND**
-- Menzies's 5.8 post-TB DALYs per case suggests the unvalued pool could be several times larger than 2.5M DALYs per adoption-year if the Investigator's baseline is raised. That would raise the ceiling, but not the central estimate unless the effect size is also supported.
-- Double-counting risk with Critique 2: post-TB mortality is inside Menzies's post-TB DALYs. If baselines are taken from Menzies, Critiques 1 and 2 overlap.
-- The convention flag is correct. Menzies shows a large share of DALYs accrue after 15 or more years, so discounting would cut this channel materially.
+- The Investigator's baseline looks too low relative to Menzies. 
+Menzies puts post-TB burden at 5.8 DALYs per case.
+ For 3.3M patients that is ~19M DALYs, versus the Investigator's ~2.5M for lung morbidity alone. This is a different scope (mortality included, extrapulmonary cases included), so it isn't a direct contradiction. It does suggest the 5% × baseline term could be understated if the lung-damage-to-long-term-outcome link holds.
+- 
+A 2025 Lancet Glob Health modelling paper on progressive lung damage found post-TB DALYs were 52.5% of total DALYs with prompt treatment.
+ This supports a large post-TB share.
+- Overlap with Critique 2: both apply the same 5% reduction to the same lung-damage pathway. Menzies models post-TB mortality and morbidity jointly from lung function, so these two channels should be combined rather than added as independent terms.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: A ~5% proportional reduction in long-term post-TB lung burden follows from the trial's early lung-damage signal.
+- Support: **LOGIC ONLY**
+- Why: The baseline burden is well supported, but I found no evidence on surrogate-to-long-term transfer, and the 5% is admitted to be an assumption.
 
-**REVISED CRITIQUE:** Post-TB lung disease is a large, real burden. Menzies 2021 puts about 5.8 of 12.1 lifetime DALYs per case in the post-TB phase, and these are long-tail DALYs that discounting would cut. A BOTEC that assigns this channel zero value omits a potentially important term. The central estimate of ~55k rests on two unsupported inputs: the 5% effect size and the "lung damage signal" premise. The premise is **UNVERIFIED** and is contradicted by ROSETTA, which found no lung benefit on x-ray, spirometry or PET-CT. The 0.75 DALY baseline is probably too low compared with Menzies, though that source mixes morbidity and mortality. Keep the strength at medium-to-low, conditional on identifying which trial showed the lung signal. Report discounted and undiscounted versions. Avoid double-counting with Critique 2.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The channel exists and is large. The 5% effect size and the 0.45 probability weight are ungrounded.
+
+**REVISED CRITIQUE**
+- Post-TB sequelae account for about 5.8 of 12.1 lifetime DALYs per incident case (Menzies 2021). The BOTEC assigns this channel zero value.
+- The Investigator's baseline of 0.75 DALYs per patient is probably conservative for morbidity alone, and could be much larger if mortality is included.
+- The 5% reduction attributable to the intervention is UNGROUNDED, as is the claim that early lung-damage reductions persist. Treat the central estimate (~55k) as illustrative.
+- Combine with Critique 2 to avoid double counting.
+- Strength: medium, with higher upside uncertainty than stated.
+- Report both discounted and undiscounted versions, as the Investigator suggested.
 
 ---
 
 ## Critique 2: Post-treatment excess mortality and life-expectancy adjustment
 
 **CITATION CHECK**
-- Romanowski et al. 2019 (Lancet Infect Dis 19:1129–37): **VERIFIED.**
-  - It is a systematic review and meta-analysis of long-term all-cause mortality in people treated for TB.
-  - Commentary describes 
-TB survivors as having approximately three to four times the mortality of local populations.
-
-  - The pooled figure is cited as 
-2.91 (95% CI 2.21–3.84) times higher than in those who never had TB.
-
-  - This fills in the number the Investigator could not recall. "A multiple of the general population's" is correct.
+- Romanowski et al. 2019 (Lancet Infect Dis 19:1129–37): **VERIFIED.** 
+It found the force of mortality in TB survivors to be 2.91 (95% CI 2.21–3.84) times that of people who never had TB.
+ 
+A commentary describes it as roughly three to four times greater mortality than local populations.
+ The "multiple of the general population" recollection is correct. The Investigator's cumulative 10% excess over 10 years is flagged as illustrative and is not from the paper.
 
 **CLAIM CHECK**
-- Elevated post-treatment mortality: **VERIFIED.** A large 2025 Brazilian cohort also found 
-an elevated natural-cause mortality risk in the treated cohort (RR 1.77, 95% CI 1.55–2.03).
- 
-Risk ratios were raised for respiratory deaths, among other causes.
-
-- Respiratory disease as a major driver of excess deaths: **PARTIALLY VERIFIED.** One review states that 
-respiratory diseases remain the leading cause of excess deaths in people who recover from TB.
- The 40% attributable share is not directly sourced. For comparison, Romanowski attributed 20% (95% CI 15–26) of the excess to cardiovascular disease (
-per the Basham et al. discussion
-). A respiratory share of 40% is therefore plausible but **UNGROUNDED**.
-- ~10% cumulative excess mortality over 10 years: **PLAUSIBLE.** An SMR of ~2.9 on typical LMIC adult background mortality could give excess mortality of that order. The Investigator labelled this as illustrative.
-- 5% intervention effect: **UNGROUNDED.**
-- Arithmetic for (a): **VERIFIED.** 0.1 × 0.4 × 0.05 = 0.002; × 15 = 0.03; × 3.3M ≈ 99k; × 0.45 ≈ 45k. Part (b): 5–10% of 535k = 27–54k, which matches the stated −25k to −55k.
-- Part (b), that rescued patients have worse residual life expectancy: **UNVERIFIABLE.** It is logically sound, since late diagnosis and immunocompromise raise the risk of lasting impairment (
-per a Lancet ID commentary
-). I found no quantification. The 5–10% overstatement is the Investigator's own figure.
-- Statin cardiovascular benefit over about 6 months treated as zero: **PLAUSIBLE.** I did not verify it.
+- Elevated long-term all-cause mortality after TB: **VERIFIED.**
+- ~40% of excess deaths attributable to respiratory sequelae: **PLAUSIBLE, UNGROUNDED.**
+  - 
+Romanowski attributed 20% (95% CI 15–26) of the excess to cardiovascular disease.
+ That leaves room for a respiratory share.
+  - 
+A 2025 lung-function meta-analysis says respiratory diseases remain the leading cause of excess deaths in people who recover from TB.
+ This is a secondary claim, so I can't pin the share at 40%.
+- ~10% cumulative excess mortality over 10 years: **PLAUSIBLE.** With an SMR of ~2.9 the figure depends on background mortality, so 10% is within a reasonable range. It is not directly verified.
+- Arithmetic: **VERIFIED.** 0.1 × 0.4 × 0.05 = 0.002; × 15 DALYs × 3.3M ≈ 99k; × 0.45 ≈ 45k. The (b) range of 25–55k also reproduces from 5–10% of 535k.
+- (b) The 5–10% overstatement from the life-expectancy adjustment: **UNVERIFIABLE.**
+  - 
+Menzies finds young age, HIV and living in a high-incidence country associated with higher DALYs per incident case.
+ That is about post-TB burden, not remaining life expectancy of those rescued from death.
+  - The direction of the Investigator's argument is plausible, but the magnitude is invented.
+- Statin's own cardiovascular benefit over ~6 months is negligible: **PLAUSIBLE.** I did not search for this.
 
 **EVIDENCE FOUND**
-- Menzies's post-TB DALYs include post-TB mortality, so this channel overlaps with Critique 1 if both are added.
-- Mortality is elevated in the Cerqueira-Silva cohort even in treated patients, supporting the existence of the excess-death pool but not the 40% lung share or the 5% effect.
-- The net effect is unsigned. The Investigator's own conclusion that the two adjustments may cancel is reasonable.
+- Post-TB mortality is already modelled in Menzies' per-case DALYs, so channel (a) overlaps Critique 1 and the Menzies framework.
+- The "Estimated Direction: decreases" label is ambiguous. (a) adds benefit and (b) subtracts it, so the net sign is genuinely unclear, as the Investigator says.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: About 40% of post-treatment excess deaths are lung-related and reducible by ~5% via the intervention, roughly offset by a 5–10% overstatement of on-treatment benefit.
+- Support: **LOGIC ONLY**
+- Why: The excess mortality is verified, but I found no evidence on the respiratory share, the 5% reduction, or the life-expectancy adjustment.
 
-**REVISED CRITIQUE:** TB survivors have substantially elevated long-term mortality (pooled SMR ~2.9 in Romanowski 2019). Respiratory causes are a major contributor, but the 40% share is **UNGROUNDED**. The upside channel (~45k) depends on three unsupported inputs: a 5% effect, a 10% excess mortality, and a 40% respiratory share. Treat it as a flagged hypothesis with a wide range of roughly 0–50k. The downside life-expectancy adjustment is logically sound but its size is unquantified (**UNGROUNDED**). Treat the net as approximately zero with uncertain sign. Merge or net this against Critique 1 to avoid double-counting. Strength: low-to-medium.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The elevated mortality is real. The magnitudes are all assumptions.
+
+**REVISED CRITIQUE**
+- TB survivors have about 2.9× background mortality (Romanowski 2019). Some of it is respiratory, and CVD accounts for ~20%.
+- A lung-sparing adjunct could avert some post-treatment deaths, but the respiratory share, the 5% reduction, and the 10% cumulative excess are UNGROUNDED.
+- The sign-reversing life-expectancy adjustment is a logically coherent hypothesis. It is flagged UNGROUNDED, and the 5–10% is unsupported.
+- The net could be anywhere between about −25k and +45k. Because it overlaps with Critique 1, merge the two.
+- Strength: low–medium.
 
 ---
 
 ## Critique 3: Transmission benefit (~10–30k central)
 
 **CITATION CHECK**
-No specific studies were cited. The Investigator asked the Verifier to find relevant modelling studies.
+- No specific studies were cited, so there is nothing to check. Supporting literature I found is listed below.
 
 **CLAIM CHECK**
-- Most transmission occurs before diagnosis and treatment start: **VERIFIED.** A review on infectiousness and treatment effect says 
-most TB transmission occurs before diagnosis and effective treatment initiation.
- A Bayesian modelling study finds 
-a disproportionate share of future transmission arises from undiagnosed smear-positive subclinical TB.
+- "Infectiousness falls quickly after effective therapy starts": **VERIFIED.**
+  - 
+In early guinea-pig experiments, animals exposed to patients on effective treatment were only 2% as likely to be infected as those exposed to untreated patients.
 
-- Infectiousness falls quickly after effective therapy starts: **VERIFIED, with caveats.**
-  - A population model of shorter regimens assumes 
-bacillary burden drops rapidly and patients are non-infectious after the first two weeks.
+  - 
+A systematic review says data from diverse experimental studies suggest infectiousness declines rapidly after effective treatment starts, before smear and culture conversion.
 
-  - The same review reports that 
-30–40% of patients who produce cough aerosols rapidly become nonculturable after treatment initiation.
+  - 
+A 2025 review says the exact duration remains uncertain.
 
-  - Human-to-guinea-pig experiments show a rapid effect of effective treatment on transmission.
-  - However, 
-the exact duration of infectiousness after treatment initiation remains uncertain and likely varies between individuals.
- A 1–5% post-start transmission share is directionally supported but not directly measured.
-- Culture conversion at 8 weeks does not map one-to-one to infectiousness: **PLAUSIBLE.** Conversion at 8 weeks is a phase 2b efficacy endpoint (
-usually measured at 2 months
-). Infectiousness collapses much earlier than culture conversion, so the Investigator's discount is warranted.
-- ROSETTA, a statin trial, found no benefit on culture conversion. 
-Another trial using rosuvastatin did not affect sputum culture conversion.
- 
-An atorvastatin phase IIA study did show a significant reduction in sputum mycobacterial load.
- The premise of faster conversion is therefore contested across trials.
-- Secondary cases per index case of 0.3–1: **UNVERIFIABLE** here. It is plausible for high-burden settings but not sourced.
-- 10 DALYs per secondary case: **PLAUSIBLE.** Menzies gives an average of 12.1 DALYs per incident case.
-- Arithmetic: **VERIFIED.** 3.3M × 0.5 × 0.003 × 10 ≈ 49.5k; × 0.4 ≈ 20k. The net 0.1–1% follows from 1–5% × 10–20%. The 3k–150k range is unverified.
+- "Most transmission occurs before diagnosis": **PLAUSIBLE, partly supported.**
+  - 
+A Valencia whole-genome-sequencing study found 5 of 14 cases (35.7%) likely transmitted well before symptom onset.
+
+  - 
+In rural China (Songjiang), 40.6% of determinate transmission events occurred before the index case's symptom onset.
+
+  - These figures are for before symptom onset, not before diagnosis. Diagnostic delay would push the pre-diagnosis share higher.
+  - 
+A modelling study estimated roughly 68% of global transmission came from asymptomatic TB.
+ The range is wide (27–92%).
+- Post-start share of lifetime transmission is 1–5%: **UNVERIFIABLE, plausible.** The guinea-pig 2% figure and the pre-diagnosis shares are consistent with a small number. I found no direct estimate of this parameter.
+- "Culture conversion at 8 weeks does not map to infectiousness one-to-one": **VERIFIED.**
+  - 
+A WHO-commissioned meta-analysis found most patients remained culture positive at 2 weeks. It notes culture positivity is only one component of infectiousness, with cough frequency and aerosol generation also important.
+
+  - 
+It also states there are no data describing how infectiousness changed over time after treatment initiation.
+
+  - This supports the Investigator's downward adjustment, and also means the 10–20% fractional reduction is poorly anchored.
+- Arithmetic: **VERIFIED.** 3.3M × 0.5 × 0.003 × 10 ≈ 50k, and ~20k after weighting.
+- 10 DALYs per secondary case: **PLAUSIBLE.** It is consistent with Menzies' 12.1 DALYs per incident case.
 
 **EVIDENCE FOUND**
-- Modelling sources that fit the Investigator's logic:
-  - The shorter-regimen model (PMC4015982).
-  - Dowdy-type pre-diagnosis transmission analyses (PMC9907102).
-  - The infectiousness and effective-treatment review (PMC12054730).
-- Shorter-regimen modelling treats on-treatment infectiousness as short-lived. This supports the idea that conversion speed after week 2 matters little.
-- Counterweight to the Investigator's logic: a lung-sparing adjunct does not shorten diagnostic delay, which is the dominant transmission window. This reinforces the small-effect conclusion.
+- The guinea-pig data show infectiousness drops sharply with effective therapy regardless of culture status, which weakens the case that a faster culture conversion adds much extra transmission reduction.
+- 
+In one MDR-TB guinea-pig experiment, patients infected 26.7% of animals before treatment and 27.8% at 72 hours after drug initiation.
+ Early post-start infectiousness is therefore not always near zero, which keeps some upper tail alive.
+- 
+The ROSETTA trial found no substantive benefit of rosuvastatin on culture conversion.
+ If the trial under evaluation has a similarly weak conversion signal, this channel shrinks further. I can't confirm this for the actual trial.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED**
+**CORE CLAIM**
+- Claim: The net reduction in total transmission from faster conversion is ~0.3% (range 0.1–1%).
+- Support: **LOGIC ONLY**
+- Why: Qualitative literature supports "small", but the 1–5% post-start share and the 10–20% fractional reduction are unsupported, and the evidence cuts toward a smaller effect.
 
-**REVISED CRITIQUE:** Most transmission occurs before diagnosis, and infectiousness falls within days to weeks of effective treatment. Any transmission benefit from faster culture conversion is therefore small. This is supported by the transmission and modelling literature above. The numerical inputs (post-start transmission share of 1–5%, 10–20% reduction, 0.5 secondary cases) are unsourced and should be flagged **UNGROUNDED**. The central estimate of ~20k is a bounded order-of-magnitude figure, with real downside if the statin has no culture-conversion effect (ROSETTA found none). Consider lowering the central estimate toward ~10k or below, and widening the low end toward zero. Strength: low. This is a minor channel, and the thread label ("post-TB lung disease") does not match its content.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction and the logic that the benefit is small are supported. The numbers are unanchored.
+
+**REVISED CRITIQUE**
+- Most transmission occurs before treatment starts, and effective therapy rapidly reduces infectiousness. Culture conversion is an imperfect proxy for infectiousness, so the incremental transmission benefit is small.
+- The specific figures (0.3% net reduction, 1–5% post-start share, 10–20% fractional reduction) are UNGROUNDED.
+- Treat ~10–30k as an order-of-magnitude placeholder. The true value is probably at or below the low end if the trial's culture-conversion effect is weak.
+- Strength: low. This is the least material of the three channels.
 
 --- Critique: The "lung benefit without mortality benefit" scenario is structurally less valuable than a simple p_success weighting implies ---
 
-## Critique 1: "Lung benefit without mortality benefit" is worth less than a simple p_success weighting implies
+## Critique 1: Lung benefit without mortality benefit is worth less than a simple p_success weighting implies
 
-**OVERALL VERDICT: UNVERIFIABLE on the empirical side, with the logic mostly sound (PARTIALLY VERIFIED).** The Investigator marked this UNGROUNDED, and I agree. I could not identify the specific trial or grant. I therefore could not check the Phase IIc or planned Phase III endpoints, the "3.3M patients" figure, or the 60% uptake assumption. The arithmetic mostly holds. The "increases" direction label is inconsistent with the argument.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic holds, but it is ungrounded. Its inputs are unverified and its labelled direction is inconsistent.
 
 **CLAIM CHECK**
-- **Adoption in the lung-only branch is ≤10–20%:** UNVERIFIABLE. It is a judgment call, and no source on WHO guideline handling of lung-function surrogates turned up.
-- **Realistic weighting adds ~0.02–0.06 to the 0.4 base:** VERIFIED as arithmetic. 0.6 × (0.3–0.5) × (0.1–0.2) = 0.018–0.06, so the total is about 0.42–0.46.
-- **Naive weighting gives "up to ~2×":** PARTIALLY VERIFIED. At the stated inputs, 0.4 + 0.6 × (0.3–0.5) = 0.58–0.70, which is about 1.45–1.75× the base. "Up to ~2×" is a mild overstatement.
-- **Conflation of terms:** MISLEADING WORDING. The text calls 0.6 the "60% uptake". In the formula, 0.6 is P(mortality fails), which is 1 − 0.4. These are different parameters.
-- **Direction label:** FLAG. The argument says the lung channel is worth *less* than a naive weighting implies. That is a correction toward ~1×, not an increase. "Increases" only makes sense relative to the 0.4 base, and the size is negligible (+0.02–0.06).
+- *"A surrogate-only (lung) result would not obviously lead to adoption at 60% scale."* **PLAUSIBLE, no direct evidence.** I found no WHO guideline text on how lung-function surrogates are weighed. I did not find the CG model, the specific trial, or its registered Phase IIc and Phase III endpoints, so these remain **UNVERIFIABLE**.
+- *Conditional adoption of 10–20% in the "mortality fails, lung holds" branch.* **UNVERIFIABLE.** The Investigator already labels it UNGROUNDED.
+- *The 0.45, 0.4 base and 60% uptake figures, and the 3.3M patients.* **UNVERIFIABLE.** These come from the CG model, which I could not access.
+- *Arithmetic.*
+  - The "realistic" range checks out: 0.6 × (0.3–0.5) × (0.1–0.2) ≈ 0.018–0.06.
+  - The "naive" bound is overstated. 0.4 + 0.6 × (0.3–0.5) gives about 0.58–0.70, which is roughly 1.3–1.6× of 0.45, not "up to ~2×". A 2× result would need P(lung holds | mortality fails) near 1.
+- *Direction label.* The critique argues that the 0.45 figure is about right and that the upside is limited. It is labelled "increases", which does not match that argument. Its net effect is closer to neutral. It is a caution against over-crediting the lung channel.
 
 **EVIDENCE FOUND**
-- Lung function is a recognized preliminary-efficacy outcome in adjunctive host-directed therapy trials. A Phase 2 RCT of CC-11050 and everolimus 
-suggests they might enhance recovery of FEV1, a measure of lung function and predictor of all-cause mortality
-. This supports P(lung holds) being non-trivial. It says nothing about whether FEV1 alone would drive a WHO recommendation.
-- I found no evidence on how WHO guideline groups weigh lung-function surrogates.
+- 
+Few tuberculosis treatment trials have included lung function as a primary efficacy outcome
+, although 
+FEV1 correlates with long-term mortality
+. This supports the premise that lung function is a non-standard endpoint, so a lung-only win may not translate cleanly into guidelines.
+- The phase 2 trial by Wallis et al. found that 
+CC-11050 and everolimus might enhance the recovery of FEV1
+. FEV1 was therefore used as a preliminary efficacy signal, not as an established registrational endpoint.
+- Phase IIc in TB normally means the STEP design. 
+CRUSH-TB, for example, uses time to sputum culture negativity as its primary intermediate endpoint
+. A trial in this style would not natively produce a lung-function primary endpoint. This is circumstantial, because I could not identify the CG-funded trial.
+
+**CORE CLAIM**
+- Claim: conditional adoption in the lung-only branch is far below 60% (about 10–20%).
+- Support: **LOGIC ONLY.**
+- Why: the reasoning is plausible, and lung function is a non-standard TB endpoint, but I found no direct evidence on WHO or adoption behaviour for this branch.
 
 **REVISED CRITIQUE**
-Treat this as a structural caveat, not a quantified adjustment. If the trial's registered endpoint is not lung function, a lung-only result probably earns a lower adoption probability than the main-case uptake. The 0.45 figure is arithmetically consistent with the Investigator's inputs. The 10–20% conditional adoption is UNGROUNDED. The direction should read "neutral to slightly decreases relative to a naive weighting". Magnitude is small, not medium.
+- Retain this as a **weighting caution, flagged UNGROUNDED**. Do not apply the full uptake to the lung-only branch without a separate adoption discount.
+- The effect is modest: roughly +0.02–0.06 on a 0.4 base.
+- Fix the "up to 2×" figure to about 1.3–1.6×. Treat the direction as neutral to slightly decreasing, with small magnitude.
 
 ---
 
-## Critique 2: The sweat-based diagnostic has speculative option value (~10–30k)
+## Critique 2: Sweat-based diagnostic option value (~10–30k central)
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is plausible, and the key inputs are UNGROUNDED (as the Investigator said). New evidence on the counterfactual (WHO tongue-swab endorsement) strengthens the discount. I could not identify the specific sweat-based test funded alongside the trial.
+**OVERALL VERDICT: UNVERIFIABLE for the specific test. The background facts are verified.** Retain it as a flagged, low-confidence hypothesis.
 
 **CLAIM CHECK**
-- **"Roughly 2–3M TB cases per year undiagnosed or unreported":** VERIFIED. WHO reports 
-8.3 million people diagnosed in 2024, 78% of estimated incident cases
-. Incidence was 
-an estimated 10.7 million
-. The gap is therefore about 2.4M.
-- **Sweat as a diagnostic biofluid:** PLAUSIBLE but early. A proteomic proof-of-concept found 
-26 proteins exclusively detected in the sweat of active TB patients
-. That study pooled specimens from 32 TB patients. A ClinicalTrials.gov study (NCT03667742) is examining sweat protein markers. Neither is the funded test, and I found nothing on its stage, accuracy or regulatory path. The broader sputum-free field is described as 
-mostly at an early developmental phase
-, which fits a low P(adoption).
-- **Counterfactual non-sputum diagnostics are advancing:** VERIFIED, and stronger than the Investigator assumed.
-  - WHO has now recommended 
-near-point-of-care molecular tests, tongue swabs, and sputum pooling
+- *CG funds a sweat-based TB diagnostic alongside the trial.* **UNVERIFIABLE.** I found nothing on this test's development stage, accuracy or regulatory path, or on the funding link.
+- *Roughly 2–3M TB cases per year are undiagnosed or unreported.* **VERIFIED.** 
+8.3 million people were newly diagnosed with TB in 2024, which is 78% of the estimated incident cases
+. 
+Estimated incidence was 10.7 million
+, so the gap is about 2.4M.
+- *Non-sputum competitors are advancing (tongue swab).* **VERIFIED, and ahead of the Investigator's expectation.** 
+WHO has issued its first recommendations on near-point-of-care molecular tests and easy-to-collect tongue swab samples
+, in February 2026. The Investigator had not checked WHO endorsements. The accuracy evidence is 
+tongue-swab performance meeting the minimum WHO non-sputum target (>75% sensitivity, >98% specificity)
 .
-  - Tongue swabs are meant for 
-when sputum cannot be produced
-. They are less sensitive than sputum, so they only partly displace a new test.
-  - A multi-country evaluation found tongue-swab tests 
-meet or exceed WHO minimum accuracy targets for near-POC non-sputum tests
-.
-  - This directly targets the "people who can't produce sputum" population. It supports a lower incremental-yield estimate (1–3% of incidence is possibly generous).
-  - Urine-LAM as a competitor is not confirmed by my searches. It is background knowledge, not verified here.
-- **Calculation:** VERIFIED as arithmetic. 0.05 × 200k × 5 = 50k. The step from 50k to "10–30k" is a 0.2–0.6 discount with no stated derivation.
-- **5 DALYs per additional case (20% CFR × 25 DALYs):** UNVERIFIED. I did not check the untreated case-fatality rate. Published untreated CFRs may be higher, so this input could be conservative.
-- **Units:** FLAG. The 50k figure is "per year", but the headline "10–30k central" doesn't say whether it is annual or total.
-- **Cost-inclusion consistency point:** UNVERIFIABLE without the grant documents. If the $7M cost includes the diagnostic's funding, the omission biases against the intervention. If it doesn't, treating it separately is defensible.
+- *Urine LAM as a competitor.* **PLAUSIBLE.** The LF-LAM assays are named in the WHO report as a bacteriological confirmation method.
+- *Arithmetic.* 0.05 × 200k × 5 = 50k DALYs per year, which is correct. The 20% untreated case fatality and 25 DALYs per death are unverified assumptions. Widely cited untreated-TB fatality figures are higher than 20%, so these are not clearly inflated.
+- *Whether the $7M all-in cost includes the diagnostic.* **UNVERIFIABLE.** I could not see the model. The Investigator correctly flags this as a consistency check for the CG model owner.
 
 **EVIDENCE FOUND**
-- Tongue-swab and NPOC-NAAT recommendations came in early 2026. A WHO and Stop TB toolkit followed in 
-May 2026
-. Both push toward lower incremental value for any new non-sputum test.
-- WHO reports 
-almost 100 diagnostic products in development
- as of August 2025. This reinforces crowding.
+- WHO's tongue-swab recommendation has a limited scope. 
+Programmes may use tongue swabs from adults and adolescents when sputum cannot be obtained
+. Children and others who cannot give sputum are therefore not covered by that recommendation. This leaves some room for a different non-sputum test, which mildly supports the critique's option-value logic.
+- Against that, 
+tongue swabs are less sensitive than sputum
+. The counterfactual is also moving fast. The base case for "incremental cases beyond alternatives" at 1–3% of incidence is therefore uncertain. Counterfactual displacement could push the value toward the low end.
+- The tongue-swab and NPOC tests are PCR-based. A sweat-based test would need its own evidence pathway and WHO policy review, which supports the low adoption probability.
+
+**CORE CLAIM**
+- Claim: P(adoption) ≈ 5% with an incremental yield of 1–3% of incidence, giving about 10–30k DALYs per year.
+- Support: **LOGIC ONLY.**
+- Why: the arithmetic is internally consistent, but the probability and yield inputs are an assumed base rate with no source, and the test itself could not be found.
 
 **REVISED CRITIQUE**
-CG assigns zero value to the sweat diagnostic. The unaddressed gap in non-notified cases (~2.4M/yr) is real. The incremental value is low and uncertain. WHO's 2026 tongue-swab and NPOC recommendations substantially weaken the counterfactual. The ~10–30k figure is UNGROUNDED and should be treated as an illustrative upper-range option value. Direction is "uncertain" and leans neutral-to-negative given the new evidence. Magnitude is small. The cost-inclusion question must be settled against CG's actual cost model.
+- CG assigns zero value to the sweat test. This may understate value, but the amount is speculative, and the range of 0 to ~100k DALYs per year is wide.
+- The tongue-swab and NPOC WHO endorsement (Feb 2026) lowers the counterfactual incremental value relative to what the Investigator assumed. The paediatric and no-sputum gap remains.
+- Mark it **UNGROUNDED, small magnitude, direction uncertain**.
+- The cost-attribution question should be resolved from the model, not from this critique.
 
 ---
 
-## Critique 3: 60% steady-state uptake has no precedent among comparable TB program additions
+## Critique 3: 60% steady-state uptake has no precedent among comparable additions
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core claim is supported. TB program additions often scale slowly, and the 4-month regimen and WRD examples hold up. The title ("no precedent") is overstated, because the best-documented analog is near, not far below, 60%. The dexamethasone and pyridoxine examples are unverified. The Investigator's WRD recollection ("roughly 40–50%") is slightly low.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** Slow ramps are well supported. The claim that the ceiling is below 60% is not. The title's "no precedent" is overstated.
 
 **CITATION CHECK**
-- **WHO Global TB Report, WRD as initial test:** VERIFIED, with a correction. 
-In 2024, a WRD was the initial test for 54% (4.5 million) of 8.3 million people newly diagnosed, up from 48%
-. The Investigator's "roughly 40–50%" is outdated. Xpert was endorsed in 2010, so about 14 years in, global coverage is ~54%.
-- **Country heterogeneity:** In 2023, 
-68 countries reached at least 80%, but coverage was under 20% in 25 countries
-. That is a bimodal pattern, not a uniform ceiling. In 2024, 
-37 of 49 high-burden countries reported WRD use as the initial test for more than half of people newly diagnosed
-. The global target is 
-100% by 2027
+- *Xpert MTB/RIF, WHO endorsement 2010.* **VERIFIED in outline.** 
+Since 2011, rapid molecular tests have transformed the TB diagnostic landscape
 .
-- **4HPMZ (WHO 2022):** VERIFIED. The 2022 guideline is confirmed. One source states 
-global uptake has been slow, largely due to implementation challenges including limited worldwide availability of rifapentine
-. A Lancet Global Health paper also called rollout 
-limited in high-burden settings
-. A US program evaluation found only 
-14% of eligible patients prescribed 4-HPMZ, and 36% of those initiating completed treatment
-.
-- **Dexamethasone for TBM (evidence 2004) and pyridoxine with isoniazid:** UNVERIFIED. I found no coverage data. Corticosteroids are 
-"standard for TB meningitis"
- in clinical practice, but that says nothing about coverage.
-- **GDF/HPMZ order data:** NOT FOUND.
+- *WRD coverage "roughly 40–50% in recent reports".* **PARTIALLY VERIFIED.** The global figure was 
+54% in 2024, up from 47% in 2022
+, and 48% in 2023. The Investigator's range is slightly low. The WRD indicator also covers all WHO-recommended rapid tests, not just Xpert.
+- *4-month rifapentine-moxifloxacin, WHO 2022.* **VERIFIED, with strong support for slow uptake.** 
+Only 4,154 people were reported started on 4-month HPMZ in 2024, up from 1,271 in 2023
+. That is about 0.05% of the 8.3M notified. 
+Uptake has been slow, largely because of limited rifapentine availability
+. The WHO page also says 
+15 countries and areas reported using the regimen by end-2024
+. A second list on the same page gives 26.
+- *Dexamethasone for TBM (evidence 2004).* **UNVERIFIED.** I did not retrieve coverage data. The 2004 trial is real from background knowledge, but its uptake history needs checking.
+- *Pyridoxine with isoniazid recommended but inconsistently supplied.* **UNVERIFIED.** No coverage data retrieved.
 
 **CLAIM CHECK**
-- **"Comparable additions often take many years to reach moderate coverage":** VERIFIED for WRD (14 years to 54%) and 4HPMZ.
-- **"Some stall below 50%":** PARTIALLY VERIFIED. 4HPMZ is well below 50%. WRD is at 54%, not below 50%.
-- **The 4HPMZ analogy is imperfect.** Its slow uptake is driven mainly by rifapentine supply, adverse events and a high pill burden. A cheap generic adjunct isn't supply-constrained in the same way. The Investigator's claim that an adjunct is a "harder sell" than regimens that simplify care is a reasonable inference, but it is inference.
-- **WRD is also an imperfect analog.** It needs instruments, cartridges and labs. A generic pill avoids that infrastructure barrier.
-- **"60% has no precedent":** FALSE as worded. The WRD benchmark (54% after 14 years, with many countries above 80%) suggests 60% is reachable but optimistic on a short horizon. "Plausibly an upper-bound or optimistic-case value" is defensible. "No precedent" is not.
-- **Arithmetic:** VERIFIED. Cutting the ceiling from 60% to 40% or 30% reduces SROI by 33% or 50% under linear scaling. The "materiality line is 0.39" is internal to the model and unverifiable here.
-- **"Ceiling matters more than ramp":** PLAUSIBLE. It is logically sound for an undiscounted infinite horizon. The Investigator acknowledges the caveats (finite horizon, incidence decline, discounting).
+- *Reducing the ceiling to 0.30–0.40 cuts SROI by 33–50%.* **VERIFIED as arithmetic.** 0.40/0.60 is a 33% cut and 0.30/0.60 is a 50% cut, assuming linear dependence. The model structure and the "0.39 materiality line" are unverifiable.
+- *Comparable additions "often" stall below 50%.* **PARTIALLY CONTRADICTED.** Global WRD coverage is 54% after about 14 years and still rising, not stalled below 50%. WHO also reports that 
+37 of 49 high-burden countries used a WRD as the initial test for more than half of notified cases in 2024, up from 31 in 2023
+. This is evidence of a slow ramp, not a ceiling.
+- *An adjunct with no visible patient benefit is a harder sell.* **PLAUSIBLE, no direct evidence.** It is a reasonable argument.
+- *The ramp matters little over an infinite horizon.* **LOGICALLY VALID**, with the discounting caveat the Investigator notes.
 
 **EVIDENCE FOUND**
-- WRD coverage rose in 24 African countries 
-from 37% in 2018 to 58% in 2023
-. That is about 4 percentage points per year, a useful ramp-rate benchmark.
-- WHO's Guideline Development Group framed the 4-month regimen as an option whose uptake would grow 
-"in future as uptake of this regimen improves"
-. This shows WHO itself anticipated gradual uptake.
+- The analogs have key differences from a cheap generic oral adjunct. Xpert needs capital equipment and labs. HPMZ is supply-limited by rifapentine, and the NYC experience showed tolerability problems: 
+only 14% of eligible patients were prescribed it, and 64% of those who started discontinued
+. Neither is a clean analog for generic-drug supply, so they bear on the ramp more than on the ceiling.
+- The global target is 100% WRD coverage by 2027 (
+set at the 2023 UN high-level meeting
+). A system target is not the same as steady-state achieved coverage, but it suggests over 50% is feasible with sustained push.
+- Equating adult_uptake with a coverage fraction among all patients may be a different construct from "percent of notified cases tested". I could not check how the CG model defines it.
+
+**CORE CLAIM**
+- Claim: the long-run uptake ceiling is plausibly 0.30–0.40, not 0.60.
+- Support: **LOGIC ONLY.**
+- Why: the precedents show slow ramps (HPMZ about 0.05% after three years, WRD 54% after about 14 years). None shows a stalled ceiling below 60% for a cheap, generic, oral co-administered drug.
 
 **REVISED CRITIQUE**
-CG's 60% steady-state uptake looks optimistic relative to TB program precedent. The strongest verified analogs are WRD at 54% global coverage after ~14 years (heavily skewed by country) and 4HPMZ with slow, supply- and tolerability-limited uptake. Neither is a clean analog for a cheap generic adjunct. Reducing the ceiling to 0.30–0.40 cuts SROI by about 33–50% under linear scaling. The 60% figure is a plausible optimistic or upper-central case, not an impossible one. The dexamethasone and pyridoxine examples should be dropped or flagged as UNVERIFIED. Direction is "decreases". Magnitude is medium to large, but the evidence supports the ceiling being uncertain rather than demonstrably too high. I would rate the critique's strength as moderate. Pulling country-level adoption data for comparable adjuncts would strengthen it.
+- Evidence supports the view that new TB tools take about 10 or more years to reach about 50% coverage, and that guideline endorsement does not guarantee uptake.
+- This is a stronger argument against the ramp (timing) than against the ceiling. Its main effect is through discounting and finite horizons.
+- Retain the ceiling concern as **UNGROUNDED**. Downgrade the magnitude from **large to medium**, with direction **decreases**.
+- Do not use "stall below 50%" as support for the 0.30–0.40 ceiling. The WRD data point to 54% and rising.
+- Dexamethasone and pyridoxine remain unverified. The pull the Investigator requested has been done for WRD and HPMZ. The GDF order data were not found.
 
 --- Critique: The sweat-based diagnostic carries real option value but is speculative (~10–30k central) ---
 
-## Critique 1: "Lung benefit without mortality benefit" is worth less than a simple p_success weighting implies
+## Critique 1: Lung benefit without mortality benefit is worth less than a simple p_success weighting implies
 
-**OVERALL VERDICT: UNVERIFIABLE on the empirical side, with the logic mostly sound (PARTIALLY VERIFIED).** The Investigator marked this UNGROUNDED, and I agree. I could not identify the specific trial or grant. I therefore could not check the Phase IIc or planned Phase III endpoints, the "3.3M patients" figure, or the 60% uptake assumption. The arithmetic mostly holds. The "increases" direction label is inconsistent with the argument.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic holds, but it is ungrounded. Its inputs are unverified and its labelled direction is inconsistent.
 
 **CLAIM CHECK**
-- **Adoption in the lung-only branch is ≤10–20%:** UNVERIFIABLE. It is a judgment call, and no source on WHO guideline handling of lung-function surrogates turned up.
-- **Realistic weighting adds ~0.02–0.06 to the 0.4 base:** VERIFIED as arithmetic. 0.6 × (0.3–0.5) × (0.1–0.2) = 0.018–0.06, so the total is about 0.42–0.46.
-- **Naive weighting gives "up to ~2×":** PARTIALLY VERIFIED. At the stated inputs, 0.4 + 0.6 × (0.3–0.5) = 0.58–0.70, which is about 1.45–1.75× the base. "Up to ~2×" is a mild overstatement.
-- **Conflation of terms:** MISLEADING WORDING. The text calls 0.6 the "60% uptake". In the formula, 0.6 is P(mortality fails), which is 1 − 0.4. These are different parameters.
-- **Direction label:** FLAG. The argument says the lung channel is worth *less* than a naive weighting implies. That is a correction toward ~1×, not an increase. "Increases" only makes sense relative to the 0.4 base, and the size is negligible (+0.02–0.06).
+- *"A surrogate-only (lung) result would not obviously lead to adoption at 60% scale."* **PLAUSIBLE, no direct evidence.** I found no WHO guideline text on how lung-function surrogates are weighed. I did not find the CG model, the specific trial, or its registered Phase IIc and Phase III endpoints, so these remain **UNVERIFIABLE**.
+- *Conditional adoption of 10–20% in the "mortality fails, lung holds" branch.* **UNVERIFIABLE.** The Investigator already labels it UNGROUNDED.
+- *The 0.45, 0.4 base and 60% uptake figures, and the 3.3M patients.* **UNVERIFIABLE.** These come from the CG model, which I could not access.
+- *Arithmetic.*
+  - The "realistic" range checks out: 0.6 × (0.3–0.5) × (0.1–0.2) ≈ 0.018–0.06.
+  - The "naive" bound is overstated. 0.4 + 0.6 × (0.3–0.5) gives about 0.58–0.70, which is roughly 1.3–1.6× of 0.45, not "up to ~2×". A 2× result would need P(lung holds | mortality fails) near 1.
+- *Direction label.* The critique argues that the 0.45 figure is about right and that the upside is limited. It is labelled "increases", which does not match that argument. Its net effect is closer to neutral. It is a caution against over-crediting the lung channel.
 
 **EVIDENCE FOUND**
-- Lung function is a recognized preliminary-efficacy outcome in adjunctive host-directed therapy trials. A Phase 2 RCT of CC-11050 and everolimus 
-suggests they might enhance recovery of FEV1, a measure of lung function and predictor of all-cause mortality
-. This supports P(lung holds) being non-trivial. It says nothing about whether FEV1 alone would drive a WHO recommendation.
-- I found no evidence on how WHO guideline groups weigh lung-function surrogates.
+- 
+Few tuberculosis treatment trials have included lung function as a primary efficacy outcome
+, although 
+FEV1 correlates with long-term mortality
+. This supports the premise that lung function is a non-standard endpoint, so a lung-only win may not translate cleanly into guidelines.
+- The phase 2 trial by Wallis et al. found that 
+CC-11050 and everolimus might enhance the recovery of FEV1
+. FEV1 was therefore used as a preliminary efficacy signal, not as an established registrational endpoint.
+- Phase IIc in TB normally means the STEP design. 
+CRUSH-TB, for example, uses time to sputum culture negativity as its primary intermediate endpoint
+. A trial in this style would not natively produce a lung-function primary endpoint. This is circumstantial, because I could not identify the CG-funded trial.
+
+**CORE CLAIM**
+- Claim: conditional adoption in the lung-only branch is far below 60% (about 10–20%).
+- Support: **LOGIC ONLY.**
+- Why: the reasoning is plausible, and lung function is a non-standard TB endpoint, but I found no direct evidence on WHO or adoption behaviour for this branch.
 
 **REVISED CRITIQUE**
-Treat this as a structural caveat, not a quantified adjustment. If the trial's registered endpoint is not lung function, a lung-only result probably earns a lower adoption probability than the main-case uptake. The 0.45 figure is arithmetically consistent with the Investigator's inputs. The 10–20% conditional adoption is UNGROUNDED. The direction should read "neutral to slightly decreases relative to a naive weighting". Magnitude is small, not medium.
+- Retain this as a **weighting caution, flagged UNGROUNDED**. Do not apply the full uptake to the lung-only branch without a separate adoption discount.
+- The effect is modest: roughly +0.02–0.06 on a 0.4 base.
+- Fix the "up to 2×" figure to about 1.3–1.6×. Treat the direction as neutral to slightly decreasing, with small magnitude.
 
 ---
 
-## Critique 2: The sweat-based diagnostic has speculative option value (~10–30k)
+## Critique 2: Sweat-based diagnostic option value (~10–30k central)
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is plausible, and the key inputs are UNGROUNDED (as the Investigator said). New evidence on the counterfactual (WHO tongue-swab endorsement) strengthens the discount. I could not identify the specific sweat-based test funded alongside the trial.
+**OVERALL VERDICT: UNVERIFIABLE for the specific test. The background facts are verified.** Retain it as a flagged, low-confidence hypothesis.
 
 **CLAIM CHECK**
-- **"Roughly 2–3M TB cases per year undiagnosed or unreported":** VERIFIED. WHO reports 
-8.3 million people diagnosed in 2024, 78% of estimated incident cases
-. Incidence was 
-an estimated 10.7 million
-. The gap is therefore about 2.4M.
-- **Sweat as a diagnostic biofluid:** PLAUSIBLE but early. A proteomic proof-of-concept found 
-26 proteins exclusively detected in the sweat of active TB patients
-. That study pooled specimens from 32 TB patients. A ClinicalTrials.gov study (NCT03667742) is examining sweat protein markers. Neither is the funded test, and I found nothing on its stage, accuracy or regulatory path. The broader sputum-free field is described as 
-mostly at an early developmental phase
-, which fits a low P(adoption).
-- **Counterfactual non-sputum diagnostics are advancing:** VERIFIED, and stronger than the Investigator assumed.
-  - WHO has now recommended 
-near-point-of-care molecular tests, tongue swabs, and sputum pooling
+- *CG funds a sweat-based TB diagnostic alongside the trial.* **UNVERIFIABLE.** I found nothing on this test's development stage, accuracy or regulatory path, or on the funding link.
+- *Roughly 2–3M TB cases per year are undiagnosed or unreported.* **VERIFIED.** 
+8.3 million people were newly diagnosed with TB in 2024, which is 78% of the estimated incident cases
+. 
+Estimated incidence was 10.7 million
+, so the gap is about 2.4M.
+- *Non-sputum competitors are advancing (tongue swab).* **VERIFIED, and ahead of the Investigator's expectation.** 
+WHO has issued its first recommendations on near-point-of-care molecular tests and easy-to-collect tongue swab samples
+, in February 2026. The Investigator had not checked WHO endorsements. The accuracy evidence is 
+tongue-swab performance meeting the minimum WHO non-sputum target (>75% sensitivity, >98% specificity)
 .
-  - Tongue swabs are meant for 
-when sputum cannot be produced
-. They are less sensitive than sputum, so they only partly displace a new test.
-  - A multi-country evaluation found tongue-swab tests 
-meet or exceed WHO minimum accuracy targets for near-POC non-sputum tests
-.
-  - This directly targets the "people who can't produce sputum" population. It supports a lower incremental-yield estimate (1–3% of incidence is possibly generous).
-  - Urine-LAM as a competitor is not confirmed by my searches. It is background knowledge, not verified here.
-- **Calculation:** VERIFIED as arithmetic. 0.05 × 200k × 5 = 50k. The step from 50k to "10–30k" is a 0.2–0.6 discount with no stated derivation.
-- **5 DALYs per additional case (20% CFR × 25 DALYs):** UNVERIFIED. I did not check the untreated case-fatality rate. Published untreated CFRs may be higher, so this input could be conservative.
-- **Units:** FLAG. The 50k figure is "per year", but the headline "10–30k central" doesn't say whether it is annual or total.
-- **Cost-inclusion consistency point:** UNVERIFIABLE without the grant documents. If the $7M cost includes the diagnostic's funding, the omission biases against the intervention. If it doesn't, treating it separately is defensible.
+- *Urine LAM as a competitor.* **PLAUSIBLE.** The LF-LAM assays are named in the WHO report as a bacteriological confirmation method.
+- *Arithmetic.* 0.05 × 200k × 5 = 50k DALYs per year, which is correct. The 20% untreated case fatality and 25 DALYs per death are unverified assumptions. Widely cited untreated-TB fatality figures are higher than 20%, so these are not clearly inflated.
+- *Whether the $7M all-in cost includes the diagnostic.* **UNVERIFIABLE.** I could not see the model. The Investigator correctly flags this as a consistency check for the CG model owner.
 
 **EVIDENCE FOUND**
-- Tongue-swab and NPOC-NAAT recommendations came in early 2026. A WHO and Stop TB toolkit followed in 
-May 2026
-. Both push toward lower incremental value for any new non-sputum test.
-- WHO reports 
-almost 100 diagnostic products in development
- as of August 2025. This reinforces crowding.
+- WHO's tongue-swab recommendation has a limited scope. 
+Programmes may use tongue swabs from adults and adolescents when sputum cannot be obtained
+. Children and others who cannot give sputum are therefore not covered by that recommendation. This leaves some room for a different non-sputum test, which mildly supports the critique's option-value logic.
+- Against that, 
+tongue swabs are less sensitive than sputum
+. The counterfactual is also moving fast. The base case for "incremental cases beyond alternatives" at 1–3% of incidence is therefore uncertain. Counterfactual displacement could push the value toward the low end.
+- The tongue-swab and NPOC tests are PCR-based. A sweat-based test would need its own evidence pathway and WHO policy review, which supports the low adoption probability.
+
+**CORE CLAIM**
+- Claim: P(adoption) ≈ 5% with an incremental yield of 1–3% of incidence, giving about 10–30k DALYs per year.
+- Support: **LOGIC ONLY.**
+- Why: the arithmetic is internally consistent, but the probability and yield inputs are an assumed base rate with no source, and the test itself could not be found.
 
 **REVISED CRITIQUE**
-CG assigns zero value to the sweat diagnostic. The unaddressed gap in non-notified cases (~2.4M/yr) is real. The incremental value is low and uncertain. WHO's 2026 tongue-swab and NPOC recommendations substantially weaken the counterfactual. The ~10–30k figure is UNGROUNDED and should be treated as an illustrative upper-range option value. Direction is "uncertain" and leans neutral-to-negative given the new evidence. Magnitude is small. The cost-inclusion question must be settled against CG's actual cost model.
+- CG assigns zero value to the sweat test. This may understate value, but the amount is speculative, and the range of 0 to ~100k DALYs per year is wide.
+- The tongue-swab and NPOC WHO endorsement (Feb 2026) lowers the counterfactual incremental value relative to what the Investigator assumed. The paediatric and no-sputum gap remains.
+- Mark it **UNGROUNDED, small magnitude, direction uncertain**.
+- The cost-attribution question should be resolved from the model, not from this critique.
 
 ---
 
-## Critique 3: 60% steady-state uptake has no precedent among comparable TB program additions
+## Critique 3: 60% steady-state uptake has no precedent among comparable additions
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core claim is supported. TB program additions often scale slowly, and the 4-month regimen and WRD examples hold up. The title ("no precedent") is overstated, because the best-documented analog is near, not far below, 60%. The dexamethasone and pyridoxine examples are unverified. The Investigator's WRD recollection ("roughly 40–50%") is slightly low.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** Slow ramps are well supported. The claim that the ceiling is below 60% is not. The title's "no precedent" is overstated.
 
 **CITATION CHECK**
-- **WHO Global TB Report, WRD as initial test:** VERIFIED, with a correction. 
-In 2024, a WRD was the initial test for 54% (4.5 million) of 8.3 million people newly diagnosed, up from 48%
-. The Investigator's "roughly 40–50%" is outdated. Xpert was endorsed in 2010, so about 14 years in, global coverage is ~54%.
-- **Country heterogeneity:** In 2023, 
-68 countries reached at least 80%, but coverage was under 20% in 25 countries
-. That is a bimodal pattern, not a uniform ceiling. In 2024, 
-37 of 49 high-burden countries reported WRD use as the initial test for more than half of people newly diagnosed
-. The global target is 
-100% by 2027
+- *Xpert MTB/RIF, WHO endorsement 2010.* **VERIFIED in outline.** 
+Since 2011, rapid molecular tests have transformed the TB diagnostic landscape
 .
-- **4HPMZ (WHO 2022):** VERIFIED. The 2022 guideline is confirmed. One source states 
-global uptake has been slow, largely due to implementation challenges including limited worldwide availability of rifapentine
-. A Lancet Global Health paper also called rollout 
-limited in high-burden settings
-. A US program evaluation found only 
-14% of eligible patients prescribed 4-HPMZ, and 36% of those initiating completed treatment
-.
-- **Dexamethasone for TBM (evidence 2004) and pyridoxine with isoniazid:** UNVERIFIED. I found no coverage data. Corticosteroids are 
-"standard for TB meningitis"
- in clinical practice, but that says nothing about coverage.
-- **GDF/HPMZ order data:** NOT FOUND.
+- *WRD coverage "roughly 40–50% in recent reports".* **PARTIALLY VERIFIED.** The global figure was 
+54% in 2024, up from 47% in 2022
+, and 48% in 2023. The Investigator's range is slightly low. The WRD indicator also covers all WHO-recommended rapid tests, not just Xpert.
+- *4-month rifapentine-moxifloxacin, WHO 2022.* **VERIFIED, with strong support for slow uptake.** 
+Only 4,154 people were reported started on 4-month HPMZ in 2024, up from 1,271 in 2023
+. That is about 0.05% of the 8.3M notified. 
+Uptake has been slow, largely because of limited rifapentine availability
+. The WHO page also says 
+15 countries and areas reported using the regimen by end-2024
+. A second list on the same page gives 26.
+- *Dexamethasone for TBM (evidence 2004).* **UNVERIFIED.** I did not retrieve coverage data. The 2004 trial is real from background knowledge, but its uptake history needs checking.
+- *Pyridoxine with isoniazid recommended but inconsistently supplied.* **UNVERIFIED.** No coverage data retrieved.
 
 **CLAIM CHECK**
-- **"Comparable additions often take many years to reach moderate coverage":** VERIFIED for WRD (14 years to 54%) and 4HPMZ.
-- **"Some stall below 50%":** PARTIALLY VERIFIED. 4HPMZ is well below 50%. WRD is at 54%, not below 50%.
-- **The 4HPMZ analogy is imperfect.** Its slow uptake is driven mainly by rifapentine supply, adverse events and a high pill burden. A cheap generic adjunct isn't supply-constrained in the same way. The Investigator's claim that an adjunct is a "harder sell" than regimens that simplify care is a reasonable inference, but it is inference.
-- **WRD is also an imperfect analog.** It needs instruments, cartridges and labs. A generic pill avoids that infrastructure barrier.
-- **"60% has no precedent":** FALSE as worded. The WRD benchmark (54% after 14 years, with many countries above 80%) suggests 60% is reachable but optimistic on a short horizon. "Plausibly an upper-bound or optimistic-case value" is defensible. "No precedent" is not.
-- **Arithmetic:** VERIFIED. Cutting the ceiling from 60% to 40% or 30% reduces SROI by 33% or 50% under linear scaling. The "materiality line is 0.39" is internal to the model and unverifiable here.
-- **"Ceiling matters more than ramp":** PLAUSIBLE. It is logically sound for an undiscounted infinite horizon. The Investigator acknowledges the caveats (finite horizon, incidence decline, discounting).
+- *Reducing the ceiling to 0.30–0.40 cuts SROI by 33–50%.* **VERIFIED as arithmetic.** 0.40/0.60 is a 33% cut and 0.30/0.60 is a 50% cut, assuming linear dependence. The model structure and the "0.39 materiality line" are unverifiable.
+- *Comparable additions "often" stall below 50%.* **PARTIALLY CONTRADICTED.** Global WRD coverage is 54% after about 14 years and still rising, not stalled below 50%. WHO also reports that 
+37 of 49 high-burden countries used a WRD as the initial test for more than half of notified cases in 2024, up from 31 in 2023
+. This is evidence of a slow ramp, not a ceiling.
+- *An adjunct with no visible patient benefit is a harder sell.* **PLAUSIBLE, no direct evidence.** It is a reasonable argument.
+- *The ramp matters little over an infinite horizon.* **LOGICALLY VALID**, with the discounting caveat the Investigator notes.
 
 **EVIDENCE FOUND**
-- WRD coverage rose in 24 African countries 
-from 37% in 2018 to 58% in 2023
-. That is about 4 percentage points per year, a useful ramp-rate benchmark.
-- WHO's Guideline Development Group framed the 4-month regimen as an option whose uptake would grow 
-"in future as uptake of this regimen improves"
-. This shows WHO itself anticipated gradual uptake.
+- The analogs have key differences from a cheap generic oral adjunct. Xpert needs capital equipment and labs. HPMZ is supply-limited by rifapentine, and the NYC experience showed tolerability problems: 
+only 14% of eligible patients were prescribed it, and 64% of those who started discontinued
+. Neither is a clean analog for generic-drug supply, so they bear on the ramp more than on the ceiling.
+- The global target is 100% WRD coverage by 2027 (
+set at the 2023 UN high-level meeting
+). A system target is not the same as steady-state achieved coverage, but it suggests over 50% is feasible with sustained push.
+- Equating adult_uptake with a coverage fraction among all patients may be a different construct from "percent of notified cases tested". I could not check how the CG model defines it.
+
+**CORE CLAIM**
+- Claim: the long-run uptake ceiling is plausibly 0.30–0.40, not 0.60.
+- Support: **LOGIC ONLY.**
+- Why: the precedents show slow ramps (HPMZ about 0.05% after three years, WRD 54% after about 14 years). None shows a stalled ceiling below 60% for a cheap, generic, oral co-administered drug.
 
 **REVISED CRITIQUE**
-CG's 60% steady-state uptake looks optimistic relative to TB program precedent. The strongest verified analogs are WRD at 54% global coverage after ~14 years (heavily skewed by country) and 4HPMZ with slow, supply- and tolerability-limited uptake. Neither is a clean analog for a cheap generic adjunct. Reducing the ceiling to 0.30–0.40 cuts SROI by about 33–50% under linear scaling. The 60% figure is a plausible optimistic or upper-central case, not an impossible one. The dexamethasone and pyridoxine examples should be dropped or flagged as UNVERIFIED. Direction is "decreases". Magnitude is medium to large, but the evidence supports the ceiling being uncertain rather than demonstrably too high. I would rate the critique's strength as moderate. Pulling country-level adoption data for comparable adjuncts would strengthen it.
+- Evidence supports the view that new TB tools take about 10 or more years to reach about 50% coverage, and that guideline endorsement does not guarantee uptake.
+- This is a stronger argument against the ramp (timing) than against the ceiling. Its main effect is through discounting and finite horizons.
+- Retain the ceiling concern as **UNGROUNDED**. Downgrade the magnitude from **large to medium**, with direction **decreases**.
+- Do not use "stall below 50%" as support for the 0.30–0.40 ceiling. The WRD data point to 54% and rising.
+- Dexamethasone and pyridoxine remain unverified. The pull the Investigator requested has been done for WRD and HPMZ. The GDF order data were not found.
 
 --- Critique: 60% steady-state uptake has no precedent among comparable TB program additions ---
 
-## Critique 1: "Lung benefit without mortality benefit" is worth less than a simple p_success weighting implies
+## Critique 1: Lung benefit without mortality benefit is worth less than a simple p_success weighting implies
 
-**OVERALL VERDICT: UNVERIFIABLE on the empirical side, with the logic mostly sound (PARTIALLY VERIFIED).** The Investigator marked this UNGROUNDED, and I agree. I could not identify the specific trial or grant. I therefore could not check the Phase IIc or planned Phase III endpoints, the "3.3M patients" figure, or the 60% uptake assumption. The arithmetic mostly holds. The "increases" direction label is inconsistent with the argument.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic holds, but it is ungrounded. Its inputs are unverified and its labelled direction is inconsistent.
 
 **CLAIM CHECK**
-- **Adoption in the lung-only branch is ≤10–20%:** UNVERIFIABLE. It is a judgment call, and no source on WHO guideline handling of lung-function surrogates turned up.
-- **Realistic weighting adds ~0.02–0.06 to the 0.4 base:** VERIFIED as arithmetic. 0.6 × (0.3–0.5) × (0.1–0.2) = 0.018–0.06, so the total is about 0.42–0.46.
-- **Naive weighting gives "up to ~2×":** PARTIALLY VERIFIED. At the stated inputs, 0.4 + 0.6 × (0.3–0.5) = 0.58–0.70, which is about 1.45–1.75× the base. "Up to ~2×" is a mild overstatement.
-- **Conflation of terms:** MISLEADING WORDING. The text calls 0.6 the "60% uptake". In the formula, 0.6 is P(mortality fails), which is 1 − 0.4. These are different parameters.
-- **Direction label:** FLAG. The argument says the lung channel is worth *less* than a naive weighting implies. That is a correction toward ~1×, not an increase. "Increases" only makes sense relative to the 0.4 base, and the size is negligible (+0.02–0.06).
+- *"A surrogate-only (lung) result would not obviously lead to adoption at 60% scale."* **PLAUSIBLE, no direct evidence.** I found no WHO guideline text on how lung-function surrogates are weighed. I did not find the CG model, the specific trial, or its registered Phase IIc and Phase III endpoints, so these remain **UNVERIFIABLE**.
+- *Conditional adoption of 10–20% in the "mortality fails, lung holds" branch.* **UNVERIFIABLE.** The Investigator already labels it UNGROUNDED.
+- *The 0.45, 0.4 base and 60% uptake figures, and the 3.3M patients.* **UNVERIFIABLE.** These come from the CG model, which I could not access.
+- *Arithmetic.*
+  - The "realistic" range checks out: 0.6 × (0.3–0.5) × (0.1–0.2) ≈ 0.018–0.06.
+  - The "naive" bound is overstated. 0.4 + 0.6 × (0.3–0.5) gives about 0.58–0.70, which is roughly 1.3–1.6× of 0.45, not "up to ~2×". A 2× result would need P(lung holds | mortality fails) near 1.
+- *Direction label.* The critique argues that the 0.45 figure is about right and that the upside is limited. It is labelled "increases", which does not match that argument. Its net effect is closer to neutral. It is a caution against over-crediting the lung channel.
 
 **EVIDENCE FOUND**
-- Lung function is a recognized preliminary-efficacy outcome in adjunctive host-directed therapy trials. A Phase 2 RCT of CC-11050 and everolimus 
-suggests they might enhance recovery of FEV1, a measure of lung function and predictor of all-cause mortality
-. This supports P(lung holds) being non-trivial. It says nothing about whether FEV1 alone would drive a WHO recommendation.
-- I found no evidence on how WHO guideline groups weigh lung-function surrogates.
+- 
+Few tuberculosis treatment trials have included lung function as a primary efficacy outcome
+, although 
+FEV1 correlates with long-term mortality
+. This supports the premise that lung function is a non-standard endpoint, so a lung-only win may not translate cleanly into guidelines.
+- The phase 2 trial by Wallis et al. found that 
+CC-11050 and everolimus might enhance the recovery of FEV1
+. FEV1 was therefore used as a preliminary efficacy signal, not as an established registrational endpoint.
+- Phase IIc in TB normally means the STEP design. 
+CRUSH-TB, for example, uses time to sputum culture negativity as its primary intermediate endpoint
+. A trial in this style would not natively produce a lung-function primary endpoint. This is circumstantial, because I could not identify the CG-funded trial.
+
+**CORE CLAIM**
+- Claim: conditional adoption in the lung-only branch is far below 60% (about 10–20%).
+- Support: **LOGIC ONLY.**
+- Why: the reasoning is plausible, and lung function is a non-standard TB endpoint, but I found no direct evidence on WHO or adoption behaviour for this branch.
 
 **REVISED CRITIQUE**
-Treat this as a structural caveat, not a quantified adjustment. If the trial's registered endpoint is not lung function, a lung-only result probably earns a lower adoption probability than the main-case uptake. The 0.45 figure is arithmetically consistent with the Investigator's inputs. The 10–20% conditional adoption is UNGROUNDED. The direction should read "neutral to slightly decreases relative to a naive weighting". Magnitude is small, not medium.
+- Retain this as a **weighting caution, flagged UNGROUNDED**. Do not apply the full uptake to the lung-only branch without a separate adoption discount.
+- The effect is modest: roughly +0.02–0.06 on a 0.4 base.
+- Fix the "up to 2×" figure to about 1.3–1.6×. Treat the direction as neutral to slightly decreasing, with small magnitude.
 
 ---
 
-## Critique 2: The sweat-based diagnostic has speculative option value (~10–30k)
+## Critique 2: Sweat-based diagnostic option value (~10–30k central)
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is plausible, and the key inputs are UNGROUNDED (as the Investigator said). New evidence on the counterfactual (WHO tongue-swab endorsement) strengthens the discount. I could not identify the specific sweat-based test funded alongside the trial.
+**OVERALL VERDICT: UNVERIFIABLE for the specific test. The background facts are verified.** Retain it as a flagged, low-confidence hypothesis.
 
 **CLAIM CHECK**
-- **"Roughly 2–3M TB cases per year undiagnosed or unreported":** VERIFIED. WHO reports 
-8.3 million people diagnosed in 2024, 78% of estimated incident cases
-. Incidence was 
-an estimated 10.7 million
-. The gap is therefore about 2.4M.
-- **Sweat as a diagnostic biofluid:** PLAUSIBLE but early. A proteomic proof-of-concept found 
-26 proteins exclusively detected in the sweat of active TB patients
-. That study pooled specimens from 32 TB patients. A ClinicalTrials.gov study (NCT03667742) is examining sweat protein markers. Neither is the funded test, and I found nothing on its stage, accuracy or regulatory path. The broader sputum-free field is described as 
-mostly at an early developmental phase
-, which fits a low P(adoption).
-- **Counterfactual non-sputum diagnostics are advancing:** VERIFIED, and stronger than the Investigator assumed.
-  - WHO has now recommended 
-near-point-of-care molecular tests, tongue swabs, and sputum pooling
+- *CG funds a sweat-based TB diagnostic alongside the trial.* **UNVERIFIABLE.** I found nothing on this test's development stage, accuracy or regulatory path, or on the funding link.
+- *Roughly 2–3M TB cases per year are undiagnosed or unreported.* **VERIFIED.** 
+8.3 million people were newly diagnosed with TB in 2024, which is 78% of the estimated incident cases
+. 
+Estimated incidence was 10.7 million
+, so the gap is about 2.4M.
+- *Non-sputum competitors are advancing (tongue swab).* **VERIFIED, and ahead of the Investigator's expectation.** 
+WHO has issued its first recommendations on near-point-of-care molecular tests and easy-to-collect tongue swab samples
+, in February 2026. The Investigator had not checked WHO endorsements. The accuracy evidence is 
+tongue-swab performance meeting the minimum WHO non-sputum target (>75% sensitivity, >98% specificity)
 .
-  - Tongue swabs are meant for 
-when sputum cannot be produced
-. They are less sensitive than sputum, so they only partly displace a new test.
-  - A multi-country evaluation found tongue-swab tests 
-meet or exceed WHO minimum accuracy targets for near-POC non-sputum tests
-.
-  - This directly targets the "people who can't produce sputum" population. It supports a lower incremental-yield estimate (1–3% of incidence is possibly generous).
-  - Urine-LAM as a competitor is not confirmed by my searches. It is background knowledge, not verified here.
-- **Calculation:** VERIFIED as arithmetic. 0.05 × 200k × 5 = 50k. The step from 50k to "10–30k" is a 0.2–0.6 discount with no stated derivation.
-- **5 DALYs per additional case (20% CFR × 25 DALYs):** UNVERIFIED. I did not check the untreated case-fatality rate. Published untreated CFRs may be higher, so this input could be conservative.
-- **Units:** FLAG. The 50k figure is "per year", but the headline "10–30k central" doesn't say whether it is annual or total.
-- **Cost-inclusion consistency point:** UNVERIFIABLE without the grant documents. If the $7M cost includes the diagnostic's funding, the omission biases against the intervention. If it doesn't, treating it separately is defensible.
+- *Urine LAM as a competitor.* **PLAUSIBLE.** The LF-LAM assays are named in the WHO report as a bacteriological confirmation method.
+- *Arithmetic.* 0.05 × 200k × 5 = 50k DALYs per year, which is correct. The 20% untreated case fatality and 25 DALYs per death are unverified assumptions. Widely cited untreated-TB fatality figures are higher than 20%, so these are not clearly inflated.
+- *Whether the $7M all-in cost includes the diagnostic.* **UNVERIFIABLE.** I could not see the model. The Investigator correctly flags this as a consistency check for the CG model owner.
 
 **EVIDENCE FOUND**
-- Tongue-swab and NPOC-NAAT recommendations came in early 2026. A WHO and Stop TB toolkit followed in 
-May 2026
-. Both push toward lower incremental value for any new non-sputum test.
-- WHO reports 
-almost 100 diagnostic products in development
- as of August 2025. This reinforces crowding.
+- WHO's tongue-swab recommendation has a limited scope. 
+Programmes may use tongue swabs from adults and adolescents when sputum cannot be obtained
+. Children and others who cannot give sputum are therefore not covered by that recommendation. This leaves some room for a different non-sputum test, which mildly supports the critique's option-value logic.
+- Against that, 
+tongue swabs are less sensitive than sputum
+. The counterfactual is also moving fast. The base case for "incremental cases beyond alternatives" at 1–3% of incidence is therefore uncertain. Counterfactual displacement could push the value toward the low end.
+- The tongue-swab and NPOC tests are PCR-based. A sweat-based test would need its own evidence pathway and WHO policy review, which supports the low adoption probability.
+
+**CORE CLAIM**
+- Claim: P(adoption) ≈ 5% with an incremental yield of 1–3% of incidence, giving about 10–30k DALYs per year.
+- Support: **LOGIC ONLY.**
+- Why: the arithmetic is internally consistent, but the probability and yield inputs are an assumed base rate with no source, and the test itself could not be found.
 
 **REVISED CRITIQUE**
-CG assigns zero value to the sweat diagnostic. The unaddressed gap in non-notified cases (~2.4M/yr) is real. The incremental value is low and uncertain. WHO's 2026 tongue-swab and NPOC recommendations substantially weaken the counterfactual. The ~10–30k figure is UNGROUNDED and should be treated as an illustrative upper-range option value. Direction is "uncertain" and leans neutral-to-negative given the new evidence. Magnitude is small. The cost-inclusion question must be settled against CG's actual cost model.
+- CG assigns zero value to the sweat test. This may understate value, but the amount is speculative, and the range of 0 to ~100k DALYs per year is wide.
+- The tongue-swab and NPOC WHO endorsement (Feb 2026) lowers the counterfactual incremental value relative to what the Investigator assumed. The paediatric and no-sputum gap remains.
+- Mark it **UNGROUNDED, small magnitude, direction uncertain**.
+- The cost-attribution question should be resolved from the model, not from this critique.
 
 ---
 
-## Critique 3: 60% steady-state uptake has no precedent among comparable TB program additions
+## Critique 3: 60% steady-state uptake has no precedent among comparable additions
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core claim is supported. TB program additions often scale slowly, and the 4-month regimen and WRD examples hold up. The title ("no precedent") is overstated, because the best-documented analog is near, not far below, 60%. The dexamethasone and pyridoxine examples are unverified. The Investigator's WRD recollection ("roughly 40–50%") is slightly low.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** Slow ramps are well supported. The claim that the ceiling is below 60% is not. The title's "no precedent" is overstated.
 
 **CITATION CHECK**
-- **WHO Global TB Report, WRD as initial test:** VERIFIED, with a correction. 
-In 2024, a WRD was the initial test for 54% (4.5 million) of 8.3 million people newly diagnosed, up from 48%
-. The Investigator's "roughly 40–50%" is outdated. Xpert was endorsed in 2010, so about 14 years in, global coverage is ~54%.
-- **Country heterogeneity:** In 2023, 
-68 countries reached at least 80%, but coverage was under 20% in 25 countries
-. That is a bimodal pattern, not a uniform ceiling. In 2024, 
-37 of 49 high-burden countries reported WRD use as the initial test for more than half of people newly diagnosed
-. The global target is 
-100% by 2027
+- *Xpert MTB/RIF, WHO endorsement 2010.* **VERIFIED in outline.** 
+Since 2011, rapid molecular tests have transformed the TB diagnostic landscape
 .
-- **4HPMZ (WHO 2022):** VERIFIED. The 2022 guideline is confirmed. One source states 
-global uptake has been slow, largely due to implementation challenges including limited worldwide availability of rifapentine
-. A Lancet Global Health paper also called rollout 
-limited in high-burden settings
-. A US program evaluation found only 
-14% of eligible patients prescribed 4-HPMZ, and 36% of those initiating completed treatment
-.
-- **Dexamethasone for TBM (evidence 2004) and pyridoxine with isoniazid:** UNVERIFIED. I found no coverage data. Corticosteroids are 
-"standard for TB meningitis"
- in clinical practice, but that says nothing about coverage.
-- **GDF/HPMZ order data:** NOT FOUND.
+- *WRD coverage "roughly 40–50% in recent reports".* **PARTIALLY VERIFIED.** The global figure was 
+54% in 2024, up from 47% in 2022
+, and 48% in 2023. The Investigator's range is slightly low. The WRD indicator also covers all WHO-recommended rapid tests, not just Xpert.
+- *4-month rifapentine-moxifloxacin, WHO 2022.* **VERIFIED, with strong support for slow uptake.** 
+Only 4,154 people were reported started on 4-month HPMZ in 2024, up from 1,271 in 2023
+. That is about 0.05% of the 8.3M notified. 
+Uptake has been slow, largely because of limited rifapentine availability
+. The WHO page also says 
+15 countries and areas reported using the regimen by end-2024
+. A second list on the same page gives 26.
+- *Dexamethasone for TBM (evidence 2004).* **UNVERIFIED.** I did not retrieve coverage data. The 2004 trial is real from background knowledge, but its uptake history needs checking.
+- *Pyridoxine with isoniazid recommended but inconsistently supplied.* **UNVERIFIED.** No coverage data retrieved.
 
 **CLAIM CHECK**
-- **"Comparable additions often take many years to reach moderate coverage":** VERIFIED for WRD (14 years to 54%) and 4HPMZ.
-- **"Some stall below 50%":** PARTIALLY VERIFIED. 4HPMZ is well below 50%. WRD is at 54%, not below 50%.
-- **The 4HPMZ analogy is imperfect.** Its slow uptake is driven mainly by rifapentine supply, adverse events and a high pill burden. A cheap generic adjunct isn't supply-constrained in the same way. The Investigator's claim that an adjunct is a "harder sell" than regimens that simplify care is a reasonable inference, but it is inference.
-- **WRD is also an imperfect analog.** It needs instruments, cartridges and labs. A generic pill avoids that infrastructure barrier.
-- **"60% has no precedent":** FALSE as worded. The WRD benchmark (54% after 14 years, with many countries above 80%) suggests 60% is reachable but optimistic on a short horizon. "Plausibly an upper-bound or optimistic-case value" is defensible. "No precedent" is not.
-- **Arithmetic:** VERIFIED. Cutting the ceiling from 60% to 40% or 30% reduces SROI by 33% or 50% under linear scaling. The "materiality line is 0.39" is internal to the model and unverifiable here.
-- **"Ceiling matters more than ramp":** PLAUSIBLE. It is logically sound for an undiscounted infinite horizon. The Investigator acknowledges the caveats (finite horizon, incidence decline, discounting).
+- *Reducing the ceiling to 0.30–0.40 cuts SROI by 33–50%.* **VERIFIED as arithmetic.** 0.40/0.60 is a 33% cut and 0.30/0.60 is a 50% cut, assuming linear dependence. The model structure and the "0.39 materiality line" are unverifiable.
+- *Comparable additions "often" stall below 50%.* **PARTIALLY CONTRADICTED.** Global WRD coverage is 54% after about 14 years and still rising, not stalled below 50%. WHO also reports that 
+37 of 49 high-burden countries used a WRD as the initial test for more than half of notified cases in 2024, up from 31 in 2023
+. This is evidence of a slow ramp, not a ceiling.
+- *An adjunct with no visible patient benefit is a harder sell.* **PLAUSIBLE, no direct evidence.** It is a reasonable argument.
+- *The ramp matters little over an infinite horizon.* **LOGICALLY VALID**, with the discounting caveat the Investigator notes.
 
 **EVIDENCE FOUND**
-- WRD coverage rose in 24 African countries 
-from 37% in 2018 to 58% in 2023
-. That is about 4 percentage points per year, a useful ramp-rate benchmark.
-- WHO's Guideline Development Group framed the 4-month regimen as an option whose uptake would grow 
-"in future as uptake of this regimen improves"
-. This shows WHO itself anticipated gradual uptake.
+- The analogs have key differences from a cheap generic oral adjunct. Xpert needs capital equipment and labs. HPMZ is supply-limited by rifapentine, and the NYC experience showed tolerability problems: 
+only 14% of eligible patients were prescribed it, and 64% of those who started discontinued
+. Neither is a clean analog for generic-drug supply, so they bear on the ramp more than on the ceiling.
+- The global target is 100% WRD coverage by 2027 (
+set at the 2023 UN high-level meeting
+). A system target is not the same as steady-state achieved coverage, but it suggests over 50% is feasible with sustained push.
+- Equating adult_uptake with a coverage fraction among all patients may be a different construct from "percent of notified cases tested". I could not check how the CG model defines it.
+
+**CORE CLAIM**
+- Claim: the long-run uptake ceiling is plausibly 0.30–0.40, not 0.60.
+- Support: **LOGIC ONLY.**
+- Why: the precedents show slow ramps (HPMZ about 0.05% after three years, WRD 54% after about 14 years). None shows a stalled ceiling below 60% for a cheap, generic, oral co-administered drug.
 
 **REVISED CRITIQUE**
-CG's 60% steady-state uptake looks optimistic relative to TB program precedent. The strongest verified analogs are WRD at 54% global coverage after ~14 years (heavily skewed by country) and 4HPMZ with slow, supply- and tolerability-limited uptake. Neither is a clean analog for a cheap generic adjunct. Reducing the ceiling to 0.30–0.40 cuts SROI by about 33–50% under linear scaling. The 60% figure is a plausible optimistic or upper-central case, not an impossible one. The dexamethasone and pyridoxine examples should be dropped or flagged as UNVERIFIED. Direction is "decreases". Magnitude is medium to large, but the evidence supports the ceiling being uncertain rather than demonstrably too high. I would rate the critique's strength as moderate. Pulling country-level adoption data for comparable adjuncts would strengthen it.
+- Evidence supports the view that new TB tools take about 10 or more years to reach about 50% coverage, and that guideline endorsement does not guarantee uptake.
+- This is a stronger argument against the ramp (timing) than against the ceiling. Its main effect is through discounting and finite horizons.
+- Retain the ceiling concern as **UNGROUNDED**. Downgrade the magnitude from **large to medium**, with direction **decreases**.
+- Do not use "stall below 50%" as support for the 0.30–0.40 ceiling. The WRD data point to 54% and rising.
+- Dexamethasone and pyridoxine remain unverified. The pull the Investigator requested has been done for WRD and HPMZ. The GDF order data were not found.
 
 --- Critique: A Phase III cannot be powered on mortality, so the WHO GDG would be recommending on surrogate or composite endpoints ---
 
-## Critique 1: A Phase III cannot be powered on mortality, so the WHO GDG would be recommending on surrogate or composite endpoints
+## Critique 1: Phase III cannot be powered on mortality, so the WHO GDG would recommend on surrogate or composite endpoints
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The statistical argument and the GRADE mechanism are sound. The baseline mortality figure and the size of the uptake effect remain ungrounded.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic and the GRADE indirectness logic hold. The baseline mortality is now grounded. The link from this to lower uptake is logic only, and the critique overstates how much a lack of mortality data would hurt in TB guidelines.
 
 **CLAIM CHECK**
-- **Sample size of about 30,000 per arm: VERIFIED (arithmetic).**
-  - The Investigator's formula gives about 29,800.
-  - The standard two-proportion formula (5% vs 4.5%, alpha 0.05 two-sided, 80% power) gives about 28,400 per arm.
-  - Both round to roughly 30,000, so the conclusion holds. It depends entirely on the 5% baseline and 10% relative reduction.
-- **GRADE downgrades for indirectness when a surrogate stands in for a patient-important outcome: VERIFIED.**
+- **Sample size of about 30,000 per arm (5% baseline, 10% relative reduction, α 0.05, 80% power): VERIFIED (arithmetic).**
+  - I recomputed it with the standard two-proportion formula: 7.84 × (0.0475 + 0.0430) / 0.005² ≈ 28,400 per arm. The Investigator's shortcut gives about 29,800. Both round to roughly 28–30k per arm.
+  - The result depends entirely on the 5% baseline and the 10% effect, as the Investigator said.
+- **On-treatment DS-TB mortality of about 3–6% (previously UNGROUNDED): PLAUSIBLE, now sourced.**
   - 
-GRADE guidance says that when a surrogate is used, authors should rate down the quality of evidence for indirectness of outcome.
+A program-setting cohort of drug-susceptible pulmonary TB found 37 of 565 patients (6.6%) died during the study period.
 
-  - WHO's own SAGE guidance lists 
-surrogate end-points as an example of indirectness.
-
-  - WHO guidelines that follow the WHO handbook define indirectness as including 
-differences in populations, interventions, comparisons or outcomes of interest between the research and the target context.
-
-  - WHO's DR-TB guidelines also 
-list indirectness among the criteria for rating certainty down.
-
-  - I could not retrieve the handbook text itself. The claim is supported through WHO documents that apply it.
-- **On-treatment DS-TB mortality of about 3–6%: UNVERIFIABLE in this session.**
-  - My search for WHO Global TB Report treatment-outcome data failed.
-  - From background knowledge the range is plausible, but I have no citation.
-  - It still needs sourcing.
-- **The realistic Phase III will use culture conversion, relapse-free cure, unfavorable outcome or lung function: PLAUSIBLE.**
-  - Existing statin and host-directed-therapy trials use surrogate endpoints.
   - 
-An atorvastatin phase IIA study measured mycobacterial load in sputum, and a rosuvastatin trial measured sputum culture conversion.
+In Kenya, about 6% of drug-susceptible TB cases died.
 
-  - A phase 2 host-directed-therapy trial used 
-recovery of FEV1.
+  - 
+A multi-country study reported mortality of 6.0% in adequately treated patients with pan-susceptible strains.
 
-- **Lower uptake, a delayed or conditional recommendation, or subgroup-only recommendations: PLAUSIBLE but UNGROUNDED.**
-  - The "a third of patients, so uptake cut by half or more" scenario is self-labelled speculative, and I found nothing to confirm or refute it.
-  - I also could not check CG's "if it works → 60%" figure or the claim that CG's value is "entirely mortality-based." Those come from the source materials.
+  - 
+WHO reports DS-TB treatment success of 88% (2023 data).
+ That is consistent with deaths of roughly 4–6%, but I did not retrieve the exact WHO death proportion.
+  - The "3–6%" range is therefore reasonable. Cohorts with HIV or severe disease run higher, so the range sits at the low-to-mid end of what is reported.
+- **GRADE downgrades for indirectness when surrogate outcomes are used: VERIFIED.**
+  - 
+WHO SAGE guidance says that when important outcomes are represented by a surrogate, the evidence quality frequently needs down-rating for indirectness.
+
+  - 
+A WHO guideline applying the Handbook (2nd edition) downgrades for indirectness when the evidence differs from the target context in populations, interventions, comparisons or outcomes.
+
+  - I did not retrieve the Handbook text itself. The two sources above are WHO documents applying it.
+- **Recommendation delayed, conditional or subgroup-only: PLAUSIBLE.** This is a reasonable inference. It is not a documented outcome for any specific TB adjunct.
+- **Effective uptake would fall by about half or more under a subgroup recommendation: UNVERIFIABLE.** The Investigator already flagged this as speculative.
 
 **EVIDENCE FOUND**
-- The GRADE downgrade applies specifically to the mortality outcome. If the Phase III reports unfavorable outcome, which includes death, WHO TB guidelines have historically treated treatment outcomes as critical outcomes. A recommendation therefore need not stall. It would simply carry a "mortality benefit not directly shown" caveat. This weakens the "delay" pathway and leaves the "modeled benefit is unverified" pathway intact.
-- The sample-size problem is worse for a trial restricted to a high-risk subgroup, because the trial then enrolls fewer patients.
+- **Weakens the critique.** WHO TB guideline groups routinely treat composite patient-important outcomes (treatment success, unfavourable outcome including death, relapse) as critical outcomes.
+  - The critique treats a composite as a weak substitute. In TB, a composite that includes death is often a direct outcome. That reduces the expected indirectness penalty.
+  - This is from my background knowledge. I did not search for it.
+- **Supports the critique.** The only statin RCT I found, StAT-TB, is a Phase 2b dose-finding trial. 
+Its endpoints are time to sputum-culture negativity and lung function.
+ 
+Mortality is assessed as a tolerability measure.
+ Mortality is not the primary efficacy endpoint.
+- Observational data link statin use to lower all-cause mortality in TB patients with ASCVD. 
+The authors say RCTs are needed.
+ That is a narrow subgroup, and it supports the case for a subgroup-limited recommendation.
+
+**CORE CLAIM**
+- **Claim:** A Phase III cannot be powered on a roughly 10% relative mortality reduction (about 30k per arm), so the recommendation would rest on surrogate or composite endpoints that GRADE treats as indirect.
+- **Support:** SUPPORTED, for the feasibility and GRADE-mechanism part. The effect on uptake is LOGIC ONLY.
+- **Why:** The arithmetic reproduces, baseline mortality sits in the claimed range, and WHO guidance confirms the downgrading mechanism. No evidence ties this to a specific uptake reduction.
 
 **REVISED CRITIQUE**
-A Phase III powered on mortality is infeasible. About 28,000–30,000 per arm would be needed at a 5% baseline and 10% relative reduction, and both inputs are assumptions. The trial will likely use a surrogate or composite endpoint. GRADE and WHO methods support downgrading the mortality evidence for indirectness. The realized mortality effect, and so relative_reduction variance, stays unverified. Effects on adoption timing and uptake are plausible but unquantified.
-- **Flag:** the baseline mortality figure is UNGROUNDED and needs a WHO Global TB Report source.
-- **Flag:** the uptake magnitude is speculative.
-- **Strength:** medium, perhaps medium-low for the uptake channel.
+A mortality-powered Phase III would need about 28–30k patients per arm at a 5–6% baseline. A mortality-driven benefit would therefore probably be inferred from composite or surrogate endpoints. That invites an indirectness downgrade. It could make the recommendation conditional, delayed or subgroup-limited, and it raises variance on the realized relative reduction. Counterweight: TB GDGs usually accept unfavourable-outcome composites that include death as direct. The uptake and timing effects are UNGROUNDED. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.
 
 ---
 
-## Critique 2: Clinical eligibility and monitoring barriers cap the achievable prescribing share
+## Critique 2: Clinical eligibility and monitoring barriers cap the prescribing share
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The pharmacology and DILI premises are real, and the DILI incidence is understated. The eligibility-exclusion shares are ungrounded, as the Investigator said.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hepatotoxicity premise is verified. The numeric uptake cap is ungrounded. Several pharmacology points are likely mismatched to the statin actually under study.
 
 **CLAIM CHECK**
-- **Anti-TB DILI affects a non-trivial minority, "low single digits to ~10%": VERIFIED but the range is too narrow.**
-  - A recent review reports 
-a global incidence of 11.5%, with rates from 2% to 28%.
-
-  - Another review gives 
-2.55 to 36.75%, depending on definitions, populations and regimens.
+- **Anti-TB DILI is common, "low single digits to ~10%": PARTIALLY VERIFIED.**
+  - 
+A recent meta-analysis reported a global incidence of 11.5%, with rates varying from 2% to 28%.
 
   - 
-Among TB/HIV-coinfected patients, 37% developed liver injury after starting anti-TB treatment.
+Another source cites 3–36% for drug-susceptible TB.
 
-  - A recent cohort found a much lower 
-2.1% (13/610).
- This shows how much the definition matters.
-  - Overall the evidence supports the critique, and the upper bound is more severe than stated.
-- **Rifampicin lowers atorvastatin exposure: VERIFIED.**
-  - A crossover study found 
-rifampin reduced atorvastatin acid AUC by 80%.
+  - 
+Incidence varies with the cohort, regimen, DILI threshold and monitoring.
 
-  - The interaction is two-sided. 
-A single rifamycin dose raises atorvastatin exposure by inhibiting OATP1B1/1B3, but after multiple doses induction dominates and AUC falls.
+  - The Investigator's range is directionally right but understates the upper end. If anything, DILI is more common than stated, which strengthens the premise. The Investigator said they could not cite a paper. Wang et al. (2022), a meta-analysis of 160 studies, is the relevant one.
+- **Rifampicin is a strong CYP3A4 inducer: VERIFIED.** 
+Rifampin is a strong inducer of CYP3A4 and 2C19.
 
-  - The label advises 
-simultaneous co-administration of atorvastatin and rifampin.
-
-- **PI-based ART raises atorvastatin and efavirenz lowers it: VERIFIED.**
-  - The label table shows 
-tipranavir/ritonavir raised atorvastatin AUC about 9.4-fold.
-
-  - The label also 
-names efavirenz among CYP3A inducers that can variably reduce atorvastatin concentrations.
-
-  - I did not access the Liverpool database.
-- **Statin label cautions on liver disease and transaminases: PLAUSIBLE.** I did not retrieve the label text for this point, but it is standard.
-- **Statins "historically avoided in pregnancy": PLAUSIBLE.**
-  - My search on this failed.
-  - From background knowledge, the FDA asked in 2021 for removal of the blanket pregnancy contraindication.
-  - The word "historically" is therefore appropriate, but the exclusion should not be treated as absolute for current labels.
-- **LFTs are not routinely done for DS-TB in many NTPs: PLAUSIBLE, UNVERIFIED.** The DILI literature recommends 
-regular liver function monitoring during anti-TB treatment.
- That does not show what programs actually do.
-- **Arithmetic: UNGROUNDED and slightly loose.** Excluding 10–20% from 0.60 gives 0.48–0.54. Reaching 0.45–0.50 needs an extra program-adoption factor of about 0.9, which is not stated.
+- **Specific ART interactions (PI-boosted raises atorvastatin, efavirenz lowers it): UNVERIFIED.** I did not check the Liverpool database. This is standard pharmacology and plausible.
+- **Statin label warnings for liver disease and pregnancy: PLAUSIBLE but possibly outdated.** I did not search this. From background knowledge, FDA labelling was revised after 2012 to drop routine periodic LFT monitoring. The pregnancy contraindication was also relaxed in 2021. The "mandated LFT monitoring" scenario is therefore weaker than the critique implies.
+- **Exclusion of 10–20% of adults, bringing 0.60 to 0.45–0.50: UNVERIFIABLE.** The Investigator labelled it illustrative and ungrounded. I found no data.
+- **Many NTPs do not routinely perform LFTs in DS-TB: PLAUSIBLE.** I found no direct source. WHO guidance recommends symptom-based monitoring for most patients, which is consistent with it.
 
 **EVIDENCE FOUND**
-- The existing statin-in-TB trials are small and short. One example is 
-rosuvastatin 10 mg daily for 8 weeks with standard HRZE.
+- **Statin identity matters.** The Phase 2b trial (StAT-TB) tests pravastatin. 
+It asks whether pravastatin adjunctive therapy shortens time to sputum-culture negativity and improves lung function.
 
-- Trial eligibility criteria will probably exclude liver disease, so any recommendation would inherit those exclusions.
-- The choice of statin matters. Atorvastatin is heavily CYP3A4-dependent, and CG's candidate is in the source materials, which I could not check. A less CYP3A4-dependent statin would soften the ART and rifamycin interaction arguments, though not the DILI-attribution argument.
+  - 
+In preclinical work, atorvastatin and mevastatin did not inhibit Mtb growth in THP-1 cells at nontoxic doses.
+ 
+Pravastatin showed the least toxicity in that study.
+
+  - From background knowledge, pravastatin is not substantially CYP3A4-metabolised. If CG's candidate is pravastatin, the CYP3A4 and PI-boosted ART interaction arguments largely fall away. The hepatotoxicity-attribution and pill-burden arguments remain.
+  - I do not know which statin CG assumes. The Investigator should have flagged that dependence.
+- 
+The DILI meta-analysis authors say regular liver function monitoring is imperative during anti-TB treatment.
+ This supports the premise that monitoring is a live issue, though it is not specific to statins.
+
+**CORE CLAIM**
+- **Claim:** Eligibility exclusions, DILI-attribution concerns and monitoring requirements would cut adult uptake from about 0.60 to about 0.45–0.50.
+- **Support:** LOGIC ONLY.
+- **Why:** The mechanisms are plausible and the DILI base rate is verified, but I found no evidence for the size of the exclusion or program-reluctance effect.
 
 **REVISED CRITIQUE**
-Eligibility and monitoring barriers plausibly reduce adult_uptake. Supported premises:
-- Anti-TB DILI is common. The pooled estimate is about 11.5%, and it is much higher in some settings and in HIV coinfection.
-- Rifamycin, PI and efavirenz interactions with atorvastatin are documented.
-- A statin adds a confounder when attributing liver injury.
-
-**Flags:**
-- The 10–20% exclusion share and the 0.45–0.50 figure are UNGROUNDED and the arithmetic is incomplete.
-- The NTP LFT-monitoring gap is unsourced.
-- The pregnancy exclusion should be stated with current label status.
-
-**Strength:** medium. The direction is well supported, but the magnitude is not.
+Anti-TB DILI is common, with a pooled incidence of about 11.5% and a range of roughly 2–28% or more. Clinicians may be reluctant to add a hepatically relevant agent that confounds attribution. Some eligibility exclusion (liver disease, pregnancy, polypharmacy) is therefore plausible. The cited drug-interaction concerns apply to CYP3A4-metabolised statins such as atorvastatin, not necessarily to pravastatin, which is the statin in the Phase 2b trial. The specific 0.45–0.50 figure is **UNGROUNDED — plausible but needs empirical support.** **Magnitude: low-to-medium.** Direction: decreases.
 
 ---
 
-## Critique 3: Delivered dose and adherence diverge from trial conditions, notably with rifapentine regimens
+## Critique 3: Delivered dose and adherence diverge from trial conditions, especially with rifapentine regimens
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The adherence and dose-transfer logic holds. The rifapentine claim is overstated: the evidence does not show it is a stronger inducer than rifampicin. Its main point, that rifamycin induction reduces statin exposure, is supported.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The general adherence and effectiveness-gap logic is sound. The rifapentine claim is overstated relative to the sources. The adherence factor risks double-counting.
 
 **CLAIM CHECK**
-- **Rifapentine is a CYP3A4 inducer "comparable to or stronger than rifampicin in some dosing contexts": PARTIALLY VERIFIED / PARTLY MISREPRESENTED.**
-  - A pharmacology review ranks the inductive potency of rifamycins as 
-rifampin > rifapentine > rifabutin.
+- **Rifapentine is a strong CYP3A4 inducer, "comparable to or stronger than rifampicin in some dosing contexts": PARTIALLY VERIFIED, mostly contradicted on direction.**
+  - 
+One review ranks relative inductive potency as rifampin > rifapentine > rifabutin. It says rifapentine's CYP3A4 induction approaches rifampin's (85–100%) with daily dosing and is more moderate with once- or twice-weekly dosing.
 
-  - It adds that 
-rifapentine's induction approaches 85–100% of rifampin's when used daily and is more moderate with once- or twice-weekly dosing.
+  - 
+The WHO prequalification document says rifapentine's induction potential may be less than rifampicin's but more potent than rifabutin's.
 
-  - A diabetes-focused review rates rifapentine's induction magnitude as 
-"++" against "+++" for rifampicin.
+  - 
+A clinical protocol gives relative potency as rifampin 100%, rifapentine 85% and rifabutin 40%.
 
-  - In human hepatocytes, 
-the potency hierarchy was rifampin > rifabutin > rifapentine.
+  - There is supporting evidence for "stronger in some contexts." 
+In one study, oral midazolam AUC fell 75% with rifampin versus 92% with rifapentine, each at 10 mg/kg daily.
 
-  - "Comparable at daily dosing" is defensible. "Stronger" is not supported by anything I found.
-  - The critique's differential argument also fails. Rifapentine is not shown to reduce atorvastatin exposure more than rifampicin does, so HPMZ regimens are not worse than HRZE for statin exposure. They are about equally affected.
-- **Rifamycin co-administration lowers atorvastatin exposure: VERIFIED.** See Critique 2 (about 80% AUC reduction with rifampin).
-- **Rifapentine–atorvastatin interaction magnitude: UNVERIFIABLE.**
-  - I found no direct study.
-  - Rifapentine's induction may be 
-delayed in onset but may persist beyond the end of treatment.
- That could matter for statin dosing timing.
-- **Dose-finding on a rifampicin-based regimen: PLAUSIBLE.** The visible statin trials use HRZE as the backbone, for example the 
-rosuvastatin phase 2b.
- The Phase IIc design itself is in the source materials, which I could not check.
-- **A shorter 4-month window shortens the co-administration period: LOGICAL but conditional.** It would not matter if the statin course is about 8 weeks, as in existing trials. That depends on CG's design.
-- **Adjunct pills are less adherent than anti-TB drugs, and general statin adherence is poor: UNVERIFIABLE here.**
-  - I did not search for this.
-  - It is widely reported in general populations, but the transfer to a 6-month TB course is an assumption.
-  - The Investigator admits having no TB-specific source.
-- **Arithmetic: VERIFIED.** 0.60 × 0.70 = 0.42, a 30% reduction.
-- **Internal error:** the text says the effect "compounds with Critiques 1 and 3." This should read Critiques 1 and 2.
-- **HPMZ is "currently small but growing": UNVERIFIED.**
+  - 
+One in vitro hepatocyte study found rifapentine to be the weakest of the three inducers.
+
+  - The evidence is mixed. It does not support the stronger claim that HPMZ regimens would lower statin exposure "further" than rifampicin regimens. Daily rifapentine dosing, as in HPMZ, is the condition where induction is closest to rifampicin's. A modest difference in either direction is the best-supported reading.
+- **HPMZ is a 4-month rifapentine-containing regimen that programs are moving toward, with a currently small but growing share: PLAUSIBLE.** I did not search this. From background knowledge, WHO recommended it in 2022. I have no uptake share data.
+- **Statin non-adherence is high in general populations: PLAUSIBLE, not searched.** It is a well-known finding, but it was not checked for the TB context.
+- **Adjunct pills outside an FDC are less likely to be taken than anti-TB drugs: PLAUSIBLE.** The Investigator admitted there is no specific source, and I found none.
+- **0.60 × 0.70 = 0.42, about a 30% reduction: VERIFIED (arithmetic).** The 70% adherence figure is an assumption.
+- **Dose-finding on one regimen may not carry over: PLAUSIBLE.** StAT-TB tests statins with first-line HRZE. 
+The protocol describes testing statins in combination with first-line TB drugs.
+
 
 **EVIDENCE FOUND**
-- Rifamycin-driven statin exposure reduction is a stronger point against the dose-transfer assumption than the HPMZ-specific argument. Even in HRZE regimens the interaction is large and variable between patients. Dose selection in Phase IIc already has to account for it. Whether it carries over to HPMZ depends on whether rifapentine is dosed daily, since the induction estimates above are for daily use.
-- Pravastatin showed variable rifampicin interaction, with 
-AUC at 50% or less in five of ten subjects.
- The statin choice therefore changes the size of this problem.
+- **Possible double-counting.** If the Phase III is pragmatic or intention-to-treat, the effect size already embeds trial-level non-adherence. Applying an adherence haircut again to uptake would then overstate the downward adjustment. The Investigator did not address this.
+- **Statin identity again.** If pravastatin is the candidate, rifamycin CYP3A4 induction is a minor concern. The rifapentine-specific argument then largely falls away.
+- The critique says it "compounds with Critiques 1 and 3". That appears to be a self-reference error and should probably read 1 and 2.
+
+**CORE CLAIM**
+- **Claim:** Real-world delivered dose and adherence (about 70%) would reduce effective uptake by about 30%, and rifapentine regimens would further lower statin exposure.
+- **Support:** LOGIC ONLY for the adherence factor. The rifapentine "further lower" claim is weakly supported to partly contradicted.
+- **Why:** The effectiveness-gap mechanism is generic and plausible. The 70% is assumed, and most pharmacology sources rank rifapentine at or below rifampicin for CYP3A4 induction.
 
 **REVISED CRITIQUE**
-Two separate concerns remain:
-1. **Adherence and delivered dose.** Real-world adherence to an out-of-FDC adjunct plausibly falls below trial adherence. Illustratively, 70% adherence would cut effective uptake from 0.60 to 0.42. The 70% figure is a framing assumption, not data, and the TB-specific adherence evidence is UNGROUNDED. This part keeps medium strength.
-2. **Rifamycin interaction and dose transfer.** Rifamycins substantially lower atorvastatin exposure. Daily rifapentine induces CYP3A4 at roughly 85–100% of rifampicin's level. Intermittent dosing induces less. A dose chosen on one rifamycin regimen may not transfer exactly to another, and rifapentine's induction effect may persist after treatment ends. The claim that rifapentine is "stronger" than rifampicin should be dropped, and the interaction should not be presented as specifically worse in HPMZ. The rifapentine magnitude is UNGROUNDED. Reduce this part to **low** strength.
-
-Overall strength: medium for adherence and low-to-medium for the rifapentine component. The reference to "Critique 3" in the compounding sentence should be corrected to Critique 2.
-
-**Limits of this verification:** my search quota ran out before I could check the FDA pregnancy label change, WHO treatment-outcome mortality data, statin adherence literature and HPMZ uptake. Those items are flagged above as unverified rather than refuted.
+Programmatic adherence to an unsupervised adjunct pill is likely below trial adherence, and this lowers realized benefit. The size of the effect is **UNGROUNDED — plausible but needs empirical support.** The 70% figure is an assumption, and it risks double-counting if the trial effect is already pragmatic or intention-to-treat. The rifapentine point is weaker than stated. Daily rifapentine induces CYP3A4 at roughly 85–100% of rifampicin's level. That is similar to the interaction already present in HRZE-based trials, not clearly worse, and it matters only for CYP3A4-metabolised statins. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.
 
 --- Critique: Clinical eligibility and monitoring barriers cap the achievable prescribing share below the "generic and cheap" logic ---
 
-## Critique 1: A Phase III cannot be powered on mortality, so the WHO GDG would be recommending on surrogate or composite endpoints
+## Critique 1: Phase III cannot be powered on mortality, so the WHO GDG would recommend on surrogate or composite endpoints
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The statistical argument and the GRADE mechanism are sound. The baseline mortality figure and the size of the uptake effect remain ungrounded.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic and the GRADE indirectness logic hold. The baseline mortality is now grounded. The link from this to lower uptake is logic only, and the critique overstates how much a lack of mortality data would hurt in TB guidelines.
 
 **CLAIM CHECK**
-- **Sample size of about 30,000 per arm: VERIFIED (arithmetic).**
-  - The Investigator's formula gives about 29,800.
-  - The standard two-proportion formula (5% vs 4.5%, alpha 0.05 two-sided, 80% power) gives about 28,400 per arm.
-  - Both round to roughly 30,000, so the conclusion holds. It depends entirely on the 5% baseline and 10% relative reduction.
-- **GRADE downgrades for indirectness when a surrogate stands in for a patient-important outcome: VERIFIED.**
+- **Sample size of about 30,000 per arm (5% baseline, 10% relative reduction, α 0.05, 80% power): VERIFIED (arithmetic).**
+  - I recomputed it with the standard two-proportion formula: 7.84 × (0.0475 + 0.0430) / 0.005² ≈ 28,400 per arm. The Investigator's shortcut gives about 29,800. Both round to roughly 28–30k per arm.
+  - The result depends entirely on the 5% baseline and the 10% effect, as the Investigator said.
+- **On-treatment DS-TB mortality of about 3–6% (previously UNGROUNDED): PLAUSIBLE, now sourced.**
   - 
-GRADE guidance says that when a surrogate is used, authors should rate down the quality of evidence for indirectness of outcome.
+A program-setting cohort of drug-susceptible pulmonary TB found 37 of 565 patients (6.6%) died during the study period.
 
-  - WHO's own SAGE guidance lists 
-surrogate end-points as an example of indirectness.
-
-  - WHO guidelines that follow the WHO handbook define indirectness as including 
-differences in populations, interventions, comparisons or outcomes of interest between the research and the target context.
-
-  - WHO's DR-TB guidelines also 
-list indirectness among the criteria for rating certainty down.
-
-  - I could not retrieve the handbook text itself. The claim is supported through WHO documents that apply it.
-- **On-treatment DS-TB mortality of about 3–6%: UNVERIFIABLE in this session.**
-  - My search for WHO Global TB Report treatment-outcome data failed.
-  - From background knowledge the range is plausible, but I have no citation.
-  - It still needs sourcing.
-- **The realistic Phase III will use culture conversion, relapse-free cure, unfavorable outcome or lung function: PLAUSIBLE.**
-  - Existing statin and host-directed-therapy trials use surrogate endpoints.
   - 
-An atorvastatin phase IIA study measured mycobacterial load in sputum, and a rosuvastatin trial measured sputum culture conversion.
+In Kenya, about 6% of drug-susceptible TB cases died.
 
-  - A phase 2 host-directed-therapy trial used 
-recovery of FEV1.
+  - 
+A multi-country study reported mortality of 6.0% in adequately treated patients with pan-susceptible strains.
 
-- **Lower uptake, a delayed or conditional recommendation, or subgroup-only recommendations: PLAUSIBLE but UNGROUNDED.**
-  - The "a third of patients, so uptake cut by half or more" scenario is self-labelled speculative, and I found nothing to confirm or refute it.
-  - I also could not check CG's "if it works → 60%" figure or the claim that CG's value is "entirely mortality-based." Those come from the source materials.
+  - 
+WHO reports DS-TB treatment success of 88% (2023 data).
+ That is consistent with deaths of roughly 4–6%, but I did not retrieve the exact WHO death proportion.
+  - The "3–6%" range is therefore reasonable. Cohorts with HIV or severe disease run higher, so the range sits at the low-to-mid end of what is reported.
+- **GRADE downgrades for indirectness when surrogate outcomes are used: VERIFIED.**
+  - 
+WHO SAGE guidance says that when important outcomes are represented by a surrogate, the evidence quality frequently needs down-rating for indirectness.
+
+  - 
+A WHO guideline applying the Handbook (2nd edition) downgrades for indirectness when the evidence differs from the target context in populations, interventions, comparisons or outcomes.
+
+  - I did not retrieve the Handbook text itself. The two sources above are WHO documents applying it.
+- **Recommendation delayed, conditional or subgroup-only: PLAUSIBLE.** This is a reasonable inference. It is not a documented outcome for any specific TB adjunct.
+- **Effective uptake would fall by about half or more under a subgroup recommendation: UNVERIFIABLE.** The Investigator already flagged this as speculative.
 
 **EVIDENCE FOUND**
-- The GRADE downgrade applies specifically to the mortality outcome. If the Phase III reports unfavorable outcome, which includes death, WHO TB guidelines have historically treated treatment outcomes as critical outcomes. A recommendation therefore need not stall. It would simply carry a "mortality benefit not directly shown" caveat. This weakens the "delay" pathway and leaves the "modeled benefit is unverified" pathway intact.
-- The sample-size problem is worse for a trial restricted to a high-risk subgroup, because the trial then enrolls fewer patients.
+- **Weakens the critique.** WHO TB guideline groups routinely treat composite patient-important outcomes (treatment success, unfavourable outcome including death, relapse) as critical outcomes.
+  - The critique treats a composite as a weak substitute. In TB, a composite that includes death is often a direct outcome. That reduces the expected indirectness penalty.
+  - This is from my background knowledge. I did not search for it.
+- **Supports the critique.** The only statin RCT I found, StAT-TB, is a Phase 2b dose-finding trial. 
+Its endpoints are time to sputum-culture negativity and lung function.
+ 
+Mortality is assessed as a tolerability measure.
+ Mortality is not the primary efficacy endpoint.
+- Observational data link statin use to lower all-cause mortality in TB patients with ASCVD. 
+The authors say RCTs are needed.
+ That is a narrow subgroup, and it supports the case for a subgroup-limited recommendation.
+
+**CORE CLAIM**
+- **Claim:** A Phase III cannot be powered on a roughly 10% relative mortality reduction (about 30k per arm), so the recommendation would rest on surrogate or composite endpoints that GRADE treats as indirect.
+- **Support:** SUPPORTED, for the feasibility and GRADE-mechanism part. The effect on uptake is LOGIC ONLY.
+- **Why:** The arithmetic reproduces, baseline mortality sits in the claimed range, and WHO guidance confirms the downgrading mechanism. No evidence ties this to a specific uptake reduction.
 
 **REVISED CRITIQUE**
-A Phase III powered on mortality is infeasible. About 28,000–30,000 per arm would be needed at a 5% baseline and 10% relative reduction, and both inputs are assumptions. The trial will likely use a surrogate or composite endpoint. GRADE and WHO methods support downgrading the mortality evidence for indirectness. The realized mortality effect, and so relative_reduction variance, stays unverified. Effects on adoption timing and uptake are plausible but unquantified.
-- **Flag:** the baseline mortality figure is UNGROUNDED and needs a WHO Global TB Report source.
-- **Flag:** the uptake magnitude is speculative.
-- **Strength:** medium, perhaps medium-low for the uptake channel.
+A mortality-powered Phase III would need about 28–30k patients per arm at a 5–6% baseline. A mortality-driven benefit would therefore probably be inferred from composite or surrogate endpoints. That invites an indirectness downgrade. It could make the recommendation conditional, delayed or subgroup-limited, and it raises variance on the realized relative reduction. Counterweight: TB GDGs usually accept unfavourable-outcome composites that include death as direct. The uptake and timing effects are UNGROUNDED. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.
 
 ---
 
-## Critique 2: Clinical eligibility and monitoring barriers cap the achievable prescribing share
+## Critique 2: Clinical eligibility and monitoring barriers cap the prescribing share
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The pharmacology and DILI premises are real, and the DILI incidence is understated. The eligibility-exclusion shares are ungrounded, as the Investigator said.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hepatotoxicity premise is verified. The numeric uptake cap is ungrounded. Several pharmacology points are likely mismatched to the statin actually under study.
 
 **CLAIM CHECK**
-- **Anti-TB DILI affects a non-trivial minority, "low single digits to ~10%": VERIFIED but the range is too narrow.**
-  - A recent review reports 
-a global incidence of 11.5%, with rates from 2% to 28%.
-
-  - Another review gives 
-2.55 to 36.75%, depending on definitions, populations and regimens.
+- **Anti-TB DILI is common, "low single digits to ~10%": PARTIALLY VERIFIED.**
+  - 
+A recent meta-analysis reported a global incidence of 11.5%, with rates varying from 2% to 28%.
 
   - 
-Among TB/HIV-coinfected patients, 37% developed liver injury after starting anti-TB treatment.
+Another source cites 3–36% for drug-susceptible TB.
 
-  - A recent cohort found a much lower 
-2.1% (13/610).
- This shows how much the definition matters.
-  - Overall the evidence supports the critique, and the upper bound is more severe than stated.
-- **Rifampicin lowers atorvastatin exposure: VERIFIED.**
-  - A crossover study found 
-rifampin reduced atorvastatin acid AUC by 80%.
+  - 
+Incidence varies with the cohort, regimen, DILI threshold and monitoring.
 
-  - The interaction is two-sided. 
-A single rifamycin dose raises atorvastatin exposure by inhibiting OATP1B1/1B3, but after multiple doses induction dominates and AUC falls.
+  - The Investigator's range is directionally right but understates the upper end. If anything, DILI is more common than stated, which strengthens the premise. The Investigator said they could not cite a paper. Wang et al. (2022), a meta-analysis of 160 studies, is the relevant one.
+- **Rifampicin is a strong CYP3A4 inducer: VERIFIED.** 
+Rifampin is a strong inducer of CYP3A4 and 2C19.
 
-  - The label advises 
-simultaneous co-administration of atorvastatin and rifampin.
-
-- **PI-based ART raises atorvastatin and efavirenz lowers it: VERIFIED.**
-  - The label table shows 
-tipranavir/ritonavir raised atorvastatin AUC about 9.4-fold.
-
-  - The label also 
-names efavirenz among CYP3A inducers that can variably reduce atorvastatin concentrations.
-
-  - I did not access the Liverpool database.
-- **Statin label cautions on liver disease and transaminases: PLAUSIBLE.** I did not retrieve the label text for this point, but it is standard.
-- **Statins "historically avoided in pregnancy": PLAUSIBLE.**
-  - My search on this failed.
-  - From background knowledge, the FDA asked in 2021 for removal of the blanket pregnancy contraindication.
-  - The word "historically" is therefore appropriate, but the exclusion should not be treated as absolute for current labels.
-- **LFTs are not routinely done for DS-TB in many NTPs: PLAUSIBLE, UNVERIFIED.** The DILI literature recommends 
-regular liver function monitoring during anti-TB treatment.
- That does not show what programs actually do.
-- **Arithmetic: UNGROUNDED and slightly loose.** Excluding 10–20% from 0.60 gives 0.48–0.54. Reaching 0.45–0.50 needs an extra program-adoption factor of about 0.9, which is not stated.
+- **Specific ART interactions (PI-boosted raises atorvastatin, efavirenz lowers it): UNVERIFIED.** I did not check the Liverpool database. This is standard pharmacology and plausible.
+- **Statin label warnings for liver disease and pregnancy: PLAUSIBLE but possibly outdated.** I did not search this. From background knowledge, FDA labelling was revised after 2012 to drop routine periodic LFT monitoring. The pregnancy contraindication was also relaxed in 2021. The "mandated LFT monitoring" scenario is therefore weaker than the critique implies.
+- **Exclusion of 10–20% of adults, bringing 0.60 to 0.45–0.50: UNVERIFIABLE.** The Investigator labelled it illustrative and ungrounded. I found no data.
+- **Many NTPs do not routinely perform LFTs in DS-TB: PLAUSIBLE.** I found no direct source. WHO guidance recommends symptom-based monitoring for most patients, which is consistent with it.
 
 **EVIDENCE FOUND**
-- The existing statin-in-TB trials are small and short. One example is 
-rosuvastatin 10 mg daily for 8 weeks with standard HRZE.
+- **Statin identity matters.** The Phase 2b trial (StAT-TB) tests pravastatin. 
+It asks whether pravastatin adjunctive therapy shortens time to sputum-culture negativity and improves lung function.
 
-- Trial eligibility criteria will probably exclude liver disease, so any recommendation would inherit those exclusions.
-- The choice of statin matters. Atorvastatin is heavily CYP3A4-dependent, and CG's candidate is in the source materials, which I could not check. A less CYP3A4-dependent statin would soften the ART and rifamycin interaction arguments, though not the DILI-attribution argument.
+  - 
+In preclinical work, atorvastatin and mevastatin did not inhibit Mtb growth in THP-1 cells at nontoxic doses.
+ 
+Pravastatin showed the least toxicity in that study.
+
+  - From background knowledge, pravastatin is not substantially CYP3A4-metabolised. If CG's candidate is pravastatin, the CYP3A4 and PI-boosted ART interaction arguments largely fall away. The hepatotoxicity-attribution and pill-burden arguments remain.
+  - I do not know which statin CG assumes. The Investigator should have flagged that dependence.
+- 
+The DILI meta-analysis authors say regular liver function monitoring is imperative during anti-TB treatment.
+ This supports the premise that monitoring is a live issue, though it is not specific to statins.
+
+**CORE CLAIM**
+- **Claim:** Eligibility exclusions, DILI-attribution concerns and monitoring requirements would cut adult uptake from about 0.60 to about 0.45–0.50.
+- **Support:** LOGIC ONLY.
+- **Why:** The mechanisms are plausible and the DILI base rate is verified, but I found no evidence for the size of the exclusion or program-reluctance effect.
 
 **REVISED CRITIQUE**
-Eligibility and monitoring barriers plausibly reduce adult_uptake. Supported premises:
-- Anti-TB DILI is common. The pooled estimate is about 11.5%, and it is much higher in some settings and in HIV coinfection.
-- Rifamycin, PI and efavirenz interactions with atorvastatin are documented.
-- A statin adds a confounder when attributing liver injury.
-
-**Flags:**
-- The 10–20% exclusion share and the 0.45–0.50 figure are UNGROUNDED and the arithmetic is incomplete.
-- The NTP LFT-monitoring gap is unsourced.
-- The pregnancy exclusion should be stated with current label status.
-
-**Strength:** medium. The direction is well supported, but the magnitude is not.
+Anti-TB DILI is common, with a pooled incidence of about 11.5% and a range of roughly 2–28% or more. Clinicians may be reluctant to add a hepatically relevant agent that confounds attribution. Some eligibility exclusion (liver disease, pregnancy, polypharmacy) is therefore plausible. The cited drug-interaction concerns apply to CYP3A4-metabolised statins such as atorvastatin, not necessarily to pravastatin, which is the statin in the Phase 2b trial. The specific 0.45–0.50 figure is **UNGROUNDED — plausible but needs empirical support.** **Magnitude: low-to-medium.** Direction: decreases.
 
 ---
 
-## Critique 3: Delivered dose and adherence diverge from trial conditions, notably with rifapentine regimens
+## Critique 3: Delivered dose and adherence diverge from trial conditions, especially with rifapentine regimens
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The adherence and dose-transfer logic holds. The rifapentine claim is overstated: the evidence does not show it is a stronger inducer than rifampicin. Its main point, that rifamycin induction reduces statin exposure, is supported.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The general adherence and effectiveness-gap logic is sound. The rifapentine claim is overstated relative to the sources. The adherence factor risks double-counting.
 
 **CLAIM CHECK**
-- **Rifapentine is a CYP3A4 inducer "comparable to or stronger than rifampicin in some dosing contexts": PARTIALLY VERIFIED / PARTLY MISREPRESENTED.**
-  - A pharmacology review ranks the inductive potency of rifamycins as 
-rifampin > rifapentine > rifabutin.
+- **Rifapentine is a strong CYP3A4 inducer, "comparable to or stronger than rifampicin in some dosing contexts": PARTIALLY VERIFIED, mostly contradicted on direction.**
+  - 
+One review ranks relative inductive potency as rifampin > rifapentine > rifabutin. It says rifapentine's CYP3A4 induction approaches rifampin's (85–100%) with daily dosing and is more moderate with once- or twice-weekly dosing.
 
-  - It adds that 
-rifapentine's induction approaches 85–100% of rifampin's when used daily and is more moderate with once- or twice-weekly dosing.
+  - 
+The WHO prequalification document says rifapentine's induction potential may be less than rifampicin's but more potent than rifabutin's.
 
-  - A diabetes-focused review rates rifapentine's induction magnitude as 
-"++" against "+++" for rifampicin.
+  - 
+A clinical protocol gives relative potency as rifampin 100%, rifapentine 85% and rifabutin 40%.
 
-  - In human hepatocytes, 
-the potency hierarchy was rifampin > rifabutin > rifapentine.
+  - There is supporting evidence for "stronger in some contexts." 
+In one study, oral midazolam AUC fell 75% with rifampin versus 92% with rifapentine, each at 10 mg/kg daily.
 
-  - "Comparable at daily dosing" is defensible. "Stronger" is not supported by anything I found.
-  - The critique's differential argument also fails. Rifapentine is not shown to reduce atorvastatin exposure more than rifampicin does, so HPMZ regimens are not worse than HRZE for statin exposure. They are about equally affected.
-- **Rifamycin co-administration lowers atorvastatin exposure: VERIFIED.** See Critique 2 (about 80% AUC reduction with rifampin).
-- **Rifapentine–atorvastatin interaction magnitude: UNVERIFIABLE.**
-  - I found no direct study.
-  - Rifapentine's induction may be 
-delayed in onset but may persist beyond the end of treatment.
- That could matter for statin dosing timing.
-- **Dose-finding on a rifampicin-based regimen: PLAUSIBLE.** The visible statin trials use HRZE as the backbone, for example the 
-rosuvastatin phase 2b.
- The Phase IIc design itself is in the source materials, which I could not check.
-- **A shorter 4-month window shortens the co-administration period: LOGICAL but conditional.** It would not matter if the statin course is about 8 weeks, as in existing trials. That depends on CG's design.
-- **Adjunct pills are less adherent than anti-TB drugs, and general statin adherence is poor: UNVERIFIABLE here.**
-  - I did not search for this.
-  - It is widely reported in general populations, but the transfer to a 6-month TB course is an assumption.
-  - The Investigator admits having no TB-specific source.
-- **Arithmetic: VERIFIED.** 0.60 × 0.70 = 0.42, a 30% reduction.
-- **Internal error:** the text says the effect "compounds with Critiques 1 and 3." This should read Critiques 1 and 2.
-- **HPMZ is "currently small but growing": UNVERIFIED.**
+  - 
+One in vitro hepatocyte study found rifapentine to be the weakest of the three inducers.
+
+  - The evidence is mixed. It does not support the stronger claim that HPMZ regimens would lower statin exposure "further" than rifampicin regimens. Daily rifapentine dosing, as in HPMZ, is the condition where induction is closest to rifampicin's. A modest difference in either direction is the best-supported reading.
+- **HPMZ is a 4-month rifapentine-containing regimen that programs are moving toward, with a currently small but growing share: PLAUSIBLE.** I did not search this. From background knowledge, WHO recommended it in 2022. I have no uptake share data.
+- **Statin non-adherence is high in general populations: PLAUSIBLE, not searched.** It is a well-known finding, but it was not checked for the TB context.
+- **Adjunct pills outside an FDC are less likely to be taken than anti-TB drugs: PLAUSIBLE.** The Investigator admitted there is no specific source, and I found none.
+- **0.60 × 0.70 = 0.42, about a 30% reduction: VERIFIED (arithmetic).** The 70% adherence figure is an assumption.
+- **Dose-finding on one regimen may not carry over: PLAUSIBLE.** StAT-TB tests statins with first-line HRZE. 
+The protocol describes testing statins in combination with first-line TB drugs.
+
 
 **EVIDENCE FOUND**
-- Rifamycin-driven statin exposure reduction is a stronger point against the dose-transfer assumption than the HPMZ-specific argument. Even in HRZE regimens the interaction is large and variable between patients. Dose selection in Phase IIc already has to account for it. Whether it carries over to HPMZ depends on whether rifapentine is dosed daily, since the induction estimates above are for daily use.
-- Pravastatin showed variable rifampicin interaction, with 
-AUC at 50% or less in five of ten subjects.
- The statin choice therefore changes the size of this problem.
+- **Possible double-counting.** If the Phase III is pragmatic or intention-to-treat, the effect size already embeds trial-level non-adherence. Applying an adherence haircut again to uptake would then overstate the downward adjustment. The Investigator did not address this.
+- **Statin identity again.** If pravastatin is the candidate, rifamycin CYP3A4 induction is a minor concern. The rifapentine-specific argument then largely falls away.
+- The critique says it "compounds with Critiques 1 and 3". That appears to be a self-reference error and should probably read 1 and 2.
+
+**CORE CLAIM**
+- **Claim:** Real-world delivered dose and adherence (about 70%) would reduce effective uptake by about 30%, and rifapentine regimens would further lower statin exposure.
+- **Support:** LOGIC ONLY for the adherence factor. The rifapentine "further lower" claim is weakly supported to partly contradicted.
+- **Why:** The effectiveness-gap mechanism is generic and plausible. The 70% is assumed, and most pharmacology sources rank rifapentine at or below rifampicin for CYP3A4 induction.
 
 **REVISED CRITIQUE**
-Two separate concerns remain:
-1. **Adherence and delivered dose.** Real-world adherence to an out-of-FDC adjunct plausibly falls below trial adherence. Illustratively, 70% adherence would cut effective uptake from 0.60 to 0.42. The 70% figure is a framing assumption, not data, and the TB-specific adherence evidence is UNGROUNDED. This part keeps medium strength.
-2. **Rifamycin interaction and dose transfer.** Rifamycins substantially lower atorvastatin exposure. Daily rifapentine induces CYP3A4 at roughly 85–100% of rifampicin's level. Intermittent dosing induces less. A dose chosen on one rifamycin regimen may not transfer exactly to another, and rifapentine's induction effect may persist after treatment ends. The claim that rifapentine is "stronger" than rifampicin should be dropped, and the interaction should not be presented as specifically worse in HPMZ. The rifapentine magnitude is UNGROUNDED. Reduce this part to **low** strength.
-
-Overall strength: medium for adherence and low-to-medium for the rifapentine component. The reference to "Critique 3" in the compounding sentence should be corrected to Critique 2.
-
-**Limits of this verification:** my search quota ran out before I could check the FDA pregnancy label change, WHO treatment-outcome mortality data, statin adherence literature and HPMZ uptake. Those items are flagged above as unverified rather than refuted.
+Programmatic adherence to an unsupervised adjunct pill is likely below trial adherence, and this lowers realized benefit. The size of the effect is **UNGROUNDED — plausible but needs empirical support.** The 70% figure is an assumption, and it risks double-counting if the trial effect is already pragmatic or intention-to-treat. The rifapentine point is weaker than stated. Daily rifapentine induces CYP3A4 at roughly 85–100% of rifampicin's level. That is similar to the interaction already present in HRZE-based trials, not clearly worse, and it matters only for CYP3A4-metabolised statins. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.
 
 --- Critique: Effective delivered dose and adherence diverge from trial conditions, and programmatic dose may be lower than the trial dose, notably with rifapentine regimens ---
 
-## Critique 1: A Phase III cannot be powered on mortality, so the WHO GDG would be recommending on surrogate or composite endpoints
+## Critique 1: Phase III cannot be powered on mortality, so the WHO GDG would recommend on surrogate or composite endpoints
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The statistical argument and the GRADE mechanism are sound. The baseline mortality figure and the size of the uptake effect remain ungrounded.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The sample-size arithmetic and the GRADE indirectness logic hold. The baseline mortality is now grounded. The link from this to lower uptake is logic only, and the critique overstates how much a lack of mortality data would hurt in TB guidelines.
 
 **CLAIM CHECK**
-- **Sample size of about 30,000 per arm: VERIFIED (arithmetic).**
-  - The Investigator's formula gives about 29,800.
-  - The standard two-proportion formula (5% vs 4.5%, alpha 0.05 two-sided, 80% power) gives about 28,400 per arm.
-  - Both round to roughly 30,000, so the conclusion holds. It depends entirely on the 5% baseline and 10% relative reduction.
-- **GRADE downgrades for indirectness when a surrogate stands in for a patient-important outcome: VERIFIED.**
+- **Sample size of about 30,000 per arm (5% baseline, 10% relative reduction, α 0.05, 80% power): VERIFIED (arithmetic).**
+  - I recomputed it with the standard two-proportion formula: 7.84 × (0.0475 + 0.0430) / 0.005² ≈ 28,400 per arm. The Investigator's shortcut gives about 29,800. Both round to roughly 28–30k per arm.
+  - The result depends entirely on the 5% baseline and the 10% effect, as the Investigator said.
+- **On-treatment DS-TB mortality of about 3–6% (previously UNGROUNDED): PLAUSIBLE, now sourced.**
   - 
-GRADE guidance says that when a surrogate is used, authors should rate down the quality of evidence for indirectness of outcome.
+A program-setting cohort of drug-susceptible pulmonary TB found 37 of 565 patients (6.6%) died during the study period.
 
-  - WHO's own SAGE guidance lists 
-surrogate end-points as an example of indirectness.
-
-  - WHO guidelines that follow the WHO handbook define indirectness as including 
-differences in populations, interventions, comparisons or outcomes of interest between the research and the target context.
-
-  - WHO's DR-TB guidelines also 
-list indirectness among the criteria for rating certainty down.
-
-  - I could not retrieve the handbook text itself. The claim is supported through WHO documents that apply it.
-- **On-treatment DS-TB mortality of about 3–6%: UNVERIFIABLE in this session.**
-  - My search for WHO Global TB Report treatment-outcome data failed.
-  - From background knowledge the range is plausible, but I have no citation.
-  - It still needs sourcing.
-- **The realistic Phase III will use culture conversion, relapse-free cure, unfavorable outcome or lung function: PLAUSIBLE.**
-  - Existing statin and host-directed-therapy trials use surrogate endpoints.
   - 
-An atorvastatin phase IIA study measured mycobacterial load in sputum, and a rosuvastatin trial measured sputum culture conversion.
+In Kenya, about 6% of drug-susceptible TB cases died.
 
-  - A phase 2 host-directed-therapy trial used 
-recovery of FEV1.
+  - 
+A multi-country study reported mortality of 6.0% in adequately treated patients with pan-susceptible strains.
 
-- **Lower uptake, a delayed or conditional recommendation, or subgroup-only recommendations: PLAUSIBLE but UNGROUNDED.**
-  - The "a third of patients, so uptake cut by half or more" scenario is self-labelled speculative, and I found nothing to confirm or refute it.
-  - I also could not check CG's "if it works → 60%" figure or the claim that CG's value is "entirely mortality-based." Those come from the source materials.
+  - 
+WHO reports DS-TB treatment success of 88% (2023 data).
+ That is consistent with deaths of roughly 4–6%, but I did not retrieve the exact WHO death proportion.
+  - The "3–6%" range is therefore reasonable. Cohorts with HIV or severe disease run higher, so the range sits at the low-to-mid end of what is reported.
+- **GRADE downgrades for indirectness when surrogate outcomes are used: VERIFIED.**
+  - 
+WHO SAGE guidance says that when important outcomes are represented by a surrogate, the evidence quality frequently needs down-rating for indirectness.
+
+  - 
+A WHO guideline applying the Handbook (2nd edition) downgrades for indirectness when the evidence differs from the target context in populations, interventions, comparisons or outcomes.
+
+  - I did not retrieve the Handbook text itself. The two sources above are WHO documents applying it.
+- **Recommendation delayed, conditional or subgroup-only: PLAUSIBLE.** This is a reasonable inference. It is not a documented outcome for any specific TB adjunct.
+- **Effective uptake would fall by about half or more under a subgroup recommendation: UNVERIFIABLE.** The Investigator already flagged this as speculative.
 
 **EVIDENCE FOUND**
-- The GRADE downgrade applies specifically to the mortality outcome. If the Phase III reports unfavorable outcome, which includes death, WHO TB guidelines have historically treated treatment outcomes as critical outcomes. A recommendation therefore need not stall. It would simply carry a "mortality benefit not directly shown" caveat. This weakens the "delay" pathway and leaves the "modeled benefit is unverified" pathway intact.
-- The sample-size problem is worse for a trial restricted to a high-risk subgroup, because the trial then enrolls fewer patients.
+- **Weakens the critique.** WHO TB guideline groups routinely treat composite patient-important outcomes (treatment success, unfavourable outcome including death, relapse) as critical outcomes.
+  - The critique treats a composite as a weak substitute. In TB, a composite that includes death is often a direct outcome. That reduces the expected indirectness penalty.
+  - This is from my background knowledge. I did not search for it.
+- **Supports the critique.** The only statin RCT I found, StAT-TB, is a Phase 2b dose-finding trial. 
+Its endpoints are time to sputum-culture negativity and lung function.
+ 
+Mortality is assessed as a tolerability measure.
+ Mortality is not the primary efficacy endpoint.
+- Observational data link statin use to lower all-cause mortality in TB patients with ASCVD. 
+The authors say RCTs are needed.
+ That is a narrow subgroup, and it supports the case for a subgroup-limited recommendation.
+
+**CORE CLAIM**
+- **Claim:** A Phase III cannot be powered on a roughly 10% relative mortality reduction (about 30k per arm), so the recommendation would rest on surrogate or composite endpoints that GRADE treats as indirect.
+- **Support:** SUPPORTED, for the feasibility and GRADE-mechanism part. The effect on uptake is LOGIC ONLY.
+- **Why:** The arithmetic reproduces, baseline mortality sits in the claimed range, and WHO guidance confirms the downgrading mechanism. No evidence ties this to a specific uptake reduction.
 
 **REVISED CRITIQUE**
-A Phase III powered on mortality is infeasible. About 28,000–30,000 per arm would be needed at a 5% baseline and 10% relative reduction, and both inputs are assumptions. The trial will likely use a surrogate or composite endpoint. GRADE and WHO methods support downgrading the mortality evidence for indirectness. The realized mortality effect, and so relative_reduction variance, stays unverified. Effects on adoption timing and uptake are plausible but unquantified.
-- **Flag:** the baseline mortality figure is UNGROUNDED and needs a WHO Global TB Report source.
-- **Flag:** the uptake magnitude is speculative.
-- **Strength:** medium, perhaps medium-low for the uptake channel.
+A mortality-powered Phase III would need about 28–30k patients per arm at a 5–6% baseline. A mortality-driven benefit would therefore probably be inferred from composite or surrogate endpoints. That invites an indirectness downgrade. It could make the recommendation conditional, delayed or subgroup-limited, and it raises variance on the realized relative reduction. Counterweight: TB GDGs usually accept unfavourable-outcome composites that include death as direct. The uptake and timing effects are UNGROUNDED. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.
 
 ---
 
-## Critique 2: Clinical eligibility and monitoring barriers cap the achievable prescribing share
+## Critique 2: Clinical eligibility and monitoring barriers cap the prescribing share
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The pharmacology and DILI premises are real, and the DILI incidence is understated. The eligibility-exclusion shares are ungrounded, as the Investigator said.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The hepatotoxicity premise is verified. The numeric uptake cap is ungrounded. Several pharmacology points are likely mismatched to the statin actually under study.
 
 **CLAIM CHECK**
-- **Anti-TB DILI affects a non-trivial minority, "low single digits to ~10%": VERIFIED but the range is too narrow.**
-  - A recent review reports 
-a global incidence of 11.5%, with rates from 2% to 28%.
-
-  - Another review gives 
-2.55 to 36.75%, depending on definitions, populations and regimens.
+- **Anti-TB DILI is common, "low single digits to ~10%": PARTIALLY VERIFIED.**
+  - 
+A recent meta-analysis reported a global incidence of 11.5%, with rates varying from 2% to 28%.
 
   - 
-Among TB/HIV-coinfected patients, 37% developed liver injury after starting anti-TB treatment.
+Another source cites 3–36% for drug-susceptible TB.
 
-  - A recent cohort found a much lower 
-2.1% (13/610).
- This shows how much the definition matters.
-  - Overall the evidence supports the critique, and the upper bound is more severe than stated.
-- **Rifampicin lowers atorvastatin exposure: VERIFIED.**
-  - A crossover study found 
-rifampin reduced atorvastatin acid AUC by 80%.
+  - 
+Incidence varies with the cohort, regimen, DILI threshold and monitoring.
 
-  - The interaction is two-sided. 
-A single rifamycin dose raises atorvastatin exposure by inhibiting OATP1B1/1B3, but after multiple doses induction dominates and AUC falls.
+  - The Investigator's range is directionally right but understates the upper end. If anything, DILI is more common than stated, which strengthens the premise. The Investigator said they could not cite a paper. Wang et al. (2022), a meta-analysis of 160 studies, is the relevant one.
+- **Rifampicin is a strong CYP3A4 inducer: VERIFIED.** 
+Rifampin is a strong inducer of CYP3A4 and 2C19.
 
-  - The label advises 
-simultaneous co-administration of atorvastatin and rifampin.
-
-- **PI-based ART raises atorvastatin and efavirenz lowers it: VERIFIED.**
-  - The label table shows 
-tipranavir/ritonavir raised atorvastatin AUC about 9.4-fold.
-
-  - The label also 
-names efavirenz among CYP3A inducers that can variably reduce atorvastatin concentrations.
-
-  - I did not access the Liverpool database.
-- **Statin label cautions on liver disease and transaminases: PLAUSIBLE.** I did not retrieve the label text for this point, but it is standard.
-- **Statins "historically avoided in pregnancy": PLAUSIBLE.**
-  - My search on this failed.
-  - From background knowledge, the FDA asked in 2021 for removal of the blanket pregnancy contraindication.
-  - The word "historically" is therefore appropriate, but the exclusion should not be treated as absolute for current labels.
-- **LFTs are not routinely done for DS-TB in many NTPs: PLAUSIBLE, UNVERIFIED.** The DILI literature recommends 
-regular liver function monitoring during anti-TB treatment.
- That does not show what programs actually do.
-- **Arithmetic: UNGROUNDED and slightly loose.** Excluding 10–20% from 0.60 gives 0.48–0.54. Reaching 0.45–0.50 needs an extra program-adoption factor of about 0.9, which is not stated.
+- **Specific ART interactions (PI-boosted raises atorvastatin, efavirenz lowers it): UNVERIFIED.** I did not check the Liverpool database. This is standard pharmacology and plausible.
+- **Statin label warnings for liver disease and pregnancy: PLAUSIBLE but possibly outdated.** I did not search this. From background knowledge, FDA labelling was revised after 2012 to drop routine periodic LFT monitoring. The pregnancy contraindication was also relaxed in 2021. The "mandated LFT monitoring" scenario is therefore weaker than the critique implies.
+- **Exclusion of 10–20% of adults, bringing 0.60 to 0.45–0.50: UNVERIFIABLE.** The Investigator labelled it illustrative and ungrounded. I found no data.
+- **Many NTPs do not routinely perform LFTs in DS-TB: PLAUSIBLE.** I found no direct source. WHO guidance recommends symptom-based monitoring for most patients, which is consistent with it.
 
 **EVIDENCE FOUND**
-- The existing statin-in-TB trials are small and short. One example is 
-rosuvastatin 10 mg daily for 8 weeks with standard HRZE.
+- **Statin identity matters.** The Phase 2b trial (StAT-TB) tests pravastatin. 
+It asks whether pravastatin adjunctive therapy shortens time to sputum-culture negativity and improves lung function.
 
-- Trial eligibility criteria will probably exclude liver disease, so any recommendation would inherit those exclusions.
-- The choice of statin matters. Atorvastatin is heavily CYP3A4-dependent, and CG's candidate is in the source materials, which I could not check. A less CYP3A4-dependent statin would soften the ART and rifamycin interaction arguments, though not the DILI-attribution argument.
+  - 
+In preclinical work, atorvastatin and mevastatin did not inhibit Mtb growth in THP-1 cells at nontoxic doses.
+ 
+Pravastatin showed the least toxicity in that study.
+
+  - From background knowledge, pravastatin is not substantially CYP3A4-metabolised. If CG's candidate is pravastatin, the CYP3A4 and PI-boosted ART interaction arguments largely fall away. The hepatotoxicity-attribution and pill-burden arguments remain.
+  - I do not know which statin CG assumes. The Investigator should have flagged that dependence.
+- 
+The DILI meta-analysis authors say regular liver function monitoring is imperative during anti-TB treatment.
+ This supports the premise that monitoring is a live issue, though it is not specific to statins.
+
+**CORE CLAIM**
+- **Claim:** Eligibility exclusions, DILI-attribution concerns and monitoring requirements would cut adult uptake from about 0.60 to about 0.45–0.50.
+- **Support:** LOGIC ONLY.
+- **Why:** The mechanisms are plausible and the DILI base rate is verified, but I found no evidence for the size of the exclusion or program-reluctance effect.
 
 **REVISED CRITIQUE**
-Eligibility and monitoring barriers plausibly reduce adult_uptake. Supported premises:
-- Anti-TB DILI is common. The pooled estimate is about 11.5%, and it is much higher in some settings and in HIV coinfection.
-- Rifamycin, PI and efavirenz interactions with atorvastatin are documented.
-- A statin adds a confounder when attributing liver injury.
-
-**Flags:**
-- The 10–20% exclusion share and the 0.45–0.50 figure are UNGROUNDED and the arithmetic is incomplete.
-- The NTP LFT-monitoring gap is unsourced.
-- The pregnancy exclusion should be stated with current label status.
-
-**Strength:** medium. The direction is well supported, but the magnitude is not.
+Anti-TB DILI is common, with a pooled incidence of about 11.5% and a range of roughly 2–28% or more. Clinicians may be reluctant to add a hepatically relevant agent that confounds attribution. Some eligibility exclusion (liver disease, pregnancy, polypharmacy) is therefore plausible. The cited drug-interaction concerns apply to CYP3A4-metabolised statins such as atorvastatin, not necessarily to pravastatin, which is the statin in the Phase 2b trial. The specific 0.45–0.50 figure is **UNGROUNDED — plausible but needs empirical support.** **Magnitude: low-to-medium.** Direction: decreases.
 
 ---
 
-## Critique 3: Delivered dose and adherence diverge from trial conditions, notably with rifapentine regimens
+## Critique 3: Delivered dose and adherence diverge from trial conditions, especially with rifapentine regimens
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The adherence and dose-transfer logic holds. The rifapentine claim is overstated: the evidence does not show it is a stronger inducer than rifampicin. Its main point, that rifamycin induction reduces statin exposure, is supported.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The general adherence and effectiveness-gap logic is sound. The rifapentine claim is overstated relative to the sources. The adherence factor risks double-counting.
 
 **CLAIM CHECK**
-- **Rifapentine is a CYP3A4 inducer "comparable to or stronger than rifampicin in some dosing contexts": PARTIALLY VERIFIED / PARTLY MISREPRESENTED.**
-  - A pharmacology review ranks the inductive potency of rifamycins as 
-rifampin > rifapentine > rifabutin.
+- **Rifapentine is a strong CYP3A4 inducer, "comparable to or stronger than rifampicin in some dosing contexts": PARTIALLY VERIFIED, mostly contradicted on direction.**
+  - 
+One review ranks relative inductive potency as rifampin > rifapentine > rifabutin. It says rifapentine's CYP3A4 induction approaches rifampin's (85–100%) with daily dosing and is more moderate with once- or twice-weekly dosing.
 
-  - It adds that 
-rifapentine's induction approaches 85–100% of rifampin's when used daily and is more moderate with once- or twice-weekly dosing.
+  - 
+The WHO prequalification document says rifapentine's induction potential may be less than rifampicin's but more potent than rifabutin's.
 
-  - A diabetes-focused review rates rifapentine's induction magnitude as 
-"++" against "+++" for rifampicin.
+  - 
+A clinical protocol gives relative potency as rifampin 100%, rifapentine 85% and rifabutin 40%.
 
-  - In human hepatocytes, 
-the potency hierarchy was rifampin > rifabutin > rifapentine.
+  - There is supporting evidence for "stronger in some contexts." 
+In one study, oral midazolam AUC fell 75% with rifampin versus 92% with rifapentine, each at 10 mg/kg daily.
 
-  - "Comparable at daily dosing" is defensible. "Stronger" is not supported by anything I found.
-  - The critique's differential argument also fails. Rifapentine is not shown to reduce atorvastatin exposure more than rifampicin does, so HPMZ regimens are not worse than HRZE for statin exposure. They are about equally affected.
-- **Rifamycin co-administration lowers atorvastatin exposure: VERIFIED.** See Critique 2 (about 80% AUC reduction with rifampin).
-- **Rifapentine–atorvastatin interaction magnitude: UNVERIFIABLE.**
-  - I found no direct study.
-  - Rifapentine's induction may be 
-delayed in onset but may persist beyond the end of treatment.
- That could matter for statin dosing timing.
-- **Dose-finding on a rifampicin-based regimen: PLAUSIBLE.** The visible statin trials use HRZE as the backbone, for example the 
-rosuvastatin phase 2b.
- The Phase IIc design itself is in the source materials, which I could not check.
-- **A shorter 4-month window shortens the co-administration period: LOGICAL but conditional.** It would not matter if the statin course is about 8 weeks, as in existing trials. That depends on CG's design.
-- **Adjunct pills are less adherent than anti-TB drugs, and general statin adherence is poor: UNVERIFIABLE here.**
-  - I did not search for this.
-  - It is widely reported in general populations, but the transfer to a 6-month TB course is an assumption.
-  - The Investigator admits having no TB-specific source.
-- **Arithmetic: VERIFIED.** 0.60 × 0.70 = 0.42, a 30% reduction.
-- **Internal error:** the text says the effect "compounds with Critiques 1 and 3." This should read Critiques 1 and 2.
-- **HPMZ is "currently small but growing": UNVERIFIED.**
+  - 
+One in vitro hepatocyte study found rifapentine to be the weakest of the three inducers.
+
+  - The evidence is mixed. It does not support the stronger claim that HPMZ regimens would lower statin exposure "further" than rifampicin regimens. Daily rifapentine dosing, as in HPMZ, is the condition where induction is closest to rifampicin's. A modest difference in either direction is the best-supported reading.
+- **HPMZ is a 4-month rifapentine-containing regimen that programs are moving toward, with a currently small but growing share: PLAUSIBLE.** I did not search this. From background knowledge, WHO recommended it in 2022. I have no uptake share data.
+- **Statin non-adherence is high in general populations: PLAUSIBLE, not searched.** It is a well-known finding, but it was not checked for the TB context.
+- **Adjunct pills outside an FDC are less likely to be taken than anti-TB drugs: PLAUSIBLE.** The Investigator admitted there is no specific source, and I found none.
+- **0.60 × 0.70 = 0.42, about a 30% reduction: VERIFIED (arithmetic).** The 70% adherence figure is an assumption.
+- **Dose-finding on one regimen may not carry over: PLAUSIBLE.** StAT-TB tests statins with first-line HRZE. 
+The protocol describes testing statins in combination with first-line TB drugs.
+
 
 **EVIDENCE FOUND**
-- Rifamycin-driven statin exposure reduction is a stronger point against the dose-transfer assumption than the HPMZ-specific argument. Even in HRZE regimens the interaction is large and variable between patients. Dose selection in Phase IIc already has to account for it. Whether it carries over to HPMZ depends on whether rifapentine is dosed daily, since the induction estimates above are for daily use.
-- Pravastatin showed variable rifampicin interaction, with 
-AUC at 50% or less in five of ten subjects.
- The statin choice therefore changes the size of this problem.
+- **Possible double-counting.** If the Phase III is pragmatic or intention-to-treat, the effect size already embeds trial-level non-adherence. Applying an adherence haircut again to uptake would then overstate the downward adjustment. The Investigator did not address this.
+- **Statin identity again.** If pravastatin is the candidate, rifamycin CYP3A4 induction is a minor concern. The rifapentine-specific argument then largely falls away.
+- The critique says it "compounds with Critiques 1 and 3". That appears to be a self-reference error and should probably read 1 and 2.
+
+**CORE CLAIM**
+- **Claim:** Real-world delivered dose and adherence (about 70%) would reduce effective uptake by about 30%, and rifapentine regimens would further lower statin exposure.
+- **Support:** LOGIC ONLY for the adherence factor. The rifapentine "further lower" claim is weakly supported to partly contradicted.
+- **Why:** The effectiveness-gap mechanism is generic and plausible. The 70% is assumed, and most pharmacology sources rank rifapentine at or below rifampicin for CYP3A4 induction.
 
 **REVISED CRITIQUE**
-Two separate concerns remain:
-1. **Adherence and delivered dose.** Real-world adherence to an out-of-FDC adjunct plausibly falls below trial adherence. Illustratively, 70% adherence would cut effective uptake from 0.60 to 0.42. The 70% figure is a framing assumption, not data, and the TB-specific adherence evidence is UNGROUNDED. This part keeps medium strength.
-2. **Rifamycin interaction and dose transfer.** Rifamycins substantially lower atorvastatin exposure. Daily rifapentine induces CYP3A4 at roughly 85–100% of rifampicin's level. Intermittent dosing induces less. A dose chosen on one rifamycin regimen may not transfer exactly to another, and rifapentine's induction effect may persist after treatment ends. The claim that rifapentine is "stronger" than rifampicin should be dropped, and the interaction should not be presented as specifically worse in HPMZ. The rifapentine magnitude is UNGROUNDED. Reduce this part to **low** strength.
-
-Overall strength: medium for adherence and low-to-medium for the rifapentine component. The reference to "Critique 3" in the compounding sentence should be corrected to Critique 2.
-
-**Limits of this verification:** my search quota ran out before I could check the FDA pregnancy label change, WHO treatment-outcome mortality data, statin adherence literature and HPMZ uptake. Those items are flagged above as unverified rather than refuted.
+Programmatic adherence to an unsupervised adjunct pill is likely below trial adherence, and this lowers realized benefit. The size of the effect is **UNGROUNDED — plausible but needs empirical support.** The 70% figure is an assumption, and it risks double-counting if the trial effect is already pragmatic or intention-to-treat. The rifapentine point is weaker than stated. Daily rifapentine induces CYP3A4 at roughly 85–100% of rifampicin's level. That is similar to the interaction already present in HRZE-based trials, not clearly worse, and it matters only for CYP3A4-metabolised statins. **Magnitude: low-to-medium** (downgraded from medium). Direction: decreases.
 
 --- Critique: Private-sector treatment share and the reach of national guidelines are not modeled ---
 
 ## Critique 1: Private-sector treatment share and the reach of national guidelines are not modeled
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is sound and the one number the Investigator gave is accurate. The direction and the 5–15% magnitude are inference only and stay flagged as such. The claim that private providers "may not use FDCs" and the claim about what drives private-sector uptake are not supported by anything I found.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The India notification share checks out. The sign of the effect, the 5–15% magnitude and the guideline-deviation claim are unsourced. Some evidence also cuts against the "not on NTP procurement" framing.
 
-**CLAIM CHECK**
-- **India's private-sector notifications are "roughly a third" of the total: VERIFIED.**
+**CITATION CHECK:** The critique cites no specific papers. It names WHO Global TB Reports and Ni-kshay generally, and it says it cannot cite a paper for guideline deviation.
+
+**CLAIM CHECK:**
+- *India's private-sector notifications are roughly a third of the total.* **VERIFIED.**
   - 
-In 2023 the private sector accounted for 33% (0.84 million) of total notifications.
+India's Ministry of Health reports 0.73 million private notifications in 2022 (30% of the total) and 0.83 million in 2023 (32%).
 
-  - The Government of India's WHO statement gives 
-30% in 2022 and 32% in 2023.
+  - Other sources give 
+33% (0.84 million) in 2023
+.
+- *A large share of TB care is in the private sector in India, Indonesia, Pakistan and the Philippines.* **PARTIALLY VERIFIED.**
+  - For India, 
+a prevalence survey found about 50% of people with TB symptoms consult private facilities
+. This is much larger than the one-third notified share.
+  - 
+India, Indonesia, the Philippines and Pakistan are among the five countries with the most cases
+.
+  - I found no data on private-sector share for Indonesia, Pakistan or the Philippines.
+- *Private providers deviate from guidelines.* **PLAUSIBLE.** 
+Reports describe persistent underreporting, delays in diagnosis and treatment initiation, and weak adherence to standards of care in the Indian private sector.
+ I found no direct evidence on FDC use or dosing.
+- *Unnotified ("missing") cases are a large share in the same countries.* **PARTIALLY CONTRADICTED for India.**
+  - 
+India cut missed notifications from 1.2 million in 2015 to 0.3 million in 2023.
 
-  - The Investigator's "UNGROUNDED as to numbers" label can be dropped for India.
-- **A large share of DS-TB care happens in the private sector (India, Indonesia, Pakistan, Philippines): VERIFIED.**
-  - In India, 
-more than 50% of patients seek initial care from private providers.
+  - Globally, 
+notifications reached 78% of estimated incident cases
+.
+  - The "large share missing" claim is therefore weaker for India than the critique implies. I did not check the other three countries.
+- *Uptake depends on professional societies, pharma marketing and notification, not on NTP procurement.* **PARTIALLY CONTRADICTED.** India's programme is actively routing private patients to government supply.
+  - 
+Private-sector engagement agencies (PPSAs) link private patients to free public drugs and diagnostics.
 
-  - Another source notes that 
-in Pakistan, the Philippines and Indonesia, most first-contact care happens in the private sector.
+  - 
+The programme also works with professional bodies such as the Indian Medical Association.
 
-  - The 2019 Global TB Report's PPM trend data are patchy. A WHO private-engagement document says 
-reporting on private-sector notifications from countries remains highly inconsistent.
+  - Private-sector uptake therefore runs partly through NTP channels.
+- *Net effect is a downward adjustment of about 5–15% of benefit.* **UNVERIFIABLE.** The critique itself labels this inference.
 
-- **Unnotified or "missing" cases are a large share in the same countries: PARTIALLY VERIFIED, and outdated for India.**
-  - WHO's 2025 report says the largest notification gaps in 2024 were 
-Indonesia (10%), India (8.8%), the Philippines (7.5%), Pakistan (7.2%) and China (6.9%) of the global gap.
+**EVIDENCE FOUND:**
+- 
+Private practitioners in India have had to notify every TB case since a 2012 Gazette notification.
+ The mandatory-notification lever the critique mentions exists, but enforcement is weak.
+- 
+Notification and public-health actions in the private sector have not really become routine practice.
 
-  - India's own gap has shrunk sharply, 
-from 1.2 million missed notifications in 2015 to 0.3 million in 2023.
+- The direction is ambiguous, as the critique admits. Rising private-sector linkage to NTP drugs argues against a net downward adjustment in India.
 
-  - The "missing cases never see the guideline" argument is therefore stronger for Indonesia, the Philippines and Pakistan than for India now.
-- **Private providers frequently deviate from national guidelines: PLAUSIBLE, with a caveat on what the evidence covers.**
-  - Standardized-patient studies show poor adherence at the diagnostic and management stage. Correct management was seen in 
-959 of 2,602 interactions (37%) in Mumbai and Patna.
+**CORE CLAIM:**
+- Claim: Effective uptake of a new regimen in the private sector is materially lower than the model assumes, giving a net downward adjustment to benefit.
+- Support: **LOGIC ONLY.**
+- Why: The private share is real, but I found no evidence on private-sector uptake of new regimens, and the sign is admittedly ambiguous.
 
-  - In Mumbai, 
-correct management against national guidelines was 75% in the public sector versus 35% in the private sector.
-
-  - Those studies measure testing and referral, not regimen, dosing or FDC use. For regimens, a Chennai survey concluded that 
-TB management practices in India's urban private sector are heterogeneous and often suboptimal.
-
-  - The same paper reports that 
-over three-quarters of providers in a systematic review prescribed a regimen potentially consistent with ISTC guidelines for new patients.
- That cuts against a strong "non-standard dosing" claim. Treatment-regimen deviation is therefore only moderately supported.
-- **"May not use FDCs": UNVERIFIABLE.** I found nothing on FDC use in the private sector.
-- **Uptake in the private sector depends on professional societies, pharma marketing and mandatory notification rather than NTP procurement: PARTIALLY VERIFIED.**
-  - India's mechanisms include 
-mandatory notification by gazette, incentives, PPSA and collaboration with professional bodies such as the IMA.
-
-  - Private-sector drug sales are large, and one source notes that 
-enormous quantities of TB drugs are sold in the Indian private market.
-
-  - I found no evidence on pharma marketing as a driver of guideline uptake.
-- **Net effect of about 5–15% of the benefit: UNGROUNDED.** This is the Investigator's inference, as they stated.
-
-**EVIDENCE FOUND**
-- **Undermining or complicating:** Notified private patients are increasingly inside the programme. A 2025 analysis reports that private-sector engagement models improved 
-"TB notification and drug uptake"
- in India. For notified private patients, the "NTP procurement doesn't reach them" premise is therefore weaker.
-- **Supporting:** Notification itself remains incomplete. An older estimate put private-provider notifications at 
-only 22% of the estimated cases treated in that sector
- across Bangladesh, India, Indonesia and Myanmar.
-- **Sign ambiguity:** The Investigator's point that the sign could flip is reasonable. Private providers show high use of adjunct tests such as chest X-rays and antibiotics (see the Mumbai study).
-
-**REVISED CRITIQUE:** A substantial share of DS-TB care in the highest-burden countries is private. India's private notifications are about 30–33% of the total, and more than half of patients first seek care privately. Sector-specific guideline adherence is documented for diagnosis and management but not clearly for regimen or dosing. The model uses a single uptake figure across public, notified-private and unnotified-private settings. Whether this lowers effective uptake is uncertain. The direction is probably down but could be neutral or positive in some countries. The 5–15% magnitude is UNGROUNDED. Missing-case data support the argument for Indonesia, the Philippines and Pakistan more than for India. **Strength: low-to-medium.**
+**REVISED CRITIQUE:** The private sector handles about one-third of notified cases in India. The share of all care-seeking is higher, with roughly half of symptomatic people consulting private providers. A guideline's reach into the private sector depends partly on notification mandates and PPSA-mediated access to free drugs. The model's single uptake figure does not capture this. The direction and size of the effect are **UNGROUNDED, plausible but needing empirical support**. Do not assert the 5–15% figure. Strength: **low–medium**, and the direction is uncertain, not "decreases".
 
 ---
 
-## Critique 2: Zero modeled lag between Phase III completion and adoption; speedup assumes trial timing is the binding constraint
+## Critique 2: Zero modeled lag between Phase III completion and adoption
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core logic holds. One factual detail is wrong: WHO guidance on the HPMZ regimen did not wait until 2022. The Xpert details come from my own background knowledge and I could not check them in this session.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The HPMZ timeline is slightly wrong in a way that supports the critique's own "WHO step can be short" point. The Xpert example is real. The funding-gating argument is logic only.
 
-**CITATION CHECK**
-- **Study 31/A5349 published 2021: VERIFIED.** 
-Detailed results were published on 6 May 2021.
- The NEJM reference is 
-N Engl J Med 2021;384:1705–18.
+**CITATION CHECK:**
+- Study 31/A5349, published 2021: **VERIFIED.** 
+WHO notes that detailed results were published on 6 May 2021.
+ The NEJM citation is 
+n engl j med 384;18, May 6, 2021
+.
+- WHO guidance in 2022: **PARTIALLY VERIFIED, with a correction.**
+  - 
+WHO convened its guideline group on 27–30 April 2021, before publication.
+ A rapid communication followed in June 2021.
+  - The 2022 date matches the consolidated Module 4 guidelines, 
+which list the HPMZ regimen as conditionally recommended
+.
+  - The WHO step was therefore faster than the critique recalls, at about a month from publication and months from topline data. 
+WHO posted a news item on the findings in October 2020.
 
-- **"WHO guidance followed in 2022": MISREPRESENTED / imprecise.**
-  - Topline results were presented in October 2020, and 
-WHO welcomed them at the Union World Conference.
+- Xpert endorsement in 2010: **VERIFIED.** 
+WHO endorsed it in December 2010 and recommended phased implementation from 2011.
 
-  - WHO 
-convened a GDG meeting on 27–30 April 2021.
- It then issued a "Rapid Communication" in June 2021, roughly one month after publication and about eight months after topline data.
-  - A fully integrated guideline update came later, which I believe was 2022. I did not confirm that date here.
-  - This supports the Investigator's point that the WHO step can be short. It also shows the "WHO guidance followed in 2022" wording is wrong.
-- **Xpert WHO endorsement in 2010, with many years of implementation afterwards: NOT CHECKED.** From background knowledge the endorsement was December 2010. I did not verify it by search.
-- **Albert et al. and Cazabon et al.: NOT CHECKED.** The Investigator also hadn't confirmed their findings.
+- Cazabon et al.: **VERIFIED as existing.** 
+Cazabon D, et al., "Implementation of Xpert MTB/RIF in 22 high tuberculosis burden countries: are we making progress?", Eur Respir J 2017.
+ I did not retrieve its findings. Another paper on market penetration states that 
+previous studies showed low market penetration
+.
+- Albert et al.: **NOT CHECKED.** The search budget ran out before I could look it up.
 
-**CLAIM CHECK**
-- **WHO step is short on a rapid-communication path: VERIFIED** (timeline above).
-- **National adoption and procurement take additional years: PLAUSIBLE, with partial support.** The WHO rapid communication itself said wider uptake 
-would be more feasible if the cost of rifapentine is reduced.
- That points to cost and procurement as the bottleneck, not the guideline.
-- **A generic drug has no commercial sponsor, so Phase III funding could be the gating constraint: PLAUSIBLE.** This is logical inference. I found no empirical evidence either way.
-- **Added years of lag reduce benefit by about 2% per year, so 3–5 years is roughly 6–10%: UNVERIFIABLE.** The 2% rate comes from the model's formula, which I haven't seen. The arithmetic is internally consistent.
-- **Lumpiness alone doesn't lower expected speedup under uniform timing: LOGICALLY SOUND.** This is a good self-correction by the Investigator.
-- **TB trials with 12–24 month relapse follow-up often slip: PLAUSIBLE.** This is general knowledge. No specific slippage data were retrieved.
+**CLAIM CHECK:**
+- *Real-world chains include long national adoption and procurement lags.* **PLAUSIBLE.** Xpert supports it. Early WHO endorsement was followed by 
+a trial (registered 2013) describing Xpert as not yet integrated into national programmes
+.
+- *A generic drug has no sponsor, so Phase III funding could gate the timeline.* **UNVERIFIABLE (logic).**
+- *Phase III trials routinely slip.* **PLAUSIBLE.** No source was retrieved.
+- *The model sets years_to_adoption equal to Phase III completion and loses about 2% of benefit per year of delay.* **UNVERIFIABLE.** I have no access to the model.
 
-**EVIDENCE FOUND**
-- WHO acted fast once data existed. The delay lay in trial execution and rapid generation of results, and in downstream access. That supports the point that the binding constraint is not WHO guideline convening.
-- Study 31/A5349 is described as 
-the first 4-month regimen endorsed by both WHO and the U.S.
- (CDC). I include this only as context on the endorsement path.
+**EVIDENCE FOUND:**
+- The HPMZ case shows the WHO step can be very short once data exist. The critique's central point is that country adoption and the trial's place on the critical path matter more, which this case does not contradict. I found no HPMZ country-uptake data.
 
-**REVISED CRITIQUE:** The model sets lag between Phase III completion and adoption at zero. The HPMZ precedent shows WHO endorsement can follow within about a month of publication (June 2021 rapid communication, after a May 2021 NEJM publication). It also shows that practical uptake was constrained by drug cost and availability, not by WHO. An expected speedup below one year per year of Phase IIc acceleration depends on the trial not being the critical path. Phase III funding for a generic is a plausible but ungrounded gating factor. The lag-cost arithmetic depends on the unverified formula. The Xpert precedent is unverified. **Strength: low-to-medium.** The lag piece is modest, and the "not on the critical path" piece is the more important one but is ungrounded.
+**CORE CLAIM:**
+- Claim: A 1-year acceleration of Phase IIc does not give a 1-year earlier adoption, because the trial is not the binding constraint.
+- Support: **LOGIC ONLY.**
+- Why: Plausible, since sponsorship and funding could gate Phase III, but I found no evidence on this regimen's funding path or timeline.
+
+**REVISED CRITIQUE:** Correct the HPMZ chronology: WHO acted within weeks of publication in 2021, with consolidated guidelines in 2022. Retain the argument that post-guideline national adoption and procurement add lag, with Xpert as a qualitative analogy. Flag the Phase III funding gate and the claim that speedup is below 1 year as **UNGROUNDED**. The critique's own admission that lumpiness does not lower expected speedup should stay. Strength: **low–medium**.
 
 ---
 
 ## Critique 3: Survivors' excess mortality and comorbidity shrink the 27 DALYs per death
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The citation is real and the SMR figure is approximately right. The Gompertz arithmetic is correct. Two points could not be checked: how "27" was derived and the "17.7 threshold" are both internal to the source model. The effect size depends heavily on those, so the "large" rating is only conditionally supported.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The Romanowski citation is real and the SMR is close, though slightly lower than recalled. The Gompertz arithmetic is sound. The load-bearing claim about how 27 was derived cannot be checked.
 
-**CITATION CHECK**
-- **Romanowski et al. 2019, Lancet Infect Dis: VERIFIED.** It is 
-Romanowski K, Baumann B, Basham CA, et al., Lancet Infect Dis 2019;19:1129–1137
-, and it is a systematic review and meta-analysis. The DOI is 10.1016/S1473-3099(19)30309-3.
-- **Pooled SMR "roughly 3–4": PARTIALLY VERIFIED, slightly high at the low end.**
-  - A later article reports that the review 
-found the force of mortality for TB survivors to be 2.91 (95% CI 2.21–3.84) times higher than in those who never had TB.
+**CITATION CHECK:**
+- Romanowski et al. 2019, Lancet Infect Dis: **VERIFIED, with a number correction.**
+  - It is published as 
+Lancet Infect Dis 2019;19:1129–1137.
 
-  - The accompanying Lancet ID comment summarizes it as 
-approximately three-times to four-times greater mortality than local populations, including among younger adults.
+  - 
+It found the force of mortality in TB survivors was 2.91 (95% CI 2.21–3.84) times that of people who never had TB.
 
-  - Using "about 3" is fine. "3–4" matches the commentary but overstates the pooled point estimate.
+  - The critique recalled a pooled SMR of 3–4. The point estimate is about 2.9, and 3–4 is the upper part of the CI.
+  - Another source summarizes it as 
+2 to 5 times more likely to die versus the general population or matched controls
+.
 
-**CLAIM CHECK**
-- **TB patients carry high rates of smoking, alcohol use, diabetes, undernutrition and HIV: VERIFIED.** A Lancet seminar says 
-progression to disease is higher in people with undernourishment, immunosuppression, or who smoke, drink alcohol, or have diabetes.
- A Georgia, USA cohort found that 
-HIV co-infection, excess alcohol use, diabetes and end-stage renal disease were associated with post-treatment death.
+**CLAIM CHECK:**
+- *The Gompertz shift is ln(k)/b, which is about 11–12 years for k = 3 and b = 0.09.* **VERIFIED (arithmetic).** With the real estimate of 2.91, ln(2.91)/0.09 ≈ 11.9 years.
+- *Remaining life expectancy at 40 is low-to-mid 30s, and in the mid-20s at effective age 52.* **PLAUSIBLE.** I did not retrieve a life table.
+- *That implies a 20–30% reduction, so 27 falls to about 19–22.* **PLAUSIBLE but conditional.**
+  - It holds only if 27 came from an unadjusted general-population table.
+  - The SMR is also confounded, as the critique notes. For a counterfactual averted-death patient, shared risk factors still apply.
+  - A first-year or on-treatment death averted differs from a post-treatment survivor, so applying the post-treatment SMR to the whole remaining lifespan is a modelling choice.
+- *The 17.7 threshold.* **UNVERIFIABLE.** It comes from the model I cannot see.
+- *CG's derivation of 27.* **UNVERIFIABLE.**
 
-- **Post-TB lung damage drives excess mortality: VERIFIED.** A Lancet Global Health review states that 
-respiratory diseases remain the leading cause of excess deaths in people who recover from TB, with mortality three to six times that of local peers.
+**EVIDENCE FOUND:**
+- Independent support: 
+A lifetime-burden analysis estimated 12.1 DALYs per incident TB case, 5.8 of them from post-TB sequelae
+. 
+Per-case post-TB burden was greater for younger people and in high-incidence countries.
+ This confirms that post-TB morbidity and mortality are material. It also shows that burden estimates can include post-TB effects, which could offset the critique if CG's figure already includes them.
+- A large 2026 cohort comparison found 
+elevated natural-cause mortality in the treated cohort (RR = 1.77)
+. This is lower than Romanowski's pooled estimate, which suggests k = 3 may be on the high side.
+- Using k ≈ 1.8 instead of 2.9 gives an effective ageing of about 6.5 years, which roughly halves the reduction the critique computes.
 
-- **Gompertz arithmetic: VERIFIED.** ln(3) ≈ 1.10. Dividing by 0.09–0.10 gives about 11–12 years of effective ageing, as stated. Whether b ≈ 0.09–0.10 applies to LMIC adult mortality was not checked. It is roughly standard for adult mortality.
-- **Remaining life expectancy of about 30–35 years at age 40 and mid-20s at age 52 in LMICs: PLAUSIBLE.** I did not look up life tables. The 20–30% reduction follows from those inputs.
-- **Result: 27 falls to about 19–22: CONDITIONAL.** This is only valid if 27 was derived from general-population life tables. That was not established.
-- **"Near or below the 17.7 threshold": UNVERIFIABLE.** This refers to the source model.
+**CORE CLAIM:**
+- Claim: The 27 DALYs per death derives from general-population or GBD-style life tables and is therefore overstated for the people whose deaths are actually averted.
+- Support: **LOGIC ONLY.**
+- Why: Excess post-TB mortality is well documented, but I could not find how CG built 27. It may already be a TB-specific or healthy-life figure, which would offset the adjustment.
 
-**Weaknesses in the mechanism (my additions)**
-1. **SMR heterogeneity.** The Georgia cohort found a 
-pooled SMR of 0.89 (95% CI 0.73–1.05)
-, well below the Romanowski pooled estimate. It was a US cohort, but it shows SMR varies widely by setting. Romanowski's pooled value may not transfer to the countries where the HPMZ regimen would be used. A single hazard multiplier applied across all ages is also a simplification, since the commentary says excess mortality is notable among younger adults.
-2. **Double-counting.** Part of the excess mortality is caused by TB sequelae, which the model may already treat elsewhere. A lifetime-burden study estimated 
-12.1 DALYs per incident TB case, of which 5.8 were post-TB.
- If 27 is already a healthy-life figure from a TB-specific population, the adjustment would partly double-count. The Investigator acknowledged this.
-3. **Averted-death patients are not the same population as treated survivors.** The Romanowski cohort was treated and survived. Patients whose deaths a shorter regimen averts are likely sicker at presentation, which supports the Investigator's direction. But it also means that applying a survivor SMR is an approximation.
-
-**EVIDENCE FOUND**
-- No source for how "27" was derived. Without it, whether the proposed adjustment applies cannot be settled.
-- The direction (downward) is well supported by the literature. The magnitude (20–30%) rests on assumptions that cannot be verified here.
-
-**REVISED CRITIQUE:** TB survivors have about three times the mortality of local populations (Romanowski 2019, pooled 2.91, 95% CI 2.21–3.84). Patients whose death is averted are not average members of the population, so a general-population life table likely overstates their remaining healthy years. A simple Gompertz scaling gives an effective ageing of about 11–12 years and a 20–30% reduction in remaining life expectancy at age 40. This is the Investigator's own illustration and was not sourced. The magnitude depends on whether "27" came from a general-population table, which is unknown, and on whether the SMR transfers to the relevant countries and ages. Caveats: SMR varies by setting, and TB-specific life tables may already include much of the effect. **Direction: decreases (well supported). Magnitude: medium-to-large, conditional on the derivation of 27.** The SMR is real and the mechanism is sound. The exact size of the effect is UNGROUNDED until the derivation of 27 is checked.
+**REVISED CRITIQUE:** Survivors of TB have roughly 1.8–2.9 times the all-cause mortality of the general population, per Romanowski 2019 (2.91, 95% CI 2.21–3.84) and a recent cohort study (RR 1.77). Applying general-population life expectancy to averted deaths probably overstates years gained. Using Gompertz scaling, the plausible reduction is about 10–25%, not a flat 20–30%, and it is **conditional on the provenance of 27**, which is **UNGROUNDED**. The claim that 27 falls "near or below 17.7" is a model-specific inference. Strength: **medium**, down from large, until the source of 27 is known.
 
 --- Critique: Zero modeled lag between Phase III completion and adoption, and a speedup that assumes trial timing is the binding constraint ---
 
 ## Critique 1: Private-sector treatment share and the reach of national guidelines are not modeled
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is sound and the one number the Investigator gave is accurate. The direction and the 5–15% magnitude are inference only and stay flagged as such. The claim that private providers "may not use FDCs" and the claim about what drives private-sector uptake are not supported by anything I found.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The India notification share checks out. The sign of the effect, the 5–15% magnitude and the guideline-deviation claim are unsourced. Some evidence also cuts against the "not on NTP procurement" framing.
 
-**CLAIM CHECK**
-- **India's private-sector notifications are "roughly a third" of the total: VERIFIED.**
+**CITATION CHECK:** The critique cites no specific papers. It names WHO Global TB Reports and Ni-kshay generally, and it says it cannot cite a paper for guideline deviation.
+
+**CLAIM CHECK:**
+- *India's private-sector notifications are roughly a third of the total.* **VERIFIED.**
   - 
-In 2023 the private sector accounted for 33% (0.84 million) of total notifications.
+India's Ministry of Health reports 0.73 million private notifications in 2022 (30% of the total) and 0.83 million in 2023 (32%).
 
-  - The Government of India's WHO statement gives 
-30% in 2022 and 32% in 2023.
+  - Other sources give 
+33% (0.84 million) in 2023
+.
+- *A large share of TB care is in the private sector in India, Indonesia, Pakistan and the Philippines.* **PARTIALLY VERIFIED.**
+  - For India, 
+a prevalence survey found about 50% of people with TB symptoms consult private facilities
+. This is much larger than the one-third notified share.
+  - 
+India, Indonesia, the Philippines and Pakistan are among the five countries with the most cases
+.
+  - I found no data on private-sector share for Indonesia, Pakistan or the Philippines.
+- *Private providers deviate from guidelines.* **PLAUSIBLE.** 
+Reports describe persistent underreporting, delays in diagnosis and treatment initiation, and weak adherence to standards of care in the Indian private sector.
+ I found no direct evidence on FDC use or dosing.
+- *Unnotified ("missing") cases are a large share in the same countries.* **PARTIALLY CONTRADICTED for India.**
+  - 
+India cut missed notifications from 1.2 million in 2015 to 0.3 million in 2023.
 
-  - The Investigator's "UNGROUNDED as to numbers" label can be dropped for India.
-- **A large share of DS-TB care happens in the private sector (India, Indonesia, Pakistan, Philippines): VERIFIED.**
-  - In India, 
-more than 50% of patients seek initial care from private providers.
+  - Globally, 
+notifications reached 78% of estimated incident cases
+.
+  - The "large share missing" claim is therefore weaker for India than the critique implies. I did not check the other three countries.
+- *Uptake depends on professional societies, pharma marketing and notification, not on NTP procurement.* **PARTIALLY CONTRADICTED.** India's programme is actively routing private patients to government supply.
+  - 
+Private-sector engagement agencies (PPSAs) link private patients to free public drugs and diagnostics.
 
-  - Another source notes that 
-in Pakistan, the Philippines and Indonesia, most first-contact care happens in the private sector.
+  - 
+The programme also works with professional bodies such as the Indian Medical Association.
 
-  - The 2019 Global TB Report's PPM trend data are patchy. A WHO private-engagement document says 
-reporting on private-sector notifications from countries remains highly inconsistent.
+  - Private-sector uptake therefore runs partly through NTP channels.
+- *Net effect is a downward adjustment of about 5–15% of benefit.* **UNVERIFIABLE.** The critique itself labels this inference.
 
-- **Unnotified or "missing" cases are a large share in the same countries: PARTIALLY VERIFIED, and outdated for India.**
-  - WHO's 2025 report says the largest notification gaps in 2024 were 
-Indonesia (10%), India (8.8%), the Philippines (7.5%), Pakistan (7.2%) and China (6.9%) of the global gap.
+**EVIDENCE FOUND:**
+- 
+Private practitioners in India have had to notify every TB case since a 2012 Gazette notification.
+ The mandatory-notification lever the critique mentions exists, but enforcement is weak.
+- 
+Notification and public-health actions in the private sector have not really become routine practice.
 
-  - India's own gap has shrunk sharply, 
-from 1.2 million missed notifications in 2015 to 0.3 million in 2023.
+- The direction is ambiguous, as the critique admits. Rising private-sector linkage to NTP drugs argues against a net downward adjustment in India.
 
-  - The "missing cases never see the guideline" argument is therefore stronger for Indonesia, the Philippines and Pakistan than for India now.
-- **Private providers frequently deviate from national guidelines: PLAUSIBLE, with a caveat on what the evidence covers.**
-  - Standardized-patient studies show poor adherence at the diagnostic and management stage. Correct management was seen in 
-959 of 2,602 interactions (37%) in Mumbai and Patna.
+**CORE CLAIM:**
+- Claim: Effective uptake of a new regimen in the private sector is materially lower than the model assumes, giving a net downward adjustment to benefit.
+- Support: **LOGIC ONLY.**
+- Why: The private share is real, but I found no evidence on private-sector uptake of new regimens, and the sign is admittedly ambiguous.
 
-  - In Mumbai, 
-correct management against national guidelines was 75% in the public sector versus 35% in the private sector.
-
-  - Those studies measure testing and referral, not regimen, dosing or FDC use. For regimens, a Chennai survey concluded that 
-TB management practices in India's urban private sector are heterogeneous and often suboptimal.
-
-  - The same paper reports that 
-over three-quarters of providers in a systematic review prescribed a regimen potentially consistent with ISTC guidelines for new patients.
- That cuts against a strong "non-standard dosing" claim. Treatment-regimen deviation is therefore only moderately supported.
-- **"May not use FDCs": UNVERIFIABLE.** I found nothing on FDC use in the private sector.
-- **Uptake in the private sector depends on professional societies, pharma marketing and mandatory notification rather than NTP procurement: PARTIALLY VERIFIED.**
-  - India's mechanisms include 
-mandatory notification by gazette, incentives, PPSA and collaboration with professional bodies such as the IMA.
-
-  - Private-sector drug sales are large, and one source notes that 
-enormous quantities of TB drugs are sold in the Indian private market.
-
-  - I found no evidence on pharma marketing as a driver of guideline uptake.
-- **Net effect of about 5–15% of the benefit: UNGROUNDED.** This is the Investigator's inference, as they stated.
-
-**EVIDENCE FOUND**
-- **Undermining or complicating:** Notified private patients are increasingly inside the programme. A 2025 analysis reports that private-sector engagement models improved 
-"TB notification and drug uptake"
- in India. For notified private patients, the "NTP procurement doesn't reach them" premise is therefore weaker.
-- **Supporting:** Notification itself remains incomplete. An older estimate put private-provider notifications at 
-only 22% of the estimated cases treated in that sector
- across Bangladesh, India, Indonesia and Myanmar.
-- **Sign ambiguity:** The Investigator's point that the sign could flip is reasonable. Private providers show high use of adjunct tests such as chest X-rays and antibiotics (see the Mumbai study).
-
-**REVISED CRITIQUE:** A substantial share of DS-TB care in the highest-burden countries is private. India's private notifications are about 30–33% of the total, and more than half of patients first seek care privately. Sector-specific guideline adherence is documented for diagnosis and management but not clearly for regimen or dosing. The model uses a single uptake figure across public, notified-private and unnotified-private settings. Whether this lowers effective uptake is uncertain. The direction is probably down but could be neutral or positive in some countries. The 5–15% magnitude is UNGROUNDED. Missing-case data support the argument for Indonesia, the Philippines and Pakistan more than for India. **Strength: low-to-medium.**
+**REVISED CRITIQUE:** The private sector handles about one-third of notified cases in India. The share of all care-seeking is higher, with roughly half of symptomatic people consulting private providers. A guideline's reach into the private sector depends partly on notification mandates and PPSA-mediated access to free drugs. The model's single uptake figure does not capture this. The direction and size of the effect are **UNGROUNDED, plausible but needing empirical support**. Do not assert the 5–15% figure. Strength: **low–medium**, and the direction is uncertain, not "decreases".
 
 ---
 
-## Critique 2: Zero modeled lag between Phase III completion and adoption; speedup assumes trial timing is the binding constraint
+## Critique 2: Zero modeled lag between Phase III completion and adoption
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core logic holds. One factual detail is wrong: WHO guidance on the HPMZ regimen did not wait until 2022. The Xpert details come from my own background knowledge and I could not check them in this session.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The HPMZ timeline is slightly wrong in a way that supports the critique's own "WHO step can be short" point. The Xpert example is real. The funding-gating argument is logic only.
 
-**CITATION CHECK**
-- **Study 31/A5349 published 2021: VERIFIED.** 
-Detailed results were published on 6 May 2021.
- The NEJM reference is 
-N Engl J Med 2021;384:1705–18.
+**CITATION CHECK:**
+- Study 31/A5349, published 2021: **VERIFIED.** 
+WHO notes that detailed results were published on 6 May 2021.
+ The NEJM citation is 
+n engl j med 384;18, May 6, 2021
+.
+- WHO guidance in 2022: **PARTIALLY VERIFIED, with a correction.**
+  - 
+WHO convened its guideline group on 27–30 April 2021, before publication.
+ A rapid communication followed in June 2021.
+  - The 2022 date matches the consolidated Module 4 guidelines, 
+which list the HPMZ regimen as conditionally recommended
+.
+  - The WHO step was therefore faster than the critique recalls, at about a month from publication and months from topline data. 
+WHO posted a news item on the findings in October 2020.
 
-- **"WHO guidance followed in 2022": MISREPRESENTED / imprecise.**
-  - Topline results were presented in October 2020, and 
-WHO welcomed them at the Union World Conference.
+- Xpert endorsement in 2010: **VERIFIED.** 
+WHO endorsed it in December 2010 and recommended phased implementation from 2011.
 
-  - WHO 
-convened a GDG meeting on 27–30 April 2021.
- It then issued a "Rapid Communication" in June 2021, roughly one month after publication and about eight months after topline data.
-  - A fully integrated guideline update came later, which I believe was 2022. I did not confirm that date here.
-  - This supports the Investigator's point that the WHO step can be short. It also shows the "WHO guidance followed in 2022" wording is wrong.
-- **Xpert WHO endorsement in 2010, with many years of implementation afterwards: NOT CHECKED.** From background knowledge the endorsement was December 2010. I did not verify it by search.
-- **Albert et al. and Cazabon et al.: NOT CHECKED.** The Investigator also hadn't confirmed their findings.
+- Cazabon et al.: **VERIFIED as existing.** 
+Cazabon D, et al., "Implementation of Xpert MTB/RIF in 22 high tuberculosis burden countries: are we making progress?", Eur Respir J 2017.
+ I did not retrieve its findings. Another paper on market penetration states that 
+previous studies showed low market penetration
+.
+- Albert et al.: **NOT CHECKED.** The search budget ran out before I could look it up.
 
-**CLAIM CHECK**
-- **WHO step is short on a rapid-communication path: VERIFIED** (timeline above).
-- **National adoption and procurement take additional years: PLAUSIBLE, with partial support.** The WHO rapid communication itself said wider uptake 
-would be more feasible if the cost of rifapentine is reduced.
- That points to cost and procurement as the bottleneck, not the guideline.
-- **A generic drug has no commercial sponsor, so Phase III funding could be the gating constraint: PLAUSIBLE.** This is logical inference. I found no empirical evidence either way.
-- **Added years of lag reduce benefit by about 2% per year, so 3–5 years is roughly 6–10%: UNVERIFIABLE.** The 2% rate comes from the model's formula, which I haven't seen. The arithmetic is internally consistent.
-- **Lumpiness alone doesn't lower expected speedup under uniform timing: LOGICALLY SOUND.** This is a good self-correction by the Investigator.
-- **TB trials with 12–24 month relapse follow-up often slip: PLAUSIBLE.** This is general knowledge. No specific slippage data were retrieved.
+**CLAIM CHECK:**
+- *Real-world chains include long national adoption and procurement lags.* **PLAUSIBLE.** Xpert supports it. Early WHO endorsement was followed by 
+a trial (registered 2013) describing Xpert as not yet integrated into national programmes
+.
+- *A generic drug has no sponsor, so Phase III funding could gate the timeline.* **UNVERIFIABLE (logic).**
+- *Phase III trials routinely slip.* **PLAUSIBLE.** No source was retrieved.
+- *The model sets years_to_adoption equal to Phase III completion and loses about 2% of benefit per year of delay.* **UNVERIFIABLE.** I have no access to the model.
 
-**EVIDENCE FOUND**
-- WHO acted fast once data existed. The delay lay in trial execution and rapid generation of results, and in downstream access. That supports the point that the binding constraint is not WHO guideline convening.
-- Study 31/A5349 is described as 
-the first 4-month regimen endorsed by both WHO and the U.S.
- (CDC). I include this only as context on the endorsement path.
+**EVIDENCE FOUND:**
+- The HPMZ case shows the WHO step can be very short once data exist. The critique's central point is that country adoption and the trial's place on the critical path matter more, which this case does not contradict. I found no HPMZ country-uptake data.
 
-**REVISED CRITIQUE:** The model sets lag between Phase III completion and adoption at zero. The HPMZ precedent shows WHO endorsement can follow within about a month of publication (June 2021 rapid communication, after a May 2021 NEJM publication). It also shows that practical uptake was constrained by drug cost and availability, not by WHO. An expected speedup below one year per year of Phase IIc acceleration depends on the trial not being the critical path. Phase III funding for a generic is a plausible but ungrounded gating factor. The lag-cost arithmetic depends on the unverified formula. The Xpert precedent is unverified. **Strength: low-to-medium.** The lag piece is modest, and the "not on the critical path" piece is the more important one but is ungrounded.
+**CORE CLAIM:**
+- Claim: A 1-year acceleration of Phase IIc does not give a 1-year earlier adoption, because the trial is not the binding constraint.
+- Support: **LOGIC ONLY.**
+- Why: Plausible, since sponsorship and funding could gate Phase III, but I found no evidence on this regimen's funding path or timeline.
+
+**REVISED CRITIQUE:** Correct the HPMZ chronology: WHO acted within weeks of publication in 2021, with consolidated guidelines in 2022. Retain the argument that post-guideline national adoption and procurement add lag, with Xpert as a qualitative analogy. Flag the Phase III funding gate and the claim that speedup is below 1 year as **UNGROUNDED**. The critique's own admission that lumpiness does not lower expected speedup should stay. Strength: **low–medium**.
 
 ---
 
 ## Critique 3: Survivors' excess mortality and comorbidity shrink the 27 DALYs per death
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The citation is real and the SMR figure is approximately right. The Gompertz arithmetic is correct. Two points could not be checked: how "27" was derived and the "17.7 threshold" are both internal to the source model. The effect size depends heavily on those, so the "large" rating is only conditionally supported.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The Romanowski citation is real and the SMR is close, though slightly lower than recalled. The Gompertz arithmetic is sound. The load-bearing claim about how 27 was derived cannot be checked.
 
-**CITATION CHECK**
-- **Romanowski et al. 2019, Lancet Infect Dis: VERIFIED.** It is 
-Romanowski K, Baumann B, Basham CA, et al., Lancet Infect Dis 2019;19:1129–1137
-, and it is a systematic review and meta-analysis. The DOI is 10.1016/S1473-3099(19)30309-3.
-- **Pooled SMR "roughly 3–4": PARTIALLY VERIFIED, slightly high at the low end.**
-  - A later article reports that the review 
-found the force of mortality for TB survivors to be 2.91 (95% CI 2.21–3.84) times higher than in those who never had TB.
+**CITATION CHECK:**
+- Romanowski et al. 2019, Lancet Infect Dis: **VERIFIED, with a number correction.**
+  - It is published as 
+Lancet Infect Dis 2019;19:1129–1137.
 
-  - The accompanying Lancet ID comment summarizes it as 
-approximately three-times to four-times greater mortality than local populations, including among younger adults.
+  - 
+It found the force of mortality in TB survivors was 2.91 (95% CI 2.21–3.84) times that of people who never had TB.
 
-  - Using "about 3" is fine. "3–4" matches the commentary but overstates the pooled point estimate.
+  - The critique recalled a pooled SMR of 3–4. The point estimate is about 2.9, and 3–4 is the upper part of the CI.
+  - Another source summarizes it as 
+2 to 5 times more likely to die versus the general population or matched controls
+.
 
-**CLAIM CHECK**
-- **TB patients carry high rates of smoking, alcohol use, diabetes, undernutrition and HIV: VERIFIED.** A Lancet seminar says 
-progression to disease is higher in people with undernourishment, immunosuppression, or who smoke, drink alcohol, or have diabetes.
- A Georgia, USA cohort found that 
-HIV co-infection, excess alcohol use, diabetes and end-stage renal disease were associated with post-treatment death.
+**CLAIM CHECK:**
+- *The Gompertz shift is ln(k)/b, which is about 11–12 years for k = 3 and b = 0.09.* **VERIFIED (arithmetic).** With the real estimate of 2.91, ln(2.91)/0.09 ≈ 11.9 years.
+- *Remaining life expectancy at 40 is low-to-mid 30s, and in the mid-20s at effective age 52.* **PLAUSIBLE.** I did not retrieve a life table.
+- *That implies a 20–30% reduction, so 27 falls to about 19–22.* **PLAUSIBLE but conditional.**
+  - It holds only if 27 came from an unadjusted general-population table.
+  - The SMR is also confounded, as the critique notes. For a counterfactual averted-death patient, shared risk factors still apply.
+  - A first-year or on-treatment death averted differs from a post-treatment survivor, so applying the post-treatment SMR to the whole remaining lifespan is a modelling choice.
+- *The 17.7 threshold.* **UNVERIFIABLE.** It comes from the model I cannot see.
+- *CG's derivation of 27.* **UNVERIFIABLE.**
 
-- **Post-TB lung damage drives excess mortality: VERIFIED.** A Lancet Global Health review states that 
-respiratory diseases remain the leading cause of excess deaths in people who recover from TB, with mortality three to six times that of local peers.
+**EVIDENCE FOUND:**
+- Independent support: 
+A lifetime-burden analysis estimated 12.1 DALYs per incident TB case, 5.8 of them from post-TB sequelae
+. 
+Per-case post-TB burden was greater for younger people and in high-incidence countries.
+ This confirms that post-TB morbidity and mortality are material. It also shows that burden estimates can include post-TB effects, which could offset the critique if CG's figure already includes them.
+- A large 2026 cohort comparison found 
+elevated natural-cause mortality in the treated cohort (RR = 1.77)
+. This is lower than Romanowski's pooled estimate, which suggests k = 3 may be on the high side.
+- Using k ≈ 1.8 instead of 2.9 gives an effective ageing of about 6.5 years, which roughly halves the reduction the critique computes.
 
-- **Gompertz arithmetic: VERIFIED.** ln(3) ≈ 1.10. Dividing by 0.09–0.10 gives about 11–12 years of effective ageing, as stated. Whether b ≈ 0.09–0.10 applies to LMIC adult mortality was not checked. It is roughly standard for adult mortality.
-- **Remaining life expectancy of about 30–35 years at age 40 and mid-20s at age 52 in LMICs: PLAUSIBLE.** I did not look up life tables. The 20–30% reduction follows from those inputs.
-- **Result: 27 falls to about 19–22: CONDITIONAL.** This is only valid if 27 was derived from general-population life tables. That was not established.
-- **"Near or below the 17.7 threshold": UNVERIFIABLE.** This refers to the source model.
+**CORE CLAIM:**
+- Claim: The 27 DALYs per death derives from general-population or GBD-style life tables and is therefore overstated for the people whose deaths are actually averted.
+- Support: **LOGIC ONLY.**
+- Why: Excess post-TB mortality is well documented, but I could not find how CG built 27. It may already be a TB-specific or healthy-life figure, which would offset the adjustment.
 
-**Weaknesses in the mechanism (my additions)**
-1. **SMR heterogeneity.** The Georgia cohort found a 
-pooled SMR of 0.89 (95% CI 0.73–1.05)
-, well below the Romanowski pooled estimate. It was a US cohort, but it shows SMR varies widely by setting. Romanowski's pooled value may not transfer to the countries where the HPMZ regimen would be used. A single hazard multiplier applied across all ages is also a simplification, since the commentary says excess mortality is notable among younger adults.
-2. **Double-counting.** Part of the excess mortality is caused by TB sequelae, which the model may already treat elsewhere. A lifetime-burden study estimated 
-12.1 DALYs per incident TB case, of which 5.8 were post-TB.
- If 27 is already a healthy-life figure from a TB-specific population, the adjustment would partly double-count. The Investigator acknowledged this.
-3. **Averted-death patients are not the same population as treated survivors.** The Romanowski cohort was treated and survived. Patients whose deaths a shorter regimen averts are likely sicker at presentation, which supports the Investigator's direction. But it also means that applying a survivor SMR is an approximation.
-
-**EVIDENCE FOUND**
-- No source for how "27" was derived. Without it, whether the proposed adjustment applies cannot be settled.
-- The direction (downward) is well supported by the literature. The magnitude (20–30%) rests on assumptions that cannot be verified here.
-
-**REVISED CRITIQUE:** TB survivors have about three times the mortality of local populations (Romanowski 2019, pooled 2.91, 95% CI 2.21–3.84). Patients whose death is averted are not average members of the population, so a general-population life table likely overstates their remaining healthy years. A simple Gompertz scaling gives an effective ageing of about 11–12 years and a 20–30% reduction in remaining life expectancy at age 40. This is the Investigator's own illustration and was not sourced. The magnitude depends on whether "27" came from a general-population table, which is unknown, and on whether the SMR transfers to the relevant countries and ages. Caveats: SMR varies by setting, and TB-specific life tables may already include much of the effect. **Direction: decreases (well supported). Magnitude: medium-to-large, conditional on the derivation of 27.** The SMR is real and the mechanism is sound. The exact size of the effect is UNGROUNDED until the derivation of 27 is checked.
+**REVISED CRITIQUE:** Survivors of TB have roughly 1.8–2.9 times the all-cause mortality of the general population, per Romanowski 2019 (2.91, 95% CI 2.21–3.84) and a recent cohort study (RR 1.77). Applying general-population life expectancy to averted deaths probably overstates years gained. Using Gompertz scaling, the plausible reduction is about 10–25%, not a flat 20–30%, and it is **conditional on the provenance of 27**, which is **UNGROUNDED**. The claim that 27 falls "near or below 17.7" is a model-specific inference. Strength: **medium**, down from large, until the source of 27 is known.
 
 --- Critique: Survivors' excess mortality and comorbidity shrink the 27 DALYs per death ---
 
 ## Critique 1: Private-sector treatment share and the reach of national guidelines are not modeled
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The hypothesis is sound and the one number the Investigator gave is accurate. The direction and the 5–15% magnitude are inference only and stay flagged as such. The claim that private providers "may not use FDCs" and the claim about what drives private-sector uptake are not supported by anything I found.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The India notification share checks out. The sign of the effect, the 5–15% magnitude and the guideline-deviation claim are unsourced. Some evidence also cuts against the "not on NTP procurement" framing.
 
-**CLAIM CHECK**
-- **India's private-sector notifications are "roughly a third" of the total: VERIFIED.**
+**CITATION CHECK:** The critique cites no specific papers. It names WHO Global TB Reports and Ni-kshay generally, and it says it cannot cite a paper for guideline deviation.
+
+**CLAIM CHECK:**
+- *India's private-sector notifications are roughly a third of the total.* **VERIFIED.**
   - 
-In 2023 the private sector accounted for 33% (0.84 million) of total notifications.
+India's Ministry of Health reports 0.73 million private notifications in 2022 (30% of the total) and 0.83 million in 2023 (32%).
 
-  - The Government of India's WHO statement gives 
-30% in 2022 and 32% in 2023.
+  - Other sources give 
+33% (0.84 million) in 2023
+.
+- *A large share of TB care is in the private sector in India, Indonesia, Pakistan and the Philippines.* **PARTIALLY VERIFIED.**
+  - For India, 
+a prevalence survey found about 50% of people with TB symptoms consult private facilities
+. This is much larger than the one-third notified share.
+  - 
+India, Indonesia, the Philippines and Pakistan are among the five countries with the most cases
+.
+  - I found no data on private-sector share for Indonesia, Pakistan or the Philippines.
+- *Private providers deviate from guidelines.* **PLAUSIBLE.** 
+Reports describe persistent underreporting, delays in diagnosis and treatment initiation, and weak adherence to standards of care in the Indian private sector.
+ I found no direct evidence on FDC use or dosing.
+- *Unnotified ("missing") cases are a large share in the same countries.* **PARTIALLY CONTRADICTED for India.**
+  - 
+India cut missed notifications from 1.2 million in 2015 to 0.3 million in 2023.
 
-  - The Investigator's "UNGROUNDED as to numbers" label can be dropped for India.
-- **A large share of DS-TB care happens in the private sector (India, Indonesia, Pakistan, Philippines): VERIFIED.**
-  - In India, 
-more than 50% of patients seek initial care from private providers.
+  - Globally, 
+notifications reached 78% of estimated incident cases
+.
+  - The "large share missing" claim is therefore weaker for India than the critique implies. I did not check the other three countries.
+- *Uptake depends on professional societies, pharma marketing and notification, not on NTP procurement.* **PARTIALLY CONTRADICTED.** India's programme is actively routing private patients to government supply.
+  - 
+Private-sector engagement agencies (PPSAs) link private patients to free public drugs and diagnostics.
 
-  - Another source notes that 
-in Pakistan, the Philippines and Indonesia, most first-contact care happens in the private sector.
+  - 
+The programme also works with professional bodies such as the Indian Medical Association.
 
-  - The 2019 Global TB Report's PPM trend data are patchy. A WHO private-engagement document says 
-reporting on private-sector notifications from countries remains highly inconsistent.
+  - Private-sector uptake therefore runs partly through NTP channels.
+- *Net effect is a downward adjustment of about 5–15% of benefit.* **UNVERIFIABLE.** The critique itself labels this inference.
 
-- **Unnotified or "missing" cases are a large share in the same countries: PARTIALLY VERIFIED, and outdated for India.**
-  - WHO's 2025 report says the largest notification gaps in 2024 were 
-Indonesia (10%), India (8.8%), the Philippines (7.5%), Pakistan (7.2%) and China (6.9%) of the global gap.
+**EVIDENCE FOUND:**
+- 
+Private practitioners in India have had to notify every TB case since a 2012 Gazette notification.
+ The mandatory-notification lever the critique mentions exists, but enforcement is weak.
+- 
+Notification and public-health actions in the private sector have not really become routine practice.
 
-  - India's own gap has shrunk sharply, 
-from 1.2 million missed notifications in 2015 to 0.3 million in 2023.
+- The direction is ambiguous, as the critique admits. Rising private-sector linkage to NTP drugs argues against a net downward adjustment in India.
 
-  - The "missing cases never see the guideline" argument is therefore stronger for Indonesia, the Philippines and Pakistan than for India now.
-- **Private providers frequently deviate from national guidelines: PLAUSIBLE, with a caveat on what the evidence covers.**
-  - Standardized-patient studies show poor adherence at the diagnostic and management stage. Correct management was seen in 
-959 of 2,602 interactions (37%) in Mumbai and Patna.
+**CORE CLAIM:**
+- Claim: Effective uptake of a new regimen in the private sector is materially lower than the model assumes, giving a net downward adjustment to benefit.
+- Support: **LOGIC ONLY.**
+- Why: The private share is real, but I found no evidence on private-sector uptake of new regimens, and the sign is admittedly ambiguous.
 
-  - In Mumbai, 
-correct management against national guidelines was 75% in the public sector versus 35% in the private sector.
-
-  - Those studies measure testing and referral, not regimen, dosing or FDC use. For regimens, a Chennai survey concluded that 
-TB management practices in India's urban private sector are heterogeneous and often suboptimal.
-
-  - The same paper reports that 
-over three-quarters of providers in a systematic review prescribed a regimen potentially consistent with ISTC guidelines for new patients.
- That cuts against a strong "non-standard dosing" claim. Treatment-regimen deviation is therefore only moderately supported.
-- **"May not use FDCs": UNVERIFIABLE.** I found nothing on FDC use in the private sector.
-- **Uptake in the private sector depends on professional societies, pharma marketing and mandatory notification rather than NTP procurement: PARTIALLY VERIFIED.**
-  - India's mechanisms include 
-mandatory notification by gazette, incentives, PPSA and collaboration with professional bodies such as the IMA.
-
-  - Private-sector drug sales are large, and one source notes that 
-enormous quantities of TB drugs are sold in the Indian private market.
-
-  - I found no evidence on pharma marketing as a driver of guideline uptake.
-- **Net effect of about 5–15% of the benefit: UNGROUNDED.** This is the Investigator's inference, as they stated.
-
-**EVIDENCE FOUND**
-- **Undermining or complicating:** Notified private patients are increasingly inside the programme. A 2025 analysis reports that private-sector engagement models improved 
-"TB notification and drug uptake"
- in India. For notified private patients, the "NTP procurement doesn't reach them" premise is therefore weaker.
-- **Supporting:** Notification itself remains incomplete. An older estimate put private-provider notifications at 
-only 22% of the estimated cases treated in that sector
- across Bangladesh, India, Indonesia and Myanmar.
-- **Sign ambiguity:** The Investigator's point that the sign could flip is reasonable. Private providers show high use of adjunct tests such as chest X-rays and antibiotics (see the Mumbai study).
-
-**REVISED CRITIQUE:** A substantial share of DS-TB care in the highest-burden countries is private. India's private notifications are about 30–33% of the total, and more than half of patients first seek care privately. Sector-specific guideline adherence is documented for diagnosis and management but not clearly for regimen or dosing. The model uses a single uptake figure across public, notified-private and unnotified-private settings. Whether this lowers effective uptake is uncertain. The direction is probably down but could be neutral or positive in some countries. The 5–15% magnitude is UNGROUNDED. Missing-case data support the argument for Indonesia, the Philippines and Pakistan more than for India. **Strength: low-to-medium.**
+**REVISED CRITIQUE:** The private sector handles about one-third of notified cases in India. The share of all care-seeking is higher, with roughly half of symptomatic people consulting private providers. A guideline's reach into the private sector depends partly on notification mandates and PPSA-mediated access to free drugs. The model's single uptake figure does not capture this. The direction and size of the effect are **UNGROUNDED, plausible but needing empirical support**. Do not assert the 5–15% figure. Strength: **low–medium**, and the direction is uncertain, not "decreases".
 
 ---
 
-## Critique 2: Zero modeled lag between Phase III completion and adoption; speedup assumes trial timing is the binding constraint
+## Critique 2: Zero modeled lag between Phase III completion and adoption
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core logic holds. One factual detail is wrong: WHO guidance on the HPMZ regimen did not wait until 2022. The Xpert details come from my own background knowledge and I could not check them in this session.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The HPMZ timeline is slightly wrong in a way that supports the critique's own "WHO step can be short" point. The Xpert example is real. The funding-gating argument is logic only.
 
-**CITATION CHECK**
-- **Study 31/A5349 published 2021: VERIFIED.** 
-Detailed results were published on 6 May 2021.
- The NEJM reference is 
-N Engl J Med 2021;384:1705–18.
+**CITATION CHECK:**
+- Study 31/A5349, published 2021: **VERIFIED.** 
+WHO notes that detailed results were published on 6 May 2021.
+ The NEJM citation is 
+n engl j med 384;18, May 6, 2021
+.
+- WHO guidance in 2022: **PARTIALLY VERIFIED, with a correction.**
+  - 
+WHO convened its guideline group on 27–30 April 2021, before publication.
+ A rapid communication followed in June 2021.
+  - The 2022 date matches the consolidated Module 4 guidelines, 
+which list the HPMZ regimen as conditionally recommended
+.
+  - The WHO step was therefore faster than the critique recalls, at about a month from publication and months from topline data. 
+WHO posted a news item on the findings in October 2020.
 
-- **"WHO guidance followed in 2022": MISREPRESENTED / imprecise.**
-  - Topline results were presented in October 2020, and 
-WHO welcomed them at the Union World Conference.
+- Xpert endorsement in 2010: **VERIFIED.** 
+WHO endorsed it in December 2010 and recommended phased implementation from 2011.
 
-  - WHO 
-convened a GDG meeting on 27–30 April 2021.
- It then issued a "Rapid Communication" in June 2021, roughly one month after publication and about eight months after topline data.
-  - A fully integrated guideline update came later, which I believe was 2022. I did not confirm that date here.
-  - This supports the Investigator's point that the WHO step can be short. It also shows the "WHO guidance followed in 2022" wording is wrong.
-- **Xpert WHO endorsement in 2010, with many years of implementation afterwards: NOT CHECKED.** From background knowledge the endorsement was December 2010. I did not verify it by search.
-- **Albert et al. and Cazabon et al.: NOT CHECKED.** The Investigator also hadn't confirmed their findings.
+- Cazabon et al.: **VERIFIED as existing.** 
+Cazabon D, et al., "Implementation of Xpert MTB/RIF in 22 high tuberculosis burden countries: are we making progress?", Eur Respir J 2017.
+ I did not retrieve its findings. Another paper on market penetration states that 
+previous studies showed low market penetration
+.
+- Albert et al.: **NOT CHECKED.** The search budget ran out before I could look it up.
 
-**CLAIM CHECK**
-- **WHO step is short on a rapid-communication path: VERIFIED** (timeline above).
-- **National adoption and procurement take additional years: PLAUSIBLE, with partial support.** The WHO rapid communication itself said wider uptake 
-would be more feasible if the cost of rifapentine is reduced.
- That points to cost and procurement as the bottleneck, not the guideline.
-- **A generic drug has no commercial sponsor, so Phase III funding could be the gating constraint: PLAUSIBLE.** This is logical inference. I found no empirical evidence either way.
-- **Added years of lag reduce benefit by about 2% per year, so 3–5 years is roughly 6–10%: UNVERIFIABLE.** The 2% rate comes from the model's formula, which I haven't seen. The arithmetic is internally consistent.
-- **Lumpiness alone doesn't lower expected speedup under uniform timing: LOGICALLY SOUND.** This is a good self-correction by the Investigator.
-- **TB trials with 12–24 month relapse follow-up often slip: PLAUSIBLE.** This is general knowledge. No specific slippage data were retrieved.
+**CLAIM CHECK:**
+- *Real-world chains include long national adoption and procurement lags.* **PLAUSIBLE.** Xpert supports it. Early WHO endorsement was followed by 
+a trial (registered 2013) describing Xpert as not yet integrated into national programmes
+.
+- *A generic drug has no sponsor, so Phase III funding could gate the timeline.* **UNVERIFIABLE (logic).**
+- *Phase III trials routinely slip.* **PLAUSIBLE.** No source was retrieved.
+- *The model sets years_to_adoption equal to Phase III completion and loses about 2% of benefit per year of delay.* **UNVERIFIABLE.** I have no access to the model.
 
-**EVIDENCE FOUND**
-- WHO acted fast once data existed. The delay lay in trial execution and rapid generation of results, and in downstream access. That supports the point that the binding constraint is not WHO guideline convening.
-- Study 31/A5349 is described as 
-the first 4-month regimen endorsed by both WHO and the U.S.
- (CDC). I include this only as context on the endorsement path.
+**EVIDENCE FOUND:**
+- The HPMZ case shows the WHO step can be very short once data exist. The critique's central point is that country adoption and the trial's place on the critical path matter more, which this case does not contradict. I found no HPMZ country-uptake data.
 
-**REVISED CRITIQUE:** The model sets lag between Phase III completion and adoption at zero. The HPMZ precedent shows WHO endorsement can follow within about a month of publication (June 2021 rapid communication, after a May 2021 NEJM publication). It also shows that practical uptake was constrained by drug cost and availability, not by WHO. An expected speedup below one year per year of Phase IIc acceleration depends on the trial not being the critical path. Phase III funding for a generic is a plausible but ungrounded gating factor. The lag-cost arithmetic depends on the unverified formula. The Xpert precedent is unverified. **Strength: low-to-medium.** The lag piece is modest, and the "not on the critical path" piece is the more important one but is ungrounded.
+**CORE CLAIM:**
+- Claim: A 1-year acceleration of Phase IIc does not give a 1-year earlier adoption, because the trial is not the binding constraint.
+- Support: **LOGIC ONLY.**
+- Why: Plausible, since sponsorship and funding could gate Phase III, but I found no evidence on this regimen's funding path or timeline.
+
+**REVISED CRITIQUE:** Correct the HPMZ chronology: WHO acted within weeks of publication in 2021, with consolidated guidelines in 2022. Retain the argument that post-guideline national adoption and procurement add lag, with Xpert as a qualitative analogy. Flag the Phase III funding gate and the claim that speedup is below 1 year as **UNGROUNDED**. The critique's own admission that lumpiness does not lower expected speedup should stay. Strength: **low–medium**.
 
 ---
 
 ## Critique 3: Survivors' excess mortality and comorbidity shrink the 27 DALYs per death
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The citation is real and the SMR figure is approximately right. The Gompertz arithmetic is correct. Two points could not be checked: how "27" was derived and the "17.7 threshold" are both internal to the source model. The effect size depends heavily on those, so the "large" rating is only conditionally supported.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The Romanowski citation is real and the SMR is close, though slightly lower than recalled. The Gompertz arithmetic is sound. The load-bearing claim about how 27 was derived cannot be checked.
 
-**CITATION CHECK**
-- **Romanowski et al. 2019, Lancet Infect Dis: VERIFIED.** It is 
-Romanowski K, Baumann B, Basham CA, et al., Lancet Infect Dis 2019;19:1129–1137
-, and it is a systematic review and meta-analysis. The DOI is 10.1016/S1473-3099(19)30309-3.
-- **Pooled SMR "roughly 3–4": PARTIALLY VERIFIED, slightly high at the low end.**
-  - A later article reports that the review 
-found the force of mortality for TB survivors to be 2.91 (95% CI 2.21–3.84) times higher than in those who never had TB.
+**CITATION CHECK:**
+- Romanowski et al. 2019, Lancet Infect Dis: **VERIFIED, with a number correction.**
+  - It is published as 
+Lancet Infect Dis 2019;19:1129–1137.
 
-  - The accompanying Lancet ID comment summarizes it as 
-approximately three-times to four-times greater mortality than local populations, including among younger adults.
+  - 
+It found the force of mortality in TB survivors was 2.91 (95% CI 2.21–3.84) times that of people who never had TB.
 
-  - Using "about 3" is fine. "3–4" matches the commentary but overstates the pooled point estimate.
+  - The critique recalled a pooled SMR of 3–4. The point estimate is about 2.9, and 3–4 is the upper part of the CI.
+  - Another source summarizes it as 
+2 to 5 times more likely to die versus the general population or matched controls
+.
 
-**CLAIM CHECK**
-- **TB patients carry high rates of smoking, alcohol use, diabetes, undernutrition and HIV: VERIFIED.** A Lancet seminar says 
-progression to disease is higher in people with undernourishment, immunosuppression, or who smoke, drink alcohol, or have diabetes.
- A Georgia, USA cohort found that 
-HIV co-infection, excess alcohol use, diabetes and end-stage renal disease were associated with post-treatment death.
+**CLAIM CHECK:**
+- *The Gompertz shift is ln(k)/b, which is about 11–12 years for k = 3 and b = 0.09.* **VERIFIED (arithmetic).** With the real estimate of 2.91, ln(2.91)/0.09 ≈ 11.9 years.
+- *Remaining life expectancy at 40 is low-to-mid 30s, and in the mid-20s at effective age 52.* **PLAUSIBLE.** I did not retrieve a life table.
+- *That implies a 20–30% reduction, so 27 falls to about 19–22.* **PLAUSIBLE but conditional.**
+  - It holds only if 27 came from an unadjusted general-population table.
+  - The SMR is also confounded, as the critique notes. For a counterfactual averted-death patient, shared risk factors still apply.
+  - A first-year or on-treatment death averted differs from a post-treatment survivor, so applying the post-treatment SMR to the whole remaining lifespan is a modelling choice.
+- *The 17.7 threshold.* **UNVERIFIABLE.** It comes from the model I cannot see.
+- *CG's derivation of 27.* **UNVERIFIABLE.**
 
-- **Post-TB lung damage drives excess mortality: VERIFIED.** A Lancet Global Health review states that 
-respiratory diseases remain the leading cause of excess deaths in people who recover from TB, with mortality three to six times that of local peers.
+**EVIDENCE FOUND:**
+- Independent support: 
+A lifetime-burden analysis estimated 12.1 DALYs per incident TB case, 5.8 of them from post-TB sequelae
+. 
+Per-case post-TB burden was greater for younger people and in high-incidence countries.
+ This confirms that post-TB morbidity and mortality are material. It also shows that burden estimates can include post-TB effects, which could offset the critique if CG's figure already includes them.
+- A large 2026 cohort comparison found 
+elevated natural-cause mortality in the treated cohort (RR = 1.77)
+. This is lower than Romanowski's pooled estimate, which suggests k = 3 may be on the high side.
+- Using k ≈ 1.8 instead of 2.9 gives an effective ageing of about 6.5 years, which roughly halves the reduction the critique computes.
 
-- **Gompertz arithmetic: VERIFIED.** ln(3) ≈ 1.10. Dividing by 0.09–0.10 gives about 11–12 years of effective ageing, as stated. Whether b ≈ 0.09–0.10 applies to LMIC adult mortality was not checked. It is roughly standard for adult mortality.
-- **Remaining life expectancy of about 30–35 years at age 40 and mid-20s at age 52 in LMICs: PLAUSIBLE.** I did not look up life tables. The 20–30% reduction follows from those inputs.
-- **Result: 27 falls to about 19–22: CONDITIONAL.** This is only valid if 27 was derived from general-population life tables. That was not established.
-- **"Near or below the 17.7 threshold": UNVERIFIABLE.** This refers to the source model.
+**CORE CLAIM:**
+- Claim: The 27 DALYs per death derives from general-population or GBD-style life tables and is therefore overstated for the people whose deaths are actually averted.
+- Support: **LOGIC ONLY.**
+- Why: Excess post-TB mortality is well documented, but I could not find how CG built 27. It may already be a TB-specific or healthy-life figure, which would offset the adjustment.
 
-**Weaknesses in the mechanism (my additions)**
-1. **SMR heterogeneity.** The Georgia cohort found a 
-pooled SMR of 0.89 (95% CI 0.73–1.05)
-, well below the Romanowski pooled estimate. It was a US cohort, but it shows SMR varies widely by setting. Romanowski's pooled value may not transfer to the countries where the HPMZ regimen would be used. A single hazard multiplier applied across all ages is also a simplification, since the commentary says excess mortality is notable among younger adults.
-2. **Double-counting.** Part of the excess mortality is caused by TB sequelae, which the model may already treat elsewhere. A lifetime-burden study estimated 
-12.1 DALYs per incident TB case, of which 5.8 were post-TB.
- If 27 is already a healthy-life figure from a TB-specific population, the adjustment would partly double-count. The Investigator acknowledged this.
-3. **Averted-death patients are not the same population as treated survivors.** The Romanowski cohort was treated and survived. Patients whose deaths a shorter regimen averts are likely sicker at presentation, which supports the Investigator's direction. But it also means that applying a survivor SMR is an approximation.
-
-**EVIDENCE FOUND**
-- No source for how "27" was derived. Without it, whether the proposed adjustment applies cannot be settled.
-- The direction (downward) is well supported by the literature. The magnitude (20–30%) rests on assumptions that cannot be verified here.
-
-**REVISED CRITIQUE:** TB survivors have about three times the mortality of local populations (Romanowski 2019, pooled 2.91, 95% CI 2.21–3.84). Patients whose death is averted are not average members of the population, so a general-population life table likely overstates their remaining healthy years. A simple Gompertz scaling gives an effective ageing of about 11–12 years and a 20–30% reduction in remaining life expectancy at age 40. This is the Investigator's own illustration and was not sourced. The magnitude depends on whether "27" came from a general-population table, which is unknown, and on whether the SMR transfers to the relevant countries and ages. Caveats: SMR varies by setting, and TB-specific life tables may already include much of the effect. **Direction: decreases (well supported). Magnitude: medium-to-large, conditional on the derivation of 27.** The SMR is real and the mechanism is sound. The exact size of the effect is UNGROUNDED until the derivation of 27 is checked.
+**REVISED CRITIQUE:** Survivors of TB have roughly 1.8–2.9 times the all-cause mortality of the general population, per Romanowski 2019 (2.91, 95% CI 2.21–3.84) and a recent cohort study (RR 1.77). Applying general-population life expectancy to averted deaths probably overstates years gained. Using Gompertz scaling, the plausible reduction is about 10–25%, not a flat 20–30%, and it is **conditional on the provenance of 27**, which is **UNGROUNDED**. The claim that 27 falls "near or below 17.7" is a model-specific inference. Strength: **medium**, down from large, until the source of 27 is known.
 
 --- Critique: The 6% is a mix of deaths, and only a fraction is reachable and modifiable by atorvastatin ---
 
 ## Critique 1: The 6% is a mix of deaths, and only a fraction is reachable and modifiable by atorvastatin
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis is well supported. The quantitative decomposition is ungrounded, and it risks double-counting.
+**CITATION CHECK**
+- Waitt & Squire 2011, IJTLD: **VERIFIED as existing, only partly verified on content.**
+  - It is a real paper: Int J Tuberc Lung Dis 2011;15(7):871–85. 
+It identified 62 studies on risk factors for death in patients started on TB treatment.
+
+  - 
+The review found two distinct epidemics with separate risk factors for death.
+
+  - Other papers cite it as showing that 
+comorbidities were risk factors in high-incidence, high-HIV settings rather than low-incidence, low-HIV settings.
+
+  - I could not retrieve the review itself. The critique's "many deaths occur early" attribution to it is unconfirmed, though other sources support the point.
+- "Country cohort studies": the Investigator named none. I found several (see Evidence Found).
+- Rifampicin–atorvastatin interaction: **VERIFIED.** 
+Rifampin shortened atorvastatin's half-life by 74%.
+ Prescribing guidance also notes 
+CYP3A inducers such as rifampin can cause variable reductions in atorvastatin plasma concentrations.
+
 
 **CLAIM CHECK**
-- **Waitt & Squire 2011 (IJTLD) exists. VERIFIED.** 
-It is Int J Tuberc Lung Dis 2011;15(7):871-85, PMID 21496360.
-
-  - I could only see how other papers describe it, not the paper itself. 
-One describes its risk factors as HIV co-infection, advancing immunosuppression, smear-negative disease and malnutrition.
- The investigator's recollection of HIV and malnutrition is therefore right.
-  - The recollection of older age is not confirmed by that secondary description.
-  - The claim that "many deaths occur early" is not verified as a finding of that review. Other studies support it (see below).
-- **Deaths are concentrated early. VERIFIED (multiple cohorts).**
-  - Zambia: 
-75.7% of deaths occurred in the first two months, with a median time to death of 21 days.
+- Deaths are concentrated early, in the first weeks: **VERIFIED.**
+  - Zambia, 1,063 deaths: 
+58.1% occurred in the first month and 75.1% in the first two months.
  
-More than half (58.1%) occurred in the first month.
+The median time to death was 21 days.
 
-  - Taiwan: 
-Underweight predicted mortality only in the first 8 weeks.
- This supports the malnutrition link.
-  - Another cohort found 
-TB-related deaths occurred early, with a median survival of 20 days.
+  - Kenya, Meru County: 
+76% of deaths occurred within three months of starting treatment.
 
   - Ethiopia: 
-56.7% of deaths occurred in the intensive phase.
+More than 70% of deaths occur in the first two months.
 
-  - Counter-evidence: in the Andhra Pradesh cohort, 
-deaths were described as fairly evenly distributed across treatment.
- The early concentration is therefore not universal.
-- **Some deaths are not TB-attributable. PLAUSIBLE/VERIFIED in direction.**
-  - One cohort split deaths into TB-related and non-TB-related. 
-Liver cirrhosis was the only comorbidity associated with TB-related death.
+  - Taiwan: 
+Underweight was associated with higher mortality only in the first 8 weeks.
 
-  - I found no pooled share of non-TB deaths, so the 15% is a placeholder.
-- **The rifampicin–atorvastatin interaction is established, but the investigator's framing is too simple. PARTIALLY VERIFIED.**
-  - The interaction is real but works in two directions. 
-A single rifampicin dose inhibits OATP1B1/1B3 and raises atorvastatin exposure about 6.8-fold. After multiple doses, induction can overcome this and lower exposure.
+- Very sick, malnourished or advanced-HIV patients dominate early deaths: **VERIFIED.** 
+The major risk factors for early death are HIV positivity, old age, being underweight and retreatment.
 
-  - 
-These opposing effects make the interaction hard to manage, with either reduced or raised statin levels.
-
-  - 
-Labelling recommends simultaneous co-administration, because delayed atorvastatin after rifampicin is associated with a significant drop in plasma concentration.
-
-  - Early exposure could even be higher, not lower. The inference that onset of benefit is delayed is not supported. It also contradicts the unqualified "limited by rifampicin induction."
-- **The arithmetic is correct.** 6% × 0.7 × 0.85 = 3.57%. I cannot verify the 3.9% threshold, because it comes from the source materials.
+- Some deaths are non-TB causes: **VERIFIED.** A Taiwanese review classified deaths as TB-related or non-TB-related. 
+Most TB-related deaths occurred early, with a median survival of 20 days.
+ The non-TB share varies by setting, and I did not find a pooled figure.
+- Some deaths occur before treatment starts: **VERIFIED, but outside the treated cohort.** In a US study, 
+TB-related death occurred during treatment for 75% of decedents and before treatment began for 25%.
+ These deaths would not be in an on-treatment 6%.
+- Rifampicin induction delays onset of statin benefit: **PLAUSIBLE.** The interaction is real. The timing of induction relative to benefit is an inference, and the Investigator labels it as one.
+- The arithmetic 6% × 0.7 × 0.85 = 3.57%: **VERIFIED** (≈3.6%). I could not verify the 3.9% threshold. It comes from the source model.
+- The 30% and 15% shares are placeholders, as the Investigator says. The 30% is plausible for deaths within about 2 weeks, given the Zambian median of 21 days. The 15% non-TB share is unsupported.
 
 **EVIDENCE FOUND**
-- Early-death concentration is strongly supported in sub-Saharan African cohorts (Zambia, Ethiopia, Cameroon). Taiwan adds that malnutrition-related excess mortality is confined to the first 8 weeks.
-- Double-counting risk, from my own reasoning. If the statin effect size comes from a trial or meta-analysis of all-cause mortality in enrolled patients, early and non-TB deaths are already reflected in that effect. Applying the "addressable share" haircut to the baseline as well would penalise the same deaths twice. The decomposition only holds if the model applies the effect as a relative reduction to unselected WHO-cohort mortality. This is an unverified inference.
-- Trial populations usually exclude the sickest patients. This makes the haircut more defensible if effect sizes come from healthier trial populations.
+- The timing evidence above comes from Zambia, Kenya, Ethiopia, Turkey, Cameroon and India. It supports the early-death premise strongly.
+- Caveat the Investigator did not raise: if the model's statin effect size comes from a trial population, it already excludes very early or ineligible deaths. Applying the "addressable share" haircut on top would double-count.
+- The eligibility factor appears in the mechanism formula but not in the worked example.
+- Early deaths may be partly reversible with timely care. 
+Deaths within 14 days of anti-TB treatment suggest some mortality may have been reversible with earlier therapy.
+ That cuts against treating all very early deaths as unreachable.
+
+**CORE CLAIM**
+- Claim: A large enough share of the 6% is unreachable or non-TB (about 35–40% combined) to push the effective baseline below 3.9%.
+- Support: **LOGIC ONLY**
+- Why: Early concentration of deaths is directly supported, but the specific shares are acknowledged placeholders, and I found no evidence on the statin onset-time or non-TB share needed to reach the threshold.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction (the addressable share is below 6%) is well supported. The magnitude, and the claim that the threshold is crossed, are ungrounded.
 
 **REVISED CRITIQUE**
-On-treatment TB deaths are concentrated in the first 1–2 months in many high-burden cohorts. Zambia shows about 75%, though some cohorts show flatter timing. Deaths in this window are often among malnourished, advanced-HIV or very sick patients. The rifampicin–atorvastatin interaction is bidirectional, so whether benefit onset is delayed is **UNGROUNDED**. The share of the 6% that is addressable is likely below 100%. The 30% and 15% figures and the 3.6% result are **illustrative only**.
-- The critique must state how the effect size was derived, to avoid double-counting.
-- Strength: medium, direction uncertain-to-decreasing. This holds only if effect sizes come from unselected populations.
+- Deaths during TB treatment are heavily front-loaded. In several African cohorts, roughly 55–75% occur within 1–2 months, and the median is about 3 weeks in Zambia.
+- Early deaths are concentrated in HIV-positive, underweight and older patients. Rifampicin cuts atorvastatin exposure substantially.
+- Applying the 6% to all patients probably overstates the share a statin could avert.
+- **UNGROUNDED:** the size of the haircut. Needed evidence: statin time-to-effect, the TB-attributable share of deaths, and whether the model's effect size already reflects an enrolled trial population.
+- Strength: medium, direction decreases, with a caution against double-counting.
 
 ---
 
 ## Critique 2: Under-ascertained deaths push true mortality up
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The mechanism is sound and some direction-of-effect evidence exists. The magnitude is plausible but weakly grounded. There are definitional problems and a labelling error.
+**CITATION CHECK**
+- WHO Global TB Report outcome categories: **VERIFIED for definitions.** WHO data lists 
+treatment success (cured or completed), failed, died, lost to follow-up, or not evaluated
+ as the outcome categories.
+- WHO figures of "~5–6% died, ~3–4% LTFU, a few % not evaluated": **UNVERIFIED.** I could not retrieve the global outcome table. 
+Global treatment success was 88% in 2023 and 2022.
+ That leaves about 12% across all other outcomes, which is consistent with the Investigator's recall but does not confirm it.
+- The tracing studies the Investigator "believed" existed: **found, see below.**
 
 **CLAIM CHECK**
-- **WHO outcome categories are as described. VERIFIED.** 
-The categories are treatment success, failed, died, lost to follow-up and not evaluated.
- 
-The denominator is everyone who started rifampicin-susceptible treatment.
- So deaths among LTFU and not-evaluated patients are not in the "died" numerator.
-- **Specific global percentages (5–6% died, 3–4% LTFU, a few percent not evaluated). UNVERIFIABLE from my searches.**
-  - I confirmed only that 
-global treatment success was 88% in 2023 and 2022.
+- The 6% comes from the "died" category and excludes LTFU and not-evaluated patients: **PLAUSIBLE.** WHO's definition supports the structure. I cannot confirm how the source model derived its 6%.
+- LTFU is about 3–4% and not-evaluated a few percent: **PLAUSIBLE.**
+  - Uganda/Kenya-type cohort: 
+5.5% died and 2.6% were LTFU
+, and 618/10,717 (5.8%) were not evaluated.
+  - Kenya, Meru County: 
+6.3% were LTFU and 5.1% died.
 
-  - Kenya's 2022 national data were about 
-6% died and 5% lost to follow-up.
+  - Ranges vary widely by country, and Zimbabwe has very high not-evaluated shares.
+- A meaningful share of LTFU patients die: **SUPPORTED for TB, at the low end of the Investigator's 10–20%.**
+  - Kenya CHP tracing: 
+of 140 patients identified for tracing, 36 (25.7%) were traced, 90 had relocated and 14 (10.0%) had died.
 
-  - A Kenyan county surveillance dataset had 
-5.5% died, 2.6% LTFU and 5.8% not evaluated.
- That makes LTFU plus NE 8.4% there, higher than the 6–7% assumed.
-  - Not-evaluated can be very large in some programmes. 
-Zimbabwe reports high percentages of not-evaluated outcomes.
+  - A medRxiv cohort found that 
+LTFU raised standardized five-year mortality by 2.23 percentage points.
+ It noted that 
+SMRs after LTFU are two to seven times higher than after cure.
 
-- **A meaningful share of LTFU patients die. VERIFIED in direction. The 10–20% range is plausible but evidence is mixed.**
-  - A Kilifi, Kenya tracing study (medRxiv preprint) 
-found 14 of 140 patients identified for tracing (10%) had died, with 36 traced and 90 relocated.
- That matches the low end of the investigator's range.
-  - 
-A Georgia study of second-line (MDR/XDR) treatment found 107 of 461 LFU patients (23%) died.
- This is drug-resistant TB, so it is not a good analogue for drug-susceptible TB.
-  - 
-An Estonian study found 30% of the 102 traced LFU patients died.
- It mixed drug-susceptible and drug-resistant TB.
-  - A Brazilian preprint found 
-8.0% of LFU patients died, at a median of 17.5 months after LTFU.
- It also found 
-a two- to three-fold increased hazard of late mortality after LTFU.
+  - Cape Town tracing: a small share died among true LTFU (1/30 and 3/12 in two subgroups). That is a low and noisy signal.
+  - The HIV ART LTFU meta-analysis (20–60% of traced patients dead) is about ART programmes, not TB, so it should not be used for the TB range.
+- Pre-treatment deaths and untreated cases are excluded: **VERIFIED, but not statin-reachable.** In Zimbabwe, 
+49.6% (252/508) of pre-treatment lost-to-follow-up TB patients died.
+ In Cape Town, 
+2% died before starting treatment.
 
-  - The Brazilian deaths occur long after the on-treatment window. This undermines treating them as "on-treatment mortality."
-- **Deaths before treatment start or among untreated patients push true mortality up. PARTIALLY MISREPRESENTED.**
-  - The 6% is a share of patients who started treatment, so pre-treatment deaths are outside both the numerator and the denominator. They do not make "mortality among treated patients" higher.
-  - They matter only if the model's population is broader than the WHO treated cohort. In Cape Town, 
-17.1% of initially lost patients died, 69.7% of them within 30 days.
- That is a different population.
-  - Under WHO definitions, transfers out fall into "not evaluated". This is from my background knowledge, not verified in these searches.
-- **The arithmetic is correct.** 0.6 and 1.4 pp are right, giving 6.6–7.4% and a 10–23% proportional rise.
-- **Internal labelling error.** The title says "opposite of Critiques 1–2", but this is Critique 2. It presumably means Critiques 1 and 3. This should be fixed.
+- Arithmetic: 6–7% × 10–20% = 0.6–1.4 pp. 6.6–7.4% / 6% = +10% to +23%. **VERIFIED.**
+- The title says "opposite of Critiques 1–2", but this is Critique 2. It is probably a labelling slip and should say "opposite of Critique 1".
 
 **EVIDENCE FOUND**
-- The Kenyan surveillance paper says 
-the vital status of the 8.4% who were LTFU or not evaluated could not be ascertained.
- This directly supports the under-ascertainment mechanism.
-- The Kilifi tracing study (10%) supports the low end of the range. The drug-resistant TB studies (23–30%) are less applicable.
-- The timing of deaths among LTFU patients undermines the "on-treatment" framing and the statin-attributable fraction.
+- Mortality in some settings is already above 6%, for example 
+8.6% among South African adults on treatment.
+ This shows that 6% is a global average, not a floor.
+- A conceptual weakness: many LTFU deaths happen after treatment stops. They are not on-treatment deaths, so a statin taken during treatment may not be able to avert them. The Investigator mentions this caveat but still applies the full proportional uplift to SROI.
+- "Not evaluated" includes transfers and missing records, and most of these patients are probably alive. A 10–20% death rate for that group is unsupported. The 10–20% range fits LTFU better than the not-evaluated group.
+- This critique and Critique 1 pull in opposite directions. Both are plausible, and the net effect is undetermined.
+
+**CORE CLAIM**
+- Claim: A meaningful share of LTFU and not-evaluated patients die, so true mortality among treated patients exceeds 6%, and the excess is relevant to statin benefit.
+- Support: **SUPPORTED for direction.** Several studies show excess mortality after LTFU, but the 10–20% magnitude and the statin relevance are only logic.
+- Why: Tracing and cohort data show elevated post-LTFU mortality (about 10% in Kenya, SMR 2–7×), but no source shows these deaths are modifiable by an adjunct taken during treatment.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.**
 
 **REVISED CRITIQUE**
-WHO "died" excludes deaths among LTFU and not-evaluated patients. Tracing studies show non-trivial mortality among LTFU patients, about 10% in a Kenyan drug-susceptible-dominant setting and higher in drug-resistant cohorts. This could push true mortality among those who started treatment above 6%. A plausible range is perhaps +0.3 to +1.4 pp. The statin-attributable share of these deaths is uncertain, because they may occur after treatment interruption. The pre-treatment-death and untreated-case claims should be dropped or reframed, since they do not affect mortality among treated patients. Global WHO percentages are **UNVERIFIED**. Strength: **low-to-medium**, direction increases.
+- WHO outcome categories exclude post-LTFU and pre-treatment deaths. TB-specific evidence shows elevated mortality among LTFU patients, with about 10% found dead in one Kenyan tracing study and SMRs 2–7× higher than after cure.
+- True all-cause mortality among everyone who starts treatment is therefore probably somewhat above the "died" category.
+- The SROI uplift is smaller than 10–23% if the statin cannot affect deaths after treatment interruption.
+- **UNGROUNDED:** the exact WHO shares and the 10–20% death rate for not-evaluated patients.
+- Strength: low-to-medium, direction increases. Reduce the weight because of the addressability caveat.
 
 ---
 
 ## Critique 3: Covariance between mortality and DALYs per death
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic and arithmetic are correct, and the direction of the age–mortality relationship is supported. The magnitude (−10 to −15%) rests entirely on invented numbers. The critique may not apply at all, depending on how the 27 was derived.
+**CITATION CHECK**
+- GBD 2021 TB deaths and YLLs by age, country and HIV status: **NOT CHECKED.** The Investigator proposes this as an analysis and has not run it. The critique cites no paper, and the group numbers are labelled illustrative.
 
 **CLAIM CHECK**
-- **The arithmetic is correct. VERIFIED.**
-  - Mean mortality is 0.7×4% + 0.3×12% = 6.4%.
-  - Death-weighted DALYs are (0.98+0.54)/0.064 = 23.75.
-  - Expected DALYs per patient are 1.52, against 6.4%×27 = 1.728, so 12% lower.
-- **Higher-mortality subgroups tend to be older. VERIFIED.**
-  - In a South African cohort of 190,472 TB cases, 
-advancing age was the strongest risk factor for death, followed by HIV co-infection or unknown HIV status.
+- The arithmetic is **VERIFIED:**
+  - Mean mortality = 0.7×4% + 0.3×12% = 6.4%.
+  - Death-weighted DALYs = (0.028×35 + 0.036×15)/0.064 = 23.75.
+  - Expected DALYs per patient = 1.52, versus 6.4%×27 = 1.73, which is −12%.
+- The illustrative inputs are internally inconsistent with the "27" baseline. The case-weighted mean of 35 and 15 is 0.7×35 + 0.3×15 = 29, not 27. If 29 were the population-average comparator, the bias would be −18%, not −12%.
+- Higher mortality in older or comorbid patients: **VERIFIED.** 
+Advanced age raised the risk of death during treatment in Turkey.
+ 
+Old age, TB/HIV co-infection and baseline body weight under 35 kg increased mortality in Ethiopia.
 
-  - Kenyan data also associate older age with mortality: 
-other comorbidities, clinical diagnosis, undernourishment and older age were positively associated with mortality.
-
-  - Turkey: 
-advanced age increased mortality risk.
-
-- **HIV pushes the other way. PLAUSIBLE/VERIFIED in part.** 
-HIV co-infection (OR 2.2) and unknown HIV status (OR 2.8) were independently associated with death.
- Age-at-death for HIV-positive patients was not retrieved. The Kenyan cohort had 
-a median age of 32 years.
- This supports the point that many TB patients, and deaths, are young adults in high-HIV settings.
-- **"If 27 was derived without death weighting, the product is biased." CONDITIONAL.**
-  - GBD-style total DALYs (or YLLs) divided by total deaths is already a death-weighted mean. In that case no covariance bias arises.
-  - The bias arises only if 27 came from something else, such as life expectancy at an average age or a patient-weighted average age. I cannot see how 27 was derived.
-- **GBD 2021 can be used to compute this. PLAUSIBLE, not run.** I did not verify the specific GBD tables.
-- **The −10 to −15% effect in low-HIV settings. UNGROUNDED.** It is an artefact of the invented group parameters. The investigator flagged this.
+- HIV deaths push the other way: **PLAUSIBLE and consistent with the evidence.** In Cape Town, 
+the main risk factor was HIV status at treatment start.
+ HIV-associated deaths tend to be in younger adults. I did not retrieve an age-specific YLL figure.
+- "27 was derived without death-weighting": **UNVERIFIABLE.** I do not know how 27 was derived. If it came from GBD YLL ÷ deaths, it is already death-weighted by construction, and the critique's concern would not apply. The critique matters only if 27 came from a population or case-weighted age-at-diagnosis calculation.
 
 **EVIDENCE FOUND**
-- The relevant quantity is DALYs per *averted* death, which depends on who benefits from the statin. The statin might benefit older or comorbid patients differently, which adds further uncertainty.
-- Standard life-table YLLs overstate remaining life expectancy for sick patients. This is my own reasoning, not verified, and it suggests a further downward bias on top of the covariance issue.
-- Direction is uncertain overall: age pushes DALYs down, HIV and young-adult TB push them up.
+- Two points weaken the critique:
+  - Statin benefit may not be proportional across subgroups, so the right weight is deaths averted, not deaths.
+  - The Investigator concedes the sign is uncertain, particularly in high-HIV settings. The stated direction "decreases" with a −10 to −15% range is therefore stronger than the evidence allows.
+- The critique's structural point (E[m·d] ≠ E[m]·E[d] when the two covary) is mathematically correct.
+
+**CORE CLAIM**
+- Claim: The 27 DALYs/death input is not death-weighted, and the covariance is negative enough to bias the product upward by about 10–15%.
+- Support: **LOGIC ONLY**
+- Why: The covariance logic is sound, but I found no evidence on how 27 was derived or on the actual size of the covariance.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The mathematical structure is verified, and the empirical claim is **UNGROUNDED**.
 
 **REVISED CRITIQUE**
-Mortality is positively associated with age, and years lost per death fall with age. If dalys_per_death was computed as a population or patient-weighted average, multiplying by mean mortality overstates expected DALYs averted. If it was computed as total DALYs divided by total deaths, which is the GBD approach, the bias largely disappears. In high-HIV settings, young-adult deaths push the opposite way. The size of the effect is **UNGROUNDED** and the sign is uncertain.
-- The critique should be conditioned on how 27 was derived.
-- A GBD age/HIV-stratified death-weighted YLL calculation would settle it.
-- Strength: **low-to-medium**, direction **uncertain, leaning decreases** in low-HIV settings.
+- If dalys_per_death is a case-weighted or population-average figure rather than a death-weighted one, multiplying it by mean mortality can misstate expected DALYs averted.
+- Age is a known mortality risk factor, which supports a negative covariance in low-HIV settings. HIV-associated deaths in younger adults push the other way, so the net sign is uncertain.
+- **UNGROUNDED:** the −10 to −15% magnitude. It depends on how 27 was derived and on GBD age- and HIV-stratified YLL data.
+- Check first whether 27 is already GBD YLL ÷ deaths. If so, drop this critique.
+- Strength: low-to-medium, direction uncertain (lean decreases in low-HIV settings only).
 
 --- Critique: Under-ascertained deaths push true mortality up, and the direction is the opposite of Critiques 1–2 ---
 
 ## Critique 1: The 6% is a mix of deaths, and only a fraction is reachable and modifiable by atorvastatin
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis is well supported. The quantitative decomposition is ungrounded, and it risks double-counting.
+**CITATION CHECK**
+- Waitt & Squire 2011, IJTLD: **VERIFIED as existing, only partly verified on content.**
+  - It is a real paper: Int J Tuberc Lung Dis 2011;15(7):871–85. 
+It identified 62 studies on risk factors for death in patients started on TB treatment.
+
+  - 
+The review found two distinct epidemics with separate risk factors for death.
+
+  - Other papers cite it as showing that 
+comorbidities were risk factors in high-incidence, high-HIV settings rather than low-incidence, low-HIV settings.
+
+  - I could not retrieve the review itself. The critique's "many deaths occur early" attribution to it is unconfirmed, though other sources support the point.
+- "Country cohort studies": the Investigator named none. I found several (see Evidence Found).
+- Rifampicin–atorvastatin interaction: **VERIFIED.** 
+Rifampin shortened atorvastatin's half-life by 74%.
+ Prescribing guidance also notes 
+CYP3A inducers such as rifampin can cause variable reductions in atorvastatin plasma concentrations.
+
 
 **CLAIM CHECK**
-- **Waitt & Squire 2011 (IJTLD) exists. VERIFIED.** 
-It is Int J Tuberc Lung Dis 2011;15(7):871-85, PMID 21496360.
-
-  - I could only see how other papers describe it, not the paper itself. 
-One describes its risk factors as HIV co-infection, advancing immunosuppression, smear-negative disease and malnutrition.
- The investigator's recollection of HIV and malnutrition is therefore right.
-  - The recollection of older age is not confirmed by that secondary description.
-  - The claim that "many deaths occur early" is not verified as a finding of that review. Other studies support it (see below).
-- **Deaths are concentrated early. VERIFIED (multiple cohorts).**
-  - Zambia: 
-75.7% of deaths occurred in the first two months, with a median time to death of 21 days.
+- Deaths are concentrated early, in the first weeks: **VERIFIED.**
+  - Zambia, 1,063 deaths: 
+58.1% occurred in the first month and 75.1% in the first two months.
  
-More than half (58.1%) occurred in the first month.
+The median time to death was 21 days.
 
-  - Taiwan: 
-Underweight predicted mortality only in the first 8 weeks.
- This supports the malnutrition link.
-  - Another cohort found 
-TB-related deaths occurred early, with a median survival of 20 days.
+  - Kenya, Meru County: 
+76% of deaths occurred within three months of starting treatment.
 
   - Ethiopia: 
-56.7% of deaths occurred in the intensive phase.
+More than 70% of deaths occur in the first two months.
 
-  - Counter-evidence: in the Andhra Pradesh cohort, 
-deaths were described as fairly evenly distributed across treatment.
- The early concentration is therefore not universal.
-- **Some deaths are not TB-attributable. PLAUSIBLE/VERIFIED in direction.**
-  - One cohort split deaths into TB-related and non-TB-related. 
-Liver cirrhosis was the only comorbidity associated with TB-related death.
+  - Taiwan: 
+Underweight was associated with higher mortality only in the first 8 weeks.
 
-  - I found no pooled share of non-TB deaths, so the 15% is a placeholder.
-- **The rifampicin–atorvastatin interaction is established, but the investigator's framing is too simple. PARTIALLY VERIFIED.**
-  - The interaction is real but works in two directions. 
-A single rifampicin dose inhibits OATP1B1/1B3 and raises atorvastatin exposure about 6.8-fold. After multiple doses, induction can overcome this and lower exposure.
+- Very sick, malnourished or advanced-HIV patients dominate early deaths: **VERIFIED.** 
+The major risk factors for early death are HIV positivity, old age, being underweight and retreatment.
 
-  - 
-These opposing effects make the interaction hard to manage, with either reduced or raised statin levels.
-
-  - 
-Labelling recommends simultaneous co-administration, because delayed atorvastatin after rifampicin is associated with a significant drop in plasma concentration.
-
-  - Early exposure could even be higher, not lower. The inference that onset of benefit is delayed is not supported. It also contradicts the unqualified "limited by rifampicin induction."
-- **The arithmetic is correct.** 6% × 0.7 × 0.85 = 3.57%. I cannot verify the 3.9% threshold, because it comes from the source materials.
+- Some deaths are non-TB causes: **VERIFIED.** A Taiwanese review classified deaths as TB-related or non-TB-related. 
+Most TB-related deaths occurred early, with a median survival of 20 days.
+ The non-TB share varies by setting, and I did not find a pooled figure.
+- Some deaths occur before treatment starts: **VERIFIED, but outside the treated cohort.** In a US study, 
+TB-related death occurred during treatment for 75% of decedents and before treatment began for 25%.
+ These deaths would not be in an on-treatment 6%.
+- Rifampicin induction delays onset of statin benefit: **PLAUSIBLE.** The interaction is real. The timing of induction relative to benefit is an inference, and the Investigator labels it as one.
+- The arithmetic 6% × 0.7 × 0.85 = 3.57%: **VERIFIED** (≈3.6%). I could not verify the 3.9% threshold. It comes from the source model.
+- The 30% and 15% shares are placeholders, as the Investigator says. The 30% is plausible for deaths within about 2 weeks, given the Zambian median of 21 days. The 15% non-TB share is unsupported.
 
 **EVIDENCE FOUND**
-- Early-death concentration is strongly supported in sub-Saharan African cohorts (Zambia, Ethiopia, Cameroon). Taiwan adds that malnutrition-related excess mortality is confined to the first 8 weeks.
-- Double-counting risk, from my own reasoning. If the statin effect size comes from a trial or meta-analysis of all-cause mortality in enrolled patients, early and non-TB deaths are already reflected in that effect. Applying the "addressable share" haircut to the baseline as well would penalise the same deaths twice. The decomposition only holds if the model applies the effect as a relative reduction to unselected WHO-cohort mortality. This is an unverified inference.
-- Trial populations usually exclude the sickest patients. This makes the haircut more defensible if effect sizes come from healthier trial populations.
+- The timing evidence above comes from Zambia, Kenya, Ethiopia, Turkey, Cameroon and India. It supports the early-death premise strongly.
+- Caveat the Investigator did not raise: if the model's statin effect size comes from a trial population, it already excludes very early or ineligible deaths. Applying the "addressable share" haircut on top would double-count.
+- The eligibility factor appears in the mechanism formula but not in the worked example.
+- Early deaths may be partly reversible with timely care. 
+Deaths within 14 days of anti-TB treatment suggest some mortality may have been reversible with earlier therapy.
+ That cuts against treating all very early deaths as unreachable.
+
+**CORE CLAIM**
+- Claim: A large enough share of the 6% is unreachable or non-TB (about 35–40% combined) to push the effective baseline below 3.9%.
+- Support: **LOGIC ONLY**
+- Why: Early concentration of deaths is directly supported, but the specific shares are acknowledged placeholders, and I found no evidence on the statin onset-time or non-TB share needed to reach the threshold.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction (the addressable share is below 6%) is well supported. The magnitude, and the claim that the threshold is crossed, are ungrounded.
 
 **REVISED CRITIQUE**
-On-treatment TB deaths are concentrated in the first 1–2 months in many high-burden cohorts. Zambia shows about 75%, though some cohorts show flatter timing. Deaths in this window are often among malnourished, advanced-HIV or very sick patients. The rifampicin–atorvastatin interaction is bidirectional, so whether benefit onset is delayed is **UNGROUNDED**. The share of the 6% that is addressable is likely below 100%. The 30% and 15% figures and the 3.6% result are **illustrative only**.
-- The critique must state how the effect size was derived, to avoid double-counting.
-- Strength: medium, direction uncertain-to-decreasing. This holds only if effect sizes come from unselected populations.
+- Deaths during TB treatment are heavily front-loaded. In several African cohorts, roughly 55–75% occur within 1–2 months, and the median is about 3 weeks in Zambia.
+- Early deaths are concentrated in HIV-positive, underweight and older patients. Rifampicin cuts atorvastatin exposure substantially.
+- Applying the 6% to all patients probably overstates the share a statin could avert.
+- **UNGROUNDED:** the size of the haircut. Needed evidence: statin time-to-effect, the TB-attributable share of deaths, and whether the model's effect size already reflects an enrolled trial population.
+- Strength: medium, direction decreases, with a caution against double-counting.
 
 ---
 
 ## Critique 2: Under-ascertained deaths push true mortality up
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The mechanism is sound and some direction-of-effect evidence exists. The magnitude is plausible but weakly grounded. There are definitional problems and a labelling error.
+**CITATION CHECK**
+- WHO Global TB Report outcome categories: **VERIFIED for definitions.** WHO data lists 
+treatment success (cured or completed), failed, died, lost to follow-up, or not evaluated
+ as the outcome categories.
+- WHO figures of "~5–6% died, ~3–4% LTFU, a few % not evaluated": **UNVERIFIED.** I could not retrieve the global outcome table. 
+Global treatment success was 88% in 2023 and 2022.
+ That leaves about 12% across all other outcomes, which is consistent with the Investigator's recall but does not confirm it.
+- The tracing studies the Investigator "believed" existed: **found, see below.**
 
 **CLAIM CHECK**
-- **WHO outcome categories are as described. VERIFIED.** 
-The categories are treatment success, failed, died, lost to follow-up and not evaluated.
- 
-The denominator is everyone who started rifampicin-susceptible treatment.
- So deaths among LTFU and not-evaluated patients are not in the "died" numerator.
-- **Specific global percentages (5–6% died, 3–4% LTFU, a few percent not evaluated). UNVERIFIABLE from my searches.**
-  - I confirmed only that 
-global treatment success was 88% in 2023 and 2022.
+- The 6% comes from the "died" category and excludes LTFU and not-evaluated patients: **PLAUSIBLE.** WHO's definition supports the structure. I cannot confirm how the source model derived its 6%.
+- LTFU is about 3–4% and not-evaluated a few percent: **PLAUSIBLE.**
+  - Uganda/Kenya-type cohort: 
+5.5% died and 2.6% were LTFU
+, and 618/10,717 (5.8%) were not evaluated.
+  - Kenya, Meru County: 
+6.3% were LTFU and 5.1% died.
 
-  - Kenya's 2022 national data were about 
-6% died and 5% lost to follow-up.
+  - Ranges vary widely by country, and Zimbabwe has very high not-evaluated shares.
+- A meaningful share of LTFU patients die: **SUPPORTED for TB, at the low end of the Investigator's 10–20%.**
+  - Kenya CHP tracing: 
+of 140 patients identified for tracing, 36 (25.7%) were traced, 90 had relocated and 14 (10.0%) had died.
 
-  - A Kenyan county surveillance dataset had 
-5.5% died, 2.6% LTFU and 5.8% not evaluated.
- That makes LTFU plus NE 8.4% there, higher than the 6–7% assumed.
-  - Not-evaluated can be very large in some programmes. 
-Zimbabwe reports high percentages of not-evaluated outcomes.
+  - A medRxiv cohort found that 
+LTFU raised standardized five-year mortality by 2.23 percentage points.
+ It noted that 
+SMRs after LTFU are two to seven times higher than after cure.
 
-- **A meaningful share of LTFU patients die. VERIFIED in direction. The 10–20% range is plausible but evidence is mixed.**
-  - A Kilifi, Kenya tracing study (medRxiv preprint) 
-found 14 of 140 patients identified for tracing (10%) had died, with 36 traced and 90 relocated.
- That matches the low end of the investigator's range.
-  - 
-A Georgia study of second-line (MDR/XDR) treatment found 107 of 461 LFU patients (23%) died.
- This is drug-resistant TB, so it is not a good analogue for drug-susceptible TB.
-  - 
-An Estonian study found 30% of the 102 traced LFU patients died.
- It mixed drug-susceptible and drug-resistant TB.
-  - A Brazilian preprint found 
-8.0% of LFU patients died, at a median of 17.5 months after LTFU.
- It also found 
-a two- to three-fold increased hazard of late mortality after LTFU.
+  - Cape Town tracing: a small share died among true LTFU (1/30 and 3/12 in two subgroups). That is a low and noisy signal.
+  - The HIV ART LTFU meta-analysis (20–60% of traced patients dead) is about ART programmes, not TB, so it should not be used for the TB range.
+- Pre-treatment deaths and untreated cases are excluded: **VERIFIED, but not statin-reachable.** In Zimbabwe, 
+49.6% (252/508) of pre-treatment lost-to-follow-up TB patients died.
+ In Cape Town, 
+2% died before starting treatment.
 
-  - The Brazilian deaths occur long after the on-treatment window. This undermines treating them as "on-treatment mortality."
-- **Deaths before treatment start or among untreated patients push true mortality up. PARTIALLY MISREPRESENTED.**
-  - The 6% is a share of patients who started treatment, so pre-treatment deaths are outside both the numerator and the denominator. They do not make "mortality among treated patients" higher.
-  - They matter only if the model's population is broader than the WHO treated cohort. In Cape Town, 
-17.1% of initially lost patients died, 69.7% of them within 30 days.
- That is a different population.
-  - Under WHO definitions, transfers out fall into "not evaluated". This is from my background knowledge, not verified in these searches.
-- **The arithmetic is correct.** 0.6 and 1.4 pp are right, giving 6.6–7.4% and a 10–23% proportional rise.
-- **Internal labelling error.** The title says "opposite of Critiques 1–2", but this is Critique 2. It presumably means Critiques 1 and 3. This should be fixed.
+- Arithmetic: 6–7% × 10–20% = 0.6–1.4 pp. 6.6–7.4% / 6% = +10% to +23%. **VERIFIED.**
+- The title says "opposite of Critiques 1–2", but this is Critique 2. It is probably a labelling slip and should say "opposite of Critique 1".
 
 **EVIDENCE FOUND**
-- The Kenyan surveillance paper says 
-the vital status of the 8.4% who were LTFU or not evaluated could not be ascertained.
- This directly supports the under-ascertainment mechanism.
-- The Kilifi tracing study (10%) supports the low end of the range. The drug-resistant TB studies (23–30%) are less applicable.
-- The timing of deaths among LTFU patients undermines the "on-treatment" framing and the statin-attributable fraction.
+- Mortality in some settings is already above 6%, for example 
+8.6% among South African adults on treatment.
+ This shows that 6% is a global average, not a floor.
+- A conceptual weakness: many LTFU deaths happen after treatment stops. They are not on-treatment deaths, so a statin taken during treatment may not be able to avert them. The Investigator mentions this caveat but still applies the full proportional uplift to SROI.
+- "Not evaluated" includes transfers and missing records, and most of these patients are probably alive. A 10–20% death rate for that group is unsupported. The 10–20% range fits LTFU better than the not-evaluated group.
+- This critique and Critique 1 pull in opposite directions. Both are plausible, and the net effect is undetermined.
+
+**CORE CLAIM**
+- Claim: A meaningful share of LTFU and not-evaluated patients die, so true mortality among treated patients exceeds 6%, and the excess is relevant to statin benefit.
+- Support: **SUPPORTED for direction.** Several studies show excess mortality after LTFU, but the 10–20% magnitude and the statin relevance are only logic.
+- Why: Tracing and cohort data show elevated post-LTFU mortality (about 10% in Kenya, SMR 2–7×), but no source shows these deaths are modifiable by an adjunct taken during treatment.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.**
 
 **REVISED CRITIQUE**
-WHO "died" excludes deaths among LTFU and not-evaluated patients. Tracing studies show non-trivial mortality among LTFU patients, about 10% in a Kenyan drug-susceptible-dominant setting and higher in drug-resistant cohorts. This could push true mortality among those who started treatment above 6%. A plausible range is perhaps +0.3 to +1.4 pp. The statin-attributable share of these deaths is uncertain, because they may occur after treatment interruption. The pre-treatment-death and untreated-case claims should be dropped or reframed, since they do not affect mortality among treated patients. Global WHO percentages are **UNVERIFIED**. Strength: **low-to-medium**, direction increases.
+- WHO outcome categories exclude post-LTFU and pre-treatment deaths. TB-specific evidence shows elevated mortality among LTFU patients, with about 10% found dead in one Kenyan tracing study and SMRs 2–7× higher than after cure.
+- True all-cause mortality among everyone who starts treatment is therefore probably somewhat above the "died" category.
+- The SROI uplift is smaller than 10–23% if the statin cannot affect deaths after treatment interruption.
+- **UNGROUNDED:** the exact WHO shares and the 10–20% death rate for not-evaluated patients.
+- Strength: low-to-medium, direction increases. Reduce the weight because of the addressability caveat.
 
 ---
 
 ## Critique 3: Covariance between mortality and DALYs per death
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic and arithmetic are correct, and the direction of the age–mortality relationship is supported. The magnitude (−10 to −15%) rests entirely on invented numbers. The critique may not apply at all, depending on how the 27 was derived.
+**CITATION CHECK**
+- GBD 2021 TB deaths and YLLs by age, country and HIV status: **NOT CHECKED.** The Investigator proposes this as an analysis and has not run it. The critique cites no paper, and the group numbers are labelled illustrative.
 
 **CLAIM CHECK**
-- **The arithmetic is correct. VERIFIED.**
-  - Mean mortality is 0.7×4% + 0.3×12% = 6.4%.
-  - Death-weighted DALYs are (0.98+0.54)/0.064 = 23.75.
-  - Expected DALYs per patient are 1.52, against 6.4%×27 = 1.728, so 12% lower.
-- **Higher-mortality subgroups tend to be older. VERIFIED.**
-  - In a South African cohort of 190,472 TB cases, 
-advancing age was the strongest risk factor for death, followed by HIV co-infection or unknown HIV status.
+- The arithmetic is **VERIFIED:**
+  - Mean mortality = 0.7×4% + 0.3×12% = 6.4%.
+  - Death-weighted DALYs = (0.028×35 + 0.036×15)/0.064 = 23.75.
+  - Expected DALYs per patient = 1.52, versus 6.4%×27 = 1.73, which is −12%.
+- The illustrative inputs are internally inconsistent with the "27" baseline. The case-weighted mean of 35 and 15 is 0.7×35 + 0.3×15 = 29, not 27. If 29 were the population-average comparator, the bias would be −18%, not −12%.
+- Higher mortality in older or comorbid patients: **VERIFIED.** 
+Advanced age raised the risk of death during treatment in Turkey.
+ 
+Old age, TB/HIV co-infection and baseline body weight under 35 kg increased mortality in Ethiopia.
 
-  - Kenyan data also associate older age with mortality: 
-other comorbidities, clinical diagnosis, undernourishment and older age were positively associated with mortality.
-
-  - Turkey: 
-advanced age increased mortality risk.
-
-- **HIV pushes the other way. PLAUSIBLE/VERIFIED in part.** 
-HIV co-infection (OR 2.2) and unknown HIV status (OR 2.8) were independently associated with death.
- Age-at-death for HIV-positive patients was not retrieved. The Kenyan cohort had 
-a median age of 32 years.
- This supports the point that many TB patients, and deaths, are young adults in high-HIV settings.
-- **"If 27 was derived without death weighting, the product is biased." CONDITIONAL.**
-  - GBD-style total DALYs (or YLLs) divided by total deaths is already a death-weighted mean. In that case no covariance bias arises.
-  - The bias arises only if 27 came from something else, such as life expectancy at an average age or a patient-weighted average age. I cannot see how 27 was derived.
-- **GBD 2021 can be used to compute this. PLAUSIBLE, not run.** I did not verify the specific GBD tables.
-- **The −10 to −15% effect in low-HIV settings. UNGROUNDED.** It is an artefact of the invented group parameters. The investigator flagged this.
+- HIV deaths push the other way: **PLAUSIBLE and consistent with the evidence.** In Cape Town, 
+the main risk factor was HIV status at treatment start.
+ HIV-associated deaths tend to be in younger adults. I did not retrieve an age-specific YLL figure.
+- "27 was derived without death-weighting": **UNVERIFIABLE.** I do not know how 27 was derived. If it came from GBD YLL ÷ deaths, it is already death-weighted by construction, and the critique's concern would not apply. The critique matters only if 27 came from a population or case-weighted age-at-diagnosis calculation.
 
 **EVIDENCE FOUND**
-- The relevant quantity is DALYs per *averted* death, which depends on who benefits from the statin. The statin might benefit older or comorbid patients differently, which adds further uncertainty.
-- Standard life-table YLLs overstate remaining life expectancy for sick patients. This is my own reasoning, not verified, and it suggests a further downward bias on top of the covariance issue.
-- Direction is uncertain overall: age pushes DALYs down, HIV and young-adult TB push them up.
+- Two points weaken the critique:
+  - Statin benefit may not be proportional across subgroups, so the right weight is deaths averted, not deaths.
+  - The Investigator concedes the sign is uncertain, particularly in high-HIV settings. The stated direction "decreases" with a −10 to −15% range is therefore stronger than the evidence allows.
+- The critique's structural point (E[m·d] ≠ E[m]·E[d] when the two covary) is mathematically correct.
+
+**CORE CLAIM**
+- Claim: The 27 DALYs/death input is not death-weighted, and the covariance is negative enough to bias the product upward by about 10–15%.
+- Support: **LOGIC ONLY**
+- Why: The covariance logic is sound, but I found no evidence on how 27 was derived or on the actual size of the covariance.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The mathematical structure is verified, and the empirical claim is **UNGROUNDED**.
 
 **REVISED CRITIQUE**
-Mortality is positively associated with age, and years lost per death fall with age. If dalys_per_death was computed as a population or patient-weighted average, multiplying by mean mortality overstates expected DALYs averted. If it was computed as total DALYs divided by total deaths, which is the GBD approach, the bias largely disappears. In high-HIV settings, young-adult deaths push the opposite way. The size of the effect is **UNGROUNDED** and the sign is uncertain.
-- The critique should be conditioned on how 27 was derived.
-- A GBD age/HIV-stratified death-weighted YLL calculation would settle it.
-- Strength: **low-to-medium**, direction **uncertain, leaning decreases** in low-HIV settings.
+- If dalys_per_death is a case-weighted or population-average figure rather than a death-weighted one, multiplying it by mean mortality can misstate expected DALYs averted.
+- Age is a known mortality risk factor, which supports a negative covariance in low-HIV settings. HIV-associated deaths in younger adults push the other way, so the net sign is uncertain.
+- **UNGROUNDED:** the −10 to −15% magnitude. It depends on how 27 was derived and on GBD age- and HIV-stratified YLL data.
+- Check first whether 27 is already GBD YLL ÷ deaths. If so, drop this critique.
+- Strength: low-to-medium, direction uncertain (lean decreases in low-HIV settings only).
 
 --- Critique: Covariance between mortality and DALYs per death means the product of means is not the mean of the product ---
 
 ## Critique 1: The 6% is a mix of deaths, and only a fraction is reachable and modifiable by atorvastatin
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The qualitative hypothesis is well supported. The quantitative decomposition is ungrounded, and it risks double-counting.
+**CITATION CHECK**
+- Waitt & Squire 2011, IJTLD: **VERIFIED as existing, only partly verified on content.**
+  - It is a real paper: Int J Tuberc Lung Dis 2011;15(7):871–85. 
+It identified 62 studies on risk factors for death in patients started on TB treatment.
+
+  - 
+The review found two distinct epidemics with separate risk factors for death.
+
+  - Other papers cite it as showing that 
+comorbidities were risk factors in high-incidence, high-HIV settings rather than low-incidence, low-HIV settings.
+
+  - I could not retrieve the review itself. The critique's "many deaths occur early" attribution to it is unconfirmed, though other sources support the point.
+- "Country cohort studies": the Investigator named none. I found several (see Evidence Found).
+- Rifampicin–atorvastatin interaction: **VERIFIED.** 
+Rifampin shortened atorvastatin's half-life by 74%.
+ Prescribing guidance also notes 
+CYP3A inducers such as rifampin can cause variable reductions in atorvastatin plasma concentrations.
+
 
 **CLAIM CHECK**
-- **Waitt & Squire 2011 (IJTLD) exists. VERIFIED.** 
-It is Int J Tuberc Lung Dis 2011;15(7):871-85, PMID 21496360.
-
-  - I could only see how other papers describe it, not the paper itself. 
-One describes its risk factors as HIV co-infection, advancing immunosuppression, smear-negative disease and malnutrition.
- The investigator's recollection of HIV and malnutrition is therefore right.
-  - The recollection of older age is not confirmed by that secondary description.
-  - The claim that "many deaths occur early" is not verified as a finding of that review. Other studies support it (see below).
-- **Deaths are concentrated early. VERIFIED (multiple cohorts).**
-  - Zambia: 
-75.7% of deaths occurred in the first two months, with a median time to death of 21 days.
+- Deaths are concentrated early, in the first weeks: **VERIFIED.**
+  - Zambia, 1,063 deaths: 
+58.1% occurred in the first month and 75.1% in the first two months.
  
-More than half (58.1%) occurred in the first month.
+The median time to death was 21 days.
 
-  - Taiwan: 
-Underweight predicted mortality only in the first 8 weeks.
- This supports the malnutrition link.
-  - Another cohort found 
-TB-related deaths occurred early, with a median survival of 20 days.
+  - Kenya, Meru County: 
+76% of deaths occurred within three months of starting treatment.
 
   - Ethiopia: 
-56.7% of deaths occurred in the intensive phase.
+More than 70% of deaths occur in the first two months.
 
-  - Counter-evidence: in the Andhra Pradesh cohort, 
-deaths were described as fairly evenly distributed across treatment.
- The early concentration is therefore not universal.
-- **Some deaths are not TB-attributable. PLAUSIBLE/VERIFIED in direction.**
-  - One cohort split deaths into TB-related and non-TB-related. 
-Liver cirrhosis was the only comorbidity associated with TB-related death.
+  - Taiwan: 
+Underweight was associated with higher mortality only in the first 8 weeks.
 
-  - I found no pooled share of non-TB deaths, so the 15% is a placeholder.
-- **The rifampicin–atorvastatin interaction is established, but the investigator's framing is too simple. PARTIALLY VERIFIED.**
-  - The interaction is real but works in two directions. 
-A single rifampicin dose inhibits OATP1B1/1B3 and raises atorvastatin exposure about 6.8-fold. After multiple doses, induction can overcome this and lower exposure.
+- Very sick, malnourished or advanced-HIV patients dominate early deaths: **VERIFIED.** 
+The major risk factors for early death are HIV positivity, old age, being underweight and retreatment.
 
-  - 
-These opposing effects make the interaction hard to manage, with either reduced or raised statin levels.
-
-  - 
-Labelling recommends simultaneous co-administration, because delayed atorvastatin after rifampicin is associated with a significant drop in plasma concentration.
-
-  - Early exposure could even be higher, not lower. The inference that onset of benefit is delayed is not supported. It also contradicts the unqualified "limited by rifampicin induction."
-- **The arithmetic is correct.** 6% × 0.7 × 0.85 = 3.57%. I cannot verify the 3.9% threshold, because it comes from the source materials.
+- Some deaths are non-TB causes: **VERIFIED.** A Taiwanese review classified deaths as TB-related or non-TB-related. 
+Most TB-related deaths occurred early, with a median survival of 20 days.
+ The non-TB share varies by setting, and I did not find a pooled figure.
+- Some deaths occur before treatment starts: **VERIFIED, but outside the treated cohort.** In a US study, 
+TB-related death occurred during treatment for 75% of decedents and before treatment began for 25%.
+ These deaths would not be in an on-treatment 6%.
+- Rifampicin induction delays onset of statin benefit: **PLAUSIBLE.** The interaction is real. The timing of induction relative to benefit is an inference, and the Investigator labels it as one.
+- The arithmetic 6% × 0.7 × 0.85 = 3.57%: **VERIFIED** (≈3.6%). I could not verify the 3.9% threshold. It comes from the source model.
+- The 30% and 15% shares are placeholders, as the Investigator says. The 30% is plausible for deaths within about 2 weeks, given the Zambian median of 21 days. The 15% non-TB share is unsupported.
 
 **EVIDENCE FOUND**
-- Early-death concentration is strongly supported in sub-Saharan African cohorts (Zambia, Ethiopia, Cameroon). Taiwan adds that malnutrition-related excess mortality is confined to the first 8 weeks.
-- Double-counting risk, from my own reasoning. If the statin effect size comes from a trial or meta-analysis of all-cause mortality in enrolled patients, early and non-TB deaths are already reflected in that effect. Applying the "addressable share" haircut to the baseline as well would penalise the same deaths twice. The decomposition only holds if the model applies the effect as a relative reduction to unselected WHO-cohort mortality. This is an unverified inference.
-- Trial populations usually exclude the sickest patients. This makes the haircut more defensible if effect sizes come from healthier trial populations.
+- The timing evidence above comes from Zambia, Kenya, Ethiopia, Turkey, Cameroon and India. It supports the early-death premise strongly.
+- Caveat the Investigator did not raise: if the model's statin effect size comes from a trial population, it already excludes very early or ineligible deaths. Applying the "addressable share" haircut on top would double-count.
+- The eligibility factor appears in the mechanism formula but not in the worked example.
+- Early deaths may be partly reversible with timely care. 
+Deaths within 14 days of anti-TB treatment suggest some mortality may have been reversible with earlier therapy.
+ That cuts against treating all very early deaths as unreachable.
+
+**CORE CLAIM**
+- Claim: A large enough share of the 6% is unreachable or non-TB (about 35–40% combined) to push the effective baseline below 3.9%.
+- Support: **LOGIC ONLY**
+- Why: Early concentration of deaths is directly supported, but the specific shares are acknowledged placeholders, and I found no evidence on the statin onset-time or non-TB share needed to reach the threshold.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The direction (the addressable share is below 6%) is well supported. The magnitude, and the claim that the threshold is crossed, are ungrounded.
 
 **REVISED CRITIQUE**
-On-treatment TB deaths are concentrated in the first 1–2 months in many high-burden cohorts. Zambia shows about 75%, though some cohorts show flatter timing. Deaths in this window are often among malnourished, advanced-HIV or very sick patients. The rifampicin–atorvastatin interaction is bidirectional, so whether benefit onset is delayed is **UNGROUNDED**. The share of the 6% that is addressable is likely below 100%. The 30% and 15% figures and the 3.6% result are **illustrative only**.
-- The critique must state how the effect size was derived, to avoid double-counting.
-- Strength: medium, direction uncertain-to-decreasing. This holds only if effect sizes come from unselected populations.
+- Deaths during TB treatment are heavily front-loaded. In several African cohorts, roughly 55–75% occur within 1–2 months, and the median is about 3 weeks in Zambia.
+- Early deaths are concentrated in HIV-positive, underweight and older patients. Rifampicin cuts atorvastatin exposure substantially.
+- Applying the 6% to all patients probably overstates the share a statin could avert.
+- **UNGROUNDED:** the size of the haircut. Needed evidence: statin time-to-effect, the TB-attributable share of deaths, and whether the model's effect size already reflects an enrolled trial population.
+- Strength: medium, direction decreases, with a caution against double-counting.
 
 ---
 
 ## Critique 2: Under-ascertained deaths push true mortality up
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The mechanism is sound and some direction-of-effect evidence exists. The magnitude is plausible but weakly grounded. There are definitional problems and a labelling error.
+**CITATION CHECK**
+- WHO Global TB Report outcome categories: **VERIFIED for definitions.** WHO data lists 
+treatment success (cured or completed), failed, died, lost to follow-up, or not evaluated
+ as the outcome categories.
+- WHO figures of "~5–6% died, ~3–4% LTFU, a few % not evaluated": **UNVERIFIED.** I could not retrieve the global outcome table. 
+Global treatment success was 88% in 2023 and 2022.
+ That leaves about 12% across all other outcomes, which is consistent with the Investigator's recall but does not confirm it.
+- The tracing studies the Investigator "believed" existed: **found, see below.**
 
 **CLAIM CHECK**
-- **WHO outcome categories are as described. VERIFIED.** 
-The categories are treatment success, failed, died, lost to follow-up and not evaluated.
- 
-The denominator is everyone who started rifampicin-susceptible treatment.
- So deaths among LTFU and not-evaluated patients are not in the "died" numerator.
-- **Specific global percentages (5–6% died, 3–4% LTFU, a few percent not evaluated). UNVERIFIABLE from my searches.**
-  - I confirmed only that 
-global treatment success was 88% in 2023 and 2022.
+- The 6% comes from the "died" category and excludes LTFU and not-evaluated patients: **PLAUSIBLE.** WHO's definition supports the structure. I cannot confirm how the source model derived its 6%.
+- LTFU is about 3–4% and not-evaluated a few percent: **PLAUSIBLE.**
+  - Uganda/Kenya-type cohort: 
+5.5% died and 2.6% were LTFU
+, and 618/10,717 (5.8%) were not evaluated.
+  - Kenya, Meru County: 
+6.3% were LTFU and 5.1% died.
 
-  - Kenya's 2022 national data were about 
-6% died and 5% lost to follow-up.
+  - Ranges vary widely by country, and Zimbabwe has very high not-evaluated shares.
+- A meaningful share of LTFU patients die: **SUPPORTED for TB, at the low end of the Investigator's 10–20%.**
+  - Kenya CHP tracing: 
+of 140 patients identified for tracing, 36 (25.7%) were traced, 90 had relocated and 14 (10.0%) had died.
 
-  - A Kenyan county surveillance dataset had 
-5.5% died, 2.6% LTFU and 5.8% not evaluated.
- That makes LTFU plus NE 8.4% there, higher than the 6–7% assumed.
-  - Not-evaluated can be very large in some programmes. 
-Zimbabwe reports high percentages of not-evaluated outcomes.
+  - A medRxiv cohort found that 
+LTFU raised standardized five-year mortality by 2.23 percentage points.
+ It noted that 
+SMRs after LTFU are two to seven times higher than after cure.
 
-- **A meaningful share of LTFU patients die. VERIFIED in direction. The 10–20% range is plausible but evidence is mixed.**
-  - A Kilifi, Kenya tracing study (medRxiv preprint) 
-found 14 of 140 patients identified for tracing (10%) had died, with 36 traced and 90 relocated.
- That matches the low end of the investigator's range.
-  - 
-A Georgia study of second-line (MDR/XDR) treatment found 107 of 461 LFU patients (23%) died.
- This is drug-resistant TB, so it is not a good analogue for drug-susceptible TB.
-  - 
-An Estonian study found 30% of the 102 traced LFU patients died.
- It mixed drug-susceptible and drug-resistant TB.
-  - A Brazilian preprint found 
-8.0% of LFU patients died, at a median of 17.5 months after LTFU.
- It also found 
-a two- to three-fold increased hazard of late mortality after LTFU.
+  - Cape Town tracing: a small share died among true LTFU (1/30 and 3/12 in two subgroups). That is a low and noisy signal.
+  - The HIV ART LTFU meta-analysis (20–60% of traced patients dead) is about ART programmes, not TB, so it should not be used for the TB range.
+- Pre-treatment deaths and untreated cases are excluded: **VERIFIED, but not statin-reachable.** In Zimbabwe, 
+49.6% (252/508) of pre-treatment lost-to-follow-up TB patients died.
+ In Cape Town, 
+2% died before starting treatment.
 
-  - The Brazilian deaths occur long after the on-treatment window. This undermines treating them as "on-treatment mortality."
-- **Deaths before treatment start or among untreated patients push true mortality up. PARTIALLY MISREPRESENTED.**
-  - The 6% is a share of patients who started treatment, so pre-treatment deaths are outside both the numerator and the denominator. They do not make "mortality among treated patients" higher.
-  - They matter only if the model's population is broader than the WHO treated cohort. In Cape Town, 
-17.1% of initially lost patients died, 69.7% of them within 30 days.
- That is a different population.
-  - Under WHO definitions, transfers out fall into "not evaluated". This is from my background knowledge, not verified in these searches.
-- **The arithmetic is correct.** 0.6 and 1.4 pp are right, giving 6.6–7.4% and a 10–23% proportional rise.
-- **Internal labelling error.** The title says "opposite of Critiques 1–2", but this is Critique 2. It presumably means Critiques 1 and 3. This should be fixed.
+- Arithmetic: 6–7% × 10–20% = 0.6–1.4 pp. 6.6–7.4% / 6% = +10% to +23%. **VERIFIED.**
+- The title says "opposite of Critiques 1–2", but this is Critique 2. It is probably a labelling slip and should say "opposite of Critique 1".
 
 **EVIDENCE FOUND**
-- The Kenyan surveillance paper says 
-the vital status of the 8.4% who were LTFU or not evaluated could not be ascertained.
- This directly supports the under-ascertainment mechanism.
-- The Kilifi tracing study (10%) supports the low end of the range. The drug-resistant TB studies (23–30%) are less applicable.
-- The timing of deaths among LTFU patients undermines the "on-treatment" framing and the statin-attributable fraction.
+- Mortality in some settings is already above 6%, for example 
+8.6% among South African adults on treatment.
+ This shows that 6% is a global average, not a floor.
+- A conceptual weakness: many LTFU deaths happen after treatment stops. They are not on-treatment deaths, so a statin taken during treatment may not be able to avert them. The Investigator mentions this caveat but still applies the full proportional uplift to SROI.
+- "Not evaluated" includes transfers and missing records, and most of these patients are probably alive. A 10–20% death rate for that group is unsupported. The 10–20% range fits LTFU better than the not-evaluated group.
+- This critique and Critique 1 pull in opposite directions. Both are plausible, and the net effect is undetermined.
+
+**CORE CLAIM**
+- Claim: A meaningful share of LTFU and not-evaluated patients die, so true mortality among treated patients exceeds 6%, and the excess is relevant to statin benefit.
+- Support: **SUPPORTED for direction.** Several studies show excess mortality after LTFU, but the 10–20% magnitude and the statin relevance are only logic.
+- Why: Tracing and cohort data show elevated post-LTFU mortality (about 10% in Kenya, SMR 2–7×), but no source shows these deaths are modifiable by an adjunct taken during treatment.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.**
 
 **REVISED CRITIQUE**
-WHO "died" excludes deaths among LTFU and not-evaluated patients. Tracing studies show non-trivial mortality among LTFU patients, about 10% in a Kenyan drug-susceptible-dominant setting and higher in drug-resistant cohorts. This could push true mortality among those who started treatment above 6%. A plausible range is perhaps +0.3 to +1.4 pp. The statin-attributable share of these deaths is uncertain, because they may occur after treatment interruption. The pre-treatment-death and untreated-case claims should be dropped or reframed, since they do not affect mortality among treated patients. Global WHO percentages are **UNVERIFIED**. Strength: **low-to-medium**, direction increases.
+- WHO outcome categories exclude post-LTFU and pre-treatment deaths. TB-specific evidence shows elevated mortality among LTFU patients, with about 10% found dead in one Kenyan tracing study and SMRs 2–7× higher than after cure.
+- True all-cause mortality among everyone who starts treatment is therefore probably somewhat above the "died" category.
+- The SROI uplift is smaller than 10–23% if the statin cannot affect deaths after treatment interruption.
+- **UNGROUNDED:** the exact WHO shares and the 10–20% death rate for not-evaluated patients.
+- Strength: low-to-medium, direction increases. Reduce the weight because of the addressability caveat.
 
 ---
 
 ## Critique 3: Covariance between mortality and DALYs per death
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic and arithmetic are correct, and the direction of the age–mortality relationship is supported. The magnitude (−10 to −15%) rests entirely on invented numbers. The critique may not apply at all, depending on how the 27 was derived.
+**CITATION CHECK**
+- GBD 2021 TB deaths and YLLs by age, country and HIV status: **NOT CHECKED.** The Investigator proposes this as an analysis and has not run it. The critique cites no paper, and the group numbers are labelled illustrative.
 
 **CLAIM CHECK**
-- **The arithmetic is correct. VERIFIED.**
-  - Mean mortality is 0.7×4% + 0.3×12% = 6.4%.
-  - Death-weighted DALYs are (0.98+0.54)/0.064 = 23.75.
-  - Expected DALYs per patient are 1.52, against 6.4%×27 = 1.728, so 12% lower.
-- **Higher-mortality subgroups tend to be older. VERIFIED.**
-  - In a South African cohort of 190,472 TB cases, 
-advancing age was the strongest risk factor for death, followed by HIV co-infection or unknown HIV status.
+- The arithmetic is **VERIFIED:**
+  - Mean mortality = 0.7×4% + 0.3×12% = 6.4%.
+  - Death-weighted DALYs = (0.028×35 + 0.036×15)/0.064 = 23.75.
+  - Expected DALYs per patient = 1.52, versus 6.4%×27 = 1.73, which is −12%.
+- The illustrative inputs are internally inconsistent with the "27" baseline. The case-weighted mean of 35 and 15 is 0.7×35 + 0.3×15 = 29, not 27. If 29 were the population-average comparator, the bias would be −18%, not −12%.
+- Higher mortality in older or comorbid patients: **VERIFIED.** 
+Advanced age raised the risk of death during treatment in Turkey.
+ 
+Old age, TB/HIV co-infection and baseline body weight under 35 kg increased mortality in Ethiopia.
 
-  - Kenyan data also associate older age with mortality: 
-other comorbidities, clinical diagnosis, undernourishment and older age were positively associated with mortality.
-
-  - Turkey: 
-advanced age increased mortality risk.
-
-- **HIV pushes the other way. PLAUSIBLE/VERIFIED in part.** 
-HIV co-infection (OR 2.2) and unknown HIV status (OR 2.8) were independently associated with death.
- Age-at-death for HIV-positive patients was not retrieved. The Kenyan cohort had 
-a median age of 32 years.
- This supports the point that many TB patients, and deaths, are young adults in high-HIV settings.
-- **"If 27 was derived without death weighting, the product is biased." CONDITIONAL.**
-  - GBD-style total DALYs (or YLLs) divided by total deaths is already a death-weighted mean. In that case no covariance bias arises.
-  - The bias arises only if 27 came from something else, such as life expectancy at an average age or a patient-weighted average age. I cannot see how 27 was derived.
-- **GBD 2021 can be used to compute this. PLAUSIBLE, not run.** I did not verify the specific GBD tables.
-- **The −10 to −15% effect in low-HIV settings. UNGROUNDED.** It is an artefact of the invented group parameters. The investigator flagged this.
+- HIV deaths push the other way: **PLAUSIBLE and consistent with the evidence.** In Cape Town, 
+the main risk factor was HIV status at treatment start.
+ HIV-associated deaths tend to be in younger adults. I did not retrieve an age-specific YLL figure.
+- "27 was derived without death-weighting": **UNVERIFIABLE.** I do not know how 27 was derived. If it came from GBD YLL ÷ deaths, it is already death-weighted by construction, and the critique's concern would not apply. The critique matters only if 27 came from a population or case-weighted age-at-diagnosis calculation.
 
 **EVIDENCE FOUND**
-- The relevant quantity is DALYs per *averted* death, which depends on who benefits from the statin. The statin might benefit older or comorbid patients differently, which adds further uncertainty.
-- Standard life-table YLLs overstate remaining life expectancy for sick patients. This is my own reasoning, not verified, and it suggests a further downward bias on top of the covariance issue.
-- Direction is uncertain overall: age pushes DALYs down, HIV and young-adult TB push them up.
+- Two points weaken the critique:
+  - Statin benefit may not be proportional across subgroups, so the right weight is deaths averted, not deaths.
+  - The Investigator concedes the sign is uncertain, particularly in high-HIV settings. The stated direction "decreases" with a −10 to −15% range is therefore stronger than the evidence allows.
+- The critique's structural point (E[m·d] ≠ E[m]·E[d] when the two covary) is mathematically correct.
+
+**CORE CLAIM**
+- Claim: The 27 DALYs/death input is not death-weighted, and the covariance is negative enough to bias the product upward by about 10–15%.
+- Support: **LOGIC ONLY**
+- Why: The covariance logic is sound, but I found no evidence on how 27 was derived or on the actual size of the covariance.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The mathematical structure is verified, and the empirical claim is **UNGROUNDED**.
 
 **REVISED CRITIQUE**
-Mortality is positively associated with age, and years lost per death fall with age. If dalys_per_death was computed as a population or patient-weighted average, multiplying by mean mortality overstates expected DALYs averted. If it was computed as total DALYs divided by total deaths, which is the GBD approach, the bias largely disappears. In high-HIV settings, young-adult deaths push the opposite way. The size of the effect is **UNGROUNDED** and the sign is uncertain.
-- The critique should be conditioned on how 27 was derived.
-- A GBD age/HIV-stratified death-weighted YLL calculation would settle it.
-- Strength: **low-to-medium**, direction **uncertain, leaning decreases** in low-HIV settings.
+- If dalys_per_death is a case-weighted or population-average figure rather than a death-weighted one, multiplying it by mean mortality can misstate expected DALYs averted.
+- Age is a known mortality risk factor, which supports a negative covariance in low-HIV settings. HIV-associated deaths in younger adults push the other way, so the net sign is uncertain.
+- **UNGROUNDED:** the −10 to −15% magnitude. It depends on how 27 was derived and on GBD age- and HIV-stratified YLL data.
+- Check first whether 27 is already GBD YLL ÷ deaths. If so, drop this critique.
+- Strength: low-to-medium, direction uncertain (lean decreases in low-HIV settings only).
 
 --- Critique: A global-average mortality may not match the countries where an atorvastatin adjunct would actually be deployed ---
 
-I ran out of search budget partway through, so some items could not be checked. Where I rely on background knowledge instead of a retrieved source, I say so.
+## Critique 1: Global-average mortality vs. deployment countries
 
-## Critique 1: Global-average mortality vs. deployment-country mix
+**CITATION CHECK:** The critique cites no papers. It names the WHO Global TB Report and GBD as suggested evidence only.
 
 **CLAIM CHECK**
-- **Country-level on-treatment mortality (India ~4–5%, South Africa ~8–10%): UNVERIFIABLE this session.** My searches did not return WHO country outcome tables. The Investigator labeled these figures "from memory, UNVERIFIED". From my background knowledge, India sits below the global average and South Africa above it. Treat that as unconfirmed.
-- **HIV prevalence drives country differences in on-treatment mortality: PLAUSIBLE.**
-  - The ACT HIV trial gives indirect support. 
-12-month death occurred in 44.1% of the dexamethasone arm and 49.0% of the placebo arm
- in HIV-positive adults with TB meningitis. That is a severe form of TB, not typical pulmonary TB.
-  - It still shows how much HIV can raise mortality in some TB subpopulations.
-- **"Weighted mean depends on deployment mix": TRUE arithmetically.** The 4.5% figure is only as good as the unverified country inputs. The 3.9% threshold comes from the model, which I cannot see.
-- **Deployment countries (India, South Africa, Indonesia, Nigeria, Philippines): UNVERIFIABLE.** This is a list of plausible high-burden countries, not a sourced deployment plan.
+- **TB burden is concentrated in India, Indonesia, the Philippines, Nigeria and South Africa: VERIFIED.** The CDC/WHO 2019 summary lists 
+India (26%), Indonesia (8.5%), China (8.4%), the Philippines (6.0%), Pakistan (5.7%), Nigeria (4.4%), Bangladesh (3.6%), and South Africa (3.6%)
+ as the eight countries with two thirds of global cases.
+- **On-treatment mortality differs by country: PLAUSIBLE.** A model-based analysis of Brazil, India and South Africa reports different deviations in deaths during treatment in each country (
+13.7% higher than predicted in Brazil, 1.7% in India and 21.8% in South Africa
+). That shows heterogeneity in how deaths changed, not baseline levels.
+- **India about 4–5% and South Africa about 8–10%: UNVERIFIABLE.** The critique itself flags these as from memory. My searches did not return the WHO country-level cohort tables. An Indian systematic review of treatment-phase case fatality exists (
+India accounts for a third of global TB deaths; the review covers cohort studies and trial control arms
+). I did not retrieve its pooled estimate.
+- **The global 6% figure, the 3.9% threshold and the "Phase III and uptake concentrate in a handful of countries" claim: UNVERIFIABLE.** These are properties of the model or its deployment plan, which I could not check.
 
 **EVIDENCE FOUND**
-- Nothing directly supports or refutes the country figures.
-- One further consideration is my own inference, not sourced. Phase III trial sites (South Africa is common) may not match eventual deployment (India-heavy by case share). That would add a gap between trial-population mortality and deployment mortality.
+- WHO reports 
+a sustained high treatment success rate for drug-susceptible TB, 88% globally in 2023 and 2022
+. The residual 12% (deaths, loss to follow-up, failure) leaves room for substantial country spread.
+- One caveat the critique misses: trial-enrolled patients usually have lower on-treatment mortality than programmatic cohorts. The relevant baseline for a Phase III-based effect may be below WHO country figures. That would push the number down in every country.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED (hypothesis sound, evidence UNGROUNDED).**
-- What survives: the logical point that a case-weighted mean replaces a global figure.
-- What doesn't: every quantitative input is unverified.
+**CORE CLAIM**
+- Claim: Country-weighted on-treatment mortality could differ materially from the single global 6% figure, depending on deployment mix.
+- Support: **LOGIC ONLY.**
+- Why: Heterogeneity is plausible and directionally supported, but I found no country-specific on-treatment death percentages to size it.
 
-**REVISED CRITIQUE**
-- baseline_mortality is a global figure, and the right input is a case-weighted average over deployment countries.
-- The direction is uncertain and depends on the HIV and age mix.
-- All country figures are UNGROUNDED, so this is a sensitivity flag, not a demonstrated bias.
-- Keep it as a low-to-medium strength flag. Retain it only if someone pulls the WHO Global TB Report cohort outcomes (death share among evaluated cases) for the top 5–8 countries.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The structural point is sound: a global average is a proxy for a deployment-weighted one. The country mortality numbers remain UNGROUNDED. The critique correctly labels itself a sensitivity issue with uncertain direction.
+
+**REVISED CRITIQUE:** Baseline mortality is a global figure, but TB burden is concentrated in a few countries whose on-treatment mortality probably differs (HIV, age mix, delay to diagnosis). The model should show a case-weighted sensitivity range. Remove the specific India and South Africa percentages until sourced from WHO country cohort tables. Also consider trial-versus-programme mortality differences. Direction: uncertain. Magnitude: medium-low. Strength: moderate-weak.
 
 ---
 
-## Critique 2: Industry base rates imply ~15–25%, not 40%
+## Critique 2: Industry base rates imply about 15–25%, not 40%
 
 **CITATION CHECK**
-- **BIO/Informa/QLS 2021 (2011–2020): VERIFIED for Phase II→III and Phase III→NDA/BLA.**
-  - 
-The table shows 28.9% for Phase II and 57.8% for Phase III.
-
-  - A second paper reports its own Phase II→III estimates 
-(28.4% for 2012–2020 and 28.8% for 2011–2019, close to BIO's 28.9%)
+- **BIO/Informa/QLS 2021 (2011–2020): VERIFIED.** It is cited in multiple papers as 
+"Clinical Development Success Rates and Contributing Factors 2011–2020" (2021)
 .
-  - The ~91% filing→approval figure was not shown in my results. I believe it is ~90.6%, but this is unverified here.
-  - The implied overall from Phase II (0.289 × 0.578 × 0.906 ≈ 15%) is arithmetically consistent.
-- **Wong, Siah & Lo (2019), Biostatistics: the paper EXISTS.**
-  - The citation is 
-Biostatistics 2019;20(2):273–286
+- **Wong, Siah & Lo 2019, *Biostatistics*: VERIFIED (exists).** It is 
+Biostatistics 2019 Apr 1;20(2):273-286
 .
-  - There is a corrigendum: 
-errors were found in Tables 1 and 2, specifically the Phase 2→3 and Phase 3→APP columns
-.
-  - Whether its figures are "similar" to BIO's is UNVERIFIED. Anyone checking should use the corrected tables.
-- **Infectious-disease-specific rates: PARTIALLY CONTRADICTED.** The Investigator assumed Phase III ≈ 65% for infectious disease. I found sources suggesting this may be too low.
-  - One study reports that 
-infectious diseases have the highest unconditional success rate at 14.0%, with a Phase III success rate of 80.9% and an application success rate of 95.6%
-.
-  - Another finds that 
-anti-infective drugs have, in general, the highest hazard curves across all three phases
-.
-  - Wong/Siah/Lo also have a separate anti-infective paper: 
-it uses 6,829 non-vaccine infectious-disease programs from 2000 to 2020
-. I could not retrieve its numbers.
+  - There is a corrigendum. 
+The original Tables 1 and 2 had errors in the Phase 2→3 and Phase 3→approval columns.
+ The critique's "similar overall figures" from memory may come from the uncorrected numbers, so they need checking against the corrected tables.
 
 **CLAIM CHECK**
-- **"All-indication P(II and III both succeed) ≈ 0.29 × 0.58 ≈ 17%": VERIFIED.** The inputs are verified and the arithmetic is correct.
-- **"Infectious-disease-adjusted ≈ 24–26%, at or below the 0.26 break-even": NOT ROBUST.**
-  - If Phase III is ~80% rather than 65%, and Phase II is 37–40%, the product is ~30–32%. That is above the break-even.
-  - The 0.26 break-even is from the model, which I cannot see.
-  - The conclusion is therefore sensitive to which infectious-disease dataset is used.
-- **"Premium of 1.6–2.7×": arithmetically correct** (0.40/0.25 = 1.6; 0.40/0.15 ≈ 2.7). The "1.6×" end depends on the contested 65% assumption.
-- **"Moving from 0.40 to 0.20–0.25 cuts expected cost-effectiveness 37–50%": VERIFIED arithmetically** (linear).
-- **"Dominant failure mode is lack of efficacy, so repurposing helps mainly safety attrition": PLAUSIBLE.** This is widely accepted but I did not retrieve a source for it.
-- **"CG names no reference class for 40%": UNVERIFIABLE.** I do not have the source model.
-- **The decomposition (0.5 × 0.40–0.55 × 0.7–0.85 ≈ 0.14–0.30): the Investigator's own inference, labeled as such.**
-  - P(adopted | III) of 0.7–0.85 is not an industry phase-transition parameter.
-  - It is a different kind of parameter than the BIO benchmark, so the comparison to "industry 17%" is partly apples-to-oranges.
+- **Phase II→III about 29%: VERIFIED.** BIO's figure is 
+28.9%
+.
+- **Phase III→NDA/BLA about 58%: VERIFIED.** The BIO table gives 
+57.8%
+ for Phase III.
+- **Filing→approval about 91%: UNVERIFIABLE** in my results, though plausible.
+- **Arithmetic: VERIFIED.** 0.289 × 0.578 ≈ 16.7%. The 1.6×–2.7× premium and the 37–50% cut from moving 0.40 to 0.20–0.25 are correct.
+- **Infectious-disease uplift gives Phase III about 65% and a product of 24–26%: PARTIALLY CONTRADICTED.**
+  - One analysis of a different dataset finds infectious diseases have 
+the highest unconditional success rate at 14.0%, with a Phase III success rate of 80.9% and application success of 95.6%
+.
+  - This is a different methodology from BIO and probably uses different phase definitions. Still, it suggests the critique's assumed 65% Phase III rate for infectious disease may be too low.
+  - With Phase II at about 37–40% and Phase III at about 80%, the product is roughly 30%, not 24–26%.
+  - It would still be below 40%, but near the 0.26 break-even. The critique's central 0.20 looks somewhat pessimistic.
+- **Anti-infective overall rates are not dramatically above average: VERIFIED.** Anti-infective Phase I→approval is 
+fairly stable around 10.6%
+. Wong et al. report that 
+only 6.8% of non-industry-sponsored vaccine and 8.2% of non-vaccine infectious-disease programs transition from phase 1 to approval
+. This mildly supports the critique's skepticism.
+- **Repurposing premium applies mostly to safety attrition, not efficacy: LOGIC ONLY.** The critique flags this as UNGROUNDED, which is accurate.
+- **The PIIc success estimate of 0.5 and the decomposition: UNVERIFIABLE** (own inference, as stated).
+- **The 0.26 break-even and CG's 40%: UNVERIFIABLE.** They come from the model.
 
 **EVIDENCE FOUND**
-- The BIO and academic figures are corroborated.
-- Infectious-disease/anti-infective programs do show above-average success, with a very high late-stage rate in at least one dataset. This partly undermines the "at or below break-even" claim and moves the reasonable range up.
-- Success measured as "approval" is not the same as "adopted at scale in LMICs", which is the model's likely endpoint.
+- Hay et al. 2014 (via a secondary source) put the non-oncology Phase II→III rate at 
+34.8%
+ and Phase III success at 
+54%
+. This corroborates the general range.
+- Industry transition rates measure drug progression, which includes business-driven terminations. They may understate the scientific probability of success for a well-funded academic or public-health program. They are also not defined identically to CG's p_success, which may start at Phase IIc and end at adoption. The critique doesn't discuss this definitional mismatch.
+- The critique's internal cross-references ("Critique 2", "Critique 4") do not match this batch's numbering.
+
+**CORE CLAIM**
+- Claim: Industry reference-class rates imply P(II and III succeed) of roughly 15–25%, so CG's 40% needs an unstated premium of about 1.6× or more.
+- Support: **SUPPORTED** for the base-rate numbers (BIO's 28.9% and 57.8%). The conclusion that 40% is unjustified is LOGIC ONLY, because the definitional match is untested.
+- Why: The BIO rates were directly confirmed, but the infectious-disease uplift could be larger than assumed and CG's endpoint definition is unknown.
 
 **OVERALL VERDICT: PARTIALLY VERIFIED.**
-- What survives:
-  - The all-indication base rate is ~15–17%.
-  - 40% needs a stated justification and a named reference class.
-  - Infectious disease is above average.
-- What doesn't: the claim that the infectious-disease-adjusted figure is at or below 0.26 is not established.
 
-**REVISED CRITIQUE**
-- CG gives no reference class for 40%. Industry phase-transition data (BIO 2011–2020) give ~29% (Phase II→III) × ~58% (Phase III→filing), or ~17%, and ~15% to approval for all indications.
-- Infectious-disease and anti-infective programs perform better than average. Estimates of the uplift vary, and one dataset puts Phase III success above 80%.
-- A reasonable range for infectious-disease-adjusted P(II and III) is roughly 20–32%, which brackets the 0.26 break-even rather than clearly falling below it.
-- The decomposition is the Investigator's own inference and should be flagged as such. The repurposing-premium argument is UNGROUNDED.
-- Strength: medium-large, because the direction is robust but the magnitude and the break-even crossing are uncertain.
+**REVISED CRITIQUE:** CG gives no reference class for 40%. BIO 2011–2020 rates (Phase II→III 28.9%, Phase III→filing 57.8%) imply about 17% for both phases. Infectious-disease-specific data (one analysis: Phase III about 81%) lift this to roughly 25–32%, which is still below 40% and close to the 0.26 break-even. Remove the claim that the infectious-disease-adjusted product is 24–26%. Replace it with a range of about 25–32%, and state that the Wong 2019 figures need checking against the corrected tables. The own-inference decomposition is UNGROUNDED. The repurposing-premium argument is plausible but unsourced. Strength: moderate-to-strong on direction, with the size of the gap uncertain. Magnitude: medium-large.
 
 ---
 
-## Critique 3: TB-specific reference classes have a worse record than 40%
+## Critique 3: TB host-directed and adjunctive therapy record is poor
 
 **CITATION CHECK**
-- **REMoxTB, OFLOTUB, RIFAQUIN: VERIFIED.**
-  - 
-WHO states that REMoxTB, OFLOTUB and RIFAQUIN failed to demonstrate non-inferiority of shorter regimens
+- **Wejse et al. 2009 (Guinea-Bissau): VERIFIED.** It is 
+Wejse C, et al., Am J Respir Crit Care Med 2009;179:843–50
+. A review summarises it as showing 
+no difference in TB score, 12-month mortality, or sputum smear conversion times between arms
 .
-  - A pooled analysis confirms that 
-in each of the three trials, the 4-month regimen did not satisfy non-inferiority criteria
+- **Martineau et al. 2011 (London): VERIFIED, with nuance.** The trial found 
+median time to culture conversion of 36.0 vs 43.5 days (adjusted HR 1.39, 95% CI 0.90–2.16; p=0.14)
+. It also found 
+a significant effect in participants with the tt genotype of the TaqI polymorphism
+. "No overall benefit" is accurate. The genotype signal is omitted.
+- **ACT HIV 2023: VERIFIED.** Deaths were 
+116/263 (44.1%) with dexamethasone vs 126/257 (49.0%) with placebo (HR 0.85, 95% CI 0.66–1.10; P=0.22)
+. The trial 
+did not confer a benefit on survival or any secondary end point
 .
-  - Nuance: in RIFAQUIN, 
-the 6-month regimen proved non-inferior, but non-inferiority could not be declared for the 4-month regimen
-.
-  - These are antibiotic-regimen trials with a non-inferiority design. They are not host-directed or adjunctive therapies, so they are an analogy for "surrogate to Phase III", not members of the HDT class.
-  - The claim that they had "encouraging mouse and Phase II culture-conversion data" was not checked.
-- **Study 31/A5349: VERIFIED.**
-  - 
-The 4-month rifapentine-moxifloxacin regimen was non-inferior to the standard 6-month regimen.
-
-  - WHO issued a conditional recommendation: 
-people aged 12 or older with drug-susceptible pulmonary TB may receive a 4-month regimen of isoniazid, rifapentine, moxifloxacin and pyrazinamide
-.
-  - The shortening class has a second success: 
-the SHINE trial showed a 4-month regimen non-inferior to the 6-month regimen in children
-. The Investigator didn't mention it.
-- **ACT HIV (2023): VERIFIED.**
-  - 
-Death occurred in 44.1% (dexamethasone) vs 49.0% (placebo); HR 0.85, 95% CI 0.66–1.10, P = 0.22.
-
-  - 
-The earlier 2004 Vietnam trial showed benefit overall, though the benefit was uncertain in the 98 HIV-positive participants.
-
-  - The Investigator's "did not generalize" framing is fair, but "looked effective in the earlier trial population" needs the caveat that the HIV-positive subgroup was small and uncertain from the start.
-- **Thwaites 2004 (dexamethasone, TBM): VERIFIED (secondary).**
-  - 
-A Vietnam trial published in 2004 found that dexamethasone significantly reduced overall mortality from TB meningitis.
-
-  - 
-The relative risk of death was 0.69 (95% CI 0.52–0.92).
-
-  - The newer LAST ACT trial muddies this: 
-neither non-inferiority nor superiority of placebo was established in HIV-negative LTA4H CC/CT-genotype adults
-. The authors still conclude that 
-the pooled data support a modest survival benefit in HIV-negative adults
-.
-- **Vitamin D (Wejse 2009, Guinea-Bissau; Martineau 2011, London): NOT CHECKED (search budget).** From background knowledge, both are real and neither showed an overall primary-endpoint benefit. Martineau 2011 reported a genotype-specific subgroup effect. Treat as plausible, not verified.
-- **Pravastatin mouse data (Karakousis group), Wallis & Hafner, Kolloli & Subbian: NOT CHECKED.**
-- **"No HDT is WHO-recommended for drug-sensitive pulmonary TB": NOT CHECKED.** It is plausible, but I only verified the dexamethasone TBM recommendation context.
+- **Thwaites 2004: VERIFIED.** The trial showed 
+improved survival in patients over 14 years of age with tuberculous meningitis
+. The 
+benefit was uncertain in the 98 HIV-positive participants
+. That fits the critique's "didn't generalise" framing.
+- **REMoxTB, OFLOTUB, RIFAQUIN (all NEJM 2014) failing non-inferiority for 4-month regimens, and Study 31/A5349 succeeding: NOT CHECKED.** My final search was rejected. They match my background knowledge, but they are not verified in this session.
+- **Parihar and colleagues, "Karakousis group": PARTIALLY MISATTRIBUTED (from background knowledge, unchecked).** I believe the 2014 Parihar statin–macrophage–mouse paper came from Reto Guler's group in Cape Town. The Karakousis group published separate pravastatin mouse work. The critique conflates the two.
+- **Wallis & Hafner; Kolloli & Subbian reviews: NOT CHECKED.**
 
 **CLAIM CHECK**
-- **"Class success rate 10–20%": UNGROUNDED (the Investigator labeled it as inference).**
-  - There are no denominators, and the class is defined post hoc from a few salient failures and successes.
-  - The count includes at least three successes (Study 31, SHINE, TBM corticosteroids), so it is not a clean "mostly failures" record.
-  - Design differences matter. Non-inferiority regimen-shortening trials and superiority adjunct trials have different success definitions.
-- **"At 0.15, CE is ~38% of the base case": VERIFIED arithmetic** (0.15/0.40 = 0.375).
-- **"Blend of TB class and industry priors gives 0.2–0.3": UNGROUNDED but reasonable.** It is the Investigator's own inference.
-- **Estimated direction "uncertain" is inconsistent with the argument.** The whole argument points to a lower p_success.
+- **"No HDT is WHO-recommended for drug-sensitive pulmonary TB": PLAUSIBLE, unchecked.**
+- **Class success rate of 10–20%: UNVERIFIABLE** (own inference, as stated).
+- **At p=0.15, cost-effectiveness is about 38% of CG's base case: VERIFIED arithmetically** (0.15/0.40 = 0.375).
 
 **EVIDENCE FOUND**
-- The strongest verified analogue for an anti-inflammatory adjunct is the corticosteroid sequence. There was a positive early trial in a mostly HIV-negative population (RR 0.69), then a null result in HIV-positive adults (HR 0.85, P = 0.22), then an ambiguous genotype-stratified trial. That supports a "benefit may be heterogeneous and not generalize" caution, and the population of statin trials matters.
-- The shortening class is not uniformly bad. The negative result came from simple fluoroquinolone substitution, and the positive one from a different design (rifapentine plus moxifloxacin).
+- A vitamin D meta-analysis found 
+a significantly higher proportion of sputum culture conversion overall (OR 1.22, 1.04–1.43), but no shortening of time to conversion
+. This is a mild counterweight to "null."
+- The 2025 LAST ACT trial in HIV-negative adults, stratified by LTA4H genotype, found 
+neither non-inferiority nor superiority of placebo established in CC/CT-genotype adults
+. A combined analysis 
+supports dexamethasone's modest survival benefit in all HIV-negative adults
+. This reinforces that even the one adopted class member has a modest, heterogeneous effect.
+- **Reference-class weakness:**
+  - The list is a hand-picked set of failures, so it is vulnerable to selection bias.
+  - Several trials were themselves Phase II/III, not Phase II→III transitions.
+  - The ACT HIV trial concerned TB meningitis mortality, a very different setting from pulmonary TB with a culture-conversion or relapse endpoint.
+  - Most statin evidence is preclinical, so a 10–20% rate from this class has no denominator.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- What survives:
-  - The antibiotic-shortening and ACT HIV facts are accurate.
-  - A TB-specific prior is more pessimistic than a generic one.
-- What doesn't: the quantitative class rate, and the vitamin D and HDT-pipeline claims, which are unverified here. Presenting regimen-shortening trials as HDT-class evidence overstates the relevance.
+**CORE CLAIM**
+- Claim: The appropriate TB-specific reference class has a success rate well under 40% from Phase II onward (about 10–20%).
+- Support: **LOGIC ONLY.**
+- Why: The individual trial facts check out, but the class rate is an unpublished inference built from a non-systematic, selected list.
 
-**REVISED CRITIQUE**
-- No named reference class supports 40%. The nearest TB analogues are mixed:
-  - Three fluoroquinolone 4-month trials (REMoxTB, OFLOTUB, RIFAQUIN) failed non-inferiority.
-  - Study 31 succeeded and was conditionally recommended by WHO, and SHINE succeeded in children.
-  - The anti-inflammatory adjunct dexamethasone worked in TBM overall, but ACT HIV was null in HIV-positive adults.
-- No quantitative success rate for "TB host-directed therapy" is available, so a 10–20% rate is UNGROUNDED. A blended range of ~0.2–0.3 is plausible but also inferential.
-- Vitamin D and statin-preclinical claims should be marked "unchecked, plausible" until sourced.
-- Direction: lowers p_success. Strength: medium, not large, until a sourced class rate exists.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The vitamin D, dexamethasone and Thwaites facts are real and accurately characterised. The quantitative class rate stays UNGROUNDED, and the statin attribution is dubious.
+
+**REVISED CRITIQUE:** TB adjunctive and host-directed trials have a mixed record. Vitamin D showed no overall benefit on culture conversion (Wejse 2009, Martineau 2011). Dexamethasone in HIV-associated TB meningitis was null (ACT HIV, HR 0.85, 0.66–1.10). Dexamethasone in HIV-negative TB meningitis showed benefit (Thwaites 2004), though it is modest and heterogeneous. The fluoroquinolone 4-month failures and the Study 31 success are from the critique's memory and need a check. Remove the Parihar/Karakousis attribution until verified. The 10–20% class rate and the blended p_success of 0.2–0.3 are UNGROUNDED inferences. They are plausible, but the reference class is selective and the endpoint context differs from pulmonary TB. Direction: lowers p_success. Magnitude: medium-large. Strength: moderate, as a qualitative prior shift rather than a quantified one.
 
 --- Critique: Industry phase-transition base rates put "II and III both succeed" at roughly 15–25%, so 40% requires an unstated premium of about 1.6–2.7× ---
 
-I ran out of search budget partway through, so some items could not be checked. Where I rely on background knowledge instead of a retrieved source, I say so.
+## Critique 1: Global-average mortality vs. deployment countries
 
-## Critique 1: Global-average mortality vs. deployment-country mix
+**CITATION CHECK:** The critique cites no papers. It names the WHO Global TB Report and GBD as suggested evidence only.
 
 **CLAIM CHECK**
-- **Country-level on-treatment mortality (India ~4–5%, South Africa ~8–10%): UNVERIFIABLE this session.** My searches did not return WHO country outcome tables. The Investigator labeled these figures "from memory, UNVERIFIED". From my background knowledge, India sits below the global average and South Africa above it. Treat that as unconfirmed.
-- **HIV prevalence drives country differences in on-treatment mortality: PLAUSIBLE.**
-  - The ACT HIV trial gives indirect support. 
-12-month death occurred in 44.1% of the dexamethasone arm and 49.0% of the placebo arm
- in HIV-positive adults with TB meningitis. That is a severe form of TB, not typical pulmonary TB.
-  - It still shows how much HIV can raise mortality in some TB subpopulations.
-- **"Weighted mean depends on deployment mix": TRUE arithmetically.** The 4.5% figure is only as good as the unverified country inputs. The 3.9% threshold comes from the model, which I cannot see.
-- **Deployment countries (India, South Africa, Indonesia, Nigeria, Philippines): UNVERIFIABLE.** This is a list of plausible high-burden countries, not a sourced deployment plan.
+- **TB burden is concentrated in India, Indonesia, the Philippines, Nigeria and South Africa: VERIFIED.** The CDC/WHO 2019 summary lists 
+India (26%), Indonesia (8.5%), China (8.4%), the Philippines (6.0%), Pakistan (5.7%), Nigeria (4.4%), Bangladesh (3.6%), and South Africa (3.6%)
+ as the eight countries with two thirds of global cases.
+- **On-treatment mortality differs by country: PLAUSIBLE.** A model-based analysis of Brazil, India and South Africa reports different deviations in deaths during treatment in each country (
+13.7% higher than predicted in Brazil, 1.7% in India and 21.8% in South Africa
+). That shows heterogeneity in how deaths changed, not baseline levels.
+- **India about 4–5% and South Africa about 8–10%: UNVERIFIABLE.** The critique itself flags these as from memory. My searches did not return the WHO country-level cohort tables. An Indian systematic review of treatment-phase case fatality exists (
+India accounts for a third of global TB deaths; the review covers cohort studies and trial control arms
+). I did not retrieve its pooled estimate.
+- **The global 6% figure, the 3.9% threshold and the "Phase III and uptake concentrate in a handful of countries" claim: UNVERIFIABLE.** These are properties of the model or its deployment plan, which I could not check.
 
 **EVIDENCE FOUND**
-- Nothing directly supports or refutes the country figures.
-- One further consideration is my own inference, not sourced. Phase III trial sites (South Africa is common) may not match eventual deployment (India-heavy by case share). That would add a gap between trial-population mortality and deployment mortality.
+- WHO reports 
+a sustained high treatment success rate for drug-susceptible TB, 88% globally in 2023 and 2022
+. The residual 12% (deaths, loss to follow-up, failure) leaves room for substantial country spread.
+- One caveat the critique misses: trial-enrolled patients usually have lower on-treatment mortality than programmatic cohorts. The relevant baseline for a Phase III-based effect may be below WHO country figures. That would push the number down in every country.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED (hypothesis sound, evidence UNGROUNDED).**
-- What survives: the logical point that a case-weighted mean replaces a global figure.
-- What doesn't: every quantitative input is unverified.
+**CORE CLAIM**
+- Claim: Country-weighted on-treatment mortality could differ materially from the single global 6% figure, depending on deployment mix.
+- Support: **LOGIC ONLY.**
+- Why: Heterogeneity is plausible and directionally supported, but I found no country-specific on-treatment death percentages to size it.
 
-**REVISED CRITIQUE**
-- baseline_mortality is a global figure, and the right input is a case-weighted average over deployment countries.
-- The direction is uncertain and depends on the HIV and age mix.
-- All country figures are UNGROUNDED, so this is a sensitivity flag, not a demonstrated bias.
-- Keep it as a low-to-medium strength flag. Retain it only if someone pulls the WHO Global TB Report cohort outcomes (death share among evaluated cases) for the top 5–8 countries.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The structural point is sound: a global average is a proxy for a deployment-weighted one. The country mortality numbers remain UNGROUNDED. The critique correctly labels itself a sensitivity issue with uncertain direction.
+
+**REVISED CRITIQUE:** Baseline mortality is a global figure, but TB burden is concentrated in a few countries whose on-treatment mortality probably differs (HIV, age mix, delay to diagnosis). The model should show a case-weighted sensitivity range. Remove the specific India and South Africa percentages until sourced from WHO country cohort tables. Also consider trial-versus-programme mortality differences. Direction: uncertain. Magnitude: medium-low. Strength: moderate-weak.
 
 ---
 
-## Critique 2: Industry base rates imply ~15–25%, not 40%
+## Critique 2: Industry base rates imply about 15–25%, not 40%
 
 **CITATION CHECK**
-- **BIO/Informa/QLS 2021 (2011–2020): VERIFIED for Phase II→III and Phase III→NDA/BLA.**
-  - 
-The table shows 28.9% for Phase II and 57.8% for Phase III.
-
-  - A second paper reports its own Phase II→III estimates 
-(28.4% for 2012–2020 and 28.8% for 2011–2019, close to BIO's 28.9%)
+- **BIO/Informa/QLS 2021 (2011–2020): VERIFIED.** It is cited in multiple papers as 
+"Clinical Development Success Rates and Contributing Factors 2011–2020" (2021)
 .
-  - The ~91% filing→approval figure was not shown in my results. I believe it is ~90.6%, but this is unverified here.
-  - The implied overall from Phase II (0.289 × 0.578 × 0.906 ≈ 15%) is arithmetically consistent.
-- **Wong, Siah & Lo (2019), Biostatistics: the paper EXISTS.**
-  - The citation is 
-Biostatistics 2019;20(2):273–286
+- **Wong, Siah & Lo 2019, *Biostatistics*: VERIFIED (exists).** It is 
+Biostatistics 2019 Apr 1;20(2):273-286
 .
-  - There is a corrigendum: 
-errors were found in Tables 1 and 2, specifically the Phase 2→3 and Phase 3→APP columns
-.
-  - Whether its figures are "similar" to BIO's is UNVERIFIED. Anyone checking should use the corrected tables.
-- **Infectious-disease-specific rates: PARTIALLY CONTRADICTED.** The Investigator assumed Phase III ≈ 65% for infectious disease. I found sources suggesting this may be too low.
-  - One study reports that 
-infectious diseases have the highest unconditional success rate at 14.0%, with a Phase III success rate of 80.9% and an application success rate of 95.6%
-.
-  - Another finds that 
-anti-infective drugs have, in general, the highest hazard curves across all three phases
-.
-  - Wong/Siah/Lo also have a separate anti-infective paper: 
-it uses 6,829 non-vaccine infectious-disease programs from 2000 to 2020
-. I could not retrieve its numbers.
+  - There is a corrigendum. 
+The original Tables 1 and 2 had errors in the Phase 2→3 and Phase 3→approval columns.
+ The critique's "similar overall figures" from memory may come from the uncorrected numbers, so they need checking against the corrected tables.
 
 **CLAIM CHECK**
-- **"All-indication P(II and III both succeed) ≈ 0.29 × 0.58 ≈ 17%": VERIFIED.** The inputs are verified and the arithmetic is correct.
-- **"Infectious-disease-adjusted ≈ 24–26%, at or below the 0.26 break-even": NOT ROBUST.**
-  - If Phase III is ~80% rather than 65%, and Phase II is 37–40%, the product is ~30–32%. That is above the break-even.
-  - The 0.26 break-even is from the model, which I cannot see.
-  - The conclusion is therefore sensitive to which infectious-disease dataset is used.
-- **"Premium of 1.6–2.7×": arithmetically correct** (0.40/0.25 = 1.6; 0.40/0.15 ≈ 2.7). The "1.6×" end depends on the contested 65% assumption.
-- **"Moving from 0.40 to 0.20–0.25 cuts expected cost-effectiveness 37–50%": VERIFIED arithmetically** (linear).
-- **"Dominant failure mode is lack of efficacy, so repurposing helps mainly safety attrition": PLAUSIBLE.** This is widely accepted but I did not retrieve a source for it.
-- **"CG names no reference class for 40%": UNVERIFIABLE.** I do not have the source model.
-- **The decomposition (0.5 × 0.40–0.55 × 0.7–0.85 ≈ 0.14–0.30): the Investigator's own inference, labeled as such.**
-  - P(adopted | III) of 0.7–0.85 is not an industry phase-transition parameter.
-  - It is a different kind of parameter than the BIO benchmark, so the comparison to "industry 17%" is partly apples-to-oranges.
+- **Phase II→III about 29%: VERIFIED.** BIO's figure is 
+28.9%
+.
+- **Phase III→NDA/BLA about 58%: VERIFIED.** The BIO table gives 
+57.8%
+ for Phase III.
+- **Filing→approval about 91%: UNVERIFIABLE** in my results, though plausible.
+- **Arithmetic: VERIFIED.** 0.289 × 0.578 ≈ 16.7%. The 1.6×–2.7× premium and the 37–50% cut from moving 0.40 to 0.20–0.25 are correct.
+- **Infectious-disease uplift gives Phase III about 65% and a product of 24–26%: PARTIALLY CONTRADICTED.**
+  - One analysis of a different dataset finds infectious diseases have 
+the highest unconditional success rate at 14.0%, with a Phase III success rate of 80.9% and application success of 95.6%
+.
+  - This is a different methodology from BIO and probably uses different phase definitions. Still, it suggests the critique's assumed 65% Phase III rate for infectious disease may be too low.
+  - With Phase II at about 37–40% and Phase III at about 80%, the product is roughly 30%, not 24–26%.
+  - It would still be below 40%, but near the 0.26 break-even. The critique's central 0.20 looks somewhat pessimistic.
+- **Anti-infective overall rates are not dramatically above average: VERIFIED.** Anti-infective Phase I→approval is 
+fairly stable around 10.6%
+. Wong et al. report that 
+only 6.8% of non-industry-sponsored vaccine and 8.2% of non-vaccine infectious-disease programs transition from phase 1 to approval
+. This mildly supports the critique's skepticism.
+- **Repurposing premium applies mostly to safety attrition, not efficacy: LOGIC ONLY.** The critique flags this as UNGROUNDED, which is accurate.
+- **The PIIc success estimate of 0.5 and the decomposition: UNVERIFIABLE** (own inference, as stated).
+- **The 0.26 break-even and CG's 40%: UNVERIFIABLE.** They come from the model.
 
 **EVIDENCE FOUND**
-- The BIO and academic figures are corroborated.
-- Infectious-disease/anti-infective programs do show above-average success, with a very high late-stage rate in at least one dataset. This partly undermines the "at or below break-even" claim and moves the reasonable range up.
-- Success measured as "approval" is not the same as "adopted at scale in LMICs", which is the model's likely endpoint.
+- Hay et al. 2014 (via a secondary source) put the non-oncology Phase II→III rate at 
+34.8%
+ and Phase III success at 
+54%
+. This corroborates the general range.
+- Industry transition rates measure drug progression, which includes business-driven terminations. They may understate the scientific probability of success for a well-funded academic or public-health program. They are also not defined identically to CG's p_success, which may start at Phase IIc and end at adoption. The critique doesn't discuss this definitional mismatch.
+- The critique's internal cross-references ("Critique 2", "Critique 4") do not match this batch's numbering.
+
+**CORE CLAIM**
+- Claim: Industry reference-class rates imply P(II and III succeed) of roughly 15–25%, so CG's 40% needs an unstated premium of about 1.6× or more.
+- Support: **SUPPORTED** for the base-rate numbers (BIO's 28.9% and 57.8%). The conclusion that 40% is unjustified is LOGIC ONLY, because the definitional match is untested.
+- Why: The BIO rates were directly confirmed, but the infectious-disease uplift could be larger than assumed and CG's endpoint definition is unknown.
 
 **OVERALL VERDICT: PARTIALLY VERIFIED.**
-- What survives:
-  - The all-indication base rate is ~15–17%.
-  - 40% needs a stated justification and a named reference class.
-  - Infectious disease is above average.
-- What doesn't: the claim that the infectious-disease-adjusted figure is at or below 0.26 is not established.
 
-**REVISED CRITIQUE**
-- CG gives no reference class for 40%. Industry phase-transition data (BIO 2011–2020) give ~29% (Phase II→III) × ~58% (Phase III→filing), or ~17%, and ~15% to approval for all indications.
-- Infectious-disease and anti-infective programs perform better than average. Estimates of the uplift vary, and one dataset puts Phase III success above 80%.
-- A reasonable range for infectious-disease-adjusted P(II and III) is roughly 20–32%, which brackets the 0.26 break-even rather than clearly falling below it.
-- The decomposition is the Investigator's own inference and should be flagged as such. The repurposing-premium argument is UNGROUNDED.
-- Strength: medium-large, because the direction is robust but the magnitude and the break-even crossing are uncertain.
+**REVISED CRITIQUE:** CG gives no reference class for 40%. BIO 2011–2020 rates (Phase II→III 28.9%, Phase III→filing 57.8%) imply about 17% for both phases. Infectious-disease-specific data (one analysis: Phase III about 81%) lift this to roughly 25–32%, which is still below 40% and close to the 0.26 break-even. Remove the claim that the infectious-disease-adjusted product is 24–26%. Replace it with a range of about 25–32%, and state that the Wong 2019 figures need checking against the corrected tables. The own-inference decomposition is UNGROUNDED. The repurposing-premium argument is plausible but unsourced. Strength: moderate-to-strong on direction, with the size of the gap uncertain. Magnitude: medium-large.
 
 ---
 
-## Critique 3: TB-specific reference classes have a worse record than 40%
+## Critique 3: TB host-directed and adjunctive therapy record is poor
 
 **CITATION CHECK**
-- **REMoxTB, OFLOTUB, RIFAQUIN: VERIFIED.**
-  - 
-WHO states that REMoxTB, OFLOTUB and RIFAQUIN failed to demonstrate non-inferiority of shorter regimens
+- **Wejse et al. 2009 (Guinea-Bissau): VERIFIED.** It is 
+Wejse C, et al., Am J Respir Crit Care Med 2009;179:843–50
+. A review summarises it as showing 
+no difference in TB score, 12-month mortality, or sputum smear conversion times between arms
 .
-  - A pooled analysis confirms that 
-in each of the three trials, the 4-month regimen did not satisfy non-inferiority criteria
+- **Martineau et al. 2011 (London): VERIFIED, with nuance.** The trial found 
+median time to culture conversion of 36.0 vs 43.5 days (adjusted HR 1.39, 95% CI 0.90–2.16; p=0.14)
+. It also found 
+a significant effect in participants with the tt genotype of the TaqI polymorphism
+. "No overall benefit" is accurate. The genotype signal is omitted.
+- **ACT HIV 2023: VERIFIED.** Deaths were 
+116/263 (44.1%) with dexamethasone vs 126/257 (49.0%) with placebo (HR 0.85, 95% CI 0.66–1.10; P=0.22)
+. The trial 
+did not confer a benefit on survival or any secondary end point
 .
-  - Nuance: in RIFAQUIN, 
-the 6-month regimen proved non-inferior, but non-inferiority could not be declared for the 4-month regimen
-.
-  - These are antibiotic-regimen trials with a non-inferiority design. They are not host-directed or adjunctive therapies, so they are an analogy for "surrogate to Phase III", not members of the HDT class.
-  - The claim that they had "encouraging mouse and Phase II culture-conversion data" was not checked.
-- **Study 31/A5349: VERIFIED.**
-  - 
-The 4-month rifapentine-moxifloxacin regimen was non-inferior to the standard 6-month regimen.
-
-  - WHO issued a conditional recommendation: 
-people aged 12 or older with drug-susceptible pulmonary TB may receive a 4-month regimen of isoniazid, rifapentine, moxifloxacin and pyrazinamide
-.
-  - The shortening class has a second success: 
-the SHINE trial showed a 4-month regimen non-inferior to the 6-month regimen in children
-. The Investigator didn't mention it.
-- **ACT HIV (2023): VERIFIED.**
-  - 
-Death occurred in 44.1% (dexamethasone) vs 49.0% (placebo); HR 0.85, 95% CI 0.66–1.10, P = 0.22.
-
-  - 
-The earlier 2004 Vietnam trial showed benefit overall, though the benefit was uncertain in the 98 HIV-positive participants.
-
-  - The Investigator's "did not generalize" framing is fair, but "looked effective in the earlier trial population" needs the caveat that the HIV-positive subgroup was small and uncertain from the start.
-- **Thwaites 2004 (dexamethasone, TBM): VERIFIED (secondary).**
-  - 
-A Vietnam trial published in 2004 found that dexamethasone significantly reduced overall mortality from TB meningitis.
-
-  - 
-The relative risk of death was 0.69 (95% CI 0.52–0.92).
-
-  - The newer LAST ACT trial muddies this: 
-neither non-inferiority nor superiority of placebo was established in HIV-negative LTA4H CC/CT-genotype adults
-. The authors still conclude that 
-the pooled data support a modest survival benefit in HIV-negative adults
-.
-- **Vitamin D (Wejse 2009, Guinea-Bissau; Martineau 2011, London): NOT CHECKED (search budget).** From background knowledge, both are real and neither showed an overall primary-endpoint benefit. Martineau 2011 reported a genotype-specific subgroup effect. Treat as plausible, not verified.
-- **Pravastatin mouse data (Karakousis group), Wallis & Hafner, Kolloli & Subbian: NOT CHECKED.**
-- **"No HDT is WHO-recommended for drug-sensitive pulmonary TB": NOT CHECKED.** It is plausible, but I only verified the dexamethasone TBM recommendation context.
+- **Thwaites 2004: VERIFIED.** The trial showed 
+improved survival in patients over 14 years of age with tuberculous meningitis
+. The 
+benefit was uncertain in the 98 HIV-positive participants
+. That fits the critique's "didn't generalise" framing.
+- **REMoxTB, OFLOTUB, RIFAQUIN (all NEJM 2014) failing non-inferiority for 4-month regimens, and Study 31/A5349 succeeding: NOT CHECKED.** My final search was rejected. They match my background knowledge, but they are not verified in this session.
+- **Parihar and colleagues, "Karakousis group": PARTIALLY MISATTRIBUTED (from background knowledge, unchecked).** I believe the 2014 Parihar statin–macrophage–mouse paper came from Reto Guler's group in Cape Town. The Karakousis group published separate pravastatin mouse work. The critique conflates the two.
+- **Wallis & Hafner; Kolloli & Subbian reviews: NOT CHECKED.**
 
 **CLAIM CHECK**
-- **"Class success rate 10–20%": UNGROUNDED (the Investigator labeled it as inference).**
-  - There are no denominators, and the class is defined post hoc from a few salient failures and successes.
-  - The count includes at least three successes (Study 31, SHINE, TBM corticosteroids), so it is not a clean "mostly failures" record.
-  - Design differences matter. Non-inferiority regimen-shortening trials and superiority adjunct trials have different success definitions.
-- **"At 0.15, CE is ~38% of the base case": VERIFIED arithmetic** (0.15/0.40 = 0.375).
-- **"Blend of TB class and industry priors gives 0.2–0.3": UNGROUNDED but reasonable.** It is the Investigator's own inference.
-- **Estimated direction "uncertain" is inconsistent with the argument.** The whole argument points to a lower p_success.
+- **"No HDT is WHO-recommended for drug-sensitive pulmonary TB": PLAUSIBLE, unchecked.**
+- **Class success rate of 10–20%: UNVERIFIABLE** (own inference, as stated).
+- **At p=0.15, cost-effectiveness is about 38% of CG's base case: VERIFIED arithmetically** (0.15/0.40 = 0.375).
 
 **EVIDENCE FOUND**
-- The strongest verified analogue for an anti-inflammatory adjunct is the corticosteroid sequence. There was a positive early trial in a mostly HIV-negative population (RR 0.69), then a null result in HIV-positive adults (HR 0.85, P = 0.22), then an ambiguous genotype-stratified trial. That supports a "benefit may be heterogeneous and not generalize" caution, and the population of statin trials matters.
-- The shortening class is not uniformly bad. The negative result came from simple fluoroquinolone substitution, and the positive one from a different design (rifapentine plus moxifloxacin).
+- A vitamin D meta-analysis found 
+a significantly higher proportion of sputum culture conversion overall (OR 1.22, 1.04–1.43), but no shortening of time to conversion
+. This is a mild counterweight to "null."
+- The 2025 LAST ACT trial in HIV-negative adults, stratified by LTA4H genotype, found 
+neither non-inferiority nor superiority of placebo established in CC/CT-genotype adults
+. A combined analysis 
+supports dexamethasone's modest survival benefit in all HIV-negative adults
+. This reinforces that even the one adopted class member has a modest, heterogeneous effect.
+- **Reference-class weakness:**
+  - The list is a hand-picked set of failures, so it is vulnerable to selection bias.
+  - Several trials were themselves Phase II/III, not Phase II→III transitions.
+  - The ACT HIV trial concerned TB meningitis mortality, a very different setting from pulmonary TB with a culture-conversion or relapse endpoint.
+  - Most statin evidence is preclinical, so a 10–20% rate from this class has no denominator.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- What survives:
-  - The antibiotic-shortening and ACT HIV facts are accurate.
-  - A TB-specific prior is more pessimistic than a generic one.
-- What doesn't: the quantitative class rate, and the vitamin D and HDT-pipeline claims, which are unverified here. Presenting regimen-shortening trials as HDT-class evidence overstates the relevance.
+**CORE CLAIM**
+- Claim: The appropriate TB-specific reference class has a success rate well under 40% from Phase II onward (about 10–20%).
+- Support: **LOGIC ONLY.**
+- Why: The individual trial facts check out, but the class rate is an unpublished inference built from a non-systematic, selected list.
 
-**REVISED CRITIQUE**
-- No named reference class supports 40%. The nearest TB analogues are mixed:
-  - Three fluoroquinolone 4-month trials (REMoxTB, OFLOTUB, RIFAQUIN) failed non-inferiority.
-  - Study 31 succeeded and was conditionally recommended by WHO, and SHINE succeeded in children.
-  - The anti-inflammatory adjunct dexamethasone worked in TBM overall, but ACT HIV was null in HIV-positive adults.
-- No quantitative success rate for "TB host-directed therapy" is available, so a 10–20% rate is UNGROUNDED. A blended range of ~0.2–0.3 is plausible but also inferential.
-- Vitamin D and statin-preclinical claims should be marked "unchecked, plausible" until sourced.
-- Direction: lowers p_success. Strength: medium, not large, until a sourced class rate exists.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The vitamin D, dexamethasone and Thwaites facts are real and accurately characterised. The quantitative class rate stays UNGROUNDED, and the statin attribution is dubious.
+
+**REVISED CRITIQUE:** TB adjunctive and host-directed trials have a mixed record. Vitamin D showed no overall benefit on culture conversion (Wejse 2009, Martineau 2011). Dexamethasone in HIV-associated TB meningitis was null (ACT HIV, HR 0.85, 0.66–1.10). Dexamethasone in HIV-negative TB meningitis showed benefit (Thwaites 2004), though it is modest and heterogeneous. The fluoroquinolone 4-month failures and the Study 31 success are from the critique's memory and need a check. Remove the Parihar/Karakousis attribution until verified. The 10–20% class rate and the blended p_success of 0.2–0.3 are UNGROUNDED inferences. They are plausible, but the reference class is selective and the endpoint context differs from pulmonary TB. Direction: lowers p_success. Magnitude: medium-large. Strength: moderate, as a qualitative prior shift rather than a quantified one.
 
 --- Critique: The TB-specific reference classes (host-directed therapy, adjunctives, regimen-shortening) have a much worse record than 40% ---
 
-I ran out of search budget partway through, so some items could not be checked. Where I rely on background knowledge instead of a retrieved source, I say so.
+## Critique 1: Global-average mortality vs. deployment countries
 
-## Critique 1: Global-average mortality vs. deployment-country mix
+**CITATION CHECK:** The critique cites no papers. It names the WHO Global TB Report and GBD as suggested evidence only.
 
 **CLAIM CHECK**
-- **Country-level on-treatment mortality (India ~4–5%, South Africa ~8–10%): UNVERIFIABLE this session.** My searches did not return WHO country outcome tables. The Investigator labeled these figures "from memory, UNVERIFIED". From my background knowledge, India sits below the global average and South Africa above it. Treat that as unconfirmed.
-- **HIV prevalence drives country differences in on-treatment mortality: PLAUSIBLE.**
-  - The ACT HIV trial gives indirect support. 
-12-month death occurred in 44.1% of the dexamethasone arm and 49.0% of the placebo arm
- in HIV-positive adults with TB meningitis. That is a severe form of TB, not typical pulmonary TB.
-  - It still shows how much HIV can raise mortality in some TB subpopulations.
-- **"Weighted mean depends on deployment mix": TRUE arithmetically.** The 4.5% figure is only as good as the unverified country inputs. The 3.9% threshold comes from the model, which I cannot see.
-- **Deployment countries (India, South Africa, Indonesia, Nigeria, Philippines): UNVERIFIABLE.** This is a list of plausible high-burden countries, not a sourced deployment plan.
+- **TB burden is concentrated in India, Indonesia, the Philippines, Nigeria and South Africa: VERIFIED.** The CDC/WHO 2019 summary lists 
+India (26%), Indonesia (8.5%), China (8.4%), the Philippines (6.0%), Pakistan (5.7%), Nigeria (4.4%), Bangladesh (3.6%), and South Africa (3.6%)
+ as the eight countries with two thirds of global cases.
+- **On-treatment mortality differs by country: PLAUSIBLE.** A model-based analysis of Brazil, India and South Africa reports different deviations in deaths during treatment in each country (
+13.7% higher than predicted in Brazil, 1.7% in India and 21.8% in South Africa
+). That shows heterogeneity in how deaths changed, not baseline levels.
+- **India about 4–5% and South Africa about 8–10%: UNVERIFIABLE.** The critique itself flags these as from memory. My searches did not return the WHO country-level cohort tables. An Indian systematic review of treatment-phase case fatality exists (
+India accounts for a third of global TB deaths; the review covers cohort studies and trial control arms
+). I did not retrieve its pooled estimate.
+- **The global 6% figure, the 3.9% threshold and the "Phase III and uptake concentrate in a handful of countries" claim: UNVERIFIABLE.** These are properties of the model or its deployment plan, which I could not check.
 
 **EVIDENCE FOUND**
-- Nothing directly supports or refutes the country figures.
-- One further consideration is my own inference, not sourced. Phase III trial sites (South Africa is common) may not match eventual deployment (India-heavy by case share). That would add a gap between trial-population mortality and deployment mortality.
+- WHO reports 
+a sustained high treatment success rate for drug-susceptible TB, 88% globally in 2023 and 2022
+. The residual 12% (deaths, loss to follow-up, failure) leaves room for substantial country spread.
+- One caveat the critique misses: trial-enrolled patients usually have lower on-treatment mortality than programmatic cohorts. The relevant baseline for a Phase III-based effect may be below WHO country figures. That would push the number down in every country.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED (hypothesis sound, evidence UNGROUNDED).**
-- What survives: the logical point that a case-weighted mean replaces a global figure.
-- What doesn't: every quantitative input is unverified.
+**CORE CLAIM**
+- Claim: Country-weighted on-treatment mortality could differ materially from the single global 6% figure, depending on deployment mix.
+- Support: **LOGIC ONLY.**
+- Why: Heterogeneity is plausible and directionally supported, but I found no country-specific on-treatment death percentages to size it.
 
-**REVISED CRITIQUE**
-- baseline_mortality is a global figure, and the right input is a case-weighted average over deployment countries.
-- The direction is uncertain and depends on the HIV and age mix.
-- All country figures are UNGROUNDED, so this is a sensitivity flag, not a demonstrated bias.
-- Keep it as a low-to-medium strength flag. Retain it only if someone pulls the WHO Global TB Report cohort outcomes (death share among evaluated cases) for the top 5–8 countries.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The structural point is sound: a global average is a proxy for a deployment-weighted one. The country mortality numbers remain UNGROUNDED. The critique correctly labels itself a sensitivity issue with uncertain direction.
+
+**REVISED CRITIQUE:** Baseline mortality is a global figure, but TB burden is concentrated in a few countries whose on-treatment mortality probably differs (HIV, age mix, delay to diagnosis). The model should show a case-weighted sensitivity range. Remove the specific India and South Africa percentages until sourced from WHO country cohort tables. Also consider trial-versus-programme mortality differences. Direction: uncertain. Magnitude: medium-low. Strength: moderate-weak.
 
 ---
 
-## Critique 2: Industry base rates imply ~15–25%, not 40%
+## Critique 2: Industry base rates imply about 15–25%, not 40%
 
 **CITATION CHECK**
-- **BIO/Informa/QLS 2021 (2011–2020): VERIFIED for Phase II→III and Phase III→NDA/BLA.**
-  - 
-The table shows 28.9% for Phase II and 57.8% for Phase III.
-
-  - A second paper reports its own Phase II→III estimates 
-(28.4% for 2012–2020 and 28.8% for 2011–2019, close to BIO's 28.9%)
+- **BIO/Informa/QLS 2021 (2011–2020): VERIFIED.** It is cited in multiple papers as 
+"Clinical Development Success Rates and Contributing Factors 2011–2020" (2021)
 .
-  - The ~91% filing→approval figure was not shown in my results. I believe it is ~90.6%, but this is unverified here.
-  - The implied overall from Phase II (0.289 × 0.578 × 0.906 ≈ 15%) is arithmetically consistent.
-- **Wong, Siah & Lo (2019), Biostatistics: the paper EXISTS.**
-  - The citation is 
-Biostatistics 2019;20(2):273–286
+- **Wong, Siah & Lo 2019, *Biostatistics*: VERIFIED (exists).** It is 
+Biostatistics 2019 Apr 1;20(2):273-286
 .
-  - There is a corrigendum: 
-errors were found in Tables 1 and 2, specifically the Phase 2→3 and Phase 3→APP columns
-.
-  - Whether its figures are "similar" to BIO's is UNVERIFIED. Anyone checking should use the corrected tables.
-- **Infectious-disease-specific rates: PARTIALLY CONTRADICTED.** The Investigator assumed Phase III ≈ 65% for infectious disease. I found sources suggesting this may be too low.
-  - One study reports that 
-infectious diseases have the highest unconditional success rate at 14.0%, with a Phase III success rate of 80.9% and an application success rate of 95.6%
-.
-  - Another finds that 
-anti-infective drugs have, in general, the highest hazard curves across all three phases
-.
-  - Wong/Siah/Lo also have a separate anti-infective paper: 
-it uses 6,829 non-vaccine infectious-disease programs from 2000 to 2020
-. I could not retrieve its numbers.
+  - There is a corrigendum. 
+The original Tables 1 and 2 had errors in the Phase 2→3 and Phase 3→approval columns.
+ The critique's "similar overall figures" from memory may come from the uncorrected numbers, so they need checking against the corrected tables.
 
 **CLAIM CHECK**
-- **"All-indication P(II and III both succeed) ≈ 0.29 × 0.58 ≈ 17%": VERIFIED.** The inputs are verified and the arithmetic is correct.
-- **"Infectious-disease-adjusted ≈ 24–26%, at or below the 0.26 break-even": NOT ROBUST.**
-  - If Phase III is ~80% rather than 65%, and Phase II is 37–40%, the product is ~30–32%. That is above the break-even.
-  - The 0.26 break-even is from the model, which I cannot see.
-  - The conclusion is therefore sensitive to which infectious-disease dataset is used.
-- **"Premium of 1.6–2.7×": arithmetically correct** (0.40/0.25 = 1.6; 0.40/0.15 ≈ 2.7). The "1.6×" end depends on the contested 65% assumption.
-- **"Moving from 0.40 to 0.20–0.25 cuts expected cost-effectiveness 37–50%": VERIFIED arithmetically** (linear).
-- **"Dominant failure mode is lack of efficacy, so repurposing helps mainly safety attrition": PLAUSIBLE.** This is widely accepted but I did not retrieve a source for it.
-- **"CG names no reference class for 40%": UNVERIFIABLE.** I do not have the source model.
-- **The decomposition (0.5 × 0.40–0.55 × 0.7–0.85 ≈ 0.14–0.30): the Investigator's own inference, labeled as such.**
-  - P(adopted | III) of 0.7–0.85 is not an industry phase-transition parameter.
-  - It is a different kind of parameter than the BIO benchmark, so the comparison to "industry 17%" is partly apples-to-oranges.
+- **Phase II→III about 29%: VERIFIED.** BIO's figure is 
+28.9%
+.
+- **Phase III→NDA/BLA about 58%: VERIFIED.** The BIO table gives 
+57.8%
+ for Phase III.
+- **Filing→approval about 91%: UNVERIFIABLE** in my results, though plausible.
+- **Arithmetic: VERIFIED.** 0.289 × 0.578 ≈ 16.7%. The 1.6×–2.7× premium and the 37–50% cut from moving 0.40 to 0.20–0.25 are correct.
+- **Infectious-disease uplift gives Phase III about 65% and a product of 24–26%: PARTIALLY CONTRADICTED.**
+  - One analysis of a different dataset finds infectious diseases have 
+the highest unconditional success rate at 14.0%, with a Phase III success rate of 80.9% and application success of 95.6%
+.
+  - This is a different methodology from BIO and probably uses different phase definitions. Still, it suggests the critique's assumed 65% Phase III rate for infectious disease may be too low.
+  - With Phase II at about 37–40% and Phase III at about 80%, the product is roughly 30%, not 24–26%.
+  - It would still be below 40%, but near the 0.26 break-even. The critique's central 0.20 looks somewhat pessimistic.
+- **Anti-infective overall rates are not dramatically above average: VERIFIED.** Anti-infective Phase I→approval is 
+fairly stable around 10.6%
+. Wong et al. report that 
+only 6.8% of non-industry-sponsored vaccine and 8.2% of non-vaccine infectious-disease programs transition from phase 1 to approval
+. This mildly supports the critique's skepticism.
+- **Repurposing premium applies mostly to safety attrition, not efficacy: LOGIC ONLY.** The critique flags this as UNGROUNDED, which is accurate.
+- **The PIIc success estimate of 0.5 and the decomposition: UNVERIFIABLE** (own inference, as stated).
+- **The 0.26 break-even and CG's 40%: UNVERIFIABLE.** They come from the model.
 
 **EVIDENCE FOUND**
-- The BIO and academic figures are corroborated.
-- Infectious-disease/anti-infective programs do show above-average success, with a very high late-stage rate in at least one dataset. This partly undermines the "at or below break-even" claim and moves the reasonable range up.
-- Success measured as "approval" is not the same as "adopted at scale in LMICs", which is the model's likely endpoint.
+- Hay et al. 2014 (via a secondary source) put the non-oncology Phase II→III rate at 
+34.8%
+ and Phase III success at 
+54%
+. This corroborates the general range.
+- Industry transition rates measure drug progression, which includes business-driven terminations. They may understate the scientific probability of success for a well-funded academic or public-health program. They are also not defined identically to CG's p_success, which may start at Phase IIc and end at adoption. The critique doesn't discuss this definitional mismatch.
+- The critique's internal cross-references ("Critique 2", "Critique 4") do not match this batch's numbering.
+
+**CORE CLAIM**
+- Claim: Industry reference-class rates imply P(II and III succeed) of roughly 15–25%, so CG's 40% needs an unstated premium of about 1.6× or more.
+- Support: **SUPPORTED** for the base-rate numbers (BIO's 28.9% and 57.8%). The conclusion that 40% is unjustified is LOGIC ONLY, because the definitional match is untested.
+- Why: The BIO rates were directly confirmed, but the infectious-disease uplift could be larger than assumed and CG's endpoint definition is unknown.
 
 **OVERALL VERDICT: PARTIALLY VERIFIED.**
-- What survives:
-  - The all-indication base rate is ~15–17%.
-  - 40% needs a stated justification and a named reference class.
-  - Infectious disease is above average.
-- What doesn't: the claim that the infectious-disease-adjusted figure is at or below 0.26 is not established.
 
-**REVISED CRITIQUE**
-- CG gives no reference class for 40%. Industry phase-transition data (BIO 2011–2020) give ~29% (Phase II→III) × ~58% (Phase III→filing), or ~17%, and ~15% to approval for all indications.
-- Infectious-disease and anti-infective programs perform better than average. Estimates of the uplift vary, and one dataset puts Phase III success above 80%.
-- A reasonable range for infectious-disease-adjusted P(II and III) is roughly 20–32%, which brackets the 0.26 break-even rather than clearly falling below it.
-- The decomposition is the Investigator's own inference and should be flagged as such. The repurposing-premium argument is UNGROUNDED.
-- Strength: medium-large, because the direction is robust but the magnitude and the break-even crossing are uncertain.
+**REVISED CRITIQUE:** CG gives no reference class for 40%. BIO 2011–2020 rates (Phase II→III 28.9%, Phase III→filing 57.8%) imply about 17% for both phases. Infectious-disease-specific data (one analysis: Phase III about 81%) lift this to roughly 25–32%, which is still below 40% and close to the 0.26 break-even. Remove the claim that the infectious-disease-adjusted product is 24–26%. Replace it with a range of about 25–32%, and state that the Wong 2019 figures need checking against the corrected tables. The own-inference decomposition is UNGROUNDED. The repurposing-premium argument is plausible but unsourced. Strength: moderate-to-strong on direction, with the size of the gap uncertain. Magnitude: medium-large.
 
 ---
 
-## Critique 3: TB-specific reference classes have a worse record than 40%
+## Critique 3: TB host-directed and adjunctive therapy record is poor
 
 **CITATION CHECK**
-- **REMoxTB, OFLOTUB, RIFAQUIN: VERIFIED.**
-  - 
-WHO states that REMoxTB, OFLOTUB and RIFAQUIN failed to demonstrate non-inferiority of shorter regimens
+- **Wejse et al. 2009 (Guinea-Bissau): VERIFIED.** It is 
+Wejse C, et al., Am J Respir Crit Care Med 2009;179:843–50
+. A review summarises it as showing 
+no difference in TB score, 12-month mortality, or sputum smear conversion times between arms
 .
-  - A pooled analysis confirms that 
-in each of the three trials, the 4-month regimen did not satisfy non-inferiority criteria
+- **Martineau et al. 2011 (London): VERIFIED, with nuance.** The trial found 
+median time to culture conversion of 36.0 vs 43.5 days (adjusted HR 1.39, 95% CI 0.90–2.16; p=0.14)
+. It also found 
+a significant effect in participants with the tt genotype of the TaqI polymorphism
+. "No overall benefit" is accurate. The genotype signal is omitted.
+- **ACT HIV 2023: VERIFIED.** Deaths were 
+116/263 (44.1%) with dexamethasone vs 126/257 (49.0%) with placebo (HR 0.85, 95% CI 0.66–1.10; P=0.22)
+. The trial 
+did not confer a benefit on survival or any secondary end point
 .
-  - Nuance: in RIFAQUIN, 
-the 6-month regimen proved non-inferior, but non-inferiority could not be declared for the 4-month regimen
-.
-  - These are antibiotic-regimen trials with a non-inferiority design. They are not host-directed or adjunctive therapies, so they are an analogy for "surrogate to Phase III", not members of the HDT class.
-  - The claim that they had "encouraging mouse and Phase II culture-conversion data" was not checked.
-- **Study 31/A5349: VERIFIED.**
-  - 
-The 4-month rifapentine-moxifloxacin regimen was non-inferior to the standard 6-month regimen.
-
-  - WHO issued a conditional recommendation: 
-people aged 12 or older with drug-susceptible pulmonary TB may receive a 4-month regimen of isoniazid, rifapentine, moxifloxacin and pyrazinamide
-.
-  - The shortening class has a second success: 
-the SHINE trial showed a 4-month regimen non-inferior to the 6-month regimen in children
-. The Investigator didn't mention it.
-- **ACT HIV (2023): VERIFIED.**
-  - 
-Death occurred in 44.1% (dexamethasone) vs 49.0% (placebo); HR 0.85, 95% CI 0.66–1.10, P = 0.22.
-
-  - 
-The earlier 2004 Vietnam trial showed benefit overall, though the benefit was uncertain in the 98 HIV-positive participants.
-
-  - The Investigator's "did not generalize" framing is fair, but "looked effective in the earlier trial population" needs the caveat that the HIV-positive subgroup was small and uncertain from the start.
-- **Thwaites 2004 (dexamethasone, TBM): VERIFIED (secondary).**
-  - 
-A Vietnam trial published in 2004 found that dexamethasone significantly reduced overall mortality from TB meningitis.
-
-  - 
-The relative risk of death was 0.69 (95% CI 0.52–0.92).
-
-  - The newer LAST ACT trial muddies this: 
-neither non-inferiority nor superiority of placebo was established in HIV-negative LTA4H CC/CT-genotype adults
-. The authors still conclude that 
-the pooled data support a modest survival benefit in HIV-negative adults
-.
-- **Vitamin D (Wejse 2009, Guinea-Bissau; Martineau 2011, London): NOT CHECKED (search budget).** From background knowledge, both are real and neither showed an overall primary-endpoint benefit. Martineau 2011 reported a genotype-specific subgroup effect. Treat as plausible, not verified.
-- **Pravastatin mouse data (Karakousis group), Wallis & Hafner, Kolloli & Subbian: NOT CHECKED.**
-- **"No HDT is WHO-recommended for drug-sensitive pulmonary TB": NOT CHECKED.** It is plausible, but I only verified the dexamethasone TBM recommendation context.
+- **Thwaites 2004: VERIFIED.** The trial showed 
+improved survival in patients over 14 years of age with tuberculous meningitis
+. The 
+benefit was uncertain in the 98 HIV-positive participants
+. That fits the critique's "didn't generalise" framing.
+- **REMoxTB, OFLOTUB, RIFAQUIN (all NEJM 2014) failing non-inferiority for 4-month regimens, and Study 31/A5349 succeeding: NOT CHECKED.** My final search was rejected. They match my background knowledge, but they are not verified in this session.
+- **Parihar and colleagues, "Karakousis group": PARTIALLY MISATTRIBUTED (from background knowledge, unchecked).** I believe the 2014 Parihar statin–macrophage–mouse paper came from Reto Guler's group in Cape Town. The Karakousis group published separate pravastatin mouse work. The critique conflates the two.
+- **Wallis & Hafner; Kolloli & Subbian reviews: NOT CHECKED.**
 
 **CLAIM CHECK**
-- **"Class success rate 10–20%": UNGROUNDED (the Investigator labeled it as inference).**
-  - There are no denominators, and the class is defined post hoc from a few salient failures and successes.
-  - The count includes at least three successes (Study 31, SHINE, TBM corticosteroids), so it is not a clean "mostly failures" record.
-  - Design differences matter. Non-inferiority regimen-shortening trials and superiority adjunct trials have different success definitions.
-- **"At 0.15, CE is ~38% of the base case": VERIFIED arithmetic** (0.15/0.40 = 0.375).
-- **"Blend of TB class and industry priors gives 0.2–0.3": UNGROUNDED but reasonable.** It is the Investigator's own inference.
-- **Estimated direction "uncertain" is inconsistent with the argument.** The whole argument points to a lower p_success.
+- **"No HDT is WHO-recommended for drug-sensitive pulmonary TB": PLAUSIBLE, unchecked.**
+- **Class success rate of 10–20%: UNVERIFIABLE** (own inference, as stated).
+- **At p=0.15, cost-effectiveness is about 38% of CG's base case: VERIFIED arithmetically** (0.15/0.40 = 0.375).
 
 **EVIDENCE FOUND**
-- The strongest verified analogue for an anti-inflammatory adjunct is the corticosteroid sequence. There was a positive early trial in a mostly HIV-negative population (RR 0.69), then a null result in HIV-positive adults (HR 0.85, P = 0.22), then an ambiguous genotype-stratified trial. That supports a "benefit may be heterogeneous and not generalize" caution, and the population of statin trials matters.
-- The shortening class is not uniformly bad. The negative result came from simple fluoroquinolone substitution, and the positive one from a different design (rifapentine plus moxifloxacin).
+- A vitamin D meta-analysis found 
+a significantly higher proportion of sputum culture conversion overall (OR 1.22, 1.04–1.43), but no shortening of time to conversion
+. This is a mild counterweight to "null."
+- The 2025 LAST ACT trial in HIV-negative adults, stratified by LTA4H genotype, found 
+neither non-inferiority nor superiority of placebo established in CC/CT-genotype adults
+. A combined analysis 
+supports dexamethasone's modest survival benefit in all HIV-negative adults
+. This reinforces that even the one adopted class member has a modest, heterogeneous effect.
+- **Reference-class weakness:**
+  - The list is a hand-picked set of failures, so it is vulnerable to selection bias.
+  - Several trials were themselves Phase II/III, not Phase II→III transitions.
+  - The ACT HIV trial concerned TB meningitis mortality, a very different setting from pulmonary TB with a culture-conversion or relapse endpoint.
+  - Most statin evidence is preclinical, so a 10–20% rate from this class has no denominator.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.**
-- What survives:
-  - The antibiotic-shortening and ACT HIV facts are accurate.
-  - A TB-specific prior is more pessimistic than a generic one.
-- What doesn't: the quantitative class rate, and the vitamin D and HDT-pipeline claims, which are unverified here. Presenting regimen-shortening trials as HDT-class evidence overstates the relevance.
+**CORE CLAIM**
+- Claim: The appropriate TB-specific reference class has a success rate well under 40% from Phase II onward (about 10–20%).
+- Support: **LOGIC ONLY.**
+- Why: The individual trial facts check out, but the class rate is an unpublished inference built from a non-systematic, selected list.
 
-**REVISED CRITIQUE**
-- No named reference class supports 40%. The nearest TB analogues are mixed:
-  - Three fluoroquinolone 4-month trials (REMoxTB, OFLOTUB, RIFAQUIN) failed non-inferiority.
-  - Study 31 succeeded and was conditionally recommended by WHO, and SHINE succeeded in children.
-  - The anti-inflammatory adjunct dexamethasone worked in TBM overall, but ACT HIV was null in HIV-positive adults.
-- No quantitative success rate for "TB host-directed therapy" is available, so a 10–20% rate is UNGROUNDED. A blended range of ~0.2–0.3 is plausible but also inferential.
-- Vitamin D and statin-preclinical claims should be marked "unchecked, plausible" until sourced.
-- Direction: lowers p_success. Strength: medium, not large, until a sourced class rate exists.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The vitamin D, dexamethasone and Thwaites facts are real and accurately characterised. The quantitative class rate stays UNGROUNDED, and the statin attribution is dubious.
+
+**REVISED CRITIQUE:** TB adjunctive and host-directed trials have a mixed record. Vitamin D showed no overall benefit on culture conversion (Wejse 2009, Martineau 2011). Dexamethasone in HIV-associated TB meningitis was null (ACT HIV, HR 0.85, 0.66–1.10). Dexamethasone in HIV-negative TB meningitis showed benefit (Thwaites 2004), though it is modest and heterogeneous. The fluoroquinolone 4-month failures and the Study 31 success are from the critique's memory and need a check. Remove the Parihar/Karakousis attribution until verified. The 10–20% class rate and the blended p_success of 0.2–0.3 are UNGROUNDED inferences. They are plausible, but the reference class is selective and the endpoint context differs from pulmonary TB. Direction: lowers p_success. Magnitude: medium-large. Strength: moderate, as a qualitative prior shift rather than a quantified one.
 
 --- Critique: "Success" probably means a surrogate or composite endpoint, but the model needs a 10% mortality reduction, so P(adopted AND 10% mortality benefit) < P(trials succeed) ---
 
-**Scope note:** No source materials were attached, and I found nothing public on the CG model. I could not check any CG parameter: p_success = 0.40, the 10% relative mortality reduction, 60% uptake, the $7M cost, the 8-year timeline, the 0.26 break-even threshold, or how the Phase IIc defines success. Every claim about the CG model is therefore unverified. I checked the external trial facts and the arithmetic.
+## Critique 1: "Success" is probably a surrogate or composite endpoint, but the model needs a 10% mortality reduction
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the claim about standard TB Phase III endpoints check out. The specific baseline mortality and the effect-size discount are ungrounded. The critique also assumes a DS-TB population, which I could not confirm.
+
+**CLAIM CHECK**
+- **Power calculation (~36,000 per arm at 4% → 3.6%): VERIFIED (arithmetic).** I recomputed it. The variance term is 0.0384 + 0.0347 = 0.0731. Then 7.84 × 0.0731 / 0.004² ≈ 35,800 per arm.
+- **Baseline mortality of ~4% in trial populations: FALSE or overstated for trials, and the error makes the critique stronger.**
+  - 
+Study 31 on-treatment all-cause mortality was 0.8% (control), 0.4% (rifapentine–moxifloxacin) and 0.5% (rifapentine).
+
+  - 
+Overall mortality in Study 31 was 0.6%.
+
+  - 
+Among people with HIV it was 1.5%.
+
+  - In TRUNCATE-TB, 
+deaths before week 96 were 2 (1.1%) in the control arm and 5 (2.7%) in one experimental arm.
+
+  - At about 1% baseline, my calculation gives roughly 148,000 per arm. The 4–6% figure is closer to programmatic cohorts, which I did not verify.
+- **Standard Phase III TB trials use composite endpoints, not mortality: VERIFIED.**
+  - Study 31's 
+primary efficacy endpoint was TB disease-free survival at 12 months.
+
+  - REMoxTB's 
+primary endpoint was a composite unfavorable outcome (failure or relapse within 18 months).
+
+  - TRUNCATE-TB's 
+primary outcome was a composite of death before week 96, or ongoing treatment or active TB at week 96.
+
+  - Another source says 
+the accepted primary efficacy endpoint is a composite of mainly bacteriological failure and relapse.
+
+- **Enrolment of "hundreds to a few thousand": VERIFIED.** Study 31 randomized about 2,500 and TRUNCATE-TB about 675 across its arms.
+- **The surrogate-to-mortality link is uncertain: PLAUSIBLE.** Culture-conversion surrogates are known to be weak. 
+Culture conversion has only a limited role in advancing regimens to phase III or predicting outcomes.
+ That evidence concerns culture conversion and relapse, not mortality for adjunct drugs.
+- **"E[RR | surrogate success] is 5–7%": UNGROUNDED.** It is an illustrative number with no source.
+
+**EVIDENCE FOUND**
+- **Counter-consideration.** The critique's DS-TB framing may not match the model. In high-mortality populations such as TB meningitis or advanced HIV, mortality-powered trials are feasible. One review notes 
+dexamethasone significantly reduces mortality in tuberculous meningitis and pericarditis.
+ If CG targets those populations, the power argument weakens.
+- **Possible misreading of the 10%.** The model's 10% may be a population-level or assumed effect, not the trial's powered effect size. I could not see CG's model, so I could not check this.
+
+**CORE CLAIM**
+- **Claim:** CG's "Phase III success" is declared on a surrogate or composite endpoint that does not directly test a 10% mortality reduction, so P(success) overstates P(adopted AND ≥10% mortality benefit).
+- **Support: LOGIC ONLY.**
+- **Why:** The arithmetic and TB endpoint conventions are verified, but I found no evidence on how CG defines success or on the actual mortality-conditional effect.
+
+**REVISED CRITIQUE**
+- **Verified:** A mortality-powered Phase III in a typical drug-susceptible TB population needs about 36,000 per arm at 4% baseline mortality. It would need far more at the 0.5–2% mortality seen in Study 31 and TRUNCATE-TB. Standard TB Phase III trials use composite unfavorable-outcome endpoints.
+- **Implication:** If CG's population is DS-TB or similarly low-mortality, the 10% mortality effect is an extrapolation, and the model should state it separately from P(trial success).
+- **Flagged:** The 5–7% discount is UNGROUNDED. The critique does not apply in high-mortality populations. CG's definition of success needs checking.
+- **Strength:** Large if the population is low-mortality, but conditional on that. The direction is correct.
 
 ---
 
-## Critique 1: Surrogate or composite "success" versus the 10% mortality-reduction assumption
+## Critique 2: P(adoption | Phase III success) and P(Phase III funded | IIc success) are missing
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the endpoint claims check out. The 4% baseline mortality is probably too high for DS-TB trials, which makes the argument stronger. The 5–7% "realized RR" and the "large" magnitude are ungrounded.
+**OVERALL VERDICT: UNVERIFIABLE (retain as a flagged, UNGROUNDED hypothesis).** The arithmetic is correct. Everything else depends on CG's model structure, which I could not access.
 
 **CLAIM CHECK**
-- **Sample-size arithmetic (4% → 3.6%, about 36,000 per arm): VERIFIED.** I recomputed it. The sum p₁q₁ + p₂q₂ is 0.0731 and d² is 1.6×10⁻⁵. That gives about 35,800 per arm.
-- **"Even at 6% it is tens of thousands per arm": VERIFIED.** At 6% → 5.4% I get about 23,400 per arm.
-- **Standard TB Phase III trials enroll hundreds to a few thousand: VERIFIED.**
-  - 
-Study 31 had 2,234 participants assessable for its primary outcome.
-
-  - TRUNCATE-TB's two arms shown in the NEJM table had 
-181 and 184 participants.
-
-  - I did not find the TRUNCATE-TB total enrollment.
-- **Primary endpoints are composites or surrogates: VERIFIED, with a nuance.**
-  - 
-Study 31's primary efficacy outcome was survival free of tuberculosis at 12 months.
-
-  - 
-REMoxTB's primary outcome was a composite of bacteriological or clinical failure or relapse within 18 months.
-
-  - 
-TRUNCATE-TB's primary outcome was a composite of death, ongoing treatment, or active disease at week 96.
-
-  - 
-Regulatory guidance and recent Phase III trials use a composite of mainly bacteriological failure and relapse.
-
-  - Death is a component of some of these composites, so they are not purely bacteriological surrogates. None of them tests all-cause mortality alone.
-- **Baseline mortality of about 4% in DS-TB trial populations: LIKELY OVERSTATED.**
-  - In Study 31, 
-mortality was 0.6% in the overall study population.
-
-  - 
-Among people with HIV on treatment it was 1.5%.
-
-  - WHO's review reports 
-0.4% all-cause mortality within 14 days of the end of treatment.
-
-  - At around 1% baseline, a 10% relative reduction would need several hundred thousand participants. Programmatic mortality of 4–6% (Critique 1's range) is plausible from general knowledge, but I did not verify it here.
-- **Surrogate-to-mortality relationship for TB adjuncts is ungrounded: AGREED.** I found no validated link.
-- **Success may be declared on a non-mortality endpoint (supported for adjuncts):**
-  - A recent review says 
-host-directed therapy trial designs have focused on safety, biological activity and intermediate outcomes, rather than being powered for mortality.
-
-  - It also says 
-no adjunctive host-directed therapy has shown sufficient, reproducible efficacy for routine use.
-
-- **"If E[RR | surrogate success] is 5–7%, benefit falls 30–50%": arithmetic correct, premise UNGROUNDED.** 5–7% versus 10% is a 30–50% shortfall. The 5–7% figure is an assumption.
+- **0.40 × 0.75–0.85 = 0.30–0.34, a 15–25% reduction: VERIFIED (arithmetic).**
+- **Combined with funding at 0.8, the result is "close to the 0.26 threshold": UNVERIFIABLE.** The 0.26 break-even is internal to CG's model. Note that 0.40 × 0.8 × 0.8 ≈ 0.256, which is consistent with the claim.
+- **WHO recommendations require a GRADE review and low-certainty evidence may give a conditional or no recommendation: PLAUSIBLE.** This is general institutional knowledge. My searches did not retrieve WHO guideline-methodology documents.
+- **The 60% uptake figure covers only country-level implementation, or blends adoption and uptake: UNVERIFIABLE.** I could not find CG's model or grant documents.
+- **"$7M includes later trials": UNVERIFIABLE.**
+- **"Many Phase II→III failures are strategic or funding exits": UNVERIFIED.** I did not search for it. It is a reasonable industry-data claim but needs a source.
+- **"8 years to Phase III completion": UNVERIFIABLE.**
 
 **EVIDENCE FOUND**
-- **Higher-mortality populations are less extreme but still large.**
-  - TB Fast Track's primary outcome was all-cause mortality in advanced HIV: 
-19.0 versus 21.6 deaths per 100 person-years, HR 0.92, not significant.
+- Nothing directly confirms or contradicts the critique. Generic repurposed drugs lack a commercial sponsor, which is plausible. I found no data on adoption or funding probabilities for repurposed TB adjuncts.
+- There may be a double-counting issue. If the 40% came from industry base rates for reaching approval, it may already include some funding and strategic attrition. That would cut against this critique, but I could not check it.
 
-  - At 20% baseline, a 10% relative reduction needs about 6,000 per arm by the Critique's formula (my calculation). That is still large.
-- **TB meningitis is the best-grounded case for a mortality endpoint.** 
-Dexamethasone is the only evidence-based adjunctive therapy there and gives a modest reduction in short-term mortality.
- If the CG drug targets TBM or advanced HIV, the critique's baseline changes materially. I could not tell which population CG uses.
-- **Sample-size concerns also apply at Phase II.** In the four-drug HDT Phase 2 trial, 
-the main shortcomings were a small sample size and low statistical power.
- 
-Its efficacy signal was FEV₁, a predictor of long-term all-cause mortality.
- That is a surrogate-based "success" in this class.
-- **Cost implication:** a mortality-powered Phase III of 12,000 to 70,000 participants would likely cost far more than a $7M budget covering later trials. This is my inference, not verified.
+**CORE CLAIM**
+- **Claim:** The model has no separate factor for WHO adoption or Phase III funding, and the 60% uptake does not already cover them.
+- **Support: LOGIC ONLY.**
+- **Why:** This depends on how CG derived the 60% and what it includes, which I could not check.
 
-**REVISED CRITIQUE (strength: MEDIUM–LARGE, direction: decreases)**
-A Phase III TB trial powered for a 10% relative mortality reduction would need on the order of 10⁴–10⁵ participants. This holds for baseline mortality from about 1% to about 20%, and the required size is larger at low baseline mortality (my calculations). Published Phase III TB trials (Study 31, REMoxTB, TRUNCATE-TB) used composite clinical endpoints and enrolled hundreds to low thousands. Trial "success" is therefore unlikely to demonstrate a 10% mortality benefit directly. The model should either (a) state how the 10% was derived, or (b) run a sensitivity analysis with E[RR | trial success] below 10%. **UNGROUNDED:** the 5–7% figure and the 30–50% loss. The "4%" baseline should be replaced with a population-specific figure. Trial-population mortality in DS-TB is closer to 0.4–1.5%.
+**REVISED CRITIQUE**
+- **Hypothesis (UNGROUNDED):** Separate adoption and funding steps may be missing from the p_success chain. If they are absent and each is below 1, cost-effectiveness falls roughly proportionally.
+- **Arithmetic:** 0.40 × 0.75–0.85 gives 0.30–0.34, a 15–25% reduction.
+- **Action:** The first step is to check how the 60% was derived. If it embeds adoption, this becomes a documentation point only. Medium strength at most, conditional on that check.
 
 ---
 
-## Critique 2: Missing P(adoption | Phase III success) and P(Phase III funded | IIc success)
+## Critique 3: Phase IIc "success" is a weak gate
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic and arithmetic hold. The key dependency, how the 60% uptake was derived, is unverifiable here. The quantitative inputs (0.75–0.85, 0.8) are admitted guesses.
-
-**CLAIM CHECK**
-- **Arithmetic: VERIFIED.**
-  - 0.40 × 0.75 = 0.30, a 25% reduction.
-  - 0.40 × 0.85 = 0.34, a 15% reduction.
-  - Applying a further 0.8 funding factor gives 0.24–0.27, which is near the 0.26 threshold.
-  - The threshold itself is a CG figure I could not check.
-- **WHO recommendations go through a guideline development group and evidence review: VERIFIED in outline.**
-  - For Study 31, 
-a WHO-convened GDG considered the 4-month regimen.
-
-  - 
-The other 4-month arm did not meet non-inferiority and was not reviewed by the GDG.
-
-  - That document is a June 2021 WHO rapid communication, so adoption can be quick for a clean positive Phase III. The 2021 rapid communication followed Study 31's results within a short window. I did not verify the exact timing.
-  - I did not find the GRADE rating wording on that page.
-- **A conditional recommendation or none for low-certainty mortality evidence: PLAUSIBLE, UNVERIFIED.** It matches how GRADE works, but I found no TB-specific example.
-- **Generics lack a commercial sponsor, so funding risk is higher: PLAUSIBLE.** Repurposed-drug HDT trials in the results were philanthropy- or public-funded. For example, 
-the HDT Phase 2 trial was supported by the Gates Foundation and the South African MRC.
- This is consistent with the critique but does not quantify P(funded).
-- **"Many Phase II→III failures are strategic or funding exits": PLAUSIBLE.** This matches general industry analyses, but I did not verify it here.
-- **60% uptake covers country-level implementation only: UNVERIFIABLE.** The critique itself concedes it collapses to a documentation issue if the 60% already embeds adoption.
-
-**EVIDENCE FOUND**
-- No source gives P(adoption | positive Phase III) for TB adjuncts. The Study 31 and WHO pathway shows a clean non-inferiority trial being adopted within months, which argues against a heavy discount in the best case. An adjunct with only low-certainty mortality evidence (Critique 1) is the harder case, and this links the two critiques.
-- The cost-versus-funding gap is also linked to Critique 1. A mortality-powered Phase III is much more expensive than a standard TB composite-endpoint trial, so P(funded) is not independent of the endpoint.
-
-**REVISED CRITIQUE (strength: MEDIUM, conditional)**
-The CG chain should show explicit factors for P(Phase III funded | IIc success) and P(WHO or national adoption | Phase III success), or state that the 60% uptake already includes them. The critique's directional claim (decreases) follows if either factor is below 1. **UNGROUNDED:** the values 0.75–0.85 and 0.8. Treat the 15–25% reduction as an illustrative sensitivity range, not an estimate. The "near the 0.26 threshold" claim holds only if CG's break-even really is 0.26 and the 60% excludes adoption.
-
----
-
-## Critique 3: Phase IIc as a weak gate
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The REMoxTB precedent and the statistical point are valid. The premise that the IIc is a PK or dose-finding trial is unverified, and TB usage of "Phase IIc" may contradict it. The direction claim is internally inconsistent. The "winner's curse" argument is partly misapplied. The cross-reference to Critique 2 is wrong.
+**OVERALL VERDICT: REJECTED as stated.** The key premise, that Phase IIc is chiefly PK or dose-finding, conflicts with how Phase IIc is defined in TB. A conditional version of the hypothesis survives. It depends on how CG defines its IIc, which I could not see.
 
 **CLAIM CHECK**
-- **REMoxTB: early culture-conversion signals did not translate to Phase III: VERIFIED.**
+- **Phase IIc is chiefly dose-finding or PK/safety: CONTRADICTED under standard TB usage.**
+  - The Phase IIC STEP design is 
+a hybrid in which the experimental regimen is given for its planned Phase III duration, with patients followed for failure and relapse for 12 months from randomisation.
+
+  - The authors say their 
+intention was to set a high bar for moving regimens forward, to reduce the risk of costly phase III failures.
+
+  - A review describes 
+the hybrid Phase IIC design as permitting earlier identification of candidate regimens likely to succeed in Phase III.
+
+  - An ongoing Phase IIc protocol uses unfavorable outcome status as its efficacy endpoint. It uses 
+Stage 1 unfavorable outcome status to inform the decision to proceed to Stage 2.
+
+  - The critique infers "dose-finding" from an exclusion list I cannot see. CG could be using "IIc" loosely, which I could not check.
+- **"Phase II culture-conversion signals did not translate in REMoxTB": PARTIALLY VERIFIED.**
+  - REMoxTB was itself a Phase III trial. It 
+showed a faster initial decline in bacterial burden but was not sufficiently sterilizing to shorten treatment from six to four months.
+
   - 
-Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited use as a surrogate in REMoxTB.
+Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited surrogate use in REMoxTB.
 
-  - A REMoxTB reanalysis found 
-faster culture conversion with the moxifloxacin regimens, even though the smear-conversion analysis showed no treatment difference.
-
-  - 
-Culture conversion has only a limited role in deciding which regimens advance to Phase III.
-
-- **"See Critique 2": WRONG REFERENCE.** REMoxTB is not discussed in Critique 2, only in Critique 1's suggested evidence.
-- **Phase IIc is mainly dose-finding or PK/safety, as the "exclusion list implies": UNVERIFIABLE, and RISKY.**
-  - In the TB field, Phase IIb trials usually use culture-conversion endpoints: 
-Phase IIb trials continue to use culture-conversion primary endpoints as the best available marker.
-
-  - From general knowledge, "Phase IIc" in TB usually means a larger or longer proof-of-efficacy trial with clinical-outcome endpoints. I did not confirm this by search.
-  - If so, the critique's premise that P(IIc) is 0.6–0.8 and uninformative may be wrong. The protocol or grant rationale needs checking, which the Investigator also recommended.
-- **Industry Phase II success of about 29%: PLAUSIBLE, NOT VERIFIED HERE.** The figure matches my recollection of Phase II→III transition rates in industry benchmarking. It is a transition rate, not Phase II→approval, so the critique's phrase "Phase II→approval statistics" mixes two measures. Industry likelihood of approval from Phase II is much lower than 40%, which would support the broader point that CG's 40% for both stages is high (not verified).
-- **0.7 × 0.3 = 0.21: arithmetic correct.** The 0.3 for P(III | weak signal) is an assumption with no support. Nothing in the critique shows that 0.3 is a better estimate than 0.57, the value implied by 0.40 ÷ 0.7.
-- **E[p·RR] ≠ p·E[RR] when both depend on the true effect: VALID.** This is basic probability: the two differ by the covariance.
-- **Winner's curse (realized effect below the planning value): PARTLY MISAPPLIED.** Winner's curse biases the estimated effect in a successful trial. Deaths averted depend on the true effect. Conditional on success, the true effect is selected upward, which is the opposite direction, as the critique acknowledges. The net direction is therefore ambiguous. This conflicts with the critique's header "Estimated Direction: decreases", and with its own "direction is ambiguous".
-- **"Same linear effect on p_success as Critique 1": MINOR ERROR.** Critique 1 is about the RR term, not p_success.
+  - The analogy supports the point that early-phase surrogates mislead. It concerns Phase IIb culture-conversion endpoints, not Phase IIc dose-finding.
+  - "See Critique 2" appears to be a wrong cross-reference. The surrogate point belongs to Critique 1.
+- **"Industry Phase II rate ~29%": UNVERIFIED.** I did not search for it. It is plausible from general knowledge.
+- **0.7 × 0.3 = 0.21: VERIFIED (arithmetic).** The inputs are illustrative.
+- **E[p·RR] ≠ p·E[RR] when both depend on the true effect: VERIFIED (statistical logic).** The critique itself says the direction is ambiguous.
 
 **EVIDENCE FOUND**
-- Phase 2 HDT trials in TB often define success by safety and surrogates. The four-HDT Phase 2 trial in South Africa (
-200 patients
-) assessed 
-safety and preliminary efficacy.
- Its efficacy signal was FEV₁ recovery, 
-a predictor of long-term all-cause mortality.
- This supports the "weak gate" idea for HDT-type adjuncts in general. It does not show how this specific IIc defines success.
-- 
-More data are needed before any endpoint can be used as a surrogate in a confirmatory Phase III trial.
- That fits the concern that Phase II signals transmit little information.
+- The STEP design was created precisely because Phase II endpoints at 14 days and 8 weeks were over-relied on. That runs against the "weak gate" framing for TB Phase IIc in general.
+- Phase IIc in TB can still be underpowered. In STEP's own simulation, 
+80 patients per arm with 2.5% unfavourable outcomes gives a probability of 0.99 that Phase III unfavourable outcomes would be below 12%.
+ That is a Bayesian prediction, not a guarantee, so some uncertainty remains.
 
-**REVISED CRITIQUE (strength: LOW–MEDIUM, direction: ambiguous, conditional on IIc definition)**
-If the IIc endpoint is PK, dose or surrogate-based (a condition not yet verified), then P(IIc success) is likely high. Phase III then carries most of the risk, and the realistic joint probability could fall below 0.40. REMoxTB is a verified precedent for Phase II signals not translating. Because p_success and the true effect size are correlated, E[p·RR] ≠ p·E[RR]. Whether this raises or lowers the expected benefit needs a scenario analysis over a prior on the true effect. The winner's-curse point should be dropped or reframed as an effect-size selection argument. **UNGROUNDED:** P(IIc) = 0.7, P(III | weak signal) = 0.3, the 0.21 product, and the premise that IIc is dose-finding. **Correct** the "see Critique 2" reference to Critique 1 and fix the "Phase II→approval" wording.
+**CORE CLAIM**
+- **Claim:** The Phase IIc success criterion is PK or dose selection, so P(IIc) is about 0.6–0.8 and transmits little information about Phase III.
+- **Support: CONTRADICTED** under the standard TB definition of Phase IIc, which is an efficacy-based selection trial.
+- **Why:** Phase IIc is designed to be a high-bar efficacy gate. Whether CG's IIc matches that design is unchecked.
+
+**REVISED CRITIQUE (conditional, not a finding)**
+- **Retain only this conditional hypothesis.** If CG's Phase IIc is defined by PK or dose rather than clinical outcomes, the 40% should be decomposed into P(IIc) × P(III | weak signal) before it is compared with Phase II→approval base rates.
+- **Generic point that survives:** Modelling p_success and RR as independent point values is a modelling simplification. It can be tested by a scenario analysis over a prior on the true effect size.
+- **Flagged UNGROUNDED:** The 0.6–0.8 IIc pass rate, the 0.21 product, and the direction of the joint-distribution effect.
+- **Strength:** Downgrade from medium to low-to-medium, pending the check of CG's IIc definition.
 
 --- Critique: P(adoption | Phase III success) and P(Phase III gets funded and run | Phase IIc success) are missing, and the 60% uptake factor may not cover them ---
 
-**Scope note:** No source materials were attached, and I found nothing public on the CG model. I could not check any CG parameter: p_success = 0.40, the 10% relative mortality reduction, 60% uptake, the $7M cost, the 8-year timeline, the 0.26 break-even threshold, or how the Phase IIc defines success. Every claim about the CG model is therefore unverified. I checked the external trial facts and the arithmetic.
+## Critique 1: "Success" is probably a surrogate or composite endpoint, but the model needs a 10% mortality reduction
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the claim about standard TB Phase III endpoints check out. The specific baseline mortality and the effect-size discount are ungrounded. The critique also assumes a DS-TB population, which I could not confirm.
+
+**CLAIM CHECK**
+- **Power calculation (~36,000 per arm at 4% → 3.6%): VERIFIED (arithmetic).** I recomputed it. The variance term is 0.0384 + 0.0347 = 0.0731. Then 7.84 × 0.0731 / 0.004² ≈ 35,800 per arm.
+- **Baseline mortality of ~4% in trial populations: FALSE or overstated for trials, and the error makes the critique stronger.**
+  - 
+Study 31 on-treatment all-cause mortality was 0.8% (control), 0.4% (rifapentine–moxifloxacin) and 0.5% (rifapentine).
+
+  - 
+Overall mortality in Study 31 was 0.6%.
+
+  - 
+Among people with HIV it was 1.5%.
+
+  - In TRUNCATE-TB, 
+deaths before week 96 were 2 (1.1%) in the control arm and 5 (2.7%) in one experimental arm.
+
+  - At about 1% baseline, my calculation gives roughly 148,000 per arm. The 4–6% figure is closer to programmatic cohorts, which I did not verify.
+- **Standard Phase III TB trials use composite endpoints, not mortality: VERIFIED.**
+  - Study 31's 
+primary efficacy endpoint was TB disease-free survival at 12 months.
+
+  - REMoxTB's 
+primary endpoint was a composite unfavorable outcome (failure or relapse within 18 months).
+
+  - TRUNCATE-TB's 
+primary outcome was a composite of death before week 96, or ongoing treatment or active TB at week 96.
+
+  - Another source says 
+the accepted primary efficacy endpoint is a composite of mainly bacteriological failure and relapse.
+
+- **Enrolment of "hundreds to a few thousand": VERIFIED.** Study 31 randomized about 2,500 and TRUNCATE-TB about 675 across its arms.
+- **The surrogate-to-mortality link is uncertain: PLAUSIBLE.** Culture-conversion surrogates are known to be weak. 
+Culture conversion has only a limited role in advancing regimens to phase III or predicting outcomes.
+ That evidence concerns culture conversion and relapse, not mortality for adjunct drugs.
+- **"E[RR | surrogate success] is 5–7%": UNGROUNDED.** It is an illustrative number with no source.
+
+**EVIDENCE FOUND**
+- **Counter-consideration.** The critique's DS-TB framing may not match the model. In high-mortality populations such as TB meningitis or advanced HIV, mortality-powered trials are feasible. One review notes 
+dexamethasone significantly reduces mortality in tuberculous meningitis and pericarditis.
+ If CG targets those populations, the power argument weakens.
+- **Possible misreading of the 10%.** The model's 10% may be a population-level or assumed effect, not the trial's powered effect size. I could not see CG's model, so I could not check this.
+
+**CORE CLAIM**
+- **Claim:** CG's "Phase III success" is declared on a surrogate or composite endpoint that does not directly test a 10% mortality reduction, so P(success) overstates P(adopted AND ≥10% mortality benefit).
+- **Support: LOGIC ONLY.**
+- **Why:** The arithmetic and TB endpoint conventions are verified, but I found no evidence on how CG defines success or on the actual mortality-conditional effect.
+
+**REVISED CRITIQUE**
+- **Verified:** A mortality-powered Phase III in a typical drug-susceptible TB population needs about 36,000 per arm at 4% baseline mortality. It would need far more at the 0.5–2% mortality seen in Study 31 and TRUNCATE-TB. Standard TB Phase III trials use composite unfavorable-outcome endpoints.
+- **Implication:** If CG's population is DS-TB or similarly low-mortality, the 10% mortality effect is an extrapolation, and the model should state it separately from P(trial success).
+- **Flagged:** The 5–7% discount is UNGROUNDED. The critique does not apply in high-mortality populations. CG's definition of success needs checking.
+- **Strength:** Large if the population is low-mortality, but conditional on that. The direction is correct.
 
 ---
 
-## Critique 1: Surrogate or composite "success" versus the 10% mortality-reduction assumption
+## Critique 2: P(adoption | Phase III success) and P(Phase III funded | IIc success) are missing
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the endpoint claims check out. The 4% baseline mortality is probably too high for DS-TB trials, which makes the argument stronger. The 5–7% "realized RR" and the "large" magnitude are ungrounded.
+**OVERALL VERDICT: UNVERIFIABLE (retain as a flagged, UNGROUNDED hypothesis).** The arithmetic is correct. Everything else depends on CG's model structure, which I could not access.
 
 **CLAIM CHECK**
-- **Sample-size arithmetic (4% → 3.6%, about 36,000 per arm): VERIFIED.** I recomputed it. The sum p₁q₁ + p₂q₂ is 0.0731 and d² is 1.6×10⁻⁵. That gives about 35,800 per arm.
-- **"Even at 6% it is tens of thousands per arm": VERIFIED.** At 6% → 5.4% I get about 23,400 per arm.
-- **Standard TB Phase III trials enroll hundreds to a few thousand: VERIFIED.**
-  - 
-Study 31 had 2,234 participants assessable for its primary outcome.
-
-  - TRUNCATE-TB's two arms shown in the NEJM table had 
-181 and 184 participants.
-
-  - I did not find the TRUNCATE-TB total enrollment.
-- **Primary endpoints are composites or surrogates: VERIFIED, with a nuance.**
-  - 
-Study 31's primary efficacy outcome was survival free of tuberculosis at 12 months.
-
-  - 
-REMoxTB's primary outcome was a composite of bacteriological or clinical failure or relapse within 18 months.
-
-  - 
-TRUNCATE-TB's primary outcome was a composite of death, ongoing treatment, or active disease at week 96.
-
-  - 
-Regulatory guidance and recent Phase III trials use a composite of mainly bacteriological failure and relapse.
-
-  - Death is a component of some of these composites, so they are not purely bacteriological surrogates. None of them tests all-cause mortality alone.
-- **Baseline mortality of about 4% in DS-TB trial populations: LIKELY OVERSTATED.**
-  - In Study 31, 
-mortality was 0.6% in the overall study population.
-
-  - 
-Among people with HIV on treatment it was 1.5%.
-
-  - WHO's review reports 
-0.4% all-cause mortality within 14 days of the end of treatment.
-
-  - At around 1% baseline, a 10% relative reduction would need several hundred thousand participants. Programmatic mortality of 4–6% (Critique 1's range) is plausible from general knowledge, but I did not verify it here.
-- **Surrogate-to-mortality relationship for TB adjuncts is ungrounded: AGREED.** I found no validated link.
-- **Success may be declared on a non-mortality endpoint (supported for adjuncts):**
-  - A recent review says 
-host-directed therapy trial designs have focused on safety, biological activity and intermediate outcomes, rather than being powered for mortality.
-
-  - It also says 
-no adjunctive host-directed therapy has shown sufficient, reproducible efficacy for routine use.
-
-- **"If E[RR | surrogate success] is 5–7%, benefit falls 30–50%": arithmetic correct, premise UNGROUNDED.** 5–7% versus 10% is a 30–50% shortfall. The 5–7% figure is an assumption.
+- **0.40 × 0.75–0.85 = 0.30–0.34, a 15–25% reduction: VERIFIED (arithmetic).**
+- **Combined with funding at 0.8, the result is "close to the 0.26 threshold": UNVERIFIABLE.** The 0.26 break-even is internal to CG's model. Note that 0.40 × 0.8 × 0.8 ≈ 0.256, which is consistent with the claim.
+- **WHO recommendations require a GRADE review and low-certainty evidence may give a conditional or no recommendation: PLAUSIBLE.** This is general institutional knowledge. My searches did not retrieve WHO guideline-methodology documents.
+- **The 60% uptake figure covers only country-level implementation, or blends adoption and uptake: UNVERIFIABLE.** I could not find CG's model or grant documents.
+- **"$7M includes later trials": UNVERIFIABLE.**
+- **"Many Phase II→III failures are strategic or funding exits": UNVERIFIED.** I did not search for it. It is a reasonable industry-data claim but needs a source.
+- **"8 years to Phase III completion": UNVERIFIABLE.**
 
 **EVIDENCE FOUND**
-- **Higher-mortality populations are less extreme but still large.**
-  - TB Fast Track's primary outcome was all-cause mortality in advanced HIV: 
-19.0 versus 21.6 deaths per 100 person-years, HR 0.92, not significant.
+- Nothing directly confirms or contradicts the critique. Generic repurposed drugs lack a commercial sponsor, which is plausible. I found no data on adoption or funding probabilities for repurposed TB adjuncts.
+- There may be a double-counting issue. If the 40% came from industry base rates for reaching approval, it may already include some funding and strategic attrition. That would cut against this critique, but I could not check it.
 
-  - At 20% baseline, a 10% relative reduction needs about 6,000 per arm by the Critique's formula (my calculation). That is still large.
-- **TB meningitis is the best-grounded case for a mortality endpoint.** 
-Dexamethasone is the only evidence-based adjunctive therapy there and gives a modest reduction in short-term mortality.
- If the CG drug targets TBM or advanced HIV, the critique's baseline changes materially. I could not tell which population CG uses.
-- **Sample-size concerns also apply at Phase II.** In the four-drug HDT Phase 2 trial, 
-the main shortcomings were a small sample size and low statistical power.
- 
-Its efficacy signal was FEV₁, a predictor of long-term all-cause mortality.
- That is a surrogate-based "success" in this class.
-- **Cost implication:** a mortality-powered Phase III of 12,000 to 70,000 participants would likely cost far more than a $7M budget covering later trials. This is my inference, not verified.
+**CORE CLAIM**
+- **Claim:** The model has no separate factor for WHO adoption or Phase III funding, and the 60% uptake does not already cover them.
+- **Support: LOGIC ONLY.**
+- **Why:** This depends on how CG derived the 60% and what it includes, which I could not check.
 
-**REVISED CRITIQUE (strength: MEDIUM–LARGE, direction: decreases)**
-A Phase III TB trial powered for a 10% relative mortality reduction would need on the order of 10⁴–10⁵ participants. This holds for baseline mortality from about 1% to about 20%, and the required size is larger at low baseline mortality (my calculations). Published Phase III TB trials (Study 31, REMoxTB, TRUNCATE-TB) used composite clinical endpoints and enrolled hundreds to low thousands. Trial "success" is therefore unlikely to demonstrate a 10% mortality benefit directly. The model should either (a) state how the 10% was derived, or (b) run a sensitivity analysis with E[RR | trial success] below 10%. **UNGROUNDED:** the 5–7% figure and the 30–50% loss. The "4%" baseline should be replaced with a population-specific figure. Trial-population mortality in DS-TB is closer to 0.4–1.5%.
+**REVISED CRITIQUE**
+- **Hypothesis (UNGROUNDED):** Separate adoption and funding steps may be missing from the p_success chain. If they are absent and each is below 1, cost-effectiveness falls roughly proportionally.
+- **Arithmetic:** 0.40 × 0.75–0.85 gives 0.30–0.34, a 15–25% reduction.
+- **Action:** The first step is to check how the 60% was derived. If it embeds adoption, this becomes a documentation point only. Medium strength at most, conditional on that check.
 
 ---
 
-## Critique 2: Missing P(adoption | Phase III success) and P(Phase III funded | IIc success)
+## Critique 3: Phase IIc "success" is a weak gate
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic and arithmetic hold. The key dependency, how the 60% uptake was derived, is unverifiable here. The quantitative inputs (0.75–0.85, 0.8) are admitted guesses.
-
-**CLAIM CHECK**
-- **Arithmetic: VERIFIED.**
-  - 0.40 × 0.75 = 0.30, a 25% reduction.
-  - 0.40 × 0.85 = 0.34, a 15% reduction.
-  - Applying a further 0.8 funding factor gives 0.24–0.27, which is near the 0.26 threshold.
-  - The threshold itself is a CG figure I could not check.
-- **WHO recommendations go through a guideline development group and evidence review: VERIFIED in outline.**
-  - For Study 31, 
-a WHO-convened GDG considered the 4-month regimen.
-
-  - 
-The other 4-month arm did not meet non-inferiority and was not reviewed by the GDG.
-
-  - That document is a June 2021 WHO rapid communication, so adoption can be quick for a clean positive Phase III. The 2021 rapid communication followed Study 31's results within a short window. I did not verify the exact timing.
-  - I did not find the GRADE rating wording on that page.
-- **A conditional recommendation or none for low-certainty mortality evidence: PLAUSIBLE, UNVERIFIED.** It matches how GRADE works, but I found no TB-specific example.
-- **Generics lack a commercial sponsor, so funding risk is higher: PLAUSIBLE.** Repurposed-drug HDT trials in the results were philanthropy- or public-funded. For example, 
-the HDT Phase 2 trial was supported by the Gates Foundation and the South African MRC.
- This is consistent with the critique but does not quantify P(funded).
-- **"Many Phase II→III failures are strategic or funding exits": PLAUSIBLE.** This matches general industry analyses, but I did not verify it here.
-- **60% uptake covers country-level implementation only: UNVERIFIABLE.** The critique itself concedes it collapses to a documentation issue if the 60% already embeds adoption.
-
-**EVIDENCE FOUND**
-- No source gives P(adoption | positive Phase III) for TB adjuncts. The Study 31 and WHO pathway shows a clean non-inferiority trial being adopted within months, which argues against a heavy discount in the best case. An adjunct with only low-certainty mortality evidence (Critique 1) is the harder case, and this links the two critiques.
-- The cost-versus-funding gap is also linked to Critique 1. A mortality-powered Phase III is much more expensive than a standard TB composite-endpoint trial, so P(funded) is not independent of the endpoint.
-
-**REVISED CRITIQUE (strength: MEDIUM, conditional)**
-The CG chain should show explicit factors for P(Phase III funded | IIc success) and P(WHO or national adoption | Phase III success), or state that the 60% uptake already includes them. The critique's directional claim (decreases) follows if either factor is below 1. **UNGROUNDED:** the values 0.75–0.85 and 0.8. Treat the 15–25% reduction as an illustrative sensitivity range, not an estimate. The "near the 0.26 threshold" claim holds only if CG's break-even really is 0.26 and the 60% excludes adoption.
-
----
-
-## Critique 3: Phase IIc as a weak gate
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The REMoxTB precedent and the statistical point are valid. The premise that the IIc is a PK or dose-finding trial is unverified, and TB usage of "Phase IIc" may contradict it. The direction claim is internally inconsistent. The "winner's curse" argument is partly misapplied. The cross-reference to Critique 2 is wrong.
+**OVERALL VERDICT: REJECTED as stated.** The key premise, that Phase IIc is chiefly PK or dose-finding, conflicts with how Phase IIc is defined in TB. A conditional version of the hypothesis survives. It depends on how CG defines its IIc, which I could not see.
 
 **CLAIM CHECK**
-- **REMoxTB: early culture-conversion signals did not translate to Phase III: VERIFIED.**
+- **Phase IIc is chiefly dose-finding or PK/safety: CONTRADICTED under standard TB usage.**
+  - The Phase IIC STEP design is 
+a hybrid in which the experimental regimen is given for its planned Phase III duration, with patients followed for failure and relapse for 12 months from randomisation.
+
+  - The authors say their 
+intention was to set a high bar for moving regimens forward, to reduce the risk of costly phase III failures.
+
+  - A review describes 
+the hybrid Phase IIC design as permitting earlier identification of candidate regimens likely to succeed in Phase III.
+
+  - An ongoing Phase IIc protocol uses unfavorable outcome status as its efficacy endpoint. It uses 
+Stage 1 unfavorable outcome status to inform the decision to proceed to Stage 2.
+
+  - The critique infers "dose-finding" from an exclusion list I cannot see. CG could be using "IIc" loosely, which I could not check.
+- **"Phase II culture-conversion signals did not translate in REMoxTB": PARTIALLY VERIFIED.**
+  - REMoxTB was itself a Phase III trial. It 
+showed a faster initial decline in bacterial burden but was not sufficiently sterilizing to shorten treatment from six to four months.
+
   - 
-Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited use as a surrogate in REMoxTB.
+Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited surrogate use in REMoxTB.
 
-  - A REMoxTB reanalysis found 
-faster culture conversion with the moxifloxacin regimens, even though the smear-conversion analysis showed no treatment difference.
-
-  - 
-Culture conversion has only a limited role in deciding which regimens advance to Phase III.
-
-- **"See Critique 2": WRONG REFERENCE.** REMoxTB is not discussed in Critique 2, only in Critique 1's suggested evidence.
-- **Phase IIc is mainly dose-finding or PK/safety, as the "exclusion list implies": UNVERIFIABLE, and RISKY.**
-  - In the TB field, Phase IIb trials usually use culture-conversion endpoints: 
-Phase IIb trials continue to use culture-conversion primary endpoints as the best available marker.
-
-  - From general knowledge, "Phase IIc" in TB usually means a larger or longer proof-of-efficacy trial with clinical-outcome endpoints. I did not confirm this by search.
-  - If so, the critique's premise that P(IIc) is 0.6–0.8 and uninformative may be wrong. The protocol or grant rationale needs checking, which the Investigator also recommended.
-- **Industry Phase II success of about 29%: PLAUSIBLE, NOT VERIFIED HERE.** The figure matches my recollection of Phase II→III transition rates in industry benchmarking. It is a transition rate, not Phase II→approval, so the critique's phrase "Phase II→approval statistics" mixes two measures. Industry likelihood of approval from Phase II is much lower than 40%, which would support the broader point that CG's 40% for both stages is high (not verified).
-- **0.7 × 0.3 = 0.21: arithmetic correct.** The 0.3 for P(III | weak signal) is an assumption with no support. Nothing in the critique shows that 0.3 is a better estimate than 0.57, the value implied by 0.40 ÷ 0.7.
-- **E[p·RR] ≠ p·E[RR] when both depend on the true effect: VALID.** This is basic probability: the two differ by the covariance.
-- **Winner's curse (realized effect below the planning value): PARTLY MISAPPLIED.** Winner's curse biases the estimated effect in a successful trial. Deaths averted depend on the true effect. Conditional on success, the true effect is selected upward, which is the opposite direction, as the critique acknowledges. The net direction is therefore ambiguous. This conflicts with the critique's header "Estimated Direction: decreases", and with its own "direction is ambiguous".
-- **"Same linear effect on p_success as Critique 1": MINOR ERROR.** Critique 1 is about the RR term, not p_success.
+  - The analogy supports the point that early-phase surrogates mislead. It concerns Phase IIb culture-conversion endpoints, not Phase IIc dose-finding.
+  - "See Critique 2" appears to be a wrong cross-reference. The surrogate point belongs to Critique 1.
+- **"Industry Phase II rate ~29%": UNVERIFIED.** I did not search for it. It is plausible from general knowledge.
+- **0.7 × 0.3 = 0.21: VERIFIED (arithmetic).** The inputs are illustrative.
+- **E[p·RR] ≠ p·E[RR] when both depend on the true effect: VERIFIED (statistical logic).** The critique itself says the direction is ambiguous.
 
 **EVIDENCE FOUND**
-- Phase 2 HDT trials in TB often define success by safety and surrogates. The four-HDT Phase 2 trial in South Africa (
-200 patients
-) assessed 
-safety and preliminary efficacy.
- Its efficacy signal was FEV₁ recovery, 
-a predictor of long-term all-cause mortality.
- This supports the "weak gate" idea for HDT-type adjuncts in general. It does not show how this specific IIc defines success.
-- 
-More data are needed before any endpoint can be used as a surrogate in a confirmatory Phase III trial.
- That fits the concern that Phase II signals transmit little information.
+- The STEP design was created precisely because Phase II endpoints at 14 days and 8 weeks were over-relied on. That runs against the "weak gate" framing for TB Phase IIc in general.
+- Phase IIc in TB can still be underpowered. In STEP's own simulation, 
+80 patients per arm with 2.5% unfavourable outcomes gives a probability of 0.99 that Phase III unfavourable outcomes would be below 12%.
+ That is a Bayesian prediction, not a guarantee, so some uncertainty remains.
 
-**REVISED CRITIQUE (strength: LOW–MEDIUM, direction: ambiguous, conditional on IIc definition)**
-If the IIc endpoint is PK, dose or surrogate-based (a condition not yet verified), then P(IIc success) is likely high. Phase III then carries most of the risk, and the realistic joint probability could fall below 0.40. REMoxTB is a verified precedent for Phase II signals not translating. Because p_success and the true effect size are correlated, E[p·RR] ≠ p·E[RR]. Whether this raises or lowers the expected benefit needs a scenario analysis over a prior on the true effect. The winner's-curse point should be dropped or reframed as an effect-size selection argument. **UNGROUNDED:** P(IIc) = 0.7, P(III | weak signal) = 0.3, the 0.21 product, and the premise that IIc is dose-finding. **Correct** the "see Critique 2" reference to Critique 1 and fix the "Phase II→approval" wording.
+**CORE CLAIM**
+- **Claim:** The Phase IIc success criterion is PK or dose selection, so P(IIc) is about 0.6–0.8 and transmits little information about Phase III.
+- **Support: CONTRADICTED** under the standard TB definition of Phase IIc, which is an efficacy-based selection trial.
+- **Why:** Phase IIc is designed to be a high-bar efficacy gate. Whether CG's IIc matches that design is unchecked.
+
+**REVISED CRITIQUE (conditional, not a finding)**
+- **Retain only this conditional hypothesis.** If CG's Phase IIc is defined by PK or dose rather than clinical outcomes, the 40% should be decomposed into P(IIc) × P(III | weak signal) before it is compared with Phase II→approval base rates.
+- **Generic point that survives:** Modelling p_success and RR as independent point values is a modelling simplification. It can be tested by a scenario analysis over a prior on the true effect size.
+- **Flagged UNGROUNDED:** The 0.6–0.8 IIc pass rate, the 0.21 product, and the direction of the joint-distribution effect.
+- **Strength:** Downgrade from medium to low-to-medium, pending the check of CG's IIc definition.
 
 --- Critique: Phase IIc "success" is a weak gate. If it is defined by PK or dose selection, it passes easily and transmits little information, so the probability of the whole chain should be weighted toward Phase III ---
 
-**Scope note:** No source materials were attached, and I found nothing public on the CG model. I could not check any CG parameter: p_success = 0.40, the 10% relative mortality reduction, 60% uptake, the $7M cost, the 8-year timeline, the 0.26 break-even threshold, or how the Phase IIc defines success. Every claim about the CG model is therefore unverified. I checked the external trial facts and the arithmetic.
+## Critique 1: "Success" is probably a surrogate or composite endpoint, but the model needs a 10% mortality reduction
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the claim about standard TB Phase III endpoints check out. The specific baseline mortality and the effect-size discount are ungrounded. The critique also assumes a DS-TB population, which I could not confirm.
+
+**CLAIM CHECK**
+- **Power calculation (~36,000 per arm at 4% → 3.6%): VERIFIED (arithmetic).** I recomputed it. The variance term is 0.0384 + 0.0347 = 0.0731. Then 7.84 × 0.0731 / 0.004² ≈ 35,800 per arm.
+- **Baseline mortality of ~4% in trial populations: FALSE or overstated for trials, and the error makes the critique stronger.**
+  - 
+Study 31 on-treatment all-cause mortality was 0.8% (control), 0.4% (rifapentine–moxifloxacin) and 0.5% (rifapentine).
+
+  - 
+Overall mortality in Study 31 was 0.6%.
+
+  - 
+Among people with HIV it was 1.5%.
+
+  - In TRUNCATE-TB, 
+deaths before week 96 were 2 (1.1%) in the control arm and 5 (2.7%) in one experimental arm.
+
+  - At about 1% baseline, my calculation gives roughly 148,000 per arm. The 4–6% figure is closer to programmatic cohorts, which I did not verify.
+- **Standard Phase III TB trials use composite endpoints, not mortality: VERIFIED.**
+  - Study 31's 
+primary efficacy endpoint was TB disease-free survival at 12 months.
+
+  - REMoxTB's 
+primary endpoint was a composite unfavorable outcome (failure or relapse within 18 months).
+
+  - TRUNCATE-TB's 
+primary outcome was a composite of death before week 96, or ongoing treatment or active TB at week 96.
+
+  - Another source says 
+the accepted primary efficacy endpoint is a composite of mainly bacteriological failure and relapse.
+
+- **Enrolment of "hundreds to a few thousand": VERIFIED.** Study 31 randomized about 2,500 and TRUNCATE-TB about 675 across its arms.
+- **The surrogate-to-mortality link is uncertain: PLAUSIBLE.** Culture-conversion surrogates are known to be weak. 
+Culture conversion has only a limited role in advancing regimens to phase III or predicting outcomes.
+ That evidence concerns culture conversion and relapse, not mortality for adjunct drugs.
+- **"E[RR | surrogate success] is 5–7%": UNGROUNDED.** It is an illustrative number with no source.
+
+**EVIDENCE FOUND**
+- **Counter-consideration.** The critique's DS-TB framing may not match the model. In high-mortality populations such as TB meningitis or advanced HIV, mortality-powered trials are feasible. One review notes 
+dexamethasone significantly reduces mortality in tuberculous meningitis and pericarditis.
+ If CG targets those populations, the power argument weakens.
+- **Possible misreading of the 10%.** The model's 10% may be a population-level or assumed effect, not the trial's powered effect size. I could not see CG's model, so I could not check this.
+
+**CORE CLAIM**
+- **Claim:** CG's "Phase III success" is declared on a surrogate or composite endpoint that does not directly test a 10% mortality reduction, so P(success) overstates P(adopted AND ≥10% mortality benefit).
+- **Support: LOGIC ONLY.**
+- **Why:** The arithmetic and TB endpoint conventions are verified, but I found no evidence on how CG defines success or on the actual mortality-conditional effect.
+
+**REVISED CRITIQUE**
+- **Verified:** A mortality-powered Phase III in a typical drug-susceptible TB population needs about 36,000 per arm at 4% baseline mortality. It would need far more at the 0.5–2% mortality seen in Study 31 and TRUNCATE-TB. Standard TB Phase III trials use composite unfavorable-outcome endpoints.
+- **Implication:** If CG's population is DS-TB or similarly low-mortality, the 10% mortality effect is an extrapolation, and the model should state it separately from P(trial success).
+- **Flagged:** The 5–7% discount is UNGROUNDED. The critique does not apply in high-mortality populations. CG's definition of success needs checking.
+- **Strength:** Large if the population is low-mortality, but conditional on that. The direction is correct.
 
 ---
 
-## Critique 1: Surrogate or composite "success" versus the 10% mortality-reduction assumption
+## Critique 2: P(adoption | Phase III success) and P(Phase III funded | IIc success) are missing
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The arithmetic and the endpoint claims check out. The 4% baseline mortality is probably too high for DS-TB trials, which makes the argument stronger. The 5–7% "realized RR" and the "large" magnitude are ungrounded.
+**OVERALL VERDICT: UNVERIFIABLE (retain as a flagged, UNGROUNDED hypothesis).** The arithmetic is correct. Everything else depends on CG's model structure, which I could not access.
 
 **CLAIM CHECK**
-- **Sample-size arithmetic (4% → 3.6%, about 36,000 per arm): VERIFIED.** I recomputed it. The sum p₁q₁ + p₂q₂ is 0.0731 and d² is 1.6×10⁻⁵. That gives about 35,800 per arm.
-- **"Even at 6% it is tens of thousands per arm": VERIFIED.** At 6% → 5.4% I get about 23,400 per arm.
-- **Standard TB Phase III trials enroll hundreds to a few thousand: VERIFIED.**
-  - 
-Study 31 had 2,234 participants assessable for its primary outcome.
-
-  - TRUNCATE-TB's two arms shown in the NEJM table had 
-181 and 184 participants.
-
-  - I did not find the TRUNCATE-TB total enrollment.
-- **Primary endpoints are composites or surrogates: VERIFIED, with a nuance.**
-  - 
-Study 31's primary efficacy outcome was survival free of tuberculosis at 12 months.
-
-  - 
-REMoxTB's primary outcome was a composite of bacteriological or clinical failure or relapse within 18 months.
-
-  - 
-TRUNCATE-TB's primary outcome was a composite of death, ongoing treatment, or active disease at week 96.
-
-  - 
-Regulatory guidance and recent Phase III trials use a composite of mainly bacteriological failure and relapse.
-
-  - Death is a component of some of these composites, so they are not purely bacteriological surrogates. None of them tests all-cause mortality alone.
-- **Baseline mortality of about 4% in DS-TB trial populations: LIKELY OVERSTATED.**
-  - In Study 31, 
-mortality was 0.6% in the overall study population.
-
-  - 
-Among people with HIV on treatment it was 1.5%.
-
-  - WHO's review reports 
-0.4% all-cause mortality within 14 days of the end of treatment.
-
-  - At around 1% baseline, a 10% relative reduction would need several hundred thousand participants. Programmatic mortality of 4–6% (Critique 1's range) is plausible from general knowledge, but I did not verify it here.
-- **Surrogate-to-mortality relationship for TB adjuncts is ungrounded: AGREED.** I found no validated link.
-- **Success may be declared on a non-mortality endpoint (supported for adjuncts):**
-  - A recent review says 
-host-directed therapy trial designs have focused on safety, biological activity and intermediate outcomes, rather than being powered for mortality.
-
-  - It also says 
-no adjunctive host-directed therapy has shown sufficient, reproducible efficacy for routine use.
-
-- **"If E[RR | surrogate success] is 5–7%, benefit falls 30–50%": arithmetic correct, premise UNGROUNDED.** 5–7% versus 10% is a 30–50% shortfall. The 5–7% figure is an assumption.
+- **0.40 × 0.75–0.85 = 0.30–0.34, a 15–25% reduction: VERIFIED (arithmetic).**
+- **Combined with funding at 0.8, the result is "close to the 0.26 threshold": UNVERIFIABLE.** The 0.26 break-even is internal to CG's model. Note that 0.40 × 0.8 × 0.8 ≈ 0.256, which is consistent with the claim.
+- **WHO recommendations require a GRADE review and low-certainty evidence may give a conditional or no recommendation: PLAUSIBLE.** This is general institutional knowledge. My searches did not retrieve WHO guideline-methodology documents.
+- **The 60% uptake figure covers only country-level implementation, or blends adoption and uptake: UNVERIFIABLE.** I could not find CG's model or grant documents.
+- **"$7M includes later trials": UNVERIFIABLE.**
+- **"Many Phase II→III failures are strategic or funding exits": UNVERIFIED.** I did not search for it. It is a reasonable industry-data claim but needs a source.
+- **"8 years to Phase III completion": UNVERIFIABLE.**
 
 **EVIDENCE FOUND**
-- **Higher-mortality populations are less extreme but still large.**
-  - TB Fast Track's primary outcome was all-cause mortality in advanced HIV: 
-19.0 versus 21.6 deaths per 100 person-years, HR 0.92, not significant.
+- Nothing directly confirms or contradicts the critique. Generic repurposed drugs lack a commercial sponsor, which is plausible. I found no data on adoption or funding probabilities for repurposed TB adjuncts.
+- There may be a double-counting issue. If the 40% came from industry base rates for reaching approval, it may already include some funding and strategic attrition. That would cut against this critique, but I could not check it.
 
-  - At 20% baseline, a 10% relative reduction needs about 6,000 per arm by the Critique's formula (my calculation). That is still large.
-- **TB meningitis is the best-grounded case for a mortality endpoint.** 
-Dexamethasone is the only evidence-based adjunctive therapy there and gives a modest reduction in short-term mortality.
- If the CG drug targets TBM or advanced HIV, the critique's baseline changes materially. I could not tell which population CG uses.
-- **Sample-size concerns also apply at Phase II.** In the four-drug HDT Phase 2 trial, 
-the main shortcomings were a small sample size and low statistical power.
- 
-Its efficacy signal was FEV₁, a predictor of long-term all-cause mortality.
- That is a surrogate-based "success" in this class.
-- **Cost implication:** a mortality-powered Phase III of 12,000 to 70,000 participants would likely cost far more than a $7M budget covering later trials. This is my inference, not verified.
+**CORE CLAIM**
+- **Claim:** The model has no separate factor for WHO adoption or Phase III funding, and the 60% uptake does not already cover them.
+- **Support: LOGIC ONLY.**
+- **Why:** This depends on how CG derived the 60% and what it includes, which I could not check.
 
-**REVISED CRITIQUE (strength: MEDIUM–LARGE, direction: decreases)**
-A Phase III TB trial powered for a 10% relative mortality reduction would need on the order of 10⁴–10⁵ participants. This holds for baseline mortality from about 1% to about 20%, and the required size is larger at low baseline mortality (my calculations). Published Phase III TB trials (Study 31, REMoxTB, TRUNCATE-TB) used composite clinical endpoints and enrolled hundreds to low thousands. Trial "success" is therefore unlikely to demonstrate a 10% mortality benefit directly. The model should either (a) state how the 10% was derived, or (b) run a sensitivity analysis with E[RR | trial success] below 10%. **UNGROUNDED:** the 5–7% figure and the 30–50% loss. The "4%" baseline should be replaced with a population-specific figure. Trial-population mortality in DS-TB is closer to 0.4–1.5%.
+**REVISED CRITIQUE**
+- **Hypothesis (UNGROUNDED):** Separate adoption and funding steps may be missing from the p_success chain. If they are absent and each is below 1, cost-effectiveness falls roughly proportionally.
+- **Arithmetic:** 0.40 × 0.75–0.85 gives 0.30–0.34, a 15–25% reduction.
+- **Action:** The first step is to check how the 60% was derived. If it embeds adoption, this becomes a documentation point only. Medium strength at most, conditional on that check.
 
 ---
 
-## Critique 2: Missing P(adoption | Phase III success) and P(Phase III funded | IIc success)
+## Critique 3: Phase IIc "success" is a weak gate
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The logic and arithmetic hold. The key dependency, how the 60% uptake was derived, is unverifiable here. The quantitative inputs (0.75–0.85, 0.8) are admitted guesses.
-
-**CLAIM CHECK**
-- **Arithmetic: VERIFIED.**
-  - 0.40 × 0.75 = 0.30, a 25% reduction.
-  - 0.40 × 0.85 = 0.34, a 15% reduction.
-  - Applying a further 0.8 funding factor gives 0.24–0.27, which is near the 0.26 threshold.
-  - The threshold itself is a CG figure I could not check.
-- **WHO recommendations go through a guideline development group and evidence review: VERIFIED in outline.**
-  - For Study 31, 
-a WHO-convened GDG considered the 4-month regimen.
-
-  - 
-The other 4-month arm did not meet non-inferiority and was not reviewed by the GDG.
-
-  - That document is a June 2021 WHO rapid communication, so adoption can be quick for a clean positive Phase III. The 2021 rapid communication followed Study 31's results within a short window. I did not verify the exact timing.
-  - I did not find the GRADE rating wording on that page.
-- **A conditional recommendation or none for low-certainty mortality evidence: PLAUSIBLE, UNVERIFIED.** It matches how GRADE works, but I found no TB-specific example.
-- **Generics lack a commercial sponsor, so funding risk is higher: PLAUSIBLE.** Repurposed-drug HDT trials in the results were philanthropy- or public-funded. For example, 
-the HDT Phase 2 trial was supported by the Gates Foundation and the South African MRC.
- This is consistent with the critique but does not quantify P(funded).
-- **"Many Phase II→III failures are strategic or funding exits": PLAUSIBLE.** This matches general industry analyses, but I did not verify it here.
-- **60% uptake covers country-level implementation only: UNVERIFIABLE.** The critique itself concedes it collapses to a documentation issue if the 60% already embeds adoption.
-
-**EVIDENCE FOUND**
-- No source gives P(adoption | positive Phase III) for TB adjuncts. The Study 31 and WHO pathway shows a clean non-inferiority trial being adopted within months, which argues against a heavy discount in the best case. An adjunct with only low-certainty mortality evidence (Critique 1) is the harder case, and this links the two critiques.
-- The cost-versus-funding gap is also linked to Critique 1. A mortality-powered Phase III is much more expensive than a standard TB composite-endpoint trial, so P(funded) is not independent of the endpoint.
-
-**REVISED CRITIQUE (strength: MEDIUM, conditional)**
-The CG chain should show explicit factors for P(Phase III funded | IIc success) and P(WHO or national adoption | Phase III success), or state that the 60% uptake already includes them. The critique's directional claim (decreases) follows if either factor is below 1. **UNGROUNDED:** the values 0.75–0.85 and 0.8. Treat the 15–25% reduction as an illustrative sensitivity range, not an estimate. The "near the 0.26 threshold" claim holds only if CG's break-even really is 0.26 and the 60% excludes adoption.
-
----
-
-## Critique 3: Phase IIc as a weak gate
-
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The REMoxTB precedent and the statistical point are valid. The premise that the IIc is a PK or dose-finding trial is unverified, and TB usage of "Phase IIc" may contradict it. The direction claim is internally inconsistent. The "winner's curse" argument is partly misapplied. The cross-reference to Critique 2 is wrong.
+**OVERALL VERDICT: REJECTED as stated.** The key premise, that Phase IIc is chiefly PK or dose-finding, conflicts with how Phase IIc is defined in TB. A conditional version of the hypothesis survives. It depends on how CG defines its IIc, which I could not see.
 
 **CLAIM CHECK**
-- **REMoxTB: early culture-conversion signals did not translate to Phase III: VERIFIED.**
+- **Phase IIc is chiefly dose-finding or PK/safety: CONTRADICTED under standard TB usage.**
+  - The Phase IIC STEP design is 
+a hybrid in which the experimental regimen is given for its planned Phase III duration, with patients followed for failure and relapse for 12 months from randomisation.
+
+  - The authors say their 
+intention was to set a high bar for moving regimens forward, to reduce the risk of costly phase III failures.
+
+  - A review describes 
+the hybrid Phase IIC design as permitting earlier identification of candidate regimens likely to succeed in Phase III.
+
+  - An ongoing Phase IIc protocol uses unfavorable outcome status as its efficacy endpoint. It uses 
+Stage 1 unfavorable outcome status to inform the decision to proceed to Stage 2.
+
+  - The critique infers "dose-finding" from an exclusion list I cannot see. CG could be using "IIc" loosely, which I could not check.
+- **"Phase II culture-conversion signals did not translate in REMoxTB": PARTIALLY VERIFIED.**
+  - REMoxTB was itself a Phase III trial. It 
+showed a faster initial decline in bacterial burden but was not sufficiently sterilizing to shorten treatment from six to four months.
+
   - 
-Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited use as a surrogate in REMoxTB.
+Earlier time to culture conversion failed to predict successful 4-month fluoroquinolone regimens and had limited surrogate use in REMoxTB.
 
-  - A REMoxTB reanalysis found 
-faster culture conversion with the moxifloxacin regimens, even though the smear-conversion analysis showed no treatment difference.
-
-  - 
-Culture conversion has only a limited role in deciding which regimens advance to Phase III.
-
-- **"See Critique 2": WRONG REFERENCE.** REMoxTB is not discussed in Critique 2, only in Critique 1's suggested evidence.
-- **Phase IIc is mainly dose-finding or PK/safety, as the "exclusion list implies": UNVERIFIABLE, and RISKY.**
-  - In the TB field, Phase IIb trials usually use culture-conversion endpoints: 
-Phase IIb trials continue to use culture-conversion primary endpoints as the best available marker.
-
-  - From general knowledge, "Phase IIc" in TB usually means a larger or longer proof-of-efficacy trial with clinical-outcome endpoints. I did not confirm this by search.
-  - If so, the critique's premise that P(IIc) is 0.6–0.8 and uninformative may be wrong. The protocol or grant rationale needs checking, which the Investigator also recommended.
-- **Industry Phase II success of about 29%: PLAUSIBLE, NOT VERIFIED HERE.** The figure matches my recollection of Phase II→III transition rates in industry benchmarking. It is a transition rate, not Phase II→approval, so the critique's phrase "Phase II→approval statistics" mixes two measures. Industry likelihood of approval from Phase II is much lower than 40%, which would support the broader point that CG's 40% for both stages is high (not verified).
-- **0.7 × 0.3 = 0.21: arithmetic correct.** The 0.3 for P(III | weak signal) is an assumption with no support. Nothing in the critique shows that 0.3 is a better estimate than 0.57, the value implied by 0.40 ÷ 0.7.
-- **E[p·RR] ≠ p·E[RR] when both depend on the true effect: VALID.** This is basic probability: the two differ by the covariance.
-- **Winner's curse (realized effect below the planning value): PARTLY MISAPPLIED.** Winner's curse biases the estimated effect in a successful trial. Deaths averted depend on the true effect. Conditional on success, the true effect is selected upward, which is the opposite direction, as the critique acknowledges. The net direction is therefore ambiguous. This conflicts with the critique's header "Estimated Direction: decreases", and with its own "direction is ambiguous".
-- **"Same linear effect on p_success as Critique 1": MINOR ERROR.** Critique 1 is about the RR term, not p_success.
+  - The analogy supports the point that early-phase surrogates mislead. It concerns Phase IIb culture-conversion endpoints, not Phase IIc dose-finding.
+  - "See Critique 2" appears to be a wrong cross-reference. The surrogate point belongs to Critique 1.
+- **"Industry Phase II rate ~29%": UNVERIFIED.** I did not search for it. It is plausible from general knowledge.
+- **0.7 × 0.3 = 0.21: VERIFIED (arithmetic).** The inputs are illustrative.
+- **E[p·RR] ≠ p·E[RR] when both depend on the true effect: VERIFIED (statistical logic).** The critique itself says the direction is ambiguous.
 
 **EVIDENCE FOUND**
-- Phase 2 HDT trials in TB often define success by safety and surrogates. The four-HDT Phase 2 trial in South Africa (
-200 patients
-) assessed 
-safety and preliminary efficacy.
- Its efficacy signal was FEV₁ recovery, 
-a predictor of long-term all-cause mortality.
- This supports the "weak gate" idea for HDT-type adjuncts in general. It does not show how this specific IIc defines success.
-- 
-More data are needed before any endpoint can be used as a surrogate in a confirmatory Phase III trial.
- That fits the concern that Phase II signals transmit little information.
+- The STEP design was created precisely because Phase II endpoints at 14 days and 8 weeks were over-relied on. That runs against the "weak gate" framing for TB Phase IIc in general.
+- Phase IIc in TB can still be underpowered. In STEP's own simulation, 
+80 patients per arm with 2.5% unfavourable outcomes gives a probability of 0.99 that Phase III unfavourable outcomes would be below 12%.
+ That is a Bayesian prediction, not a guarantee, so some uncertainty remains.
 
-**REVISED CRITIQUE (strength: LOW–MEDIUM, direction: ambiguous, conditional on IIc definition)**
-If the IIc endpoint is PK, dose or surrogate-based (a condition not yet verified), then P(IIc success) is likely high. Phase III then carries most of the risk, and the realistic joint probability could fall below 0.40. REMoxTB is a verified precedent for Phase II signals not translating. Because p_success and the true effect size are correlated, E[p·RR] ≠ p·E[RR]. Whether this raises or lowers the expected benefit needs a scenario analysis over a prior on the true effect. The winner's-curse point should be dropped or reframed as an effect-size selection argument. **UNGROUNDED:** P(IIc) = 0.7, P(III | weak signal) = 0.3, the 0.21 product, and the premise that IIc is dose-finding. **Correct** the "see Critique 2" reference to Critique 1 and fix the "Phase II→approval" wording.
+**CORE CLAIM**
+- **Claim:** The Phase IIc success criterion is PK or dose selection, so P(IIc) is about 0.6–0.8 and transmits little information about Phase III.
+- **Support: CONTRADICTED** under the standard TB definition of Phase IIc, which is an efficacy-based selection trial.
+- **Why:** Phase IIc is designed to be a high-bar efficacy gate. Whether CG's IIc matches that design is unchecked.
+
+**REVISED CRITIQUE (conditional, not a finding)**
+- **Retain only this conditional hypothesis.** If CG's Phase IIc is defined by PK or dose rather than clinical outcomes, the 40% should be decomposed into P(IIc) × P(III | weak signal) before it is compared with Phase II→approval base rates.
+- **Generic point that survives:** Modelling p_success and RR as independent point values is a modelling simplification. It can be tested by a scenario analysis over a prior on the true effect size.
+- **Flagged UNGROUNDED:** The 0.6–0.8 IIc pass rate, the 0.21 product, and the direction of the joint-distribution effect.
+- **Strength:** Downgrade from medium to low-to-medium, pending the check of CG's IIc definition.
 
 --- Critique: Baseline year is stale and the 5.5M figure is sensitive to it ---
 
 ## Critique 1: Baseline year is stale and the 5.5M figure is sensitive to it
 
-**OVERALL VERDICT: VERIFIED.** I could not check what baseline CG actually used, because I don't have CG's source. The WHO numbers and the arithmetic hold up. One nuance sharpens the critique: notifications stopped rising in 2024.
+**OVERALL VERDICT: VERIFIED (conditional).** The WHO numbers are right and the arithmetic holds. I could not see CG's model, so whether CG actually anchored on 2022 is unverified. The critique is worded conditionally ("If CG anchored on 2022"), so that is acceptable.
 
 **CLAIM CHECK**
-- **2022 notifications of ~7.5M:** VERIFIED. 
+- **2022 notifications ≈ 7.5M:** VERIFIED. 
 WHO reported about 8.2 million newly diagnosed in 2023, up from 7.5 million in 2022.
 
-- **~8.2M in 2023:** VERIFIED. 
-8.2 million was the highest single-year number since the mid-1990s, up from the previous record of 7.5M in 2022.
+- **2023 ≈ 8.2M:** VERIFIED. 
+Globally in 2023, 8.2 million people with a new episode of TB were diagnosed and notified.
 
-- **"Notifications continuing to rise":** PARTIALLY VERIFIED. They rose through 2023, then levelled off. 
-In 2024, 8.3 million were newly diagnosed and notified, similar to 8.2 million in 2023 and 17% above the pre-pandemic level of 7.1 million.
- The better statement is that 2024 is a plateau at about 8.3M, which is 10.7% above 7.5M.
-- **"2022 was a post-COVID recovery year":** VERIFIED. WHO says 
-those diagnosed in 2022 and 2023 probably included a sizeable backlog of people whose diagnosis was delayed by COVID-related disruptions.
- This applies to 2023 as well. Part of the 8.2M may be one-off backlog, so it is not a clean steady-state anchor either.
-- **Arithmetic:** VERIFIED. 8.2/7.5 = +9.3% and 8.3/7.5 = +10.7%. Applied to 5.5M, that gives ~6.0–6.1M. The result is below the ±25% materiality bar.
+- **"Later reports show notifications continuing to rise" (8.3M for 2024):** VERIFIED, but the rise has flattened. 
+In 2024, 8.3 million were notified, similar to the 8.2 million in 2023 and 17% above the pre-pandemic 7.1 million in 2019.
+ The critique's "~8.2–8.3M" range is therefore accurate.
+- **"2022 was a post-COVID recovery year":** VERIFIED. 
+WHO says those diagnosed in 2022 and 2023 probably included a sizeable backlog of people whose diagnosis was delayed by COVID.
+ The critique does not note that 2023 shares this backlog caveat. 2024 held at 8.3M, though, so the higher level looks persistent.
+- **Uplift of 9–11% (5.5M → 6.0–6.1M):** VERIFIED arithmetic. 8.2/7.5 = +9.3% and 8.3/7.5 = +10.7%. The 5.5M figure also reconciles with 7.5M × 0.98⁸ × 0.96 × ~0.90, which suggests the model is built the way the critique assumes.
+- **"Below ±25% materiality bar":** correct.
+- **"No sensitivity analysis on baseline year":** UNVERIFIABLE. It comes from the thread, not from external evidence.
 
 **EVIDENCE FOUND**
-- The 2024 data point (8.3M, from the WHO Global TB Report 2025) post-dates the Investigator's recollection. It supports "upward, small."
-- The backlog caveat means the upward correction may be slightly overstated if the baseline is treated as a steady-state level.
+- The 2025 WHO report is already out. It gives 2024 notifications as 8.3M, and 
+notifications were 78% of estimated incidence
+. A baseline of 2023 or 2024 is therefore clearly available.
+- Notifications rose even though incidence was flat to slightly down, which is the detection-gap mechanism behind Critique 2.
 
-**REVISED CRITIQUE:** Same as stated, with these edits.
-- Replace "continuing to rise" with "rose to 8.2M in 2023 and plateaued at 8.3M in 2024."
-- Add the backlog caveat.
-- Strength remains small, direction up (+9–11%).
+**CORE CLAIM**
+- Claim: Notified cases are ~8.2–8.3M, not ~7.5M, so a 7.5M baseline understates the starting point by ~9–11%.
+- Support: **SUPPORTED**
+- Why: Two successive WHO reports give 8.2M (2023) and 8.3M (2024) against 7.5M (2022).
+
+**REVISED CRITIQUE:** Stands as written. Add that the latest figure is 8.3M for 2024. Flag that the CG anchor year is an assumption. Strength: low-to-moderate, upward, non-material alone (+9–11%).
 
 ---
 
-## Critique 2: A 2%/yr decline in notified counts contradicts the observed trend
+## Critique 2: A 2%/yr decline in notified case counts probably contradicts the observed trend
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core hypothesis is well supported by WHO data. Three things don't survive as stated.
-- The claim about CG's method is unverifiable.
-- The "+29%" figure double-counts Critique 1.
-- The 2025 funding-shock point is ungrounded.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The core observation survives: counts are not falling at 2%/yr. Several details need correction, and the "UNGROUNDED" numbers can now be grounded. Whether CG applies the 2% to counts rather than rates is unverified.
 
 **CLAIM CHECK**
-- **Rates fall about 1–2%/yr:** VERIFIED. WHO describes 
-declines of about 2% per year between 2010 and 2020, reversed by a 4.6% rise from 2020 to 2023.
+- **WHO headline declines are in incidence rates:** VERIFIED. 
+The rate fell 1.7% between 2023 and 2024, and the net reduction from 2015 to 2024 was 12.3%.
+
+- **Rate fell ~8% over 2015–2023:** VERIFIED. 
+The net reduction in the incidence rate between 2015 and 2023 was 8.3%.
+
+- **Absolute incident cases roughly flat, ~10–11M:** VERIFIED for 2020–2024. 
+The total was 10.8M in 2023, up from 10.7M in 2022, 10.4M in 2021 and 10.1M in 2020.
  
-The net reduction in the rate from 2015 to 2024 was 12.3%
-, which is about 1.4%/yr.
-- **Rate down ~8% over 2015–2023:** VERIFIED. 
-The net reduction was 8.3%.
+The 2024 figure of 10.7M was a ~1% reduction from 2023.
+ I did not verify the "flat since ~2015" claim directly.
+- **Population growth offsets rate declines:** VERIFIED. 
+Most of the increase in incident cases between 2022 and 2023 reflects population growth.
 
-- **Counts are roughly flat while rates fall:** VERIFIED for the recent period, but "since 2015" is unconfirmed. 
-Incident cases fell 1% in 2024, from 10.8M to 10.7M, but remain above the 2020 level of 10.3M.
- I did not retrieve a 2015 absolute figure.
-- **Population growth drives counts:** VERIFIED in direction. WHO states 
-most of the global increase in incident cases between 2022 and 2023 reflects population growth.
-
-- **~25% of incident cases are not notified:** VERIFIED, and now somewhat better. 
-In 2024 about 2.4 million people were not diagnosed or not reported, and notifications were 78% of incidence.
- In 2023 the gap was 
-about 2.7 million, down from around 4 million in 2020 and 2021.
- This supports "detection gaps are closing."
-- **Notified counts are flat to rising, not falling 2%/yr:** VERIFIED. Notifications went from 7.1M in 2019 to 8.3M in 2024. 
-In the African Region they were 38% above 2019.
-
-- **"CG applies a 2%/yr decline to counts":** UNVERIFIABLE. I have no CG source. This is the pivotal premise, so it should stay flagged.
-- **Scenario arithmetic:** the arithmetic is correct.
-  - 8.2 × 0.96 × 0.90 = 7.09M, which is +29% versus 5.5M.
-  - With +1%/yr growth, 8.2 × 1.01⁸ × 0.864 = 7.67M.
-  - The 6.5M lower bound corresponds to about −1%/yr.
-- **Double-counting problem:** the +29% already includes Critique 1.
-  - Flat counts remove 8 years of 2%/yr decline (0.98⁸ ≈ 0.85), which is worth +17.5% on its own.
-  - The baseline update adds about +9% (1.093 × 1.175 ≈ 1.28).
-  - Critique 2 alone is therefore about +17.5% for flat counts, or about +27% with +1%/yr growth.
-  - Crossing the 25% bar needs Critique 1 or a rise in counts. The Investigator's wording ("combined with Critique 1") is right, but the +29% should not be presented as Critique 2's standalone effect.
-- **2025 funding disruptions could cut notifications:** UNVERIFIABLE. My searches returned no data on the size of this effect, and the 2024 data pre-date it. It stays flagged as ungrounded.
-- **Direction field "uncertain":** the text argues the error is probably upward, so the label is internally inconsistent. The evidence supports "likely increases," with downside risk from funding and from the backlog fading.
+- **"~1–2%/yr in good pre-COVID years":** PARTLY WRONG, understated. The 2024 report slide says 
+the 2015–2020 reduction was 12%
+, about 2.5%/yr. This weakens the "2% is clearly too fast" framing only for rates, not for counts.
+- **~25% of incident cases not notified:** approximately right but slightly stale. The 2024 figure is 22% (78% notified). The gap was 
+2.7M in 2023, down from about 4M in 2020–21 and below the pre-pandemic 3.2M
+.
+- **Notifications can rise as the detection gap closes:** VERIFIED. Notifications went from 7.1M (2019) to 8.3M (2024) while incident cases were flat.
+- **Scenario arithmetic:** correct. 8.2 × 0.96 × 0.90 ≈ 7.1M (+29% vs 5.5M), and +1%/yr gives ≈ 7.7M.
+- **2025 funding disruption could cut notifications:** PLAUSIBLE and now partly grounded. 
+WHO's provisional data for the first half of 2025 show a mixed picture, with reductions beyond trend in Cambodia, Kenya, Mozambique and Uganda.
+ 
+WHO says impacts could worsen over time.
+ Modelling studies project 
+excess TB deaths from USAID termination (420,500 by 2035)
+. The effect on global notified counts is not established. The critique's "cannot ground the size" is fair.
 
 **EVIDENCE FOUND**
-- WHO notes that 
-the recovery in reported newly diagnosed cases in 2022–2024 first slowed increases in incidence, then reversed the upward trend.
- Notifications and incidence estimates are therefore linked, which weakens any "independent" notification trend.
-- Counter-consideration: WHO's 2.4M gap bounds how much notifications can rise from detection alone. The ceiling is about +28% above 8.3M, and only in the unrealistic case of 100% detection.
+- Modelling of US funding cuts projects 
+a 12–41% increase in TB episodes among people living with HIV in South Africa over 2025–2035.
+ If cuts persist, true incidence could rise, which pushes the same way as the critique.
+- The notification-versus-incidence distinction matters. A drug given at treatment start is exposed to notified/treated counts, which track detection, not the incidence-rate trend.
+- The critique's "direction: uncertain" label conflicts with its own conclusion ("probably upward"). Net direction is upward, with downside risk from funding.
+- Critique 2's scenario starts from the 8.2M baseline, so it already includes Critique 1. The two should not be added together.
 
-**REVISED CRITIQUE:** Rate declines in WHO reporting are not the same as declines in case counts. Observed notifications rose from 7.5M (2022) to 8.3M (2024), and incident counts have been about flat (10.3–10.8M since 2020). If CG applies 2%/yr to counts, it likely understates the eligible population by roughly 17% (flat counts) to 27% (+1%/yr), before the baseline correction in Critique 1.
-- Combined with Critique 1, eligible is about 6.5–7.7M.
-- The CG-method premise and the funding-shock point stay flagged as UNGROUNDED.
-- Strength: medium. Direction: up, with downside risk.
+**CORE CLAIM**
+- Claim: Notified case counts have not been declining ~2%/yr and are more likely flat or rising over the next 8 years, so applying 2%/yr to counts understates eligible volume.
+- Support: **SUPPORTED** for the historical trend (counts flat or rising 2020–2024). The 8-year forward projection is **LOGIC ONLY**.
+- Why: WHO data show incident counts flat and notifications up while rates fell only 1.7% in 2024.
+
+**REVISED CRITIQUE**
+- Replace "roughly flat since ~2015" with "roughly flat 2020–2024".
+- Correct pre-COVID rate declines to ~2.5%/yr, and the gap to ~22%.
+- The conclusion is upward, not "uncertain": eligible ≈ 6.5–7.7M under flat-to-mild-growth scenarios, with a flagged downside from funding cuts.
+- Flag that CG's use of 2% on counts is unverified.
+- Strength: moderate-to-high, **upward**. It is likely material (>25%) when combined with the baseline correction, which is already inside its own scenario.
 
 ---
 
 ## Critique 3: "Adult DS notified" is not "eligible for the trial label"
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The WHO shares are broadly right, and the direction (filters reduce eligibility) is sound. One denominator is mis-stated, one share is slightly high, and the exclusion list is the Investigator's own inference.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The epidemiological shares are essentially correct and the arithmetic holds. The hypothesis that applicability filters are missing is logically sound but depends on trial design and on CG's actual model, neither of which I could see. The statin-specific exclusions are the investigator's own inference, as the investigator admits.
 
 **CLAIM CHECK**
-- **Extrapulmonary TB ~15%:** VERIFIED. 
-In 2024, 84% of notified cases were pulmonary and 16% extrapulmonary
-, and the 2023 figures were the same (
-84% and 16%
-). Regional variation is large. 
-South-East Asia is 25% extrapulmonary
-, and 
-India and Bangladesh are above 20%.
- The ×0.85 filter is therefore too lenient for India and South Asia, the biggest contributors.
-- **Clinically diagnosed "~35–40% of notifications":** MISSTATED. 
-Of 6.9 million pulmonary cases in 2024, 64% were bacteriologically confirmed, up from 62% in 2023.
- The 62–64% is a share of pulmonary cases, not of all notifications, so 36–38% of pulmonary cases are clinically diagnosed.
-  - The stacked arithmetic does apply ×0.62 after the pulmonary filter, so it is consistent.
-  - Of all notifications, confirmed pulmonary cases are only about 0.84 × 0.64 ≈ 54%.
-- **HIV coinfection ~6–8%:** SLIGHTLY HIGH. 
-5.8% of incident cases in 2024 were among people living with HIV
-, and 
-6.1% in 2023.
- Notified HIV-positive cases were 
-413,516 in 2024
-, about 5% of 8.3M. A range of 5–7% is better. The share is concentrated in Africa, with 
-over 50% in parts of southern Africa.
-
+- **Extrapulmonary ≈ 15%:** VERIFIED, slightly low. 
+In 2024, 8.3 million were notified: 84% pulmonary and 16% extrapulmonary.
+ Regional variation is large. 
+Extrapulmonary share is 25% in South-East Asia and 8% in the Western Pacific.
+ 
+It exceeds 20% in India, Bangladesh and Ethiopia.
+ India is the largest contributor, so the real filter loss is likely larger than 15%.
+- **Clinically diagnosed ~35–40% of notifications:** MOSTLY CORRECT, but mislabelled. 
+64% of the 6.9M pulmonary cases were bacteriologically confirmed in 2024, up from 62% in 2023.
+ That is a share of pulmonary cases, so it is ~36% clinically diagnosed among pulmonary cases. The critique's own stack applies ×0.62 after the pulmonary filter, which is correct sequencing. Confirmed pulmonary cases are ~54% of all notifications (0.84 × 0.64).
+- **HIV coinfection ~6–8%:** ROUGHLY CORRECT. 
+413,516 notified TB cases were in people with HIV in 2024, equal to 6.2% of the 6.7M with an HIV test result.
+ That is about 5% of all notifications. 
+In 2023 the figure was 6.8%.
+ The range is fine for tested cases but slightly high for all notifications.
 - **Hr-TB ~7%:** VERIFIED. 
-Hr-TB prevalence was estimated at 7.4% among new cases and 11.4% among previously treated cases.
- Another source gives 
-7.1% of new cases.
- It is 
-treated with a modified regimen including levofloxacin since 2018.
- I did not verify how routinely Hr-TB is detected. Isoniazid DST is not routine, so many Hr-TB patients are probably in "DS" cohorts in practice. That blunts the filter's real-world effect but not a trial-eligibility one.
-- **Pregnancy, hepatic disease, existing statin use, drug interactions:** UNVERIFIABLE. These are inference from standard trial design, as the Investigator says. The ×0.85 for "other filters" is also ungrounded. HIV plus Hr-TB alone gives about 0.87, so 0.85 is plausible but unsupported.
-- **Stack arithmetic:** correct.
-  - 5.5 × 0.85 = 4.7M, then × 0.85 = 4.0M, then × 0.62 = 2.5M.
-  - Restricting to bacteriologically confirmed cases is a trial-design choice. A label population may not carry it.
+Data reported to WHO from 156 countries (2002–2018) gave 7.4% of new patients and 11.4% of previously treated patients.
+ Other sources say 
+about 8% (range 5–11%)
+. The treatment difference is verified. 
+WHO recommended a distinct 6-month regimen for Hr-TB containing rifampicin, pyrazinamide, ethambutol and levofloxacin.
+ The claim that Hr-TB is classified as "DS" in some schemas is UNVERIFIABLE. It depends on CG's schema, and Hr-TB patients are usually not detected without isoniazid testing.
+- **Stack arithmetic:** correct. 5.5 × 0.85 = 4.7M; × 0.85 = 4.0M; × 0.62 = 2.5M.
+- **Statin exclusion list (pregnancy, hepatic disease, ART interaction, existing statin use):** UNVERIFIABLE as a trial design. This is the investigator's inference, which the investigator discloses. It is plausible. Rifampicin–statin interactions are real, and I did not check them against a protocol.
+- **Pregnancy filter:** The size is not grounded in any search result.
 
 **EVIDENCE FOUND**
-- Applying Critique 2's upside to these filters:
-  - 7.1M (flat, adjusted) × 0.85 × 0.85 = 5.1M. That is about −7% versus 5.5M, so it roughly nets out to the current figure, as the Investigator suggests.
-  - Adding the confirmed-only restriction gives about 3.2M, below the 3.6M bar.
-- The conclusion therefore hinges on whether the label or trial requires bacteriological confirmation. That is the single most decision-relevant unknown.
-- Applying the filters to the regional mix makes this worse. India and South Asia have the highest extrapulmonary share, and Africa has the highest HIV share.
+- WHO data confirm that the extrapulmonary share and the confirmation share vary a lot by region, so a global average could misstate a model weighted toward India, Nigeria and Indonesia.
+- The bacteriological-confirmation filter is design-dependent and probably the weakest link. A label or real-world adoption model would apply to all treated pulmonary DS-TB, not only culture-confirmed cases. WHO notes that 
+a proportion of clinically diagnosed cases may be incorrect diagnoses of TB
+, which supports some downward adjustment but not a full ×0.62.
+- The critique's "could push eligible below the 3.6M bar" only occurs with the full confirmation filter. Without it, ~4.0M stays above the bar.
+- The filters partly overlap. HIV-positive and extrapulmonary cases are correlated, so multiplying them overstates the combined loss.
 
-**REVISED CRITIQUE:** Notified adult cases overstate the population that fits a pulmonary, trial-like label. Verified WHO figures:
-- Extrapulmonary share is 16% globally and ~25% in South-East Asia.
-- Pulmonary cases are 64% bacteriologically confirmed (the denominator is pulmonary, not all notifications).
-- HIV is about 5–6%.
-- Hr-TB is about 7%.
+**CORE CLAIM**
+- Claim: CG's 5.5M includes cases outside the likely trial or label population (extrapulmonary, HIV, pregnancy, hepatic disease, Hr-TB, clinically diagnosed), and these should be modelled explicitly.
+- Support: **LOGIC ONLY**
+- Why: The WHO shares are verified, but whether CG's 5.5M already excludes them, and which filters a trial or label would apply, are not visible or verifiable.
 
-An illustrative stack gives 4.0M without confirmation and ~2.5M with it, before the upside from Critique 2. The statin-specific exclusions and the ×0.85 factor are the Investigator's own assumptions and are flagged as UNGROUNDED. Strength: medium. Standalone direction: down. Net direction when combined with Critique 2: uncertain.
+**REVISED CRITIQUE**
+- Keep the verified shares: extrapulmonary 16% (up to 25% in SE Asia), pulmonary bacteriological confirmation 64%, HIV ~5–6%, Hr-TB ~7–8%.
+- Flag the statin-specific exclusions and the pregnancy and hepatic filters as **UNGROUNDED — plausible but needs a trial protocol**.
+- Treat the bacteriological-confirmation filter as scenario-dependent rather than a base-case reduction.
+- Account for filter overlap.
+- Realistic range: ~3.5–4.7M before any confirmation restriction; ~2.5M only under a culture-confirmed-only design.
+- Direction: **downward** if filters are not already in the model. The "uncertain" label arises only from Critique 2 offsetting it.
+- Strength: moderate. It is conditional on CG's model structure and on trial design.
 
 --- Critique: A 2%/yr decline in notified case counts probably contradicts the observed trend; incidence rates fall slowly while counts do not ---
 
 ## Critique 1: Baseline year is stale and the 5.5M figure is sensitive to it
 
-**OVERALL VERDICT: VERIFIED.** I could not check what baseline CG actually used, because I don't have CG's source. The WHO numbers and the arithmetic hold up. One nuance sharpens the critique: notifications stopped rising in 2024.
+**OVERALL VERDICT: VERIFIED (conditional).** The WHO numbers are right and the arithmetic holds. I could not see CG's model, so whether CG actually anchored on 2022 is unverified. The critique is worded conditionally ("If CG anchored on 2022"), so that is acceptable.
 
 **CLAIM CHECK**
-- **2022 notifications of ~7.5M:** VERIFIED. 
+- **2022 notifications ≈ 7.5M:** VERIFIED. 
 WHO reported about 8.2 million newly diagnosed in 2023, up from 7.5 million in 2022.
 
-- **~8.2M in 2023:** VERIFIED. 
-8.2 million was the highest single-year number since the mid-1990s, up from the previous record of 7.5M in 2022.
+- **2023 ≈ 8.2M:** VERIFIED. 
+Globally in 2023, 8.2 million people with a new episode of TB were diagnosed and notified.
 
-- **"Notifications continuing to rise":** PARTIALLY VERIFIED. They rose through 2023, then levelled off. 
-In 2024, 8.3 million were newly diagnosed and notified, similar to 8.2 million in 2023 and 17% above the pre-pandemic level of 7.1 million.
- The better statement is that 2024 is a plateau at about 8.3M, which is 10.7% above 7.5M.
-- **"2022 was a post-COVID recovery year":** VERIFIED. WHO says 
-those diagnosed in 2022 and 2023 probably included a sizeable backlog of people whose diagnosis was delayed by COVID-related disruptions.
- This applies to 2023 as well. Part of the 8.2M may be one-off backlog, so it is not a clean steady-state anchor either.
-- **Arithmetic:** VERIFIED. 8.2/7.5 = +9.3% and 8.3/7.5 = +10.7%. Applied to 5.5M, that gives ~6.0–6.1M. The result is below the ±25% materiality bar.
+- **"Later reports show notifications continuing to rise" (8.3M for 2024):** VERIFIED, but the rise has flattened. 
+In 2024, 8.3 million were notified, similar to the 8.2 million in 2023 and 17% above the pre-pandemic 7.1 million in 2019.
+ The critique's "~8.2–8.3M" range is therefore accurate.
+- **"2022 was a post-COVID recovery year":** VERIFIED. 
+WHO says those diagnosed in 2022 and 2023 probably included a sizeable backlog of people whose diagnosis was delayed by COVID.
+ The critique does not note that 2023 shares this backlog caveat. 2024 held at 8.3M, though, so the higher level looks persistent.
+- **Uplift of 9–11% (5.5M → 6.0–6.1M):** VERIFIED arithmetic. 8.2/7.5 = +9.3% and 8.3/7.5 = +10.7%. The 5.5M figure also reconciles with 7.5M × 0.98⁸ × 0.96 × ~0.90, which suggests the model is built the way the critique assumes.
+- **"Below ±25% materiality bar":** correct.
+- **"No sensitivity analysis on baseline year":** UNVERIFIABLE. It comes from the thread, not from external evidence.
 
 **EVIDENCE FOUND**
-- The 2024 data point (8.3M, from the WHO Global TB Report 2025) post-dates the Investigator's recollection. It supports "upward, small."
-- The backlog caveat means the upward correction may be slightly overstated if the baseline is treated as a steady-state level.
+- The 2025 WHO report is already out. It gives 2024 notifications as 8.3M, and 
+notifications were 78% of estimated incidence
+. A baseline of 2023 or 2024 is therefore clearly available.
+- Notifications rose even though incidence was flat to slightly down, which is the detection-gap mechanism behind Critique 2.
 
-**REVISED CRITIQUE:** Same as stated, with these edits.
-- Replace "continuing to rise" with "rose to 8.2M in 2023 and plateaued at 8.3M in 2024."
-- Add the backlog caveat.
-- Strength remains small, direction up (+9–11%).
+**CORE CLAIM**
+- Claim: Notified cases are ~8.2–8.3M, not ~7.5M, so a 7.5M baseline understates the starting point by ~9–11%.
+- Support: **SUPPORTED**
+- Why: Two successive WHO reports give 8.2M (2023) and 8.3M (2024) against 7.5M (2022).
+
+**REVISED CRITIQUE:** Stands as written. Add that the latest figure is 8.3M for 2024. Flag that the CG anchor year is an assumption. Strength: low-to-moderate, upward, non-material alone (+9–11%).
 
 ---
 
-## Critique 2: A 2%/yr decline in notified counts contradicts the observed trend
+## Critique 2: A 2%/yr decline in notified case counts probably contradicts the observed trend
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core hypothesis is well supported by WHO data. Three things don't survive as stated.
-- The claim about CG's method is unverifiable.
-- The "+29%" figure double-counts Critique 1.
-- The 2025 funding-shock point is ungrounded.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The core observation survives: counts are not falling at 2%/yr. Several details need correction, and the "UNGROUNDED" numbers can now be grounded. Whether CG applies the 2% to counts rather than rates is unverified.
 
 **CLAIM CHECK**
-- **Rates fall about 1–2%/yr:** VERIFIED. WHO describes 
-declines of about 2% per year between 2010 and 2020, reversed by a 4.6% rise from 2020 to 2023.
+- **WHO headline declines are in incidence rates:** VERIFIED. 
+The rate fell 1.7% between 2023 and 2024, and the net reduction from 2015 to 2024 was 12.3%.
+
+- **Rate fell ~8% over 2015–2023:** VERIFIED. 
+The net reduction in the incidence rate between 2015 and 2023 was 8.3%.
+
+- **Absolute incident cases roughly flat, ~10–11M:** VERIFIED for 2020–2024. 
+The total was 10.8M in 2023, up from 10.7M in 2022, 10.4M in 2021 and 10.1M in 2020.
  
-The net reduction in the rate from 2015 to 2024 was 12.3%
-, which is about 1.4%/yr.
-- **Rate down ~8% over 2015–2023:** VERIFIED. 
-The net reduction was 8.3%.
+The 2024 figure of 10.7M was a ~1% reduction from 2023.
+ I did not verify the "flat since ~2015" claim directly.
+- **Population growth offsets rate declines:** VERIFIED. 
+Most of the increase in incident cases between 2022 and 2023 reflects population growth.
 
-- **Counts are roughly flat while rates fall:** VERIFIED for the recent period, but "since 2015" is unconfirmed. 
-Incident cases fell 1% in 2024, from 10.8M to 10.7M, but remain above the 2020 level of 10.3M.
- I did not retrieve a 2015 absolute figure.
-- **Population growth drives counts:** VERIFIED in direction. WHO states 
-most of the global increase in incident cases between 2022 and 2023 reflects population growth.
-
-- **~25% of incident cases are not notified:** VERIFIED, and now somewhat better. 
-In 2024 about 2.4 million people were not diagnosed or not reported, and notifications were 78% of incidence.
- In 2023 the gap was 
-about 2.7 million, down from around 4 million in 2020 and 2021.
- This supports "detection gaps are closing."
-- **Notified counts are flat to rising, not falling 2%/yr:** VERIFIED. Notifications went from 7.1M in 2019 to 8.3M in 2024. 
-In the African Region they were 38% above 2019.
-
-- **"CG applies a 2%/yr decline to counts":** UNVERIFIABLE. I have no CG source. This is the pivotal premise, so it should stay flagged.
-- **Scenario arithmetic:** the arithmetic is correct.
-  - 8.2 × 0.96 × 0.90 = 7.09M, which is +29% versus 5.5M.
-  - With +1%/yr growth, 8.2 × 1.01⁸ × 0.864 = 7.67M.
-  - The 6.5M lower bound corresponds to about −1%/yr.
-- **Double-counting problem:** the +29% already includes Critique 1.
-  - Flat counts remove 8 years of 2%/yr decline (0.98⁸ ≈ 0.85), which is worth +17.5% on its own.
-  - The baseline update adds about +9% (1.093 × 1.175 ≈ 1.28).
-  - Critique 2 alone is therefore about +17.5% for flat counts, or about +27% with +1%/yr growth.
-  - Crossing the 25% bar needs Critique 1 or a rise in counts. The Investigator's wording ("combined with Critique 1") is right, but the +29% should not be presented as Critique 2's standalone effect.
-- **2025 funding disruptions could cut notifications:** UNVERIFIABLE. My searches returned no data on the size of this effect, and the 2024 data pre-date it. It stays flagged as ungrounded.
-- **Direction field "uncertain":** the text argues the error is probably upward, so the label is internally inconsistent. The evidence supports "likely increases," with downside risk from funding and from the backlog fading.
+- **"~1–2%/yr in good pre-COVID years":** PARTLY WRONG, understated. The 2024 report slide says 
+the 2015–2020 reduction was 12%
+, about 2.5%/yr. This weakens the "2% is clearly too fast" framing only for rates, not for counts.
+- **~25% of incident cases not notified:** approximately right but slightly stale. The 2024 figure is 22% (78% notified). The gap was 
+2.7M in 2023, down from about 4M in 2020–21 and below the pre-pandemic 3.2M
+.
+- **Notifications can rise as the detection gap closes:** VERIFIED. Notifications went from 7.1M (2019) to 8.3M (2024) while incident cases were flat.
+- **Scenario arithmetic:** correct. 8.2 × 0.96 × 0.90 ≈ 7.1M (+29% vs 5.5M), and +1%/yr gives ≈ 7.7M.
+- **2025 funding disruption could cut notifications:** PLAUSIBLE and now partly grounded. 
+WHO's provisional data for the first half of 2025 show a mixed picture, with reductions beyond trend in Cambodia, Kenya, Mozambique and Uganda.
+ 
+WHO says impacts could worsen over time.
+ Modelling studies project 
+excess TB deaths from USAID termination (420,500 by 2035)
+. The effect on global notified counts is not established. The critique's "cannot ground the size" is fair.
 
 **EVIDENCE FOUND**
-- WHO notes that 
-the recovery in reported newly diagnosed cases in 2022–2024 first slowed increases in incidence, then reversed the upward trend.
- Notifications and incidence estimates are therefore linked, which weakens any "independent" notification trend.
-- Counter-consideration: WHO's 2.4M gap bounds how much notifications can rise from detection alone. The ceiling is about +28% above 8.3M, and only in the unrealistic case of 100% detection.
+- Modelling of US funding cuts projects 
+a 12–41% increase in TB episodes among people living with HIV in South Africa over 2025–2035.
+ If cuts persist, true incidence could rise, which pushes the same way as the critique.
+- The notification-versus-incidence distinction matters. A drug given at treatment start is exposed to notified/treated counts, which track detection, not the incidence-rate trend.
+- The critique's "direction: uncertain" label conflicts with its own conclusion ("probably upward"). Net direction is upward, with downside risk from funding.
+- Critique 2's scenario starts from the 8.2M baseline, so it already includes Critique 1. The two should not be added together.
 
-**REVISED CRITIQUE:** Rate declines in WHO reporting are not the same as declines in case counts. Observed notifications rose from 7.5M (2022) to 8.3M (2024), and incident counts have been about flat (10.3–10.8M since 2020). If CG applies 2%/yr to counts, it likely understates the eligible population by roughly 17% (flat counts) to 27% (+1%/yr), before the baseline correction in Critique 1.
-- Combined with Critique 1, eligible is about 6.5–7.7M.
-- The CG-method premise and the funding-shock point stay flagged as UNGROUNDED.
-- Strength: medium. Direction: up, with downside risk.
+**CORE CLAIM**
+- Claim: Notified case counts have not been declining ~2%/yr and are more likely flat or rising over the next 8 years, so applying 2%/yr to counts understates eligible volume.
+- Support: **SUPPORTED** for the historical trend (counts flat or rising 2020–2024). The 8-year forward projection is **LOGIC ONLY**.
+- Why: WHO data show incident counts flat and notifications up while rates fell only 1.7% in 2024.
+
+**REVISED CRITIQUE**
+- Replace "roughly flat since ~2015" with "roughly flat 2020–2024".
+- Correct pre-COVID rate declines to ~2.5%/yr, and the gap to ~22%.
+- The conclusion is upward, not "uncertain": eligible ≈ 6.5–7.7M under flat-to-mild-growth scenarios, with a flagged downside from funding cuts.
+- Flag that CG's use of 2% on counts is unverified.
+- Strength: moderate-to-high, **upward**. It is likely material (>25%) when combined with the baseline correction, which is already inside its own scenario.
 
 ---
 
 ## Critique 3: "Adult DS notified" is not "eligible for the trial label"
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The WHO shares are broadly right, and the direction (filters reduce eligibility) is sound. One denominator is mis-stated, one share is slightly high, and the exclusion list is the Investigator's own inference.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The epidemiological shares are essentially correct and the arithmetic holds. The hypothesis that applicability filters are missing is logically sound but depends on trial design and on CG's actual model, neither of which I could see. The statin-specific exclusions are the investigator's own inference, as the investigator admits.
 
 **CLAIM CHECK**
-- **Extrapulmonary TB ~15%:** VERIFIED. 
-In 2024, 84% of notified cases were pulmonary and 16% extrapulmonary
-, and the 2023 figures were the same (
-84% and 16%
-). Regional variation is large. 
-South-East Asia is 25% extrapulmonary
-, and 
-India and Bangladesh are above 20%.
- The ×0.85 filter is therefore too lenient for India and South Asia, the biggest contributors.
-- **Clinically diagnosed "~35–40% of notifications":** MISSTATED. 
-Of 6.9 million pulmonary cases in 2024, 64% were bacteriologically confirmed, up from 62% in 2023.
- The 62–64% is a share of pulmonary cases, not of all notifications, so 36–38% of pulmonary cases are clinically diagnosed.
-  - The stacked arithmetic does apply ×0.62 after the pulmonary filter, so it is consistent.
-  - Of all notifications, confirmed pulmonary cases are only about 0.84 × 0.64 ≈ 54%.
-- **HIV coinfection ~6–8%:** SLIGHTLY HIGH. 
-5.8% of incident cases in 2024 were among people living with HIV
-, and 
-6.1% in 2023.
- Notified HIV-positive cases were 
-413,516 in 2024
-, about 5% of 8.3M. A range of 5–7% is better. The share is concentrated in Africa, with 
-over 50% in parts of southern Africa.
-
+- **Extrapulmonary ≈ 15%:** VERIFIED, slightly low. 
+In 2024, 8.3 million were notified: 84% pulmonary and 16% extrapulmonary.
+ Regional variation is large. 
+Extrapulmonary share is 25% in South-East Asia and 8% in the Western Pacific.
+ 
+It exceeds 20% in India, Bangladesh and Ethiopia.
+ India is the largest contributor, so the real filter loss is likely larger than 15%.
+- **Clinically diagnosed ~35–40% of notifications:** MOSTLY CORRECT, but mislabelled. 
+64% of the 6.9M pulmonary cases were bacteriologically confirmed in 2024, up from 62% in 2023.
+ That is a share of pulmonary cases, so it is ~36% clinically diagnosed among pulmonary cases. The critique's own stack applies ×0.62 after the pulmonary filter, which is correct sequencing. Confirmed pulmonary cases are ~54% of all notifications (0.84 × 0.64).
+- **HIV coinfection ~6–8%:** ROUGHLY CORRECT. 
+413,516 notified TB cases were in people with HIV in 2024, equal to 6.2% of the 6.7M with an HIV test result.
+ That is about 5% of all notifications. 
+In 2023 the figure was 6.8%.
+ The range is fine for tested cases but slightly high for all notifications.
 - **Hr-TB ~7%:** VERIFIED. 
-Hr-TB prevalence was estimated at 7.4% among new cases and 11.4% among previously treated cases.
- Another source gives 
-7.1% of new cases.
- It is 
-treated with a modified regimen including levofloxacin since 2018.
- I did not verify how routinely Hr-TB is detected. Isoniazid DST is not routine, so many Hr-TB patients are probably in "DS" cohorts in practice. That blunts the filter's real-world effect but not a trial-eligibility one.
-- **Pregnancy, hepatic disease, existing statin use, drug interactions:** UNVERIFIABLE. These are inference from standard trial design, as the Investigator says. The ×0.85 for "other filters" is also ungrounded. HIV plus Hr-TB alone gives about 0.87, so 0.85 is plausible but unsupported.
-- **Stack arithmetic:** correct.
-  - 5.5 × 0.85 = 4.7M, then × 0.85 = 4.0M, then × 0.62 = 2.5M.
-  - Restricting to bacteriologically confirmed cases is a trial-design choice. A label population may not carry it.
+Data reported to WHO from 156 countries (2002–2018) gave 7.4% of new patients and 11.4% of previously treated patients.
+ Other sources say 
+about 8% (range 5–11%)
+. The treatment difference is verified. 
+WHO recommended a distinct 6-month regimen for Hr-TB containing rifampicin, pyrazinamide, ethambutol and levofloxacin.
+ The claim that Hr-TB is classified as "DS" in some schemas is UNVERIFIABLE. It depends on CG's schema, and Hr-TB patients are usually not detected without isoniazid testing.
+- **Stack arithmetic:** correct. 5.5 × 0.85 = 4.7M; × 0.85 = 4.0M; × 0.62 = 2.5M.
+- **Statin exclusion list (pregnancy, hepatic disease, ART interaction, existing statin use):** UNVERIFIABLE as a trial design. This is the investigator's inference, which the investigator discloses. It is plausible. Rifampicin–statin interactions are real, and I did not check them against a protocol.
+- **Pregnancy filter:** The size is not grounded in any search result.
 
 **EVIDENCE FOUND**
-- Applying Critique 2's upside to these filters:
-  - 7.1M (flat, adjusted) × 0.85 × 0.85 = 5.1M. That is about −7% versus 5.5M, so it roughly nets out to the current figure, as the Investigator suggests.
-  - Adding the confirmed-only restriction gives about 3.2M, below the 3.6M bar.
-- The conclusion therefore hinges on whether the label or trial requires bacteriological confirmation. That is the single most decision-relevant unknown.
-- Applying the filters to the regional mix makes this worse. India and South Asia have the highest extrapulmonary share, and Africa has the highest HIV share.
+- WHO data confirm that the extrapulmonary share and the confirmation share vary a lot by region, so a global average could misstate a model weighted toward India, Nigeria and Indonesia.
+- The bacteriological-confirmation filter is design-dependent and probably the weakest link. A label or real-world adoption model would apply to all treated pulmonary DS-TB, not only culture-confirmed cases. WHO notes that 
+a proportion of clinically diagnosed cases may be incorrect diagnoses of TB
+, which supports some downward adjustment but not a full ×0.62.
+- The critique's "could push eligible below the 3.6M bar" only occurs with the full confirmation filter. Without it, ~4.0M stays above the bar.
+- The filters partly overlap. HIV-positive and extrapulmonary cases are correlated, so multiplying them overstates the combined loss.
 
-**REVISED CRITIQUE:** Notified adult cases overstate the population that fits a pulmonary, trial-like label. Verified WHO figures:
-- Extrapulmonary share is 16% globally and ~25% in South-East Asia.
-- Pulmonary cases are 64% bacteriologically confirmed (the denominator is pulmonary, not all notifications).
-- HIV is about 5–6%.
-- Hr-TB is about 7%.
+**CORE CLAIM**
+- Claim: CG's 5.5M includes cases outside the likely trial or label population (extrapulmonary, HIV, pregnancy, hepatic disease, Hr-TB, clinically diagnosed), and these should be modelled explicitly.
+- Support: **LOGIC ONLY**
+- Why: The WHO shares are verified, but whether CG's 5.5M already excludes them, and which filters a trial or label would apply, are not visible or verifiable.
 
-An illustrative stack gives 4.0M without confirmation and ~2.5M with it, before the upside from Critique 2. The statin-specific exclusions and the ×0.85 factor are the Investigator's own assumptions and are flagged as UNGROUNDED. Strength: medium. Standalone direction: down. Net direction when combined with Critique 2: uncertain.
+**REVISED CRITIQUE**
+- Keep the verified shares: extrapulmonary 16% (up to 25% in SE Asia), pulmonary bacteriological confirmation 64%, HIV ~5–6%, Hr-TB ~7–8%.
+- Flag the statin-specific exclusions and the pregnancy and hepatic filters as **UNGROUNDED — plausible but needs a trial protocol**.
+- Treat the bacteriological-confirmation filter as scenario-dependent rather than a base-case reduction.
+- Account for filter overlap.
+- Realistic range: ~3.5–4.7M before any confirmation restriction; ~2.5M only under a culture-confirmed-only design.
+- Direction: **downward** if filters are not already in the model. The "uncertain" label arises only from Critique 2 offsetting it.
+- Strength: moderate. It is conditional on CG's model structure and on trial design.
 
 --- Critique: "Adult DS notified" is not "eligible for the trial label": missing applicability filters ---
 
 ## Critique 1: Baseline year is stale and the 5.5M figure is sensitive to it
 
-**OVERALL VERDICT: VERIFIED.** I could not check what baseline CG actually used, because I don't have CG's source. The WHO numbers and the arithmetic hold up. One nuance sharpens the critique: notifications stopped rising in 2024.
+**OVERALL VERDICT: VERIFIED (conditional).** The WHO numbers are right and the arithmetic holds. I could not see CG's model, so whether CG actually anchored on 2022 is unverified. The critique is worded conditionally ("If CG anchored on 2022"), so that is acceptable.
 
 **CLAIM CHECK**
-- **2022 notifications of ~7.5M:** VERIFIED. 
+- **2022 notifications ≈ 7.5M:** VERIFIED. 
 WHO reported about 8.2 million newly diagnosed in 2023, up from 7.5 million in 2022.
 
-- **~8.2M in 2023:** VERIFIED. 
-8.2 million was the highest single-year number since the mid-1990s, up from the previous record of 7.5M in 2022.
+- **2023 ≈ 8.2M:** VERIFIED. 
+Globally in 2023, 8.2 million people with a new episode of TB were diagnosed and notified.
 
-- **"Notifications continuing to rise":** PARTIALLY VERIFIED. They rose through 2023, then levelled off. 
-In 2024, 8.3 million were newly diagnosed and notified, similar to 8.2 million in 2023 and 17% above the pre-pandemic level of 7.1 million.
- The better statement is that 2024 is a plateau at about 8.3M, which is 10.7% above 7.5M.
-- **"2022 was a post-COVID recovery year":** VERIFIED. WHO says 
-those diagnosed in 2022 and 2023 probably included a sizeable backlog of people whose diagnosis was delayed by COVID-related disruptions.
- This applies to 2023 as well. Part of the 8.2M may be one-off backlog, so it is not a clean steady-state anchor either.
-- **Arithmetic:** VERIFIED. 8.2/7.5 = +9.3% and 8.3/7.5 = +10.7%. Applied to 5.5M, that gives ~6.0–6.1M. The result is below the ±25% materiality bar.
+- **"Later reports show notifications continuing to rise" (8.3M for 2024):** VERIFIED, but the rise has flattened. 
+In 2024, 8.3 million were notified, similar to the 8.2 million in 2023 and 17% above the pre-pandemic 7.1 million in 2019.
+ The critique's "~8.2–8.3M" range is therefore accurate.
+- **"2022 was a post-COVID recovery year":** VERIFIED. 
+WHO says those diagnosed in 2022 and 2023 probably included a sizeable backlog of people whose diagnosis was delayed by COVID.
+ The critique does not note that 2023 shares this backlog caveat. 2024 held at 8.3M, though, so the higher level looks persistent.
+- **Uplift of 9–11% (5.5M → 6.0–6.1M):** VERIFIED arithmetic. 8.2/7.5 = +9.3% and 8.3/7.5 = +10.7%. The 5.5M figure also reconciles with 7.5M × 0.98⁸ × 0.96 × ~0.90, which suggests the model is built the way the critique assumes.
+- **"Below ±25% materiality bar":** correct.
+- **"No sensitivity analysis on baseline year":** UNVERIFIABLE. It comes from the thread, not from external evidence.
 
 **EVIDENCE FOUND**
-- The 2024 data point (8.3M, from the WHO Global TB Report 2025) post-dates the Investigator's recollection. It supports "upward, small."
-- The backlog caveat means the upward correction may be slightly overstated if the baseline is treated as a steady-state level.
+- The 2025 WHO report is already out. It gives 2024 notifications as 8.3M, and 
+notifications were 78% of estimated incidence
+. A baseline of 2023 or 2024 is therefore clearly available.
+- Notifications rose even though incidence was flat to slightly down, which is the detection-gap mechanism behind Critique 2.
 
-**REVISED CRITIQUE:** Same as stated, with these edits.
-- Replace "continuing to rise" with "rose to 8.2M in 2023 and plateaued at 8.3M in 2024."
-- Add the backlog caveat.
-- Strength remains small, direction up (+9–11%).
+**CORE CLAIM**
+- Claim: Notified cases are ~8.2–8.3M, not ~7.5M, so a 7.5M baseline understates the starting point by ~9–11%.
+- Support: **SUPPORTED**
+- Why: Two successive WHO reports give 8.2M (2023) and 8.3M (2024) against 7.5M (2022).
+
+**REVISED CRITIQUE:** Stands as written. Add that the latest figure is 8.3M for 2024. Flag that the CG anchor year is an assumption. Strength: low-to-moderate, upward, non-material alone (+9–11%).
 
 ---
 
-## Critique 2: A 2%/yr decline in notified counts contradicts the observed trend
+## Critique 2: A 2%/yr decline in notified case counts probably contradicts the observed trend
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The core hypothesis is well supported by WHO data. Three things don't survive as stated.
-- The claim about CG's method is unverifiable.
-- The "+29%" figure double-counts Critique 1.
-- The 2025 funding-shock point is ungrounded.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The core observation survives: counts are not falling at 2%/yr. Several details need correction, and the "UNGROUNDED" numbers can now be grounded. Whether CG applies the 2% to counts rather than rates is unverified.
 
 **CLAIM CHECK**
-- **Rates fall about 1–2%/yr:** VERIFIED. WHO describes 
-declines of about 2% per year between 2010 and 2020, reversed by a 4.6% rise from 2020 to 2023.
+- **WHO headline declines are in incidence rates:** VERIFIED. 
+The rate fell 1.7% between 2023 and 2024, and the net reduction from 2015 to 2024 was 12.3%.
+
+- **Rate fell ~8% over 2015–2023:** VERIFIED. 
+The net reduction in the incidence rate between 2015 and 2023 was 8.3%.
+
+- **Absolute incident cases roughly flat, ~10–11M:** VERIFIED for 2020–2024. 
+The total was 10.8M in 2023, up from 10.7M in 2022, 10.4M in 2021 and 10.1M in 2020.
  
-The net reduction in the rate from 2015 to 2024 was 12.3%
-, which is about 1.4%/yr.
-- **Rate down ~8% over 2015–2023:** VERIFIED. 
-The net reduction was 8.3%.
+The 2024 figure of 10.7M was a ~1% reduction from 2023.
+ I did not verify the "flat since ~2015" claim directly.
+- **Population growth offsets rate declines:** VERIFIED. 
+Most of the increase in incident cases between 2022 and 2023 reflects population growth.
 
-- **Counts are roughly flat while rates fall:** VERIFIED for the recent period, but "since 2015" is unconfirmed. 
-Incident cases fell 1% in 2024, from 10.8M to 10.7M, but remain above the 2020 level of 10.3M.
- I did not retrieve a 2015 absolute figure.
-- **Population growth drives counts:** VERIFIED in direction. WHO states 
-most of the global increase in incident cases between 2022 and 2023 reflects population growth.
-
-- **~25% of incident cases are not notified:** VERIFIED, and now somewhat better. 
-In 2024 about 2.4 million people were not diagnosed or not reported, and notifications were 78% of incidence.
- In 2023 the gap was 
-about 2.7 million, down from around 4 million in 2020 and 2021.
- This supports "detection gaps are closing."
-- **Notified counts are flat to rising, not falling 2%/yr:** VERIFIED. Notifications went from 7.1M in 2019 to 8.3M in 2024. 
-In the African Region they were 38% above 2019.
-
-- **"CG applies a 2%/yr decline to counts":** UNVERIFIABLE. I have no CG source. This is the pivotal premise, so it should stay flagged.
-- **Scenario arithmetic:** the arithmetic is correct.
-  - 8.2 × 0.96 × 0.90 = 7.09M, which is +29% versus 5.5M.
-  - With +1%/yr growth, 8.2 × 1.01⁸ × 0.864 = 7.67M.
-  - The 6.5M lower bound corresponds to about −1%/yr.
-- **Double-counting problem:** the +29% already includes Critique 1.
-  - Flat counts remove 8 years of 2%/yr decline (0.98⁸ ≈ 0.85), which is worth +17.5% on its own.
-  - The baseline update adds about +9% (1.093 × 1.175 ≈ 1.28).
-  - Critique 2 alone is therefore about +17.5% for flat counts, or about +27% with +1%/yr growth.
-  - Crossing the 25% bar needs Critique 1 or a rise in counts. The Investigator's wording ("combined with Critique 1") is right, but the +29% should not be presented as Critique 2's standalone effect.
-- **2025 funding disruptions could cut notifications:** UNVERIFIABLE. My searches returned no data on the size of this effect, and the 2024 data pre-date it. It stays flagged as ungrounded.
-- **Direction field "uncertain":** the text argues the error is probably upward, so the label is internally inconsistent. The evidence supports "likely increases," with downside risk from funding and from the backlog fading.
+- **"~1–2%/yr in good pre-COVID years":** PARTLY WRONG, understated. The 2024 report slide says 
+the 2015–2020 reduction was 12%
+, about 2.5%/yr. This weakens the "2% is clearly too fast" framing only for rates, not for counts.
+- **~25% of incident cases not notified:** approximately right but slightly stale. The 2024 figure is 22% (78% notified). The gap was 
+2.7M in 2023, down from about 4M in 2020–21 and below the pre-pandemic 3.2M
+.
+- **Notifications can rise as the detection gap closes:** VERIFIED. Notifications went from 7.1M (2019) to 8.3M (2024) while incident cases were flat.
+- **Scenario arithmetic:** correct. 8.2 × 0.96 × 0.90 ≈ 7.1M (+29% vs 5.5M), and +1%/yr gives ≈ 7.7M.
+- **2025 funding disruption could cut notifications:** PLAUSIBLE and now partly grounded. 
+WHO's provisional data for the first half of 2025 show a mixed picture, with reductions beyond trend in Cambodia, Kenya, Mozambique and Uganda.
+ 
+WHO says impacts could worsen over time.
+ Modelling studies project 
+excess TB deaths from USAID termination (420,500 by 2035)
+. The effect on global notified counts is not established. The critique's "cannot ground the size" is fair.
 
 **EVIDENCE FOUND**
-- WHO notes that 
-the recovery in reported newly diagnosed cases in 2022–2024 first slowed increases in incidence, then reversed the upward trend.
- Notifications and incidence estimates are therefore linked, which weakens any "independent" notification trend.
-- Counter-consideration: WHO's 2.4M gap bounds how much notifications can rise from detection alone. The ceiling is about +28% above 8.3M, and only in the unrealistic case of 100% detection.
+- Modelling of US funding cuts projects 
+a 12–41% increase in TB episodes among people living with HIV in South Africa over 2025–2035.
+ If cuts persist, true incidence could rise, which pushes the same way as the critique.
+- The notification-versus-incidence distinction matters. A drug given at treatment start is exposed to notified/treated counts, which track detection, not the incidence-rate trend.
+- The critique's "direction: uncertain" label conflicts with its own conclusion ("probably upward"). Net direction is upward, with downside risk from funding.
+- Critique 2's scenario starts from the 8.2M baseline, so it already includes Critique 1. The two should not be added together.
 
-**REVISED CRITIQUE:** Rate declines in WHO reporting are not the same as declines in case counts. Observed notifications rose from 7.5M (2022) to 8.3M (2024), and incident counts have been about flat (10.3–10.8M since 2020). If CG applies 2%/yr to counts, it likely understates the eligible population by roughly 17% (flat counts) to 27% (+1%/yr), before the baseline correction in Critique 1.
-- Combined with Critique 1, eligible is about 6.5–7.7M.
-- The CG-method premise and the funding-shock point stay flagged as UNGROUNDED.
-- Strength: medium. Direction: up, with downside risk.
+**CORE CLAIM**
+- Claim: Notified case counts have not been declining ~2%/yr and are more likely flat or rising over the next 8 years, so applying 2%/yr to counts understates eligible volume.
+- Support: **SUPPORTED** for the historical trend (counts flat or rising 2020–2024). The 8-year forward projection is **LOGIC ONLY**.
+- Why: WHO data show incident counts flat and notifications up while rates fell only 1.7% in 2024.
+
+**REVISED CRITIQUE**
+- Replace "roughly flat since ~2015" with "roughly flat 2020–2024".
+- Correct pre-COVID rate declines to ~2.5%/yr, and the gap to ~22%.
+- The conclusion is upward, not "uncertain": eligible ≈ 6.5–7.7M under flat-to-mild-growth scenarios, with a flagged downside from funding cuts.
+- Flag that CG's use of 2% on counts is unverified.
+- Strength: moderate-to-high, **upward**. It is likely material (>25%) when combined with the baseline correction, which is already inside its own scenario.
 
 ---
 
 ## Critique 3: "Adult DS notified" is not "eligible for the trial label"
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The WHO shares are broadly right, and the direction (filters reduce eligibility) is sound. One denominator is mis-stated, one share is slightly high, and the exclusion list is the Investigator's own inference.
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The epidemiological shares are essentially correct and the arithmetic holds. The hypothesis that applicability filters are missing is logically sound but depends on trial design and on CG's actual model, neither of which I could see. The statin-specific exclusions are the investigator's own inference, as the investigator admits.
 
 **CLAIM CHECK**
-- **Extrapulmonary TB ~15%:** VERIFIED. 
-In 2024, 84% of notified cases were pulmonary and 16% extrapulmonary
-, and the 2023 figures were the same (
-84% and 16%
-). Regional variation is large. 
-South-East Asia is 25% extrapulmonary
-, and 
-India and Bangladesh are above 20%.
- The ×0.85 filter is therefore too lenient for India and South Asia, the biggest contributors.
-- **Clinically diagnosed "~35–40% of notifications":** MISSTATED. 
-Of 6.9 million pulmonary cases in 2024, 64% were bacteriologically confirmed, up from 62% in 2023.
- The 62–64% is a share of pulmonary cases, not of all notifications, so 36–38% of pulmonary cases are clinically diagnosed.
-  - The stacked arithmetic does apply ×0.62 after the pulmonary filter, so it is consistent.
-  - Of all notifications, confirmed pulmonary cases are only about 0.84 × 0.64 ≈ 54%.
-- **HIV coinfection ~6–8%:** SLIGHTLY HIGH. 
-5.8% of incident cases in 2024 were among people living with HIV
-, and 
-6.1% in 2023.
- Notified HIV-positive cases were 
-413,516 in 2024
-, about 5% of 8.3M. A range of 5–7% is better. The share is concentrated in Africa, with 
-over 50% in parts of southern Africa.
-
+- **Extrapulmonary ≈ 15%:** VERIFIED, slightly low. 
+In 2024, 8.3 million were notified: 84% pulmonary and 16% extrapulmonary.
+ Regional variation is large. 
+Extrapulmonary share is 25% in South-East Asia and 8% in the Western Pacific.
+ 
+It exceeds 20% in India, Bangladesh and Ethiopia.
+ India is the largest contributor, so the real filter loss is likely larger than 15%.
+- **Clinically diagnosed ~35–40% of notifications:** MOSTLY CORRECT, but mislabelled. 
+64% of the 6.9M pulmonary cases were bacteriologically confirmed in 2024, up from 62% in 2023.
+ That is a share of pulmonary cases, so it is ~36% clinically diagnosed among pulmonary cases. The critique's own stack applies ×0.62 after the pulmonary filter, which is correct sequencing. Confirmed pulmonary cases are ~54% of all notifications (0.84 × 0.64).
+- **HIV coinfection ~6–8%:** ROUGHLY CORRECT. 
+413,516 notified TB cases were in people with HIV in 2024, equal to 6.2% of the 6.7M with an HIV test result.
+ That is about 5% of all notifications. 
+In 2023 the figure was 6.8%.
+ The range is fine for tested cases but slightly high for all notifications.
 - **Hr-TB ~7%:** VERIFIED. 
-Hr-TB prevalence was estimated at 7.4% among new cases and 11.4% among previously treated cases.
- Another source gives 
-7.1% of new cases.
- It is 
-treated with a modified regimen including levofloxacin since 2018.
- I did not verify how routinely Hr-TB is detected. Isoniazid DST is not routine, so many Hr-TB patients are probably in "DS" cohorts in practice. That blunts the filter's real-world effect but not a trial-eligibility one.
-- **Pregnancy, hepatic disease, existing statin use, drug interactions:** UNVERIFIABLE. These are inference from standard trial design, as the Investigator says. The ×0.85 for "other filters" is also ungrounded. HIV plus Hr-TB alone gives about 0.87, so 0.85 is plausible but unsupported.
-- **Stack arithmetic:** correct.
-  - 5.5 × 0.85 = 4.7M, then × 0.85 = 4.0M, then × 0.62 = 2.5M.
-  - Restricting to bacteriologically confirmed cases is a trial-design choice. A label population may not carry it.
+Data reported to WHO from 156 countries (2002–2018) gave 7.4% of new patients and 11.4% of previously treated patients.
+ Other sources say 
+about 8% (range 5–11%)
+. The treatment difference is verified. 
+WHO recommended a distinct 6-month regimen for Hr-TB containing rifampicin, pyrazinamide, ethambutol and levofloxacin.
+ The claim that Hr-TB is classified as "DS" in some schemas is UNVERIFIABLE. It depends on CG's schema, and Hr-TB patients are usually not detected without isoniazid testing.
+- **Stack arithmetic:** correct. 5.5 × 0.85 = 4.7M; × 0.85 = 4.0M; × 0.62 = 2.5M.
+- **Statin exclusion list (pregnancy, hepatic disease, ART interaction, existing statin use):** UNVERIFIABLE as a trial design. This is the investigator's inference, which the investigator discloses. It is plausible. Rifampicin–statin interactions are real, and I did not check them against a protocol.
+- **Pregnancy filter:** The size is not grounded in any search result.
 
 **EVIDENCE FOUND**
-- Applying Critique 2's upside to these filters:
-  - 7.1M (flat, adjusted) × 0.85 × 0.85 = 5.1M. That is about −7% versus 5.5M, so it roughly nets out to the current figure, as the Investigator suggests.
-  - Adding the confirmed-only restriction gives about 3.2M, below the 3.6M bar.
-- The conclusion therefore hinges on whether the label or trial requires bacteriological confirmation. That is the single most decision-relevant unknown.
-- Applying the filters to the regional mix makes this worse. India and South Asia have the highest extrapulmonary share, and Africa has the highest HIV share.
+- WHO data confirm that the extrapulmonary share and the confirmation share vary a lot by region, so a global average could misstate a model weighted toward India, Nigeria and Indonesia.
+- The bacteriological-confirmation filter is design-dependent and probably the weakest link. A label or real-world adoption model would apply to all treated pulmonary DS-TB, not only culture-confirmed cases. WHO notes that 
+a proportion of clinically diagnosed cases may be incorrect diagnoses of TB
+, which supports some downward adjustment but not a full ×0.62.
+- The critique's "could push eligible below the 3.6M bar" only occurs with the full confirmation filter. Without it, ~4.0M stays above the bar.
+- The filters partly overlap. HIV-positive and extrapulmonary cases are correlated, so multiplying them overstates the combined loss.
 
-**REVISED CRITIQUE:** Notified adult cases overstate the population that fits a pulmonary, trial-like label. Verified WHO figures:
-- Extrapulmonary share is 16% globally and ~25% in South-East Asia.
-- Pulmonary cases are 64% bacteriologically confirmed (the denominator is pulmonary, not all notifications).
-- HIV is about 5–6%.
-- Hr-TB is about 7%.
+**CORE CLAIM**
+- Claim: CG's 5.5M includes cases outside the likely trial or label population (extrapulmonary, HIV, pregnancy, hepatic disease, Hr-TB, clinically diagnosed), and these should be modelled explicitly.
+- Support: **LOGIC ONLY**
+- Why: The WHO shares are verified, but whether CG's 5.5M already excludes them, and which filters a trial or label would apply, are not visible or verifiable.
 
-An illustrative stack gives 4.0M without confirmation and ~2.5M with it, before the upside from Critique 2. The statin-specific exclusions and the ×0.85 factor are the Investigator's own assumptions and are flagged as UNGROUNDED. Strength: medium. Standalone direction: down. Net direction when combined with Critique 2: uncertain.
+**REVISED CRITIQUE**
+- Keep the verified shares: extrapulmonary 16% (up to 25% in SE Asia), pulmonary bacteriological confirmation 64%, HIV ~5–6%, Hr-TB ~7–8%.
+- Flag the statin-specific exclusions and the pregnancy and hepatic filters as **UNGROUNDED — plausible but needs a trial protocol**.
+- Treat the bacteriological-confirmation filter as scenario-dependent rather than a base-case reduction.
+- Account for filter overlap.
+- Realistic range: ~3.5–4.7M before any confirmation restriction; ~2.5M only under a culture-confirmed-only design.
+- Direction: **downward** if filters are not already in the model. The "uncertain" label arises only from Critique 2 offsetting it.
+- Strength: moderate. It is conditional on CG's model structure and on trial design.
 
 --- Critique: Shorter and new regimens erode both the eligible population and the incremental benefit ---
 
 ## Critique 1: Shorter and new regimens erode both the eligible population and the incremental benefit
 
+**CITATION CHECK**
+- WHO 2022, 4-month HPMZ for age ≥12: **VERIFIED**. 
+WHO's 2022 Module 4 conditionally recommends the 4-month isoniazid–rifapentine–moxifloxacin–pyrazinamide regimen for people aged 12 or older with drug-susceptible pulmonary TB (moderate certainty).
+
+- Dorman et al., NEJM 2021 (Study 31/A5349): **VERIFIED in substance, but not directly retrieved.** 
+TBTC Study 31/ACTG A5349 is a phase 3 trial that found the 4-month rifapentine-moxifloxacin regimen safe and effective.
+ I did not pull the NEJM 2021 record itself. The authorship and year match my own knowledge.
+- Paton et al., NEJM 2023 (TRUNCATE-TB): **VERIFIED.** 
+It was published in N Engl J Med 2023;388:873-887.
+ The Investigator's "from my recollection" hedge is unnecessary.
+- "Bedaquiline-containing short regimens": **PARTIALLY VERIFIED, with a correction.** 
+TRUNCATE-TB found that a strategy starting with an 8-week regimen of bedaquiline and linezolid was noninferior to standard treatment at week 96.
+ This is a trial strategy that includes retreatment, not a WHO-recommended DS-TB regimen. The Investigator should not group it with HPMZ as an "adopted" regimen.
+
 **CLAIM CHECK**
-
-- **WHO (2022) recommended a 4-month HPMZ regimen for people aged 12 and over: VERIFIED.**
-  - 
-The WHO 2022 DS-TB module recommends a 4-month isoniazid, rifapentine, moxifloxacin and pyrazinamide regimen for people aged 12 or older with pulmonary DS-TB.
- It is a conditional recommendation with moderate certainty of evidence.
-  - WHO also said that 
-clinicians should weigh eligibility criteria, patient preference and local factors such as the availability of rifapentine.
- This supports the supply and uptake caveat, though it does not quantify it.
-- **Dorman et al., NEJM 2021 (Study 31/A5349): VERIFIED, with an incomplete check.**
-  - I did not retrieve the paper directly. A trial protocol states that 
-a four-month rifapentine regimen containing moxifloxacin was non-inferior to the standard 6-month regimen (Dorman et al., 2021).
-
-  - A ClinicalTrials.gov reference list also carries the matching title, "Four-Month Rifapentine Regimens with or without Moxifloxacin for Tuberculosis."
-- **Paton et al., NEJM 2023 (TRUNCATE-TB): VERIFIED, but MISCHARACTERISED as a "regimen" alternative.**
-  - The citation is correct: 
-Paton NI et al., "Treatment Strategy for Rifampin-Susceptible Tuberculosis," N Engl J Med 2023;388(10):873-887.
-
-  - It tested a management strategy, not a drop-in regimen. 
-An initial 8-week bedaquiline–linezolid regimen was noninferior to standard treatment for a composite clinical outcome at week 96.
-
-  - The strategy includes monitoring and retreatment of relapses. A later exploratory analysis found 
-all four 8-week regimens had lower efficacy than the standard 24-week regimen.
- Its authors say that 
-even the best 8-week bedaquiline-linezolid regimen should only be used within the TRUNCATE management strategy.
-
-  - This makes TRUNCATE-TB a weaker candidate for displacing HRZE at scale by ~2033 than the critique implies. I found no WHO recommendation for it.
-- **"Bedaquiline-containing short regimens" in the pipeline: PLAUSIBLE/VERIFIED as pipeline.**
-  - Bedaquiline-containing regimens are being tested for DS-TB, for example 
-the SimpliciTB bedaquiline-pretomanid-moxifloxacin-pyrazinamide trial.
- There is also a Phase 2 trial of TBAJ-876 or bedaquiline with pretomanid and linezolid (NCT06058299).
-  - These are Phase 2 or 2c. None is a recommended DS-TB standard of care.
-- **"Rifapentine is a stronger CYP3A4 inducer than rifampicin": UNVERIFIED, and probably wrong as stated.**
-  - I found no source in my searches. My background understanding, which I could not re-check this session, is that rifapentine is usually described as a CYP3A4 inducer of similar or somewhat lower potency than rifampicin, not a stronger one.
-  - What does survive: both are strong rifamycin inducers, so a statin interaction concern applies to HPMZ as well. The "may worsen" wording should be dropped.
-- **Slow HPMZ uptake because of rifapentine supply and cost: PLAUSIBLE, UNVERIFIED.**
-  - One 2025 abstract notes that 
-the high rifapentine dose may limit use in clinical practice, particularly in patients with comorbidities.
- That is a clinical limitation, not a supply or cost finding. I found no programme-level uptake data.
-- **20–40% adoption scenario: UNGROUNDED, as the Investigator admits.** The arithmetic is correct: 5.5M × 0.6–0.8 = 3.3–4.4M.
-- **The 5.5M eligible figure and the 3.6M bar** come from the CEA source materials, which I do not have. I could not check them.
+- WHO recommended the 4-month HPMZ regimen in 2022 for age ≥12: **VERIFIED** (see above).
+- A statin trial on HRZE does not establish efficacy on a rifapentine/moxifloxacin backbone: **PLAUSIBLE.** This is sound reasoning, and I found no direct evidence either way.
+- "Rifapentine is a stronger CYP3A4 inducer than rifampicin": **UNVERIFIABLE and probably overstated.** I ran out of searches before checking it. From general pharmacology, rifampicin is usually described as the most potent inducer, and rifapentine is comparable or somewhat weaker depending on dose. Both are inducers, so the broader worry about interactions with atorvastatin survives. The comparative "stronger" claim should be dropped or checked.
+- "Programme uptake of HPMZ has been slow because of rifapentine supply and cost": **UNVERIFIABLE.** I found no direct source. One adjacent source says 
+use of the regimen in clinical practice may be limited by the high rifapentine dose, particularly in patients with comorbidities.
+ This partly supports the idea that uptake is constrained, though for a different reason than the Investigator gives.
+- 20–40% of eligible patients on non-trial regimens by ~2033: **UNGROUNDED.** The Investigator says so too. I found no projection.
+- Shorter regimens reduce room for an adjunct to add benefit: **PLAUSIBLE.** This is logic only.
 
 **EVIDENCE FOUND**
-- WHO's conditional recommendation, and its explicit reference to rifapentine availability, supports a slow-uptake scenario.
-- 
-Adolescents aged 12–16 have three options: 4-month HPMZ, 4-month 2HRZ(E)/2HR, or standard 6-month.
- The 4-month 2HRZ(E)/2HR regimen for non-severe paediatric TB is still rifampicin-based. It reduces duration, not the backbone.
-- Concerning "shortening" benefit: the 4-month 2HRZ(E)/2HR regimen applies only to non-severe TB in children under 16. It is not a general adult option.
-- No evidence was found on the effect of a statin adjunct on shorter regimens. This is a genuine gap.
+- HPMZ is restricted to age ≥12, and it is conditional. Rifapentine exposure has been shown to drive outcomes: 
+low rifapentine exposure is the strongest driver of TB-related unfavorable outcomes in the rifapentine-moxifloxacin arm.
+ That limits how fast HPMZ can displace HRZE, because dosing and supply constraints apply. It weakly favours the low end of the Investigator's range.
+- Under the WHO guidance, 
+adolescents aged 12–16 have three options: 4-month HPMZ, 4-month 2HRZ(E)/2HR, or standard 6-month 2HRZ(E)/4HR.
+ The 4-month HRZ(E) regimen for children with non-severe TB still contains rifampicin. The rifamycin-induction problem would therefore remain on that backbone, which weakens the "non-trial backbone" argument for that group.
+- Most 2022 TRUNCATE-type and bedaquiline-linezolid strategies remain trial-stage. They are unlikely to reach 20–40% of patients by 2033.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The HPMZ and Dorman facts are correct. The core logic (new backbones reduce applicability and incremental benefit) is sound but ungrounded quantitatively. The rifapentine "stronger inducer" claim is unverified and probably wrong. TRUNCATE-TB is mischaracterised.
+**CORE CLAIM**
+- Claim: 20–40% of eligible patients will be on non-HRZE regimens at the benefit horizon, which pushes effective eligibility down to about the 3.6M threshold.
+- Support: **LOGIC ONLY**
+- Why: No adoption projection exists, and the Investigator admits it is a self-chosen scenario. The slow-uptake evidence points to the low end of the range or below it.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The regimen facts and the direction of the concern are real. The adoption range, the "stronger inducer" claim, and the "uptake slow" claim are ungrounded or unverifiable. The 3.3–4.4M figure depends on a source model (5.5M eligible, 3.6M bar) that I could not see.
 
 **REVISED CRITIQUE**
-- **Hypothesis:** By the benefit horizon, some DS-TB patients may be on the WHO-recommended 4-month HPMZ regimen, which includes rifapentine and moxifloxacin in place of rifampicin and ethambutol. 
-This applies to people aged 12 or older.
- A statin trial on HRZE may not transfer to that backbone.
-- **Retained:**
-  1. Applicability: the evidence is HRZE-specific.
-  2. Incremental value: shorter regimens leave less room for a duration-shortening adjunct.
-  3. Rifamycin interaction concerns would likely apply to rifapentine as well as rifampicin. The direction and size of any difference is unverified.
-- **Corrections:**
-  - TRUNCATE-TB is a strategy trial with bedaquiline–linezolid, not a WHO-endorsed standard regimen, so it is a weaker driver of displacement.
-  - Bedaquiline-based DS-TB regimens remain in Phase 2 or 2c.
-- **Flagged UNGROUNDED:** the 20–40% adoption range and the slow-uptake claim. The drop to 3.3–4.4M is arithmetic on an assumed range.
-- **Strength:** medium, direction uncertain. The adoption share is the key unknown. The "at or near 3.6M" conclusion depends wholly on the assumed range.
+The 6-month HRZE regimen is no longer the only standard of care. 
+WHO conditionally recommends a 4-month HPMZ regimen for people aged 12 or older
+, and Paton et al. (NEJM 2023) showed that an 8-week bedaquiline-linezolid strategy was noninferior to standard treatment in a trial. Three things follow:
+- Efficacy shown on an HRZE backbone may not transfer to rifapentine/moxifloxacin regimens. Rifapentine is a CYP3A4 inducer, so the atorvastatin interaction question carries over. Whether it is stronger than rifampicin is unverified.
+- Shorter regimens may leave less baseline relapse or mortality for an adjunct to improve.
+- Any statin benefit that works through shortening treatment would be reduced.
+
+The share of patients moved off HRZE by ~2033 is **UNGROUNDED, plausible but needs empirical support**. Evidence of dosing and supply limits suggests the share may be modest. Direction: uncertain, magnitude: low-to-medium (down from medium), because the displacement estimate has no support and the evidence points to slow uptake.
 
 ---
 
-## Critique 2: M72/AS01E and other incidence shocks
+## Critique 2: M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled
 
 **CITATION CHECK**
-- **Tait et al., NEJM 2019: VERIFIED.**
-  - It is the "Final Analysis of a Trial of M72/AS01E Vaccine to Prevent Tuberculosis," N Engl J Med 2019;381:2429–39.
-  - 
-Vaccine efficacy at month 36 was 49.7% (90% CI 12.1–71.2; 95% CI 2.1–74.2).
-
-  - The ~50% efficacy figure is accurate. Note the very wide confidence interval and that the original 2018 report (Van Der Meeren) gave 
-54.0% efficacy.
-
-- **Harris et al.: PARTIALLY VERIFIED, MISATTRIBUTED.**
-  - Rebecca Harris of LSHTM is first author of 
-"Age-targeted tuberculosis vaccination in China and implications for vaccine development: a modelling study," Lancet Glob Health 2019.
-
-  - That paper models generic vaccine profiles, with the intermediate profile at 
-60% efficacy, 10-year protection and 70% coverage.
- It is not an M72-specific projection.
-  - I could not find a Harris paper projecting M72 impacts "mostly in the 2040s." The Investigator already says they cannot cite a figure.
+- Tait et al., NEJM 2019, Phase IIb, ~50% efficacy: **VERIFIED.** 
+Vaccine efficacy at month 36 was 49.7% (95% CI, 2.1 to 74.2).
+ The earlier primary analysis (a separate NEJM 2018 paper) reported 
+54.0% (95% CI, 2.9 to 78.2).
+ The "Tait 2019" citation correctly points to the final analysis.
+- Harris et al. (LSHTM-type models): **PARTIALLY VERIFIED.** Harris et al. exist: 
+New tuberculosis vaccines in India: modelling the potential health and economic impacts, with projections to 2050
+ (BMC Med 2023). The Investigator said they cannot cite a figure, and I could not extract a 2033–35 incidence figure either. The models report cumulative impact and 2050 outcomes, which is consistent with the "impact in the 2040s" framing but does not prove it.
+- Gates MRI Phase III, started 2024, ~20,000 participants: **PARTIALLY VERIFIED, with a discrepancy.** 
+Nature reports that M72 entered phase 3 in March 2024, targeting around 26,000 participants across seven countries.
+ 
+The Phase III (Gates MRI; NCT06062238) is described as ongoing.
+ A design paper modelled 
+18,000 IGRA-positive participants, with 110 events accruing in 3.5–4 years
+. So "~20,000" is in the right range, but the current target is higher (~26,000, including the larger HIV cohort).
 
 **CLAIM CHECK**
-- **Phase III started 2024: VERIFIED.** 
-In March 2024, M72 went into phase 3 trials.
- The registered trial is NCT06062238, run by the Gates Medical Research Institute (
-ongoing registrational efficacy trial.
-).
-- **~20,000 participants: PARTIALLY VERIFIED.** Sources vary.
-  - Nature reports 
-around 26,000 participants across seven countries.
+- Phase IIb efficacy applied to an already-infected population: **VERIFIED.** 
+The trial enrolled 3,573 HIV-negative adults aged 18–50 in Southern Africa with evidence of M.tb infection (IGRA+).
 
-  - A design paper models 
-18,000 IGRA-positive participants
- for the primary analysis, with the full trial larger once other groups are added.
-  - ~20,000 is not wrong for the IGRA+ core, but ~26,000 is the better-supported total.
-- **Results "late 2020s": PLAUSIBLE.** The design paper projects 
-a 90% probability of accruing 110 events within 3.5 to 4 years.
- With enrolment starting in 2024, a primary readout near 2028 is consistent. Licensure around 2028–30 is therefore plausible but unconfirmed.
-- **Phase IIb efficacy was in a small, selected population: VERIFIED.**
-  - It enrolled 
-3,573 HIV-negative adults aged 18–50 who were IGRA-positive.
-
-  - It rested on 
-39 primary-analysis cases (13 in the vaccine group, 26 on placebo).
-
-  - The Investigator's caution about probability-weighting is well founded.
-- **Vaccine impact mostly via preventing progression in the already-infected: VERIFIED as the efficacy basis, with modelling nuance.**
-  - Phase IIb efficacy was measured only in infected people. LSHTM modellers note that 
-a pre- and post-infection vaccine had a much greater impact on 2050 incidence than a post-infection-only vaccine.
- That supports the idea that impact accrues gradually.
-  - An analysis of the trial found that 
-the most plausible models needed protection against at least two of the three routes to active TB.
- So the mechanism is not settled.
-- **Slow rollout needing Gavi financing: PLAUSIBLE.** A recent M72 demand-forecast paper includes 
-an "upside" scenario with higher efficacy, more global funding (Gavi and others) and faster rollout than the base case.
- This implies the base case assumes slower and more constrained rollout.
-- **LSHTM-type models project larger impacts in the 2040s: PLAUSIBLE, UNVERIFIED.** LSHTM-linked India modelling 
-projects over 2025–2050
- and reports results as cumulative impact by 2050. That is consistent with late-accruing impact but does not show a 2040s-specific finding. This modelling assumes 
-non-vaccine scale-up toward a 50% incidence reduction by 2035,
- which would itself shrink the eligible pool independently of vaccines.
-- **Own estimate of a 5–15% incidence reduction by 2033–35: UNGROUNDED.** The arithmetic is right: 5.5M × 0.85–0.95 = ~4.7–5.2M. The 20–35% average reduction over a 15+-year horizon is also ungrounded and depends on the CEA structure.
+- Phase IIb evidence is "small, selected": **VERIFIED.** 
+Only 39 participants contributed to the primary efficacy analysis: 13 vaccinated and 26 placebo.
+ The confidence interval is very wide.
+- Results are expected in the late 2020s and licensure around 2028–30: **PLAUSIBLE, not directly confirmed.** The event-driven design implies several years of accrual after a ~2-year enrolment period. I found no official timeline.
+- Incidence reduction of 5–15% by 2033–35: **UNVERIFIABLE.** This is the Investigator's own estimate.
+- Vaccine impact accrues gradually, mostly via already-infected people: **PARTIALLY CONTRADICTED / nuanced.** Harris et al. conclude M72 would 
+be effective in a larger proportion of the population than BCG-revaccination and have a more rapid impact on tuberculosis incidence.
+ Post-infection vaccines act on the prevalent latent pool, so they are faster than infection-blocking vaccines. They are still limited by coverage ramp-up and duration of protection. Separately, 
+a vaccine with pre- and post-infection efficacy had a much greater 2050 incidence impact than a post-infection-only vaccine.
+ That supports a modest impact from a post-infection-only M72.
+- Average eligible pool 20–35% lower over a >15-year horizon: **UNVERIFIABLE.** The Investigator says so. It depends on assumptions about vaccine uptake, duration and coverage.
 
 **EVIDENCE FOUND**
-- Global M72 demand-forecast work and country models exist and could ground the rollout assumptions. I did not extract specific numbers.
-- An M72-specific South Africa model and India models exist (
-49.7% efficacy over 3 years in previously sensitised adolescents and adults
- as the input). These would be better sources than Harris 2019 for a sensitivity analysis.
-- Efficacy was assessed only in IGRA+ individuals, and its uncertainty and duration of protection (10 years is an assumed value in one model) add further uncertainty to any projected incidence effect.
+- Models assume ~10-year duration of protection, 50% efficacy and staggered introduction. For example, 
+the India model assumed introduction in 2025 with repeat campaigns in 2035 and 2045.
+ Vaccine timing therefore matters a great deal. With later introduction, around 2030, impact by 2033–35 is likely small. This supports the Investigator's claim of a small effect at year 8 and a larger one later.
+- A baseline assumption matters here. The India model assumed 
+scale-up of non-vaccine interventions to meet a 50% reduction in incidence by 2035 versus 2015.
+ The CEA's eligible-population baseline should be checked for the same kind of decline.
+- A South Africa model found M72 could 
+avert between 0.86 and 2.55 million TB cases by 2050
+. That is large cumulatively but consistent with back-loaded impact.
+- A demand-forecast paper exists (
+"Preparing for Tuberculosis Vaccine M72/AS01E Implementation"
+). It could inform uptake assumptions but I did not extract numbers from it.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The Tait citation, the Phase III existence and timing, and the logic that vaccine impact is a later-horizon effect hold. The Harris citation is misattributed, the participant number is imprecise, and all impact magnitudes are ungrounded.
+**CORE CLAIM**
+- Claim: M72-driven incidence reduction by year 8–10 is small (5–15%). It becomes large (30–50%) only later, so a constant eligible-population assumption overstates the pool in the later years of the benefit horizon.
+- Support: **LOGIC ONLY**
+- Why: The model literature points to impact building toward 2050 and a modest effect from a post-infection-only vaccine, but no source gives 2033–35 incidence figures, and the 30–50% later-year reduction is not sourced.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The citations are real. The trial size is slightly off (~26,000 target versus ~20,000). The Phase IIb limitations are verified. All the quantitative impact estimates are ungrounded.
 
 **REVISED CRITIQUE**
-- **Hypothesis:** The M72/AS01E Phase III (NCT06062238, began March 2024, ~20,000–26,000 participants depending on source) follows a Phase IIb in which 
-efficacy was 49.7% (95% CI 2.1–74.2)
- in IGRA+, HIV-negative adults. If it succeeds, licensure is plausibly ~2028–30 with a slow rollout.
-- **Retained:** Population-level incidence effects are unlikely to be large by 2033–35, and they matter more over a long benefit horizon. The CEA's constant eligible population of 5.5M may therefore overstate eligible patients in later years. The probability of vaccine success should be modelled separately.
-- **Removed or corrected:**
-  - Harris 2019 is a generic China age-targeting model, not an M72 projection. Replace it with M72-specific models (India, South Africa) for future citations.
-  - The participant count should be stated as a range.
-- **Flagged UNGROUNDED:** the 5–15% incidence reduction by 2033–35, the 30–50% later-year reduction, and the 20–35% average-eligible reduction. A CEA sensitivity analysis is required.
-- **Strength:** medium, direction decreases. The size depends on trial success, coverage and the CEA's treatment of post-adoption years.
+Tait et al. (NEJM 2019) reported a vaccine efficacy of 49.7% (95% CI 2.1–74.2) against pulmonary TB in about 3,500 HIV-negative, IGRA-positive adults. The primary analysis rested on only 39 cases, so the point estimate is imprecise. The Phase III, which started in March 2024, is ongoing with a target of about 26,000 participants. Licensure and rollout timing are uncertain but unlikely to produce a large incidence effect by 2033–35. Published models (Harris et al. and related work) project cumulative impact toward 2050 and a smaller effect from post-infection-only vaccines. The CEA should therefore be checked for whether it holds the eligible pool constant after year 8. Any later-year reduction in eligibility (30–50%) and the 20–35% averaged reduction are **UNGROUNDED, plausible but needing empirical support** via CEA sensitivity analysis. Vaccine success probability should be weighted separately. Direction: decreases, magnitude: low-to-medium and horizon-dependent, with the "5–15% at year 8" figure marked as the Investigator's own estimate.
 
 --- Critique: M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled ---
 
 ## Critique 1: Shorter and new regimens erode both the eligible population and the incremental benefit
 
+**CITATION CHECK**
+- WHO 2022, 4-month HPMZ for age ≥12: **VERIFIED**. 
+WHO's 2022 Module 4 conditionally recommends the 4-month isoniazid–rifapentine–moxifloxacin–pyrazinamide regimen for people aged 12 or older with drug-susceptible pulmonary TB (moderate certainty).
+
+- Dorman et al., NEJM 2021 (Study 31/A5349): **VERIFIED in substance, but not directly retrieved.** 
+TBTC Study 31/ACTG A5349 is a phase 3 trial that found the 4-month rifapentine-moxifloxacin regimen safe and effective.
+ I did not pull the NEJM 2021 record itself. The authorship and year match my own knowledge.
+- Paton et al., NEJM 2023 (TRUNCATE-TB): **VERIFIED.** 
+It was published in N Engl J Med 2023;388:873-887.
+ The Investigator's "from my recollection" hedge is unnecessary.
+- "Bedaquiline-containing short regimens": **PARTIALLY VERIFIED, with a correction.** 
+TRUNCATE-TB found that a strategy starting with an 8-week regimen of bedaquiline and linezolid was noninferior to standard treatment at week 96.
+ This is a trial strategy that includes retreatment, not a WHO-recommended DS-TB regimen. The Investigator should not group it with HPMZ as an "adopted" regimen.
+
 **CLAIM CHECK**
-
-- **WHO (2022) recommended a 4-month HPMZ regimen for people aged 12 and over: VERIFIED.**
-  - 
-The WHO 2022 DS-TB module recommends a 4-month isoniazid, rifapentine, moxifloxacin and pyrazinamide regimen for people aged 12 or older with pulmonary DS-TB.
- It is a conditional recommendation with moderate certainty of evidence.
-  - WHO also said that 
-clinicians should weigh eligibility criteria, patient preference and local factors such as the availability of rifapentine.
- This supports the supply and uptake caveat, though it does not quantify it.
-- **Dorman et al., NEJM 2021 (Study 31/A5349): VERIFIED, with an incomplete check.**
-  - I did not retrieve the paper directly. A trial protocol states that 
-a four-month rifapentine regimen containing moxifloxacin was non-inferior to the standard 6-month regimen (Dorman et al., 2021).
-
-  - A ClinicalTrials.gov reference list also carries the matching title, "Four-Month Rifapentine Regimens with or without Moxifloxacin for Tuberculosis."
-- **Paton et al., NEJM 2023 (TRUNCATE-TB): VERIFIED, but MISCHARACTERISED as a "regimen" alternative.**
-  - The citation is correct: 
-Paton NI et al., "Treatment Strategy for Rifampin-Susceptible Tuberculosis," N Engl J Med 2023;388(10):873-887.
-
-  - It tested a management strategy, not a drop-in regimen. 
-An initial 8-week bedaquiline–linezolid regimen was noninferior to standard treatment for a composite clinical outcome at week 96.
-
-  - The strategy includes monitoring and retreatment of relapses. A later exploratory analysis found 
-all four 8-week regimens had lower efficacy than the standard 24-week regimen.
- Its authors say that 
-even the best 8-week bedaquiline-linezolid regimen should only be used within the TRUNCATE management strategy.
-
-  - This makes TRUNCATE-TB a weaker candidate for displacing HRZE at scale by ~2033 than the critique implies. I found no WHO recommendation for it.
-- **"Bedaquiline-containing short regimens" in the pipeline: PLAUSIBLE/VERIFIED as pipeline.**
-  - Bedaquiline-containing regimens are being tested for DS-TB, for example 
-the SimpliciTB bedaquiline-pretomanid-moxifloxacin-pyrazinamide trial.
- There is also a Phase 2 trial of TBAJ-876 or bedaquiline with pretomanid and linezolid (NCT06058299).
-  - These are Phase 2 or 2c. None is a recommended DS-TB standard of care.
-- **"Rifapentine is a stronger CYP3A4 inducer than rifampicin": UNVERIFIED, and probably wrong as stated.**
-  - I found no source in my searches. My background understanding, which I could not re-check this session, is that rifapentine is usually described as a CYP3A4 inducer of similar or somewhat lower potency than rifampicin, not a stronger one.
-  - What does survive: both are strong rifamycin inducers, so a statin interaction concern applies to HPMZ as well. The "may worsen" wording should be dropped.
-- **Slow HPMZ uptake because of rifapentine supply and cost: PLAUSIBLE, UNVERIFIED.**
-  - One 2025 abstract notes that 
-the high rifapentine dose may limit use in clinical practice, particularly in patients with comorbidities.
- That is a clinical limitation, not a supply or cost finding. I found no programme-level uptake data.
-- **20–40% adoption scenario: UNGROUNDED, as the Investigator admits.** The arithmetic is correct: 5.5M × 0.6–0.8 = 3.3–4.4M.
-- **The 5.5M eligible figure and the 3.6M bar** come from the CEA source materials, which I do not have. I could not check them.
+- WHO recommended the 4-month HPMZ regimen in 2022 for age ≥12: **VERIFIED** (see above).
+- A statin trial on HRZE does not establish efficacy on a rifapentine/moxifloxacin backbone: **PLAUSIBLE.** This is sound reasoning, and I found no direct evidence either way.
+- "Rifapentine is a stronger CYP3A4 inducer than rifampicin": **UNVERIFIABLE and probably overstated.** I ran out of searches before checking it. From general pharmacology, rifampicin is usually described as the most potent inducer, and rifapentine is comparable or somewhat weaker depending on dose. Both are inducers, so the broader worry about interactions with atorvastatin survives. The comparative "stronger" claim should be dropped or checked.
+- "Programme uptake of HPMZ has been slow because of rifapentine supply and cost": **UNVERIFIABLE.** I found no direct source. One adjacent source says 
+use of the regimen in clinical practice may be limited by the high rifapentine dose, particularly in patients with comorbidities.
+ This partly supports the idea that uptake is constrained, though for a different reason than the Investigator gives.
+- 20–40% of eligible patients on non-trial regimens by ~2033: **UNGROUNDED.** The Investigator says so too. I found no projection.
+- Shorter regimens reduce room for an adjunct to add benefit: **PLAUSIBLE.** This is logic only.
 
 **EVIDENCE FOUND**
-- WHO's conditional recommendation, and its explicit reference to rifapentine availability, supports a slow-uptake scenario.
-- 
-Adolescents aged 12–16 have three options: 4-month HPMZ, 4-month 2HRZ(E)/2HR, or standard 6-month.
- The 4-month 2HRZ(E)/2HR regimen for non-severe paediatric TB is still rifampicin-based. It reduces duration, not the backbone.
-- Concerning "shortening" benefit: the 4-month 2HRZ(E)/2HR regimen applies only to non-severe TB in children under 16. It is not a general adult option.
-- No evidence was found on the effect of a statin adjunct on shorter regimens. This is a genuine gap.
+- HPMZ is restricted to age ≥12, and it is conditional. Rifapentine exposure has been shown to drive outcomes: 
+low rifapentine exposure is the strongest driver of TB-related unfavorable outcomes in the rifapentine-moxifloxacin arm.
+ That limits how fast HPMZ can displace HRZE, because dosing and supply constraints apply. It weakly favours the low end of the Investigator's range.
+- Under the WHO guidance, 
+adolescents aged 12–16 have three options: 4-month HPMZ, 4-month 2HRZ(E)/2HR, or standard 6-month 2HRZ(E)/4HR.
+ The 4-month HRZ(E) regimen for children with non-severe TB still contains rifampicin. The rifamycin-induction problem would therefore remain on that backbone, which weakens the "non-trial backbone" argument for that group.
+- Most 2022 TRUNCATE-type and bedaquiline-linezolid strategies remain trial-stage. They are unlikely to reach 20–40% of patients by 2033.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The HPMZ and Dorman facts are correct. The core logic (new backbones reduce applicability and incremental benefit) is sound but ungrounded quantitatively. The rifapentine "stronger inducer" claim is unverified and probably wrong. TRUNCATE-TB is mischaracterised.
+**CORE CLAIM**
+- Claim: 20–40% of eligible patients will be on non-HRZE regimens at the benefit horizon, which pushes effective eligibility down to about the 3.6M threshold.
+- Support: **LOGIC ONLY**
+- Why: No adoption projection exists, and the Investigator admits it is a self-chosen scenario. The slow-uptake evidence points to the low end of the range or below it.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The regimen facts and the direction of the concern are real. The adoption range, the "stronger inducer" claim, and the "uptake slow" claim are ungrounded or unverifiable. The 3.3–4.4M figure depends on a source model (5.5M eligible, 3.6M bar) that I could not see.
 
 **REVISED CRITIQUE**
-- **Hypothesis:** By the benefit horizon, some DS-TB patients may be on the WHO-recommended 4-month HPMZ regimen, which includes rifapentine and moxifloxacin in place of rifampicin and ethambutol. 
-This applies to people aged 12 or older.
- A statin trial on HRZE may not transfer to that backbone.
-- **Retained:**
-  1. Applicability: the evidence is HRZE-specific.
-  2. Incremental value: shorter regimens leave less room for a duration-shortening adjunct.
-  3. Rifamycin interaction concerns would likely apply to rifapentine as well as rifampicin. The direction and size of any difference is unverified.
-- **Corrections:**
-  - TRUNCATE-TB is a strategy trial with bedaquiline–linezolid, not a WHO-endorsed standard regimen, so it is a weaker driver of displacement.
-  - Bedaquiline-based DS-TB regimens remain in Phase 2 or 2c.
-- **Flagged UNGROUNDED:** the 20–40% adoption range and the slow-uptake claim. The drop to 3.3–4.4M is arithmetic on an assumed range.
-- **Strength:** medium, direction uncertain. The adoption share is the key unknown. The "at or near 3.6M" conclusion depends wholly on the assumed range.
+The 6-month HRZE regimen is no longer the only standard of care. 
+WHO conditionally recommends a 4-month HPMZ regimen for people aged 12 or older
+, and Paton et al. (NEJM 2023) showed that an 8-week bedaquiline-linezolid strategy was noninferior to standard treatment in a trial. Three things follow:
+- Efficacy shown on an HRZE backbone may not transfer to rifapentine/moxifloxacin regimens. Rifapentine is a CYP3A4 inducer, so the atorvastatin interaction question carries over. Whether it is stronger than rifampicin is unverified.
+- Shorter regimens may leave less baseline relapse or mortality for an adjunct to improve.
+- Any statin benefit that works through shortening treatment would be reduced.
+
+The share of patients moved off HRZE by ~2033 is **UNGROUNDED, plausible but needs empirical support**. Evidence of dosing and supply limits suggests the share may be modest. Direction: uncertain, magnitude: low-to-medium (down from medium), because the displacement estimate has no support and the evidence points to slow uptake.
 
 ---
 
-## Critique 2: M72/AS01E and other incidence shocks
+## Critique 2: M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled
 
 **CITATION CHECK**
-- **Tait et al., NEJM 2019: VERIFIED.**
-  - It is the "Final Analysis of a Trial of M72/AS01E Vaccine to Prevent Tuberculosis," N Engl J Med 2019;381:2429–39.
-  - 
-Vaccine efficacy at month 36 was 49.7% (90% CI 12.1–71.2; 95% CI 2.1–74.2).
-
-  - The ~50% efficacy figure is accurate. Note the very wide confidence interval and that the original 2018 report (Van Der Meeren) gave 
-54.0% efficacy.
-
-- **Harris et al.: PARTIALLY VERIFIED, MISATTRIBUTED.**
-  - Rebecca Harris of LSHTM is first author of 
-"Age-targeted tuberculosis vaccination in China and implications for vaccine development: a modelling study," Lancet Glob Health 2019.
-
-  - That paper models generic vaccine profiles, with the intermediate profile at 
-60% efficacy, 10-year protection and 70% coverage.
- It is not an M72-specific projection.
-  - I could not find a Harris paper projecting M72 impacts "mostly in the 2040s." The Investigator already says they cannot cite a figure.
+- Tait et al., NEJM 2019, Phase IIb, ~50% efficacy: **VERIFIED.** 
+Vaccine efficacy at month 36 was 49.7% (95% CI, 2.1 to 74.2).
+ The earlier primary analysis (a separate NEJM 2018 paper) reported 
+54.0% (95% CI, 2.9 to 78.2).
+ The "Tait 2019" citation correctly points to the final analysis.
+- Harris et al. (LSHTM-type models): **PARTIALLY VERIFIED.** Harris et al. exist: 
+New tuberculosis vaccines in India: modelling the potential health and economic impacts, with projections to 2050
+ (BMC Med 2023). The Investigator said they cannot cite a figure, and I could not extract a 2033–35 incidence figure either. The models report cumulative impact and 2050 outcomes, which is consistent with the "impact in the 2040s" framing but does not prove it.
+- Gates MRI Phase III, started 2024, ~20,000 participants: **PARTIALLY VERIFIED, with a discrepancy.** 
+Nature reports that M72 entered phase 3 in March 2024, targeting around 26,000 participants across seven countries.
+ 
+The Phase III (Gates MRI; NCT06062238) is described as ongoing.
+ A design paper modelled 
+18,000 IGRA-positive participants, with 110 events accruing in 3.5–4 years
+. So "~20,000" is in the right range, but the current target is higher (~26,000, including the larger HIV cohort).
 
 **CLAIM CHECK**
-- **Phase III started 2024: VERIFIED.** 
-In March 2024, M72 went into phase 3 trials.
- The registered trial is NCT06062238, run by the Gates Medical Research Institute (
-ongoing registrational efficacy trial.
-).
-- **~20,000 participants: PARTIALLY VERIFIED.** Sources vary.
-  - Nature reports 
-around 26,000 participants across seven countries.
+- Phase IIb efficacy applied to an already-infected population: **VERIFIED.** 
+The trial enrolled 3,573 HIV-negative adults aged 18–50 in Southern Africa with evidence of M.tb infection (IGRA+).
 
-  - A design paper models 
-18,000 IGRA-positive participants
- for the primary analysis, with the full trial larger once other groups are added.
-  - ~20,000 is not wrong for the IGRA+ core, but ~26,000 is the better-supported total.
-- **Results "late 2020s": PLAUSIBLE.** The design paper projects 
-a 90% probability of accruing 110 events within 3.5 to 4 years.
- With enrolment starting in 2024, a primary readout near 2028 is consistent. Licensure around 2028–30 is therefore plausible but unconfirmed.
-- **Phase IIb efficacy was in a small, selected population: VERIFIED.**
-  - It enrolled 
-3,573 HIV-negative adults aged 18–50 who were IGRA-positive.
-
-  - It rested on 
-39 primary-analysis cases (13 in the vaccine group, 26 on placebo).
-
-  - The Investigator's caution about probability-weighting is well founded.
-- **Vaccine impact mostly via preventing progression in the already-infected: VERIFIED as the efficacy basis, with modelling nuance.**
-  - Phase IIb efficacy was measured only in infected people. LSHTM modellers note that 
-a pre- and post-infection vaccine had a much greater impact on 2050 incidence than a post-infection-only vaccine.
- That supports the idea that impact accrues gradually.
-  - An analysis of the trial found that 
-the most plausible models needed protection against at least two of the three routes to active TB.
- So the mechanism is not settled.
-- **Slow rollout needing Gavi financing: PLAUSIBLE.** A recent M72 demand-forecast paper includes 
-an "upside" scenario with higher efficacy, more global funding (Gavi and others) and faster rollout than the base case.
- This implies the base case assumes slower and more constrained rollout.
-- **LSHTM-type models project larger impacts in the 2040s: PLAUSIBLE, UNVERIFIED.** LSHTM-linked India modelling 
-projects over 2025–2050
- and reports results as cumulative impact by 2050. That is consistent with late-accruing impact but does not show a 2040s-specific finding. This modelling assumes 
-non-vaccine scale-up toward a 50% incidence reduction by 2035,
- which would itself shrink the eligible pool independently of vaccines.
-- **Own estimate of a 5–15% incidence reduction by 2033–35: UNGROUNDED.** The arithmetic is right: 5.5M × 0.85–0.95 = ~4.7–5.2M. The 20–35% average reduction over a 15+-year horizon is also ungrounded and depends on the CEA structure.
+- Phase IIb evidence is "small, selected": **VERIFIED.** 
+Only 39 participants contributed to the primary efficacy analysis: 13 vaccinated and 26 placebo.
+ The confidence interval is very wide.
+- Results are expected in the late 2020s and licensure around 2028–30: **PLAUSIBLE, not directly confirmed.** The event-driven design implies several years of accrual after a ~2-year enrolment period. I found no official timeline.
+- Incidence reduction of 5–15% by 2033–35: **UNVERIFIABLE.** This is the Investigator's own estimate.
+- Vaccine impact accrues gradually, mostly via already-infected people: **PARTIALLY CONTRADICTED / nuanced.** Harris et al. conclude M72 would 
+be effective in a larger proportion of the population than BCG-revaccination and have a more rapid impact on tuberculosis incidence.
+ Post-infection vaccines act on the prevalent latent pool, so they are faster than infection-blocking vaccines. They are still limited by coverage ramp-up and duration of protection. Separately, 
+a vaccine with pre- and post-infection efficacy had a much greater 2050 incidence impact than a post-infection-only vaccine.
+ That supports a modest impact from a post-infection-only M72.
+- Average eligible pool 20–35% lower over a >15-year horizon: **UNVERIFIABLE.** The Investigator says so. It depends on assumptions about vaccine uptake, duration and coverage.
 
 **EVIDENCE FOUND**
-- Global M72 demand-forecast work and country models exist and could ground the rollout assumptions. I did not extract specific numbers.
-- An M72-specific South Africa model and India models exist (
-49.7% efficacy over 3 years in previously sensitised adolescents and adults
- as the input). These would be better sources than Harris 2019 for a sensitivity analysis.
-- Efficacy was assessed only in IGRA+ individuals, and its uncertainty and duration of protection (10 years is an assumed value in one model) add further uncertainty to any projected incidence effect.
+- Models assume ~10-year duration of protection, 50% efficacy and staggered introduction. For example, 
+the India model assumed introduction in 2025 with repeat campaigns in 2035 and 2045.
+ Vaccine timing therefore matters a great deal. With later introduction, around 2030, impact by 2033–35 is likely small. This supports the Investigator's claim of a small effect at year 8 and a larger one later.
+- A baseline assumption matters here. The India model assumed 
+scale-up of non-vaccine interventions to meet a 50% reduction in incidence by 2035 versus 2015.
+ The CEA's eligible-population baseline should be checked for the same kind of decline.
+- A South Africa model found M72 could 
+avert between 0.86 and 2.55 million TB cases by 2050
+. That is large cumulatively but consistent with back-loaded impact.
+- A demand-forecast paper exists (
+"Preparing for Tuberculosis Vaccine M72/AS01E Implementation"
+). It could inform uptake assumptions but I did not extract numbers from it.
 
-**OVERALL VERDICT: PARTIALLY VERIFIED.** The Tait citation, the Phase III existence and timing, and the logic that vaccine impact is a later-horizon effect hold. The Harris citation is misattributed, the participant number is imprecise, and all impact magnitudes are ungrounded.
+**CORE CLAIM**
+- Claim: M72-driven incidence reduction by year 8–10 is small (5–15%). It becomes large (30–50%) only later, so a constant eligible-population assumption overstates the pool in the later years of the benefit horizon.
+- Support: **LOGIC ONLY**
+- Why: The model literature points to impact building toward 2050 and a modest effect from a post-infection-only vaccine, but no source gives 2033–35 incidence figures, and the 30–50% later-year reduction is not sourced.
+
+**OVERALL VERDICT: PARTIALLY VERIFIED.** The citations are real. The trial size is slightly off (~26,000 target versus ~20,000). The Phase IIb limitations are verified. All the quantitative impact estimates are ungrounded.
 
 **REVISED CRITIQUE**
-- **Hypothesis:** The M72/AS01E Phase III (NCT06062238, began March 2024, ~20,000–26,000 participants depending on source) follows a Phase IIb in which 
-efficacy was 49.7% (95% CI 2.1–74.2)
- in IGRA+, HIV-negative adults. If it succeeds, licensure is plausibly ~2028–30 with a slow rollout.
-- **Retained:** Population-level incidence effects are unlikely to be large by 2033–35, and they matter more over a long benefit horizon. The CEA's constant eligible population of 5.5M may therefore overstate eligible patients in later years. The probability of vaccine success should be modelled separately.
-- **Removed or corrected:**
-  - Harris 2019 is a generic China age-targeting model, not an M72 projection. Replace it with M72-specific models (India, South Africa) for future citations.
-  - The participant count should be stated as a range.
-- **Flagged UNGROUNDED:** the 5–15% incidence reduction by 2033–35, the 30–50% later-year reduction, and the 20–35% average-eligible reduction. A CEA sensitivity analysis is required.
-- **Strength:** medium, direction decreases. The size depends on trial success, coverage and the CEA's treatment of post-adoption years.
+Tait et al. (NEJM 2019) reported a vaccine efficacy of 49.7% (95% CI 2.1–74.2) against pulmonary TB in about 3,500 HIV-negative, IGRA-positive adults. The primary analysis rested on only 39 cases, so the point estimate is imprecise. The Phase III, which started in March 2024, is ongoing with a target of about 26,000 participants. Licensure and rollout timing are uncertain but unlikely to produce a large incidence effect by 2033–35. Published models (Harris et al. and related work) project cumulative impact toward 2050 and a smaller effect from post-infection-only vaccines. The CEA should therefore be checked for whether it holds the eligible pool constant after year 8. Any later-year reduction in eligibility (30–50%) and the 20–35% averaged reduction are **UNGROUNDED, plausible but needing empirical support** via CEA sensitivity analysis. Vaccine success probability should be weighted separately. Direction: decreases, magnitude: low-to-medium and horizon-dependent, with the "5–15% at year 8" figure marked as the Investigator's own estimate.
