@@ -266,16 +266,25 @@ CRITICAL RULES FOR THIS SECTION:
 
 Some surviving findings depend on a claim the verifier could not check
 (support: LOGIC ONLY). They stay in the findings above, but the reader
-should check that claim before acting on the finding. For each entry in
-the input section "Surviving Findings Resting on Unverified Core Claims",
-write one entry:
+should check that claim before acting on the finding. Many of these
+claims are settled by the same few documents, so do not list them one by
+one. Using the entries in the input section "Surviving Findings Resting
+on Unverified Core Claims", write a short checklist of the distinct
+questions that would settle them, in two groups:
 
-**[Finding title, verbatim]** rests on: [core claim from input].
-*Why it could not be checked:* [reason from input].
-*What would settle it:* [one sentence naming the specific evidence or
-document that would confirm or refute the claim.]
+**A. Questions for the CEA's authors** (definitions, sources and internal
+documents only the analysts hold):
+1. [The question.] *Settles findings:* [numbers]. *Why it matters:*
+   [one sentence on which way the answer could move the bottom line].
 
-Rules: ONLY use entries from that input section, in its order. If it says
+**B. Questions that need new evidence** (studies, datasets, trial
+results):
+1. [Same format.]
+
+Rules: every finding in that input section must appear under at least one
+question. Merge findings that the same document or study would settle.
+Order questions within each group by how many findings they settle. Do
+not add questions for findings outside that input section. If it says
 "(none)", write "(none — every surviving finding's core claim was
 supported)".
 

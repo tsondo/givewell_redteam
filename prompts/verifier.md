@@ -45,7 +45,10 @@ CORE CLAIM:
     - SUPPORTED: you found direct evidence for this claim.
     - LOGIC ONLY: it follows from reasoning about the model, or is
       plausible, but you found no direct evidence for or against it.
-    - CONTRADICTED: evidence you found directly contradicts it.
+    - CONTRADICTED: evidence you found directly contradicts the claim
+      as it applies to this case. If evidence contradicts a general
+      premise but you could not check whether it holds for this
+      specific trial, program or model, rate it LOGIC ONLY instead.
   - Why: [One sentence.]
 
 OVERALL VERDICT:
