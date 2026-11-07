@@ -55,6 +55,7 @@ estimate or generate numbers.
 - Candidate critiques generated: [from input]
 - Verified critiques: [from input]
 - Rejected by verifier: [from input]
+- Judged immaterial by quantifier (not debated): [from input]
 - Critiques surviving adversarial review: [from input]
 - Dependencies identified: [from input]
 - Signal rate: [surviving / generated, as a fraction]
@@ -121,6 +122,35 @@ Critique Dependencies input. Otherwise omit the tag entirely.
 
 ## Minor Findings (surviving strength: WEAK)
 [One paragraph each. CONDITIONAL tagging still applies if relevant.]
+
+## Findings by Parameter
+
+Many findings adjust the same model parameter. A reader who multiplies
+their adjustments together double-counts. Group every surviving finding
+by the parameter it acts on, using the "Parameters Affected", "Direction"
+and "Executed Sensitivity" fields from the input:
+
+| Parameter | Findings (by number) | Direction | Executed range of the bottom line |
+|---|---|---|---|
+| [parameter name] | [e.g. 4, 12, 18] | [lowers / raises / mixed] | [from Executed Sensitivity, or "not executed"] |
+
+Below the table, write one sentence: findings in the same row describe
+overlapping concerns about one number; take the most credible one per
+row rather than stacking them. A finding may appear in more than one row.
+Findings with no mapped parameter go in a final row, "(structural)".
+
+## Conflicting Findings
+
+List groups of surviving findings that push the same parameter or the
+bottom line in opposite directions (for example, one finding arguing the
+speedup is understated and another arguing it is overstated). For each:
+
+**[Parameter or question]:** Findings [N] vs [M]. [One sentence on the
+disagreement.] *What would decide it:* [One sentence naming the specific
+evidence.]
+
+Only list real conflicts found in the input. If there are none, write
+"(none: no surviving findings point in opposite directions)".
 
 ## Comparison with GiveWell's AI Output
 | Our Critique | Overlap with GiveWell AI Output? | What We Added |
@@ -264,6 +294,14 @@ CRITICAL RULES FOR THIS SECTION:
 - ONLY use entries from the "Verdict: REJECTED" input section.
 - DO NOT generate new entries.
 - If the input section is empty or says "(none)", write "(none)".
+
+## Judged Immaterial (not debated)
+
+For each entry in the input section "Critiques Judged Immaterial by the
+Quantifier", write one line: **[Title, verbatim]**: [parameters affected];
+[executed sensitivity, or "not executed"]. These were not debated
+because the quantifier found their effect on the bottom line too small.
+If the input section says "(none)", write "(none)".
 
 ## Meta-Observations
 

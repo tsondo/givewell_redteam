@@ -72,6 +72,6 @@ Run #01 (same day) failed for mechanical reasons: silent output truncation on th
 
 ## Files
 
-- Run outputs: `results/cg-tb-statins/` (graph: `cg-tb-statins-run02-2026-11-07/graph.json`)
+- Run outputs: `results/cg-tb-statins-run02/` (graph: `cg-tb-statins-run02-2026-11-07/graph.json`)
 - Input and model: `data/cg-tb-statins/`, `pipeline/botec.py`
 - Source: Coefficient Giving, "How we use back-of-the-envelope calculations in our grantmaking", May 2025 (also on the EA Forum).

@@ -379,6 +379,10 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
             baseline_output=baseline_output,
             stats=stats,
             intervention=intervention,
+            immaterial=[
+                q for q in quantified_critiques
+                if q.materiality not in ("material", "notable")
+            ],
         )
         logger.info("Synthesizer produced final report (%d chars).", len(final_report))
     else:

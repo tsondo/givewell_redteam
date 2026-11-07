@@ -2158,6 +2158,39 @@ def run_linker(
     return result
 
 
+def _parameters_affected(q: QuantifiedCritique) -> str:
+    """Model parameters a critique acts on: executed ones first, then mapped."""
+    names: list[str] = []
+    for key in q.sensitivity_results:
+        param = key.split("/", 1)[-1]
+        if param not in names:
+            names.append(param)
+    for item in q.alternative_range + q.target_parameters:
+        param = item.get("mapped")
+        if param and param not in names:
+            names.append(param)
+    return ", ".join(names) or "(none mapped)"
+
+
+def _executed_sensitivity_summary(q: QuantifiedCritique) -> str:
+    """One line per executed sweep: parameter low-high and the CE change."""
+    parts: list[str] = []
+    for key, r in q.sensitivity_results.items():
+        if not isinstance(r, dict):  # older saved runs stored bare numbers
+            parts.append(f"{key}: {r}")
+            continue
+        param = key.split("/", 1)[-1]
+        rng = next((a for a in q.alternative_range if a.get("mapped") == param), {})
+        line = (
+            f"{key}: {rng.get('low', '?')} to {rng.get('high', '?')} "
+            f"-> {r.get('pct_change_low', 0):+.0f}% to {r.get('pct_change_high', 0):+.0f}%"
+        )
+        if "pct_change_quantifier_central" in r:
+            line += f" (at central {r['quantifier_central']}: {r['pct_change_quantifier_central']:+.0f}%)"
+        parts.append(line)
+    return "; ".join(parts) or "(not executed: no parameter range could be run on the model)"
+
+
 _CORE_SUPPORT_LABELS: dict[str, str] = {
     "supported": "SUPPORTED",
     "logic_only": "LOGIC ONLY",
@@ -2296,6 +2329,7 @@ def _build_synthesizer_user_message(
     linker_output: LinkerOutput,
     decomposer_output: DecomposerOutput,
     baseline_output: str,
+    immaterial: list[QuantifiedCritique] | None = None,
 ) -> str:
     """Construct the user message for the Synthesizer API call.
 
@@ -2321,6 +2355,9 @@ def _build_synthesizer_user_message(
             f"- **Core Claim:** {dc.critique.critique.core_claim or '(not reported)'} "
             f"(support: {_CORE_SUPPORT_LABELS[dc.critique.critique.core_claim_support]})\n"
             f"- **Materiality:** {dc.critique.materiality}\n"
+            f"- **Parameters Affected:** {_parameters_affected(dc.critique)}\n"
+            f"- **Direction (investigator's estimate):** {orig.estimated_direction or 'not stated'}\n"
+            f"- **Executed Sensitivity:** {_executed_sensitivity_summary(dc.critique)}\n"
             f"- **Sensitivity Results:** {json.dumps(dc.critique.sensitivity_results, default=str)}\n"
             f"- **Key Unresolved Questions:** {', '.join(dc.key_unresolved)}\n"
             f"- **Advocate Defense Summary:** {dc.advocate_defense[:500]}...\n"
@@ -2345,6 +2382,21 @@ def _build_synthesizer_user_message(
         "## Surviving Findings Resting on Unverified Core Claims "
         "(for Open Questions — DO NOT generate new entries)\n\n"
         + ("\n".join(logic_only) if logic_only else "(none)\n")
+    )
+
+    # Critiques the quantifier judged immaterial were never debated. List them
+    # so they do not disappear from the report without a trace.
+    immaterial = immaterial or []
+    immaterial_entries = [
+        f"#### {q.critique.original.title}\n"
+        f"- **Parameters Affected:** {_parameters_affected(q)}\n"
+        f"- **Executed Sensitivity:** {_executed_sensitivity_summary(q)}\n"
+        for q in immaterial
+    ]
+    immaterial_section = (
+        "## Critiques Judged Immaterial by the Quantifier (not debated — "
+        "DO NOT generate new entries)\n\n"
+        + ("\n".join(immaterial_entries) if immaterial_entries else "(none)\n")
     )
 
     # Linker dependencies block. Show UNVERIFIABLE as the human-facing label
@@ -2390,6 +2442,7 @@ def _build_synthesizer_user_message(
         f"- Candidate critiques generated: {all_critiques_count}\n"
         f"- Verified critiques: {verified_count}\n"
         f"- Rejected by verifier: {n_rejected}\n"
+        f"- Judged immaterial by quantifier (not debated): {len(immaterial)}\n"
         f"- Critiques surviving adversarial review: {n_surviving}\n"
         f"- Dependencies identified: {n_deps}\n\n"
         f"## Decomposer Output (for accurate counts)\n\n"
@@ -2399,6 +2452,7 @@ def _build_synthesizer_user_message(
         + "\n".join(critique_summaries)
         + f"\n\n{rejected_section}"
         + f"\n\n{logic_only_section}"
+        + f"\n\n{immaterial_section}"
         + f"\n\n## Critique Dependencies (from linker)\n\n"
         f"{deps_block}\n\n"
         f"## Judge Audit Aggregate (computed from surviving critiques)\n\n"
@@ -2418,6 +2472,7 @@ def run_synthesizer(
     baseline_output: str,
     stats: PipelineStats,
     intervention: str,
+    immaterial: list[QuantifiedCritique] | None = None,
 ) -> str:
     """Stage 6: Synthesize final report."""
     system = load_prompt("synthesizer.md")
@@ -2430,6 +2485,7 @@ def run_synthesizer(
         linker_output=linker_output,
         decomposer_output=decomposer_output,
         baseline_output=baseline_output,
+        immaterial=immaterial,
     )
 
     raw = call_api(

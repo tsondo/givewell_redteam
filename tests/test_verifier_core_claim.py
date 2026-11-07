@@ -109,3 +109,28 @@ def test_rejected_entries_show_the_contradicted_core_claim() -> None:
     out = _format_rejected_critiques_for_synthesizer([vc])
     contradicted = out.split("### Verdict: REJECTED")[1]
     assert "(support: CONTRADICTED)" in contradicted
+
+
+def test_synthesizer_input_lists_immaterial_and_parameter_fields() -> None:
+    material = _debated("SUPPORTED", "Material finding")
+    material.critique.sensitivity_results = {
+        "tb_statins/p_success": {"baseline": 3055.0, "pct_change_low": -50.0, "pct_change_high": -20.0}
+    }
+    material.critique.alternative_range = [{"mapped": "p_success", "low": 0.2, "high": 0.32}]
+    immaterial = _debated("SUPPORTED", "Small effect").critique
+    immaterial.materiality = "immaterial"
+    msg = _build_synthesizer_user_message(
+        debated=[material],
+        all_critiques_count=2, verified_count=2, rejected_critiques=[],
+        linker_output=LinkerOutput(
+            dependencies=[], n_surviving_critiques_examined=1,
+            n_rejected_critiques_available=0, n_dependencies_found=0,
+        ),
+        decomposer_output=DecomposerOutput(threads=[], exclusion_list=[], cea_parameter_map=""),
+        baseline_output="",
+        immaterial=[immaterial],
+    )
+    assert "Judged immaterial by quantifier (not debated): 1" in msg
+    assert "#### Small effect" in msg.split("## Critiques Judged Immaterial")[1]
+    assert "**Parameters Affected:** p_success" in msg
+    assert "tb_statins/p_success: 0.2 to 0.32 -> -50% to -20%" in msg
