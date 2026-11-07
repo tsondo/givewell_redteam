@@ -1,0 +1,29 @@
+{
+  "total_input_tokens": 190683,
+  "total_output_tokens": 98525,
+  "total_cost": 2.0248779999999997,
+  "stage_costs": {
+    "decomposer": 0.17887199999999998,
+    "investigator-1": 0.047366,
+    "investigator-2": 0.046548,
+    "verifier-1": 0.201698,
+    "verifier-2": 0.070496,
+    "quantifier-1": 0.095296,
+    "quantifier-2": 0.14276,
+    "quantifier-3": 0.176924,
+    "quantifier-4": 0.120252,
+    "advocate-1": 0.043576000000000004,
+    "challenger-1": 0.040312,
+    "judge-1": 0.103208,
+    "advocate-2": 0.044594,
+    "challenger-2": 0.04136,
+    "judge-2": 0.10284,
+    "advocate-3": 0.043516,
+    "challenger-3": 0.042012,
+    "judge-3": 0.11004,
+    "advocate-4": 0.043544,
+    "challenger-4": 0.043332,
+    "judge-4": 0.090892,
+    "synthesizer": 0.19544
+  }
+}

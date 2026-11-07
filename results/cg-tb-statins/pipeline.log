@@ -1,0 +1,81 @@
+13:40:41 INFO Starting pipeline for 'cg-tb-statins' from stage 'decomposer' (index 0)
+13:40:41 INFO Loading CEA spreadsheet: /home/tsondo/projects/givewell_redteam/data/cg-tb-statins/botec_params.json
+13:40:41 INFO CEA spreadsheet loaded.
+13:40:41 INFO Fetching intervention report from file:cg-tb-statins/report.md
+13:40:41 INFO Fetching baseline output from (none)
+13:40:41 INFO === Stage 1: Decomposer ===
+13:42:06 INFO [decomposer] claude-opus-5-5 | 3758 in / 8192 out | $0.1789 | cumulative $0.1789
+13:42:06 INFO Saved stage output to 01-decomposer (.json + .md)
+13:42:06 INFO Decomposer produced 2 investigation threads.
+13:42:06 INFO === Stage 2: Investigators ===
+13:42:40 INFO [investigator-1] claude-sonnet-5-5 | 3203 in / 4096 out | $0.0474 | cumulative $0.2262
+13:43:14 INFO [investigator-2] claude-sonnet-5-5 | 2794 in / 4096 out | $0.0465 | cumulative $0.2728
+13:43:14 INFO Saved stage output to 02-investigators (.json + .md)
+13:43:14 INFO Investigators produced 4 candidate critiques.
+13:43:14 INFO === Stage 3: Verifier ===
+13:44:19 INFO [verifier-1] claude-sonnet-5-5 | 55334 in / 9103 out | $0.2017 | cumulative $0.4745
+13:44:37 INFO [verifier-2] claude-sonnet-5-5 | 24213 in / 2207 out | $0.0705 | cumulative $0.5450
+13:44:37 INFO Saved stage output to 03-verifier (.json + .md)
+13:44:37 INFO Saved 0 rejected critiques to 03-verifier-rejected.json
+13:44:37 INFO Verifier passed 4 / 4 critiques (0 rejected).
+13:44:37 INFO === Stage 4: Quantifier ===
+13:45:16 INFO [quantifier-1] claude-opus-5-5 | 3314 in / 4102 out | $0.0953 | cumulative $0.6403
+13:45:16 WARNING Sensitivity analysis failed for tb_statins/relative_risk: "unknown BOTEC parameters: ['relative_risk']"
+13:45:16 INFO   Quantifier [1/4] 'Selection-on-success makes the "conditional 10%" a': params=5, ranges=1, sensitivity=0, materiality=material
+13:46:17 INFO [quantifier-2] claude-opus-5-5 | 3835 in / 6371 out | $0.1428 | cumulative $0.7830
+13:46:17 INFO   Quantifier [2/4] 'A mortality-powered Phase III costs several multip': params=5, ranges=0, sensitivity=0, materiality=material
+13:47:37 INFO [quantifier-3] claude-opus-5-5 | 3271 in / 8192 out | $0.1769 | cumulative $0.9600
+13:47:37 INFO   Quantifier [3/4] 'If Phase III is surrogate-powered, costs and benef': params=4, ranges=0, sensitivity=0, materiality=notable
+13:48:28 INFO [quantifier-4] claude-opus-5-5 | 3298 in / 5353 out | $0.1203 | cumulative $1.0802
+13:48:28 INFO   Quantifier [4/4] 'WHO is unlikely to rely on a single trial': params=1, ranges=0, sensitivity=0, materiality=material
+13:48:28 INFO Saved stage output to 04-quantifier (.json + .md)
+13:48:28 INFO Quantifier processed 4 critiques.
+13:48:28 INFO === Stage 5: Adversarial ===
+13:48:54 INFO [advocate-1] claude-sonnet-5-5 | 6428 in / 3072 out | $0.0436 | cumulative $1.1238
+13:49:18 INFO [challenger-1] claude-sonnet-5-5 | 4796 in / 3072 out | $0.0403 | cumulative $1.1641
+13:49:52 INFO [judge-1] claude-opus-5-5 | 7402 in / 3680 out | $0.1032 | cumulative $1.2673
+13:50:19 INFO [advocate-2] claude-sonnet-5-5 | 6937 in / 3072 out | $0.0446 | cumulative $1.3119
+13:50:43 INFO [challenger-2] claude-sonnet-5-5 | 5320 in / 3072 out | $0.0414 | cumulative $1.3533
+13:51:19 INFO [judge-2] claude-opus-5-5 | 7165 in / 3709 out | $0.1028 | cumulative $1.4561
+13:51:45 INFO [advocate-3] claude-sonnet-5-5 | 6398 in / 3072 out | $0.0435 | cumulative $1.4996
+13:52:10 INFO [challenger-3] claude-sonnet-5-5 | 5646 in / 3072 out | $0.0420 | cumulative $1.5416
+13:52:51 INFO [judge-3] claude-opus-5-5 | 7030 in / 4096 out | $0.1100 | cumulative $1.6517
+13:53:15 INFO [advocate-4] claude-sonnet-5-5 | 6412 in / 3072 out | $0.0435 | cumulative $1.6952
+13:53:41 INFO [challenger-4] claude-sonnet-5-5 | 6306 in / 3072 out | $0.0433 | cumulative $1.7385
+13:54:12 INFO [judge-4] claude-opus-5-5 | 6903 in / 3164 out | $0.0909 | cumulative $1.8294
+13:54:12 INFO Saved stage output to 05-adversarial (.json + .md)
+13:54:12 INFO Adversarial stage produced 4 debated critiques.
+13:54:12 INFO === Stage 5b: Linker ===
+13:54:12 INFO Linker short-circuit: surviving=4, rejected=0. No API call.
+13:54:12 INFO Saved stage output to 05b-linker (.json + .md)
+13:54:12 INFO Linker identified 0 dependencies (4 surviving examined, 0 rejected available).
+13:54:12 INFO === Stage 6: Synthesizer ===
+13:55:19 INFO [synthesizer] claude-opus-5-5 | 10920 in / 7588 out | $0.1954 | cumulative $2.0249
+13:55:19 INFO Saved stage output to 06-synthesizer (.json + .md)
+13:55:19 INFO Synthesizer produced final report (16994 chars).
+13:55:19 INFO === Pipeline Complete ===
+13:55:19 INFO Total tokens: 190683 in / 98525 out
+13:55:19 INFO Total cost: $2.0249
+13:55:19 INFO   [advocate-1] $0.0436
+13:55:19 INFO   [advocate-2] $0.0446
+13:55:19 INFO   [advocate-3] $0.0435
+13:55:19 INFO   [advocate-4] $0.0435
+13:55:19 INFO   [challenger-1] $0.0403
+13:55:19 INFO   [challenger-2] $0.0414
+13:55:19 INFO   [challenger-3] $0.0420
+13:55:19 INFO   [challenger-4] $0.0433
+13:55:19 INFO   [decomposer] $0.1789
+13:55:19 INFO   [investigator-1] $0.0474
+13:55:19 INFO   [investigator-2] $0.0465
+13:55:19 INFO   [judge-1] $0.1032
+13:55:19 INFO   [judge-2] $0.1028
+13:55:19 INFO   [judge-3] $0.1100
+13:55:19 INFO   [judge-4] $0.0909
+13:55:19 INFO   [quantifier-1] $0.0953
+13:55:19 INFO   [quantifier-2] $0.1428
+13:55:19 INFO   [quantifier-3] $0.1769
+13:55:19 INFO   [quantifier-4] $0.1203
+13:55:19 INFO   [synthesizer] $0.1954
+13:55:19 INFO   [verifier-1] $0.2017
+13:55:19 INFO   [verifier-2] $0.0705
+13:55:19 INFO Pipeline stats saved to /home/tsondo/projects/givewell_redteam/results/cg-tb-statins/pipeline-stats.json
