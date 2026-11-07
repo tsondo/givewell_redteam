@@ -307,6 +307,7 @@ class PipelineStats:
     total_cost: float = 0.0
     stage_costs: dict[str, float] = field(default_factory=dict)
     cost_warning_threshold: float = 15.0  # default; overridden per-intervention at run start
+    truncated_calls: list[str] = field(default_factory=list)  # stages that hit max_tokens
 
     def record_call(
         self,

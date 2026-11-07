@@ -33,6 +33,17 @@ MAX_TOKENS_JUDGE: int = 4096
 MAX_TOKENS_LINKER: int = 4096  # linker output is structured, not narrative
 MAX_TOKENS_SYNTHESIZER: int = 12288
 
+# The MAX_TOKENS_* values above were sized for the Claude 4 models, which did
+# not think by default. Opus/Sonnet 5.5 always use adaptive thinking, and
+# thinking tokens count against max_tokens, so with these caps 14 of 22 calls
+# in the first cg-tb-statins run were truncated. call_api multiplies every cap
+# by this factor. You pay only for tokens actually used, so headroom is cheap.
+OUTPUT_TOKEN_MULTIPLIER: int = int(os.environ.get("REDTEAM_TOKEN_MULTIPLIER", "4"))
+# Above this, anthropic>=2 refuses non-streaming requests unless an explicit
+# timeout is passed; call_api then passes LONG_REQUEST_TIMEOUT_S.
+NONSTREAMING_SAFE_MAX_TOKENS: int = 21000
+LONG_REQUEST_TIMEOUT_S: float = 900.0
+
 # Verifier web search settings
 VERIFIER_MAX_SEARCHES: int = 5  # max web searches per verifier call
 VERIFIER_BATCH_SIZE: int = 3   # critiques per verifier API call

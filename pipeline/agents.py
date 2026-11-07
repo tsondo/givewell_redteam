@@ -17,6 +17,7 @@ import anthropic
 
 from pipeline.config import (
     ANTHROPIC_API_KEY,
+    LONG_REQUEST_TIMEOUT_S,
     MAX_RETRIES,
     MAX_TOKENS_ADVERSARIAL,
     MAX_TOKENS_DECOMPOSER,
@@ -26,7 +27,9 @@ from pipeline.config import (
     MAX_TOKENS_QUANTIFIER,
     MAX_TOKENS_SYNTHESIZER,
     MAX_TOKENS_VERIFIER,
+    NONSTREAMING_SAFE_MAX_TOKENS,
     OPUS_MODEL,
+    OUTPUT_TOKEN_MULTIPLIER,
     PRICING,
     PROMPTS_DIR,
     RESULTS_DIR,
@@ -69,6 +72,11 @@ def call_api(
 ) -> str:
     """Call Anthropic API with retries and cost tracking. Returns text response."""
     last_error: Exception | None = None
+    max_tokens = max_tokens * OUTPUT_TOKEN_MULTIPLIER
+    if max_tokens > NONSTREAMING_SAFE_MAX_TOKENS:
+        # Required by anthropic>=2 for long non-streaming requests; also
+        # supersedes a shorter caller-supplied timeout (e.g. synthesizer's 600s).
+        timeout = anthropic.Timeout(LONG_REQUEST_TIMEOUT_S)
     for attempt in range(MAX_RETRIES + 1):
         try:
             kwargs: dict[str, Any] = {
@@ -107,6 +115,14 @@ def call_api(
                     "Cumulative cost $%.2f exceeds warning threshold $%.2f",
                     stats.total_cost,
                     stats.cost_warning_threshold,
+                )
+            if getattr(response, "stop_reason", None) == "max_tokens":
+                # Accumulate-then-report: keep going, but make truncation visible.
+                stats.truncated_calls.append(stage)
+                logger.error(
+                    "[%s] TRUNCATED: hit max_tokens=%d; output is incomplete",
+                    stage,
+                    max_tokens,
                 )
             return text
 
@@ -254,8 +270,21 @@ DECOMPOSER_THREAD_HEADERS = [
 
 def parse_decomposer_output(text: str) -> DecomposerOutput:
     """Parse decomposer API response into DecomposerOutput."""
-    # Split into thread sections
-    thread_splits = _split_on_pattern(text, r"THREAD\s+\d+\s*:\s*(.+?)(?:\n|$)")
+    # The prompt's headers name GiveWell, but on other funders' CEAs the model
+    # writes e.g. "WHAT CG ALREADY ACCOUNTS FOR". Normalize so those sections
+    # are not silently dropped from the investigators' thread context.
+    text = re.sub(
+        r"WHAT\s+[\w./&' -]{1,40}?\s+(ALREADY ACCOUNTS FOR|DOES NOT ACCOUNT FOR)",
+        r"WHAT GIVEWELL \1",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # Split into thread sections. Headers may carry an annotation before the
+    # colon, e.g. "THREAD 3 (Structural/Methodological): ..."; without the
+    # optional group such threads were silently dropped.
+    thread_splits = _split_on_pattern(
+        text, r"THREAD\s+\d+\s*(?:\([^)\n]*\))?\s*:\s*(.+?)(?:\n|$)"
+    )
 
     threads: list[InvestigationThread] = []
     all_exclusions: list[str] = []
@@ -630,9 +659,10 @@ def _map_parameter_name(
     does, that map is used exclusively, since the default map is written for
     GiveWell's parameter names.
     """
-    lower = raw_name.lower().strip()
+    # Models often write parameter keys in code style (`relative_reduction`).
+    lower = raw_name.lower().replace("_", " ").replace("`", "").strip(" *:")
     for key, value in (name_map or _PARAM_NAME_MAP).items():
-        if key in lower:
+        if key.replace("_", " ") in lower:
             return value
     return None
 
@@ -659,7 +689,8 @@ def _extract_ranges_from_text(
     # (1. / 2. / - **Name**:) or double-newline separated paragraphs.
     # Split on numbered list items or bold headers.
     block_pattern = re.compile(
-        r"(?:^|\n)\s*(?:\d+\.\s+|\-\s+)"
+        # Bullet/number optional: newer models also write "**name:** current ..."
+        r"(?:^|\n)\s*(?:\d+\.\s+|\-\s+)?"
         r"(?:\*\*(.+?)\*\*)",
         re.MULTILINE,
     )
@@ -677,6 +708,9 @@ def _extract_ranges_from_text(
     # and try to infer the parameter name from content
     if not blocks:
         blocks = [("", text)]
+    elif text[: block_matches[0].start()].strip():
+        # Text before the first bold header used to be dropped silently.
+        blocks.insert(0, ("", text[: block_matches[0].start()]))
 
     # Matches a number (int, float, or percent) without consuming trailing
     # sentence periods.  "\d+(?:\.\d+)?" requires digits after the dot,
@@ -690,9 +724,11 @@ def _extract_ranges_from_text(
 
         # Strategy 1: "Current value = X ... range = [Y, Z]" or
         # "Current = X ... Plausible range = [Y, Z]"
+        # Also accepts prose forms: "current value 0.10. Plausible range is
+        # 0.05-0.10" (no "=" and no brackets), as newer models write them.
         m = re.search(
-            r"Current\s*(?:value)?\s*[:=]\s*(" + _NUM + r")"
-            r".*?(?:Plausible\s+)?[Rr]ange\s*[:=]?\s*\[?\s*(" + _NUM + r")"
+            r"Current\s*(?:value)?\s*(?:[:=]|is|of)?\s*(" + _NUM + r")"
+            r".*?(?:Plausible\s+)?[Rr]ange\s*(?:[:=]|is|of)?\s*\[?\s*(" + _NUM + r")"
             r"\s*[,to\-–]+\s*(" + _NUM + r")",
             merged, re.IGNORECASE | re.DOTALL,
         )
@@ -831,7 +867,15 @@ def parse_quantifier_output(
                 seen_params.add(mapped)
 
     # --- Extract ranges from PLAUSIBLE RANGE ---
-    extracted_ranges = _extract_ranges_from_text(plausible_range_raw, name_map)
+    # Bold and code markers sit between labels and numbers ("**0.05-0.10**")
+    # and defeat the patterns; keep a "**name**" header form for block splits.
+    plain_range_text = re.sub(r"`", "", plausible_range_raw)
+    plain_range_text = re.sub(r"\*\*(?=[\d.\-–])|(?<=[\d%])\*\*", "", plain_range_text)
+    # _extract_section strips the section's leading "**", which leaves the first
+    # parameter name as "name:** ..."; restore it so it is split as a block.
+    if not re.match(r"\s*(?:\d+\.\s+|\-\s+)?\*\*", plain_range_text):
+        plain_range_text = re.sub(r"^([^\n*]{1,80}?)\*\*", r"**\1**", plain_range_text)
+    extracted_ranges = _extract_ranges_from_text(plain_range_text, name_map)
     alternative_range: list[dict[str, Any]] = []
     for er in extracted_ranges:
         alternative_range.append(er)

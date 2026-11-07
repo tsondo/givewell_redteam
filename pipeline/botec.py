@@ -71,10 +71,10 @@ class TBStatinsBOTEC:
         "per daly": "op_per_daly",
         "speedup": "speedup_years",
         "acceleration": "speedup_years",
+        # No bare "cost" key: it caught "per-participant cost" ($500) in run #01.
         "all-in cost": "all_in_cost",
-        "all_in_cost": "all_in_cost",
+        "all in cost": "all_in_cost",
         "total cost": "all_in_cost",
-        "cost": "all_in_cost",
         "probability of success": "p_success",
         "p_success": "p_success",
         "success probability": "p_success",
@@ -122,6 +122,15 @@ class TBStatinsBOTEC:
         central: float,
         high: float,
     ) -> dict[str, Any]:
+        # Guard against mis-mapped names: the quantifier's stated current value
+        # must match this model's value, or the sweep would test the wrong thing.
+        model_value = self.params[parameter_name]
+        stated = self._normalize(parameter_name, central)
+        if model_value and abs(stated - model_value) / abs(model_value) > 0.5:
+            raise ValueError(
+                f"stated current value {central} does not match model value "
+                f"{model_value} for {parameter_name}; likely a mis-mapped name"
+            )
         baseline = self.compute_cost_effectiveness(program_key)
         results: dict[str, Any] = {
             "parameter_name": parameter_name,

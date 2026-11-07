@@ -411,7 +411,14 @@ def run_pipeline(intervention: str, resume_from: str | None = None) -> None:
         "total_output_tokens": stats.total_output_tokens,
         "total_cost": stats.total_cost,
         "stage_costs": stats.stage_costs,
+        "truncated_calls": stats.truncated_calls,
     }
+    if stats.truncated_calls:
+        logger.error(
+            "%d call(s) hit max_tokens and are incomplete: %s",
+            len(stats.truncated_calls),
+            ", ".join(stats.truncated_calls),
+        )
     stats_path.write_text(json.dumps(stats_dict, indent=2), encoding="utf-8")
     logger.info("Pipeline stats saved to %s", stats_path)
 
