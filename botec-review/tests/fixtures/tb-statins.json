@@ -1,0 +1,24 @@
+{
+  "title": "Trialing statins for treating tuberculosis (CG sample BOTEC, May 2025)",
+  "output": "sroi",
+  "bar": 2000,
+  "higher_is_better": true,
+  "stated_result": 3000,
+  "params": {
+    "eligible_people": {"value": 5500000, "low": 4500000, "high": 6500000, "unit": "people/yr", "basis": "stated"},
+    "adult_uptake": {"value": 0.6, "low": 0.3, "high": 0.8, "unit": "share", "basis": "judgment"},
+    "baseline_mortality": {"value": 0.06, "low": 0.03, "high": 0.08, "unit": "share", "basis": "stated"},
+    "relative_reduction": {"value": 0.10, "low": 0.05, "high": 0.15, "unit": "relative", "basis": "judgment"},
+    "dalys_per_death": {"value": 27, "low": 20, "high": 30, "unit": "DALYs", "basis": "stated"},
+    "op_per_daly": {"value": 100000, "unit": "$OP", "basis": "funder convention"},
+    "speedup_years": {"value": 1, "low": 0.5, "high": 3, "unit": "years", "basis": "judgment"},
+    "all_in_cost": {"value": 7000000, "low": 5000000, "high": 15000000, "unit": "$", "basis": "rough estimate"},
+    "p_success": {"value": 0.4, "low": 0.2, "high": 0.5, "unit": "probability", "basis": "judgment"}
+  },
+  "steps": [
+    ["treated", "eligible_people * adult_uptake"],
+    ["deaths_averted_per_year", "treated * baseline_mortality * relative_reduction"],
+    ["benefit", "deaths_averted_per_year * speedup_years * dalys_per_death * op_per_daly"],
+    ["sroi", "benefit / all_in_cost * p_success"]
+  ]
+}

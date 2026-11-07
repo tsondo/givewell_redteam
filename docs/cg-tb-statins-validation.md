@@ -101,9 +101,52 @@ Issues 1 and 2 are fixed in commit 275c389 and not yet tested in a run. The veri
 - **TB case counts (run #03 Finding 21).** WHO does report a record 8.3M people newly diagnosed in 2024, up from 7.5M in 2022. But that is about 78% of estimated incidence, the rise mostly reflects better detection, and TB deaths fell (1.25M to 1.23M). It does not undercut a falling-burden assumption. Run #03 treated it as a stale starting figure and marked it not assessable, which is reasonable.
 - **Rifampicin interaction.** Real: rifampicin sharply lowers atorvastatin levels (Backman et al., 2005). But the trials give atorvastatin alongside rifampicin-based treatment, so the trial effect already includes the interaction. It matters only if routine-care dosing differs.
 
+## Comparison: a single-session skill on the same test
+
+The pipeline costs about $20 a run and needs a local setup. To see how much of its value survives in
+something a researcher could use in their own chat with no setup, we wrote
+[botec-review](../botec-review/), a Claude skill that reviews a BOTEC in one session. It rebuilds
+the arithmetic, finds the inputs that decide whether the estimate clears the bar, checks those inputs
+against public evidence, and lists questions for the author. A small script does all the arithmetic.
+Output is capped at five findings.
+
+A fresh agent with no other context ran the skill on the same BOTEC text, with the same web
+blocking, and was scored against the same answer key with the same rule, written down before its
+output was read. [Full review](../botec-review/validation/tb-statins/review.md) and
+[scoring](../botec-review/validation/README.md).
+
+| CG item | Pipeline (run #03) | Skill |
+|---|---|---|
+| L1 diagnostic | Caught | Caught |
+| L2 quality of life | Caught | Caught |
+| L3 later trial costs | Caught | Caught |
+| L4 newer treatments | Caught | Missed |
+| U1 success ~30% | Caught | Partial: a decision driver, no direction argued |
+| U2 speedup ~3 years | Caught | Caught, as a question for the author |
+| U3 longer horizon | Partial | Partial |
+| U4 net higher | Partial | Missed: leans downward |
+| **Total** | **6 caught, 2 partial, 0 missed** | **4 caught, 2 partial, 2 missed** |
+| Cost | ~$17–22 | A few dollars (11 searches, ~128k tokens) |
+| Output | 35 findings plus a checklist | 2 findings, a decision table, 7 questions |
+
+Both found the most decision-relevant gap: the trials measure sputum and X-ray results, while the
+estimate values deaths. The skill made it concrete with a sample-size calculation (about 23,000
+patients per arm for a mortality-powered Phase III), and showed that at a published Phase III cost
+the estimate falls to 959x, below the bar. Neither reproduced CG's net upward correction, which came
+from CG's knowledge of the funding landscape.
+
+**Reading.** The pipeline catches more, and its debate stage argues directions the skill leaves as
+questions. The skill gets most of the decision-relevant content at a fraction of the cost, in a form
+a grantmaker can read in a few minutes. Which is better depends on the stakes of the decision.
+
+**Same caveats as above, plus two.** It is one case with one run of each approach. The skill's
+instructions were revised after this test, to fix clarity problems the test agent reported, not
+the items it missed, so the score describes the version that was tested.
+
 ## Files
 
 - Run #02 outputs: `results/cg-tb-statins-run02/` (graph: `cg-tb-statins-run02-2026-11-07/graph.json`)
 - Run #03 outputs: `results/cg-tb-statins/` (graph: `cg-tb-statins-run03-2026-11-07/graph.json`)
 - Input and model: `data/cg-tb-statins/`, `pipeline/botec.py`
+- Single-session skill, its review and scoring: `botec-review/`
 - Source: Coefficient Giving, "How we use back-of-the-envelope calculations in our grantmaking", May 2025 (also on the EA Forum).

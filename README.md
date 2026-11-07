@@ -33,6 +33,7 @@ Coefficient Giving (formerly Open Philanthropy) published four sample BOTECs in 
 
 - **Run #02** ($22.23): of CG's 8 follow-up points, 6 caught, 2 partial, 0 missed. These include CG's own argument for a larger speedup and its lower success probability. Caveats (possible recall from training data, 39 findings on a short BOTEC, a verifier that rejected nothing, sensitivity analysis executed for only 2 of 41 critiques) and the full scoring are in [the validation write-up](docs/cg-tb-statins-validation.md).
 - **Run #03** ($17.49, resumed from the verifier on the same critiques after the fixes below): same score, 6 caught and 2 partial, but sensitivity analysis now executes for 35 of 36 critiques, the verifier filters (5 rejected), and the report groups findings by parameter and states conflicts explicitly.
+- **Single-session skill** ([botec-review](botec-review/)), same test: 4 caught, 2 partial, 2 missed, for a few dollars instead of about $20. It found the same top issue. See the comparison in [the validation write-up](docs/cg-tb-statins-validation.md#comparison-a-single-session-skill-on-the-same-test).
 - **Run #01** failed for mechanical reasons (silent truncation and a dropped decomposer thread), fixed below. Archived in `results/cg-tb-statins-run01/`.
 
 ## Pipeline architecture

@@ -1,0 +1,170 @@
+{
+  "title": "Trialing statins for treating TB",
+  "output": "sroi",
+  "bar": 2000,
+  "higher_is_better": true,
+  "stated_result": 3000,
+  "params": {
+    "people_eligible": {
+      "value": 5500000,
+      "unit": "DS-TB patients/yr at adoption",
+      "basis": "stated",
+      "low": 4500000,
+      "high": 7000000,
+      "range_basis": "evidence: WHO 2025 factsheet 8.3M notified in 2024, 1.2M of 10.7M incident cases are children"
+    },
+    "speedup_years": {
+      "value": 1,
+      "unit": "years",
+      "basis": "stated",
+      "low": 0.5,
+      "high": 3,
+      "range_basis": "judgment"
+    },
+    "baseline_mortality": {
+      "value": 0.06,
+      "unit": "probability",
+      "basis": "stated",
+      "low": 0.03,
+      "high": 0.08,
+      "range_basis": "judgment; WHO 2024 gives 88% treatment success for the 2022 first-line cohort, death share not readable from the page"
+    },
+    "relative_reduction": {
+      "value": 0.1,
+      "unit": "relative",
+      "basis": "stated",
+      "low": 0.03,
+      "high": 0.2,
+      "range_basis": "judgment; no mortality data found. Phase IIb atorvastatin: culture negative 97% vs 85%, n=150, open label; Phase 2b rosuvastatin: no significant effect on culture conversion (HR 1.30, 0.88-1.91)"
+    },
+    "uptake": {
+      "value": 0.6,
+      "unit": "share",
+      "basis": "stated",
+      "low": 0.3,
+      "high": 0.8,
+      "range_basis": "judgment"
+    },
+    "dalys_per_death": {
+      "value": 27,
+      "unit": "DALYs",
+      "basis": "stated",
+      "low": 20,
+      "high": 32,
+      "range_basis": "judgment"
+    },
+    "op_per_daly": {
+      "value": 100000,
+      "unit": "$OP/DALY",
+      "basis": "stated"
+    },
+    "all_in_cost": {
+      "value": 7000000,
+      "unit": "USD",
+      "basis": "stated",
+      "low": 5000000,
+      "high": 30000000,
+      "range_basis": "evidence (high end): a 2001 ISPOR costing put one Phase III TB drug trial (850-1,000 patients) at $22.3-22.6M in 2000 USD"
+    },
+    "p_success": {
+      "value": 0.4,
+      "unit": "probability",
+      "basis": "stated",
+      "low": 0.2,
+      "high": 0.5,
+      "range_basis": "judgment"
+    },
+    "uncounted_benefit_factor": {
+      "value": 1,
+      "low": 1,
+      "high": 1.5,
+      "unit": "multiplier on death DALYs",
+      "basis": "implicit",
+      "range_basis": "judgment: morbidity, post-TB lung damage (post-TB mortality hazard 2.91x, Dodd et al. citing Romanowski), diagnostic work"
+    },
+    "discount_rate": {
+      "value": 0,
+      "low": 0,
+      "high": 0.04,
+      "unit": "per year",
+      "basis": "implicit",
+      "range_basis": "judgment: 3% is a common health-economics convention (unsourced)"
+    },
+    "years_to_benefit": {
+      "value": 9,
+      "unit": "years",
+      "basis": "implicit",
+      "range_basis": "8 years to Phase III end (stated) + ~1 year to guideline (judgment)"
+    }
+  },
+  "steps": [
+    [
+      "treated_users",
+      "people_eligible * uptake"
+    ],
+    [
+      "deaths_averted_per_year",
+      "treated_users * baseline_mortality * relative_reduction"
+    ],
+    [
+      "deaths_averted",
+      "deaths_averted_per_year * speedup_years"
+    ],
+    [
+      "dalys_averted",
+      "deaths_averted * dalys_per_death * uncounted_benefit_factor"
+    ],
+    [
+      "discount",
+      "1 / (1 + discount_rate) ** years_to_benefit"
+    ],
+    [
+      "benefit_op",
+      "dalys_averted * op_per_daly * discount"
+    ],
+    [
+      "sroi",
+      "benefit_op / all_in_cost * p_success"
+    ],
+    [
+      "mortality_treated_arm",
+      "baseline_mortality * (1 - relative_reduction)"
+    ],
+    [
+      "n_per_arm_mortality_trial",
+      "(1.96 + 0.8416) ** 2 * (baseline_mortality * (1 - baseline_mortality) + mortality_treated_arm * (1 - mortality_treated_arm)) / (baseline_mortality - mortality_treated_arm) ** 2"
+    ],
+    [
+      "people_from_who_2024_notified",
+      "8300000 * 0.98 ** 8 * 0.96"
+    ],
+    [
+      "people_from_who_excl_children",
+      "people_from_who_2024_notified * (1 - 1.2 / 10.7)"
+    ]
+  ],
+  "scenarios": {
+    "phase3_at_ispor_cost": {
+      "all_in_cost": 22300000
+    },
+    "uncounted_benefits_x1.25": {
+      "uncounted_benefit_factor": 1.25
+    },
+    "discount_3pct_9yr": {
+      "discount_rate": 0.03
+    },
+    "discount_3pct_12yr": {
+      "discount_rate": 0.03,
+      "years_to_benefit": 12
+    },
+    "speedup_3yr": {
+      "speedup_years": 3
+    },
+    "population_who_adults": {
+      "people_eligible": 6020000
+    },
+    "population_who_all_ages": {
+      "people_eligible": 6780000
+    }
+  }
+}
