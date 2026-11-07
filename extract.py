@@ -632,8 +632,10 @@ def _extract_weak_findings(block, sections):
     """Extract weak findings — supports both ### headers and bullet lists."""
     # Try ### headers first. Strip the "Finding N:" prefix, as the strong and
     # moderate parser does; without it weak findings never matched critiques.
-    header_parts = re.split(r"###\s+(?:Finding\s+\d+:\s*)?", block)
     found_headers = False
+    # Without any ### header, re.split returns the whole block as one "part"
+    # and its first line became a single bogus title; skip to the fallbacks.
+    header_parts = re.split(r"###\s+(?:Finding\s+\d+:\s*)?", block) if "###" in block else []
     for part in header_parts:
         part = part.strip()
         if not part:
@@ -647,6 +649,17 @@ def _extract_weak_findings(block, sections):
         found_headers = True
 
     if found_headers:
+        return
+
+    # Fallback: bold-paragraph format "**Finding N: Title.** description"
+    found_paragraphs = False
+    for m in re.finditer(
+        r"^\*\*(?:Finding\s+\d+:\s*)?(.+?)\.?\*\*\s*(.*?)(?=\n\s*\n\*\*|\Z)",
+        block, re.DOTALL | re.MULTILINE,
+    ):
+        sections.append({"title": m.group(1).strip(), "strength": "weak", "body": m.group(2).strip()})
+        found_paragraphs = True
+    if found_paragraphs:
         return
 
     # Fallback: bullet list format "- **Title**: description"

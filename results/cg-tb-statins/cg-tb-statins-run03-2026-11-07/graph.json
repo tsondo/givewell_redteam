@@ -2,7 +2,7 @@
   "schema_version": "0.2",
   "run_id": "cg-tb-statins-run03-2026-11-07",
   "topic": "Coefficient Giving TB statins BOTEC",
-  "generated_at": "2026-11-07T19:07:24.656801+00:00",
+  "generated_at": "2026-11-07T19:10:02.717143+00:00",
   "pipeline_version": "givewell_redteam@unknown",
   "pipeline_summary": {
     "investigation_threads_examined": 8,
@@ -6745,10 +6745,129 @@
         "confidence_justification": "Seed confidence 0.55 from surviving strength 'moderate'."
       },
       {
-        "id": "fnd_finding_28_regulatory_pharmacovigilance_dissemination",
-        "title": "**Finding 28: Regulatory, pharmacovigilance and dissemination costs for an off-patent drug have no obvious payer, and the $7M likely under-budgets them.** An all_in_cost of $8.5M gives about 2,516x (−18%), with a range of +8% to −42%. The headroom is thin: the bar is crossed above about $10.7M. The ATORTUB registry describes an international multicenter Phase III, which plausibly consumes much of the $7M. No rollout-cost data were found, and the $5–20M illustration is ungrounded (core claim: LOGIC ONLY). The judge recommends no cost adjustment, a request to CG for the line items of the $7M, and folding monitoring cost into Finding 13. Benchmarking against EDCTP/CORDIS awards would revive the critique only if the trial alone exceeds about $6M.",
+        "id": "fnd_regulatory_pharmacovigilance_dissemination_costs_off",
+        "title": "Regulatory, pharmacovigilance and dissemination costs for an off-patent drug have no obvious payer, and the $7M likely under-budgets them",
         "surviving_strength": "weak",
-        "text": "**Finding 29: Rifampicin induction structurally limits atorvastatin exposure in routine programs, and the trial exposure does not transfer.** relative_reduction of 0.085 gives −15%. The interaction is real (separated dosing cuts AUC by about 80%; co-administration modestly raises it), and atorvastatin had a poor in vitro therapeutic index. However, the debate established that, under regimen-matched co-administration, the interaction is a p_success consideration rather than an r haircut, because the positive signal was obtained on rifampicin backgrounds (core claim: LOGIC ONLY). Do not apply the 0.5–0.8 multiplier. Record a qualitative flag on p_success, and read the Phase IIc/III protocol for the background regimen and dosing timing.\n\n**Finding 30: The sweat-based diagnostic carries real option value but is speculative (~10–30k central).** The executed run at relative_reduction 0.1094 gives +9%, but the judge notes the stated 10–30k central corresponds to only 0.102–0.106 (about +1–6%). WHO's 2026 tongue-swab recommendation lowers incremental value, though paediatric and no-sputum gaps remain (core claim: LOGIC ONLY). Add a one-line exclusion note and confirm whether any diagnostic spend sits in the cost base. This finding engages with, but does not depend on, the unverifiable scope-boundary critique (see Open Questions).\n\n**Finding 31: Private-sector treatment share and the reach of national guidelines are not modeled.** adult_uptake of 0.57 gives −5%, with a range of −15% to +5%. The private sector handles about one-third of notified cases in India, and the notification mandate exists but is weakly enforced. The sign is ambiguous, since private providers may adopt a cheap generic faster (core claim: LOGIC ONLY). Make no adjustment, and record that the 60% has no stated channel decomposition.\n\n**Finding 32: Under-ascertained deaths push true mortality up, and the direction is the opposite of Critiques 1–2.** This finding raises SROI. baseline_mortality of 0.0625 gives +4%, with a range of 0 to +13%. Post-LTFU mortality is elevated (about 10% dead in Kenyan tracing, SMR 2–7×), but most such deaths occur after treatment stops and are unreachable by an on-treatment adjunct (core claim: LOGIC ONLY). The critique is moot if CG's 6% is all-cause cohort mortality, which is a single document check.\n\n**Finding 33: M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled.** Eligible people of 5.3M gives −4%. Even a 15% shock leaves SROI at about 2,600x. M72 Phase IIb efficacy was 49.7% (CI 2.1–74.2, 39 cases), and modelled impact builds toward 2050 (core claim: LOGIC ONLY). Add a joint sensitivity row varying secular decline (2% vs 4%/yr) with a 0/5/15% vaccine shock. The worst combination gives about 2,200x.\n\n**Finding 34: Post-treatment excess mortality (~40–50k central) and a related sign-reversing adjustment.** dalys_per_death of 27.5 gives +2%, with a range of −10% to +19%, and the sign is ambiguous. Channel (a), post-treatment deaths, overlaps with Menzies' framework and Finding 10. Channel (b), a life-expectancy overstatement, overlaps with Finding 20 (core claim: LOGIC ONLY). Merge (a) into Finding 10. Check whether 27 uses a general-population or TB-adjusted life table.\n\n**Finding 35: Covariance between mortality and DALYs per death means the product of means is not the mean of the product.** The executed central is 0%, with a range of −11% to +7%. The mathematics is correct, but the sign is uncertain (high-HIV settings reverse it), and the effect is zero if 27 is already death-weighted (core claim: LOGIC ONLY). Compare 27 to GBD TB YLL ÷ TB deaths for the deployment countries, and drop the critique if the ratio is about 24–30.",
+        "text": "An all_in_cost of $8.5M gives about 2,516x (−18%), with a range of +8% to −42%. The headroom is thin: the bar is crossed above about $10.7M. The ATORTUB registry describes an international multicenter Phase III, which plausibly consumes much of the $7M. No rollout-cost data were found, and the $5–20M illustration is ungrounded (core claim: LOGIC ONLY). The judge recommends no cost adjustment, a request to CG for the line items of the $7M, and folding monitoring cost into Finding 13. Benchmarking against EDCTP/CORDIS awards would revive the critique only if the trial alone exceeds about $6M.",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_rifampicin_induction_structurally_limits_atorvastatin",
+        "title": "Rifampicin induction structurally limits atorvastatin exposure in routine programs, and the trial exposure does not transfer",
+        "surviving_strength": "weak",
+        "text": "relative_reduction of 0.085 gives −15%. The interaction is real (separated dosing cuts AUC by about 80%; co-administration modestly raises it), and atorvastatin had a poor in vitro therapeutic index. However, the debate established that, under regimen-matched co-administration, the interaction is a p_success consideration rather than an r haircut, because the positive signal was obtained on rifampicin backgrounds (core claim: LOGIC ONLY). Do not apply the 0.5–0.8 multiplier. Record a qualitative flag on p_success, and read the Phase IIc/III protocol for the background regimen and dosing timing.",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_sweat_based_diagnostic_carries_real",
+        "title": "The sweat-based diagnostic carries real option value but is speculative (~10–30k central)",
+        "surviving_strength": "weak",
+        "text": "The executed run at relative_reduction 0.1094 gives +9%, but the judge notes the stated 10–30k central corresponds to only 0.102–0.106 (about +1–6%). WHO's 2026 tongue-swab recommendation lowers incremental value, though paediatric and no-sputum gaps remain (core claim: LOGIC ONLY). Add a one-line exclusion note and confirm whether any diagnostic spend sits in the cost base. This finding engages with, but does not depend on, the unverifiable scope-boundary critique (see Open Questions).",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_private_sector_treatment_share_reach",
+        "title": "Private-sector treatment share and the reach of national guidelines are not modeled",
+        "surviving_strength": "weak",
+        "text": "adult_uptake of 0.57 gives −5%, with a range of −15% to +5%. The private sector handles about one-third of notified cases in India, and the notification mandate exists but is weakly enforced. The sign is ambiguous, since private providers may adopt a cheap generic faster (core claim: LOGIC ONLY). Make no adjustment, and record that the 60% has no stated channel decomposition.",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_under_ascertained_deaths_push_true",
+        "title": "Under-ascertained deaths push true mortality up, and the direction is the opposite of Critiques 1–2",
+        "surviving_strength": "weak",
+        "text": "This finding raises SROI. baseline_mortality of 0.0625 gives +4%, with a range of 0 to +13%. Post-LTFU mortality is elevated (about 10% dead in Kenyan tracing, SMR 2–7×), but most such deaths occur after treatment stops and are unreachable by an on-treatment adjunct (core claim: LOGIC ONLY). The critique is moot if CG's 6% is all-cause cohort mortality, which is a single document check.",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_m72_as01e_other_incidence_shocks",
+        "title": "M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled",
+        "surviving_strength": "weak",
+        "text": "Eligible people of 5.3M gives −4%. Even a 15% shock leaves SROI at about 2,600x. M72 Phase IIb efficacy was 49.7% (CI 2.1–74.2, 39 cases), and modelled impact builds toward 2050 (core claim: LOGIC ONLY). Add a joint sensitivity row varying secular decline (2% vs 4%/yr) with a 0/5/15% vaccine shock. The worst combination gives about 2,200x.",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_post_treatment_excess_mortality_40",
+        "title": "Post-treatment excess mortality (~40–50k central) and a related sign-reversing adjustment",
+        "surviving_strength": "weak",
+        "text": "dalys_per_death of 27.5 gives +2%, with a range of −10% to +19%, and the sign is ambiguous. Channel (a), post-treatment deaths, overlaps with Menzies' framework and Finding 10. Channel (b), a life-expectancy overstatement, overlaps with Finding 20 (core claim: LOGIC ONLY). Merge (a) into Finding 10. Check whether 27 uses a general-population or TB-adjusted life table.",
+        "impact": null,
+        "evidence": null,
+        "givewell_defense": null,
+        "why_it_survives": null,
+        "recommended_action": null,
+        "key_unresolved_question": null,
+        "synthesizer_conditional_note": null,
+        "synthesizer_conditional_tag": false,
+        "conditional_on": [],
+        "confidence": 0.25,
+        "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
+      },
+      {
+        "id": "fnd_covariance_between_mortality_dalys_per",
+        "title": "Covariance between mortality and DALYs per death means the product of means is not the mean of the product",
+        "surviving_strength": "weak",
+        "text": "The executed central is 0%, with a range of −11% to +7%. The mathematics is correct, but the sign is uncertain (high-HIV settings reverse it), and the effect is zero if 27 is already death-weighted (core claim: LOGIC ONLY). Compare 27 to GBD TB YLL ÷ TB deaths for the deployment countries, and drop the critique if the ratio is about 24–30.",
         "impact": null,
         "evidence": null,
         "givewell_defense": null,
@@ -14537,176 +14656,232 @@
       },
       {
         "id": "e_1102",
+        "source_node_id": "crt_rifampicin_induction_structurally_limits_atorvastatin",
+        "target_node_id": "fnd_rifampicin_induction_structurally_limits_atorvastatin",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1103",
         "source_node_id": "crt_winner_s_curse_reference_class",
         "target_node_id": "fnd_winner_s_curse_reference_class",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1103",
+        "id": "e_1104",
         "source_node_id": "crt_hepatotoxicity_myopathy_add_negative_tail",
         "target_node_id": "fnd_hepatotoxicity_myopathy_add_negative_tail",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1104",
+        "id": "e_1105",
         "source_node_id": "crt_7m_phase_iii_cannot_be",
         "target_node_id": "fnd_7m_phase_iii_cannot_be",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1105",
+        "id": "e_1106",
         "source_node_id": "crt_all_framing_counts_benefits_every",
         "target_node_id": "fnd_all_framing_counts_benefits_every",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1106",
+        "id": "e_1107",
+        "source_node_id": "crt_regulatory_pharmacovigilance_dissemination_costs_off",
+        "target_node_id": "fnd_regulatory_pharmacovigilance_dissemination_costs_off",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1108",
         "source_node_id": "crt_reference_class_check_tb_phase",
         "target_node_id": "fnd_reference_class_check_tb_phase",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1107",
+        "id": "e_1109",
         "source_node_id": "crt_speedup_benefit_all_cost_come",
         "target_node_id": "fnd_speedup_benefit_all_cost_come",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1108",
+        "id": "e_1110",
         "source_node_id": "crt_funding_landscape_generic_statin_tb",
         "target_node_id": "fnd_funding_landscape_generic_statin_tb",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1109",
+        "id": "e_1111",
         "source_node_id": "crt_discounting_quantified_properly_s_curve",
         "target_node_id": "fnd_discounting_quantified_properly_s_curve",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1110",
+        "id": "e_1112",
         "source_node_id": "crt_1_year_speedup_trial_results",
         "target_node_id": "fnd_1_year_speedup_trial_results",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1111",
+        "id": "e_1113",
         "source_node_id": "crt_post_tb_lung_disease_morbidity",
         "target_node_id": "fnd_post_tb_lung_disease_morbidity",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1112",
+        "id": "e_1114",
+        "source_node_id": "crt_post_treatment_excess_mortality_40",
+        "target_node_id": "fnd_post_treatment_excess_mortality_40",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1115",
         "source_node_id": "crt_transmission_benefit_is_small_bounded",
         "target_node_id": "fnd_transmission_benefit_is_small_bounded",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1113",
+        "id": "e_1116",
+        "source_node_id": "crt_sweat_based_diagnostic_carries_real",
+        "target_node_id": "fnd_sweat_based_diagnostic_carries_real",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1117",
         "source_node_id": "crt_60_steady_state_uptake_has",
         "target_node_id": "fnd_60_steady_state_uptake_has",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1114",
+        "id": "e_1118",
         "source_node_id": "crt_phase_iii_cannot_be_powered",
         "target_node_id": "fnd_phase_iii_cannot_be_powered",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1115",
+        "id": "e_1119",
         "source_node_id": "crt_clinical_eligibility_monitoring_barriers_cap",
         "target_node_id": "fnd_clinical_eligibility_monitoring_barriers_cap",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1116",
+        "id": "e_1120",
+        "source_node_id": "crt_private_sector_treatment_share_reach",
+        "target_node_id": "fnd_private_sector_treatment_share_reach",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1121",
         "source_node_id": "crt_zero_modeled_lag_between_phase",
         "target_node_id": "fnd_zero_modeled_lag_between_phase",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1117",
+        "id": "e_1122",
         "source_node_id": "crt_survivors_excess_mortality_comorbidity_shrink",
         "target_node_id": "fnd_survivors_excess_mortality_comorbidity_shrink",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1118",
+        "id": "e_1123",
         "source_node_id": "crt_6_is_mix_deaths_only",
         "target_node_id": "fnd_6_is_mix_deaths_only",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1119",
+        "id": "e_1124",
+        "source_node_id": "crt_under_ascertained_deaths_push_true",
+        "target_node_id": "fnd_under_ascertained_deaths_push_true",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1125",
+        "source_node_id": "crt_covariance_between_mortality_dalys_per",
+        "target_node_id": "fnd_covariance_between_mortality_dalys_per",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1126",
         "source_node_id": "crt_global_average_mortality_may_not",
         "target_node_id": "fnd_global_average_mortality_may_not",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1120",
+        "id": "e_1127",
         "source_node_id": "crt_industry_phase_transition_base_rates",
         "target_node_id": "fnd_industry_phase_transition_base_rates",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1121",
+        "id": "e_1128",
         "source_node_id": "crt_tb_specific_reference_classes_host",
         "target_node_id": "fnd_tb_specific_reference_classes_host",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1122",
+        "id": "e_1129",
         "source_node_id": "crt_success_probably_means_surrogate_composite",
         "target_node_id": "fnd_success_probably_means_surrogate_composite",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1123",
+        "id": "e_1130",
         "source_node_id": "crt_baseline_year_is_stale_5",
         "target_node_id": "fnd_baseline_year_is_stale_5",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1124",
+        "id": "e_1131",
         "source_node_id": "crt_2_yr_decline_notified_case",
         "target_node_id": "fnd_2_yr_decline_notified_case",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1125",
+        "id": "e_1132",
         "source_node_id": "crt_adult_ds_notified_is_not",
         "target_node_id": "fnd_adult_ds_notified_is_not",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1126",
+        "id": "e_1133",
         "source_node_id": "crt_shorter_new_regimens_erode_both",
         "target_node_id": "fnd_shorter_new_regimens_erode_both",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1134",
+        "source_node_id": "crt_m72_as01e_other_incidence_shocks",
+        "target_node_id": "fnd_m72_as01e_other_incidence_shocks",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       }
