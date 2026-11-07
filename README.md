@@ -31,8 +31,8 @@ See [conclusions](docs/conclusions.md) for the full analysis, limitations, and c
 
 Coefficient Giving (formerly Open Philanthropy) published four sample BOTECs in May 2025, and later published its own corrections to one of them: trialing statins as an adjunct TB treatment. That makes a blind test possible. The pipeline sees only the original BOTEC. CG's later limitations and revisions are held out, and the verifier's web search excludes CG's site and the EA Forum, so it cannot find them. The pipeline's findings are then scored against CG's own follow-ups.
 
-- **Run #01** (archived in `results/cg-tb-statins-run01/`): 1 of CG's points caught, 1 partial, 6 missed. Three of the misses (adoption speedup, benefit horizon, competing treatments) were raised by the decomposer but lost to a parser bug. The run also exposed silent output truncation on the newer models. Both are fixed; see below.
-- **Run #02**: in progress.
+- **Run #02** ($22.23): of CG's 8 follow-up points, 6 caught, 2 partial, 0 missed. These include CG's own argument for a larger speedup and its lower success probability. Caveats (possible recall from training data, 39 findings on a short BOTEC, a verifier that rejected nothing, sensitivity analysis executed for only 2 of 41 critiques) and the full scoring are in [the validation write-up](docs/cg-tb-statins-validation.md).
+- **Run #01** failed for mechanical reasons (silent truncation and a dropped decomposer thread), fixed below. Archived in `results/cg-tb-statins-run01/`.
 
 ## Pipeline architecture
 

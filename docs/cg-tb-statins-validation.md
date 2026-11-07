@@ -1,0 +1,77 @@
+# Blind validation: Coefficient Giving TB statins BOTEC
+
+*Written 2026-11-07, after run #02. Kept deliberately plain so we cannot talk ourselves into a better result than we got.*
+
+## Why this test
+
+Our earlier runs on GiveWell CEAs could be compared only with GiveWell's single-pass AI output. That shows the pipeline produces more, better-grounded critiques. It does not show the critiques are *right*.
+
+Coefficient Giving (CG, formerly Open Philanthropy) published four sample back-of-the-envelope calculations (BOTECs) in May 2025, in "How we use back-of-the-envelope calculations in our grantmaking". For one of them, a grant to trial atorvastatin as an adjunct treatment for drug-susceptible TB, the same post also lists CG's own limitations and the revisions CG made after the grant. That gives an answer key written by the analysts themselves, before we ran anything.
+
+The BOTEC is a sample written to show CG's method, not a full analysis. Gaps in it are expected and say nothing about CG's research quality. The question is only whether the pipeline finds what CG's own analysts later found.
+
+## Design
+
+- **Input:** the BOTEC text only (`data/cg-tb-statins/report.md`), captured as a close paraphrase with every published number. CG's "limitations" and "updates since making the grant" sections were removed. A short header maps GiveWell terms to CG's units ($OP, SROI) and its ~2,000x funding bar. Prompts were not changed.
+- **Model:** `pipeline/botec.py` replicates the formula chain and reproduces CG's bottom line (3,055x vs. "about 3,000x").
+- **Blinding:** the verifier's web search was limited to medical and health-data domains (`INTERVENTION_VERIFIER_OVERRIDES["cg-tb-statins"]`). CG's site, Open Philanthropy's and the EA Forum, which host the answer key, were excluded.
+- **Scoring rule, fixed before the run:** *caught* = the pipeline raises the same issue with the same direction of effect; *partial* = right issue but wrong direction or mechanism, or only a vague mention; *missed* = not raised. The net-direction item is scored on whether the pipeline's verdict points the same way.
+
+## Answer key (CG's own follow-ups)
+
+**Limitations CG listed**
+- L1. Omits the value of the sweat-based TB diagnostic funded by the same grant.
+- L2. Omits quality-of-life gains beyond deaths averted.
+- L3. Costs of later trials are only rough estimates.
+- L4. Ignores that newer TB treatments could lower the disease burden beyond the existing trend.
+
+**Updates CG made after the grant**
+- U1. Probability of success should be ~30%, not 40%.
+- U2. Speedup should be ~3 years, not 1: few funding options existed, and the grant backed the lead researcher early.
+- U3. Model a longer period: widespread adoption may take ~18 years, not 8, and falling TB prevalence over that extra decade lowers ROI.
+- U4. Net: the larger speedup outweighs U1 and U3, so the corrected SROI is *higher* than 3,000x.
+
+## Result (run #02)
+
+Run #02: 2026-11-07, `claude-opus-5-5` and `claude-sonnet-5-5`, $22.23, no truncated calls. 8 threads, 41 candidate critiques, 39 debated (2 judged immaterial), 39 surviving.
+
+| CG item | Score | What the pipeline said |
+|---|---|---|
+| L1 diagnostic | Caught (weak) | Finding 32: the sweat-based diagnostic carries real option value but is speculative. |
+| L2 quality of life | Caught (moderate) | Finding 21: post-TB lung disease morbidity is likely the largest unvalued channel. |
+| L3 later trial costs | Caught (strong) | Finding 1: a $7M programme cannot fund a mortality-powered Phase III; also Findings 19 and 29. |
+| L4 newer treatments | Caught (moderate) | Finding 14: shorter and new regimens erode the eligible population and the incremental benefit; Finding 36 on the M72 vaccine. |
+| U1 success ~30% | Caught | Findings 4 and 18: base rates put "Phase II and III both succeed" at 15–25%. Same direction as CG, more pessimistic. |
+| U2 speedup ~3 years | Caught (moderate) | Findings 2 and 20: a generic statin has no natural funder, so "never adopted" is a live counterfactual and SROI rises. This is CG's own reasoning. Findings 24 and 35 argue the opposite. |
+| U3 longer horizon | Partial | Finding 5: a slower S-curve adoption ramp lowers SROI 20–31%, matching the direction. But Finding 13 disputes CG's falling-prevalence premise: notified cases rose from 7.5M (2022) to 8.3M (2024). |
+| U4 net higher | Partial | The report names the counterfactual framing, which pushes SROI up, "the single most decision-relevant question" and warns the downward adjustments double-count. It gives no net estimate. |
+
+**6 caught, 2 partial, 0 missed.**
+
+The pipeline also raised points CG did not list. The strongest: Phase III "success" will likely be judged on a surrogate or composite endpoint, while the BOTEC values only mortality (Findings 16, 17, 27). Rifampicin interactions may reduce atorvastatin exposure in routine care (Finding 30). The eligible population lacks label filters (Finding 6). Whether these are right is not tested here.
+
+Run #01 (same day) failed for mechanical reasons: silent output truncation on the new models and a parser bug that dropped a decomposer thread. It is archived in `results/cg-tb-statins-run01/` and gives no evidence either way about the pipeline's reasoning.
+
+## Caveats
+
+- **Possible recall.** Both models' training data extends past May 2025, so they may have seen CG's post. Web blinding cannot prevent recall. We searched every stage output: none cites CG's or the EA Forum's pages, and none uses CG's distinctive revised figures (18 years, a 3-year speedup). The only mention of the post's title comes from the source line in our own input. Recall cannot be ruled out, but nothing points to it.
+- **Coverage is cheap when output is large.** 39 findings on a 700-word BOTEC will touch most issues. A fair reading: the pipeline found everything CG later found, but a grantmaker would need the synthesizer's grouping (four undocumented parameters) to use it.
+- **Most impact numbers are not executed.** The quantifier ran real sensitivity analysis for only 2 of 41 critiques. Other SROI figures in the report are the model's own arithmetic.
+- **The verifier rejected nothing** (0 of 41), so it did not act as a filter on this input.
+- **Different models from the April runs.** Results are not directly comparable with the GiveWell runs.
+- **Single run.** No repeat yet to test stability.
+
+## Process issues found (to fix before any re-run)
+
+1. Verifier never rejects: it flags claims as ungrounded in its notes but passes every critique.
+2. Quantifier reasons in derived factors (e.g. "shrinkage factor s on relative_reduction") that do not map onto model parameters, so sensitivity rarely executes.
+3. Volume: 39 findings; overlapping haircuts on the same parameter are listed separately.
+4. Contradictory findings (speedup up vs. down) are not reconciled.
+5. Critiques skipped as immaterial are not reported in the final report.
+6. The extractor does not link the 9 weak findings to their critiques.
+
+## Files
+
+- Run outputs: `results/cg-tb-statins/` (graph: `cg-tb-statins-run02-2026-11-07/graph.json`)
+- Input and model: `data/cg-tb-statins/`, `pipeline/botec.py`
+- Source: Coefficient Giving, "How we use back-of-the-envelope calculations in our grantmaking", May 2025 (also on the EA Forum).
