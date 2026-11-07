@@ -2,7 +2,7 @@
   "schema_version": "0.2",
   "run_id": "cg-tb-statins-run02-2026-11-07",
   "topic": "Coefficient Giving TB statins BOTEC",
-  "generated_at": "2026-11-07T15:58:58.797910+00:00",
+  "generated_at": "2026-11-07T16:35:52.839334+00:00",
   "pipeline_version": "givewell_redteam@unknown",
   "pipeline_summary": {
     "investigation_threads_examined": 8,
@@ -8890,8 +8890,8 @@
         "confidence_justification": "Seed confidence 0.55 from surviving strength 'moderate'."
       },
       {
-        "id": "fnd_finding_31_covariance_between_mortality",
-        "title": "Finding 31: Covariance between mortality and DALYs per death means the product of means is not the mean of the product",
+        "id": "fnd_covariance_between_mortality_dalys_per",
+        "title": "Covariance between mortality and DALYs per death means the product of means is not the mean of the product",
         "surviving_strength": "weak",
         "text": "The judge declined any signed adjustment. The sign depends on how 27 was derived and how the effect distributes across strata; for example, a death-weighted GBD figure with a uniform absolute effect reverses it. Even the largest illustrative magnitude (~18%) does not cross the bar. Recommended action: state the source of 27 and whether it is death-weighted, and compare it with GBD TB YLLs divided by deaths for the deployment countries.",
         "impact": null,
@@ -8907,8 +8907,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_32_sweat_based_diagnostic",
-        "title": "Finding 32: The sweat-based diagnostic carries real option value but is speculative (~10–30k central)",
+        "id": "fnd_sweat_based_diagnostic_carries_real",
+        "title": "The sweat-based diagnostic carries real option value but is speculative (~10–30k central)",
         "surviving_strength": "weak",
         "text": "The 10–30k figure is UNGROUNDED, and even at face value it moves SROI by only ~+5–14%. The verified evidence points down:\n- WHO tongue-swab and near-point-of-care NAAT recommendations came in early 2026, followed by a May 2026 toolkit.\n- ~100 diagnostic products are in the pipeline.\n\nRecommended action: state the zero valuation explicitly, and confirm whether any diagnostic funding sits inside the $7M.",
         "impact": null,
@@ -8924,8 +8924,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_33_transmission_benefit_is",
-        "title": "Finding 33: Transmission benefit is small, with a bounded calculation (~10–30k central)",
+        "id": "fnd_transmission_benefit_is_small_bounded",
+        "title": "Transmission benefit is small, with a bounded calculation (~10–30k central)",
         "surviving_strength": "weak",
         "text": "Both sides agree the channel is small (0 to ~20k weighted, roughly 0–10% of benefit). It is contingent on a culture-conversion effect that ROSETTA did not find, because most transmission precedes diagnosis. Keep it at zero with a documented note. If it is ever modelled, use ~10–12 DALYs per secondary case, consistent with Menzies, not the Advocate's 1.6.",
         "impact": null,
@@ -8941,8 +8941,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_34_private_sector_treatment",
-        "title": "Finding 34: Private-sector treatment share and the reach of national guidelines are not modeled",
+        "id": "fnd_private_sector_treatment_share_reach",
+        "title": "Private-sector treatment share and the reach of national guidelines are not modeled",
         "surviving_strength": "weak",
         "text": "India's private notifications are ~30–33% of the total, and more than half of patients first seek care privately. However, the critique's upper bound (15%) is below materiality and its sign is ambiguous. Over three-quarters of private providers prescribe ISTC-consistent regimens, which weakens the dosing-fidelity mechanism.\n- Record this as a qualitative caveat.\n- Separately flag private adoption before guidelines as an unquantified downside to speedup_years.\n- Check whether the 5.5M base derives from notified or estimated treated cases.",
         "impact": null,
@@ -8958,8 +8958,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_35_1_year_speedup",
-        "title": "Finding 35: A 1-year speedup of trial results does not necessarily become a 1-year speedup of adoption, in either direction.",
+        "id": "fnd_1_year_speedup_trial_results",
+        "title": "A 1-year speedup of trial results does not necessarily become a 1-year speedup of adoption, in either direction.",
         "surviving_strength": "weak",
         "text": "The BPaLM and Study 31 precedents show the WHO GDG responding within ~1–2 months of data, which supports ~1 year at the WHO stage. Retain 1 year as the central value, define the trial-result date as \"available to WHO GDG,\" and report a 0.5–1.25 year band. The bar is crossed only below ~0.67 years. Post-WHO national and procurement lags remain untested.",
         "impact": null,
@@ -8975,8 +8975,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_36_m72_as01e_other",
-        "title": "Finding 36: M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled",
+        "id": "fnd_m72_as01e_other_incidence_shocks",
+        "title": "M72/AS01E and other incidence shocks are likely not large enough by year 8–10, but should be modelled",
         "surviving_strength": "weak",
         "text": "The context: M72's Phase IIb efficacy was 49.7% (95% CI 2.1–74.2), and its Phase III began in March 2024. Under the CEA's single-cohort year-8 structure, even the conditional −15% upper bound is sub-material, and the probability-weighted effect is likely in the low single digits. Recommended action:\n1. Confirm whether 5.5M is computed after the 2%/yr decline.\n2. Run a one-way sensitivity on decline_per_year over ~1–5%/yr. Open a new critique on the secular decline only if this crosses the threshold.",
         "impact": null,
@@ -8992,8 +8992,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_37_post_treatment_excess",
-        "title": "Finding 37: Post-treatment excess mortality (~40–50k central) and a related sign-reversing adjustment",
+        "id": "fnd_post_treatment_excess_mortality_40",
+        "title": "Post-treatment excess mortality (~40–50k central) and a related sign-reversing adjustment",
         "surviving_strength": "weak",
         "text": "TB survivors have elevated long-term mortality (pooled SMR ~2.9). However, the upside (~45k) rests on three ungrounded inputs, and the downside life-expectancy adjustment is unquantified, so the net is approximately zero with uncertain sign. Make no separate adjustment. Route the upside through Finding 21 to avoid double-counting, and record the downside as a caveat on the 27 DALYs per death.",
         "impact": null,
@@ -9009,8 +9009,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_38_lung_benefit_without",
-        "title": "Finding 38: The \"lung benefit without mortality benefit\" scenario is structurally less valuable than a simple p_success weighting implies",
+        "id": "fnd_lung_benefit_without_mortality_benefit",
+        "title": "The \"lung benefit without mortality benefit\" scenario is structurally less valuable than a simple p_success weighting implies",
         "surviving_strength": "weak",
         "text": "Under the critique's own inputs, the lung-only branch adds only ~+0.02–0.06 probability weight, which leaves ~0.45 unchanged. Record it as a structural caveat. Separately, look up the Phase IIc registered primary endpoint, which bears on what the 40% means.",
         "impact": null,
@@ -9026,8 +9026,8 @@
         "confidence_justification": "Seed confidence 0.25 from surviving strength 'weak'."
       },
       {
-        "id": "fnd_finding_39_unclear_scope_boundary",
-        "title": "Finding 39: Unclear scope boundary for the sweat-diagnostic workstream",
+        "id": "fnd_unclear_scope_boundary_sweat_diagnostic",
+        "title": "Unclear scope boundary for the sweat-diagnostic workstream",
         "surviving_strength": "weak",
         "text": "The sweat test appears to be an exploratory outcome inside the ATORTUB trial infrastructure, which suggests low cost. Make no adjustment. Add two yes/no clarification questions for CG:\n- (a) Does the $7M include diagnostic costs?\n- (b) Does the Phase III use the sweat test?\n\nOnly a \"no\" to (a) combined with a \"yes\" to (b), plus a diagnostic budget above ~$3.7M, would reopen the question.\n\n---",
         "impact": null,
@@ -19909,155 +19909,218 @@
       },
       {
         "id": "e_1546",
+        "source_node_id": "crt_unclear_scope_boundary_sweat_diagnostic",
+        "target_node_id": "fnd_unclear_scope_boundary_sweat_diagnostic",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1547",
         "source_node_id": "crt_reference_class_check_tb_phase",
         "target_node_id": "fnd_reference_class_check_tb_phase",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1547",
+        "id": "e_1548",
         "source_node_id": "crt_speedup_benefit_all_cost_come",
         "target_node_id": "fnd_speedup_benefit_all_cost_come",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1548",
+        "id": "e_1549",
         "source_node_id": "crt_funding_landscape_generic_statin_tb",
         "target_node_id": "fnd_funding_landscape_generic_statin_tb",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1549",
+        "id": "e_1550",
         "source_node_id": "crt_discounting_quantified_properly_s_curve",
         "target_node_id": "fnd_discounting_quantified_properly_s_curve",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1550",
+        "id": "e_1551",
         "source_node_id": "crt_probability_weighting_is_asymmetric_between",
         "target_node_id": "fnd_probability_weighting_is_asymmetric_between",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1551",
+        "id": "e_1552",
+        "source_node_id": "crt_1_year_speedup_trial_results",
+        "target_node_id": "fnd_1_year_speedup_trial_results",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1553",
         "source_node_id": "crt_post_tb_lung_disease_morbidity",
         "target_node_id": "fnd_post_tb_lung_disease_morbidity",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1552",
+        "id": "e_1554",
+        "source_node_id": "crt_post_treatment_excess_mortality_40",
+        "target_node_id": "fnd_post_treatment_excess_mortality_40",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1555",
+        "source_node_id": "crt_transmission_benefit_is_small_bounded",
+        "target_node_id": "fnd_transmission_benefit_is_small_bounded",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1556",
+        "source_node_id": "crt_lung_benefit_without_mortality_benefit",
+        "target_node_id": "fnd_lung_benefit_without_mortality_benefit",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1557",
+        "source_node_id": "crt_sweat_based_diagnostic_carries_real",
+        "target_node_id": "fnd_sweat_based_diagnostic_carries_real",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1558",
         "source_node_id": "crt_60_steady_state_uptake_has",
         "target_node_id": "fnd_60_steady_state_uptake_has",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1553",
+        "id": "e_1559",
         "source_node_id": "crt_phase_iii_cannot_be_powered",
         "target_node_id": "fnd_phase_iii_cannot_be_powered",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1554",
+        "id": "e_1560",
         "source_node_id": "crt_clinical_eligibility_monitoring_barriers_cap",
         "target_node_id": "fnd_clinical_eligibility_monitoring_barriers_cap",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1555",
+        "id": "e_1561",
         "source_node_id": "crt_effective_delivered_dose_adherence_diverge",
         "target_node_id": "fnd_effective_delivered_dose_adherence_diverge",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1556",
+        "id": "e_1562",
+        "source_node_id": "crt_private_sector_treatment_share_reach",
+        "target_node_id": "fnd_private_sector_treatment_share_reach",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1563",
         "source_node_id": "crt_zero_modeled_lag_between_phase",
         "target_node_id": "fnd_zero_modeled_lag_between_phase",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1557",
+        "id": "e_1564",
         "source_node_id": "crt_survivors_excess_mortality_comorbidity_shrink",
         "target_node_id": "fnd_survivors_excess_mortality_comorbidity_shrink",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1558",
+        "id": "e_1565",
         "source_node_id": "crt_6_is_mix_deaths_only",
         "target_node_id": "fnd_6_is_mix_deaths_only",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1559",
+        "id": "e_1566",
         "source_node_id": "crt_under_ascertained_deaths_push_true",
         "target_node_id": "fnd_under_ascertained_deaths_push_true",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1560",
+        "id": "e_1567",
+        "source_node_id": "crt_covariance_between_mortality_dalys_per",
+        "target_node_id": "fnd_covariance_between_mortality_dalys_per",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1568",
         "source_node_id": "crt_global_average_mortality_may_not",
         "target_node_id": "fnd_global_average_mortality_may_not",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1561",
+        "id": "e_1569",
         "source_node_id": "crt_industry_phase_transition_base_rates",
         "target_node_id": "fnd_industry_phase_transition_base_rates",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1562",
+        "id": "e_1570",
         "source_node_id": "crt_tb_specific_reference_classes_host",
         "target_node_id": "fnd_tb_specific_reference_classes_host",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1563",
+        "id": "e_1571",
         "source_node_id": "crt_success_probably_means_surrogate_composite",
         "target_node_id": "fnd_success_probably_means_surrogate_composite",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1564",
+        "id": "e_1572",
         "source_node_id": "crt_p_adoption_phase_iii_success",
         "target_node_id": "fnd_p_adoption_phase_iii_success",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1565",
+        "id": "e_1573",
         "source_node_id": "crt_2_yr_decline_notified_case",
         "target_node_id": "fnd_2_yr_decline_notified_case",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1566",
+        "id": "e_1574",
         "source_node_id": "crt_adult_ds_notified_is_not",
         "target_node_id": "fnd_adult_ds_notified_is_not",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       },
       {
-        "id": "e_1567",
+        "id": "e_1575",
         "source_node_id": "crt_shorter_new_regimens_erode_both",
         "target_node_id": "fnd_shorter_new_regimens_erode_both",
+        "weight": 1,
+        "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
+      },
+      {
+        "id": "e_1576",
+        "source_node_id": "crt_m72_as01e_other_incidence_shocks",
+        "target_node_id": "fnd_m72_as01e_other_incidence_shocks",
         "weight": 1,
         "weight_justification": "1:1 roll-up: synthesizer finding is named identically to critique."
       }

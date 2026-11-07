@@ -630,8 +630,9 @@ def _extract_findings_from_block(block, strength, sections):
 
 def _extract_weak_findings(block, sections):
     """Extract weak findings — supports both ### headers and bullet lists."""
-    # Try ### headers first
-    header_parts = re.split(r"###\s+", block)
+    # Try ### headers first. Strip the "Finding N:" prefix, as the strong and
+    # moderate parser does; without it weak findings never matched critiques.
+    header_parts = re.split(r"###\s+(?:Finding\s+\d+:\s*)?", block)
     found_headers = False
     for part in header_parts:
         part = part.strip()
